@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 自动化热点数据采集脚本 (GitHub Actions 用)
-来源: 百度/知乎/哔哩哔哩/今日头条/澎湃/华尔街见闻/财联社/凤凰/贴吧/微博/抖音
+来源: 百度/知乎/哔哩哔哩/今日头条/澎湃/华尔街见闻/财联社/凤凰/贴吧/微博/抖音/公众号
 """
 import json
 import re
@@ -347,6 +347,33 @@ def scrape_douyin():
         })
     return articles
 
+def scrape_weixin():
+    """公众号热点（聚合平台）"""
+    print("📡 公众号热点...")
+    # 使用公共热榜API获取微信热点
+    data = fetch_json("https://api.vvhan.com/api/hotlist/weixin")
+    if not data:
+        return []
+    articles = []
+    items = data.get("data", [])
+    if not items:
+        return []
+    for item in items[:10]:
+        title = item.get("title", "")
+        articles.append({
+            "id": hash(f"wx_{title}") % 10**9,
+            "title": title,
+            "summary": item.get("desc", "")[:100] if item.get("desc") else "",
+            "source": "公众号热点",
+            "date": today,
+            "time": now_time,
+            "tags": ["公众号", "社会热点", "热议"],
+            "url": item.get("url", "#"),
+            "likes": int(item.get("hot", 10000)),
+            "comments": 100,
+        })
+    return articles
+
 
 class BlogSearcher:
     """搜索博主 + 获取最新视频的辅助类"""
@@ -559,6 +586,7 @@ def main():
         ("贴吧", scrape_tieba),
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
+        ("公众号", scrape_weixin),
         ("博主追踪", scrape_bloggers),
     ]
 
