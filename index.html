@@ -456,22 +456,27 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
+<script src="data.js"></script>
 <script>
 let data=[],allTags=[],json={},dataError=null;
 
-async function loadData(){
+function loadData(){
   try {
-    const resp = await fetch('data.json?_t='+Date.now());
-    if(!resp.ok) throw new Error('HTTP '+resp.status);
-    json = await resp.json();
-    data = json.articles || [];
-    console.log('✅ 在线数据 ('+data.length+'条)');
-    initPage();
+    // 直接从 data.js 读取（可靠方案）
+    if (window.__HOT_DATA__ && window.__HOT_DATA__.articles) {
+      json = window.__HOT_DATA__;
+      data = json.articles || [];
+      console.log('✅ 数据已加载 (' + data.length + '条)');
+      initPage();
+    } else {
+      throw new Error('window.__HOT_DATA__ 未定义');
+    }
   } catch(e) {
     dataError = e.message;
     console.error('❌ 数据加载失败:', e.message);
+    // 显示错误
     document.getElementById('jsError').style.display='block';
-    document.getElementById('jsError').innerHTML='数据加载失败: '+e.message+'<br>请刷新或截图发给我';
+    document.getElementById('jsError').innerHTML='数据加载失败: '+e.message+'<br>请截图发给我';
   }
 }
 
