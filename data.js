@@ -5,12 +5,12 @@ window.__HOT_DATA__ = {
 },
 "articles": [
 {
-"id": 731917274,
+"id": 909708314,
 "title": "国乒男团3比0大胜日本",
 "summary": "B站热搜: 国乒男团3比0大胜日本",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -21,12 +21,12 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 106394267,
+"id": 55631532,
 "title": "EDG夺得VCT第一赛段冠军",
 "summary": "B站热搜: EDG夺得VCT第一赛段冠军",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -37,12 +37,12 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 352054832,
+"id": 935385766,
 "title": "国乒女团世乒赛七连冠",
 "summary": "B站热搜: 国乒女团世乒赛七连冠",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -53,60 +53,12 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 834978090,
-"title": "Smoggy获第一赛段FMVP",
-"summary": "B站热搜: Smoggy获第一赛段FMVP",
-"source": "bilibili",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"年轻",
-"二次元",
-"热门"
-],
-"url": "https://search.bilibili.com/all?keyword=Smoggy获第一赛段FMVP",
-"likes": 30000,
-"comments": 300
-},
-{
-"id": 577588853,
-"title": "紫金陈小说改编沙雕新剧",
-"summary": "B站热搜: 紫金陈小说改编沙雕新剧",
-"source": "bilibili",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"年轻",
-"二次元",
-"热门"
-],
-"url": "https://search.bilibili.com/all?keyword=紫金陈小说改编沙雕新剧",
-"likes": 30000,
-"comments": 300
-},
-{
-"id": 85242471,
-"title": "AI时代如何评价各专业",
-"summary": "B站热搜: AI时代如何评价各专业",
-"source": "bilibili",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"年轻",
-"二次元",
-"热门"
-],
-"url": "https://search.bilibili.com/all?keyword=AI时代如何评价各专业",
-"likes": 30000,
-"comments": 300
-},
-{
-"id": 711869803,
+"id": 791766106,
 "title": "JDG AL",
 "summary": "B站热搜: JDG战胜AL LPL第二赛段",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -117,12 +69,28 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 998952636,
+"id": 201050095,
+"title": "紫金陈小说改编沙雕新剧",
+"summary": "B站热搜: 紫金陈小说改编沙雕新剧",
+"source": "bilibili",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"年轻",
+"二次元",
+"热门"
+],
+"url": "https://search.bilibili.com/all?keyword=紫金陈小说改编沙雕新剧",
+"likes": 30000,
+"comments": 300
+},
+{
+"id": 395508853,
 "title": "斯特里克兰重夺UFC冠军",
 "summary": "B站热搜: 斯特里克兰重夺UFC冠军",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -133,12 +101,28 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 502415818,
+"id": 807898135,
+"title": "Smoggy获第一赛段FMVP",
+"summary": "B站热搜: Smoggy获第一赛段FMVP",
+"source": "bilibili",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"年轻",
+"二次元",
+"热门"
+],
+"url": "https://search.bilibili.com/all?keyword=Smoggy获第一赛段FMVP",
+"likes": 30000,
+"comments": 300
+},
+{
+"id": 454779479,
 "title": "五月天周深如烟神级现场",
 "summary": "B站热搜: 五月天周深如烟神级现场",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
@@ -149,188 +133,204 @@ window.__HOT_DATA__ = {
 "comments": 300
 },
 {
-"id": 639774974,
-"title": "曾经的王情歌MV",
-"summary": "B站热搜: 曾经的王情歌MV",
+"id": 579042249,
+"title": "AI时代如何评价各专业",
+"summary": "B站热搜: AI时代如何评价各专业",
 "source": "bilibili",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "年轻",
 "二次元",
 "热门"
 ],
-"url": "https://search.bilibili.com/all?keyword=曾经的王情歌MV",
+"url": "https://search.bilibili.com/all?keyword=AI时代如何评价各专业",
 "likes": 30000,
 "comments": 300
 },
 {
-"id": 102480274,
+"id": 909289899,
+"title": "给韩国人看曾经的王King",
+"summary": "B站热搜: 给韩国人看曾经的王King",
+"source": "bilibili",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"年轻",
+"二次元",
+"热门"
+],
+"url": "https://search.bilibili.com/all?keyword=给韩国人看曾经的王King",
+"likes": 30000,
+"comments": 300
+},
+{
+"id": 371647611,
 "title": "七连冠！国乒女团逆转日本 孙颖莎2战2胜",
 "summary": "hot",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7637484035215736859/",
-"likes": 37518489,
+"likes": 38984557,
 "comments": 100
 },
 {
-"id": 167440334,
+"id": 311434192,
 "title": "世界杯中国转播费3亿腰斩到1.5亿美元",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7637174028100403226/",
-"likes": 33948133,
+"likes": 35274686,
 "comments": 100
 },
 {
-"id": 771650473,
+"id": 184934538,
 "title": "4月经济发展“成绩单”公布",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7638082004940246566/",
-"likes": 30717541,
+"likes": 31917856,
 "comments": 100
 },
 {
-"id": 958690118,
+"id": 592012550,
 "title": "马琳带国乒女团手持国旗向观众鞠躬",
 "summary": "hot",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7637397533450567743/",
-"likes": 27794380,
+"likes": 28880470,
 "comments": 100
 },
 {
-"id": 69003645,
-"title": "92汽油6.6元每升被指便宜没好货",
-"summary": "",
-"source": "今日头条",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"社会",
-"资讯",
-"热议"
-],
-"url": "https://www.toutiao.com/trending/7637485989900189723/",
-"likes": 25149395,
-"comments": 100
-},
-{
-"id": 54535692,
+"id": 204249390,
 "title": "中方将赴韩国与美方举行经贸磋商",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7638269740374343689/",
-"likes": 22756114,
+"likes": 26132130,
 "comments": 100
 },
 {
-"id": 226242843,
-"title": "京哈高速杨絮爆发 能见度不足一米",
+"id": 26727673,
+"title": "92汽油6.6元每升被指便宜没好货",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
-"url": "https://www.toutiao.com/trending/7637866362266992666/",
-"likes": 20590583,
+"url": "https://www.toutiao.com/trending/7637485989900189723/",
+"likes": 23645329,
 "comments": 100
 },
 {
-"id": 788759109,
+"id": 869342768,
 "title": "中国赛车+中国车手再夺世界冠军",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7637778553300975652/",
-"likes": 18631130,
+"likes": 21395178,
 "comments": 100
 },
 {
-"id": 37294672,
+"id": 165990157,
+"title": "京哈高速杨絮爆发 能见度不足一米",
+"summary": "",
+"source": "今日头条",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"社会",
+"资讯",
+"热议"
+],
+"url": "https://www.toutiao.com/trending/7637866362266992666/",
+"likes": 19359158,
+"comments": 100
+},
+{
+"id": 326593425,
 "title": "村民被眼镜王蛇咬伤3天用13支血清救活",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7637377067235229705/",
-"likes": 16858143,
+"likes": 17516890,
 "comments": 100
 },
 {
-"id": 33130856,
+"id": 194020459,
 "title": "给阿嬷的情书摘得母亲节票房冠军",
 "summary": "",
 "source": "今日头条",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "社会",
 "资讯",
 "热议"
 ],
 "url": "https://www.toutiao.com/trending/7638254738990960178/",
-"likes": 15253879,
+"likes": 15849938,
 "comments": 100
 },
 {
-"id": 482750412,
+"id": 378020047,
 "title": "圣罗兰“拉黑”杭州一个街道？记者实测20个地址全部被拒发货",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -341,12 +341,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 793071453,
+"id": 8538524,
 "title": "做难而正确的事，他们选择在上海挑战",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -357,12 +357,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 814803185,
+"id": 133994803,
 "title": "上戏、澎湃联合出品，红色穿越文旅微短剧《朝花》开播",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -373,12 +373,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 927476794,
+"id": 949219844,
 "title": "北京试点携自行车上地铁",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -389,12 +389,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 878073703,
+"id": 687239380,
 "title": "迎来毛焦尔：在东方与西方之间，匈牙利将驶向何方？｜907编辑部",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -405,44 +405,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 874123564,
-"title": "澎湃回声丨圣罗兰解封杭州被“拉黑”街道，未回应是否调整设置",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33151485",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 664336558,
-"title": "“虎妈”时代结束？美国Beta型妈妈正在重新定义成功",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "18:53",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33141230",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 808150374,
+"id": 357745975,
 "title": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -453,12 +421,28 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 246025096,
+"id": 457840518,
+"title": "澎湃回声丨圣罗兰解封杭州被“拉黑”街道，未回应是否调整设置",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33151485",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 424995166,
 "title": "马上评｜奇葩文案该怼，也要警惕迎合“舆论连坐”",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -469,12 +453,28 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 706230093,
+"id": 509197229,
+"title": "“虎妈”时代结束？美国Beta型妈妈正在重新定义成功",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-10",
+"time": "19:55",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33141230",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 44232808,
 "title": "宠物屡屡使用饭店餐具引争议，中青评论：宠物舔舐的边界需厘清",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "社会",
@@ -485,12 +485,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 821399992,
+"id": 448748271,
 "title": "资讯",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -501,12 +501,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 178681588,
+"id": 421310436,
 "title": "首页",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -517,12 +517,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 345319953,
+"id": 71928883,
 "title": "资讯",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -533,12 +533,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 811734603,
+"id": 377349819,
 "title": "视频",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -549,12 +549,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 881156028,
+"id": 352109126,
 "title": "直播",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -565,12 +565,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 452514131,
+"id": 339709914,
 "title": "凤凰卫视",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -581,12 +581,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 756056655,
+"id": 783687938,
 "title": "财经",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -597,12 +597,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 996893217,
+"id": 593406874,
 "title": "娱乐",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -613,12 +613,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 167377810,
+"id": 821753352,
 "title": "体育",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -629,12 +629,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 617935505,
+"id": 80053182,
 "title": "时尚",
 "summary": "",
 "source": "凤凰网",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "新闻",
 "国际",
@@ -645,12 +645,12 @@ window.__HOT_DATA__ = {
 "comments": 100
 },
 {
-"id": 22827285,
+"id": 859141911,
 "title": "又偷?中国孩子善举被日本认领",
 "summary": "日本网民搬运中国孩子暖心举动的视频，张冠李戴说成是日本小孩，评论还大赞“日本孩子真温柔”，简直厚颜无耻。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -661,12 +661,12 @@ window.__HOT_DATA__ = {
 "comments": 2257680
 },
 {
-"id": 455575393,
+"id": 303749427,
 "title": "告到中央!家长投诉二次元害人",
 "summary": "成都一位家长在政务平台控诉二次元文化严重毒害孩子，把孩子沉迷小众圈层、叛逆厌学，全部归罪于二次元。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -677,12 +677,12 @@ window.__HOT_DATA__ = {
 "comments": 2003987
 },
 {
-"id": 449138611,
+"id": 471284498,
 "title": "FIFA低头,转播费降至1.5亿",
 "summary": "2026年世界杯中国转播费报价大幅下调，从初始约3亿美元降至1.5亿美元，但国际足联与央视尚未最终签约。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -693,12 +693,12 @@ window.__HOT_DATA__ = {
 "comments": 1803704
 },
 {
-"id": 568901099,
+"id": 765715936,
 "title": "棉花异环卡bug速刷30级",
 "summary": "b站棉花玩异环嘴都笑歪了，前脚官方发文称卡bug将会封号，反手棉花利用bug速升30级。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -709,12 +709,12 @@ window.__HOT_DATA__ = {
 "comments": 1674756
 },
 {
-"id": 153065856,
+"id": 907102185,
 "title": "原神福利差,外服玩家差评轰炸",
 "summary": "外网的原神玩家对奖励系统不满，着手大规模的对Google classroom和原神进行差评轰炸，国内玩家表示：真没见过比原神还差的游戏了。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -725,12 +725,12 @@ window.__HOT_DATA__ = {
 "comments": 1413204
 },
 {
-"id": 567928756,
+"id": 661749402,
 "title": "理想乱停车,游客上厕所被堵",
 "summary": "网友上厕所方便后发现门打不开，原因是理想车主把车停在了厕所门口。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -741,12 +741,12 @@ window.__HOT_DATA__ = {
 "comments": 1294525
 },
 {
-"id": 558289142,
+"id": 899866127,
 "title": "JDG2:1AL,塔赞被嘲刷子打野",
 "summary": "JDG2:1AL，从bp到对线JDG完爆AL，塔赞被说公式刷子打野表现太差",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -757,12 +757,12 @@ window.__HOT_DATA__ = {
 "comments": 1237224
 },
 {
-"id": 388646134,
+"id": 326879843,
 "title": "体育总局呼吁:别搞运动员庆生",
 "summary": "国家体育总局表态：粉丝线下为运动员庆生，不仅占用公共资源，还容易对运动员备战产生干扰。希望大家关注赛场表现，不组织、不参与庆生活动。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -773,12 +773,12 @@ window.__HOT_DATA__ = {
 "comments": 1182729
 },
 {
-"id": 188146670,
+"id": 14285165,
 "title": "碾压局!假面骑士ZZZ超梦首战",
 "summary": "假面骑士ZZZ最终形态首战炸场，超梦大王展现超强压制力秒杀西格，不亚于踩死一只蚂蚁。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -789,12 +789,12 @@ window.__HOT_DATA__ = {
 "comments": 1103454
 },
 {
-"id": 27585384,
+"id": 350654414,
 "title": "十年挚爱病逝,吧友含泪忆亡妻",
 "summary": "十年挚爱突患癌症去世，吧友发贴悼念亡妻，回忆与她相处的点点滴滴。",
 "source": "贴吧",
 "date": "2026-05-10",
-"time": "18:53",
+"time": "19:55",
 "tags": [
 "热议",
 "社会",
@@ -1292,11 +1292,11 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读国乒女团世乒赛七背后的商业逻辑\""
 },
 {
-"topic": "Smoggy获第一赛段FMVP",
+"topic": "JDG AL",
 "source": "bilibili",
-"wangba_style": "感叹型: 用\"再见！Smoggy获第！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！JDG AL！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-10社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之Smoggy获第全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之JDG AL全程高能\""
 },
 {
 "topic": "紫金陈小说改编沙雕新剧",
@@ -1306,39 +1306,39 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读紫金陈小说改编沙背后的商业逻辑\""
 },
 {
-"topic": "AI时代如何评价各专业",
-"source": "bilibili",
-"wangba_style": "悬念型: 用\"难不成是真的！AI时代如何评价\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-10社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之AI时代如何评价全程高能\""
-},
-{
-"topic": "JDG AL",
-"source": "bilibili",
-"wangba_style": "故事型: 用\"能理解能理解 JDG AL\"引发共鸣",
-"aqi_style": "速览型: 用\"关于JDG AL的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读JDG AL背后的商业逻辑\""
-},
-{
 "topic": "斯特里克兰重夺UFC冠军",
 "source": "bilibili",
-"wangba_style": "感叹型: 用\"再见！斯特里克兰重夺U！\"制造话题",
+"wangba_style": "悬念型: 用\"难不成是真的！斯特里克兰重夺U\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-10社会热点信息差\"",
 "chen_style": "大型纪录片: 用\"大型纪录片之斯特里克兰重夺U全程高能\""
 },
 {
-"topic": "五月天周深如烟神级现场",
+"topic": "Smoggy获第一赛段FMVP",
 "source": "bilibili",
-"wangba_style": "盘点型: 用\"盘点五月天周深如烟神的几个名场面\"",
-"aqi_style": "速览型: 用\"关于五月天周深如烟神的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读五月天周深如烟神背后的商业逻辑\""
+"wangba_style": "故事型: 用\"能理解能理解 Smoggy获第\"引发共鸣",
+"aqi_style": "速览型: 用\"关于Smoggy获第的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读Smoggy获第背后的商业逻辑\""
 },
 {
-"topic": "曾经的王情歌MV",
+"topic": "五月天周深如烟神级现场",
 "source": "bilibili",
-"wangba_style": "悬念型: 用\"难不成是真的！曾经的王情歌MV\"制造好奇",
+"wangba_style": "感叹型: 用\"再见！五月天周深如烟神！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-10社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之曾经的王情歌MV全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之五月天周深如烟神全程高能\""
+},
+{
+"topic": "AI时代如何评价各专业",
+"source": "bilibili",
+"wangba_style": "盘点型: 用\"盘点AI时代如何评价的几个名场面\"",
+"aqi_style": "速览型: 用\"关于AI时代如何评价的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读AI时代如何评价背后的商业逻辑\""
+},
+{
+"topic": "给韩国人看曾经的王King",
+"source": "bilibili",
+"wangba_style": "悬念型: 用\"难不成是真的！给韩国人看曾经的\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-10社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之给韩国人看曾经的全程高能\""
 },
 {
 "topic": "七连冠！国乒女团逆转日本 孙颖莎2战2胜",
@@ -1355,5 +1355,5 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之世界杯中国转播费全程高能\""
 }
 ],
-"updated_at": "2026-05-10T18:53:23.342803"
+"updated_at": "2026-05-10T19:56:07.865734"
 };
