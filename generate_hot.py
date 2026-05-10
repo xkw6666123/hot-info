@@ -57,18 +57,23 @@ def fetch_json(url, headers=None):
     except:
         return None
 
-def tikhub_request(endpoint, params=None):
-    """调用 TikHub API"""
+def tikhub_request(endpoint, params=None, method="GET"):
+    """调用 TikHub API（支持 GET/POST）"""
     url = f"{TIKHUB_BASE}{endpoint}"
-    if params:
-        query = urllib.parse.urlencode(params)
-        url += f"?{query}"
     headers = {
         "Authorization": f"Bearer {TIKHUB_API_KEY}",
         "User-Agent": USER_AGENT,
         "Content-Type": "application/json"
     }
-    req = urllib.request.Request(url, headers=headers)
+    
+    data = None
+    if method == "POST" and params:
+        data = json.dumps(params).encode("utf-8")
+    elif params:
+        query = urllib.parse.urlencode(params)
+        url += f"?{query}"
+    
+    req = urllib.request.Request(url, headers=headers, data=data, method=method)
     try:
         with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
             return json.loads(resp.read().decode("utf-8"))
@@ -342,8 +347,114 @@ def scrape_douyin():
         })
     return articles
 
+
+class BlogSearcher:
+    """搜索博主 + 获取最新视频的辅助类"""
+    def __init__(self, name):
+        self.name = name
+        self.results = []
+    
+    def run(self):
+        # 步骤1：搜索用户，获取 sec_uid
+        sec_uid = self._search_user()
+        if not sec_uid:
+            # 备用：直接搜视频，按作者名筛选
+            self._search_fallback()
+            return
+        
+        # 步骤2：获取用户作品列表（最多5条）
+        posts = self._get_user_posts(sec_uid, count=5)
+        if not posts:
+            self._search_fallback()
+            return
+        
+        # 步骤3：取最近 3 条
+        for v in posts[:3]:
+            self.results.append(self._parse_video(v))
+    
+    def _search_user(self):
+        """搜索用户，返回 sec_uid"""
+        # 优先用 search_v2（POST，直接返回 sec_uid）
+        result = tikhub_request(
+            "/api/v1/douyin/search/fetch_user_search_v2",
+            {"keyword": self.name, "cursor": 0},
+            method="POST"
+        )
+        if result and result.get("code") == 200:
+            data = result.get("data", {})
+            users = data.get("data") or data.get("user_list") or []
+            for u in users:
+                info = u.get("user_info", u)
+                nick = info.get("nickname", "")
+                sid = info.get("sec_uid", "")
+                # 名称完全匹配或包含
+                if sid and (nick == self.name or self.name in nick):
+                    return sid
+        
+        # 备用：search_v1
+        result = tikhub_request(
+            "/api/v1/douyin/search/fetch_user_search",
+            {"keyword": self.name, "cursor": 0, "douyin_user_fans": "", "douyin_user_type": "", "search_id": ""},
+            method="POST"
+        )
+        if result and result.get("code") == 200:
+            data = result.get("data", {})
+            users = data.get("data") or data.get("user_list") or []
+            for u in users:
+                info = u.get("user_info", u)
+                nick = info.get("nickname", "")
+                sid = info.get("sec_uid", "")
+                if sid and (nick == self.name or self.name in nick):
+                    return sid
+        
+        return None
+    
+    def _get_user_posts(self, sec_uid, count=5):
+        """获取用户作品列表"""
+        result = tikhub_request(
+            "/api/v1/douyin/app/v3/fetch_user_post_videos",
+            {"sec_user_id": sec_uid, "max_cursor": 0, "count": count}
+        )
+        if result and result.get("code") == 200:
+            data = result.get("data", {})
+            aweme_list = data.get("aweme_list") or data.get("data") or []
+            return aweme_list
+        return None
+    
+    def _search_fallback(self):
+        """备用方案：直接搜视频"""
+        result = tikhub_request("/api/v1/douyin/app/v3/fetch_search_result", {
+            "keyword": self.name, "offset": 0, "count": 5, "search_type": "video"
+        })
+        if not result or result.get("code") != 200:
+            return
+        
+        data_list = result.get("data", {}).get("data", [])
+        for video in data_list[:3]:
+            aweme_info = video.get("aweme_info", {}) or video
+            author = aweme_info.get("author", {}) or video.get("author", {})
+            nick = author.get("nickname", "")
+            # 筛选匹配博主名
+            if nick == self.name or self.name in nick:
+                self.results.append(self._parse_video(aweme_info))
+    
+    def _parse_video(self, v):
+        desc = v.get("desc", "")
+        stats = v.get("statistics", {})
+        create_time = v.get("create_time", 0)
+        return {
+            "aweme_id": v.get("aweme_id", ""),
+            "desc": desc,
+            "date": datetime.fromtimestamp(create_time).strftime("%Y-%m-%d") if create_time else today,
+            "time": datetime.fromtimestamp(create_time).strftime("%H:%M") if create_time else now_time,
+            "likes": stats.get("digg_count", stats.get("diggCount", 0)),
+            "comments": stats.get("comment_count", stats.get("commentCount", 0)),
+            "create_time": create_time,
+        }
+
+
 def scrape_bloggers():
-    """通过 TikHub API 搜索博主名称，获取最新视频"""
+    """通过 TikHub API 获取博主最新 3 条视频"""
     print("📡 博主追踪 (TikHub)...")
     if not TRACKED_BLOGGERS:
         print("  ℹ️ 未配置追踪博主，跳过")
@@ -353,56 +464,36 @@ def scrape_bloggers():
     for name in TRACKED_BLOGGERS:
         print(f"  📹 {name}...")
         
-        # 搜索博主视频（取最新1条）
-        result = tikhub_request("/api/v1/douyin/app/v3/fetch_search_result", {
-            "keyword": name,
-            "offset": 0,
-            "count": 1,
-            "search_type": "video"
-        })
+        searcher = BlogSearcher(name)
+        searcher.run()
         
-        if not result or result.get("code") != 200:
-            print(f"    ⚠️ 搜索失败")
-            continue
+        for video in searcher.results:
+            article = {
+                "id": hash(f"blogger_{name}_{video['aweme_id']}") % 10**9,
+                "title": video["desc"][:50] if video["desc"] else f"{name} 最新视频",
+                "summary": video["desc"][:200] if video["desc"] else "",
+                "source": "blogger",
+                "blogger_name": name,
+                "date": video["date"],
+                "time": video["time"],
+                "tags": ["博主", "爆款", "拆解"],
+                "url": f"https://www.douyin.com/video/{video['aweme_id']}",
+                "likes": video["likes"],
+                "comments": video["comments"],
+            }
+            articles.append(article)
         
-        data_list = result.get("data", {}).get("data", [])
-        if not data_list:
-            print(f"    ⚠️ 未找到视频")
-            continue
-        
-        # 取第一条视频
-        video = data_list[0]
-        aweme_info = video.get("aweme_info", {}) or video
-        
-        desc = aweme_info.get("desc", "") or video.get("desc", "")
-        stats = aweme_info.get("statistics", {}) or video.get("statistics", {})
-        author = aweme_info.get("author", {}) or video.get("author", {})
-        aweme_id = aweme_info.get("aweme_id", "") or video.get("aweme_id", "")
-        create_time = aweme_info.get("create_time", 0) or video.get("create_time", 0)
-        
-        if not aweme_id:
-            print(f"    ⚠️ 视频ID缺失")
-            continue
-        
-        video_date = datetime.fromtimestamp(create_time).strftime("%Y-%m-%d") if create_time else today
-        
-        article = {
-            "id": hash(f"blogger_{name}_{aweme_id}") % 10**9,
-            "title": desc[:50] if desc else f"{name} 最新视频",
-            "summary": desc[:200] if desc else "",
-            "source": "blogger",
-            "blogger_name": name,
-            "date": video_date,
-            "time": datetime.fromtimestamp(create_time).strftime("%H:%M") if create_time else now_time,
-            "tags": ["博主", "爆款", "拆解"],
-            "url": f"https://www.douyin.com/video/{aweme_id}",
-            "likes": stats.get("digg_count", 0) or stats.get("diggCount", 0),
-            "comments": stats.get("comment_count", 0) or stats.get("commentCount", 0),
-        }
-        articles.append(article)
-        print(f"    ✅ {desc[:30]}...  👍{article['likes']:,}")
+        if searcher.results:
+            print(f"    ✅ 找到 {len(searcher.results)} 条视频")
+        else:
+            print(f"    ⚠️ 未找到，将保留已有数据")
     
     return articles
+
+
+# ═══════════════════════════════════════════════════════
+#  创作灵感生成
+# ═══════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════
@@ -488,11 +579,11 @@ def main():
         for a in old_data.get("articles", []):
             if a.get("source") == "blogger" and a.get("analysis"):
                 existing_bloggers.append(a)
-        print(f"  📌 保留 {len(existing_bloggers)} 条博主分析数据")
+        print(f"  📌 读取 {len(existing_bloggers)} 条已有博主分析数据")
     except:
         pass
 
-    # 合并：新抓的博主 + 旧的博主分析数据（去重）
+    # 合并：新抓的博主 + 旧的博主分析数据（去重，新数据优先）
     new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
     for b in existing_bloggers:
         if str(b["id"]) not in new_blogger_ids:
@@ -507,6 +598,25 @@ def main():
             seen.add(aid)
             unique_articles.append(a)
     all_articles = unique_articles
+    
+    # 每个博主只保留最新 3 条（按日期降序）
+    blogger_by_name = {}
+    for a in all_articles:
+        if a.get("source") == "blogger":
+            name = a.get("blogger_name", "未知")
+            if name not in blogger_by_name:
+                blogger_by_name[name] = []
+            blogger_by_name[name].append(a)
+    
+    for name, items in blogger_by_name.items():
+        items.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+        kept = items[:3]
+        removed = items[3:]
+        if removed:
+            # 从 all_articles 中移除多余的
+            removed_ids = {str(r["id"]) for r in removed}
+            all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
+            print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
 
     # 生成灵感（优先博主内容）
     blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
