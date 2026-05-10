@@ -27,6 +27,9 @@ TIKHUB_TIMEOUT = 30
 TRACKED_BLOGGERS = [
     "网吧信息差",
     "阿七大型纪录片",
+    "陈先生",
+    "信息黑板报",
+    "沙漠一之雕",
 ]
 
 today = datetime.now().strftime("%Y-%m-%d")
@@ -477,8 +480,39 @@ def main():
         except Exception as e:
             print(f"  ❌ {name}: {e}")
 
-    # 生成灵感
-    inspirations = generate_inspirations(all_articles[:15])
+    # 保留已有的博主数据（含 analysis 拆解信息）
+    existing_bloggers = []
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            old_data = json.load(f)
+        for a in old_data.get("articles", []):
+            if a.get("source") == "blogger" and a.get("analysis"):
+                existing_bloggers.append(a)
+        print(f"  📌 保留 {len(existing_bloggers)} 条博主分析数据")
+    except:
+        pass
+
+    # 合并：新抓的博主 + 旧的博主分析数据（去重）
+    new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
+    for b in existing_bloggers:
+        if str(b["id"]) not in new_blogger_ids:
+            all_articles.append(b)
+    
+    # 去重（按id）
+    seen = set()
+    unique_articles = []
+    for a in all_articles:
+        aid = str(a.get("id", ""))
+        if aid and aid not in seen:
+            seen.add(aid)
+            unique_articles.append(a)
+    all_articles = unique_articles
+
+    # 生成灵感（优先博主内容）
+    blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
+    other_items = [a for a in all_articles if a.get("source") != "blogger"]
+    insp_sources = blogger_items[:3] + other_items[:12]
+    inspirations = generate_inspirations(insp_sources[:15])
 
     # 构建 data.json
     output = {
