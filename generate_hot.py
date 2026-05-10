@@ -8,6 +8,7 @@ import re
 import time
 import urllib.request
 import urllib.error
+import urllib.parse
 from datetime import datetime
 
 # ── 配置 ──
@@ -16,6 +17,17 @@ SITE_NAME = "热点信息差"
 SITE_DESC = "每日社会热点聚合 + 爆款视频拆解 + AI选题灵感"
 TIMEOUT = 10
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
+# ── TikHub 博主追踪 ──
+TIKHUB_API_KEY = "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw=="
+TIKHUB_BASE = "https://api.tikhub.io"
+TIKHUB_TIMEOUT = 30
+
+# 追踪的博主列表: {name, share_url} 填抖音分享链接即可
+TRACKED_BLOGGERS = [
+    # {"name": "网吧信息差", "share_url": "https://v.douyin.com/xxxxx/"},
+    # {"name": "阿七大型纪录片", "share_url": "https://v.douyin.com/xxxxx/"},
+]
 
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
@@ -40,6 +52,25 @@ def fetch_json(url, headers=None):
     try:
         return json.loads(text)
     except:
+        return None
+
+def tikhub_request(endpoint, params=None):
+    """调用 TikHub API"""
+    url = f"{TIKHUB_BASE}{endpoint}"
+    if params:
+        query = urllib.parse.urlencode(params)
+        url += f"?{query}"
+    headers = {
+        "Authorization": f"Bearer {TIKHUB_API_KEY}",
+        "User-Agent": USER_AGENT,
+        "Content-Type": "application/json"
+    }
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print(f"  ⚠️ TikHub API 失败: {e}")
         return None
 
 
@@ -308,6 +339,64 @@ def scrape_douyin():
         })
     return articles
 
+def scrape_bloggers():
+    """通过 TikHub API 获取追踪博主最新视频"""
+    print("📡 博主追踪 (TikHub)...")
+    if not TRACKED_BLOGGERS:
+        print("  ℹ️ 未配置追踪博主，跳过")
+        return []
+    
+    articles = []
+    for blogger in TRACKED_BLOGGERS:
+        name = blogger.get("name", "未知博主")
+        share_url = blogger.get("share_url", "")
+        print(f"  📹 {name}...")
+        
+        if not share_url:
+            print(f"    ⚠️ 未配置分享链接")
+            continue
+        
+        # 通过分享链接获取视频详情
+        encoded_url = urllib.parse.quote(share_url, safe='')
+        result = tikhub_request("/api/v1/douyin/app/v3/fetch_one_video_by_share_url",
+                                {"share_url": encoded_url})
+        
+        if not result or result.get("code") != 200:
+            print(f"    ⚠️ 获取失败")
+            continue
+        
+        detail = result.get("data", {}).get("aweme_detail", {})
+        if not detail:
+            print(f"    ⚠️ 未获取到视频详情")
+            continue
+        
+        # 提取视频信息
+        desc = detail.get("desc", "")
+        stats = detail.get("statistics", {})
+        author = detail.get("author", {})
+        aweme_id = detail.get("aweme_id", "")
+        create_time = detail.get("create_time", 0)
+        video_date = datetime.fromtimestamp(create_time).strftime("%Y-%m-%d") if create_time else today
+        
+        article = {
+            "id": hash(f"blogger_{name}_{aweme_id}") % 10**9,
+            "title": desc[:50] if desc else f"{name} 新视频",
+            "summary": desc[:200] if desc else "",
+            "source": "blogger",
+            "blogger_name": name,
+            "blogger_avatar": author.get("avatar_thumb", {}).get("url_list", [""])[0] if author.get("avatar_thumb") else "",
+            "date": video_date,
+            "time": datetime.fromtimestamp(create_time).strftime("%H:%M") if create_time else now_time,
+            "tags": ["博主", "爆款", "拆解"],
+            "url": f"https://www.douyin.com/video/{aweme_id}",
+            "likes": stats.get("digg_count", 0),
+            "comments": stats.get("comment_count", 0),
+        }
+        articles.append(article)
+        print(f"    ✅ {desc[:30]}...  👍{stats.get('digg_count',0):,}")
+    
+    return articles
+
 
 # ═══════════════════════════════════════════════════════
 #  创作灵感生成
@@ -372,6 +461,7 @@ def main():
         ("贴吧", scrape_tieba),
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
+        ("博主追踪", scrape_bloggers),
     ]
 
     all_articles = []
