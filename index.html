@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -456,13 +456,22 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js"></script>
+<script src="data.js" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
-let data=[],allTags=[],json={},dataError=null;
+var dataJsFailed=false;
+var data=[],allTags=[],json={},dataError=null;
+
+// data.js 加载后立即检查解析结果
+if(!dataJsFailed && !window.__HOT_DATA__){
+  document.getElementById('jsError').style.display='block';
+  document.getElementById('jsError').innerHTML='❌ data.js 已加载但解析失败（可能有语法错误/BOM）<br>请截图发给我';
+}
 
 function loadData(){
   try {
-    // 直接从 data.js 读取（可靠方案）
+    if(dataJsFailed){
+      throw new Error('data.js 网络加载失败(404)');
+    }
     if (window.__HOT_DATA__ && window.__HOT_DATA__.articles) {
       json = window.__HOT_DATA__;
       data = json.articles || [];
@@ -474,7 +483,6 @@ function loadData(){
   } catch(e) {
     dataError = e.message;
     console.error('❌ 数据加载失败:', e.message);
-    // 显示错误
     document.getElementById('jsError').style.display='block';
     document.getElementById('jsError').innerHTML='数据加载失败: '+e.message+'<br>请截图发给我';
   }
