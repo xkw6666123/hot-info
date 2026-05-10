@@ -23,10 +23,10 @@ TIKHUB_API_KEY = "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw=="
 TIKHUB_BASE = "https://api.tikhub.io"
 TIKHUB_TIMEOUT = 30
 
-# 追踪的博主列表: {name, share_url} 填抖音分享链接即可
+# 追踪的博主列表: 填博主抖音名称即可
 TRACKED_BLOGGERS = [
-    # {"name": "网吧信息差", "share_url": "https://v.douyin.com/xxxxx/"},
-    # {"name": "阿七大型纪录片", "share_url": "https://v.douyin.com/xxxxx/"},
+    "网吧信息差",
+    "阿七大型纪录片",
 ]
 
 today = datetime.now().strftime("%Y-%m-%d")
@@ -340,60 +340,64 @@ def scrape_douyin():
     return articles
 
 def scrape_bloggers():
-    """通过 TikHub API 获取追踪博主最新视频"""
+    """通过 TikHub API 搜索博主名称，获取最新视频"""
     print("📡 博主追踪 (TikHub)...")
     if not TRACKED_BLOGGERS:
         print("  ℹ️ 未配置追踪博主，跳过")
         return []
     
     articles = []
-    for blogger in TRACKED_BLOGGERS:
-        name = blogger.get("name", "未知博主")
-        share_url = blogger.get("share_url", "")
+    for name in TRACKED_BLOGGERS:
         print(f"  📹 {name}...")
         
-        if not share_url:
-            print(f"    ⚠️ 未配置分享链接")
-            continue
-        
-        # 通过分享链接获取视频详情
-        encoded_url = urllib.parse.quote(share_url, safe='')
-        result = tikhub_request("/api/v1/douyin/app/v3/fetch_one_video_by_share_url",
-                                {"share_url": encoded_url})
+        # 搜索博主视频（取最新1条）
+        result = tikhub_request("/api/v1/douyin/app/v3/fetch_search_result", {
+            "keyword": name,
+            "offset": 0,
+            "count": 1,
+            "search_type": "video"
+        })
         
         if not result or result.get("code") != 200:
-            print(f"    ⚠️ 获取失败")
+            print(f"    ⚠️ 搜索失败")
             continue
         
-        detail = result.get("data", {}).get("aweme_detail", {})
-        if not detail:
-            print(f"    ⚠️ 未获取到视频详情")
+        data_list = result.get("data", {}).get("data", [])
+        if not data_list:
+            print(f"    ⚠️ 未找到视频")
             continue
         
-        # 提取视频信息
-        desc = detail.get("desc", "")
-        stats = detail.get("statistics", {})
-        author = detail.get("author", {})
-        aweme_id = detail.get("aweme_id", "")
-        create_time = detail.get("create_time", 0)
+        # 取第一条视频
+        video = data_list[0]
+        aweme_info = video.get("aweme_info", {}) or video
+        
+        desc = aweme_info.get("desc", "") or video.get("desc", "")
+        stats = aweme_info.get("statistics", {}) or video.get("statistics", {})
+        author = aweme_info.get("author", {}) or video.get("author", {})
+        aweme_id = aweme_info.get("aweme_id", "") or video.get("aweme_id", "")
+        create_time = aweme_info.get("create_time", 0) or video.get("create_time", 0)
+        
+        if not aweme_id:
+            print(f"    ⚠️ 视频ID缺失")
+            continue
+        
         video_date = datetime.fromtimestamp(create_time).strftime("%Y-%m-%d") if create_time else today
         
         article = {
             "id": hash(f"blogger_{name}_{aweme_id}") % 10**9,
-            "title": desc[:50] if desc else f"{name} 新视频",
+            "title": desc[:50] if desc else f"{name} 最新视频",
             "summary": desc[:200] if desc else "",
             "source": "blogger",
             "blogger_name": name,
-            "blogger_avatar": author.get("avatar_thumb", {}).get("url_list", [""])[0] if author.get("avatar_thumb") else "",
             "date": video_date,
             "time": datetime.fromtimestamp(create_time).strftime("%H:%M") if create_time else now_time,
             "tags": ["博主", "爆款", "拆解"],
             "url": f"https://www.douyin.com/video/{aweme_id}",
-            "likes": stats.get("digg_count", 0),
-            "comments": stats.get("comment_count", 0),
+            "likes": stats.get("digg_count", 0) or stats.get("diggCount", 0),
+            "comments": stats.get("comment_count", 0) or stats.get("commentCount", 0),
         }
         articles.append(article)
-        print(f"    ✅ {desc[:30]}...  👍{stats.get('digg_count',0):,}")
+        print(f"    ✅ {desc[:30]}...  👍{article['likes']:,}")
     
     return articles
 
