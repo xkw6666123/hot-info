@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Test</title></head><body>
+<h1>数据测试</h1>
+<div id="status">加载中...</div>
+<div id="result"></div>
+<script>
+async function load() {
+  try {
+    const r = await fetch('data.json?_t='+Date.now());
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    const j = await r.json();
+    document.getElementById('status').textContent = '✅ 成功: '+j.articles.length+' 条文章';
+    document.getElementById('result').innerHTML = j.articles.slice(0,5).map(a => 
+      '<div style="border:1px solid #ccc;margin:5px;padding:5px">'+
+      '<b>'+a.title+'</b><br>'+
+      '来源: '+a.source+' | 标签: '+a.tags.join(',')+'<br>'+
+      '👍 '+a.likes+' 💬 '+a.comments+'<br>'+
+      '<a href="'+a.url+'">链接</a>'+
+      '</div>'
+    ).join('');
+  } catch(e) {
+    document.getElementById('status').textContent = '❌ 失败: '+e.message;
+  }
+}
+load();
+</script>
+</body></html>
