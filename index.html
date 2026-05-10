@@ -434,7 +434,7 @@ body{padding-bottom:0}
 <div class="about-item">
 <span class="about-icon">⚡</span>
 <h3>自动追踪</h3>
-<p>每小时自动检查博主新视频，提取内容、生成分析、实时更新到网站，信息差永不掉线。</p>
+<p>每3小时自动检查博主新视频，提取内容、生成分析、实时更新到网站，信息差永不掉线。</p>
 </div>
 </div>
 </section>
@@ -640,8 +640,8 @@ function renderCard(a){
         <span class="source">${a.source||''}</span>
         ${badge?`<span style="margin-left:6px;font-size:13px">${badge}</span>`:''}
       </div>
-      <div class="card-title">${a.title}</div>
-      <div class="card-summary">${a.summary||''}</div>
+      <div class="card-title">${esc(a.title)}</div>
+      <div class="card-summary">${esc(a.summary||'')}</div>
       <div class="card-footer">
         <div class="card-tags">${tags.map(t=>{
           let extra='';
@@ -688,8 +688,38 @@ function renderCurrent(){
   else if(currentFilter==='trend')renderTrend();
   else if(currentFilter==='analysis')renderAnalysis();
   else if(currentFilter==='hot'){renderTags('全部');render(data.filter(d=>d.source!=='blogger'))}
-  else if(currentFilter==='fav'){}
+  else if(currentFilter==='fav')renderFav();
   else render(data);
+}
+function renderFav(){
+  const el=document.getElementById('content');
+  const f=getFavs();
+  const favItems=data.filter(d=>f.includes(String(d.id)));
+  let inspHtml='';
+  try{
+    const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
+    if(raw.date===new Date().toDateString()&&raw.ids.length>0&&json.inspirations){
+      const liked=raw.ids.map(i=>json.inspirations[i]).filter(Boolean);
+      if(liked.length>0){
+        inspHtml='<div class="section-title">今日有趣的灵感 ('+raw.ids.length+')</div>'+
+        liked.map(d=>'<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div><h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3><div class="suggestion">'+esc(d.wangba_style)+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七大型纪录片风格</span></h3><div class="suggestion">'+esc(d.aqi_style)+'</div>'+(d.chen_style?'<h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生风格</span></h3><div class="suggestion" style="color:#D85A30">'+esc(d.chen_style)+'</div>':'')+'</div>').join('');
+      }
+    }
+  }catch(e){}
+  const total=f.length+((JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0);
+  if(total===0){
+    el.innerHTML='<div class="empty-state"><div class="icon">⭐</div><p>还没有收藏内容</p><p style="font-size:12px">在文章点⭐收藏或在视频点❤️喜欢，会推荐相关热点</p></div>';
+  }else{
+    renderTags('全部');
+    el.innerHTML=inspHtml+'<div class="section-title" style="margin-top:'+(inspHtml?'16px':'0')+'">收藏文章</div>';
+    el.innerHTML+=favItems.map(d=>renderCard(d)).join('');
+  }
+  const rec=getRecommended();
+  const likeCount=getLikes().length;
+  if(rec.length>0){
+    el.innerHTML+='<div class="section-title" style="margin-top:16px">🔥 猜你喜欢（基于'+(likeCount>0?'你喜欢的视频':'收藏内容')+'）</div>';
+    el.innerHTML+=rec.map(d=>renderCard(d)).join('');
+  }
 }
 function getRecommended(){
   const likeTags=getLikeTags()
@@ -698,6 +728,7 @@ function getRecommended(){
 }
 
 function fmt(n){return n>=10000?(n/10000).toFixed(1)+'万':n.toString()}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
 // tab switching
 document.querySelectorAll('.header-tabs a,.mobile-nav a').forEach(tab=>{
@@ -716,34 +747,7 @@ document.querySelectorAll('.header-tabs a,.mobile-nav a').forEach(tab=>{
     }else if(filter==='analysis'){
       renderAnalysis();
     }else if(filter==='fav'){
-      const el=document.getElementById('content');
-      const f=getFavs();
-      const favItems=data.filter(d=>f.includes(String(d.id)));
-      let inspHtml='';
-      try{
-        const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
-        if(raw.date===new Date().toDateString()&&raw.ids.length>0&&json.inspirations){
-          const liked=raw.ids.map(i=>json.inspirations[i]).filter(Boolean);
-          if(liked.length>0){
-            inspHtml='<div class="section-title">今日有趣的灵感 ('+raw.ids.length+')</div>'+
-            liked.map(d=>'<div class="inspire"><div class="topic">📌 '+d.topic+'</div><div class="source-tag">来源: '+d.source+'</div><h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3><div class="suggestion">'+d.wangba_style+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七大型纪录片风格</span></h3><div class="suggestion">'+d.aqi_style+'</div>'+(d.chen_style?'<h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生风格</span></h3><div class="suggestion" style="color:#D85A30">'+d.chen_style+'</div>':'')+'</div>').join('');
-          }
-        }
-      }catch(e){}
-      const total=f.length+((JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0);
-      if(total===0){
-        el.innerHTML='<div class="empty-state"><div class="icon">⭐</div><p>还没有收藏内容</p><p style="font-size:12px">在文章点⭐收藏或在视频点❤️喜欢，会推荐相关热点</p></div>';
-      }else{
-        renderTags('全部');
-        el.innerHTML=inspHtml+'<div class="section-title" style="margin-top:'+(inspHtml?'16px':'0')+'">收藏文章</div>';
-        el.innerHTML+=favItems.map(d=>renderCard(d)).join('');
-      }
-      const rec=getRecommended();
-      const likeCount=getLikes().length;
-      if(rec.length>0){
-        el.innerHTML+='<div class="section-title" style="margin-top:16px">🔥 猜你喜欢（基于'+(likeCount>0?'你喜欢的视频':'收藏内容')+'）</div>';
-        el.innerHTML+=rec.map(d=>renderCard(d)).join('');
-      }
+      renderFav();
     }else if(filter==='hot'){
       renderTags('全部');
       const hotItems=data.filter(d=>d.source!=='blogger');
@@ -1209,11 +1213,12 @@ function doSearch(q){
       return s.includes(term);
     });
     const el=document.getElementById('content');
+    const safeTerm=esc(q.trim());
     if(!results.length){
-      el.innerHTML='<div class="empty-state"><div class="icon">🔍</div><p>没有找到 "'+term+'" 的相关内容</p></div>';
+      el.innerHTML='<div class="empty-state"><div class="icon">🔍</div><p>没有找到 "'+safeTerm+'" 的相关内容</p></div>';
       return;
     }
-    let h='<div class="section-title" style="margin-top:0">🔍 搜索 "'+term+'" · '+results.length+'条结果</div>';
+    let h='<div class="section-title" style="margin-top:0">🔍 搜索 "'+safeTerm+'" · '+results.length+'条结果</div>';
     h+=results.map(a=>renderCard(a)).join('');
     el.innerHTML=h;
   },300);
