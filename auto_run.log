@@ -837,3 +837,145 @@ To https://github.com/xkw6666123/hot-info.git
    7e5270b..b47620c  main -> main
 [周一 2026/05/11 22:00:29.61] pushed to GitHub 
 [周一 2026/05/11 22:00:33.40] done 
+[周一 2026/05/11 23:00:02.32] start 
+error: RPC failed; curl 56 Recv failure: Connection was reset
+fatal: expected flush after ref listing
+==================================================
+  热点数据自动采集 - 2026-05-11 23:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 18 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 百度热搜, 知乎, 今日头条, 财联社热门, 华尔街见闻, 微博, 公众号热点, 抖音, bilibili, 凤凰网)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100062 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main 0315aca] auto: update (local)
+ 2 files changed, 222 insertions(+), 362 deletions(-)
+fatal: unable to access 'https://github.com/xkw6666123/hot-info.git/': Failed to connect to github.com port 443 after 21087 ms: Could not connect to server
+[周一 2026/05/11 23:01:09.68] pushed to GitHub 
+[周一 2026/05/11 23:01:31.29] done 
+[周二 2026/05/12  0:00:02.32] start 
+From https://github.com/xkw6666123/hot-info
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+==================================================
+  热点数据自动采集 - 2026-05-12 00:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 财联社热门, 百度热搜, 知乎, 微博, bilibili, 凤凰网, 公众号热点, 华尔街见闻, 今日头条, 抖音)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100041 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main 9fde285] auto: update (local)
+ 2 files changed, 242 insertions(+), 242 deletions(-)
+To https://github.com/xkw6666123/hot-info.git
+   f0abc14..9fde285  main -> main
+[周二 2026/05/12  0:00:25.05] pushed to GitHub 
+[周二 2026/05/12  0:00:28.91] done 
+[周二 2026/05/12  1:00:02.35] start 
+From https://github.com/xkw6666123/hot-info
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+==================================================
+  热点数据自动采集 - 2026-05-12 01:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 抖音, 今日头条, 凤凰网, bilibili, 知乎, 百度热搜, 财联社热门, 微博, 华尔街见闻, 公众号热点)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (101494 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main 274dbfc] auto: update (local)
+ 2 files changed, 4439 insertions(+), 87 deletions(-)
+To https://github.com/xkw6666123/hot-info.git
+   0f501d6..274dbfc  main -> main
+[周二 2026/05/12  1:00:24.21] pushed to GitHub 
+[周二 2026/05/12  1:00:27.71] done 

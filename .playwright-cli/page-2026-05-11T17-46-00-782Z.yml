@@ -1,0 +1,559 @@
+- generic [active] [ref=e1]:
+  - button "开启读屏标签" [ref=e2]
+  - generic: 读屏标签已关闭
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: //www.douyin.com/
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - link "精选" [ref=e19] [cursor=pointer]:
+            - /url: https://www.douyin.com/jingxuan?from_nav=1
+            - generic [ref=e22]: 精选
+          - link "推荐" [ref=e27] [cursor=pointer]:
+            - /url: https://www.douyin.com/?recommend=1&from_nav=1
+            - generic [ref=e30]: 推荐
+          - link "搜索" [ref=e35] [cursor=pointer]:
+            - /url: https://www.douyin.com/aisearch?from_nav=1
+            - generic [ref=e38]: 搜索
+          - link "关注" [ref=e44] [cursor=pointer]:
+            - /url: https://www.douyin.com/follow?from_nav=1
+            - generic [ref=e47]: 关注
+          - link "朋友" [ref=e52] [cursor=pointer]:
+            - /url: https://www.douyin.com/friend?from_nav=1
+            - generic [ref=e55]: 朋友
+          - link "我的" [ref=e60] [cursor=pointer]:
+            - /url: https://www.douyin.com/user/self?from_nav=1
+            - generic [ref=e63]: 我的
+          - link "直播" [ref=e69] [cursor=pointer]:
+            - /url: https://live.douyin.com/?from_nav=1
+            - generic [ref=e72]: 直播
+          - link "放映厅" [ref=e77] [cursor=pointer]:
+            - /url: https://www.douyin.com/vs?from_nav=1
+            - generic [ref=e80]: 放映厅
+          - link "短剧" [ref=e85] [cursor=pointer]:
+            - /url: https://www.douyin.com/series?from_nav=1
+            - generic [ref=e88]: 短剧
+          - link "小游戏" [ref=e93] [cursor=pointer]:
+            - /url: https://www.douyin.com/microgame?from_nav=1
+            - generic [ref=e96]: 小游戏
+        - generic [ref=e100]:
+          - img [ref=e103] [cursor=pointer]
+          - img [ref=e107] [cursor=pointer]
+          - img [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - banner [ref=e117]:
+        - generic [ref=e119]:
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e126]: 盛祝宝
+              - textbox [ref=e127]
+            - button "搜索" [ref=e129] [cursor=pointer]:
+              - img [ref=e130]
+              - generic [ref=e132]: 搜索
+          - generic [ref=e136]:
+            - generic [ref=e141] [cursor=pointer]:
+              - img [ref=e143]:
+                - img [ref=e144]
+              - paragraph [ref=e146]: 充钻石
+            - link "客户端" [ref=e151] [cursor=pointer]:
+              - /url: https://www.douyin.com/download/pc/obj/douyin-pc-web/douyin-pc-client/7044145585217083655/releases/357144074/7.8.0/win32-ia32/douyin-downloader-v7.8.0-win32-ia32-douyincold.exe
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - img [ref=e155]:
+                    - img [ref=e156]
+                  - paragraph [ref=e159]: 客户端
+                - img [ref=e161]
+            - generic [ref=e167] [cursor=pointer]:
+              - img [ref=e169]:
+                - img [ref=e170]
+              - generic [ref=e172]: 壁纸
+            - list [ref=e173]:
+              - generic [ref=e177] [cursor=pointer]:
+                - img [ref=e179]:
+                  - img [ref=e180]
+                - paragraph [ref=e183]: 通知
+            - list [ref=e184]:
+              - generic [ref=e188] [cursor=pointer]:
+                - img [ref=e190]:
+                  - img [ref=e191]
+                - paragraph [ref=e195]: 私信
+            - generic [ref=e199] [cursor=pointer]:
+              - img [ref=e201]:
+                - img [ref=e202]
+              - paragraph [ref=e204]: 投稿
+            - button "登录" [ref=e208] [cursor=pointer]:
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - paragraph [ref=e213]: 登录
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - generic [ref=e219]:
+              - img [ref=e221]
+              - generic [ref=e224]:
+                - generic [ref=e226]:
+                  - generic [ref=e227]:
+                    - img [ref=e230] [cursor=pointer]:
+                      - img [ref=e231]
+                    - generic [ref=e234] [cursor=pointer]:
+                      - generic [ref=e235]: 00:00
+                      - generic [ref=e236]: /
+                      - generic [ref=e237]: 03:58
+                    - generic [ref=e239] [cursor=pointer]:
+                      - generic [ref=e241]: 章节要点：共4个
+                      - img [ref=e242]
+                  - generic [ref=e252]:
+                    - img [ref=e255] [cursor=pointer]:
+                      - img [ref=e256]
+                    - img [ref=e260] [cursor=pointer]
+                    - generic [ref=e262] [cursor=pointer]:
+                      - generic [ref=e263]: 因浏览器限制，当前为静音
+                      - button "打开声音" [ref=e264]:
+                        - generic [ref=e265]: 打开声音
+                      - img [ref=e266]:
+                        - img [ref=e267]
+                      - img [ref=e269]:
+                        - img [ref=e270]
+                    - img [ref=e274] [cursor=pointer]:
+                      - img [ref=e275]
+                    - img [ref=e279] [cursor=pointer]:
+                      - img [ref=e280]
+                    - img [ref=e286] [cursor=pointer]
+                    - generic [ref=e289] [cursor=pointer]: 倍速
+                    - generic [ref=e292] [cursor=pointer]: 智能
+                    - generic [ref=e295] [cursor=pointer]:
+                      - button [ref=e296]
+                      - generic [ref=e297]: 清屏
+                    - generic [ref=e300] [cursor=pointer]:
+                      - button [ref=e301]
+                      - generic [ref=e302]: 连播
+                - generic [ref=e306]:
+                  - img [ref=e308]:
+                    - img [ref=e309]
+                  - img [ref=e313]:
+                    - img [ref=e314]
+                - link "作者声明：虚构演绎，仅供娱乐" [ref=e318]:
+                  - /url: undefined
+                  - img [ref=e319]
+                  - generic [ref=e320]: 作者声明：虚构演绎，仅供娱乐
+              - generic:
+                - generic:
+                  - generic:
+                    - generic [ref=e322]:
+                      - generic [ref=e324]: 章节要点
+                      - img
+                    - generic:
+                      - generic:
+                        - generic [ref=e326] [cursor=pointer]:
+                          - generic:
+                            - img [ref=e328]
+                            - generic [ref=e330]: 00:00
+                            - generic: 江苏小伙迎娶摩洛哥女孩
+                          - generic [ref=e331]:
+                            - paragraph: 江苏小伙迎娶摩洛哥女孩，新娘笑容灿烂，网友感慨真正的爱情稀缺。
+                        - generic [ref=e332] [cursor=pointer]:
+                          - generic:
+                            - img [ref=e334]
+                            - generic [ref=e336]: 00:52
+                            - generic: 盛祝宝与燕冬萍
+                        - generic [ref=e337] [cursor=pointer]:
+                          - generic:
+                            - img [ref=e339]
+                            - generic [ref=e341]: 01:54
+                            - generic: 小爱同学的神操作
+                        - generic [ref=e342] [cursor=pointer]:
+                          - generic:
+                            - img [ref=e344]
+                            - generic [ref=e346]: 02:47
+                            - generic: 出租车司机辱骂大学生
+            - generic [ref=e348]:
+              - 'heading "第70集 | 5月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=1] [ref=e351]':
+                - generic [ref=e352]:
+                  - text: 第70集 |
+                  - generic [ref=e354]:
+                    - generic [ref=e357]: 5月8日社会网络热点信息差
+                    - link "#热点" [ref=e359] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#热点新闻事件" [ref=e364] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9%E6%96%B0%E9%97%BB%E4%BA%8B%E4%BB%B6?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#热点信息差" [ref=e369] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9%E4%BF%A1%E6%81%AF%E5%B7%AE?enter_from=video_detail&source=pc_click_hashtag_feed
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - generic [ref=e372] [cursor=pointer]:
+                    - img [ref=e375]
+                    - generic [ref=e383]: "1172"
+                  - generic [ref=e384] [cursor=pointer]:
+                    - img [ref=e387]
+                    - generic [ref=e392]: "37"
+                  - generic [ref=e393] [cursor=pointer]:
+                    - img [ref=e396]
+                    - generic [ref=e405]: "64"
+                  - generic [ref=e406] [cursor=pointer]:
+                    - img [ref=e409]
+                    - generic [ref=e414]: "78"
+                - generic [ref=e415]:
+                  - generic [ref=e416] [cursor=pointer]:
+                    - img [ref=e417]
+                    - generic [ref=e419]: 举报
+                  - generic [ref=e420]: 发布时间：2026-05-09 01:24
+            - generic [ref=e424]:
+              - generic [ref=e426]: 全部评论
+              - generic [ref=e429]:
+                - img [ref=e432] [cursor=pointer]
+                - generic [ref=e441] [cursor=pointer]: 请先登录后发表评论
+              - generic [ref=e443]:
+                - generic [ref=e444]: 大家都在搜：
+                - link "盛祝宝" [ref=e448] [cursor=pointer]:
+                  - /url: //www.douyin.com/search/%E7%9B%9B%E7%A5%9D%E5%AE%9D?aweme_id=7637573042922907569&enter_from=video_detail&gid=7637573042922907569&source=comment_related_search
+                  - generic [ref=e449]: 盛祝宝
+                  - img [ref=e450]
+          - generic [ref=e453]:
+            - generic [ref=e454]:
+              - link "小熊（信息黑板报）" [ref=e457] [cursor=pointer]:
+                - /url: //www.douyin.com/user/MS4wLjABAAAAQwy0gZj7HJHkJ5YvC-rQnT3jlLp_5uHgb8iFBBpfr4Kqkmc-7UI9L2COZoPQNBHv
+                - listitem [ref=e458]:
+                  - img "小熊（信息黑板报）" [ref=e459]
+              - generic [ref=e460]:
+                - link "小熊（信息黑板报） 认证徽章" [ref=e461] [cursor=pointer]:
+                  - /url: //www.douyin.com/user/MS4wLjABAAAAQwy0gZj7HJHkJ5YvC-rQnT3jlLp_5uHgb8iFBBpfr4Kqkmc-7UI9L2COZoPQNBHv
+                  - generic [ref=e462]:
+                    - generic [ref=e467]: 小熊（信息黑板报）
+                    - generic [ref=e469]: 认证徽章
+                - paragraph [ref=e470]: 粉丝3.8万获赞134.8万
+              - button "关注" [ref=e472] [cursor=pointer]:
+                - generic [ref=e473]: 关注
+            - generic [ref=e475]:
+              - heading "您的好友在看" [level=2] [ref=e477]
+              - list [ref=e478]:
+                - listitem [ref=e479]:
+                  - generic [ref=e480]:
+                    - link "您的好友在看第65集 03:09" [ref=e482] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7625264524715540593
+                      - img "您的好友在看第65集" [ref=e486]
+                      - generic [ref=e488]: 03:09
+                    - generic [ref=e489]:
+                      - 'heading "第65集 | 4月5日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e490]':
+                        - 'link "第65集 | 4月5日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [ref=e491] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7625264524715540593
+                          - generic [ref=e496]: "第65集 | 4月5日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e498]:
+                        - img [ref=e499]
+                        - text: 7.9万
+                - listitem [ref=e501]:
+                  - generic [ref=e502]:
+                    - link "您的好友在看第66集 02:36" [ref=e504] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7626390992023084153
+                      - img "您的好友在看第66集" [ref=e508]
+                      - generic [ref=e510]: 02:36
+                    - generic [ref=e511]:
+                      - 'heading "第66集 | 4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e512]':
+                        - 'link "第66集 | 4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [ref=e513] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7626390992023084153
+                          - generic [ref=e518]: "第66集 | 4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e520]:
+                        - img [ref=e521]
+                        - text: "1320"
+                - listitem [ref=e523]:
+                  - generic [ref=e524]:
+                    - link "您的好友在看第67集 03:45" [ref=e526] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7635582384162744314
+                      - img "您的好友在看第67集" [ref=e530]
+                      - generic [ref=e532]: 03:45
+                    - generic [ref=e533]:
+                      - 'heading "第67集 | 5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e534]':
+                        - 'link "第67集 | 5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [ref=e535] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7635582384162744314
+                          - generic [ref=e540]: "第67集 | 5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e542]:
+                        - img [ref=e543]
+                        - text: 3.8万
+                - listitem [ref=e545]:
+                  - generic [ref=e546]:
+                    - link "您的好友在看第68集 02:20" [ref=e548] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7636380086177949553
+                      - img "您的好友在看第68集" [ref=e552]
+                      - generic [ref=e554]: 02:20
+                    - generic [ref=e555]:
+                      - 'heading "第68集 | 5月5日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e556]':
+                        - 'link "第68集 | 5月5日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [ref=e557] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7636380086177949553
+                          - generic [ref=e562]: "第68集 | 5月5日逆天事件合集 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e564]:
+                        - img [ref=e565]
+                        - text: "1645"
+                - listitem [ref=e567]:
+                  - generic [ref=e568]:
+                    - link "您的好友在看第69集 03:23" [ref=e570] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7637137991799134073
+                      - img "您的好友在看第69集" [ref=e574]
+                      - generic [ref=e576]: 03:23
+                    - generic [ref=e577]:
+                      - 'heading "第69集 | 5月7日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e578]':
+                        - 'link "第69集 | 5月7日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [ref=e579] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7637137991799134073
+                          - generic [ref=e584]: "第69集 | 5月7日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e586]:
+                        - img [ref=e587]
+                        - text: "821"
+                - listitem [ref=e589]:
+                  - generic [ref=e590]:
+                    - link "您的好友在看第70集 播放中" [ref=e592] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7637573042922907569
+                      - img "您的好友在看第70集" [ref=e596]
+                      - generic [ref=e601]: 播放中
+                    - generic [ref=e602]:
+                      - 'heading "第70集 | 5月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e603]':
+                        - 'link "第70集 | 5月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [ref=e604] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7637573042922907569
+                          - generic [ref=e609]: "第70集 | 5月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e611]:
+                        - img [ref=e612]
+                        - text: "1172"
+            - generic [ref=e614]:
+              - heading "推荐视频" [level=2] [ref=e616]
+              - list [ref=e617]:
+                - listitem [ref=e618]:
+                  - generic [ref=e619]:
+                    - link "03:45" [ref=e621] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7635582384162744314
+                      - generic [ref=e626]: 03:45
+                    - generic [ref=e627]:
+                      - 'heading "5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e628]':
+                        - 'link "5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差" [ref=e629] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7635582384162744314
+                          - generic [ref=e634]: "5月3日逆天事件合集 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e635]:
+                        - generic [ref=e636]:
+                          - img [ref=e637]
+                          - text: 3.8万
+                        - link "小熊（信息黑板报）" [ref=e640] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAQwy0gZj7HJHkJ5YvC-rQnT3jlLp_5uHgb8iFBBpfr4Kqkmc-7UI9L2COZoPQNBHv?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e645]: 小熊（信息黑板报）
+                - listitem [ref=e646]:
+                  - generic [ref=e647]:
+                    - link "03:27" [ref=e649] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7627573606637112622
+                      - generic [ref=e654]: 03:27
+                    - generic [ref=e655]:
+                      - 'heading "4月12日 热点快刷#热点 #信息差 #热点新闻事件" [level=3] [ref=e656]':
+                        - 'link "4月12日 热点快刷#热点 #信息差 #热点新闻事件" [ref=e657] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7627573606637112622
+                          - generic [ref=e662]: "4月12日 热点快刷#热点 #信息差 #热点新闻事件"
+                      - generic [ref=e663]:
+                        - generic [ref=e664]:
+                          - img [ref=e665]
+                          - text: "5228"
+                        - link "平账大圣" [ref=e668] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAEGm9AMHdOHeSX9K_dnUJgZoLjdwjpJ8ay_HxrA_LysSv3SjEjUZ9PkSmGLjf4vNK?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e673]: 平账大圣
+                - listitem [ref=e674]:
+                  - generic [ref=e675]:
+                    - link "02:39" [ref=e677] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7633866401668713734
+                      - generic [ref=e682]: 02:39
+                    - generic [ref=e683]:
+                      - 'heading "4月28日 热点信息差 #热点信息差 #信息差 #娱乐 #热点快报 #热点" [level=3] [ref=e684]':
+                        - 'link "4月28日 热点信息差 #热点信息差 #信息差 #娱乐 #热点快报 #热点" [ref=e685] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7633866401668713734
+                          - generic [ref=e690]: "4月28日 热点信息差 #热点信息差 #信息差 #娱乐 #热点快报 #热点"
+                      - generic [ref=e691]:
+                        - generic [ref=e692]:
+                          - img [ref=e693]
+                          - text: "9072"
+                        - link "小二快报" [ref=e696] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAFmZZpISeMc6l9TUavRn4DXOH22u5sve-HsoEQ65MbPg8Y7ExMqGEdnzDXxrYyTF9?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e701]: 小二快报
+                - listitem [ref=e702]:
+                  - generic [ref=e703]:
+                    - link "10:59" [ref=e705] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7629876095005178075
+                      - generic [ref=e710]: 10:59
+                    - generic [ref=e711]:
+                      - heading "解气瞬间" [level=3] [ref=e712]:
+                        - link "解气瞬间" [ref=e713] [cursor=pointer]:
+                          - /url: //www.douyin.com/video/7629876095005178075
+                          - generic [ref=e718]: 解气瞬间
+                      - generic [ref=e719]:
+                        - generic [ref=e720]:
+                          - img [ref=e721]
+                          - text: "6026"
+                        - link "开心一刻" [ref=e724] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAOeJ7M7AZFI9qX3H9xcayV5SPlnPRw46xRo0OY-_Qs_Jy3NvB_d8nUZDZW4GcG_v-?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e729]: 开心一刻
+                - listitem [ref=e730]:
+                  - generic [ref=e731]:
+                    - link "01:28" [ref=e733] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7613574258430318144
+                      - generic [ref=e738]: 01:28
+                    - generic [ref=e739]:
+                      - 'heading "今日热点快报 #热点 #信息" [level=3] [ref=e740]':
+                        - 'link "今日热点快报 #热点 #信息" [ref=e741] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7613574258430318144
+                          - generic [ref=e746]: "今日热点快报 #热点 #信息"
+                      - generic [ref=e747]:
+                        - generic [ref=e748]:
+                          - img [ref=e749]
+                          - text: "5763"
+                        - link "在逃沙雕" [ref=e752] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAmqgD4Eo5dkP8u31TsCijM9qTgFJRIt2aYV4iAU5hDYU?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e757]: 在逃沙雕
+                - listitem [ref=e758]:
+                  - generic [ref=e759]:
+                    - link "05:07" [ref=e761] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7613324824190698917
+                      - generic [ref=e766]: 05:07
+                    - generic [ref=e767]:
+                      - 'heading "3月4日热点信息差 #热点 #社会热点 #社会热点事件" [level=3] [ref=e768]':
+                        - 'link "3月4日热点信息差 #热点 #社会热点 #社会热点事件" [ref=e769] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7613324824190698917
+                          - generic [ref=e774]: "3月4日热点信息差 #热点 #社会热点 #社会热点事件"
+                      - generic [ref=e775]:
+                        - generic [ref=e776]:
+                          - img [ref=e777]
+                          - text: "7994"
+                        - link "猪猪快刷" [ref=e780] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAs2Aulop77IJKdj6XXlVJwuraGd2oGWXkXKmCKQDoXu7TqReUtwlA2qFk_KyjUsEo?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e785]: 猪猪快刷
+                - listitem [ref=e786]:
+                  - generic [ref=e787]:
+                    - link "03:40" [ref=e789] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7615779414869118246
+                      - generic [ref=e794]: 03:40
+                    - generic [ref=e795]:
+                      - 'heading "11日生活热点见闻速览 #热点 #新鲜事 #奇葩 #热点信息差" [level=3] [ref=e796]':
+                        - 'link "11日生活热点见闻速览 #热点 #新鲜事 #奇葩 #热点信息差" [ref=e797] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7615779414869118246
+                          - generic [ref=e802]: "11日生活热点见闻速览 #热点 #新鲜事 #奇葩 #热点信息差"
+                      - generic [ref=e803]:
+                        - generic [ref=e804]:
+                          - img [ref=e805]
+                          - text: "2287"
+                        - link "阿宁信息差" [ref=e808] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAdyZSIGojwU2TGdTomKtupIVF0ILozONLhwijOSquC14EEd3fUF_tJex7FOnlDHBE?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e813]: 阿宁信息差
+                - listitem [ref=e814]:
+                  - generic [ref=e815]:
+                    - link "02:36" [ref=e817] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7626390992023084153
+                      - generic [ref=e822]: 02:36
+                    - generic [ref=e823]:
+                      - 'heading "4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [level=3] [ref=e824]':
+                        - 'link "4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差" [ref=e825] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7626390992023084153
+                          - generic [ref=e830]: "4月8日社会网络热点信息差 #热点 #热点新闻事件 #热点信息差"
+                      - generic [ref=e831]:
+                        - generic [ref=e832]:
+                          - img [ref=e833]
+                          - text: "1320"
+                        - link "小熊（信息黑板报）" [ref=e836] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAQwy0gZj7HJHkJ5YvC-rQnT3jlLp_5uHgb8iFBBpfr4Kqkmc-7UI9L2COZoPQNBHv?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e841]: 小熊（信息黑板报）
+                - listitem [ref=e842]:
+                  - generic [ref=e843]:
+                    - link "02:41" [ref=e845] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7622241153236143360
+                      - generic [ref=e850]: 02:41
+                    - generic [ref=e851]:
+                      - 'heading "今日热点快报。 #每日新闻简报 #信息差 #奇闻趣事" [level=3] [ref=e852]':
+                        - 'link "今日热点快报。 #每日新闻简报 #信息差 #奇闻趣事" [ref=e853] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7622241153236143360
+                          - generic [ref=e858]: "今日热点快报。 #每日新闻简报 #信息差 #奇闻趣事"
+                      - generic [ref=e859]:
+                        - generic [ref=e860]:
+                          - img [ref=e861]
+                          - text: "2764"
+                        - link "碰撞解码" [ref=e864] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAmf8j24YCUEdp69olBMDzJlLmtAZXcYcfbq8j8EplAxk?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e869]: 碰撞解码
+                - listitem [ref=e870]:
+                  - generic [ref=e871]:
+                    - link "01:38" [ref=e873] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7631860462392511759
+                      - generic [ref=e878]: 01:38
+                    - generic [ref=e879]:
+                      - 'heading "今日热点速刷 #热点新闻事件#功德笑没了#热点" [level=3] [ref=e880]':
+                        - 'link "今日热点速刷 #热点新闻事件#功德笑没了#热点" [ref=e881] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7631860462392511759
+                          - generic [ref=e886]: "今日热点速刷 #热点新闻事件#功德笑没了#热点"
+                      - generic [ref=e887]:
+                        - generic [ref=e888]:
+                          - img [ref=e889]
+                          - text: "6125"
+                        - link "班长" [ref=e892] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAfpgbsR4WWl761REU_QlGU-WZpIGIcv8WEoeStr93eMGUZY4tIDFvJukOI1Elh6Sg?author_id=3080177152167980&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637573042922907569&log_pb=%7B%22impr_id%22%3A%2220260512014557AC0CF684A2827524E228%22%7D&relation=0
+                          - generic [ref=e897]: 班长
+        - contentinfo [ref=e898]:
+          - generic [ref=e899]:
+            - generic [ref=e900]:
+              - link "广告投放" [ref=e902] [cursor=pointer]:
+                - /url: https://www.oceanengine.com/resource/douyin
+              - link "用户服务协议" [ref=e904] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773906068725565448
+              - link "隐私政策" [ref=e906] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773901168964798477
+              - link "账号找回" [ref=e908] [cursor=pointer]:
+                - /url: https://www.douyin.com/recovery_account/
+              - link "联系我们" [ref=e910] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "加入我们" [ref=e912] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "营业执照" [ref=e914] [cursor=pointer]:
+                - /url: https://www.douyin.com/business_license/
+              - link "友情链接" [ref=e916] [cursor=pointer]:
+                - /url: https://www.douyin.com/friend_links
+              - link "站点地图" [ref=e918] [cursor=pointer]:
+                - /url: https://www.douyin.com/htmlmap/hotauthor_0_1
+              - link "下载抖音" [ref=e920] [cursor=pointer]:
+                - /url: https://www.douyin.com/downloadpage/pc
+              - link "抖音电商" [ref=e922] [cursor=pointer]:
+                - /url: https://mix.jinritemai.com/falcon/mix_page/index.html
+            - generic [ref=e923]:
+              - link "网络谣言曝光台 ｜" [ref=e925] [cursor=pointer]:
+                - /url: https://www.piyao.org.cn/yybgt/index.htm
+              - link "网上有害信息举报" [ref=e927] [cursor=pointer]:
+                - /url: https://www.12377.cn/
+              - generic [ref=e928]: ｜ 违法和不良信息举报：400-140-2108 ｜ 算法推荐专项举报：sfjubao@bytedance.com ｜ 网络内容从业人员违法违规行为举报：feedback@douyin.com | 体育饭圈专项举报：tyfq@bytedance.com
+            - generic [ref=e929]:
+              - link "京ICP备16016397号-3" [ref=e931] [cursor=pointer]:
+                - /url: https://beian.miit.gov.cn/
+              - generic [ref=e932]: ｜ 广播电视节目制作经营许可证 （京）字第11313号
+              - generic [ref=e933]: ｜ 增值电信业务经营许可证 京B2-20170846
+              - generic [ref=e934]: ｜ 网络文化经营许可证 京网文〔2025〕0181-061号 ｜
+              - generic [ref=e935]:
+                - img "icon" [ref=e936]
+                - link "京公网安备 11000002002046号" [ref=e937] [cursor=pointer]:
+                  - /url: http://www.beian.gov.cn/portal/registerSystemInfo
+              - generic [ref=e938]: ｜ 互联网宗教信息服务许可证 京（2025）0000017
+            - generic [ref=e939]:
+              - generic [ref=e941]: 热门：
+              - link "抖音美食推荐" [ref=e943] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan/food
+              - link "抖音体育" [ref=e945] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan/sports
+              - link "镇魂街" [ref=e947] [cursor=pointer]:
+                - /url: https://www.douyin.com/user/MS4wLjABAAAAfrkFB9mZuGBGXfqSaCocn5mCoI1vT2-IQSL-2v0EldQ
+              - link "分数拆分训练#数学思维训练" [ref=e949] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7638661317822503914
+              - link "安徽定向医学生的报考条件和要求" [ref=e951] [cursor=pointer]:
+                - /url: https://www.douyin.com/topic/7509874249553889315
+              - link "四川省医学院校录取分数线" [ref=e953] [cursor=pointer]:
+                - /url: https://www.douyin.com/shipin/7509926337264748584
+              - link "一本线甘肃" [ref=e955] [cursor=pointer]:
+                - /url: https://www.douyin.com/search/%E4%B8%80%E6%9C%AC%E7%BA%BF%E7%94%98%E8%82%83
+              - link "国乒男团将对阵法国队" [ref=e957] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7637684894931389711?source=Baiduspider
+              - 'link "2022届安徽师大最后一卷实验大题27题 #化学实验大题 #人生百岳 #带你游云南 #知识前沿派对 #全民悦读会" [ref=e959] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7312623199160732982?source=Baiduspider
+              - 'link "全球首台星闪电视来了！ 星闪+电视，两者结合长啥样？我在四川绵阳科博会的长虹展台，带大家探秘全球首台星闪电视五大亮点！#科博会 #星闪 #长虹 #星闪电视" [ref=e961] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7304686900504169728?source=Baiduspider
+              - 'link "初二期中知识点三#每天跟我涨知识 #每天进步一点" [ref=e963] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7571773607359335659?source=Baiduspider-sdc
+              - generic [ref=e964]:
+                - link:
+                  - /url: https://www.douyin.com/video/7474762130730880291?source=Baiduspider
+              - 'link "今晚给山三妹逗乐的两个男人（二）：向村长 👍👍 ——山三妹新歌发布会精彩片段回顾 👏👏👏 广西柳州对歌①⑨② 地点：柳州印象游轮上 - 柳州 鱼峰山歌圩现场山歌对唱 #热门山歌推荐 #山三妹新歌你是别人避风港 视频来源：广西 @山三妹新歌你是别人避风港 直播画面" [ref=e966] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7531436569233116466?source=Baiduspider
+              - 'link "在嵩县我这么优秀的摄影师竟然找不到可以拍照的模特#真实生活分享计划 #嵩县小洱海 #摄影 #给陌生人拍照" [ref=e968] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7562590077911518521?source=Baiduspider-sdc

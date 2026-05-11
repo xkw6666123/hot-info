@@ -897,68 +897,9 @@ def main(mode="full"):
 
 
 def _generate_video_intro(v, all_articles):
-    """基于同日期新闻数据生成视频内容简介"""
-    a = v.get("analysis", {})
-    title = v.get("title", "")
-    blogger = v.get("blogger_name", "")
-    date = v.get("date", "")
-    summary = v.get("summary", "")
-    
-    # 找到同日期的高热度新闻（非博主）
-    candidates = []
-    for art in all_articles:
-        if art.get("source") != "blogger" and art.get("date") == date:
-            candidates.append((art.get("likes", 0) or 0, art.get("title", "")))
-    candidates.sort(key=lambda x: x[0], reverse=True)
-    seen = set()
-    hot_news = []
-    for likes, t in candidates:
-        key = t[:20]
-        if key not in seen:
-            seen.add(key)
-            hot_news.append(t)
-        if len(hot_news) >= 5:
-            break
-    
-    news_text = "\n".join(f"  · {t}" for t in hot_news) if hot_news else ""
-    
-    # 判断是否有真实文案
-    title_only = title.split("#")[0].strip()
-    summary_only = summary.split("#")[0].strip() if summary else ""
-    text = summary_only if len(summary_only) > len(title_only) else title_only
-    
-    date_pattern = (
-        "月" in text[:6] and "日" in text[:8] and len(text) < 20
-    ) or text in ("放空自己。", "今日热点快报")
-    
-    detail_kw = [
-        '血赚', '退款', '崩溃', '内幕', '真相', '反转', '离谱',
-        '塌房', '曝光', '震惊', '破防', '老板', '猫猫', '装到',
-        '说实话', '公司', '刚哥', '顾客', '新衣', '五一', '节后', '包鱼塘'
-    ]
-    is_detail = not date_pattern and (
-        len(text) > 10 and any(kw in text for kw in detail_kw)
-    )
-    
-    if is_detail:
-        lead = f"本期详细内容：「{text}」。"
-        if news_text:
-            return f"{lead}\n\n📰 {date} 当日关联热点：\n{news_text}"
-        return lead
-    
-    templates = {
-        "阿七大型纪录片": f"📺 {date} 社会热点信息差日报，快速播报当日热搜新闻：",
-        "网吧信息差": f"📺 {date} 热点搬运，从大学生视角解读当日热点：",
-        "信息黑板报": f"📺 {date} 社会热点信息差合集，精选当日民生话题：",
-        "人类观察菌": f"📺 {date} 人类迷惑行为大赏，精选逆天离谱新闻：",
-        "陈先生": f"📺 {date} 热点深度解构，纪录片形式复盘重大事件：",
-        "沙漠一之雕": f"📺 {date} B站热点快报，热搜话题搞笑合集：",
-    }
-    lead = templates.get(blogger, f"📺 {date} 热点视频，可能包含以下话题：")
-    
-    if news_text:
-        return f"{lead}\n{news_text}"
-    return f"{lead}\n暂无详细数据"
+    """用视频原始 desc（作者文案）作为内容简介"""
+    desc = (v.get("summary") or v.get("title") or "").strip()
+    return desc
 
 
 if __name__ == "__main__":
