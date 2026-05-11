@@ -599,23 +599,58 @@ def main():
         except Exception as e:
             print(f"  ❌ {name}: {e}")
 
-    # 保留已有的博主数据（含 analysis 拆解信息）
-    existing_bloggers = []
+    # ═══ 保留已有数据（防爬虫失败导致数据归零）═══
+    old_data = None
     try:
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
             old_data = json.load(f)
-        for a in old_data.get("articles", []):
-            if a.get("source") == "blogger" and a.get("analysis"):
-                existing_bloggers.append(a)
-        print(f"  📌 读取 {len(existing_bloggers)} 条已有博主分析数据")
     except:
         pass
 
-    # 合并：新抓的博主 + 旧的博主分析数据（去重，新数据优先）
-    new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
-    for b in existing_bloggers:
-        if str(b["id"]) not in new_blogger_ids:
-            all_articles.append(b)
+    if old_data:
+        old_articles = old_data.get("articles", [])
+        # 1. 保留旧的博主分析数据（含 analysis 字段）
+        old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
+        new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
+        for b in old_bloggers:
+            if str(b["id"]) not in new_blogger_ids:
+                all_articles.append(b)
+        
+        # 2. 失败的源 -> 保留旧数据
+        failed_sources = set()
+        for name, scraper in scrapers:
+            if name != "博主追踪":
+                source_label = {
+                    "百度热搜": "百度热搜", "知乎": "知乎", "B站": "bilibili",
+                    "今日头条": "今日头条", "澎湃新闻": "澎湃新闻", "华尔街见闻": "华尔街见闻",
+                    "财联社": "财联社热门", "凤凰网": "凤凰网", "贴吧": "贴吧",
+                    "微博": "微博", "抖音": "抖音", "公众号": "公众号热点"
+                }.get(name, name)
+                has_data = any(a.get("source", "") == source_label for a in all_articles)
+                if not has_data:
+                    failed_sources.add(source_label)
+        
+        if failed_sources:
+            old_rescue = [a for a in old_articles 
+                          if a.get("source") in failed_sources and a.get("source") != "blogger"]
+            if old_rescue:
+                print(f"  🛟 保留 {len(old_rescue)} 条旧数据 (来自: {', '.join(failed_sources)})")
+                all_articles.extend(old_rescue)
+        
+        # 3. 如果新数据太少，额外保留所有旧的非博主数据
+        new_count = len([a for a in all_articles if a.get("source") != "blogger"])
+        old_count = len([a for a in old_articles if a.get("source") != "blogger"])
+        if new_count < 30 and old_count > 50:
+            extra = [a for a in old_articles if a.get("source") != "blogger"]
+            existing_ids = {str(a["id"]) for a in all_articles}
+            added = 0
+            for a in extra:
+                if str(a["id"]) not in existing_ids:
+                    all_articles.append(a)
+                    existing_ids.add(str(a["id"]))
+                    added += 1
+            if added:
+                print(f"  🛟 新数据太少({new_count}条)，额外保留 {added} 条旧数据")
     
     # 去重（按id）
     seen = set()
@@ -641,7 +676,9 @@ def main():
         kept = items[:3]
         removed = items[3:]
         if removed:
-            # 从 all_articles 中移除多余的
+            removed_ids = {str(r["id"]) for r in removed}
+            all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
+            print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
             removed_ids = {str(r["id"]) for r in removed}
             all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
             print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
