@@ -424,17 +424,14 @@ class BlogSearcher:
         self.results = []
     
     def run(self):
-        # 步骤1：搜索用户，获取 sec_uid
-        sec_uid = self._search_user()
-        if not sec_uid:
-            # 备用：直接搜视频，按作者名筛选
-            self._search_fallback()
+        # 步骤1：搜索用户，获取 user_id
+        user_id = self._search_user()
+        if not user_id:
             return
         
         # 步骤2：获取用户作品列表（最多5条）
-        posts = self._get_user_posts(sec_uid, count=5)
+        posts = self._get_user_posts(user_id, count=5)
         if not posts:
-            self._search_fallback()
             return
         
         # 步骤3：取最近 3 条
@@ -444,47 +441,34 @@ class BlogSearcher:
                 self.results.append(parsed)
     
     def _search_user(self):
-        """搜索用户，返回 sec_uid"""
-        # 优先用 search_v2（POST，直接返回 sec_uid）
+        """搜索用户，返回 user_id（即 sec_uid）"""
+        # TikHub v2 搜索 API（POST）
         result = tikhub_request(
             "/api/v1/douyin/search/fetch_user_search_v2",
             {"keyword": self.name, "cursor": 0},
             method="POST"
         )
         if result and result.get("code") == 200:
-            data = result.get("data", {})
-            users = (data.get("data") or data.get("user_list") or []) if isinstance(data, dict) else []
-            for u in users:
-                info = u.get("user_info", u) if isinstance(u, dict) else {}
-                nick = info.get("nickname", "") if isinstance(info, dict) else ""
-                sid = info.get("sec_uid", "") if isinstance(info, dict) else ""
-                # 名称完全匹配或包含
-                if sid and (nick == self.name or self.name in nick):
-                    return sid
-        
-        # 备用：search_v1
-        result = tikhub_request(
-            "/api/v1/douyin/search/fetch_user_search",
-            {"keyword": self.name, "cursor": 0, "douyin_user_fans": "", "douyin_user_type": "", "search_id": ""},
-            method="POST"
-        )
-        if result and result.get("code") == 200:
-            data = result.get("data", {})
-            users = (data.get("data") or data.get("user_list") or []) if isinstance(data, dict) else []
-            for u in users:
-                info = u.get("user_info", u) if isinstance(u, dict) else {}
-                nick = info.get("nickname", "") if isinstance(info, dict) else ""
-                sid = info.get("sec_uid", "") if isinstance(info, dict) else ""
-                if sid and (nick == self.name or self.name in nick):
-                    return sid
+            inner = result.get("data", {})
+            if isinstance(inner, dict):
+                users = inner.get("data", {})
+                user_list = users.get("user_list", []) if isinstance(users, dict) else []
+                for u in user_list:
+                    if not isinstance(u, dict):
+                        continue
+                    nick = u.get("nick_name", "")
+                    uid = u.get("user_id", "")
+                    if uid and (nick == self.name or self.name in nick):
+                        return uid
         
         return None
     
-    def _get_user_posts(self, sec_uid, count=5):
-        """获取用户作品列表"""
+    def _get_user_posts(self, user_id, count=5):
+        """获取用户作品列表（GET 方法）"""
         result = tikhub_request(
             "/api/v1/douyin/app/v3/fetch_user_post_videos",
-            {"sec_user_id": sec_uid, "max_cursor": 0, "count": count}
+            {"sec_user_id": user_id, "max_cursor": 0, "count": count},
+            method="GET"
         )
         if result and result.get("code") == 200:
             data = result.get("data", {})
@@ -494,24 +478,6 @@ class BlogSearcher:
                 aweme_list = []
             return aweme_list
         return None
-    
-    def _search_fallback(self):
-        """备用方案：直接搜视频"""
-        result = tikhub_request("/api/v1/douyin/app/v3/fetch_search_result", {
-            "keyword": self.name, "offset": 0, "count": 5, "search_type": "video"
-        })
-        if not result or result.get("code") != 200:
-            return
-        
-        raw_data = result.get("data", {})
-        data_list = raw_data.get("data", []) if isinstance(raw_data, dict) else []
-        for video in data_list[:3]:
-            aweme_info = video.get("aweme_info", {}) or video
-            author = aweme_info.get("author", {}) or video.get("author", {})
-            nick = author.get("nickname", "")
-            # 筛选匹配博主名
-            if nick == self.name or self.name in nick:
-                self.results.append(self._parse_video(aweme_info))
     
     def _parse_video(self, v):
         if not isinstance(v, dict):
