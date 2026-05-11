@@ -429,7 +429,9 @@ class BlogSearcher:
         
         # 步骤3：取最近 3 条
         for v in posts[:3]:
-            self.results.append(self._parse_video(v))
+            parsed = self._parse_video(v)
+            if parsed:
+                self.results.append(parsed)
     
     def _search_user(self):
         """搜索用户，返回 sec_uid"""
@@ -441,11 +443,11 @@ class BlogSearcher:
         )
         if result and result.get("code") == 200:
             data = result.get("data", {})
-            users = data.get("data") or data.get("user_list") or []
+            users = (data.get("data") or data.get("user_list") or []) if isinstance(data, dict) else []
             for u in users:
-                info = u.get("user_info", u)
-                nick = info.get("nickname", "")
-                sid = info.get("sec_uid", "")
+                info = u.get("user_info", u) if isinstance(u, dict) else {}
+                nick = info.get("nickname", "") if isinstance(info, dict) else ""
+                sid = info.get("sec_uid", "") if isinstance(info, dict) else ""
                 # 名称完全匹配或包含
                 if sid and (nick == self.name or self.name in nick):
                     return sid
@@ -458,11 +460,11 @@ class BlogSearcher:
         )
         if result and result.get("code") == 200:
             data = result.get("data", {})
-            users = data.get("data") or data.get("user_list") or []
+            users = (data.get("data") or data.get("user_list") or []) if isinstance(data, dict) else []
             for u in users:
-                info = u.get("user_info", u)
-                nick = info.get("nickname", "")
-                sid = info.get("sec_uid", "")
+                info = u.get("user_info", u) if isinstance(u, dict) else {}
+                nick = info.get("nickname", "") if isinstance(info, dict) else ""
+                sid = info.get("sec_uid", "") if isinstance(info, dict) else ""
                 if sid and (nick == self.name or self.name in nick):
                     return sid
         
@@ -476,7 +478,10 @@ class BlogSearcher:
         )
         if result and result.get("code") == 200:
             data = result.get("data", {})
-            aweme_list = data.get("aweme_list") or data.get("data") or []
+            if isinstance(data, dict):
+                aweme_list = data.get("aweme_list") or data.get("data") or []
+            else:
+                aweme_list = []
             return aweme_list
         return None
     
@@ -488,7 +493,8 @@ class BlogSearcher:
         if not result or result.get("code") != 200:
             return
         
-        data_list = result.get("data", {}).get("data", [])
+        raw_data = result.get("data", {})
+        data_list = raw_data.get("data", []) if isinstance(raw_data, dict) else []
         for video in data_list[:3]:
             aweme_info = video.get("aweme_info", {}) or video
             author = aweme_info.get("author", {}) or video.get("author", {})
@@ -498,8 +504,10 @@ class BlogSearcher:
                 self.results.append(self._parse_video(aweme_info))
     
     def _parse_video(self, v):
+        if not isinstance(v, dict):
+            return None
         desc = v.get("desc", "")
-        stats = v.get("statistics", {})
+        stats = v.get("statistics", {}) or {}
         create_time = v.get("create_time", 0)
         return {
             "aweme_id": v.get("aweme_id", ""),
