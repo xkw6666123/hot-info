@@ -814,6 +814,7 @@ def main(mode="full"):
     for name, items in blogger_by_name.items():
         # 按标题去重：如果 title_A 包含 title_B 或 title_B 包含 title_A，保留 ID 较短的那个（新数据）
         deduped = []
+        removed_ids = set()
         for item in items:
             title = item.get("title", "")
             dup = False
@@ -828,6 +829,11 @@ def main(mode="full"):
                         break
             if not dup:
                 deduped.append(item)
+            else:
+                removed_ids.add(str(item.get("id", "")))
+        # 从 all_articles 中移除被标题去重掉的条目
+        if removed_ids:
+            all_articles = [a for a in all_articles if str(a.get("id","")) not in removed_ids]
         deduped.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
         blogger_by_name[name] = deduped
     
