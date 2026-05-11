@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605120008" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605120014" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -1203,11 +1203,19 @@ function renderAnalysis(){
     h+=`<span style="font-size:11px;color:var(--text-muted)">${v.date} ${v.time}</span>`;
     h+=`<span style="margin-left:auto;font-size:11px;color:var(--text-muted)">👍 ${fmt(v.likes)} · 💬 ${fmt(v.comments)}</span>`;
     h+=`</div><h3 style="font-size:16px;margin-bottom:6px;color:var(--text-pri)">${v.title}</h3>`;
-    // 内容介绍：优先 content_intro，回退到 summary（平台视频描述）
-    const introText = v.content_intro || v.summary || '';
-    if(introText && introText !== v.title){
-      const isFullIntro = !!v.content_intro;
+    // 内容介绍：优先 content_intro，回退摘要，否则用分析数据生成描述
+    const introText = v.content_intro || (v.summary && v.summary !== v.title ? v.summary : '');
+    const isFullIntro = !!v.content_intro;
+    if(introText){
       h+=`<div style="font-size:13px;color:#C9D1D9;line-height:1.7;padding:10px 14px;background:rgba(122,130,148,0.06);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid ${isWangba?'var(--gold)':'var(--blue)'}">${isFullIntro?'📝 内容介绍':'📋 视频描述'}：${introText}</div>`;
+    } else if(a){
+      const descParts=[];
+      if(a.video_type) descParts.push('类型：'+a.video_type);
+      if(a.cover_style) descParts.push('封面：'+a.cover_style);
+      if(a.publish_pattern) descParts.push('发布：'+a.publish_pattern);
+      if(descParts.length){
+        h+=`<div style="font-size:12px;color:var(--text-sec);line-height:1.6;padding:8px 12px;background:rgba(122,130,148,0.04);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid var(--text-muted)">📊 ${descParts.join(' · ')}</div>`;
+      }
     }
     if(a){
       const kw = a.keywords;
