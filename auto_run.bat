@@ -1,5 +1,6 @@
 @echo off
 chcp 65001 >nul 2>&1
+set PYTHONIOENCODING=utf-8
 cd /d C:\Users\Kevin\WorkBuddy\2026-05-08-task-5\hot-info
 
 echo [%date% %time%] start >> auto_run.log
