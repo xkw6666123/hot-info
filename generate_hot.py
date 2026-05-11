@@ -15,8 +15,9 @@ from datetime import datetime
 OUTPUT_FILE = "data.json"
 SITE_NAME = "热点信息差"
 SITE_DESC = "每日社会热点聚合 + 爆款视频拆解 + AI选题灵感"
-TIMEOUT = 10
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+TIMEOUT = 15
+RETRIES = 3
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ── TikHub 博主追踪 ──
 TIKHUB_API_KEY = "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw=="
@@ -35,21 +36,37 @@ TRACKED_BLOGGERS = [
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
 
-def fetch(url, headers=None):
-    """HTTP GET，返回解码后的字符串"""
-    if headers is None:
-        headers = {"User-Agent": USER_AGENT}
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            return resp.read().decode("utf-8", errors="replace")
-    except Exception as e:
-        print(f"  ⚠️ 获取失败: {url[:60]} → {e}")
-        return None
+def fetch(url, headers=None, referer=None):
+    """HTTP GET（带 3 次重试），返回解码后的字符串"""
+    default_headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/json,application/xhtml+xml,*/*",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate",
+        "Cache-Control": "no-cache",
+    }
+    if referer:
+        default_headers["Referer"] = referer
+    if headers:
+        default_headers.update(headers)
+    
+    last_error = None
+    for attempt in range(RETRIES):
+        try:
+            req = urllib.request.Request(url, headers=default_headers)
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except Exception as e:
+            last_error = e
+            if attempt < RETRIES - 1:
+                time.sleep(1.5 * (attempt + 1))
+    
+    print(f"  ⚠️ 获取失败 ({RETRIES}次重试): {url[:60]} → {last_error}")
+    return None
 
-def fetch_json(url, headers=None):
+def fetch_json(url, headers=None, referer=None):
     """HTTP GET，返回 JSON"""
-    text = fetch(url, headers)
+    text = fetch(url, headers, referer)
     if text is None:
         return None
     try:
@@ -73,13 +90,19 @@ def tikhub_request(endpoint, params=None, method="GET"):
         query = urllib.parse.urlencode(params)
         url += f"?{query}"
     
-    req = urllib.request.Request(url, headers=headers, data=data, method=method)
-    try:
-        with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except Exception as e:
-        print(f"  ⚠️ TikHub API 失败: {e}")
-        return None
+    last_error = None
+    for attempt in range(RETRIES):
+        req = urllib.request.Request(url, headers=headers, data=data, method=method)
+        try:
+            with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except Exception as e:
+            last_error = e
+            if attempt < RETRIES - 1:
+                time.sleep(2)
+    
+    print(f"  ⚠️ TikHub API 失败: {last_error}")
+    return None
 
 
 # ═══════════════════════════════════════════════════════
@@ -89,7 +112,7 @@ def tikhub_request(endpoint, params=None, method="GET"):
 def scrape_baidu():
     """百度热搜"""
     print("📡 百度热搜...")
-    data = fetch_json("https://top.baidu.com/board?tab=realtime")
+    data = fetch_json("https://top.baidu.com/board?tab=realtime", referer="https://top.baidu.com/")
     if not data:
         return []
     cards = data.get("data", {}).get("cards", [])
@@ -113,7 +136,7 @@ def scrape_baidu():
 def scrape_zhihu():
     """知乎热榜"""
     print("📡 知乎热榜...")
-    data = fetch_json("https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10")
+    data = fetch_json("https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10", referer="https://www.zhihu.com/")
     if not data:
         return []
     articles = []
@@ -136,7 +159,7 @@ def scrape_zhihu():
 def scrape_bilibili():
     """B站热搜"""
     print("📡 B站热搜...")
-    data = fetch_json("https://api.bilibili.com/x/web-interface/wbi/search/square?limit=10")
+    data = fetch_json("https://api.bilibili.com/x/web-interface/wbi/search/square?limit=10", referer="https://www.bilibili.com/")
     if not data:
         return []
     articles = []
@@ -158,7 +181,7 @@ def scrape_bilibili():
 def scrape_toutiao():
     """今日头条热榜"""
     print("📡 今日头条...")
-    data = fetch_json("https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc")
+    data = fetch_json("https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc", referer="https://www.toutiao.com/")
     if not data:
         return []
     articles = []
@@ -272,7 +295,7 @@ def scrape_ifeng():
 def scrape_tieba():
     """贴吧热搜"""
     print("📡 贴吧...")
-    data = fetch_json("https://tieba.baidu.com/hottopic/browse/topicList")
+    data = fetch_json("https://tieba.baidu.com/hottopic/browse/topicList", referer="https://tieba.baidu.com/")
     if not data:
         return []
     articles = []
@@ -300,7 +323,7 @@ def scrape_weibo():
         "User-Agent": USER_AGENT,
         "Cookie": "SUB=_2AkMRK_L_f8NxqwJRmP4WyG3haYh0wgnEieKkZxRJRMxHRl-yT9kqmgntRB6OJuL3Q2LFz2Jko5w4o7B3eMUZJQoL_5PW;"
     }
-    text = fetch("https://weibo.com/ajax/side/hotSearch", headers=headers)
+    text = fetch("https://weibo.com/ajax/side/hotSearch", headers=headers, referer="https://weibo.com/")
     if not text:
         return []
     try:
@@ -327,7 +350,7 @@ def scrape_weibo():
 def scrape_douyin():
     """抖音热榜"""
     print("📡 抖音热榜...")
-    data = fetch_json("https://www.douyin.com/aweme/v1/web/hot/search/list/?detail_list=1")
+    data = fetch_json("https://www.douyin.com/aweme/v1/web/hot/search/list/?detail_list=1", referer="https://www.douyin.com/")
     if not data:
         return []
     articles = []
@@ -351,7 +374,7 @@ def scrape_weixin():
     """公众号热点（聚合平台）"""
     print("📡 公众号热点...")
     # 使用公共热榜API获取微信热点
-    data = fetch_json("https://api.vvhan.com/api/hotlist/weixin")
+    data = fetch_json("https://api.vvhan.com/api/hotlist/weixin", referer="https://api.vvhan.com/")
     if not data:
         return []
     articles = []
