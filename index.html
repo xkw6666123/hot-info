@@ -213,10 +213,12 @@ header{
 .inspire{background:linear-gradient(135deg,#1A1F2E,#161C27);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 22px;margin-bottom:14px;position:relative;overflow:hidden}
 .inspire::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));opacity:0.5}
 .inspire .topic{font-size:14px;color:var(--text-sec);margin-bottom:8px;padding:4px 10px;background:var(--gold-dim);border-radius:6px;display:inline-block}
+.inspire .source-tag{font-size:11px;color:var(--text-muted);margin-bottom:6px}
 .inspire h3{font-size:14px;color:var(--text-pri);font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .inspire h3 .badge{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
 .inspire h3 .badge-w{background:var(--gold-dim);color:var(--gold)}
 .inspire h3 .badge-a{background:var(--blue-dim);color:var(--blue)}
+.inspire h3 .badge-c{background:rgba(216,90,48,0.12);color:#D85A30}
 .inspire .suggestion{font-size:13px;color:#C9D1D9;line-height:1.6;padding:6px 0 4px;font-style:italic}
 
 /* blogger prediction card */
@@ -236,8 +238,6 @@ header{
 .prediction-card .p-tag.heiban-tag{background:var(--blue-dim);color:var(--blue)}
 .prediction-card .p-tag.guancha-tag{background:rgba(167,139,250,0.12);color:#A78BFA}
 .prediction-card .p-tag.shadi-tag{background:var(--gold-dim);color:var(--gold)}
-
-.structure-box{background:rgba(255,255,255,0.03);border-radius:8px;padding:8px;margin-top:8px}
 
 /* fav btn */
 .fav-btn{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(0,0,0,0.35);color:var(--text-muted);font-size:16px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;transition:all var(--transition);backdrop-filter:blur(4px)}
@@ -262,7 +262,7 @@ header{
 .ai-card h4{font-size:14px;color:var(--text-pri);margin-bottom:8px}
 .ai-card .ai-suggestion{font-size:13px;color:#C9D1D9;line-height:1.6;padding:8px 12px;background:var(--blue-dim);border-radius:var(--radius-sm);margin:6px 0}
 .ai-card .ai-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;background:var(--blue-dim);color:var(--blue);margin-right:4px}
-.structure-box{background:rgba(122,130,148,0.04);border-radius:var(--radius-sm);padding:8px 10px;margin:6px 0 4px}
+.structure-box{background:rgba(122,130,148,0.04);border-radius:var(--radius-sm);padding:8px 10px;margin:8px 0 4px}
 
 .section-title{font-size:13px;color:var(--text-muted);margin:0 0 12px;padding:0 4px;font-weight:500;display:flex;align-items:center;gap:8px}
 .section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
@@ -344,7 +344,7 @@ body{padding-bottom:0}
   .hero p{font-size:14px}
   .hero-stats{gap:24px}
   .hero-stat .num{font-size:20px}
-  .header-inner{padding:0 14px;height:54px;flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}
+  .header-inner{padding:0 14px;flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}
   .logo{font-size:16px;margin-bottom:4px}
   .header-right{width:100%;justify-content:space-between}
   #searchInput{width:70px;font-size:11px;padding:4px 8px}
@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605112112" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605112131" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -577,10 +577,12 @@ function renderFeatured(){
   // 1. 爆款文章（有 🔥 标签的）
   const viralItems=data.filter(a=>a.tags&&a.tags.includes('爆款')).sort((a,b)=>(b.likes||0)-(a.likes||0));
   
-  // 2. 博主最新视频（取每个博主最新1条）
+  // 2. 博主最新视频（按日期排序，取每个博主最新1条）
   const seenBloggers={};
   const blogItems=[];
-  data.filter(a=>a.source==='blogger').forEach(a=>{
+  data.filter(a=>a.source==='blogger')
+    .sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.time||'').localeCompare(a.time||''))
+    .forEach(a=>{
     if(!seenBloggers[a.blogger_name]){
       seenBloggers[a.blogger_name]=true;
       blogItems.push(a);
@@ -1242,12 +1244,18 @@ function renderTrend(){
 
   el.innerHTML=h;
 
+  // 清理旧图表（避免 "Canvas is already in use" 报错）
+  if(window._charts){window._charts.forEach(c=>{try{c.destroy()}catch(e){}});}
+  window._charts=[];
+
   // 画图
   setTimeout(()=>{
     try{
-      new Chart(document.getElementById('chartDay'),{type:'bar',data:{labels:dayLabels,datasets:[{label:'文章数',data:dayValues,backgroundColor:'rgba(201,169,110,0.7)',borderColor:'#C9A96E',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}},x:{grid:{display:false}}}}});
-      new Chart(document.getElementById('chartSrc'),{type:'bar',data:{labels:srcLabels,datasets:[{label:'文章数',data:srcValues,backgroundColor:'rgba(74,143,228,0.7)',borderColor:'#4A8FE4',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{y:{grid:{display:false}},x:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}}}}});
-      new Chart(document.getElementById('chartTag'),{type:'bar',data:{labels:tagLabels,datasets:[{label:'出现次数',data:tagValues,backgroundColor:'rgba(255,87,34,0.7)',borderColor:'#FF5722',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{y:{grid:{display:false}},x:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}}}}});
+      const cd=document.getElementById('chartDay'),cs=document.getElementById('chartSrc'),ct=document.getElementById('chartTag');
+      if(!cd||!cs||!ct)return; // DOM 已被替换，不再画图
+      window._charts.push(new Chart(cd,{type:'bar',data:{labels:dayLabels,datasets:[{label:'文章数',data:dayValues,backgroundColor:'rgba(201,169,110,0.7)',borderColor:'#C9A96E',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}},x:{grid:{display:false}}}}}));
+      window._charts.push(new Chart(cs,{type:'bar',data:{labels:srcLabels,datasets:[{label:'文章数',data:srcValues,backgroundColor:'rgba(74,143,228,0.7)',borderColor:'#4A8FE4',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{y:{grid:{display:false}},x:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}}}}}));
+      window._charts.push(new Chart(ct,{type:'bar',data:{labels:tagLabels,datasets:[{label:'出现次数',data:tagValues,backgroundColor:'rgba(255,87,34,0.7)',borderColor:'#FF5722',borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{y:{grid:{display:false}},x:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'}}}}}));
     }catch(e){}
   },100);
 }
