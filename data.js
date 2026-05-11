@@ -5,6 +5,326 @@ window.__HOT_DATA__ = {
 },
 "articles": [
 {
+"id": 194709713,
+"title": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33152120",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 684785407,
+"title": "马上评｜奇葩文案该怼，也要警惕迎合“舆论连坐”",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33152115",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 660064387,
+"title": "圣罗兰“拉黑”杭州一个街道？记者实测20个地址全部被拒发货",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33149321",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 713721445,
+"title": "澎湃回声丨圣罗兰解封杭州被“拉黑”街道，未回应是否调整设置",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33151485",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 914270538,
+"title": "北京试点携自行车上地铁",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33150711",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 286249794,
+"title": "3比0战胜日本，中国队实现世乒赛男团12连冠",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33153395",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 82061636,
+"title": "OPPO母亲节活动文案引争议，武汉大学：极不认同文案价值倾向",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33151742",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 570669563,
+"title": "蚌埠市委书记在商业航天大会现场招商：我就是首席服务员，有需必应",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33152588",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 416439792,
+"title": "安第斯病毒何去何从？张文宏团队解析涉疫邮轮传播链精细拼图",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33152581",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 280584351,
+"title": "博闻丨190元榴莲恶意“仅退款”换来拘留：规则之外，还靠诚信",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33150830",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 768237400,
+"title": "又偷?中国孩子善举被日本认领",
+"summary": "日本网民搬运中国孩子暖心举动的视频，张冠李戴说成是日本小孩，评论还大赞“日本孩子真温柔”，简直厚颜无耻。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354154",
+"likes": 2257680,
+"comments": 2257680
+},
+{
+"id": 731753368,
+"title": "告到中央!家长投诉二次元害人",
+"summary": "成都一位家长在政务平台控诉二次元文化严重毒害孩子，把孩子沉迷小众圈层、叛逆厌学，全部归罪于二次元。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354150",
+"likes": 2003987,
+"comments": 2003987
+},
+{
+"id": 53788030,
+"title": "FIFA低头,转播费降至1.5亿",
+"summary": "2026年世界杯中国转播费报价大幅下调，从初始约3亿美元降至1.5亿美元，但国际足联与央视尚未最终签约。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354148",
+"likes": 1803704,
+"comments": 1803704
+},
+{
+"id": 808060418,
+"title": "棉花异环卡bug速刷30级",
+"summary": "b站棉花玩异环嘴都笑歪了，前脚官方发文称卡bug将会封号，反手棉花利用bug速升30级。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354160",
+"likes": 1674756,
+"comments": 1674756
+},
+{
+"id": 133409386,
+"title": "原神福利差,外服玩家差评轰炸",
+"summary": "外网的原神玩家对奖励系统不满，着手大规模的对Google classroom和原神进行差评轰炸，国内玩家表示：真没见过比原神还差的游戏了。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354162",
+"likes": 1413204,
+"comments": 1413204
+},
+{
+"id": 825111495,
+"title": "理想乱停车,游客上厕所被堵",
+"summary": "网友上厕所方便后发现门打不开，原因是理想车主把车停在了厕所门口。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354157",
+"likes": 1294525,
+"comments": 1294525
+},
+{
+"id": 313747650,
+"title": "JDG2:1AL,塔赞被嘲刷子打野",
+"summary": "JDG2:1AL，从bp到对线JDG完爆AL，塔赞被说公式刷子打野表现太差",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354158",
+"likes": 1237224,
+"comments": 1237224
+},
+{
+"id": 590336004,
+"title": "体育总局呼吁:别搞运动员庆生",
+"summary": "国家体育总局表态：粉丝线下为运动员庆生，不仅占用公共资源，还容易对运动员备战产生干扰。希望大家关注赛场表现，不组织、不参与庆生活动。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354156",
+"likes": 1182729,
+"comments": 1182729
+},
+{
+"id": 149486227,
+"title": "碾压局!假面骑士ZZZ超梦首战",
+"summary": "假面骑士ZZZ最终形态首战炸场，超梦大王展现超强压制力秒杀西格，不亚于踩死一只蚂蚁。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354153",
+"likes": 1103454,
+"comments": 1103454
+},
+{
+"id": 120560570,
+"title": "十年挚爱病逝,吧友含泪忆亡妻",
+"summary": "十年挚爱突患癌症去世，吧友发贴悼念亡妻，回忆与她相处的点点滴滴。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "10:17",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354144",
+"likes": 1091139,
+"comments": 1091139
+},
+{
 "id": 7637659979633265972,
 "blogger_name": "网吧信息差",
 "time": "11:01",
@@ -463,21 +783,6 @@ window.__HOT_DATA__ = {
 "comments": 26309
 },
 {
-"id": "20260510_005",
-"title": "中国汽车工业协会：网传“新能源车企因锁电问题被约谈、立案”为不实信息",
-"summary": "【澎湃新闻】中国汽车工业协会：网传“新能源车企因锁电问题被约谈、立案”为不实信息",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "10:25",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33144435",
-"likes": 478012,
-"comments": 95602
-},
-{
 "id": "wc_20260510_016",
 "title": "[突发新闻] 费城大学城两警察昨晚遇袭,一名女警被狂射15枪",
 "summary": "昨晚(9月16日),一名枪手在西费城埋伏袭击了一位警员.在逮捕前,这名枪手击中了四名市民和一名宾夕法尼亚大学的校警.警察...",
@@ -556,36 +861,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.toutiao.com/trending/7637893630325165622/",
 "likes": 221976,
 "comments": 14798
-},
-{
-"id": "20260510_059",
-"title": "成都AG超玩会战胜上海EDG.M 挑杯",
-"summary": "【bilibili 热搜】成都AG超玩会战胜上海EDG.M 挑杯",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "22:43",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E6%88%90%E9%83%BDAG%E8%B6%85%E7%8E%A9%E4%BC%9A+%E4%B8%8A%E6%B5%B7EDG.M",
-"likes": 53773,
-"comments": 4136
-},
-{
-"id": "20260510_058",
-"title": "摆脱传统试错模式，“90后”创业者用AI解决化工研发痛点",
-"summary": "【澎湃新闻】摆脱传统试错模式，“90后”创业者用AI解决化工研发痛点",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "20:26",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33120610",
-"likes": 61111,
-"comments": 12222
 },
 {
 "id": "20260510_057",
@@ -678,21 +953,6 @@ window.__HOT_DATA__ = {
 "comments": 5621
 },
 {
-"id": "20260510_051",
-"title": "粉丝滤镜拉满,Bin哥变电竞杨洋",
-"summary": "【贴吧】粉丝滤镜拉满,Bin哥变电竞杨洋",
-"source": "贴吧",
-"date": "2026-05-10",
-"time": "06:27",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E7%B2%89%E4%B8%9D%E6%BB%A4%E9%95%9C%E6%8B%89%E6%BB%A1%2CBin%E5%93%A5%E5%8F%98%E7%94%B5%E7%AB%9E%E6%9D%A8%E6%B4%8B&topic_id=28354140",
-"likes": 103220,
-"comments": 5734
-},
-{
 "id": "20260510_050",
 "title": "历史性大手笔！中国向巴基斯坦交付海军重器",
 "summary": "【凤凰网】历史性大手笔！中国向巴基斯坦交付海军重器",
@@ -721,37 +981,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366780",
 "likes": 114254,
 "comments": 5712
-},
-{
-"id": "20260510_048",
-"title": "老二次元买谷子",
-"summary": "【bilibili 热搜】老二次元买谷子",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "00:36",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E8%80%81%E4%BA%8C%E6%AC%A1%E5%85%83%E4%B9%B0%E8%B0%B7%E5%AD%90",
-"likes": 120875,
-"comments": 6043
-},
-{
-"id": "20260510_047",
-"title": "江西省长调研萍乡烟花爆竹安全监管：铁腕开展烟花爆竹“打非治违”",
-"summary": "【澎湃新闻】江西省长调研萍乡烟花爆竹安全监管：铁腕开展烟花爆竹“打非治违”",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "22:19",
-"tags": [
-"社会热点",
-"信息差",
-"爆款"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33126571",
-"likes": 129493,
-"comments": 25898
 },
 {
 "id": "20260510_046",
@@ -844,21 +1073,6 @@ window.__HOT_DATA__ = {
 "comments": 12879
 },
 {
-"id": "20260510_040",
-"title": "水哥发威,TES轻松虐翻WE",
-"summary": "【贴吧】水哥发威,TES轻松虐翻WE",
-"source": "贴吧",
-"date": "2026-05-10",
-"time": "08:20",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E6%B0%B4%E5%93%A5%E5%8F%91%E5%A8%81%2CTES%E8%BD%BB%E6%9D%BE%E8%99%90%E7%BF%BBWE&topic_id=28354141",
-"likes": 161779,
-"comments": 20222
-},
-{
 "id": "20260510_039",
 "title": "怕中俄再否决涉伊朗决议，美国删了",
 "summary": "【凤凰网】怕中俄再否决涉伊朗决议，美国删了",
@@ -887,36 +1101,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366912",
 "likes": 210282,
 "comments": 42056
-},
-{
-"id": "20260510_037",
-"title": "央视农业评榴莲仅退款事件",
-"summary": "【bilibili 热搜】央视农业评榴莲仅退款事件",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "02:29",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%A4%AE%E8%A7%86%E5%86%9C%E4%B8%9A%E8%AF%84%E6%A6%B4%E8%8E%B2%E4%BB%85%E9%80%80%E6%AC%BE%E4%BA%8B%E4%BB%B6",
-"likes": 221015,
-"comments": 15786
-},
-{
-"id": "20260510_036",
-"title": "两年数十起官司，“网络黑嘴”为啥频频盯上胖东来",
-"summary": "【澎湃新闻】两年数十起官司，“网络黑嘴”为啥频频盯上胖东来",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "00:12",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33135729",
-"likes": 212623,
-"comments": 23624
 },
 {
 "id": "20260510_034",
@@ -994,21 +1178,6 @@ window.__HOT_DATA__ = {
 "comments": 25190
 },
 {
-"id": "20260510_029",
-"title": "能抗压!小钰直播间回应恶评",
-"summary": "【贴吧】能抗压!小钰直播间回应恶评",
-"source": "贴吧",
-"date": "2026-05-10",
-"time": "10:13",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E8%83%BD%E6%8A%97%E5%8E%8B%21%E5%B0%8F%E9%92%B0%E7%9B%B4%E6%92%AD%E9%97%B4%E5%9B%9E%E5%BA%94%E6%81%B6%E8%AF%84&topic_id=28354129",
-"likes": 287664,
-"comments": 14383
-},
-{
 "id": "20260510_028",
 "title": "俄红场阅兵，朝鲜方队接受检阅",
 "summary": "【凤凰网】俄红场阅兵，朝鲜方队接受检阅",
@@ -1037,37 +1206,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366813",
 "likes": 288658,
 "comments": 19243
-},
-{
-"id": "20260510_026",
-"title": "文班亚马季后赛进攻有多强",
-"summary": "【bilibili 热搜】文班亚马季后赛进攻有多强",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "04:22",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E6%96%87%E7%8F%AD%E4%BA%9A%E9%A9%AC%E5%AD%A3%E5%90%8E%E8%B5%9B%E8%BF%9B%E6%94%BB%E6%9C%89%E5%A4%9A%E5%BC%BA",
-"likes": 280717,
-"comments": 17544
-},
-{
-"id": "20260510_025",
-"title": "江西一精神病院成上市公司十大股东？回应：系营利性民营医院，正常参与资本市场行为",
-"summary": "【澎湃新闻】江西一精神病院成上市公司十大股东？回应：系营利性民营医院，正常参与资本市场行为",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "02:05",
-"tags": [
-"社会热点",
-"信息差",
-"爆款"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33135943",
-"likes": 318937,
-"comments": 15946
 },
 {
 "id": "20260510_023",
@@ -1145,21 +1283,6 @@ window.__HOT_DATA__ = {
 "comments": 55271
 },
 {
-"id": "20260510_018",
-"title": "中国海军或将迎来核航母",
-"summary": "【贴吧】中国海军或将迎来核航母",
-"source": "贴吧",
-"date": "2026-05-10",
-"time": "12:06",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E4%B8%AD%E5%9B%BD%E6%B5%B7%E5%86%9B%E6%88%96%E5%B0%86%E8%BF%8E%E6%9D%A5%E6%A0%B8%E8%88%AA%E6%AF%8D&topic_id=28354130",
-"likes": 354952,
-"comments": 70990
-},
-{
 "id": "20260510_017",
 "title": "专家谈俄红场阅兵：规模精简仪式感不减，要重点关注这两大变化",
 "summary": "【凤凰网】专家谈俄红场阅兵：规模精简仪式感不减，要重点关注这两大变化",
@@ -1173,36 +1296,6 @@ window.__HOT_DATA__ = {
 "url": "https://news.ifeng.com/c/8sznccbiaBX",
 "likes": 350278,
 "comments": 23351
-},
-{
-"id": "20260510_015",
-"title": "41°C高温天气来了",
-"summary": "【bilibili 热搜】41°C高温天气来了",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "06:15",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=41%C2%B0C%E9%AB%98%E6%B8%A9%E5%A4%A9%E6%B0%94%E6%9D%A5%E4%BA%86",
-"likes": 380749,
-"comments": 31729
-},
-{
-"id": "20260510_014",
-"title": "兵韬志略｜以色列向阿联酋部署防空系统，将深刻冲击中东安全格局",
-"summary": "【澎湃新闻】兵韬志略｜以色列向阿联酋部署防空系统，将深刻冲击中东安全格局",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "04:58",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33122049",
-"likes": 406074,
-"comments": 50759
 },
 {
 "id": "20260510_013",
@@ -1280,21 +1373,6 @@ window.__HOT_DATA__ = {
 "comments": 32921
 },
 {
-"id": "20260510_007",
-"title": "起点大神开炮,暗讽番茄神作抄袭",
-"summary": "【贴吧】起点大神开炮,暗讽番茄神作抄袭",
-"source": "贴吧",
-"date": "2026-05-10",
-"time": "14:59",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E8%B5%B7%E7%82%B9%E5%A4%A7%E7%A5%9E%E5%BC%80%E7%82%AE%2C%E6%9A%97%E8%AE%BD%E7%95%AA%E8%8C%84%E7%A5%9E%E4%BD%9C%E6%8A%84%E8%A2%AD&topic_id=28354139",
-"likes": 456803,
-"comments": 76133
-},
-{
 "id": "20260510_006",
 "title": "普京红场阅兵演讲全文",
 "summary": "【凤凰网】普京红场阅兵演讲全文",
@@ -1308,37 +1386,6 @@ window.__HOT_DATA__ = {
 "url": "https://news.ifeng.com/c/8szGsmVMy90",
 "likes": 433729,
 "comments": 39429
-},
-{
-"id": "20260510_004",
-"title": "AG超玩会战胜EDG.M赛后数据",
-"summary": "【bilibili 热搜】AG超玩会战胜EDG.M赛后数据",
-"source": "bilibili 热搜",
-"date": "2026-05-10",
-"time": "08:08",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=AG%E8%B6%85%E7%8E%A9%E4%BC%9A%E6%88%98%E8%83%9CEDG.M%E8%B5%9B%E5%90%8E%E6%95%B0%E6%8D%AE",
-"likes": 454743,
-"comments": 22737
-},
-{
-"id": "20260510_003",
-"title": "“百度AI称一律师被判刑”构成侵权：百度辩称AI幻觉无法预见，法院判其书面道歉",
-"summary": "【澎湃新闻】“百度AI称一律师被判刑”构成侵权：百度辩称AI幻觉无法预见，法院判其书面道歉",
-"source": "澎湃新闻",
-"date": "2026-05-10",
-"time": "06:51",
-"tags": [
-"社会热点",
-"信息差",
-"争议"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33126767",
-"likes": 472569,
-"comments": 23628
 },
 {
 "id": "20260510_001",
@@ -1924,36 +1971,6 @@ window.__HOT_DATA__ = {
 "comments": 20935
 },
 {
-"id": "20260509_059",
-"title": "外交部证实遇袭油轮上有中国籍船员",
-"summary": "【bilibili 热搜】外交部证实遇袭油轮上有中国籍船员",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "22:43",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%A4%96%E4%BA%A4%E9%83%A8%E8%AF%81%E5%AE%9E%E9%81%87%E8%A2%AD%E6%B2%B9%E8%BD%AE%E4%B8%8A%E6%9C%89%E4%B8%AD%E5%9B%BD%E7%B1%8D%E8%88%B9%E5%91%98",
-"likes": 43993,
-"comments": 4888
-},
-{
-"id": "20260509_058",
-"title": "“潦草小狗”延迟退场：新晋“城市IP”如何跃入人心",
-"summary": "【澎湃新闻】“潦草小狗”延迟退场：新晋“城市IP”如何跃入人心",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "20:26",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33122507",
-"likes": 54015,
-"comments": 6001
-},
-{
 "id": "20260509_057",
 "title": "华尔街见闻早餐FM-Radio | 2026年5月9日",
 "summary": "【华尔街见闻】华尔街见闻早餐FM-Radio | 2026年5月9日",
@@ -2074,36 +2091,6 @@ window.__HOT_DATA__ = {
 "comments": 17328
 },
 {
-"id": "20260509_048",
-"title": "世界杯商业化的四个阶段",
-"summary": "【bilibili 热搜】世界杯商业化的四个阶段",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "00:36",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E4%B8%96%E7%95%8C%E6%9D%AF%E5%95%86%E4%B8%9A%E5%8C%96%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5",
-"likes": 122608,
-"comments": 15326
-},
-{
-"id": "20260509_047",
-"title": "学校职工自曝吃空饷，太原通报：追究相关人员责任，正依法追回工资薪酬",
-"summary": "【澎湃新闻】学校职工自曝吃空饷，太原通报：追究相关人员责任，正依法追回工资薪酬",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "22:19",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33122565",
-"likes": 139878,
-"comments": 17484
-},
-{
 "id": "20260509_046",
 "title": "高盛：超配中国，A股优于H股，将沪深300目标位设于5300点",
 "summary": "【华尔街见闻】高盛：超配中国，A股优于H股，将沪深300目标位设于5300点",
@@ -2194,21 +2181,6 @@ window.__HOT_DATA__ = {
 "comments": 25337
 },
 {
-"id": "20260509_040",
-"title": "领跑联赛!BLG强势碾压JDG",
-"summary": "【贴吧】领跑联赛!BLG强势碾压JDG",
-"source": "贴吧",
-"date": "2026-05-09",
-"time": "08:20",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E9%A2%86%E8%B7%91%E8%81%94%E8%B5%9B%21BLG%E5%BC%BA%E5%8A%BF%E7%A2%BE%E5%8E%8BJDG&topic_id=28354109",
-"likes": 177977,
-"comments": 8898
-},
-{
 "id": "20260509_039",
 "title": "伊朗驻华大使：美国没法施压中国，改变对伊朗关系",
 "summary": "【凤凰网】伊朗驻华大使：美国没法施压中国，改变对伊朗关系",
@@ -2237,36 +2209,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366511",
 "likes": 182163,
 "comments": 11385
-},
-{
-"id": "20260509_037",
-"title": "巴尔韦德与琼阿梅尼各罚50万欧元",
-"summary": "【bilibili 热搜】巴尔韦德与琼阿梅尼各罚50万欧元",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "02:29",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%B7%B4%E5%B0%94%E9%9F%A6%E5%BE%B7%E4%B8%8E%E7%90%BC%E9%98%BF%E6%A2%85%E5%B0%BC%E5%90%84%E7%BD%9A50%E4%B8%87%E6%AC%A7%E5%85%83",
-"likes": 198894,
-"comments": 22099
-},
-{
-"id": "20260509_036",
-"title": "钱江摩托发布声明：“国内摩托车大厂围剿张雪机车”系不实言论",
-"summary": "【澎湃新闻】钱江摩托发布声明：“国内摩托车大厂围剿张雪机车”系不实言论",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "00:12",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33120361",
-"likes": 194967,
-"comments": 19496
 },
 {
 "id": "20260509_035",
@@ -2360,21 +2302,6 @@ window.__HOT_DATA__ = {
 "comments": 12398
 },
 {
-"id": "20260509_029",
-"title": "外媒出奇招,拿毒蘑菇戒烟瘾",
-"summary": "【贴吧】外媒出奇招,拿毒蘑菇戒烟瘾",
-"source": "贴吧",
-"date": "2026-05-09",
-"time": "10:13",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E5%A4%96%E5%AA%92%E5%87%BA%E5%A5%87%E6%8B%9B%2C%E6%8B%BF%E6%AF%92%E8%98%91%E8%8F%87%E6%88%92%E7%83%9F%E7%98%BE&topic_id=28354111",
-"likes": 277348,
-"comments": 30816
-},
-{
 "id": "20260509_028",
 "title": "卢拉告诉美方：开放稀土投资包括中国",
 "summary": "【凤凰网】卢拉告诉美方：开放稀土投资包括中国",
@@ -2403,36 +2330,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366667",
 "likes": 281706,
 "comments": 20121
-},
-{
-"id": "20260509_026",
-"title": "央视科普汉坦病毒如何预防",
-"summary": "【bilibili 热搜】央视科普汉坦病毒如何预防",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "04:22",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%A4%AE%E8%A7%86%E7%A7%91%E6%99%AE%E6%B1%89%E5%9D%A6%E7%97%85%E6%AF%92%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2",
-"likes": 287367,
-"comments": 31929
-},
-{
-"id": "20260509_025",
-"title": "一图看懂｜发现汉坦病例前30人已离船，哪些国家处于病毒暴露风险下？",
-"summary": "【澎湃新闻】一图看懂｜发现汉坦病例前30人已离船，哪些国家处于病毒暴露风险下？",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "02:05",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33122799",
-"likes": 291931,
-"comments": 36491
 },
 {
 "id": "20260509_024",
@@ -2526,21 +2423,6 @@ window.__HOT_DATA__ = {
 "comments": 22054
 },
 {
-"id": "20260509_018",
-"title": "贴吧神帖+1,《我的爱人静秋》",
-"summary": "【贴吧】贴吧神帖+1,《我的爱人静秋》",
-"source": "贴吧",
-"date": "2026-05-09",
-"time": "12:06",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E8%B4%B4%E5%90%A7%E7%A5%9E%E5%B8%96%2B1%2C%E3%80%8A%E6%88%91%E7%9A%84%E7%88%B1%E4%BA%BA%E9%9D%99%E7%A7%8B%E3%80%8B&topic_id=28354094",
-"likes": 353741,
-"comments": 20808
-},
-{
 "id": "20260509_017",
 "title": "现场画面：伊朗海军扣押一艘油轮",
 "summary": "【凤凰网】现场画面：伊朗海军扣押一艘油轮",
@@ -2569,36 +2451,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366633",
 "likes": 362050,
 "comments": 32913
-},
-{
-"id": "20260509_015",
-"title": "锐评BLG战胜JDG",
-"summary": "【bilibili 热搜】锐评BLG战胜JDG",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "06:15",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=BLG%E6%88%98%E8%83%9CJDG",
-"likes": 382701,
-"comments": 22511
-},
-{
-"id": "20260509_014",
-"title": "经纬度：公职人员带头，能否破解物业收费难",
-"summary": "【澎湃新闻】经纬度：公职人员带头，能否破解物业收费难",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "04:58",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33120249",
-"likes": 387053,
-"comments": 24190
 },
 {
 "id": "20260509_013",
@@ -2692,21 +2544,6 @@ window.__HOT_DATA__ = {
 "comments": 28253
 },
 {
-"id": "20260509_007",
-"title": "男coser称被造谣已报警处理",
-"summary": "【贴吧】男coser称被造谣已报警处理",
-"source": "贴吧",
-"date": "2026-05-09",
-"time": "14:59",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E7%94%B7coser%E7%A7%B0%E8%A2%AB%E9%80%A0%E8%B0%A3%E5%B7%B2%E6%8A%A5%E8%AD%A6%E5%A4%84%E7%90%86&topic_id=28354110",
-"likes": 440227,
-"comments": 73371
-},
-{
 "id": "20260509_006",
 "title": "伊朗战争丨特朗普称可能恢复“自由计划”",
 "summary": "【凤凰网】伊朗战争丨特朗普称可能恢复“自由计划”",
@@ -2738,36 +2575,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2366406",
 "likes": 477601,
 "comments": 43418
-},
-{
-"id": "20260509_004",
-"title": "美国公布有关UFO文件",
-"summary": "【bilibili 热搜】美国公布有关UFO文件",
-"source": "bilibili 热搜",
-"date": "2026-05-09",
-"time": "08:08",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E7%BE%8E%E5%9B%BD%E5%85%AC%E5%B8%83%E6%9C%89%E5%85%B3UFO%E6%96%87%E4%BB%B6",
-"likes": 455090,
-"comments": 65012
-},
-{
-"id": "20260509_003",
-"title": "马上评｜驱车1600公里较真“仅退款”，别让维权“亏本”",
-"summary": "【澎湃新闻】马上评｜驱车1600公里较真“仅退款”，别让维权“亏本”",
-"source": "澎湃新闻",
-"date": "2026-05-09",
-"time": "06:51",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33122989",
-"likes": 494095,
-"comments": 38007
 },
 {
 "id": "20260509_002",
@@ -2830,21 +2637,6 @@ window.__HOT_DATA__ = {
 "comments": 4091
 },
 {
-"id": "20260508_031",
-"title": "官媒下场三问享界夹人事件",
-"summary": "【贴吧】官媒下场三问享界夹人事件",
-"source": "贴吧",
-"date": "2026-05-08",
-"time": "14:47",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E5%AE%98%E5%AA%92%E4%B8%8B%E5%9C%BA%E4%B8%89%E9%97%AE%E4%BA%AB%E7%95%8C%E5%A4%B9%E4%BA%BA%E4%BA%8B%E4%BB%B6&topic_id=28354103",
-"likes": 246008,
-"comments": 13667
-},
-{
 "id": "20260508_030",
 "title": "美军，突然“反击”",
 "summary": "【凤凰网】美军，突然“反击”",
@@ -2858,21 +2650,6 @@ window.__HOT_DATA__ = {
 "url": "https://news.ifeng.com/c/8sxm8cNArDu",
 "likes": 252890,
 "comments": 16859
-},
-{
-"id": "20260508_029",
-"title": "UP vs LNG LPL第二赛段",
-"summary": "【bilibili 热搜】UP vs LNG LPL第二赛段",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "10:13",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=UP+LNG",
-"likes": 266560,
-"comments": 20504
 },
 {
 "id": "20260508_051",
@@ -2905,21 +2682,6 @@ window.__HOT_DATA__ = {
 "comments": 28232
 },
 {
-"id": "20260508_009",
-"title": "北京JDG vs 佛山DRG 挑战者杯",
-"summary": "【bilibili 热搜】北京JDG vs 佛山DRG 挑战者杯",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "18:33",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%8C%97%E4%BA%ACJDG+%E4%BD%9B%E5%B1%B1DRG",
-"likes": 444091,
-"comments": 40371
-},
-{
 "id": "20260508_023",
 "title": "榴莲仅退款买家发声",
 "summary": "【微博】榴莲仅退款买家发声",
@@ -2948,36 +2710,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.baidu.com/s?wd=%E6%B3%B0%E5%BA%B7%E4%BA%BA%E5%AF%BF%E2%80%9C%E5%85%A8%E5%9B%BD%E9%94%80%E5%86%A0%E2%80%9D%E4%BB%BB%E6%99%93%E6%95%8F%E8%A2%AB%E5%88%91%E6%8B%98",
 "likes": 320244,
 "comments": 29113
-},
-{
-"id": "20260508_059",
-"title": "美国和伊朗又打起来了",
-"summary": "【bilibili 热搜】美国和伊朗又打起来了",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "22:43",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E7%BE%8E%E5%9B%BD%E5%92%8C%E4%BC%8A%E6%9C%97%E5%8F%88%E6%89%93%E8%B5%B7%E6%9D%A5%E4%BA%86",
-"likes": 56331,
-"comments": 4694
-},
-{
-"id": "20260508_058",
-"title": "男子称爷爷30年前捐赠名家书画部分去向不明，天津美术学院：均完整在库保管",
-"summary": "【澎湃新闻】男子称爷爷30年前捐赠名家书画部分去向不明，天津美术学院：均完整在库保管",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "20:26",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33105680",
-"likes": 41878,
-"comments": 2991
 },
 {
 "id": "20260508_057",
@@ -3086,37 +2818,6 @@ window.__HOT_DATA__ = {
 "comments": 6461
 },
 {
-"id": "20260508_048",
-"title": "邮轮汉坦病毒时间线梳理",
-"summary": "【bilibili 热搜】邮轮汉坦病毒时间线梳理",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "00:36",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E9%82%AE%E8%BD%AE%E6%B1%89%E5%9D%A6%E7%97%85%E6%AF%92%E6%97%B6%E9%97%B4%E7%BA%BF%E6%A2%B3%E7%90%86",
-"likes": 112248,
-"comments": 22449
-},
-{
-"id": "20260508_047",
-"title": "探访最神秘“杭州六小龙”强脑科技：业务已延伸至具身智能，估值突破120亿元",
-"summary": "【澎湃新闻】探访最神秘“杭州六小龙”强脑科技：业务已延伸至具身智能，估值突破120亿元",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "22:19",
-"tags": [
-"社会热点",
-"信息差",
-"爆款"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33105217",
-"likes": 125903,
-"comments": 6295
-},
-{
 "id": "20260508_046",
 "title": "报道：美伊已就缓解美国海上封锁达成共识，以换取霍尔木兹“逐步开放”",
 "summary": "【华尔街见闻】报道：美伊已就缓解美国海上封锁达成共识，以换取霍尔木兹“逐步开放”",
@@ -3192,21 +2893,6 @@ window.__HOT_DATA__ = {
 "comments": 10716
 },
 {
-"id": "20260508_040",
-"title": "大学生讹诈商家当场被拆穿",
-"summary": "【贴吧】大学生讹诈商家当场被拆穿",
-"source": "贴吧",
-"date": "2026-05-08",
-"time": "08:20",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AE%B9%E8%AF%88%E5%95%86%E5%AE%B6%E5%BD%93%E5%9C%BA%E8%A2%AB%E6%8B%86%E7%A9%BF&topic_id=28354076",
-"likes": 161092,
-"comments": 10739
-},
-{
 "id": "20260508_039",
 "title": "特朗普回应打击伊朗：只是轻微敲打",
 "summary": "【凤凰网】特朗普回应打击伊朗：只是轻微敲打",
@@ -3235,36 +2921,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2365550",
 "likes": 202605,
 "comments": 11255
-},
-{
-"id": "20260508_037",
-"title": "林昀儒3-0横扫莫雷加德",
-"summary": "【bilibili 热搜】林昀儒3-0横扫莫雷加德",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "02:29",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E6%9E%97%E6%98%80%E5%84%923-0%E6%A8%AA%E6%89%AB%E8%8E%AB%E9%9B%B7%E5%8A%A0%E5%BE%B7",
-"likes": 186878,
-"comments": 10382
-},
-{
-"id": "20260508_036",
-"title": "第三轮第六批中央生态环境保护督察全面启动，7组组长公布",
-"summary": "【澎湃新闻】第三轮第六批中央生态环境保护督察全面启动，7组组长公布",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "00:12",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33105060",
-"likes": 202853,
-"comments": 22539
 },
 {
 "id": "20260508_035",
@@ -3357,36 +3013,6 @@ window.__HOT_DATA__ = {
 "comments": 34538
 },
 {
-"id": "20260508_026",
-"title": "维拉时隔44年再进欧联决赛",
-"summary": "【bilibili 热搜】维拉时隔44年再进欧联决赛",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "04:22",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E7%BB%B4%E6%8B%89%E6%97%B6%E9%9A%9444%E5%B9%B4%E5%86%8D%E8%BF%9B%E6%AC%A7%E8%81%94%E5%86%B3%E8%B5%9B",
-"likes": 308097,
-"comments": 51349
-},
-{
-"id": "20260508_025",
-"title": "宠物屡屡使用饭店餐具，谁来负责？谁来执法？",
-"summary": "【澎湃新闻】宠物屡屡使用饭店餐具，谁来负责？谁来执法？",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "02:05",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33105245",
-"likes": 295538,
-"comments": 36942
-},
-{
 "id": "20260508_024",
 "title": "华尔街见闻早餐FM-Radio | 2026年5月8日",
 "summary": "【华尔街见闻】华尔街见闻早餐FM-Radio | 2026年5月8日",
@@ -3447,21 +3073,6 @@ window.__HOT_DATA__ = {
 "comments": 33264
 },
 {
-"id": "20260508_018",
-"title": "北大教授秀谬论,尬吹西方保障",
-"summary": "【贴吧】北大教授秀谬论,尬吹西方保障",
-"source": "贴吧",
-"date": "2026-05-08",
-"time": "12:06",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E5%8C%97%E5%A4%A7%E6%95%99%E6%8E%88%E7%A7%80%E8%B0%AC%E8%AE%BA%2C%E5%B0%AC%E5%90%B9%E8%A5%BF%E6%96%B9%E4%BF%9D%E9%9A%9C&topic_id=28354080",
-"likes": 348791,
-"comments": 69758
-},
-{
 "id": "20260508_017",
 "title": "美伊打起来了，留下3个悬念",
 "summary": "【凤凰网】美伊打起来了，留下3个悬念",
@@ -3490,37 +3101,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2365503",
 "likes": 355809,
 "comments": 27369
-},
-{
-"id": "20260508_015",
-"title": "皇马启动内部纪律调查",
-"summary": "【bilibili 热搜】皇马启动内部纪律调查",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "06:15",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E7%9A%87%E9%A9%AC%E5%90%AF%E5%8A%A8%E5%86%85%E9%83%A8%E7%BA%AA%E5%BE%8B%E8%B0%83%E6%9F%A5",
-"likes": 391330,
-"comments": 35575
-},
-{
-"id": "20260508_014",
-"title": "中国球迷可能看不了今年世界杯？FIFA称谈判还在进行中，天价转播权引争议",
-"summary": "【澎湃新闻】中国球迷可能看不了今年世界杯？FIFA称谈判还在进行中，天价转播权引争议",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "04:58",
-"tags": [
-"社会热点",
-"信息差",
-"争议"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33105263",
-"likes": 401057,
-"comments": 40105
 },
 {
 "id": "20260508_013",
@@ -3600,21 +3180,6 @@ window.__HOT_DATA__ = {
 "comments": 39012
 },
 {
-"id": "20260508_007",
-"title": "日网友装可怜,借军费歪曲事实",
-"summary": "【贴吧】日网友装可怜,借军费歪曲事实",
-"source": "贴吧",
-"date": "2026-05-08",
-"time": "14:59",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E6%97%A5%E7%BD%91%E5%8F%8B%E8%A3%85%E5%8F%AF%E6%80%9C%2C%E5%80%9F%E5%86%9B%E8%B4%B9%E6%AD%AA%E6%9B%B2%E4%BA%8B%E5%AE%9E&topic_id=28354079",
-"likes": 445261,
-"comments": 37105
-},
-{
 "id": "20260508_006",
 "title": "伊朗战争丨美军对伊朗格什姆岛及阿巴斯港发动袭击",
 "summary": "【凤凰网】伊朗战争丨美军对伊朗格什姆岛及阿巴斯港发动袭击",
@@ -3644,36 +3209,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2365519",
 "likes": 465744,
 "comments": 66534
-},
-{
-"id": "20260508_004",
-"title": "详解FIFA转播权定价逻辑",
-"summary": "【bilibili 热搜】详解FIFA转播权定价逻辑",
-"source": "bilibili 热搜",
-"date": "2026-05-08",
-"time": "08:08",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E8%AF%A6%E8%A7%A3FIFA%E8%BD%AC%E6%92%AD%E6%9D%83%E5%AE%9A%E4%BB%B7%E9%80%BB%E8%BE%91",
-"likes": 462322,
-"comments": 35563
-},
-{
-"id": "20260508_003",
-"title": "星空卫视宣布停播：已开播24年，正寻求战略投资与业务重组机会",
-"summary": "【澎湃新闻】星空卫视宣布停播：已开播24年，正寻求战略投资与业务重组机会",
-"source": "澎湃新闻",
-"date": "2026-05-08",
-"time": "06:51",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33108206",
-"likes": 481287,
-"comments": 25330
 },
 {
 "id": "20260508_002",
@@ -3797,36 +3332,6 @@ window.__HOT_DATA__ = {
 "comments": 5518
 },
 {
-"id": "20260507_054",
-"title": "同济大学再通报教师王某论文数据存疑：免去其院长职务",
-"summary": "【澎湃新闻】同济大学再通报教师王某论文数据存疑：免去其院长职务",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "12:18",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33102959",
-"likes": 51698,
-"comments": 2872
-},
-{
-"id": "20260507_053",
-"title": "美军部署超10万个人工智能体，欲打造“算法铁幕”谋求算法霸权",
-"summary": "【澎湃新闻】美军部署超10万个人工智能体，欲打造“算法铁幕”谋求算法霸权",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "10:01",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33099232",
-"likes": 77630,
-"comments": 7763
-},
-{
 "id": "20260507_052",
 "title": "华尔街见闻早餐FM-Radio | 2026年5月6日",
 "summary": "【华尔街见闻】华尔街见闻早餐FM-Radio | 2026年5月6日",
@@ -3887,21 +3392,6 @@ window.__HOT_DATA__ = {
 "comments": 18961
 },
 {
-"id": "20260507_048",
-"title": "WBG战胜WE LPL第二赛段",
-"summary": "【bilibili 热搜】WBG战胜WE LPL第二赛段",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "00:36",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=WBG+WE",
-"likes": 115066,
-"comments": 23013
-},
-{
 "id": "20260507_047",
 "title": "一张打印照片秒开智能门锁",
 "summary": "【百度热搜】一张打印照片秒开智能门锁",
@@ -3960,21 +3450,6 @@ window.__HOT_DATA__ = {
 "url": "https://s.weibo.com/weibo?q=%23%E4%BA%94%E4%B8%80%E4%B9%B024%E4%BB%B6%E8%A1%A3%E6%9C%8D%E5%85%A8%E9%80%80%E5%85%89%E5%BA%97%E4%B8%BB%E5%BF%83%E6%80%81%E5%B4%A9%E4%BA%86%23",
 "likes": 141289,
 "comments": 14128
-},
-{
-"id": "20260507_042",
-"title": "杀戮尖塔遭炎上,老外吃回旋镖",
-"summary": "【贴吧】杀戮尖塔遭炎上,老外吃回旋镖",
-"source": "贴吧",
-"date": "2026-05-07",
-"time": "12:54",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E6%9D%80%E6%88%AE%E5%B0%96%E5%A1%94%E9%81%AD%E7%82%8E%E4%B8%8A%2C%E8%80%81%E5%A4%96%E5%90%83%E5%9B%9E%E6%97%8B%E9%95%96&topic_id=28354066",
-"likes": 155569,
-"comments": 19446
 },
 {
 "id": "20260507_041",
@@ -4098,21 +3573,6 @@ window.__HOT_DATA__ = {
 "comments": 13242
 },
 {
-"id": "20260507_033",
-"title": "法国国民议会审议通过关于简化非法所获文物归还程序的法律草案",
-"summary": "【澎湃新闻】法国国民议会审议通过关于简化非法所获文物归还程序的法律草案",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "18:21",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33103141",
-"likes": 250078,
-"comments": 16671
-},
-{
 "id": "20260507_032",
 "title": "华尔街见闻早餐FM-Radio | 2026年5月7日",
 "summary": "【华尔街见闻】华尔街见闻早餐FM-Radio | 2026年5月7日",
@@ -4188,51 +3648,6 @@ window.__HOT_DATA__ = {
 "comments": 31681
 },
 {
-"id": "20260507_027",
-"title": "WE战胜IG LPL第二赛段",
-"summary": "【bilibili 热搜】WE战胜IG LPL第二赛段",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "06:39",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=WE+IG",
-"likes": 275008,
-"comments": 15278
-},
-{
-"id": "20260507_026",
-"title": "三星宣布在中国大陆市场停止销售含电视、显示器在内的所有家电产品",
-"summary": "【澎湃新闻】三星宣布在中国大陆市场停止销售含电视、显示器在内的所有家电产品",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "04:22",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33102792",
-"likes": 305155,
-"comments": 30515
-},
-{
-"id": "20260507_025",
-"title": "尹锡悦夫人金建希股价操纵案二审主审法官凌晨死于法院内",
-"summary": "【澎湃新闻】尹锡悦夫人金建希股价操纵案二审主审法官凌晨死于法院内",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "02:05",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33100697",
-"likes": 319700,
-"comments": 35522
-},
-{
 "id": "20260507_024",
 "title": "报道：美伊接近达成停战备忘录，核谈判关键条款出现松动",
 "summary": "【华尔街见闻】报道：美伊接近达成停战备忘录，核谈判关键条款出现松动",
@@ -4278,21 +3693,6 @@ window.__HOT_DATA__ = {
 "comments": 19263
 },
 {
-"id": "20260507_020",
-"title": "NIP vs AL LPL第二赛段",
-"summary": "【bilibili 热搜】NIP vs AL LPL第二赛段",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "16:40",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=NIP+AL",
-"likes": 333198,
-"comments": 47599
-},
-{
 "id": "20260507_018",
 "title": "魏凤和、李尚福均被判死缓",
 "summary": "【今日头条】魏凤和、李尚福均被判死缓",
@@ -4321,21 +3721,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.cls.cn/detail/2364810",
 "likes": 377025,
 "comments": 19843
-},
-{
-"id": "20260507_009",
-"title": "澎湃回声｜江西鄱阳县政府：以最坚决有力的措施，整改整治高标准农田建设相关问题",
-"summary": "【澎湃新闻】澎湃回声｜江西鄱阳县政府：以最坚决有力的措施，整改整治高标准农田建设相关问题",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "18:33",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33103262",
-"likes": 426324,
-"comments": 60903
 },
 {
 "id": "20260507_004",
@@ -4382,37 +3767,6 @@ window.__HOT_DATA__ = {
 "url": "https://wallstreetcn.com/articles/3771614",
 "likes": 10113,
 "comments": 31953
-},
-{
-"id": 102,
-"title": "安徽省委常委、合肥市委书记费高云任上被查",
-"summary": "【澎湃新闻】安徽省委常委、合肥市委书记费高云任上被查",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "02:00",
-"tags": [
-"社会热点",
-"信息差",
-"争议"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33101885",
-"likes": 47622,
-"comments": 7981
-},
-{
-"id": 103,
-"title": "JDG战胜TES LPL第二赛段",
-"summary": "【bilibili 热搜】JDG战胜TES LPL第二赛段",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "02:00",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=TES+JDG",
-"likes": 399900,
-"comments": 16341
 },
 {
 "id": 104,
@@ -4585,36 +3939,6 @@ window.__HOT_DATA__ = {
 "comments": 43405
 },
 {
-"id": 115,
-"title": "赛后复盘巴黎晋级欧冠决赛",
-"summary": "【bilibili 热搜】赛后复盘巴黎晋级欧冠决赛",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "02:00",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98%E5%B7%B4%E9%BB%8E%E6%99%8B%E7%BA%A7%E6%AC%A7%E5%86%A0%E5%86%B3%E8%B5%9B",
-"likes": 185755,
-"comments": 45099
-},
-{
-"id": 116,
-"title": "肘赢复活赛!尘白重新开服",
-"summary": "【贴吧】肘赢复活赛!尘白重新开服",
-"source": "贴吧",
-"date": "2026-05-07",
-"time": "02:00",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E8%82%98%E8%B5%A2%E5%A4%8D%E6%B4%BB%E8%B5%9B%21%E5%B0%98%E7%99%BD%E9%87%8D%E6%96%B0%E5%BC%80%E6%9C%8D&topic_id=28354068",
-"likes": 466586,
-"comments": 44125
-},
-{
 "id": 117,
 "title": "淘宝免单",
 "summary": "【微博】淘宝免单",
@@ -4659,21 +3983,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E8%88%AA%E5%A4%A9%E6%8B%9B%E5%BF%97%E6%84%BF%E8%80%85%E6%9C%80%E6%96%B0%E6%B6%88%E6%81%AF%EF%BC%9A%E8%83%BD%E7%8E%A9%E6%89%8B%E6%9C%BA",
 "likes": 394369,
 "comments": 15015
-},
-{
-"id": "20260507_060",
-"title": "巴黎连续两年晋级欧冠决赛",
-"summary": "【bilibili 热搜】巴黎连续两年晋级欧冠决赛",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "00:00",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E5%B7%B4%E9%BB%8E%E8%BF%9E%E7%BB%AD%E4%B8%A4%E5%B9%B4%E6%99%8B%E7%BA%A7%E6%AC%A7%E5%86%A0%E5%86%B3%E8%B5%9B",
-"likes": 7278,
-"comments": 808
 },
 {
 "id": "20260507_061",
@@ -4734,21 +4043,6 @@ window.__HOT_DATA__ = {
 "url": "https://www.baidu.com/s?wd=%E4%BB%8E0%E5%88%B01+%E4%BB%8E1%E5%88%B0100+%E4%BB%8E100%E5%88%B010000",
 "likes": 155,
 "comments": 100
-},
-{
-"id": "20260507_065",
-"title": "FIFA高管被曝计划来华谈判",
-"summary": "【bilibili 热搜】FIFA高管被曝计划来华谈判",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "10:25",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=FIFA%E9%AB%98%E7%AE%A1%E8%A2%AB%E6%9B%9D%E8%AE%A1%E5%88%92%E6%9D%A5%E5%8D%8E%E8%B0%88%E5%88%A4",
-"likes": 2112,
-"comments": 105
 },
 {
 "id": "20260507_066",
@@ -4856,51 +4150,6 @@ window.__HOT_DATA__ = {
 "comments": 3876
 },
 {
-"id": "20260507_073",
-"title": "魏凤和案、李尚福案一审宣判",
-"summary": "【澎湃新闻】魏凤和案、李尚福案一审宣判",
-"source": "澎湃新闻",
-"date": "2026-05-07",
-"time": "02:41",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33107266",
-"likes": 26880,
-"comments": 2688
-},
-{
-"id": "20260507_074",
-"title": "世界杯转播权各国交易情况",
-"summary": "【bilibili 热搜】世界杯转播权各国交易情况",
-"source": "bilibili 热搜",
-"date": "2026-05-07",
-"time": "04:58",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://search.bilibili.com/all?keyword=%E4%B8%96%E7%95%8C%E6%9D%AF%E8%BD%AC%E6%92%AD%E6%9D%83%E5%90%84%E5%9B%BD%E4%BA%A4%E6%98%93%E6%83%85%E5%86%B5",
-"likes": 7167,
-"comments": 100
-},
-{
-"id": "20260507_075",
-"title": "傅首尔瘦身成功,被赞像杨紫",
-"summary": "【贴吧】傅首尔瘦身成功,被赞像杨紫",
-"source": "贴吧",
-"date": "2026-05-07",
-"time": "06:15",
-"tags": [
-"社会热点",
-"信息差"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?amp%3Btopic_name=%E5%82%85%E9%A6%96%E5%B0%94%E7%98%A6%E8%BA%AB%E6%88%90%E5%8A%9F%2C%E8%A2%AB%E8%B5%9E%E5%83%8F%E6%9D%A8%E7%B4%AB&topic_id=28354074",
-"likes": 19359,
-"comments": 1935
-},
-{
 "id": "20260507_076",
 "title": "假日经济点燃消费热潮",
 "summary": "【微博】假日经济点燃消费热潮",
@@ -4933,110 +4182,110 @@ window.__HOT_DATA__ = {
 ],
 "inspirations": [
 {
-"topic": "同济大学通报教师论文造假事件处置，院长免职降级，一作解聘，如何看待这一处理结果？",
-"source": "知乎",
-"wangba_style": "同济大学通报教师论文造假？懂你意思",
-"aqi_style": "05/07社会热点信息差",
-"chen_style": "同济大学通报教师论文造假全程高能"
+"topic": "[网吧信息差] 终于让8X装到了",
+"source": "blogger",
+"wangba_style": "悬念型: 用\"难不成是真的！[网吧信息差] \"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之[网吧信息差] 全程高能\""
 },
 {
-"topic": "肘赢复活赛!尘白重新开服",
+"topic": "[网吧信息差] 你就是猫猫？ #青年创作者成长计划#内容过于...",
+"source": "blogger",
+"wangba_style": "故事型: 用\"能理解能理解 [网吧信息差] \"引发共鸣",
+"aqi_style": "速览型: 用\"关于[网吧信息差] 的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读[网吧信息差] 背后的商业逻辑\""
+},
+{
+"topic": "[网吧信息差] 8青天限时回归！",
+"source": "blogger",
+"wangba_style": "感叹型: 用\"再见！[网吧信息差] ！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之[网吧信息差] 全程高能\""
+},
+{
+"topic": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
+"source": "澎湃新闻",
+"wangba_style": "盘点型: 用\"盘点孙颖莎独得2分！的几个名场面\"",
+"aqi_style": "速览型: 用\"关于孙颖莎独得2分！的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读孙颖莎独得2分！背后的商业逻辑\""
+},
+{
+"topic": "马上评｜奇葩文案该怼，也要警惕迎合“舆论连坐”",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！马上评｜奇葩文案\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之马上评｜奇葩文案全程高能\""
+},
+{
+"topic": "圣罗兰“拉黑”杭州一个街道？记者实测20个地址全部被拒发货",
+"source": "澎湃新闻",
+"wangba_style": "故事型: 用\"能理解能理解 圣罗兰“拉黑”杭\"引发共鸣",
+"aqi_style": "速览型: 用\"关于圣罗兰“拉黑”杭的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读圣罗兰“拉黑”杭背后的商业逻辑\""
+},
+{
+"topic": "澎湃回声丨圣罗兰解封杭州被“拉黑”街道，未回应是否调整设置",
+"source": "澎湃新闻",
+"wangba_style": "感叹型: 用\"再见！澎湃回声丨圣罗兰！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之澎湃回声丨圣罗兰全程高能\""
+},
+{
+"topic": "北京试点携自行车上地铁",
+"source": "澎湃新闻",
+"wangba_style": "盘点型: 用\"盘点北京试点携自行车的几个名场面\"",
+"aqi_style": "速览型: 用\"关于北京试点携自行车的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读北京试点携自行车背后的商业逻辑\""
+},
+{
+"topic": "3比0战胜日本，中国队实现世乒赛男团12连冠",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！3比0战胜日本，\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之3比0战胜日本，全程高能\""
+},
+{
+"topic": "OPPO母亲节活动文案引争议，武汉大学：极不认同文案价值倾向",
+"source": "澎湃新闻",
+"wangba_style": "故事型: 用\"能理解能理解 OPPO母亲节活\"引发共鸣",
+"aqi_style": "速览型: 用\"关于OPPO母亲节活的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读OPPO母亲节活背后的商业逻辑\""
+},
+{
+"topic": "蚌埠市委书记在商业航天大会现场招商：我就是首席服务员，有需必应",
+"source": "澎湃新闻",
+"wangba_style": "感叹型: 用\"再见！蚌埠市委书记在商！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之蚌埠市委书记在商全程高能\""
+},
+{
+"topic": "安第斯病毒何去何从？张文宏团队解析涉疫邮轮传播链精细拼图",
+"source": "澎湃新闻",
+"wangba_style": "盘点型: 用\"盘点安第斯病毒何去何的几个名场面\"",
+"aqi_style": "速览型: 用\"关于安第斯病毒何去何的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读安第斯病毒何去何背后的商业逻辑\""
+},
+{
+"topic": "博闻丨190元榴莲恶意“仅退款”换来拘留：规则之外，还靠诚信",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！博闻丨190元榴\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之博闻丨190元榴全程高能\""
+},
+{
+"topic": "又偷?中国孩子善举被日本认领",
 "source": "贴吧",
-"wangba_style": "肘赢复活赛!尘白重新开服？懂你意思",
-"aqi_style": "关于肘赢复活赛!尘白重新开服的几点看法",
-"chen_style": "大型纪录片肘赢复活赛!尘白重新开服：真相来了"
+"wangba_style": "故事型: 用\"能理解能理解 又偷?中国孩子善\"引发共鸣",
+"aqi_style": "速览型: 用\"关于又偷?中国孩子善的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读又偷?中国孩子善背后的商业逻辑\""
 },
 {
-"topic": "俄罗斯：呼吁各国及时从基辅撤离人员",
-"source": "今日头条",
-"wangba_style": "这操作6啊 俄罗斯：呼吁各国及时从基辅撤",
-"aqi_style": "05/07今日热点速览：俄罗斯：呼吁各国及时从基",
-"chen_style": "独家解读俄罗斯：呼吁各国及时从基背后的商业逻辑"
-},
-{
-"topic": "JDG战胜TES LPL第二赛段",
-"source": "bilibili 热搜",
-"wangba_style": "说实话 JDG战胜TES LPL第二",
-"aqi_style": "05/07热点合集：JDG战胜TES LPL",
-"chen_style": "JDG战胜TES LPL，老板都坐不住了"
-},
-{
-"topic": "美伊局势暂趋缓和，芯片股力挺标普纳指新高，原油下挫，盘后AMD大涨",
-"source": "华尔街见闻",
-"wangba_style": "美伊局势暂趋缓和，芯片股？懂你意思",
-"aqi_style": "本周TOP5：美伊局势暂趋缓和，芯片股",
-"chen_style": "独家解读美伊局势暂趋缓和，芯片股背后的商业逻辑"
-},
-{
-"topic": "中国航天招志愿者最新消息：能玩手机",
-"source": "百度热搜",
-"wangba_style": "中国航天招志愿者最新消息？懂你意思",
-"aqi_style": "05/07热点合集：中国航天招志愿者最新消息",
-"chen_style": "大型纪录片之中国航天招志愿者最新消息持续为您播出"
-},
-{
-"topic": "巴黎连续两年闯入欧冠决赛",
-"source": "抖音",
-"wangba_style": "不是吧不是吧 巴黎连续两年闯入欧冠决赛",
-"aqi_style": "本周TOP5：巴黎连续两年闯入欧冠决赛",
-"chen_style": "大型纪录片巴黎连续两年闯入欧冠决赛：真相来了"
-},
-{
-"topic": "淘宝免单",
-"source": "微博",
-"wangba_style": "说实话 淘宝免单",
-"aqi_style": "05/07社会热点信息差",
-"chen_style": "独家解读淘宝免单背后的商业逻辑"
-},
-{
-"topic": "如何看待「耿同学讲故事」再举报中山大学副院长邝栋明论文造假？",
-"source": "知乎",
-"wangba_style": "如何看待「耿同学讲故事」？懂你意思",
-"aqi_style": "关于如何看待「耿同学讲故事」的几点看法",
-"chen_style": "如何看待「耿同学讲故事」，老板都坐不住了"
-},
-{
-"topic": "国际足联可能已经慌了",
-"source": "微博",
-"wangba_style": "给我整不会了 国际足联可能已经慌了",
-"aqi_style": "05/07社会热点信息差",
-"chen_style": "国际足联可能已经慌了全程高能"
-},
-{
-"topic": "国际足联回应中国区天价世界杯版权",
-"source": "今日头条",
-"wangba_style": "国际足联回应中国区天价世？懂你意思",
-"aqi_style": "05/07今日热点速览：国际足联回应中国区天价世",
-"chen_style": "独家解读国际足联回应中国区天价世背后的商业逻辑"
-},
-{
-"topic": "赛后复盘巴黎晋级欧冠决赛",
-"source": "bilibili 热搜",
-"wangba_style": "赛后复盘巴黎晋级欧冠决赛？懂你意思",
-"aqi_style": "05/07社会热点信息差",
-"chen_style": "独家解读赛后复盘巴黎晋级欧冠决赛背后的商业逻辑"
-},
-{
-"topic": "硬刚国际足联 中国这次在争什么",
-"source": "百度热搜",
-"wangba_style": "懂的都懂 硬刚国际足联 中国这次在争什",
-"aqi_style": "05/07热点合集：硬刚国际足联 中国这次在",
-"chen_style": "硬刚国际足联 中国这次在全程高能"
-},
-{
-"topic": "中方回应英方制裁中国实体",
-"source": "抖音",
-"wangba_style": "这新闻我刷到了 中方回应英方制裁中国实体",
-"aqi_style": "关于中方回应英方制裁中国实体的几点看法",
-"chen_style": "中方回应英方制裁中国实体，老板都坐不住了"
-},
-{
-"topic": "【早报】油价大幅跳水！特朗普：美伊“很有可能”达成协议；以军在停火期间突袭贝鲁特",
-"source": "财联社热门",
-"wangba_style": "这新闻我刷到了 【早报】油价大幅跳水！特朗普",
-"aqi_style": "05/07社会热点信息差",
-"chen_style": "大型纪录片【早报】油价大幅跳水！特：真相来了"
+"topic": "告到中央!家长投诉二次元害人",
+"source": "贴吧",
+"wangba_style": "感叹型: 用\"再见！告到中央!家长投！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之告到中央!家长投全程高能\""
 }
 ],
-"updated_at": "2026-05-10T20:01:28+08:00"
+"updated_at": "2026-05-11T10:18:20.021425"
 };
