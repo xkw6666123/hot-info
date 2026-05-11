@@ -750,12 +750,21 @@ def main(mode="full"):
     # remote 模式已在前面合并过旧数据，跳过
     if mode != "remote" and old_data:
         old_articles = old_data.get("articles", [])
-        # 1. 保留旧的博主分析数据（含 analysis 字段）
-        old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
+        # 1. 保留旧的博主数据
+        #    - full 模式：只保留有 analysis 的（新数据已重新抓取，analysis 是额外附加值）
+        #    - local 模式：无条件保留全部（博主爬虫被跳过，所有旧数据都需要）
+        if mode == "local":
+            old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
+        else:
+            old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
         new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
+        rescued_bloggers = 0
         for b in old_bloggers:
             if str(b["id"]) not in new_blogger_ids:
                 all_articles.append(b)
+                rescued_bloggers += 1
+        if rescued_bloggers:
+            print(f"  🛟 保留 {rescued_bloggers} 条旧博主数据")
         
         # 2. 失败的源 -> 保留旧数据
         failed_sources = set()
