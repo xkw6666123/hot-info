@@ -5,12 +5,75 @@ window.__HOT_DATA__ = {
 },
 "articles": [
 {
+"id": 682636473,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-10",
+"time": "19:11",
+"tags": [
+"B站",
+"博主",
+"热点"
+],
+"url": "https://www.bilibili.com/video/BV1av576VErR",
+"likes": 0,
+"comments": 61,
+"play_count": 94262,
+"aweme_id": "BV1av576VErR",
+"create_time": 1778411466
+},
+{
+"id": 761684659,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-09",
+"time": "17:55",
+"tags": [
+"B站",
+"博主",
+"热点"
+],
+"url": "https://www.bilibili.com/video/BV16rR9BxERd",
+"likes": 0,
+"comments": 497,
+"play_count": 289600,
+"aweme_id": "BV16rR9BxERd",
+"create_time": 1778320557
+},
+{
+"id": 201543940,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-08",
+"time": "18:56",
+"tags": [
+"B站",
+"博主",
+"热点"
+],
+"url": "https://www.bilibili.com/video/BV1d1dGBvEKx",
+"likes": 0,
+"comments": 138,
+"play_count": 235969,
+"aweme_id": "BV1d1dGBvEKx",
+"create_time": 1778237809
+},
+{
 "id": 343927877,
 "title": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -26,7 +89,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -42,7 +105,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -58,7 +121,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -69,28 +132,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 498761611,
-"title": "《ENEMY》：两个年轻人手搓的短剧，证明真诚才是必杀技",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-11",
-"time": "15:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33144542",
-"likes": 20000,
-"comments": 200
-},
-{
 "id": 435031135,
 "title": "国家体育总局：希望大家关注运动员赛场表现，不组织、不参与庆生等活动",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -106,7 +153,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -122,7 +169,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -138,7 +185,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -154,7 +201,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "新闻",
 "社会",
@@ -165,20 +212,36 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
+"id": 83030865,
+"title": "受贿数额特别巨大，中巡组原副部级巡视专员许传智被提起公诉",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-11",
+"time": "16:00",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33154566",
+"likes": 20000,
+"comments": 200
+},
+{
 "id": 96593470,
 "title": "文案出事!OPPO内部定级处罚",
 "summary": "OPPO因母亲节不当文案事件，内部正式发布问责通告，对相关责任人进行了定级处罚。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354174",
-"likes": 1836210,
-"comments": 1836210
+"likes": 2805480,
+"comments": 2805480
 },
 {
 "id": 216758966,
@@ -186,15 +249,15 @@ window.__HOT_DATA__ = {
 "summary": "外交部发言人宣布：美国总统特朗普将于5月13日至15日对中国进行国事访问。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354165",
-"likes": 1614575,
-"comments": 1614575
+"likes": 2417469,
+"comments": 2417469
 },
 {
 "id": 69539509,
@@ -202,15 +265,15 @@ window.__HOT_DATA__ = {
 "summary": "韩国留学生称Faker热度远低于顶流女团成员，出了LOL圈子根本无人在意。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354164",
-"likes": 1144472,
-"comments": 1144472
+"likes": 1704472,
+"comments": 1704472
 },
 {
 "id": 796379866,
@@ -218,15 +281,31 @@ window.__HOT_DATA__ = {
 "summary": "美国亿万富豪、NBA雄鹿队老板艾登斯卷入丑闻：他与华裔女子发生关系后遭到勒索，要求分得12亿美元财产。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354172",
-"likes": 838107,
-"comments": 838107
+"likes": 1377378,
+"comments": 1377378
+},
+{
+"id": 883214693,
+"title": "弃LPL蹭足球,骆歆转粉阿森纳",
+"summary": "LPL热度低迷，骆歆火速弃电竞转粉阿森纳。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "16:00",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354177",
+"likes": 1086514,
+"comments": 1086514
 },
 {
 "id": 16158413,
@@ -234,31 +313,15 @@ window.__HOT_DATA__ = {
 "summary": "博主“自由人米八”等2人编造“皮套论”谣言，引发大量针对米哈游员工及游戏玩家的恶意辱骂、人身攻击，被判赔偿43万元。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354176",
-"likes": 714766,
-"comments": 714766
-},
-{
-"id": 521866002,
-"title": "教异环卡bug,账号封禁百年",
-"summary": "B站某用户发布《异环》卡bug教学视频，账号直接被封100年。",
-"source": "贴吧",
-"date": "2026-05-11",
-"time": "15:00",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354167",
-"likes": 633900,
-"comments": 633900
+"likes": 991050,
+"comments": 991050
 },
 {
 "id": 792965185,
@@ -266,15 +329,31 @@ window.__HOT_DATA__ = {
 "summary": "任天堂股价因Switch2游戏前景不佳大幅下跌，跌至2024年8月以来的最低点。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354175",
-"likes": 478104,
-"comments": 478104
+"likes": 945912,
+"comments": 945912
+},
+{
+"id": 521866002,
+"title": "教异环卡bug,账号封禁百年",
+"summary": "B站某用户发布《异环》卡bug教学视频，账号直接被封100年。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "16:00",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354167",
+"likes": 827632,
+"comments": 827632
 },
 {
 "id": 906565974,
@@ -282,15 +361,15 @@ window.__HOT_DATA__ = {
 "summary": "2026伦敦世界乒乓球团体锦标赛男子团体决赛，中国队总比分3比0战胜日本队，实现世乒赛男团十二连冠。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354166",
-"likes": 384261,
-"comments": 384261
+"likes": 616902,
+"comments": 616902
 },
 {
 "id": 693634264,
@@ -298,31 +377,15 @@ window.__HOT_DATA__ = {
 "summary": "日本网民搬运中国孩子暖心举动的视频，张冠李戴说成是日本小孩，评论还大赞“日本孩子真温柔”，简直厚颜无耻。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "15:00",
+"time": "16:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354154",
-"likes": 332772,
-"comments": 332772
-},
-{
-"id": 766358227,
-"title": "告到中央!家长投诉二次元害人",
-"summary": "成都一位家长在政务平台控诉二次元文化严重毒害孩子，把孩子沉迷小众圈层、叛逆厌学，全部归罪于二次元。",
-"source": "贴吧",
-"date": "2026-05-11",
-"time": "15:00",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354150",
-"likes": 234969,
-"comments": 234969
+"likes": 444927,
+"comments": 444927
 },
 {
 "id": 882068945,
@@ -338,8 +401,8 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7638407920689909026",
-"likes": 126476,
-"comments": 1275
+"likes": 132854,
+"comments": 1339
 },
 {
 "id": 130397889,
@@ -355,8 +418,8 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637659979633265972",
-"likes": 102279,
-"comments": 796
+"likes": 102527,
+"comments": 798
 },
 {
 "id": 351002511,
@@ -372,7 +435,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637886711091793081",
-"likes": 2595,
+"likes": 2614,
 "comments": 41
 },
 {
@@ -389,7 +452,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637501246966402803",
-"likes": 510,
+"likes": 514,
 "comments": 80
 },
 {
@@ -406,7 +469,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637573042922907569",
-"likes": 1156,
+"likes": 1157,
 "comments": 37
 },
 {
@@ -617,93 +680,6 @@ window.__HOT_DATA__ = {
 "summary": "5月5日逆天事件合集",
 "likes": 1484,
 "date": "2026-05-08"
-},
-{
-"id": "BV1d1dGBvEKx",
-"blogger_name": "沙漠一之雕",
-"time": "10:56",
-"analysis": {
-"video_type": "热点资讯",
-"replicable_tip": "热点采集+搞笑剪辑，1-2分钟合集式呈现",
-"publish_pattern": "日更 10:56",
-"cover_style": "新闻截图 + 大字标题",
-"keywords": [
-"热点",
-"信息差",
-"搞笑"
-]
-},
-"title": "[沙漠一之雕] 今日热点快报",
-"tags": [
-"沙漠一之雕",
-"信息差",
-"热点"
-],
-"url": "https://www.bilibili.com/video/BV1d1dGBvEKx",
-"content_intro": "沙漠一之雕 B站最新视频",
-"source": "blogger",
-"comments": 10,
-"summary": "沙漠一之雕 B站最新视频",
-"likes": 265,
-"date": "2026-05-08"
-},
-{
-"id": "BV19tdwBTEmg",
-"blogger_name": "沙漠一之雕",
-"time": "08:58",
-"analysis": {
-"video_type": "热点资讯",
-"replicable_tip": "热点采集+搞笑剪辑，1-2分钟合集式呈现",
-"publish_pattern": "日更 08:58",
-"cover_style": "新闻截图 + 大字标题",
-"keywords": [
-"热点",
-"信息差",
-"搞笑"
-]
-},
-"title": "[沙漠一之雕] 今日热点快报",
-"tags": [
-"沙漠一之雕",
-"信息差",
-"热点"
-],
-"url": "https://www.bilibili.com/video/BV19tdwBTEmg",
-"content_intro": "",
-"source": "blogger",
-"comments": 37,
-"summary": "",
-"likes": 2297,
-"date": "2026-05-07"
-},
-{
-"id": "BV183R4BwE9n",
-"blogger_name": "沙漠一之雕",
-"time": "10:00",
-"analysis": {
-"video_type": "热点资讯",
-"replicable_tip": "热点采集+搞笑剪辑，1-2分钟合集式呈现",
-"publish_pattern": "日更 10:00",
-"cover_style": "新闻截图 + 大字标题",
-"keywords": [
-"热点",
-"信息差",
-"搞笑"
-]
-},
-"title": "[沙漠一之雕] 今日热点快报",
-"tags": [
-"沙漠一之雕",
-"信息差",
-"热点"
-],
-"url": "https://www.bilibili.com/video/BV183R4BwE9n",
-"content_intro": "",
-"source": "blogger",
-"comments": 88,
-"summary": "",
-"likes": 3867,
-"date": "2026-05-06"
 },
 {
 "id": "20260510_024",
@@ -4120,25 +4096,25 @@ window.__HOT_DATA__ = {
 ],
 "inspirations": [
 {
-"topic": "你跟我说实话 你们公司到底干嘛的 #青年创作者成长计划#内容过于真实#大学生#热点#辟谣",
+"topic": "今日热点快报",
 "source": "blogger",
-"wangba_style": "悬念型: 用\"难不成是真的！你跟我说实话 你\"制造好奇",
+"wangba_style": "悬念型: 用\"难不成是真的！今日热点快报\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之你跟我说实话 你全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之今日热点快报全程高能\""
 },
 {
-"topic": "终于让8X装到了 #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到",
+"topic": "今日热点快报",
 "source": "blogger",
-"wangba_style": "故事型: 用\"能理解能理解 终于让8X装到了\"引发共鸣",
-"aqi_style": "速览型: 用\"关于终于让8X装到了的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读终于让8X装到了背后的商业逻辑\""
+"wangba_style": "故事型: 用\"能理解能理解 今日热点快报\"引发共鸣",
+"aqi_style": "速览型: 用\"关于今日热点快报的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读今日热点快报背后的商业逻辑\""
 },
 {
-"topic": "5月9日社会热点信息差#热点 #热点新闻事件 #离谱",
+"topic": "今日热点快报",
 "source": "blogger",
-"wangba_style": "感叹型: 用\"再见！5月9日社会热点！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！今日热点快报！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之5月9日社会热点全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之今日热点快报全程高能\""
 },
 {
 "topic": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
@@ -4169,46 +4145,46 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之3比0战胜日本，全程高能\""
 },
 {
-"topic": "《ENEMY》：两个年轻人手搓的短剧，证明真诚才是必杀技",
-"source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点《ENEMY》：的几个名场面\"",
-"aqi_style": "速览型: 用\"关于《ENEMY》：的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读《ENEMY》：背后的商业逻辑\""
-},
-{
 "topic": "国家体育总局：希望大家关注运动员赛场表现，不组织、不参与庆生等活动",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！国家体育总局：希\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之国家体育总局：希全程高能\""
+"wangba_style": "盘点型: 用\"盘点国家体育总局：希的几个名场面\"",
+"aqi_style": "速览型: 用\"关于国家体育总局：希的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读国家体育总局：希背后的商业逻辑\""
 },
 {
 "topic": "安第斯病毒何去何从？张文宏团队解析涉疫邮轮传播链精细拼图",
 "source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 安第斯病毒何去何\"引发共鸣",
-"aqi_style": "速览型: 用\"关于安第斯病毒何去何的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读安第斯病毒何去何背后的商业逻辑\""
+"wangba_style": "悬念型: 用\"难不成是真的！安第斯病毒何去何\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之安第斯病毒何去何全程高能\""
 },
 {
 "topic": "蚌埠市委书记在商业航天大会现场招商：我就是首席服务员，有需必应",
 "source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！蚌埠市委书记在商！\"制造话题",
-"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之蚌埠市委书记在商全程高能\""
+"wangba_style": "故事型: 用\"能理解能理解 蚌埠市委书记在商\"引发共鸣",
+"aqi_style": "速览型: 用\"关于蚌埠市委书记在商的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读蚌埠市委书记在商背后的商业逻辑\""
 },
 {
 "topic": "博闻丨190元榴莲恶意“仅退款”换来拘留：规则之外，还靠诚信",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点博闻丨190元榴的几个名场面\"",
-"aqi_style": "速览型: 用\"关于博闻丨190元榴的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读博闻丨190元榴背后的商业逻辑\""
+"wangba_style": "感叹型: 用\"再见！博闻丨190元榴！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之博闻丨190元榴全程高能\""
 },
 {
 "topic": "美国总统特朗普将于5月13日至15日访华",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！美国总统特朗普将\"制造好奇",
+"wangba_style": "盘点型: 用\"盘点美国总统特朗普将的几个名场面\"",
+"aqi_style": "速览型: 用\"关于美国总统特朗普将的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读美国总统特朗普将背后的商业逻辑\""
+},
+{
+"topic": "受贿数额特别巨大，中巡组原副部级巡视专员许传智被提起公诉",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！受贿数额特别巨大\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之美国总统特朗普将全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之受贿数额特别巨大全程高能\""
 },
 {
 "topic": "文案出事!OPPO内部定级处罚",
@@ -4225,5 +4201,5 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之中方官宣特朗普访全程高能\""
 }
 ],
-"updated_at": "2026-05-11T15:03:51.034881"
+"updated_at": "2026-05-11T16:02:49.473886"
 };
