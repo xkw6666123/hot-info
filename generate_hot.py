@@ -6,6 +6,7 @@
 import json
 import re
 import time
+import hashlib
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -35,6 +36,10 @@ TRACKED_BLOGGERS = [
 
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
+
+# ── 确定性 ID 生成（hashlib.md5，跨运行一致）──
+def make_id(prefix, seed):
+    return int(hashlib.md5(f"{prefix}_{seed}".encode()).hexdigest()[:8], 16) % 10**9
 
 # ── 网络策略：国内平台直连，TikHub 走代理 ──
 # fetch() 用直连 opener（忽略系统代理如 v2ray）
@@ -131,7 +136,7 @@ def scrape_baidu():
     for card in cards:
         for item in card.get("content", [])[:10]:
             articles.append({
-                "id": hash(f"baidu_{item.get('word','')}") % 10**9,
+                "id": make_id("baidu", item.get('word','')) % 10**9,
                 "title": item.get("word", item.get("query", "")),
                 "summary": item.get("desc", "")[:100],
                 "source": "百度热搜",
@@ -154,7 +159,7 @@ def scrape_zhihu():
     for item in data.get("data", [])[:10]:
         target = item.get("target", {})
         articles.append({
-            "id": hash(f"zhihu_{target.get('id','')}") % 10**9,
+            "id": make_id("zhihu", target.get('id','')) % 10**9,
             "title": target.get("title", ""),
             "summary": target.get("excerpt", "")[:100],
             "source": "知乎",
@@ -176,7 +181,7 @@ def scrape_bilibili():
     articles = []
     for item in data.get("data", {}).get("trending", {}).get("list", [])[:10]:
         articles.append({
-            "id": hash(f"bili_{item.get('keyword','')}") % 10**9,
+            "id": make_id("bili", item.get('keyword','')) % 10**9,
             "title": item.get("keyword", item.get("show_name", "")),
             "summary": f"B站热搜: {item.get('show_name','')}",
             "source": "bilibili",
@@ -198,7 +203,7 @@ def scrape_toutiao():
     articles = []
     for item in data.get("data", [])[:10]:
         articles.append({
-            "id": hash(f"toutiao_{item.get('ClusterId','')}") % 10**9,
+            "id": make_id("toutiao", item.get('ClusterId','')) % 10**9,
             "title": item.get("Title", ""),
             "summary": item.get("Label", "")[:100],
             "source": "今日头条",
@@ -221,7 +226,7 @@ def scrape_thepaper():
     articles = []
     for item in data.get("data", {}).get("hotNews", [])[:10]:
         articles.append({
-            "id": hash(f"paper_{item.get('contId','')}") % 10**9,
+            "id": make_id("paper", item.get('contId','')) % 10**9,
             "title": item.get("name", ""),
             "summary": "",
             "source": "澎湃新闻",
@@ -244,7 +249,7 @@ def scrape_wallstreetcn():
     articles = []
     for item in data.get("data", {}).get("items", [])[:10]:
         articles.append({
-            "id": hash(f"ws_{item.get('id','')}") % 10**9,
+            "id": make_id("ws", item.get('id','')) % 10**9,
             "title": item.get("title", ""),
             "summary": item.get("content_text", "")[:100],
             "source": "华尔街见闻",
@@ -267,7 +272,7 @@ def scrape_cls():
     articles = []
     for item in data.get("data", {}).get("roll_data", [])[:10]:
         articles.append({
-            "id": hash(f"cls_{item.get('id','')}") % 10**9,
+            "id": make_id("cls", item.get('id','')) % 10**9,
             "title": item.get("title", ""),
             "summary": item.get("brief", "")[:100],
             "source": "财联社热门",
@@ -293,7 +298,7 @@ def scrape_ifeng():
     for i, title in enumerate(titles):
         url = urls[i] if i < len(urls) else "#"
         articles.append({
-            "id": hash(f"ifeng_{i}") % 10**9,
+            "id": make_id("ifeng", i) % 10**9,
             "title": title,
             "summary": "",
             "source": "凤凰网",
@@ -316,7 +321,7 @@ def scrape_tieba():
     for item in data.get("data", {}).get("bang_topic", {}).get("topic_list", [])[:10]:
         tid = item.get("topic_id", "")
         articles.append({
-            "id": hash(f"tieba_{tid}") % 10**9,
+            "id": make_id("tieba", tid) % 10**9,
             "title": item.get("topic_name", ""),
             "summary": item.get("topic_desc", "")[:100],
             "source": "贴吧",
@@ -348,7 +353,7 @@ def scrape_weibo():
     for item in data.get("data", {}).get("realtime", [])[:10]:
         word = item.get("word", "")
         articles.append({
-            "id": hash(f"weibo_{word}") % 10**9,
+            "id": make_id("weibo", word) % 10**9,
             "title": item.get("note", word),
             "summary": item.get("word_scheme", "")[:100],
             "source": "微博",
@@ -371,7 +376,7 @@ def scrape_douyin():
     for item in data.get("data", {}).get("word_list", [])[:10]:
         word = item.get("word", "")
         articles.append({
-            "id": hash(f"douyin_{word}") % 10**9,
+            "id": make_id("douyin", word) % 10**9,
             "title": item.get("word", ""),
             "summary": f"抖音热搜: {word}",
             "source": "抖音",
@@ -398,7 +403,7 @@ def scrape_weixin():
     for item in items[:10]:
         title = item.get("title", "")
         articles.append({
-            "id": hash(f"wx_{title}") % 10**9,
+            "id": make_id("wx", title) % 10**9,
             "title": title,
             "summary": item.get("desc", "")[:100] if item.get("desc") else "",
             "source": "公众号热点",
@@ -541,7 +546,7 @@ def scrape_bloggers():
         
         for video in searcher.results:
             article = {
-                "id": hash(f"blogger_{name}_{video['aweme_id']}") % 10**9,
+                "id": make_id("blogger", f"{name}_{video['aweme_id']}") % 10**9,
                 "title": video["desc"][:50] if video["desc"] else f"{name} 最新视频",
                 "summary": video["desc"][:200] if video["desc"] else "",
                 "source": "blogger",

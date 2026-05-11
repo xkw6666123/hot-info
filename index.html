@@ -458,7 +458,7 @@ body{padding-bottom:0}
 <!-- ===== Script ===== -->
 <script src="data.js" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
-var dataJsFailed=false;
+if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
 
 // data.js 加载后立即检查解析结果

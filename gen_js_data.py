@@ -24,9 +24,9 @@ def main():
     if raw[:3] == b'\xef\xbb\xbf':
         with open("data.js", "wb") as f:
             f.write(raw[3:])
-        print(f"⚠️ 检测到 BOM 已自动移除")
-    
-    print(f"✅ data.js 生成完成 ({len(js)} bytes)")
+        print(f"[BOM] removed")
+
+    print(f"[OK] data.js done ({len(js)} bytes)")
 
 if __name__ == "__main__":
     main()
