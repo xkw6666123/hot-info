@@ -674,9 +674,12 @@ def generate_inspirations(articles):
 #  主流程
 # ═══════════════════════════════════════════════════════
 
-def main():
+def main(mode="full"):
+    """
+    mode: "full"=全部爬虫, "local"=跳过TikHub/B站博主, "remote"=只跑TikHub/B站+合并已有数据
+    """
     print("=" * 50)
-    print(f"  热点数据自动采集 - {today} {now_time}")
+    print(f"  热点数据自动采集 - {today} {now_time} [{mode}]")
     print("=" * 50)
     print()
 
@@ -697,6 +700,21 @@ def main():
         ("公众号", scrape_weixin),
         ("博主追踪", scrape_bloggers),
     ]
+    
+    if mode == "local":
+        # 跳过海外依赖的爬虫（TikHub + B站博主）
+        scrapers = [(n, s) for n, s in scrapers if n not in ("博主追踪", "B站博主")]
+    elif mode == "remote":
+        # 只跑海外爬虫，并合并已有 data.json
+        scrapers = [(n, s) for n, s in scrapers if n in ("博主追踪", "B站博主")]
+        # 加载已有数据用于合并
+        old_articles = []
+        try:
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                old_articles = old_data.get("articles", [])
+        except Exception:
+            old_articles = []
 
     all_articles = []
     for name, scraper in scrapers:
@@ -706,6 +724,19 @@ def main():
             print(f"  ✅ {name}: {len(result)} 条")
         except Exception as e:
             print(f"  ❌ {name}: {e}")
+
+    # remote 模式：合并新博主数据到已有 data.json
+    if mode == "remote" and old_articles:
+        new_blogger_ids = {str(a["id"]) for a in all_articles}
+        # 保留旧数据中非博主的文章 + 旧博主中有 analysis 的
+        for a in old_articles:
+            aid = str(a.get("id", ""))
+            if a.get("source") == "blogger":
+                if a.get("analysis") and aid not in new_blogger_ids:
+                    all_articles.append(a)
+            else:
+                all_articles.append(a)
+        print(f"  📦 合并完成: {len(all_articles)} 条 (旧非博主 + 新博主)")
 
     # ═══ 保留已有数据（防爬虫失败导致数据归零）═══
     old_data = None
@@ -814,5 +845,11 @@ def main():
     return len(all_articles) > 0
 
 if __name__ == "__main__":
-    success = main()
+    import sys
+    mode = "full"
+    if "--local" in sys.argv:
+        mode = "local"
+    elif "--remote" in sys.argv:
+        mode = "remote"
+    success = main(mode=mode)
     exit(0 if success else 1)
