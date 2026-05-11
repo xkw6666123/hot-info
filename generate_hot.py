@@ -36,8 +36,13 @@ TRACKED_BLOGGERS = [
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
 
+# ── 网络策略：国内平台直连，TikHub 走代理 ──
+# fetch() 用直连 opener（忽略系统代理如 v2ray）
+_no_proxy_handler = urllib.request.ProxyHandler({})
+_no_proxy_opener = urllib.request.build_opener(_no_proxy_handler)
+
 def fetch(url, headers=None, referer=None):
-    """HTTP GET（带 3 次重试），返回解码后的字符串"""
+    """HTTP GET（带 3 次重试），返回解码后的字符串。强制直连，不走系统代理"""
     default_headers = {
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/json,application/xhtml+xml,*/*",
@@ -54,7 +59,7 @@ def fetch(url, headers=None, referer=None):
     for attempt in range(RETRIES):
         try:
             req = urllib.request.Request(url, headers=default_headers)
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            with _no_proxy_opener.open(req, timeout=TIMEOUT) as resp:
                 return resp.read().decode("utf-8", errors="replace")
         except Exception as e:
             last_error = e
