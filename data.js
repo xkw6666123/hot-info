@@ -10,7 +10,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -26,7 +26,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -42,7 +42,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -58,7 +58,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -74,7 +74,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -85,28 +85,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 577678986,
-"title": "人民锐评：物业停电停不出“自觉交费”",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "00:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33152963",
-"likes": 20000,
-"comments": 200
-},
-{
 "id": 886206723,
 "title": "十大券商看后市｜A股向上趋势不改，以波段思维应对事件窗口",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -122,7 +106,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -138,7 +122,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -154,7 +138,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "新闻",
 "社会",
@@ -165,20 +149,36 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
+"id": 27456801,
+"title": "台湾方面再次无法参加世卫大会，国台办：这一局面完全是民进党当局造成的",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-12",
+"time": "01:00",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33156355",
+"likes": 20000,
+"comments": 200
+},
+{
 "id": 16158413,
 "title": "米游严打皮套论,造谣者赔43w",
 "summary": "博主“自由人米八”等2人编造“皮套论”谣言，引发大量针对米哈游员工及游戏玩家的恶意辱骂、人身攻击，被判赔偿43万元。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354176",
-"likes": 1587808,
-"comments": 1587808
+"likes": 1803870,
+"comments": 1803870
 },
 {
 "id": 887503870,
@@ -186,15 +186,15 @@ window.__HOT_DATA__ = {
 "summary": "高三一男生抗拒在校如厕，憋了一周不排便，最终肠痉挛送医急救。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354186",
-"likes": 1354808,
-"comments": 1354808
+"likes": 1320225,
+"comments": 1320225
 },
 {
 "id": 69539509,
@@ -202,15 +202,15 @@ window.__HOT_DATA__ = {
 "summary": "韩国留学生称Faker热度远低于顶流女团成员，出了LOL圈子根本无人在意。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354164",
-"likes": 1266948,
-"comments": 1266948
+"likes": 991900,
+"comments": 991900
 },
 {
 "id": 233664480,
@@ -218,15 +218,31 @@ window.__HOT_DATA__ = {
 "summary": "1亿人民币烧十年，为何2A的昭和米国物语，工期远超3A？",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354181",
-"likes": 1073072,
-"comments": 1073072
+"likes": 833139,
+"comments": 833139
+},
+{
+"id": 31038133,
+"title": "半月获利58亿,faker赚麻",
+"summary": "faker所持的T15.66%股份从1560万美元涨到1960万美元，仅仅半个月光T1股权就给faker赚了58亿韩元",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "01:00",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354188",
+"likes": 807118,
+"comments": 807118
 },
 {
 "id": 228117811,
@@ -234,15 +250,15 @@ window.__HOT_DATA__ = {
 "summary": "异环1.1版本更新，男角色同居系统正式上线，国内外玩家吵疯了",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354187",
-"likes": 780125,
-"comments": 780125
+"likes": 745250,
+"comments": 745250
 },
 {
 "id": 516072809,
@@ -250,15 +266,15 @@ window.__HOT_DATA__ = {
 "summary": "爱国网红“徐州大表哥”被曝花600万移民法国，本人晒户口本自证，网友仍然不买账。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354183",
-"likes": 772272,
-"comments": 772272
+"likes": 742704,
+"comments": 742704
 },
 {
 "id": 883214693,
@@ -266,15 +282,15 @@ window.__HOT_DATA__ = {
 "summary": "LPL热度低迷，骆歆火速弃电竞转粉阿森纳。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354177",
-"likes": 726731,
-"comments": 726731
+"likes": 609960,
+"comments": 609960
 },
 {
 "id": 796379866,
@@ -282,15 +298,15 @@ window.__HOT_DATA__ = {
 "summary": "美国亿万富豪、NBA雄鹿队老板艾登斯卷入丑闻：他与华裔女子发生关系后遭到勒索，要求分得12亿美元财产。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354172",
-"likes": 587180,
-"comments": 587180
+"likes": 602250,
+"comments": 602250
 },
 {
 "id": 120852130,
@@ -298,31 +314,15 @@ window.__HOT_DATA__ = {
 "summary": "《败犬女主太多了》作者直言男主被撬墙角才是剧情亮点。吧友：只能说很符合这作品的趣味性。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "00:00",
+"time": "01:00",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354184",
-"likes": 563199,
-"comments": 563199
-},
-{
-"id": 792965185,
-"title": "大作缺席,任天堂股价暴跌",
-"summary": "任天堂股价因Switch2游戏前景不佳大幅下跌，跌至2024年8月以来的最低点。",
-"source": "贴吧",
-"date": "2026-05-12",
-"time": "00:00",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354175",
-"likes": 506000,
-"comments": 506000
+"likes": 496440,
+"comments": 496440
 },
 {
 "id": 882068945,
@@ -4300,39 +4300,39 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读奢侈品牌MIU 背后的商业逻辑\""
 },
 {
-"topic": "人民锐评：物业停电停不出“自觉交费”",
-"source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！人民锐评：物业停\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之人民锐评：物业停全程高能\""
-},
-{
 "topic": "十大券商看后市｜A股向上趋势不改，以波段思维应对事件窗口",
 "source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 十大券商看后市｜\"引发共鸣",
-"aqi_style": "速览型: 用\"关于十大券商看后市｜的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读十大券商看后市｜背后的商业逻辑\""
+"wangba_style": "悬念型: 用\"难不成是真的！十大券商看后市｜\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之十大券商看后市｜全程高能\""
 },
 {
 "topic": "给5A体个检｜澎湃暗访广府古城水域乱象，官方回应数日内完成整改",
 "source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！给5A体个检｜澎！\"制造话题",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之给5A体个检｜澎全程高能\""
+"wangba_style": "故事型: 用\"能理解能理解 给5A体个检｜澎\"引发共鸣",
+"aqi_style": "速览型: 用\"关于给5A体个检｜澎的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读给5A体个检｜澎背后的商业逻辑\""
 },
 {
 "topic": "阵容厚度变薄了，但国乒依旧还是那个国乒",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点阵容厚度变薄了，的几个名场面\"",
-"aqi_style": "速览型: 用\"关于阵容厚度变薄了，的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读阵容厚度变薄了，背后的商业逻辑\""
+"wangba_style": "感叹型: 用\"再见！阵容厚度变薄了，！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之阵容厚度变薄了，全程高能\""
 },
 {
 "topic": "人民时评：“中国式安全感”为何圈粉世界",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！人民时评：“中国\"制造好奇",
+"wangba_style": "盘点型: 用\"盘点人民时评：“中国的几个名场面\"",
+"aqi_style": "速览型: 用\"关于人民时评：“中国的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读人民时评：“中国背后的商业逻辑\""
+},
+{
+"topic": "台湾方面再次无法参加世卫大会，国台办：这一局面完全是民进党当局造成的",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！台湾方面再次无法\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之人民时评：“中国全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之台湾方面再次无法全程高能\""
 },
 {
 "topic": "米游严打皮套论,造谣者赔43w",
@@ -4349,5 +4349,5 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之憋大号一周,男生全程高能\""
 }
 ],
-"updated_at": "2026-05-12T00:00:24.485879"
+"updated_at": "2026-05-12T01:00:23.630820"
 };
