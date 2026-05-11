@@ -5,12 +5,12 @@ window.__HOT_DATA__ = {
 },
 "articles": [
 {
-"id": 194709713,
+"id": 201825708,
 "title": "孙颖莎独得2分！中国女团逆转日本，世乒赛团体赛七连冠",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -21,12 +21,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 684785407,
+"id": 150776937,
 "title": "马上评｜奇葩文案该怼，也要警惕迎合“舆论连坐”",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -37,12 +37,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 660064387,
+"id": 464472917,
 "title": "圣罗兰“拉黑”杭州一个街道？记者实测20个地址全部被拒发货",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -53,12 +53,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 713721445,
+"id": 802587724,
 "title": "澎湃回声丨圣罗兰解封杭州被“拉黑”街道，未回应是否调整设置",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -69,12 +69,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 914270538,
+"id": 324843720,
 "title": "北京试点携自行车上地铁",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -85,12 +85,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 286249794,
+"id": 483596506,
 "title": "3比0战胜日本，中国队实现世乒赛男团12连冠",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -101,12 +101,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 82061636,
+"id": 116014919,
 "title": "OPPO母亲节活动文案引争议，武汉大学：极不认同文案价值倾向",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -117,12 +117,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 570669563,
+"id": 935192167,
 "title": "蚌埠市委书记在商业航天大会现场招商：我就是首席服务员，有需必应",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -133,12 +133,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 416439792,
+"id": 359897753,
 "title": "安第斯病毒何去何从？张文宏团队解析涉疫邮轮传播链精细拼图",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -149,12 +149,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 280584351,
+"id": 696373212,
 "title": "博闻丨190元榴莲恶意“仅退款”换来拘留：规则之外，还靠诚信",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "新闻",
 "社会",
@@ -165,164 +165,164 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 768237400,
+"id": 231657382,
 "title": "又偷?中国孩子善举被日本认领",
 "summary": "日本网民搬运中国孩子暖心举动的视频，张冠李戴说成是日本小孩，评论还大赞“日本孩子真温柔”，简直厚颜无耻。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354154",
-"likes": 2257680,
-"comments": 2257680
+"likes": 1621020,
+"comments": 1621020
 },
 {
-"id": 731753368,
+"id": 265902645,
+"title": "韩留子暴论:Faker地位输女团",
+"summary": "韩国留学生称Faker热度远低于顶流女团成员，出了LOL圈子根本无人在意。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "02:35",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354164",
+"likes": 1424886,
+"comments": 1424886
+},
+{
+"id": 930884914,
+"title": "日乒放狠话,反被男团3:0碾压夺冠",
+"summary": "2026伦敦世界乒乓球团体锦标赛男子团体决赛，中国队总比分3比0战胜日本队，实现世乒赛男团十二连冠。",
+"source": "贴吧",
+"date": "2026-05-11",
+"time": "02:35",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354166",
+"likes": 1388268,
+"comments": 1388268
+},
+{
+"id": 533801842,
 "title": "告到中央!家长投诉二次元害人",
 "summary": "成都一位家长在政务平台控诉二次元文化严重毒害孩子，把孩子沉迷小众圈层、叛逆厌学，全部归罪于二次元。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354150",
-"likes": 2003987,
-"comments": 2003987
+"likes": 1094391,
+"comments": 1094391
 },
 {
-"id": 53788030,
+"id": 452339573,
 "title": "FIFA低头,转播费降至1.5亿",
 "summary": "2026年世界杯中国转播费报价大幅下调，从初始约3亿美元降至1.5亿美元，但国际足联与央视尚未最终签约。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354148",
-"likes": 1803704,
-"comments": 1803704
+"likes": 879684,
+"comments": 879684
 },
 {
-"id": 808060418,
+"id": 732984513,
 "title": "棉花异环卡bug速刷30级",
 "summary": "b站棉花玩异环嘴都笑歪了，前脚官方发文称卡bug将会封号，反手棉花利用bug速升30级。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354160",
-"likes": 1674756,
-"comments": 1674756
+"likes": 804500,
+"comments": 804500
 },
 {
-"id": 133409386,
+"id": 79331938,
 "title": "原神福利差,外服玩家差评轰炸",
 "summary": "外网的原神玩家对奖励系统不满，着手大规模的对Google classroom和原神进行差评轰炸，国内玩家表示：真没见过比原神还差的游戏了。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354162",
-"likes": 1413204,
-"comments": 1413204
+"likes": 600072,
+"comments": 600072
 },
 {
-"id": 825111495,
+"id": 971365894,
 "title": "理想乱停车,游客上厕所被堵",
 "summary": "网友上厕所方便后发现门打不开，原因是理想车主把车停在了厕所门口。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354157",
-"likes": 1294525,
-"comments": 1294525
+"likes": 474927,
+"comments": 474927
 },
 {
-"id": 313747650,
+"id": 778384594,
 "title": "JDG2:1AL,塔赞被嘲刷子打野",
 "summary": "JDG2:1AL，从bp到对线JDG完爆AL，塔赞被说公式刷子打野表现太差",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354158",
-"likes": 1237224,
-"comments": 1237224
+"likes": 371690,
+"comments": 371690
 },
 {
-"id": 590336004,
+"id": 284681569,
 "title": "体育总局呼吁:别搞运动员庆生",
 "summary": "国家体育总局表态：粉丝线下为运动员庆生，不仅占用公共资源，还容易对运动员备战产生干扰。希望大家关注赛场表现，不组织、不参与庆生活动。",
 "source": "贴吧",
 "date": "2026-05-11",
-"time": "10:17",
+"time": "02:35",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354156",
-"likes": 1182729,
-"comments": 1182729
-},
-{
-"id": 149486227,
-"title": "碾压局!假面骑士ZZZ超梦首战",
-"summary": "假面骑士ZZZ最终形态首战炸场，超梦大王展现超强压制力秒杀西格，不亚于踩死一只蚂蚁。",
-"source": "贴吧",
-"date": "2026-05-11",
-"time": "10:17",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354153",
-"likes": 1103454,
-"comments": 1103454
-},
-{
-"id": 120560570,
-"title": "十年挚爱病逝,吧友含泪忆亡妻",
-"summary": "十年挚爱突患癌症去世，吧友发贴悼念亡妻，回忆与她相处的点点滴滴。",
-"source": "贴吧",
-"date": "2026-05-11",
-"time": "10:17",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354144",
-"likes": 1091139,
-"comments": 1091139
+"likes": 267729,
+"comments": 267729
 },
 {
 "id": 7637659979633265972,
@@ -4280,12 +4280,12 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读又偷?中国孩子善背后的商业逻辑\""
 },
 {
-"topic": "告到中央!家长投诉二次元害人",
+"topic": "韩留子暴论:Faker地位输女团",
 "source": "贴吧",
-"wangba_style": "感叹型: 用\"再见！告到中央!家长投！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！韩留子暴论:Fa！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-11社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之告到中央!家长投全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之韩留子暴论:Fa全程高能\""
 }
 ],
-"updated_at": "2026-05-11T10:18:20.021425"
+"updated_at": "2026-05-11T02:35:44.357252"
 };
