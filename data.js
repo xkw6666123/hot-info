@@ -18,8 +18,8 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7638407920689909026",
-"likes": 170961,
-"comments": 1768
+"likes": 174470,
+"comments": 1807
 },
 {
 "id": 130397889,
@@ -35,7 +35,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637659979633265972",
-"likes": 103892,
+"likes": 104026,
 "comments": 798
 },
 {
@@ -52,7 +52,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637292553041136911",
-"likes": 271024,
+"likes": 271178,
 "comments": 1546
 },
 {
@@ -69,7 +69,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637886711091793081",
-"likes": 2680,
+"likes": 2687,
 "comments": 42
 },
 {
@@ -103,7 +103,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637501246966402803",
-"likes": 532,
+"likes": 535,
 "comments": 81
 },
 {
@@ -120,7 +120,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637573042922907569",
-"likes": 1161,
+"likes": 1163,
 "comments": 37
 },
 {
@@ -137,7 +137,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7637137991799134073",
-"likes": 807,
+"likes": 809,
 "comments": 20
 },
 {
@@ -154,7 +154,7 @@ window.__HOT_DATA__ = {
 "拆解"
 ],
 "url": "https://www.douyin.com/video/7636380086177949553",
-"likes": 1632,
+"likes": 1634,
 "comments": 31
 },
 {
@@ -492,7 +492,7 @@ window.__HOT_DATA__ = {
 "信息差"
 ]
 },
-"title": "[阿七大型纪录片] 5月8日社会热点信息差",
+"title": "5月8日社会热点信息差",
 "tags": [
 "阿七大型纪录片",
 "信息差",
@@ -521,7 +521,7 @@ window.__HOT_DATA__ = {
 "李赔光"
 ]
 },
-"title": "[陈先生] 好消息刚哥包鱼塘血赚，坏消息刚哥“李赔光”名...",
+"title": "好消息刚哥包鱼塘血赚，坏消息刚哥“李赔光”名...",
 "tags": [
 "陈先生",
 "信息差",
@@ -552,7 +552,7 @@ window.__HOT_DATA__ = {
 "节后全部退还老板崩溃"
 ]
 },
-"title": "[陈先生] 4xl女顾客五一前购买24件新衣，节后全部退...",
+"title": "4xl女顾客五一前购买24件新衣，节后全部退...",
 "tags": [
 "陈先生",
 "信息差",
@@ -4089,5 +4089,5 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之憋大号一周,男生全程高能\""
 }
 ],
-"updated_at": "2026-05-11T20:17:13.425830"
+"updated_at": "2026-05-11T20:46:19.017597"
 };

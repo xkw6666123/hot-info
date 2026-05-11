@@ -837,6 +837,13 @@ def main(mode="full"):
         deduped.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
         blogger_by_name[name] = deduped
     
+    # 清理旧版 [博主名] 标题前缀
+    for a in all_articles:
+        if a.get("source") == "blogger":
+            name = a.get("blogger_name", "")
+            if name:
+                a["title"] = re.sub(rf'^\[{re.escape(name)}\]\s*', '', a.get("title", ""))
+    
     # 保留最新 3 条，移除超出部分
     
     for name, items in blogger_by_name.items():
