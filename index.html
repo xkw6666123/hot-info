@@ -221,14 +221,20 @@ header{
 
 /* blogger prediction card */
 .prediction-card{background:linear-gradient(135deg,#1A1F2E,#161C27);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:12px;border-left:3px solid}
+.prediction-card.wangba{border-left-color:#4ECDC4}
+.prediction-card.aqi{border-left-color:#FF6B6B}
 .prediction-card.chen{border-left-color:#D85A30}
 .prediction-card.heiban{border-left-color:#4A8FE4}
+.prediction-card.guancha{border-left-color:#A78BFA}
 .prediction-card.shadi{border-left-color:#C9A96E}
 .prediction-card .p-title{font-size:14px;font-weight:600;color:var(--text-pri);margin-bottom:6px}
 .prediction-card .p-reason{font-size:12px;color:var(--text-sec);line-height:1.6}
 .prediction-card .p-tag{font-size:10px;padding:2px 8px;border-radius:10px;display:inline-block;margin-right:4px;margin-top:8px}
+.prediction-card .p-tag.wangba-tag{background:rgba(78,205,196,0.12);color:#4ECDC4}
+.prediction-card .p-tag.aqi-tag{background:rgba(255,107,107,0.12);color:#FF6B6B}
 .prediction-card .p-tag.chen-tag{background:rgba(216,90,48,0.12);color:#D85A30}
 .prediction-card .p-tag.heiban-tag{background:var(--blue-dim);color:var(--blue)}
+.prediction-card .p-tag.guancha-tag{background:rgba(167,139,250,0.12);color:#A78BFA}
 .prediction-card .p-tag.shadi-tag{background:var(--gold-dim);color:var(--gold)}
 
 .structure-box{background:rgba(255,255,255,0.03);border-radius:8px;padding:8px;margin-top:8px}
@@ -456,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605112100" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605112112" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -936,11 +942,47 @@ function renderInspire(){
   const topRecent = [...data].sort((a,b) => (b.likes||0) - (a.likes||0)).slice(0,10);
   const bloggers = [
     {
+      id: 'wangba', name: '网吧信息差', style: '信息差/社会热点解构',
+      color: '#4ECDC4',
+      predict: (hots) => {
+        const picks = [];
+        const todayStr = new Date().toLocaleDateString('zh-CN', {month:'numeric', day:'numeric'});
+        hots.slice(0,4).forEach(h => {
+          const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,14);
+          const patterns = ['难不成是真的！', '能理解能理解', '再见！', '盘点'];
+          const p = patterns[picks.length % 4];
+          picks.push({
+            title: `${p}${t}`,
+            reason: `${t}——用"${p}"句式制造悬念/共鸣，网吧信息差擅长用反差标题抓眼球`
+          });
+        });
+        return picks;
+      }
+    },
+    {
+      id: 'aqi', name: '阿七大型纪录片', style: '日期锚点日更热点',
+      color: '#FF6B6B',
+      predict: (hots) => {
+        const todayStr = new Date().toLocaleDateString('zh-CN', {month:'numeric', day:'numeric'});
+        const picks = [{
+          title: `${todayStr}社会热点信息差`,
+          reason: `精选今日${hots.length}条热点做日更合集——阿七大型纪录片的标准日更格式，日期锚点+信息差速览`
+        }];
+        hots.slice(0,2).forEach(h => {
+          const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,12);
+          picks.push({
+            title: `关于${t}的几点思考`,
+            reason: `${t}热度飙升，阿七大型纪录片会用"关于XX的几点思考"做深度解读短评`
+          });
+        });
+        return picks;
+      }
+    },
+    {
       id: 'chen', name: '陈先生', style: '大型纪录片/热点解构',
       color: '#D85A30',
       predict: (hots) => {
         const picks = [];
-        // 选争议性/反转性强的热点
         const chenHot = hots.filter(h => /争议|翻车|塌房|爆料|退款|退货|涨价|暴跌|被查|违法|造假|举报/.test(h.title));
         chenHot.slice(0,3).forEach(h => {
           const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,16);
@@ -973,7 +1015,6 @@ function renderInspire(){
             reason: `精选${hots3.length}条今日高热度话题做合集：${hots3.map(h => h.title.replace(/\[.*?\]\s*/g, '').slice(0,10)).join('、')}`
           }
         ];
-        // 找2个民生类热点做单独条目
         const msHot = hots.filter(h => /民生|教育|医疗|消费|住房|就业|交通|保险|食品/.test(h.title));
         msHot.slice(0,2).forEach(h => {
           const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,12);
@@ -986,11 +1027,35 @@ function renderInspire(){
       }
     },
     {
+      id: 'guancha', name: '人类观察菌', style: '社会观察/人类行为分析',
+      color: '#A78BFA',
+      predict: (hots) => {
+        const picks = [];
+        const socialHot = hots.filter(h => /人性|人类|心理|行为|现象|奇闻|怪事|奇葩|迷惑|离谱|真实/.test(h.title));
+        socialHot.slice(0,3).forEach(h => {
+          const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,14);
+          picks.push({
+            title: `人类观察：${t}`,
+            reason: `${t}——这行为背后的人性逻辑值得拆解，人类观察菌擅长从社会新闻中提炼人性洞察`
+          });
+        });
+        if(picks.length < 2){
+          hots.slice(0,2).forEach(h => {
+            const t = h.title.replace(/\[.*?\]\s*/g, '').slice(0,14);
+            picks.push({
+              title: `今日人类迷惑行为：${t}`,
+              reason: `${t}热度高，人类观察菌会用"社会学视角"解读热点事件中的人类行为`
+            });
+          });
+        }
+        return picks.slice(0,3);
+      }
+    },
+    {
       id: 'shadi', name: '沙漠一之雕(B站)', style: '热点搬运搞笑合集',
       color: '#C9A96E',
       predict: (hots) => {
         const todayStr = new Date().toLocaleDateString('zh-CN', {month:'numeric', day:'numeric'});
-        // 选有"梗"潜力的热点
         const funnyHot = hots.filter(h => /奇葩|离谱|蛇|狗|猫|动物|搞笑|好笑|鬼畜|沙雕|神操作|骚操作|翻车|社死/.test(h.title));
         const picks = [];
         if(funnyHot.length >= 2){
@@ -999,7 +1064,6 @@ function renderInspire(){
             reason: `今日离谱新闻合集：${funnyHot.slice(0,3).map(h => h.title.replace(/\[.*?\]\s*/g, '').slice(0,8)).join(' vs ')}，沙漠一之雕会用搞笑配音+神转折剪辑做1-2分钟合集`
           });
         }
-        // 补充一个常规合集
         const others = hots.filter(h => !funnyHot.includes(h)).slice(0,3);
         picks.push({
           title: `${todayStr}今日热点快报`,
