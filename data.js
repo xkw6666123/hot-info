@@ -339,7 +339,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7638407920689909026",
 "likes": 182333,
-"comments": 1875
+"comments": 1875,
+"analysis": {
+"video_type": "热点搬运/大学生视角",
+"replicable_tip": "用大学生日常做切入，反差标题+土嗨BGM+游戏音效转场，前3秒截取最离谱片段做钩子",
+"publish_pattern": "日更 晚间",
+"cover_style": "大字报风格+人物表情截取",
+"keywords": [
+"信息差",
+"大学生",
+"热点",
+"离谱",
+"反差"
+]
+}
 },
 {
 "id": 130397889,
@@ -356,7 +369,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637659979633265972",
 "likes": 104312,
-"comments": 799
+"comments": 799,
+"analysis": {
+"video_type": "热点搬运/大学生视角",
+"replicable_tip": "用大学生日常做切入，反差标题+土嗨BGM+游戏音效转场，前3秒截取最离谱片段做钩子",
+"publish_pattern": "日更 晚间",
+"cover_style": "大字报风格+人物表情截取",
+"keywords": [
+"信息差",
+"大学生",
+"热点",
+"离谱",
+"反差"
+]
+}
 },
 {
 "id": 461384607,
@@ -373,7 +399,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637292553041136911",
 "likes": 271532,
-"comments": 1547
+"comments": 1547,
+"analysis": {
+"video_type": "热点搬运/大学生视角",
+"replicable_tip": "用大学生日常做切入，反差标题+土嗨BGM+游戏音效转场，前3秒截取最离谱片段做钩子",
+"publish_pattern": "日更 晚间",
+"cover_style": "大字报风格+人物表情截取",
+"keywords": [
+"信息差",
+"大学生",
+"热点",
+"离谱",
+"反差"
+]
+}
 },
 {
 "id": 351002511,
@@ -390,7 +429,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637886711091793081",
 "likes": 2710,
-"comments": 42
+"comments": 42,
+"analysis": {
+"video_type": "热点资讯搬运",
+"replicable_tip": "日期锚点式标题+3-5条社会热点速览，保持日更节奏，每条30秒播报式",
+"publish_pattern": "日更 晚间",
+"cover_style": "新闻截图+红色大字标题",
+"keywords": [
+"热点",
+"资讯",
+"信息差",
+"社会",
+"新闻"
+]
+}
 },
 {
 "id": 959389967,
@@ -407,7 +459,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637158565535043493",
 "likes": 3271,
-"comments": 127
+"comments": 127,
+"analysis": {
+"video_type": "热点资讯搬运",
+"replicable_tip": "日期锚点式标题+3-5条社会热点速览，保持日更节奏，每条30秒播报式",
+"publish_pattern": "日更 晚间",
+"cover_style": "新闻截图+红色大字标题",
+"keywords": [
+"热点",
+"资讯",
+"信息差",
+"社会",
+"新闻"
+]
+}
 },
 {
 "id": 570114856,
@@ -424,7 +489,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637501246966402803",
 "likes": 536,
-"comments": 81
+"comments": 81,
+"analysis": {
+"video_type": "大型纪录片/热点解构",
+"replicable_tip": "低沉开场+事件梳理+信息差视角+反转递进，封面大字标题+纪录片质感谢",
+"publish_pattern": "日更 晚间",
+"cover_style": "大字标题+暗色调纪录片质感",
+"keywords": [
+"纪录片",
+"解构",
+"热点",
+"反转",
+"争议"
+]
+}
 },
 {
 "id": 676597854,
@@ -441,7 +519,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637573042922907569",
 "likes": 1167,
-"comments": 37
+"comments": 37,
+"analysis": {
+"video_type": "社会热点信息差合集",
+"replicable_tip": "日期锚点+民生话题精选，每条简短点评式快讯，结尾引导点赞收藏",
+"publish_pattern": "日更 晚间",
+"cover_style": "新闻截图+统一红色标题",
+"keywords": [
+"信息差",
+"社会",
+"热点",
+"民生",
+"新闻"
+]
+}
 },
 {
 "id": 742378366,
@@ -458,7 +549,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637137991799134073",
 "likes": 809,
-"comments": 20
+"comments": 20,
+"analysis": {
+"video_type": "社会热点信息差合集",
+"replicable_tip": "日期锚点+民生话题精选，每条简短点评式快讯，结尾引导点赞收藏",
+"publish_pattern": "日更 晚间",
+"cover_style": "新闻截图+统一红色标题",
+"keywords": [
+"信息差",
+"社会",
+"热点",
+"民生",
+"新闻"
+]
+}
 },
 {
 "id": 844792692,
@@ -475,7 +579,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7636380086177949553",
 "likes": 1635,
-"comments": 31
+"comments": 31,
+"analysis": {
+"video_type": "社会热点信息差合集",
+"replicable_tip": "日期锚点+民生话题精选，每条简短点评式快讯，结尾引导点赞收藏",
+"publish_pattern": "日更 晚间",
+"cover_style": "新闻截图+统一红色标题",
+"keywords": [
+"信息差",
+"社会",
+"热点",
+"民生",
+"新闻"
+]
+}
 },
 {
 "id": 542356449,
@@ -492,7 +609,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637937638381136369",
 "likes": 8230,
-"comments": 413
+"comments": 413,
+"analysis": {
+"video_type": "社会热点信息快报/人类迷惑行为",
+"replicable_tip": "精选今日逆天/离谱新闻做合集，标题用#逆天 #离谱 #迷惑人类标签引流",
+"publish_pattern": "日更",
+"cover_style": "新闻截图+醒目标签",
+"keywords": [
+"逆天",
+"离谱",
+"迷惑",
+"热点",
+"社会"
+]
+}
 },
 {
 "id": 584540481,
@@ -509,7 +639,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637470030146135674",
 "likes": 106184,
-"comments": 2063
+"comments": 2063,
+"analysis": {
+"video_type": "社会热点信息快报/人类迷惑行为",
+"replicable_tip": "精选今日逆天/离谱新闻做合集，标题用#逆天 #离谱 #迷惑人类标签引流",
+"publish_pattern": "日更",
+"cover_style": "新闻截图+醒目标签",
+"keywords": [
+"逆天",
+"离谱",
+"迷惑",
+"热点",
+"社会"
+]
+}
 },
 {
 "id": 756039338,
@@ -526,7 +669,20 @@ window.__HOT_DATA__ = {
 ],
 "url": "https://www.douyin.com/video/7637070816811280315",
 "likes": 31480,
-"comments": 1784
+"comments": 1784,
+"analysis": {
+"video_type": "社会热点信息快报/人类迷惑行为",
+"replicable_tip": "精选今日逆天/离谱新闻做合集，标题用#逆天 #离谱 #迷惑人类标签引流",
+"publish_pattern": "日更",
+"cover_style": "新闻截图+醒目标签",
+"keywords": [
+"逆天",
+"离谱",
+"迷惑",
+"热点",
+"社会"
+]
+}
 },
 {
 "id": 7637523554896069753,
@@ -4031,6 +4187,111 @@ window.__HOT_DATA__ = {
 "url": "https://www.douyin.com/hot/2491317",
 "likes": 8811,
 "comments": 100
+},
+{
+"id": 901879377,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-11",
+"time": "20:35",
+"tags": [
+"B站",
+"博主",
+"热点",
+"搞笑"
+],
+"url": "https://www.bilibili.com/video/BV17W5b6nEXY",
+"likes": 27,
+"comments": 34,
+"play_count": 5622,
+"aweme_id": "BV17W5b6nEXY",
+"create_time": 1778502919,
+"analysis": {
+"video_type": "热点搬运搞笑合集",
+"replicable_tip": "B站日更热点合集：精选热搜配沙雕BGM+标题党封面，1分钟内过完，用搞笑配音+神转折剪辑",
+"publish_pattern": "日更 晚间",
+"cover_style": "沙雕风格封面+大字标题",
+"keywords": [
+"B站",
+"热点",
+"搞笑",
+"合集",
+"离谱"
+]
+}
+},
+{
+"id": 253758991,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-10",
+"time": "19:11",
+"tags": [
+"B站",
+"博主",
+"热点",
+"搞笑"
+],
+"url": "https://www.bilibili.com/video/BV1av576VErR",
+"likes": 203,
+"comments": 68,
+"play_count": 110783,
+"aweme_id": "BV1av576VErR",
+"create_time": 1778411466,
+"analysis": {
+"video_type": "热点搬运搞笑合集",
+"replicable_tip": "B站日更热点合集：精选热搜配沙雕BGM+标题党封面，1分钟内过完，用搞笑配音+神转折剪辑",
+"publish_pattern": "日更 晚间",
+"cover_style": "沙雕风格封面+大字标题",
+"keywords": [
+"B站",
+"热点",
+"搞笑",
+"合集",
+"离谱"
+]
+}
+},
+{
+"id": 287866375,
+"title": "今日热点快报",
+"summary": "今日热点快报",
+"source": "blogger",
+"blogger_name": "沙漠一之雕",
+"platform": "bilibili",
+"date": "2026-05-09",
+"time": "17:55",
+"tags": [
+"B站",
+"博主",
+"热点",
+"搞笑"
+],
+"url": "https://www.bilibili.com/video/BV16rR9BxERd",
+"likes": 4581,
+"comments": 518,
+"play_count": 305156,
+"aweme_id": "BV16rR9BxERd",
+"create_time": 1778320557,
+"analysis": {
+"video_type": "热点搬运搞笑合集",
+"replicable_tip": "B站日更热点合集：精选热搜配沙雕BGM+标题党封面，1分钟内过完，用搞笑配音+神转折剪辑",
+"publish_pattern": "日更 晚间",
+"cover_style": "沙雕风格封面+大字标题",
+"keywords": [
+"B站",
+"热点",
+"搞笑",
+"合集",
+"离谱"
+]
+}
 }
 ],
 "inspirations": [

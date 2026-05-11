@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605112200" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605112219" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -1190,11 +1190,14 @@ function renderAnalysis(){
     const isAqi=blogger==='阿七大型纪录片';
     const isChen=blogger==='陈先生';
     const isHeiban=blogger==='信息黑板报';
+    const isGuancha=blogger==='人类观察菌';
+    const isShadi=blogger==='沙漠一之雕';
     // 按博主分组标题
     if(blogger!==lastBlogger){
       lastBlogger=blogger;
-      const bloggerColor=isWangba?'#4ECDC4':(isAqi?'#FF6B6B':(isChen?'#D85A30':(isHeiban?'#4A8FE4':'var(--blue)')));
-      h+=`<div style="margin-top:12px;margin-bottom:4px;padding:6px 10px;background:rgba(122,130,148,0.04);border-radius:6px;font-size:12px;font-weight:600;color:${bloggerColor};display:flex;align-items:center;gap:6px"><span>${isWangba?'🏪':(isAqi?'🎬':(isChen?'📺':'📋'))} ${blogger}</span><span style="font-size:10px;color:var(--text-muted);font-weight:400">${allVids.filter(x=>x.blogger_name===blogger).length}条视频</span></div>`;
+      const bloggerColor=isWangba?'#4ECDC4':(isAqi?'#FF6B6B':(isChen?'#D85A30':(isHeiban?'#4A8FE4':(isGuancha?'#A78BFA':(isShadi?'#C9A96E':'var(--blue)')))));
+      const bloggerIcon=isWangba?'🏪':(isAqi?'🎬':(isChen?'📺':(isHeiban?'📋':(isGuancha?'🔍':(isShadi?'🎮':'📹'))));
+      h+=`<div style="margin-top:12px;margin-bottom:4px;padding:6px 10px;background:rgba(122,130,148,0.04);border-radius:6px;font-size:12px;font-weight:600;color:${bloggerColor};display:flex;align-items:center;gap:6px"><span>${bloggerIcon} ${blogger}</span><span style="font-size:10px;color:var(--text-muted);font-weight:400">${allVids.filter(x=>x.blogger_name===blogger).length}条视频</span></div>`;
     }
     h+=`<a href="${v.url||'#'}" target="_blank" style="display:block;color:inherit;text-decoration:none"><div class="analysis-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">`;
     h+=`<span style="font-size:11px;color:var(--text-muted)">${v.date} ${v.time}</span>`;
