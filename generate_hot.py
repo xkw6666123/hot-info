@@ -695,9 +695,6 @@ def main():
             removed_ids = {str(r["id"]) for r in removed}
             all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
             print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
-            removed_ids = {str(r["id"]) for r in removed}
-            all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
-            print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
 
     # 生成灵感（优先博主内容）
     blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
