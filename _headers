@@ -1,0 +1,10 @@
+# 禁止 Cloudflare 自动压缩/转换 JS 和 HTML（避免破坏内联脚本）
+/*.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  ! Auto-Minify
+
+/*
+  Access-Control-Allow-Origin: *
