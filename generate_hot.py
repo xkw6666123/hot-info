@@ -95,7 +95,13 @@ def tikhub_request(endpoint, params=None, method="GET"):
         req = urllib.request.Request(url, headers=headers, data=data, method=method)
         try:
             with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                raw = json.loads(resp.read().decode("utf-8"))
+                # 防御：如果 API 返回字符串而非 dict，包装为 dict
+                if isinstance(raw, str):
+                    raw = {"code": 0, "msg": raw}
+                elif not isinstance(raw, dict):
+                    raw = {"code": 0, "data": raw}
+                return raw
         except Exception as e:
             last_error = e
             if attempt < RETRIES - 1:
@@ -203,7 +209,8 @@ def scrape_toutiao():
 def scrape_thepaper():
     """澎湃新闻热榜"""
     print("📡 澎湃新闻...")
-    data = fetch_json("https://cache.thepaper.cn/contentapi/wwwIndex/rightSidebar")
+    data = fetch_json("https://cache.thepaper.cn/contentapi/wwwIndex/rightSidebar",
+                      referer="https://www.thepaper.cn/")
     if not data:
         return []
     articles = []
@@ -225,7 +232,8 @@ def scrape_thepaper():
 def scrape_wallstreetcn():
     """华尔街见闻"""
     print("📡 华尔街见闻...")
-    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=10")
+    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=10",
+                      referer="https://wallstreetcn.com/")
     if not data:
         return []
     articles = []
@@ -247,7 +255,8 @@ def scrape_wallstreetcn():
 def scrape_cls():
     """财联社"""
     print("📡 财联社...")
-    data = fetch_json("https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4.6")
+    data = fetch_json("https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4.6",
+                      referer="https://www.cls.cn/")
     if not data:
         return []
     articles = []
