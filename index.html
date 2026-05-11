@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605112131" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605112137" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -1127,11 +1127,14 @@ function renderInspire(){
 // 爆款视频拆解
 function renderAnalysis(){
   const el=document.getElementById('content');
-  const vids=data.filter(a=>a.analysis);
-  if(!vids.length){el.innerHTML='<div class="empty-state"><div class="icon">🔬</div><p>暂无视频数据</p></div>';return}
+  // 显示所有博主视频（不只是有 analysis 的），按日期降序
+  const allVids=data.filter(a=>a.source==='blogger').sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.time||'').localeCompare(a.time||''));
+  if(!allVids.length){el.innerHTML='<div class="empty-state"><div class="icon">🔬</div><p>暂无视频数据</p></div>';return}
 
+  // 统计数据：仅从有 analysis 的条目中提取
+  const analyzedVids=allVids.filter(a=>a.analysis);
   const typeCount={},hourCount={},allKeywords=[];
-  vids.forEach(v=>{
+  analyzedVids.forEach(v=>{
     const a=v.analysis; if(!a)return;
     if(a.video_type)typeCount[a.video_type]=(typeCount[a.video_type]||0)+1;
     if(v.time){const h=parseInt(v.time.split(':')[0]);if(h>=0&&h<=23)hourCount[h]=(hourCount[h]||0)+1}
@@ -1144,7 +1147,7 @@ function renderAnalysis(){
 
   h+='<div class="analysis-card"><h3>📂 视频类型分布</h3><div style="display:flex;gap:8px;flex-wrap:wrap">';
   Object.entries(typeCount).forEach(([t,c])=>{
-    const pct=Math.round(c/vids.length*100);
+    const pct=Math.round(c/analyzedVids.length*100);
     h+=`<div style="background:rgba(74,143,228,0.06);border:1px solid rgba(74,143,228,0.2);border-radius:var(--radius-sm);padding:10px 16px;flex:1;min-width:120px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--blue)">${pct}%</div><div style="font-size:11px;color:var(--text-sec);margin-top:4px">${t}</div></div>`;
   });
   h+='</div></div>';
@@ -1172,13 +1175,23 @@ function renderAnalysis(){
     h+='</div></div>';
   }
 
-  h+='<div class="section-title" style="margin-top:20px">🔍 逐个视频拆解</div>';
-  vids.forEach(v=>{
+  h+='<div class="section-title" style="margin-top:20px">🔍 全部博主视频 <span style="font-size:11px;color:var(--text-muted);font-weight:400">共'+allVids.length+'条 · '+(new Set(allVids.map(v=>v.blogger_name))).size+'位博主</span></div>';
+  let lastBlogger='';
+  allVids.forEach(v=>{
     const a=v.analysis;
     const blogger=v.blogger_name||'博主';
     const isWangba=blogger==='网吧信息差';
+    const isAqi=blogger==='阿七大型纪录片';
+    const isChen=blogger==='陈先生';
+    const isHeiban=blogger==='信息黑板报';
+    // 按博主分组标题
+    if(blogger!==lastBlogger){
+      lastBlogger=blogger;
+      const bloggerColor=isWangba?'#4ECDC4':(isAqi?'#FF6B6B':(isChen?'#D85A30':(isHeiban?'#4A8FE4':'var(--blue)')));
+      h+=`<div style="margin-top:12px;margin-bottom:4px;padding:6px 10px;background:rgba(122,130,148,0.04);border-radius:6px;font-size:12px;font-weight:600;color:${bloggerColor};display:flex;align-items:center;gap:6px"><span>${isWangba?'🏪':(isAqi?'🎬':(isChen?'📺':'📋'))} ${blogger}</span><span style="font-size:10px;color:var(--text-muted);font-weight:400">${allVids.filter(x=>x.blogger_name===blogger).length}条视频</span></div>`;
+    }
     h+=`<a href="${v.url||'#'}" target="_blank" style="display:block;color:inherit;text-decoration:none"><div class="analysis-card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">`;
-    h+=`<span style="font-size:10px;padding:3px 10px;border-radius:10px;background:${isWangba?'var(--gold-dim)':'var(--blue-dim)'};color:${isWangba?'var(--gold)':'var(--blue)'};font-weight:500">${isWangba?'🏪':'🎬'} ${blogger}</span>`;
+    h+=`<span style="font-size:10px;padding:3px 10px;border-radius:10px;background:${a?'var(--gold-dim)':'rgba(122,130,148,0.08)'};color:${a?'var(--gold)':'var(--text-muted)'};font-weight:500">${a?'📊 已分析':'📹 待分析'}</span>`;
     h+=`<span style="font-size:11px;color:var(--text-muted)">${v.date} ${v.time}</span>`;
     h+=`<span style="margin-left:auto;font-size:11px;color:var(--text-muted)">👍 ${fmt(v.likes)} · 💬 ${fmt(v.comments)}</span>`;
     h+=`</div><h3 style="font-size:16px;margin-bottom:6px;color:var(--text-pri)">${v.title}</h3>`;
