@@ -1,9 +1,9 @@
 name: Auto Update Hot News
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # 每小时
-  workflow_dispatch:        # 手动触发
+  # schedule:  # 已迁移到本地 Windows 定时任务（解决海外IP被封问题）
+  #   - cron: '0 * * * *'
+  workflow_dispatch:        # 手动触发（备用）
 
 permissions:
   contents: write
