@@ -31,7 +31,11 @@ TRACKED_BLOGGERS = [
     "阿七大型纪录片",
     "陈先生",
     "信息黑板报",
-    "沙漠一之雕",
+]
+
+# B站博主追踪: name + mid (UID)
+BILI_BLOGGERS = [
+    {"name": "沙漠一之雕", "mid": "283204224"},
 ]
 
 today = datetime.now().strftime("%Y-%m-%d")
@@ -192,6 +196,93 @@ def scrape_bilibili():
             "likes": 30000,
             "comments": 300,
         })
+    return articles
+
+def scrape_bilibili_bloggers():
+    """B站博主追踪：搜索 UID → 获取最新视频"""
+    if not BILI_BLOGGERS:
+        return []
+    
+    print("📡 B站博主追踪...")
+    articles = []
+    
+    for blogger in BILI_BLOGGERS:
+        name = blogger["name"]
+        mid = blogger.get("mid", "")
+        
+        # 如果没有 mid，先搜索
+        if not mid:
+            url = f"https://api.bilibili.com/x/web-interface/search/type?search_type=bili_user&keyword={urllib.parse.quote(name)}"
+            data = fetch_json(url, referer="https://www.bilibili.com/")
+            if data and data.get("code") == 0:
+                users = data.get("data", {}).get("result", [])
+                for u in users:
+                    if isinstance(u, dict) and (u.get("uname") == name or name in u.get("uname", "")):
+                        mid = str(u.get("mid", ""))
+                        break
+            if not mid:
+                print(f"  📹 {name}: 未找到 B站 UID")
+                continue
+        
+        # 获取最新视频（B站 space API 需要新连接，复用 opener 可能触发 412）
+        print(f"  📹 {name} (mid={mid})...")
+        url = f"https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=5&pn=1&order=pubdate"
+        
+        data = None
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url, headers={
+                    "User-Agent": "Mozilla/5.0",
+                    "Referer": f"https://space.bilibili.com/{mid}",
+                })
+                opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+                with opener.open(req, timeout=TIMEOUT) as resp:
+                    data = json.loads(resp.read().decode("utf-8", errors="replace"))
+                    code = data.get("code")
+                    if code == 0:
+                        break
+                    elif code == -799:
+                        time.sleep(8 * (attempt + 1))
+                    else:
+                        time.sleep(2)
+            except Exception as e:
+                if attempt < 2:
+                    time.sleep(8 * (attempt + 1))
+                else:
+                    print(f"    ⚠️ 获取失败: {e}")
+        
+        if not data or data.get("code") != 0:
+            if data:
+                print(f"    ⚠️ code={data.get('code')}, msg={data.get('message','')}")
+            continue
+        
+        vlist = data.get("data", {}).get("list", {}).get("vlist", [])
+        if not vlist:
+            print(f"    ⚠️ 无视频")
+            continue
+        
+        print(f"    ✅ 找到 {len(vlist)} 条视频")
+        
+        for v in vlist[:3]:
+            created = v.get("created", 0)
+            articles.append({
+                "id": make_id("bili_blogger", f"{name}_{v.get('bvid','')}") % 10**9,
+                "title": v.get("title", f"{name} 最新视频")[:50],
+                "summary": (v.get("description", "") or v.get("title", ""))[:200],
+                "source": "blogger",
+                "blogger_name": name,
+                "platform": "bilibili",
+                "date": datetime.fromtimestamp(created).strftime("%Y-%m-%d") if created else today,
+                "time": datetime.fromtimestamp(created).strftime("%H:%M") if created else now_time,
+                "tags": ["B站", "博主", "热点"],
+                "url": f"https://www.bilibili.com/video/{v.get('bvid','')}",
+                "likes": v.get("favorites", 0),
+                "comments": v.get("comment", 0),
+                "play_count": v.get("play", 0),
+                "aweme_id": v.get("bvid", ""),
+                "create_time": created,
+            })
+    
     return articles
 
 def scrape_toutiao():
@@ -593,6 +684,7 @@ def main():
     scrapers = [
         ("百度热搜", scrape_baidu),
         ("知乎", scrape_zhihu),
+        ("B站博主", scrape_bilibili_bloggers),
         ("B站", scrape_bilibili),
         ("今日头条", scrape_toutiao),
         ("澎湃新闻", scrape_thepaper),
