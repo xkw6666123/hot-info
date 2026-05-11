@@ -745,8 +745,9 @@ def main(mode="full"):
             old_data = json.load(f)
     except:
         pass
-
-    if old_data:
+    # full/local 模式：救援逻辑（防爬虫失败归零）
+    # remote 模式已在前面合并过旧数据，跳过
+    if mode != "remote" and old_data:
         old_articles = old_data.get("articles", [])
         # 1. 保留旧的博主分析数据（含 analysis 字段）
         old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
@@ -801,7 +802,7 @@ def main(mode="full"):
             unique_articles.append(a)
     all_articles = unique_articles
     
-    # 每个博主只保留最新 3 条（按日期降序）
+    # 每个博主：先按标题去重（同一视频可能因 ID 不同产生两条），再保留最新 3 条
     blogger_by_name = {}
     for a in all_articles:
         if a.get("source") == "blogger":
@@ -809,6 +810,28 @@ def main(mode="full"):
             if name not in blogger_by_name:
                 blogger_by_name[name] = []
             blogger_by_name[name].append(a)
+    
+    for name, items in blogger_by_name.items():
+        # 按标题去重：如果 title_A 包含 title_B 或 title_B 包含 title_A，保留 ID 较短的那个（新数据）
+        deduped = []
+        for item in items:
+            title = item.get("title", "")
+            dup = False
+            for existing in deduped:
+                ext = existing.get("title", "")
+                if title and ext:
+                    # 去掉 [博主名] 前缀后比较
+                    clean_a = re.sub(r'^\[.*?\]\s*', '', title).strip()
+                    clean_b = re.sub(r'^\[.*?\]\s*', '', ext).strip()
+                    if clean_a and clean_b and (clean_a in clean_b or clean_b in clean_a):
+                        dup = True
+                        break
+            if not dup:
+                deduped.append(item)
+        deduped.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+        blogger_by_name[name] = deduped
+    
+    # 保留最新 3 条，移除超出部分
     
     for name, items in blogger_by_name.items():
         items.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
