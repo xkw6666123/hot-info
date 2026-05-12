@@ -27,11 +27,11 @@ TIKHUB_API_KEY = os.environ.get("TIKHUB_API_KEY", "srAlG/ROjGy6h0XKAoib+DTMbQKKX
 TIKHUB_BASE = "https://api.tikhub.io"
 TIKHUB_TIMEOUT = 30
 
-# 追踪的博主列表: 填博主抖音名称即可
+# 追踪的博主列表: 填博主抖音名称即可；如遇重名可用 {"name": "陈先生", "user_id": "MS4wLjAB..."} 硬编码
 TRACKED_BLOGGERS = [
     "网吧信息差",
     "阿七大型纪录片",
-    "陈先生",
+    {"name": "陈先生", "user_id": ""},  # TODO: 填入8.9万粉丝陈先生的 sec_uid
     "信息黑板报",
     "人类观察菌",
 ]
@@ -513,18 +513,23 @@ def scrape_weixin():
 
 class BlogSearcher:
     """搜索博主 + 获取最新视频的辅助类"""
-    def __init__(self, name):
+    def __init__(self, name, user_id=""):
         self.name = name
+        self.user_id = user_id  # 如果提供，跳过搜索直接使用
         self.results = []
     
     def run(self):
-        # 步骤1：搜索用户，获取 user_id
-        user_id = self._search_user()
-        if not user_id:
+        # 步骤1：搜索用户，获取 user_id（如果已提供则跳过）
+        if self.user_id:
+            print(f"    🔒 使用硬编码 user_id: {self.user_id[:20]}...")
+        else:
+            self.user_id = self._search_user()
+        
+        if not self.user_id:
             return
         
         # 步骤2：获取用户作品列表（最多5条）
-        posts = self._get_user_posts(user_id, count=5)
+        posts = self._get_user_posts(self.user_id, count=5)
         if not posts:
             return
         
@@ -624,10 +629,17 @@ def scrape_bloggers():
         return []
     
     articles = []
-    for name in TRACKED_BLOGGERS:
+    for entry in TRACKED_BLOGGERS:
+        if isinstance(entry, dict):
+            name = entry.get("name", "")
+            user_id = entry.get("user_id", "")
+        else:
+            name = entry
+            user_id = ""
+        
         print(f"  📹 {name}...")
         
-        searcher = BlogSearcher(name)
+        searcher = BlogSearcher(name, user_id=user_id)
         searcher.run()
         
         for video in searcher.results:
