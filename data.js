@@ -10,7 +10,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -26,7 +26,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -42,7 +42,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -53,44 +53,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 519662253,
-"title": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "22:13",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33158233",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 485830853,
-"title": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "22:13",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33156316",
-"likes": 20000,
-"comments": 200
-},
-{
 "id": 482208400,
 "title": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -101,12 +69,28 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
+"id": 485830853,
+"title": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-12",
+"time": "23:13",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33156316",
+"likes": 20000,
+"comments": 200
+},
+{
 "id": 921716372,
 "title": "马上测｜被“刮码”的产品：真伪难辨，“消码神器”随意卖",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -122,7 +106,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -138,7 +122,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -154,7 +138,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "新闻",
 "社会",
@@ -165,20 +149,36 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
+"id": 35295315,
+"title": "南京审计大学回应学生涉嫌偷拍：将依据调查结果严肃处置",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-12",
+"time": "23:13",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33163707",
+"likes": 20000,
+"comments": 200
+},
+{
 "id": 356123224,
 "title": "商家曝光女孩演出完退礼服",
 "summary": "演出完退礼服被商家曝光，女孩发声：商家歪曲事实真相，不存在白嫖。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354207",
-"likes": 1785240,
-"comments": 1785240
+"likes": 1919550,
+"comments": 1919550
 },
 {
 "id": 551531712,
@@ -186,15 +186,15 @@ window.__HOT_DATA__ = {
 "summary": "汉坦病毒零号患者已确认，系70岁荷兰鸟类学家，疑在垃圾场吸入带病毒鼠粪颗粒感染。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354217",
-"likes": 1634556,
-"comments": 1634556
+"likes": 1538711,
+"comments": 1538711
 },
 {
 "id": 88225147,
@@ -202,15 +202,15 @@ window.__HOT_DATA__ = {
 "summary": "宇树发布全球首款量产版载人机甲：售价390万起，可以变形，做民用交通工具",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354208",
-"likes": 1407186,
-"comments": 1407186
+"likes": 1267756,
+"comments": 1267756
 },
 {
 "id": 250878860,
@@ -218,15 +218,15 @@ window.__HOT_DATA__ = {
 "summary": "15岁男子在路上从背后加速冲撞女生，致其倒地膝盖部位受伤。江西南昌警方通报：违法行为人张某某正接受公安机关调查，案件正在进一步办理中。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354212",
-"likes": 1116232,
-"comments": 1116232
+"likes": 1080972,
+"comments": 1080972
 },
 {
 "id": 512148319,
@@ -234,15 +234,31 @@ window.__HOT_DATA__ = {
 "summary": "崩铁新pv被吐槽：一边是各种短片和动画的狼尊，一边是一个pv应付了事的绯英，真的是应付了事",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354218",
-"likes": 1047925,
-"comments": 1047925
+"likes": 851682,
+"comments": 851682
+},
+{
+"id": 237889265,
+"title": "wei哥当兵补,blg横扫ig",
+"summary": "blg完成让一追二，左手恨意拉满，wei哥被blg随手当兵补，吧友戏称手抓饼谁懂。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "23:13",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354219",
+"likes": 643250,
+"comments": 643250
 },
 {
 "id": 803357514,
@@ -250,15 +266,15 @@ window.__HOT_DATA__ = {
 "summary": "西班牙女主持自曝为儿子追星，与皇马门将交往，成功拿到其亲笔签名的手套。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354213",
-"likes": 838824,
-"comments": 838824
+"likes": 512112,
+"comments": 512112
 },
 {
 "id": 188587150,
@@ -266,15 +282,15 @@ window.__HOT_DATA__ = {
 "summary": "T1青训上单撞脸Faker，LPL破防：大魔王没熬走，2.0版本已经安排上了。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354209",
-"likes": 587834,
-"comments": 587834
+"likes": 406157,
+"comments": 406157
 },
 {
 "id": 789662911,
@@ -282,15 +298,15 @@ window.__HOT_DATA__ = {
 "summary": "漫展清退乙游男coser，当事人向12345举报，投诉工单被漫展主办方恶意曝光，警方已介入调查。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354195",
-"likes": 456082,
-"comments": 456082
+"likes": 338646,
+"comments": 338646
 },
 {
 "id": 140756911,
@@ -298,31 +314,15 @@ window.__HOT_DATA__ = {
 "summary": "物业费收缴率仅65%，物业直接撤场跑路。小区变不设防，老实人替刺头买单。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "22:13",
+"time": "23:13",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354200",
-"likes": 374493,
-"comments": 374493
-},
-{
-"id": 444468267,
-"title": "科隆宣传片剪辑抠门惹调侃",
-"summary": "央视科隆游戏宣传片因某游戏镜头太短，被部分网友集体狂怼。",
-"source": "贴吧",
-"date": "2026-05-12",
-"time": "22:13",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354194",
-"likes": 310020,
-"comments": 310020
+"likes": 334509,
+"comments": 334509
 },
 {
 "id": 882068945,
@@ -4187,11 +4187,11 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读宇树发布首款载人背后的商业逻辑\""
 },
 {
-"topic": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
+"topic": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
 "source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！重庆巫山通报服农！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！一图看懂｜特朗普！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之重庆巫山通报服农全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之一图看懂｜特朗普全程高能\""
 },
 {
 "topic": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
@@ -4201,39 +4201,39 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读中美关系的潜力、背后的商业逻辑\""
 },
 {
-"topic": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
-"source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！一图看懂｜特朗普\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之一图看懂｜特朗普全程高能\""
-},
-{
 "topic": "马上测｜被“刮码”的产品：真伪难辨，“消码神器”随意卖",
 "source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 马上测｜被“刮码\"引发共鸣",
-"aqi_style": "速览型: 用\"关于马上测｜被“刮码的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读马上测｜被“刮码背后的商业逻辑\""
+"wangba_style": "悬念型: 用\"难不成是真的！马上测｜被“刮码\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之马上测｜被“刮码全程高能\""
 },
 {
 "topic": "从加法到减法：人工智能时代最难的，不是创新，而是割舍",
 "source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！从加法到减法：人！\"制造话题",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之从加法到减法：人全程高能\""
+"wangba_style": "故事型: 用\"能理解能理解 从加法到减法：人\"引发共鸣",
+"aqi_style": "速览型: 用\"关于从加法到减法：人的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读从加法到减法：人背后的商业逻辑\""
 },
 {
 "topic": "腾讯称已停止微信状态浏览人数展示测试：“已读功能和访客功能”焊死，不会开发，不会提供",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点腾讯称已停止微信的几个名场面\"",
-"aqi_style": "速览型: 用\"关于腾讯称已停止微信的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读腾讯称已停止微信背后的商业逻辑\""
+"wangba_style": "感叹型: 用\"再见！腾讯称已停止微信！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之腾讯称已停止微信全程高能\""
 },
 {
 "topic": "美国总统特朗普：非常期待中国之行",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！美国总统特朗普：\"制造好奇",
+"wangba_style": "盘点型: 用\"盘点美国总统特朗普：的几个名场面\"",
+"aqi_style": "速览型: 用\"关于美国总统特朗普：的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读美国总统特朗普：背后的商业逻辑\""
+},
+{
+"topic": "南京审计大学回应学生涉嫌偷拍：将依据调查结果严肃处置",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！南京审计大学回应\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之美国总统特朗普：全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之南京审计大学回应全程高能\""
 },
 {
 "topic": "商家曝光女孩演出完退礼服",
@@ -4250,5 +4250,5 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之汉坦病毒病人确认全程高能\""
 }
 ],
-"updated_at": "2026-05-12T22:14:09.977744"
+"updated_at": "2026-05-12T23:14:08.624917"
 };
