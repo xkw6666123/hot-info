@@ -4,6 +4,7 @@
 来源: 百度/知乎/哔哩哔哩/今日头条/澎湃/华尔街见闻/财联社/凤凰/贴吧/微博/抖音/公众号
 """
 import json
+import os
 import re
 import time
 import hashlib
@@ -13,7 +14,8 @@ import urllib.parse
 from datetime import datetime
 
 # ── 配置 ──
-OUTPUT_FILE = "data.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_FILE = os.path.join(BASE_DIR, "data.json")
 SITE_NAME = "热点信息差"
 SITE_DESC = "每日社会热点聚合 + 爆款视频拆解 + AI选题灵感"
 TIMEOUT = 15
@@ -21,7 +23,7 @@ RETRIES = 3
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ── TikHub 博主追踪 ──
-TIKHUB_API_KEY = "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw=="
+TIKHUB_API_KEY = os.environ.get("TIKHUB_API_KEY", "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw==")
 TIKHUB_BASE = "https://api.tikhub.io"
 TIKHUB_TIMEOUT = 30
 
@@ -86,7 +88,7 @@ def fetch_json(url, headers=None, referer=None):
         return None
     try:
         return json.loads(text)
-    except:
+    except json.JSONDecodeError:
         return None
 
 def tikhub_request(endpoint, params=None, method="GET"):
@@ -110,7 +112,7 @@ def tikhub_request(endpoint, params=None, method="GET"):
         req = urllib.request.Request(url, headers=headers, data=data, method=method)
         try:
             with urllib.request.urlopen(req, timeout=TIKHUB_TIMEOUT) as resp:
-                raw = json.loads(resp.read().decode("utf-8"))
+                raw = json.loads(resp.read().decode("utf-8", errors="replace"))
                 # 防御：如果 API 返回字符串而非 dict，包装为 dict
                 if isinstance(raw, str):
                     raw = {"code": 0, "msg": raw}
@@ -834,9 +836,13 @@ def main(mode="full"):
                     # 去掉 [博主名] 前缀后比较
                     clean_a = re.sub(r'^\[.*?\]\s*', '', title).strip()
                     clean_b = re.sub(r'^\[.*?\]\s*', '', ext).strip()
-                    if clean_a and clean_b and (clean_a in clean_b or clean_b in clean_a):
-                        dup = True
-                        break
+                    if clean_a and clean_b and len(clean_a) >= 10 and len(clean_b) >= 10:
+                        # 只有短标题是长标题的 80% 以上才判为重复
+                        shorter = clean_a if len(clean_a) < len(clean_b) else clean_b
+                        longer = clean_b if len(clean_a) < len(clean_b) else clean_a
+                        if shorter in longer and len(shorter) >= len(longer) * 0.8:
+                            dup = True
+                            break
             if not dup:
                 deduped.append(item)
             else:
@@ -899,8 +905,27 @@ def main(mode="full"):
 
 
 def _generate_video_intro(v, all_articles):
-    """用视频原始 desc（作者文案）作为内容简介"""
+    """基于视频 desc + 分析数据生成内容简介"""
     desc = (v.get("summary") or v.get("title") or "").strip()
+    analysis = v.get("analysis", {})
+    title = v.get("title", "")
+    
+    # 如果有长描述（作者写了详细文案），直接返回
+    if len(desc) > 30 and desc != title:
+        return desc
+    
+    # 用分析数据生成简介
+    parts = []
+    if analysis.get("video_type"):
+        parts.append(f"类型：{analysis['video_type']}")
+    if analysis.get("keywords"):
+        kw = "、".join(analysis["keywords"][:4])
+        parts.append(f"关键词：{kw}")
+    if analysis.get("replicable_tip"):
+        parts.append(f"创作要点：{analysis['replicable_tip']}")
+    
+    if parts:
+        return "。".join(parts)
     return desc
 
 

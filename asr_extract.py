@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """免费 ASR：Playwright 拦截音频 → ffmpeg下载 → Whisper → 摘要"""
-import json, os, subprocess, time, whisper, re, sys
+import json, os, subprocess, time, re, sys, shutil, whisper
 
-FFMPEG = "C:/Users/Kevin/ffmpeg/ffmpeg-master-latest-win64-gpl-shared/bin/ffmpeg.exe"
+# 自动检测 ffmpeg 路径
+FFMPEG = shutil.which("ffmpeg") or shutil.which("ffmpeg.exe") or "ffmpeg"
 PCLI = "playwright-cli"
 WORK = os.path.dirname(os.path.abspath(__file__))
 TMP = os.path.join(WORK, "asr_temp")
 os.makedirs(TMP, exist_ok=True)
+
+# Whisper 模型全局单例（只加载一次）
+_whisper_model = None
+def get_whisper():
+    global _whisper_model
+    if _whisper_model is None:
+        _whisper_model = whisper.load_model("small")
+    return _whisper_model
 
 def get_audio_url(video_url):
     """Playwright 打开视频页，从网络请求中截获音频 URL"""
@@ -66,7 +75,7 @@ def download_asr(audio_url):
                    capture_output=True, timeout=30)
     
     # Whisper
-    model = whisper.load_model("small")
+    model = get_whisper()
     r = model.transcribe(wav, language="zh", fp16=False)
     text = r["text"].strip()
     
@@ -118,7 +127,9 @@ def main():
     if updated:
         with open("data.json", "w", encoding="utf-8") as f:
             json.dump(d, f, ensure_ascii=False)
-        subprocess.run([sys.executable, "gen_js_data.py"], cwd=WORK)
+        r = subprocess.run([sys.executable, "gen_js_data.py"], cwd=WORK, capture_output=True, text=True)
+        if r.returncode != 0:
+            print(f"  ⚠️ gen_js_data 失败: {r.stderr[:200]}")
     
     subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} kill-all"], capture_output=True)
     print(f"\n✅ {updated}/{len(bloggers)} 已更新")
