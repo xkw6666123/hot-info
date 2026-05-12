@@ -1,0 +1,522 @@
+- generic [active] [ref=e1]:
+  - button "开启读屏标签" [ref=e2]
+  - generic: 读屏标签已关闭
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: //www.douyin.com/
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - link "精选" [ref=e19] [cursor=pointer]:
+            - /url: https://www.douyin.com/jingxuan?from_nav=1
+            - generic [ref=e22]: 精选
+          - link "推荐" [ref=e27] [cursor=pointer]:
+            - /url: https://www.douyin.com/?recommend=1&from_nav=1
+            - generic [ref=e30]: 推荐
+          - link "搜索" [ref=e35] [cursor=pointer]:
+            - /url: https://www.douyin.com/aisearch?from_nav=1
+            - generic [ref=e38]: 搜索
+          - link "关注" [ref=e44] [cursor=pointer]:
+            - /url: https://www.douyin.com/follow?from_nav=1
+            - generic [ref=e47]: 关注
+          - link "朋友" [ref=e52] [cursor=pointer]:
+            - /url: https://www.douyin.com/friend?from_nav=1
+            - generic [ref=e55]: 朋友
+          - link "我的" [ref=e60] [cursor=pointer]:
+            - /url: https://www.douyin.com/user/self?from_nav=1
+            - generic [ref=e63]: 我的
+          - link "直播" [ref=e69] [cursor=pointer]:
+            - /url: https://live.douyin.com/?from_nav=1
+            - generic [ref=e72]: 直播
+          - link "放映厅" [ref=e77] [cursor=pointer]:
+            - /url: https://www.douyin.com/vs?from_nav=1
+            - generic [ref=e80]: 放映厅
+          - link "短剧" [ref=e85] [cursor=pointer]:
+            - /url: https://www.douyin.com/series?from_nav=1
+            - generic [ref=e88]: 短剧
+          - link "小游戏" [ref=e93] [cursor=pointer]:
+            - /url: https://www.douyin.com/microgame?from_nav=1
+            - generic [ref=e96]: 小游戏
+        - generic [ref=e100]:
+          - img [ref=e103] [cursor=pointer]
+          - img [ref=e107] [cursor=pointer]
+          - img [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - banner [ref=e117]:
+        - generic [ref=e119]:
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e126]: 母亲节2026年几月几日
+              - textbox [ref=e127]
+            - button "搜索" [ref=e129] [cursor=pointer]:
+              - img [ref=e130]
+              - generic [ref=e132]: 搜索
+          - generic [ref=e136]:
+            - generic [ref=e138] [cursor=pointer]:
+              - img [ref=e140]:
+                - img [ref=e141]
+              - paragraph [ref=e143]: 充钻石
+            - link "客户端" [ref=e148] [cursor=pointer]:
+              - /url: ""
+              - generic [ref=e150]:
+                - img [ref=e152]:
+                  - img [ref=e153]
+                - paragraph [ref=e156]: 客户端
+            - generic [ref=e158] [cursor=pointer]:
+              - img [ref=e160]:
+                - img [ref=e161]
+              - paragraph [ref=e163]: 壁纸
+            - list [ref=e164]:
+              - generic [ref=e168] [cursor=pointer]:
+                - img [ref=e170]:
+                  - img [ref=e171]
+                - paragraph [ref=e174]: 通知
+            - generic [ref=e178] [cursor=pointer]:
+              - img [ref=e180]:
+                - img [ref=e181]
+              - paragraph [ref=e183]: 投稿
+            - button "登录" [ref=e187] [cursor=pointer]:
+              - paragraph [ref=e189]: 登录
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - img [ref=e197]
+              - generic [ref=e200]:
+                - generic [ref=e202]:
+                  - generic [ref=e203]:
+                    - img [ref=e206] [cursor=pointer]:
+                      - img [ref=e207]
+                    - generic [ref=e209] [cursor=pointer]:
+                      - generic [ref=e210]: 00:00
+                      - generic [ref=e211]: /
+                      - generic [ref=e212]: 00:00
+                  - generic [ref=e217]:
+                    - img [ref=e220] [cursor=pointer]:
+                      - img [ref=e221]
+                    - img [ref=e225] [cursor=pointer]
+                    - img [ref=e229] [cursor=pointer]:
+                      - img [ref=e230]
+                    - img [ref=e234] [cursor=pointer]:
+                      - img [ref=e235]
+                    - generic [ref=e242] [cursor=pointer]:
+                      - button [ref=e243]
+                      - generic [ref=e244]: 清屏
+                - generic [ref=e249]:
+                  - img [ref=e251]:
+                    - img [ref=e252]
+                  - img [ref=e256]:
+                    - img [ref=e257]
+                - link "作者声明：内容为转载信息" [ref=e261]:
+                  - /url: undefined
+                  - img [ref=e262]
+                  - generic [ref=e263]: 作者声明：内容为转载信息
+              - generic [ref=e265]:
+                - generic [ref=e267]: 章节要点
+                - img
+            - generic [ref=e270]:
+              - 'heading "第399集 | 终于让8X装到了 #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [level=1] [ref=e273]':
+                - generic [ref=e274]:
+                  - text: 第399集 |
+                  - generic [ref=e276]:
+                    - generic [ref=e279]: 终于让8X装到了
+                    - link "#青年创作者成长计划" [ref=e281] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E9%9D%92%E5%B9%B4%E5%88%9B%E4%BD%9C%E8%80%85%E6%88%90%E9%95%BF%E8%AE%A1%E5%88%92?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#内容过于真实" [ref=e283] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E5%86%85%E5%AE%B9%E8%BF%87%E4%BA%8E%E7%9C%9F%E5%AE%9E?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#大学生" [ref=e285] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E5%A4%A7%E5%AD%A6%E7%94%9F?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#热点" [ref=e287] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9?enter_from=video_detail&source=pc_click_hashtag_feed
+                    - link "#万万没想到" [ref=e289] [cursor=pointer]:
+                      - /url: //www.douyin.com/search/%E4%B8%87%E4%B8%87%E6%B2%A1%E6%83%B3%E5%88%B0?enter_from=video_detail&source=pc_click_hashtag_feed
+              - generic [ref=e290]:
+                - generic [ref=e291]:
+                  - generic [ref=e292] [cursor=pointer]:
+                    - img [ref=e295]
+                    - generic [ref=e303]: 10.7万
+                  - generic [ref=e304] [cursor=pointer]:
+                    - img [ref=e307]
+                    - generic [ref=e312]: "803"
+                  - generic [ref=e313] [cursor=pointer]:
+                    - img [ref=e316]
+                    - generic [ref=e325]: "2593"
+                  - generic [ref=e326] [cursor=pointer]:
+                    - img [ref=e329]
+                    - generic [ref=e334]: "7355"
+                - generic [ref=e335]:
+                  - generic [ref=e336] [cursor=pointer]:
+                    - img [ref=e337]
+                    - generic [ref=e339]: 举报
+                  - generic [ref=e340]: 发布时间：2026-05-09 07:16
+            - generic [ref=e344]:
+              - generic [ref=e346]: 全部评论
+              - generic [ref=e349]:
+                - img [ref=e352] [cursor=pointer]
+                - generic [ref=e361] [cursor=pointer]: 请先登录后发表评论
+              - generic [ref=e363]:
+                - generic [ref=e364]: 大家都在搜：
+                - link "母亲节2026年几月几日" [ref=e368] [cursor=pointer]:
+                  - /url: //www.douyin.com/search/%E6%AF%8D%E4%BA%B2%E8%8A%822026%E5%B9%B4%E5%87%A0%E6%9C%88%E5%87%A0%E6%97%A5?aweme_id=7637659979633265972&enter_from=video_detail&gid=7637659979633265972&source=comment_related_search
+                  - generic [ref=e369]: 母亲节2026年几月几日
+                  - img [ref=e370]
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - link "网吧信息差" [ref=e377] [cursor=pointer]:
+                - /url: //www.douyin.com/user/MS4wLjABAAAAokpF28xzuEX1XD968NZhGTOytSqQbDBf0kPjRTeBtVyooNhnCicUdWZYMZh8oUpv
+                - listitem [ref=e378]:
+                  - img "网吧信息差" [ref=e379]
+              - generic [ref=e380]:
+                - link "网吧信息差" [ref=e381] [cursor=pointer]:
+                  - /url: //www.douyin.com/user/MS4wLjABAAAAokpF28xzuEX1XD968NZhGTOytSqQbDBf0kPjRTeBtVyooNhnCicUdWZYMZh8oUpv
+                  - generic [ref=e387]: 网吧信息差
+                - paragraph [ref=e388]: 粉丝337.0万获赞9457.7万
+              - button "关注" [ref=e390] [cursor=pointer]:
+                - generic [ref=e391]: 关注
+            - generic [ref=e393]:
+              - heading "去看749吧！算8X求你的~" [level=2] [ref=e395]
+              - list [ref=e396]:
+                - listitem [ref=e397]:
+                  - generic [ref=e398]:
+                    - link "03:11" [ref=e400] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7636058256917482804
+                      - img [ref=e403]
+                      - generic [ref=e408]: 03:11
+                    - generic [ref=e409]:
+                      - 'heading "第396集 | 轻松崩住 就很...你懂吧 #内容过于真实#网吧信息差#搞笑#玩梗#有生之年系列" [level=3] [ref=e410]':
+                        - 'link "第396集 | 轻松崩住 就很...你懂吧 #内容过于真实#网吧信息差#搞笑#玩梗#有生之年系列" [ref=e411] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7636058256917482804
+                          - generic [ref=e416]: "第396集 | 轻松崩住 就很...你懂吧 #内容过于真实#网吧信息差#搞笑#玩梗#有生之年系列"
+                      - generic [ref=e418]:
+                        - img [ref=e419]
+                        - text: 19.9万
+                - listitem [ref=e421]:
+                  - generic [ref=e422]:
+                    - link "03:09" [ref=e424] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7636923834628607284
+                      - img [ref=e427]
+                      - generic [ref=e432]: 03:09
+                    - generic [ref=e433]:
+                      - 'heading "第397集 | 8青天限时回归！ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [level=3] [ref=e434]':
+                        - 'link "第397集 | 8青天限时回归！ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [ref=e435] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7636923834628607284
+                          - generic [ref=e440]: "第397集 | 8青天限时回归！ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到"
+                      - generic [ref=e442]:
+                        - img [ref=e443]
+                        - text: 22.2万
+                - listitem [ref=e445]:
+                  - generic [ref=e446]:
+                    - link "03:11" [ref=e448] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7637292553041136911
+                      - img [ref=e451]
+                      - generic [ref=e456]: 03:11
+                    - generic [ref=e457]:
+                      - 'heading "第398集 | 你就是猫猫？ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [level=3] [ref=e458]':
+                        - 'link "第398集 | 你就是猫猫？ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [ref=e459] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7637292553041136911
+                          - generic [ref=e464]: "第398集 | 你就是猫猫？ #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到"
+                      - generic [ref=e466]:
+                        - img [ref=e467]
+                        - text: 27.5万
+                - listitem [ref=e469]:
+                  - generic [ref=e470]:
+                    - link "播放中" [ref=e472] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7637659979633265972
+                      - img [ref=e475]
+                      - generic [ref=e483]: 播放中
+                    - generic [ref=e484]:
+                      - 'heading "第399集 | 终于让8X装到了 #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [level=3] [ref=e485]':
+                        - 'link "第399集 | 终于让8X装到了 #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到" [ref=e486] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7637659979633265972
+                          - generic [ref=e491]: "第399集 | 终于让8X装到了 #青年创作者成长计划#内容过于真实#大学生#热点#万万没想到"
+                      - generic [ref=e493]:
+                        - img [ref=e494]
+                        - text: 10.7万
+                - listitem [ref=e496]:
+                  - generic [ref=e497]:
+                    - link "03:24" [ref=e499] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7638407920689909026
+                      - img [ref=e502]
+                      - generic [ref=e507]: 03:24
+                    - generic [ref=e508]:
+                      - 'heading "第400集 | 你跟我说实话 你们公司到底干嘛的 #青年创作者成长计划#内容过于真实#大学生#热点#辟谣" [level=3] [ref=e509]':
+                        - 'link "第400集 | 你跟我说实话 你们公司到底干嘛的 #青年创作者成长计划#内容过于真实#大学生#热点#辟谣" [ref=e510] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7638407920689909026
+                          - generic [ref=e515]: "第400集 | 你跟我说实话 你们公司到底干嘛的 #青年创作者成长计划#内容过于真实#大学生#热点#辟谣"
+                      - generic [ref=e517]:
+                        - img [ref=e518]
+                        - text: 24.2万
+                - listitem [ref=e520]:
+                  - generic [ref=e521]:
+                    - link "02:30" [ref=e523] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7638867887771503912
+                      - img [ref=e526]
+                      - generic [ref=e531]: 02:30
+                    - generic [ref=e532]:
+                      - 'heading "第401集 | 第一遍年份字幕打错了 我的 #青年创作者成长计划#内容过于真实#大学生" [level=3] [ref=e533]':
+                        - 'link "第401集 | 第一遍年份字幕打错了 我的 #青年创作者成长计划#内容过于真实#大学生" [ref=e534] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7638867887771503912
+                          - generic [ref=e539]: "第401集 | 第一遍年份字幕打错了 我的 #青年创作者成长计划#内容过于真实#大学生"
+                      - generic [ref=e541]:
+                        - img [ref=e542]
+                        - text: "7951"
+            - generic [ref=e544]:
+              - heading "推荐视频" [level=2] [ref=e546]
+              - list [ref=e547]:
+                - listitem [ref=e548]:
+                  - generic [ref=e549]:
+                    - link "00:09" [ref=e551] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7627350482927653235
+                      - img [ref=e554]
+                      - generic [ref=e559]: 00:09
+                    - generic [ref=e560]:
+                      - 'heading "猫meme配音来源#猫meme #剧情演绎" [level=3] [ref=e561]':
+                        - 'link "猫meme配音来源#猫meme #剧情演绎" [ref=e562] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7627350482927653235
+                          - generic [ref=e567]: "猫meme配音来源#猫meme #剧情演绎"
+                      - generic [ref=e568]:
+                        - generic [ref=e569]:
+                          - img [ref=e570]
+                          - text: 3.3万
+                        - link "猫meme龙小超" [ref=e573] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAATeDLa2Qgz1A46EtRBd1BAcGBcP0R-MSJ3L7kUB2k-7m9DhjQ7F6eMQ5DK6754WM2?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e578]: 猫meme龙小超
+                - listitem [ref=e579]:
+                  - generic [ref=e580]:
+                    - link "03:03" [ref=e582] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7625355631755701177
+                      - img [ref=e585]
+                      - generic [ref=e590]: 03:03
+                    - generic [ref=e591]:
+                      - 'heading "今日热点信息快报#逆天 #离谱 #社会热点信息差 #迷惑人类 #万万没想到" [level=3] [ref=e592]':
+                        - 'link "今日热点信息快报#逆天 #离谱 #社会热点信息差 #迷惑人类 #万万没想到" [ref=e593] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7625355631755701177
+                          - generic [ref=e598]: "今日热点信息快报#逆天 #离谱 #社会热点信息差 #迷惑人类 #万万没想到"
+                      - generic [ref=e599]:
+                        - generic [ref=e600]:
+                          - img [ref=e601]
+                          - text: "7874"
+                        - link "人类观察菌" [ref=e604] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAA7ie_zvIQ19AWP_ZDg7heFEoQMAY3K3E9UOGYn_UKZzODbWxHxj5tnD3HGjg9sZlN?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e609]: 人类观察菌
+                - listitem [ref=e610]:
+                  - generic [ref=e611]:
+                    - link "01:52" [ref=e613] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7618795895044502757
+                      - img [ref=e616]
+                      - generic [ref=e621]: 01:52
+                    - generic [ref=e622]:
+                      - 'heading "智商不在线，还要质问别人的妹子，3月19号热点信息差。#热点 #热点小助手" [level=3] [ref=e623]':
+                        - 'link "智商不在线，还要质问别人的妹子，3月19号热点信息差。#热点 #热点小助手" [ref=e624] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7618795895044502757
+                          - generic [ref=e629]: "智商不在线，还要质问别人的妹子，3月19号热点信息差。#热点 #热点小助手"
+                      - generic [ref=e630]:
+                        - generic [ref=e631]:
+                          - img [ref=e632]
+                          - text: "4845"
+                        - link "报告老总🐵" [ref=e635] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAm13OYX83kiIGA4dum2AaxqgsjBIuistuUs6SuUWr1ZzODJkg-Y06IvUu25X2A5iG?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e641]:
+                            - text: 报告老总
+                            - img "🐵" [ref=e642]
+                - listitem [ref=e643]:
+                  - generic [ref=e644]:
+                    - link "08:23" [ref=e646] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7617290702170590970
+                      - img [ref=e649]
+                      - generic [ref=e654]: 08:23
+                    - generic [ref=e655]:
+                      - 'heading "大学生的脑子是越来越够用了 #大学生#万万没想到#搞笑#整活" [level=3] [ref=e656]':
+                        - 'link "大学生的脑子是越来越够用了 #大学生#万万没想到#搞笑#整活" [ref=e657] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7617290702170590970
+                          - generic [ref=e662]: "大学生的脑子是越来越够用了 #大学生#万万没想到#搞笑#整活"
+                      - generic [ref=e663]:
+                        - generic [ref=e664]:
+                          - img [ref=e665]
+                          - text: "1301"
+                        - link "胖子搞笑解说" [ref=e668] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAXE5aHJRgGQEtsC6UmF_RQatWKyTnyWWgGrbmqVCXLZekIMaQWCZXOtv5D6WHMKvQ?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e673]: 胖子搞笑解说
+                - listitem [ref=e674]:
+                  - generic [ref=e675]:
+                    - link "03:08" [ref=e677] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7637110658655391030
+                      - img [ref=e680]
+                      - generic [ref=e685]: 03:08
+                    - generic [ref=e686]:
+                      - 'heading "给我翻译翻译！什么叫躲猫猫！ #躲猫猫 #三角洲行动 #搞笑 #抽象 #校园" [level=3] [ref=e687]':
+                        - 'link "给我翻译翻译！什么叫躲猫猫！ #躲猫猫 #三角洲行动 #搞笑 #抽象 #校园" [ref=e688] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7637110658655391030
+                          - generic [ref=e693]: "给我翻译翻译！什么叫躲猫猫！ #躲猫猫 #三角洲行动 #搞笑 #抽象 #校园"
+                      - generic [ref=e694]:
+                        - generic [ref=e695]:
+                          - img [ref=e696]
+                          - text: 1.3万
+                        - link "阿哲Ai小剧场" [ref=e699] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAljOCshAtzdIm5wES1oz6a278CZtbYBjKRGUAou9GOBZ9Ys2wXPV27L77-lHqAm7f?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e704]: 阿哲Ai小剧场
+                - listitem [ref=e705]:
+                  - generic [ref=e706]:
+                    - link "11:15" [ref=e708] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7623770657712663409
+                      - img [ref=e711]
+                      - generic [ref=e716]: 11:15
+                    - generic [ref=e717]:
+                      - 'heading "上周逆天事件合集#热点 #热点新闻事件 #离谱" [level=3] [ref=e718]':
+                        - 'link "上周逆天事件合集#热点 #热点新闻事件 #离谱" [ref=e719] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7623770657712663409
+                          - generic [ref=e724]: "上周逆天事件合集#热点 #热点新闻事件 #离谱"
+                      - generic [ref=e725]:
+                        - generic [ref=e726]:
+                          - img [ref=e727]
+                          - text: 4.2万
+                        - link "阿七大型纪录片" [ref=e730] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAptvL9jL0lV_qhvEnHAhZRs5yEekpupXZUwucqRqrhBvMv2XUWQgxBNMRwcIP6Evf?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e735]: 阿七大型纪录片
+                - listitem [ref=e736]:
+                  - generic [ref=e737]:
+                    - link "02:27" [ref=e739] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7615530026997386546
+                      - img [ref=e742]
+                      - generic [ref=e747]: 02:27
+                    - generic [ref=e748]:
+                      - 'heading "我想知道这些学生在写作业时都是什么精神状态！ #搞笑 #作业 #抽象 #学生 #奇葩" [level=3] [ref=e749]':
+                        - 'link "我想知道这些学生在写作业时都是什么精神状态！ #搞笑 #作业 #抽象 #学生 #奇葩" [ref=e750] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7615530026997386546
+                          - generic [ref=e755]: "我想知道这些学生在写作业时都是什么精神状态！ #搞笑 #作业 #抽象 #学生 #奇葩"
+                      - generic [ref=e756]:
+                        - generic [ref=e757]:
+                          - img [ref=e758]
+                          - text: 1.7万
+                        - link "多巴安工作室" [ref=e761] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAgHouh2S7MTEbgtqL7zlXvykba1rANzuo48AnDtgkV6k?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e766]: 多巴安工作室
+                - listitem [ref=e767]:
+                  - generic [ref=e768]:
+                    - link "02:02" [ref=e770] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7638604500286049563
+                      - img [ref=e773]
+                      - generic [ref=e778]: 02:02
+                    - generic [ref=e779]:
+                      - 'heading "社长热点快刷 #热点" [level=3] [ref=e780]':
+                        - 'link "社长热点快刷 #热点" [ref=e781] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7638604500286049563
+                          - generic [ref=e786]: "社长热点快刷 #热点"
+                      - generic [ref=e787]:
+                        - generic [ref=e788]:
+                          - img [ref=e789]
+                          - text: 2.6万
+                        - link "社长" [ref=e792] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAKrzt_wcqfE6AbYRagQt8JhrjQj8WwL6Z8Ea8UxJT6iqAS_BX0VKvWIjTFyPWDqBC?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e797]: 社长
+                - listitem [ref=e798]:
+                  - generic [ref=e799]:
+                    - link "00:53" [ref=e801] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7624098935065838067
+                      - img [ref=e804]
+                      - generic [ref=e809]: 00:53
+                    - generic [ref=e810]:
+                      - 'heading "双方都觉得自己赚到了（cr:@三胆 ）#欧亨利式结尾 #震惊 #万万想不到" [level=3] [ref=e811]':
+                        - 'link "双方都觉得自己赚到了（cr:@三胆 ）#欧亨利式结尾 #震惊 #万万想不到" [ref=e812] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7624098935065838067
+                          - generic [ref=e817]: "双方都觉得自己赚到了（cr:@三胆 ）#欧亨利式结尾 #震惊 #万万想不到"
+                      - generic [ref=e818]:
+                        - generic [ref=e819]:
+                          - img [ref=e820]
+                          - text: "3344"
+                        - link "娱乐喵🐱" [ref=e823] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAE1rqzABtXb1K9EuhXblDDoAiN9EhvB3zN2jw3GPPVs1d5dH7XmBnqsf4QS2XJqwy?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e829]:
+                            - text: 娱乐喵
+                            - img "🐱" [ref=e830]
+                - listitem [ref=e831]:
+                  - generic [ref=e832]:
+                    - link "00:50" [ref=e834] [cursor=pointer]:
+                      - /url: //www.douyin.com/video/7631912085644415739
+                      - img [ref=e837]
+                      - generic [ref=e842]: 00:50
+                    - generic [ref=e843]:
+                      - 'heading "当你成为全校唯一的走读生，绝对牛逼克拉斯！！ #离谱答案 #抽象 #搞笑 #剪映 #校园" [level=3] [ref=e844]':
+                        - 'link "当你成为全校唯一的走读生，绝对牛逼克拉斯！！ #离谱答案 #抽象 #搞笑 #剪映 #校园" [ref=e845] [cursor=pointer]':
+                          - /url: //www.douyin.com/video/7631912085644415739
+                          - generic [ref=e850]: "当你成为全校唯一的走读生，绝对牛逼克拉斯！！ #离谱答案 #抽象 #搞笑 #剪映 #校园"
+                      - generic [ref=e851]:
+                        - generic [ref=e852]:
+                          - img [ref=e853]
+                          - text: "3991"
+                        - link "大橘向前冲(收徒)" [ref=e856] [cursor=pointer]:
+                          - /url: //www.douyin.com/user/MS4wLjABAAAAA1yQYXotSYbm15X6Y_hbj2_LLP4UM0LTUz30Dl9F55s?author_id=4018057545523979&enter_from=video_detail&enter_method=video_cover_title&from_tab_name=main&group_id=7637659979633265972&log_pb=%7B%22impr_id%22%3A%22202605121417284A1C0B6AE952BD3A514F%22%7D&relation=0
+                          - generic [ref=e861]: 大橘向前冲(收徒)
+        - contentinfo [ref=e862]:
+          - generic [ref=e863]:
+            - generic [ref=e864]:
+              - link "广告投放" [ref=e866] [cursor=pointer]:
+                - /url: https://www.oceanengine.com/resource/douyin
+              - link "用户服务协议" [ref=e868] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773906068725565448
+              - link "隐私政策" [ref=e870] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773901168964798477
+              - link "账号找回" [ref=e872] [cursor=pointer]:
+                - /url: https://www.douyin.com/recovery_account/
+              - link "联系我们" [ref=e874] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "加入我们" [ref=e876] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "营业执照" [ref=e878] [cursor=pointer]:
+                - /url: https://www.douyin.com/business_license/
+              - link "友情链接" [ref=e880] [cursor=pointer]:
+                - /url: https://www.douyin.com/friend_links
+              - link "站点地图" [ref=e882] [cursor=pointer]:
+                - /url: https://www.douyin.com/htmlmap/hotauthor_0_1
+              - link "下载抖音" [ref=e884] [cursor=pointer]:
+                - /url: https://www.douyin.com/downloadpage/pc
+              - link "抖音电商" [ref=e886] [cursor=pointer]:
+                - /url: https://mix.jinritemai.com/falcon/mix_page/index.html
+            - generic [ref=e887]:
+              - link "网络谣言曝光台 ｜" [ref=e889] [cursor=pointer]:
+                - /url: https://www.piyao.org.cn/yybgt/index.htm
+              - link "网上有害信息举报" [ref=e891] [cursor=pointer]:
+                - /url: https://www.12377.cn/
+              - generic [ref=e892]: ｜ 违法和不良信息举报：400-140-2108 ｜ 算法推荐专项举报：sfjubao@bytedance.com ｜ 网络内容从业人员违法违规行为举报：feedback@douyin.com | 体育饭圈专项举报：tyfq@bytedance.com
+            - generic [ref=e893]:
+              - link "京ICP备16016397号-3" [ref=e895] [cursor=pointer]:
+                - /url: https://beian.miit.gov.cn/
+              - generic [ref=e896]: ｜ 广播电视节目制作经营许可证 （京）字第11313号
+              - generic [ref=e897]: ｜ 增值电信业务经营许可证 京B2-20170846
+              - generic [ref=e898]: ｜ 网络文化经营许可证 京网文〔2025〕0181-061号 ｜
+              - generic [ref=e899]:
+                - img "icon" [ref=e900]
+                - link "京公网安备 11000002002046号" [ref=e901] [cursor=pointer]:
+                  - /url: http://www.beian.gov.cn/portal/registerSystemInfo
+              - generic [ref=e902]: ｜ 互联网宗教信息服务许可证 京（2025）0000017
+            - generic [ref=e903]:
+              - generic [ref=e905]: 热门：
+              - link "抖音电脑版" [ref=e907] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan
+              - link "抖音官网" [ref=e909] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan
+              - link "美食美味家常菜" [ref=e911] [cursor=pointer]:
+                - /url: https://www.douyin.com/user/MS4wLjABAAAAZP3g4S1AXNTStFEepD1orQPo15oaTheel_6Wd9Hro2Vcefxco5NYfQ3BhnE6uZlB
+              - link "四年级 开始要写#英语作文了，准备这套英语作文，不仅有大量的优秀范文，每一篇都带音频锻炼耳朵听力培养语感" [ref=e913] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7638709460264914195
+              - link "面对不知道该怎么填的专业犯了难" [ref=e915] [cursor=pointer]:
+                - /url: https://www.douyin.com/topic/7509868682340894739
+              - link "高考吃饭" [ref=e917] [cursor=pointer]:
+                - /url: https://www.douyin.com/shipin/7509906696362526760
+              - link "福建高考志愿多久填报" [ref=e919] [cursor=pointer]:
+                - /url: https://www.douyin.com/search/%E7%A6%8F%E5%BB%BA%E9%AB%98%E8%80%83%E5%BF%97%E6%84%BF%E5%A4%9A%E4%B9%85%E5%A1%AB%E6%8A%A5
+              - link "埃文凯尔宣布定居中国" [ref=e921] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7617821949003161259?source=Baiduspider
+              - 'link "长相思二夭柳续写巜不负相思意》第五集更新#长相思第二季 #夭柳 #相柳 #夭柳续写 #长相思相柳" [ref=e923] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7376278815800053043?source=Baiduspider
+              - 'link "汽车美容店工位的灯光如何搭配（上集）#汽车美容 #整店输出洗车店装修 #汽车后市场 #灯光 #SGCB" [ref=e925] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7384282930421566731?source=Baiduspider
+              - generic [ref=e926]:
+                - link:
+                  - /url: https://www.douyin.com/video/7589802214782195441?source=Baiduspider-sdc
+              - 'link "刚出锅的韭菜盒子金黄酥脆，咬一口，鲜香扑鼻，仿佛嚼碎了整个田 野。灶台边热腾腾的烟火里，总是藏着斑驳的时光记忆。#乡村里的这些味道你值得拥有 #韭菜盒子 #乡味食记 #新农人计划2025" [ref=e928] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7538682724870098210?source=Baiduspider
+              - link "原来是漏野的t 害我白高兴一场#暗区突围#暗区突围s15硬核轻松玩#暗区突围s15硬核好玩" [ref=e930] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7568074825421032719?source=Baiduspider
+              - 'link "兄弟们选择题又到了，欧陆GT还是DB11？#不懂就瞎说 #沉浸式说车 #抖音汽车" [ref=e932] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7033234691398405387?source=Baiduspider-sdc

@@ -1,0 +1,248 @@
+- generic [active] [ref=e1]:
+  - button "开启读屏标签" [ref=e2]
+  - generic: 读屏标签已关闭
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: //www.douyin.com/jingxuan
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - link "精选" [ref=e19] [cursor=pointer]:
+            - /url: https://www.douyin.com/jingxuan?from_nav=1
+            - generic [ref=e22]: 精选
+          - link "推荐" [ref=e27] [cursor=pointer]:
+            - /url: https://www.douyin.com/?recommend=1&from_nav=1
+            - generic [ref=e30]: 推荐
+          - link "搜索" [ref=e35] [cursor=pointer]:
+            - /url: https://www.douyin.com/aisearch?from_nav=1
+            - generic [ref=e38]: 搜索
+          - link "关注" [ref=e44] [cursor=pointer]:
+            - /url: https://www.douyin.com/follow?from_nav=1
+            - generic [ref=e47]: 关注
+          - link "朋友" [ref=e52] [cursor=pointer]:
+            - /url: https://www.douyin.com/friend?from_nav=1
+            - generic [ref=e55]: 朋友
+          - link "我的" [ref=e60] [cursor=pointer]:
+            - /url: https://www.douyin.com/user/self?from_nav=1
+            - generic [ref=e63]: 我的
+          - link "直播" [ref=e69] [cursor=pointer]:
+            - /url: https://live.douyin.com/?from_nav=1
+            - generic [ref=e72]: 直播
+          - link "放映厅" [ref=e77] [cursor=pointer]:
+            - /url: https://www.douyin.com/vs?from_nav=1
+            - generic [ref=e80]: 放映厅
+          - link "短剧" [ref=e85] [cursor=pointer]:
+            - /url: https://www.douyin.com/series?from_nav=1
+            - generic [ref=e88]: 短剧
+          - link "小游戏" [ref=e93] [cursor=pointer]:
+            - /url: https://www.douyin.com/microgame?from_nav=1
+            - generic [ref=e96]: 小游戏
+        - generic [ref=e100]:
+          - img [ref=e103] [cursor=pointer]
+          - img [ref=e107] [cursor=pointer]
+          - img [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - banner [ref=e117]:
+        - generic [ref=e119]:
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e126]: 高反女孩林月
+              - textbox [ref=e127]
+            - button "搜索" [ref=e129] [cursor=pointer]:
+              - img [ref=e130]
+              - generic [ref=e132]: 搜索
+          - generic [ref=e136]:
+            - generic [ref=e138] [cursor=pointer]:
+              - img [ref=e140]:
+                - img [ref=e141]
+              - paragraph [ref=e143]: 充钻石
+            - link "客户端" [ref=e148] [cursor=pointer]:
+              - /url: ""
+              - generic [ref=e150]:
+                - img [ref=e152]:
+                  - img [ref=e153]
+                - paragraph [ref=e156]: 客户端
+            - generic [ref=e158] [cursor=pointer]:
+              - img [ref=e160]:
+                - img [ref=e161]
+              - paragraph [ref=e163]: 壁纸
+            - list [ref=e164]:
+              - generic [ref=e168] [cursor=pointer]:
+                - img [ref=e170]:
+                  - img [ref=e171]
+                - paragraph [ref=e174]: 通知
+            - generic [ref=e178] [cursor=pointer]:
+              - img [ref=e180]:
+                - img [ref=e181]
+              - paragraph [ref=e183]: 投稿
+            - button "登录" [ref=e187] [cursor=pointer]:
+              - paragraph [ref=e189]: 登录
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - img [ref=e197]
+              - generic [ref=e200]:
+                - generic [ref=e202]:
+                  - generic [ref=e203]:
+                    - img [ref=e206] [cursor=pointer]:
+                      - img [ref=e207]
+                    - generic [ref=e209] [cursor=pointer]:
+                      - generic [ref=e210]: 00:00
+                      - generic [ref=e211]: /
+                      - generic [ref=e212]: 00:00
+                  - generic [ref=e217]:
+                    - img [ref=e220] [cursor=pointer]:
+                      - img [ref=e221]
+                    - img [ref=e225] [cursor=pointer]
+                    - img [ref=e229] [cursor=pointer]:
+                      - img [ref=e230]
+                    - img [ref=e234] [cursor=pointer]:
+                      - img [ref=e235]
+                    - generic [ref=e242] [cursor=pointer]:
+                      - button [ref=e243]
+                      - generic [ref=e244]: 清屏
+                - generic [ref=e249]:
+                  - img [ref=e251]:
+                    - img [ref=e252]
+                  - img [ref=e256]:
+                    - img [ref=e257]
+                - link "作者声明：内容来源于网络" [ref=e261]:
+                  - /url: undefined
+                  - img [ref=e262]
+                  - generic [ref=e263]: 作者声明：内容来源于网络
+              - generic [ref=e265]:
+                - generic [ref=e267]: 章节要点
+                - img
+            - generic [ref=e270]:
+              - 'heading "5月7日社会热点信息差#热点 #热点新闻事件" [level=1] [ref=e273]':
+                - generic [ref=e276]:
+                  - generic [ref=e279]: 5月7日社会热点信息差
+                  - link "#热点" [ref=e281] [cursor=pointer]:
+                    - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9?enter_from=video_detail&source=pc_click_hashtag_feed
+                  - link "#热点新闻事件" [ref=e286] [cursor=pointer]:
+                    - /url: //www.douyin.com/search/%E7%83%AD%E7%82%B9%E6%96%B0%E9%97%BB%E4%BA%8B%E4%BB%B6?enter_from=video_detail&source=pc_click_hashtag_feed
+              - generic [ref=e287]:
+                - generic [ref=e288]:
+                  - generic [ref=e289] [cursor=pointer]:
+                    - img [ref=e292]
+                    - generic [ref=e300]: "3278"
+                  - generic [ref=e301] [cursor=pointer]:
+                    - img [ref=e304]
+                    - generic [ref=e309]: "128"
+                  - generic [ref=e310] [cursor=pointer]:
+                    - img [ref=e313]
+                    - generic [ref=e322]: "241"
+                  - generic [ref=e323] [cursor=pointer]:
+                    - img [ref=e326]
+                    - generic [ref=e331]: "301"
+                - generic [ref=e332]:
+                  - generic [ref=e333] [cursor=pointer]:
+                    - img [ref=e334]
+                    - generic [ref=e336]: 举报
+                  - generic [ref=e337]: 发布时间：2026-05-07 22:35
+            - generic [ref=e341]:
+              - generic [ref=e343]: 全部评论
+              - generic [ref=e346]:
+                - img [ref=e349] [cursor=pointer]
+                - generic [ref=e358] [cursor=pointer]: 请先登录后发表评论
+              - generic [ref=e360]:
+                - generic [ref=e361]: 大家都在搜：
+                - link "高反女孩林月" [ref=e365] [cursor=pointer]:
+                  - /url: //www.douyin.com/search/%E9%AB%98%E5%8F%8D%E5%A5%B3%E5%AD%A9%E6%9E%97%E6%9C%88?aweme_id=7637158565535043493&enter_from=video_detail&gid=7637158565535043493&source=comment_related_search
+                  - generic [ref=e366]: 高反女孩林月
+                  - img [ref=e367]
+          - generic [ref=e370]:
+            - generic [ref=e371]:
+              - link "阿七大型纪录片" [ref=e374] [cursor=pointer]:
+                - /url: //www.douyin.com/user/MS4wLjABAAAAptvL9jL0lV_qhvEnHAhZRs5yEekpupXZUwucqRqrhBvMv2XUWQgxBNMRwcIP6Evf
+                - listitem [ref=e375]:
+                  - img "阿七大型纪录片" [ref=e376]
+              - generic [ref=e377]:
+                - link "阿七大型纪录片" [ref=e378] [cursor=pointer]:
+                  - /url: //www.douyin.com/user/MS4wLjABAAAAptvL9jL0lV_qhvEnHAhZRs5yEekpupXZUwucqRqrhBvMv2XUWQgxBNMRwcIP6Evf
+                  - generic [ref=e384]: 阿七大型纪录片
+                - paragraph [ref=e385]: 粉丝26.1万获赞1880.3万
+              - button "关注" [ref=e387] [cursor=pointer]:
+                - generic [ref=e388]: 关注
+            - generic [ref=e390]:
+              - heading "推荐视频" [level=2] [ref=e392]
+              - list
+              - img [ref=e395]
+              - img [ref=e406]
+              - img [ref=e417]
+              - img [ref=e428]
+              - img [ref=e439]
+              - img [ref=e450]
+        - contentinfo [ref=e461]:
+          - generic [ref=e462]:
+            - generic [ref=e463]:
+              - link "广告投放" [ref=e465] [cursor=pointer]:
+                - /url: https://www.oceanengine.com/resource/douyin
+              - link "用户服务协议" [ref=e467] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773906068725565448
+              - link "隐私政策" [ref=e469] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773901168964798477
+              - link "账号找回" [ref=e471] [cursor=pointer]:
+                - /url: https://www.douyin.com/recovery_account/
+              - link "联系我们" [ref=e473] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "加入我们" [ref=e475] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "营业执照" [ref=e477] [cursor=pointer]:
+                - /url: https://www.douyin.com/business_license/
+              - link "友情链接" [ref=e479] [cursor=pointer]:
+                - /url: https://www.douyin.com/friend_links
+              - link "站点地图" [ref=e481] [cursor=pointer]:
+                - /url: https://www.douyin.com/htmlmap/hotauthor_0_1
+              - link "下载抖音" [ref=e483] [cursor=pointer]:
+                - /url: https://www.douyin.com/downloadpage/pc
+              - link "抖音电商" [ref=e485] [cursor=pointer]:
+                - /url: https://mix.jinritemai.com/falcon/mix_page/index.html
+            - generic [ref=e486]:
+              - link "网络谣言曝光台 ｜" [ref=e488] [cursor=pointer]:
+                - /url: https://www.piyao.org.cn/yybgt/index.htm
+              - link "网上有害信息举报" [ref=e490] [cursor=pointer]:
+                - /url: https://www.12377.cn/
+              - generic [ref=e491]: ｜ 违法和不良信息举报：400-140-2108 ｜ 算法推荐专项举报：sfjubao@bytedance.com ｜ 网络内容从业人员违法违规行为举报：feedback@douyin.com | 体育饭圈专项举报：tyfq@bytedance.com
+            - generic [ref=e492]:
+              - link "京ICP备16016397号-3" [ref=e494] [cursor=pointer]:
+                - /url: https://beian.miit.gov.cn/
+              - generic [ref=e495]: ｜ 广播电视节目制作经营许可证 （京）字第11313号
+              - generic [ref=e496]: ｜ 增值电信业务经营许可证 京B2-20170846
+              - generic [ref=e497]: ｜ 网络文化经营许可证 京网文〔2025〕0181-061号 ｜
+              - generic [ref=e498]:
+                - img "icon" [ref=e499]
+                - link "京公网安备 11000002002046号" [ref=e500] [cursor=pointer]:
+                  - /url: http://www.beian.gov.cn/portal/registerSystemInfo
+              - generic [ref=e501]: ｜ 互联网宗教信息服务许可证 京（2025）0000017
+            - generic [ref=e502]:
+              - generic [ref=e504]: 热门：
+              - link "抖音游戏" [ref=e506] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan/game
+              - link "二次元视频大全" [ref=e508] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan/acg
+              - link "彪汉农机服务有限公司" [ref=e510] [cursor=pointer]:
+                - /url: https://www.douyin.com/user/MS4wLjABAAAAC902d30IMA9KOr89SoowBh1glk30yELpaHCPRylCFYQ
+              - 'link "短期备考社区，建议大家直接按这个顺序学 #社区 #闫静社工 #社区工作者 #社区招聘笔试 #社区工作者招聘" [ref=e512] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7638565666022700473
+              - link "普通高考与中职高考的区别" [ref=e514] [cursor=pointer]:
+                - /url: https://www.douyin.com/topic/7509880945927981071
+              - link "骨折钉钢板能参加高考吗" [ref=e516] [cursor=pointer]:
+                - /url: https://www.douyin.com/shipin/7509895775716034610
+              - link "莒县高考考点" [ref=e518] [cursor=pointer]:
+                - /url: https://www.douyin.com/search/%E8%8E%92%E5%8E%BF%E9%AB%98%E8%80%83%E8%80%83%E7%82%B9
+              - link "王树国：新的教育形态正在诞生" [ref=e520] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7579916198398184746?source=Baiduspider
+              - 'link "PCB新增量：高密度互连HDI概念10大龙头股#芯片 #电子元器件 #财经" [ref=e522] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7377331070942907667?source=Baiduspider
+              - link "中国农业科学院成立于1957年，是农业农村部直属的综合性农业科研机构，现有院办公室、科技管理局、人事局、财务局、发展建设局、国际合作局、成果转化局、重大任务局、直属机关党委、监督局等10个职能部门，作物科学所、植物保护所、蔬菜花卉所、哈尔滨兽医所等34个直属研究所，以及研究生院和中国农业科技出版社，共46个部门和单位。中国农业科学院是国家设立的中央级农业科研机构，是全国综合性农业科学研究的最高学术机构，是农业及农业科学技术战略咨询机构，是三农领域国家战略科技力量，担负着全国农业重大基础与应用基础研究、应用" [ref=e524] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7375654863184612634?source=Baiduspider
+              - 'link "像我一样喜欢在家吃火锅的，#苏泊尔鸳鸯电火锅 真的超实用，一边清汤一边麻辣，周末约上好友在家吃太惬意了#电煮锅 #鸳鸯锅 #多功能 #家庭火锅 z" [ref=e526] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7575849907483938063?source=Baiduspider-sdc
+              - 'link "《戏》完整版健身操，高效燃脂瘦全身，瘦手臂后背，肚子平了，腰细了#居家锻炼 #有氧健身操#轻松甩掉大肚腩水桶腰 #瘦全身#大肚腩变小蛮腰@DOU+小助手 @DOU+上热门" [ref=e528] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7437698045225061695?source=Baiduspider
+              - 'link "幺妹说家里没零食吃了，我就给她掰几个玉米回来 #舒老七与李幺妹 #我的乡村生活 #三农" [ref=e530] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7385441403418987788?source=Baiduspider
+              - 'link "三周后省考，五周后事考，如何短期突击，做好以上三点 #省考 #事业编 #行测 #政治理论 #申论字帖" [ref=e532] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7473470588351237402?source=Baiduspider-sdc

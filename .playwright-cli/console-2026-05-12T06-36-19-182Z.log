@@ -1,0 +1,136 @@
+[     222ms] [LOG] %c JSHandle@node @ https://www.douyin.com/video/7637158565535043493:0
+[     915ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://www.douyin.com/video/7637158565535043493:0
+[     924ms] [LOG] init slardar @ https://www.douyin.com/video/7637158565535043493:21
+[     924ms] [LOG] init slardar success @ https://www.douyin.com/video/7637158565535043493:101
+[    1134ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=douyin_web&store=1:0
+[    3288ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_browser/collect/batch/security/?bid=douyin_web:0
+[    4335ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/webid?aid=6383&sdk_version=5.1.24_dy:0
+[    4550ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=verify_center_cn&store=1:0
+[    5207ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-cdn-tos.bytescm.com/obj/rc-verifycenter/rmc-nocaptcha/1.0.0.17/setup.js:37
+[    5641ms] [WARNING] [SDK] 1778567784820        0 already inited @ https://lf3-short.ibytedapm.com/slardar/fe/sdk-web/browser.cn.js?bid=douyin_web&globalName=Slardar:0
+[    5662ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/webid?aid=3722&sdk_version=5.1.24_dy:0
+[    6609ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[    6663ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/player-9.5bce67d7.js:1
+[    6664ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/player-9.5bce67d7.js:1
+[    6673ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/player-9.5bce67d7.js:1
+[    7071ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[    7168ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[    7268ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7341ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7342ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7342ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7345ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7345ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7345ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7347ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7347ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7347ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7347ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    7347ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    8060ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    8084ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    8715ms] [WARNING] %c[xgplayer] color: #525252; background-color: yellow;  warn>>icons.[object Object] in config of plugin named [texttrack] is invalid @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/22373.e5335cbb.js:1
+[    8717ms] [WARNING] %c[xgplayer] color: #525252; background-color: yellow;  warn>>icons.[object Object] in config of plugin named [texttrack] is invalid @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/22373.e5335cbb.js:1
+[    8866ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/async/81708.1a4fea9d.js:1
+[    8944ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://zz.bdstatic.com/linksubmit/push.js:0
+[    8951ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/webid:0
+[    9057ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=verify_center_cn&store=1:0
+[    9378ms] [ERROR] Failed to launch 'bitbrowser://cc/' because the scheme does not have a registered handler. @ https://www.douyin.com/video/7637158565535043493:0
+[    9517ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/webid:0
+[    9596ms] [WARNING] %c[xgplayer] color: #525252; background-color: yellow;  >>>>playPromise.catch NotAllowedError @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/libs/pre-build-xgplayer.6a3ae0d0.js:0
+[    9669ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_browser/collect/batch/security/?bid=douyin_web:0
+[    9832ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=uc_secure_sdk&store=1:0
+[    9835ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/async/5498.f04a4d15.js:1
+[    9863ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[    9863ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   10074ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   10074ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mssdk.bytedance.com/web/r/token?ms_appid=6383:0
+[   10075ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   10979ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   11081ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   11082ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   11136ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   11660ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   11804ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=douyin_login_new&store=1:0
+[   11931ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_browser/collect/batch/security/?bid=douyin_web:0
+[   12346ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   12715ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/async/81708.1a4fea9d.js:1
+[   12717ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/async/81708.1a4fea9d.js:1
+[   12723ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/async/81708.1a4fea9d.js:1
+[   13165ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   13550ms] [LOG] [ Federation Runtime ] Version 18.3.0-canary-587ae49d7-20230720 from @demo/douyin-web of shared singleton module react does not satisfy the requirement of @revenue-wallet-fe/recharge-web which needs ^18.3.1) @ https://lf3-webcast.bytetos.com/obj/webcast-new/recharge_web_vmok/vmok-remote-entry.9a192be8.js:3
+[   13551ms] [LOG] [ Federation Runtime ] Version 18.3.0-canary-587ae49d7-20230720 from @demo/douyin-web of shared singleton module react-dom does not satisfy the requirement of @revenue-wallet-fe/recharge-web which needs ^18.3.1) @ https://lf3-webcast.bytetos.com/obj/webcast-new/recharge_web_vmok/vmok-remote-entry.9a192be8.js:3
+[   13555ms] [WARNING] Cannot assign to read only property 'call' of object '#<Object>' @ https://lf3-webcast.bytetos.com/obj/webcast-new/recharge_web_vmok/static/js/async/__federation_expose_data.783d5811.js:1
+[   13565ms] [LOG] getRechargePackages requestParams {path: /webcast/diamond/, queryParams: Object} @ https://lf3-webcast.bytetos.com/obj/webcast-new/recharge_web_vmok/static/js/async/__federation_expose_data.783d5811.js:1
+[   13610ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mssdk.bytedance.com/web/r/token?ms_appid=6383:0
+[   13627ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   13742ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ :2
+[   13744ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ :2
+[   13880ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ :2
+[   13902ms] [LOG] [prefetch] packageData [local]:  {packages: Array(7), extra: Object} @ https://lf3-webcast.bytetos.com/obj/webcast-new/recharge_web_vmok/static/js/async/__federation_expose_data.783d5811.js:1
+[   13905ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/webid?aid=7497&sdk_version=5.1.24_dy:0
+[   13949ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_browser/collect/batch/security/?bid=douyin_web:0
+[   13990ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=7497&sdk_version=5.1.24_dy:0
+[   13990ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=7497&sdk_version=5.1.24_dy:0
+[   14118ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   14128ms] [LOG] [c0] @ :2
+[   14270ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   14336ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/7528.db2dc206.js:1
+[   14337ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/7528.db2dc206.js:1
+[   14345ms] [ERROR] The Content Security Policy directive 'upgrade-insecure-requests' is ignored when delivered in a report-only policy. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/7528.db2dc206.js:1
+[   14395ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   14474ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/ies/douyin_web/38229.6a49a1ce.js:1
+[   14901ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   15005ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   15042ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   16236ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mon.zijieapi.com/monitor_browser/collect/batch/security/?bid=douyin_web:0
+[   16763ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   16997ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   17301ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   17308ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[   17588ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   17589ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[   18894ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   19375ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   19379ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[   20328ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   20331ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[   21759ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/bdms_1.0.1.19_fix.js:1
+[   21853ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/bdms_1.0.1.19_fix.js:1
+[   22018ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mssdk.bytedance.com/web/common?ms_appid=6383:0
+[   23827ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   24083ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   35690ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   35871ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   36188ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   36695ms] [LOG] Service worker registration success @ https://www.douyin.com/video/7637158565535043493:944
+[   43758ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   43804ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   46745ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   47030ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   52758ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   52964ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   59645ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   59745ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   64761ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   65929ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   66420ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=3722&sdk_version=5.1.24_dy:0
+[   66695ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   69489ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list:0
+[   70063ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   72729ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   72828ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   73658ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   73953ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=7497&sdk_version=5.1.24_dy:0
+[   74174ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   75573ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   75690ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   78646ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   79727ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   84778ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
+[   84926ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://mcs.zijieapi.com/list?aid=6383&sdk_version=5.1.24_dy:0
