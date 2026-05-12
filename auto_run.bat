@@ -5,6 +5,14 @@ cd /d C:\Users\Kevin\WorkBuddy\2026-05-08-task-5\hot-info
 
 echo [%date% %time%] start >> auto_run.log
 
+:: ========== 直连GitHub：清除代理环境变量 ==========
+set HTTP_PROXY=
+set HTTPS_PROXY=
+set http_proxy=
+set https_proxy=
+set ALL_PROXY=
+set all_proxy=
+
 git pull --ff-only origin main >> auto_run.log 2>&1
 
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe generate_hot.py --local >> auto_run.log 2>&1
