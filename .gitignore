@@ -1,1 +1,6 @@
 __pycache__/
+.playwright-cli/
+asr_temp/
+douyin_cookies.txt
+*.tmp
+auto_run.log

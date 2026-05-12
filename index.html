@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605121510" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605121517" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -787,7 +787,13 @@ function renderInspire(){
 
   // 选热度最高的前10条，打乱取5条
   const hotItems = [...recent].sort((a,b) => (b.likes||0) - (a.likes||0)).slice(0,10);
-  const shuffled = [...hotItems].sort(() => Math.random() - 0.5).slice(0,5);
+  // Fisher-Yates 均匀随机排列
+  const shuffled = [...hotItems];
+  for(let i=shuffled.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
+  }
+  const picks=shuffled.slice(0,5);
 
   // 网吧信息差 标题模板 + 结构模板
   const wangbaTemplates = [
@@ -858,7 +864,7 @@ function renderInspire(){
   const todayStr = new Date().toLocaleDateString('zh-CN', {month:'numeric', day:'numeric'});
   let h = `<div class="section-title">🎯 今日选题推荐 <span style="font-size:11px;color:var(--text-muted);font-weight:400">基于最近${recent.length}条热点自动生成 · 刷新页面换一组</span></div>`;
 
-  shuffled.forEach((item, idx) => {
+  picks.forEach((item, idx) => {
     const rawTitle = item.title.replace(/\[.*?\]\s*/g, '');
     const wt = wangbaTemplates[idx % wangbaTemplates.length];
     const at = aqiTemplates[idx % aqiTemplates.length];
