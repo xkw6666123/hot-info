@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605121116" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605121206" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -1127,13 +1127,11 @@ function renderInspire(){
 // 爆款视频拆解
 function renderAnalysis(){
   const el=document.getElementById('content');
-  // 显示所有博主视频，先按博主分组，再组内按日期降序
+  // 按博主分组，组内按热度（点赞）降序
   const allVids=data.filter(a=>a.source==='blogger').sort((a,b)=>{
     const nc=(a.blogger_name||'').localeCompare(b.blogger_name||'');
     if(nc!==0)return nc;
-    const dc=(b.date||'').localeCompare(a.date||'');
-    if(dc!==0)return dc;
-    return (b.time||'').localeCompare(a.time||'');
+    return (b.likes||0)-(a.likes||0);
   });
   if(!allVids.length){el.innerHTML='<div class="empty-state"><div class="icon">🔬</div><p>暂无视频数据</p></div>';return}
 
