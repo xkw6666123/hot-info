@@ -979,3 +979,192 @@ To https://github.com/xkw6666123/hot-info.git
    0f501d6..274dbfc  main -> main
 [周二 2026/05/12  1:00:24.21] pushed to GitHub 
 [周二 2026/05/12  1:00:27.71] done 
+[周二 2026/05/12  2:00:02.36] start 
+fatal: unable to access 'https://github.com/xkw6666123/hot-info.git/': Recv failure: Connection was reset
+==================================================
+  热点数据自动采集 - 2026-05-12 02:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: bilibili, 财联社热门, 华尔街见闻, 抖音, 凤凰网, 百度热搜, 今日头条, 知乎, 公众号热点, 微博)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100699 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main f46836a] auto: update (local)
+ 2 files changed, 4387 insertions(+), 35 deletions(-)
+fatal: unable to access 'https://github.com/xkw6666123/hot-info.git/': Recv failure: Connection was reset
+[周二 2026/05/12  2:00:42.28] pushed to GitHub 
+[周二 2026/05/12  2:01:02.44] done 
+[周二 2026/05/12  3:00:02.33] start 
+From https://github.com/xkw6666123/hot-info
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+==================================================
+  热点数据自动采集 - 2026-05-12 03:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 今日头条, 华尔街见闻, 财联社热门, 知乎, 凤凰网, 微博, 抖音, 公众号热点, 百度热搜, bilibili)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100722 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main be7e83c] auto: update (local)
+ 2 files changed, 148 insertions(+), 148 deletions(-)
+To https://github.com/xkw6666123/hot-info.git
+   3fb6dcf..be7e83c  main -> main
+[周二 2026/05/12  3:00:24.02] pushed to GitHub 
+[周二 2026/05/12  3:00:27.39] done 
+[周二 2026/05/12  8:43:10.71] start 
+From https://github.com/xkw6666123/hot-info
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+==================================================
+  热点数据自动采集 - 2026-05-12 08:43 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 抖音, 微博, 百度热搜, 华尔街见闻, 知乎, 凤凰网, 今日头条, bilibili, 财联社热门, 公众号热点)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100715 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main 1f81165] auto: update (local)
+ 2 files changed, 92 insertions(+), 92 deletions(-)
+To https://github.com/xkw6666123/hot-info.git
+   be7e83c..1f81165  main -> main
+[周二 2026/05/12  8:43:46.81] pushed to GitHub 
+[周二 2026/05/12  8:43:50.54] done 
+[周二 2026/05/12  9:00:02.08] start 
+From https://github.com/xkw6666123/hot-info
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+==================================================
+  热点数据自动采集 - 2026-05-12 09:00 [local]
+==================================================
+
+📡 百度热搜...
+  ✅ 百度热搜: 0 条
+📡 知乎热榜...
+  ⚠️ 获取失败 (3次重试): https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?l → HTTP Error 401: Authorization Required
+  ✅ 知乎: 0 条
+📡 B站热搜...
+  ✅ B站: 0 条
+📡 今日头条...
+  ✅ 今日头条: 0 条
+📡 澎湃新闻...
+  ✅ 澎湃新闻: 10 条
+📡 华尔街见闻...
+  ✅ 华尔街见闻: 0 条
+📡 财联社...
+  ⚠️ 获取失败 (3次重试): https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4. → HTTP Error 405: Method Not Allowed
+  ✅ 财联社: 0 条
+📡 凤凰网...
+  ✅ 凤凰网: 0 条
+📡 贴吧...
+  ✅ 贴吧: 10 条
+📡 微博热搜...
+  ✅ 微博: 0 条
+📡 抖音热榜...
+  ✅ 抖音: 0 条
+📡 公众号热点...
+  ⚠️ 获取失败 (3次重试): https://api.vvhan.com/api/hotlist/weixin → <urlopen error [Errno 11001] getaddrinfo failed>
+  ✅ 公众号: 0 条
+  🛟 保留 16 条旧博主数据
+  🛟 保留 224 条旧数据 (来自: 抖音, 凤凰网, 财联社热门, bilibili, 百度热搜, 华尔街见闻, 微博, 知乎, 今日头条, 公众号热点)
+
+✅ 生成完成: 260 条热点 + 15 条灵感
+   输出文件: data.json
+[OK] data.js done (100715 bytes)
+warning: in the working copy of 'data.js', LF will be replaced by CRLF the next time Git touches it
+[main 1ff29dc] auto: update (local)
+ 2 files changed, 42 insertions(+), 42 deletions(-)
+To https://github.com/xkw6666123/hot-info.git
+   8894625..1ff29dc  main -> main
+[周二 2026/05/12  9:00:26.60] pushed to GitHub 
+[周二 2026/05/12  9:00:30.01] done 
