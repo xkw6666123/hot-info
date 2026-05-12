@@ -14,6 +14,9 @@ set ALL_PROXY=
 set all_proxy=
 
 git pull --ff-only origin main >> auto_run.log 2>&1
+if errorlevel 1 (
+    echo [%date% %time%] WARNING: git pull failed, continuing with local data >> auto_run.log
+)
 
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe generate_hot.py --local >> auto_run.log 2>&1
 if errorlevel 1 (
@@ -27,7 +30,15 @@ if errorlevel 1 (
     exit /b 1
 )
 
-git add data.json data.js >> auto_run.log 2>&1
+:: 检查数据完整性（至少 50 条才推送）
+for /f %%i in ('C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe -c "import json;print(len(json.load(open('data.json',encoding='utf-8-sig'))['articles']))"') do set ART_COUNT=%%i
+echo [%date% %time%] articles: %ART_COUNT% >> auto_run.log
+if %ART_COUNT% LSS 50 (
+    echo [%date% %time%] WARNING: only %ART_COUNT% articles, skipping push >> auto_run.log
+    exit /b 1
+)
+
+git add data.json data.js index.html >> auto_run.log 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     git commit -m "auto: update (local)" >> auto_run.log 2>&1

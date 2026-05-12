@@ -462,7 +462,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605121437" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605121510" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -632,7 +632,7 @@ function renderFeatured(){
 }
 
 function renderCard(a){
-  const liked=getLikes().includes(a.id);
+  const liked=getLikes().includes(String(a.id));
   const isBlogger=a.source==='blogger';
   // 检测爆款/争议标签
   const tags=a.tags||[];
@@ -683,7 +683,12 @@ function toggleLike(id,tags){
       if(likedItem&&likedItem.tags)ts.push(...likedItem.tags)
     })
     ts=[...new Set(ts)]
-  }else{ids.push(id);ts=[...new Set([...ts,...(tags||[])])]}
+  }else{ids.push(id);
+    // tags 是 JSON 字符串，需要 parse
+    let parsedTags=[];
+    try{parsedTags=JSON.parse(tags||'[]')}catch(e){parsedTags=[]}
+    ts=[...new Set([...ts,...parsedTags])]
+  }
   localStorage.setItem('likes',JSON.stringify(ids))
   localStorage.setItem('likeTags',JSON.stringify(ts))
   renderCurrent()
@@ -691,7 +696,7 @@ function toggleLike(id,tags){
 
 let currentFilter='all';
 function renderCurrent(){
-  if(currentFilter==='all')renderFeatured();
+  if(currentFilter==='all'){renderTags('全部');renderFeatured();}
   else if(currentFilter==='inspire')renderInspire();
   else if(currentFilter==='trend')renderTrend();
   else if(currentFilter==='analysis')renderAnalysis();

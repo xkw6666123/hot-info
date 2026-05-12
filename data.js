@@ -508,7 +508,7 @@ window.__HOT_DATA__ = {
 "争议"
 ]
 },
-"content_intro": "字幕by索兰娅"
+"content_intro": "放空自己。"
 },
 {
 "id": 676597854,
@@ -752,7 +752,7 @@ window.__HOT_DATA__ = {
 "社会百态"
 ],
 "url": "https://www.douyin.com/video/7637946752192457334",
-"content_intro": "字幕by索兰娅",
+"content_intro": "好消息刚哥包鱼塘血赚，坏消息刚哥“李赔光”名号塌房！",
 "source": "blogger",
 "comments": 0,
 "summary": "好消息刚哥包鱼塘血赚，坏消息刚哥“李赔光”名号塌房！",
@@ -786,7 +786,7 @@ window.__HOT_DATA__ = {
 "女装"
 ],
 "url": "https://www.douyin.com/video/7637163836483684836",
-"content_intro": "字幕by索兰娅",
+"content_intro": "4xl女顾客五一前购买24件新衣，节后全部退还老板崩溃！#高能#搞笑#集美#女装#女装退货",
 "source": "blogger",
 "comments": 0,
 "summary": "4xl女顾客五一前购买24件新衣，节后全部退还老板崩溃！#高能#搞笑#集美#女装#女装退货",

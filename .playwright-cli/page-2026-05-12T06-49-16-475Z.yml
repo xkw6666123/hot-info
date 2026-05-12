@@ -1,0 +1,160 @@
+- generic [active] [ref=e1]:
+  - button "开启读屏标签" [ref=e2]
+  - generic: 读屏标签已关闭
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: //www.douyin.com/
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - link "精选" [ref=e19] [cursor=pointer]:
+            - /url: https://www.douyin.com/jingxuan?from_nav=1
+            - generic [ref=e22]: 精选
+          - link "推荐" [ref=e27] [cursor=pointer]:
+            - /url: https://www.douyin.com/?recommend=1&from_nav=1
+            - generic [ref=e30]: 推荐
+          - link "搜索" [ref=e35] [cursor=pointer]:
+            - /url: https://www.douyin.com/aisearch?from_nav=1
+            - generic [ref=e38]: 搜索
+          - link "关注" [ref=e44] [cursor=pointer]:
+            - /url: https://www.douyin.com/follow?from_nav=1
+            - generic [ref=e47]: 关注
+          - link "朋友" [ref=e52] [cursor=pointer]:
+            - /url: https://www.douyin.com/friend?from_nav=1
+            - generic [ref=e55]: 朋友
+          - link "我的" [ref=e60] [cursor=pointer]:
+            - /url: https://www.douyin.com/user/self?from_nav=1
+            - generic [ref=e63]: 我的
+          - link "直播" [ref=e69] [cursor=pointer]:
+            - /url: https://live.douyin.com/?from_nav=1
+            - generic [ref=e72]: 直播
+          - link "放映厅" [ref=e77] [cursor=pointer]:
+            - /url: https://www.douyin.com/vs?from_nav=1
+            - generic [ref=e80]: 放映厅
+          - link "短剧" [ref=e85] [cursor=pointer]:
+            - /url: https://www.douyin.com/series?from_nav=1
+            - generic [ref=e88]: 短剧
+          - link "小游戏" [ref=e93] [cursor=pointer]:
+            - /url: https://www.douyin.com/microgame?from_nav=1
+            - generic [ref=e96]: 小游戏
+        - generic [ref=e100]:
+          - img [ref=e103] [cursor=pointer]
+          - img [ref=e107] [cursor=pointer]
+          - img [ref=e111] [cursor=pointer]
+    - generic [ref=e114]:
+      - banner [ref=e117]:
+        - generic [ref=e119]:
+          - generic [ref=e123]:
+            - textbox "搜索你感兴趣的内容" [ref=e125]
+            - button "搜索" [ref=e127] [cursor=pointer]:
+              - img [ref=e128]
+              - generic [ref=e130]: 搜索
+          - generic [ref=e134]:
+            - generic [ref=e136] [cursor=pointer]:
+              - img [ref=e138]:
+                - img [ref=e139]
+              - paragraph [ref=e141]: 充钻石
+            - link "客户端" [ref=e146] [cursor=pointer]:
+              - /url: ""
+              - generic [ref=e148]:
+                - img [ref=e150]:
+                  - img [ref=e151]
+                - paragraph [ref=e154]: 客户端
+            - generic [ref=e156] [cursor=pointer]:
+              - img [ref=e158]:
+                - img [ref=e159]
+              - paragraph [ref=e161]: 壁纸
+            - list [ref=e162]:
+              - generic [ref=e166] [cursor=pointer]:
+                - img [ref=e168]:
+                  - img [ref=e169]
+                - paragraph [ref=e172]: 通知
+            - generic [ref=e176] [cursor=pointer]:
+              - img [ref=e178]:
+                - img [ref=e179]
+              - paragraph [ref=e181]: 投稿
+            - button "登录" [ref=e185] [cursor=pointer]:
+              - paragraph [ref=e187]: 登录
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - paragraph [ref=e192]: 你要观看的视频不存在
+          - paragraph
+          - generic [ref=e194]:
+            - img [ref=e198]
+            - img [ref=e208]
+            - img [ref=e218]
+            - img [ref=e228]
+            - img [ref=e238]
+          - paragraph [ref=e245] [cursor=pointer]: 去精选页查看更多视频
+        - contentinfo [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]:
+              - link "广告投放" [ref=e250] [cursor=pointer]:
+                - /url: https://www.oceanengine.com/resource/douyin
+              - link "用户服务协议" [ref=e252] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773906068725565448
+              - link "隐私政策" [ref=e254] [cursor=pointer]:
+                - /url: https://www.douyin.com/agreements/?id=6773901168964798477
+              - link "账号找回" [ref=e256] [cursor=pointer]:
+                - /url: https://www.douyin.com/recovery_account/
+              - link "联系我们" [ref=e258] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "加入我们" [ref=e260] [cursor=pointer]:
+                - /url: https://www.douyin.com/aboutus/
+              - link "营业执照" [ref=e262] [cursor=pointer]:
+                - /url: https://www.douyin.com/business_license/
+              - link "友情链接" [ref=e264] [cursor=pointer]:
+                - /url: https://www.douyin.com/friend_links
+              - link "站点地图" [ref=e266] [cursor=pointer]:
+                - /url: https://www.douyin.com/htmlmap/hotauthor_0_1
+              - link "下载抖音" [ref=e268] [cursor=pointer]:
+                - /url: https://www.douyin.com/downloadpage/pc
+              - link "抖音电商" [ref=e270] [cursor=pointer]:
+                - /url: https://mix.jinritemai.com/falcon/mix_page/index.html
+            - generic [ref=e271]:
+              - link "网络谣言曝光台 ｜" [ref=e273] [cursor=pointer]:
+                - /url: https://www.piyao.org.cn/yybgt/index.htm
+              - link "网上有害信息举报" [ref=e275] [cursor=pointer]:
+                - /url: https://www.12377.cn/
+              - generic [ref=e276]: ｜ 违法和不良信息举报：400-140-2108 ｜ 算法推荐专项举报：sfjubao@bytedance.com ｜ 网络内容从业人员违法违规行为举报：feedback@douyin.com | 体育饭圈专项举报：tyfq@bytedance.com
+            - generic [ref=e277]:
+              - link "京ICP备16016397号-3" [ref=e279] [cursor=pointer]:
+                - /url: https://beian.miit.gov.cn/
+              - generic [ref=e280]: ｜ 广播电视节目制作经营许可证 （京）字第11313号
+              - generic [ref=e281]: ｜ 增值电信业务经营许可证 京B2-20170846
+              - generic [ref=e282]: ｜ 网络文化经营许可证 京网文〔2025〕0181-061号 ｜
+              - generic [ref=e283]:
+                - img "icon" [ref=e284]
+                - link "京公网安备 11000002002046号" [ref=e285] [cursor=pointer]:
+                  - /url: http://www.beian.gov.cn/portal/registerSystemInfo
+              - generic [ref=e286]: ｜ 互联网宗教信息服务许可证 京（2025）0000017
+            - generic [ref=e287]:
+              - generic [ref=e289]: 热门：
+              - link "游戏攻略" [ref=e291] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan/game
+              - link "抖音精选" [ref=e293] [cursor=pointer]:
+                - /url: https://www.douyin.com/jingxuan
+              - link "SKY-郭震" [ref=e295] [cursor=pointer]:
+                - /url: https://www.douyin.com/user/MS4wLjABAAAAd0XYE1h9voS31UUZwuSbNYy3ivaK0XqI4RhlqB4QHCo
+              - 'link "Audencia数字营销理专业里一门有意思的课程 来自Audencia数字营销理学硕士生的VLOG#audencia #法国商学院 #南特高等商学院" [ref=e297] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7638516463229324584
+              - link "高考重要还是亲人重要" [ref=e299] [cursor=pointer]:
+                - /url: https://www.douyin.com/topic/7509876454252185640
+              - link "批次分数线什么意思" [ref=e301] [cursor=pointer]:
+                - /url: https://www.douyin.com/shipin/7509913870715176986
+              - link "宜宾高考时间安排表2025" [ref=e303] [cursor=pointer]:
+                - /url: https://www.douyin.com/search/%E5%AE%9C%E5%AE%BE%E9%AB%98%E8%80%83%E6%97%B6%E9%97%B4%E5%AE%89%E6%8E%92%E8%A1%A82025
+              - link "刘回杯百万奖金开战" [ref=e305] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7636007391498194214?source=Baiduspider
+              - 'link "#小说 #甜宠 传说影帝有一个神秘娇妻，宠爱入骨，全网都在扒这个神秘女人是谁，但无一成功。 终于有一天，影帝携神秘娇妻上恋综了！ 咦？上的怎么是离婚恋综？" [ref=e307] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7365443628799462667?source=Baiduspider
+              - link "【坐146去二仙桥】成都公交146路二环建设南路口方向全程前方展望" [ref=e309] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7363908452185312575?source=Baiduspider
+              - link "亲子活动，宝贝们棒棒哒" [ref=e311] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7588349994085310705?source=Baiduspider-sdc
+              - link "八一双拥晚会歌曲《未来我来》燃爆全场#上栗" [ref=e313] [cursor=pointer]:
+                - /url: https://www.douyin.com/video/7263022311492652324?source=Baiduspider
+              - 'link "鲨鱼巅峰赛偶遇送分仔？无延迟狙击队开始上强度！ #2025pel春决 #2025pel春季赛 #和平精英辉羽雀灵 #和平精英保护雀灵挑战攻略 #和平精英本地人穿搭" [ref=e315] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7503558461054094603?source=Baiduspider
+              - 'link "铮铮上官婉儿实在是太坏了，抓的亚瑟快要自闭了 #我的高能时刻 #细节操作 #游戏日常 #峡谷艺术 #这是一个悲伤的故事" [ref=e317] [cursor=pointer]':
+                - /url: https://www.douyin.com/video/7050757514874408196?source=Baiduspider-sdc

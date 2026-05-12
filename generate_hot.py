@@ -871,9 +871,9 @@ def main(mode="full"):
     insp_sources = blogger_items[:3] + other_items[:12]
     inspirations = generate_inspirations(insp_sources[:15])
 
-    # 为所有博主视频生成内容简介（基于同日期新闻数据）
+    # 为缺少 content_intro 的博主视频补充基础简介（不覆盖 ASR 已提取的内容）
     for a in all_articles:
-        if a.get("source") == "blogger":
+        if a.get("source") == "blogger" and not a.get("content_intro"):
             a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # 构建 data.json
@@ -887,8 +887,10 @@ def main(mode="full"):
         "updated_at": datetime.now().isoformat(),
     }
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    tmp_file = OUTPUT_FILE + ".tmp"
+    with open(tmp_file, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
+    os.replace(tmp_file, OUTPUT_FILE)
 
     print(f"\n✅ 生成完成: {len(all_articles)} 条热点 + {len(inspirations)} 条灵感")
     print(f"   输出文件: {OUTPUT_FILE}")
