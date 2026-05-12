@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-视频内容简介生成器（最终版）
-规则：直接用视频 desc（作者原始文案）
-- desc有实质内容的 → 直接展示
-- desc等于标题 → 标注"视频描述"后展示话题标签
+视频内容简介生成器
+规则：只用真实数据，绝不生成模板文案
+- desc 有实质内容（>30字且不=标题）→ 直接使用
+- desc 只有标题+话题 → 保留话题部分
+- 没有任何有效描述 → 留空，等待 ASR 提取
 """
 import json
 
@@ -11,28 +12,23 @@ import json
 def generate_intro(v):
     desc = (v.get("summary") or v.get("title") or "").strip()
     title = (v.get("title") or "").strip()
-    blogger = v.get("blogger_name", "")
     
-    # 提取纯文本（去标签）和话题标签
+    # 提取纯文本和话题标签
     parts = desc.split("#")
     main_text = parts[0].strip()
     hashtags = [h.strip() for h in parts[1:] if h.strip()]
     
-    # 有长描述（比如阿七的"三个有趣的生活小事件..."）
+    # 有实质性长描述（排除纯标题的情况）
     if len(main_text) > 30 and main_text != title[:len(main_text)]:
         return desc
     
-    # 描述就是标题本身
-    if blogger in ("阿七大型纪录片", "信息黑板报", "沙漠一之雕"):
-        if hashtags:
-            return f"视频描述：{main_text}\n话题：{' #'.join(hashtags[:8])}"
-        return f"视频描述：{main_text}"
+    # 只有标题+话题：把话题作为补充信息
+    if hashtags:
+        tags_str = " #".join(hashtags[:8])
+        return f"{main_text}\n话题：#{tags_str}"
     
-    # 其他博主可能有更多内容
-    if len(desc) > len(title) + 10:
-        return desc  # 描述比标题长，展示完整版
-    
-    return desc
+    # 什么都没有：留空等 ASR
+    return ""
 
 
 def main():
@@ -43,8 +39,15 @@ def main():
     for a in d["articles"]:
         if a.get("source") != "blogger":
             continue
+        
         new_intro = generate_intro(a)
-        if new_intro != a.get("content_intro", ""):
+        old_intro = a.get("content_intro", "")
+        
+        # 只在有实质性内容时更新；不覆盖已有的真实转录
+        if new_intro and new_intro != old_intro:
+            # 检查是否已有真实转录（ASR 结果），不要覆盖
+            if old_intro and len(old_intro) > 50 and not old_intro.startswith("视频描述"):
+                continue  # 保留已有的真实转录
             a["content_intro"] = new_intro
             count += 1
     
@@ -55,8 +58,11 @@ def main():
     print(f"✅ {count} 条已更新\n")
     for a in d["articles"]:
         if a.get("source") == "blogger":
-            print(f"[{a['blogger_name']}] {a.get('date','?')}")
-            print(f"  {a['content_intro'][:120]}")
+            ci = a.get("content_intro", "")
+            status = f"({len(ci)}字)" if ci else "(空-等ASR)"
+            print(f"[{a['blogger_name']}] {a.get('date','?')} {status}")
+            if ci:
+                print(f"  {ci[:120]}")
             print()
 
 

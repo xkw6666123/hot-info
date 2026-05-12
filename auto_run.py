@@ -58,7 +58,38 @@ def main():
         return
     log(f"gen_js_data OK")
 
-    # Step 4: 检查数据完整性
+    # Step 3.5: 从视频描述生成 content_intro（描述 → 文案，仅填充无真实转录的）
+    try:
+        code_gci, out_gci = run([PYTHON, "gen_content_intro.py"], timeout=60)
+        if code_gci == 0:
+            log("gen_content_intro OK")
+    except Exception as e:
+        log(f"WARNING: gen_content_intro failed: {e}")
+
+    # Step 4: ASR 提取博主视频真实文案
+    # 触发条件：content_intro 为空 OR 长度<50（可能是模板假文案）
+    try:
+        data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
+        need_asr = [a for a in data.get("articles", [])
+                    if a.get("source") == "blogger" and len(a.get("content_intro", "")) < 50]
+        if need_asr:
+            bloggers_need = set(a.get("blogger_name", "") for a in need_asr)
+            log(f"ASR needed for {len(need_asr)} videos: {bloggers_need}")
+            code, out = run([PYTHON, "asr_extract.py"], timeout=600)
+            if code != 0:
+                log(f"WARNING: ASR failed: {out[:200]}")
+            else:
+                log(f"ASR OK")
+                # ASR 更新了 data.json，重新生成 data.js
+                code2, out2 = run([PYTHON, "gen_js_data.py"], timeout=30)
+                if code2 != 0:
+                    log(f"ERROR: gen_js_data re-run failed: {out2[:200]}")
+        else:
+            log("all videos have content_intro (>=50 chars), no ASR needed")
+    except Exception as e:
+        log(f"WARNING: ASR check failed: {e}")
+
+    # Step 5: 检查数据完整性
     try:
         data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
         count = len(data.get("articles", []))

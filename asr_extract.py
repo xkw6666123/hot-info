@@ -1,26 +1,48 @@
 #!/usr/bin/env python3
 """免费 ASR：Playwright 拦截音频 → ffmpeg下载 → Whisper → 摘要"""
-import json, os, subprocess, time, re, sys, shutil, hashlib, whisper
-
-# 自动检测 ffmpeg 路径
+import json, os, subprocess, time, re, sys, shutil, hashlib
+import whisper as _whisper
+D_WHISPER = os.environ.get('D_WHISPER', r'D:\AI\whisper')
+D_MODELS = os.path.join(D_WHISPER, 'models')
+D_TEMP = os.path.join(D_WHISPER, 'asr_temp')
+os.makedirs(D_MODELS, exist_ok=True)
+os.makedirs(D_TEMP, exist_ok=True)
+TMP = D_TEMP
+WORK = os.path.dirname(os.path.abspath(__file__))
 FFMPEG = shutil.which("ffmpeg") or shutil.which("ffmpeg.exe") or "ffmpeg"
 PCLI = "playwright-cli"
-WORK = os.path.dirname(os.path.abspath(__file__))
-TMP = os.path.join(WORK, "asr_temp")
-os.makedirs(TMP, exist_ok=True)
 
 # Whisper 模型全局单例（只加载一次，优先 medium，内存不够用 small）
-_whisper_model = None
+# 直接传 .pt 文件路径，绕过 WHISPER_CACHE_DIR 的 checksum 校验
+_WHISPER_MODEL = None
+_WHISPER_NAME = None  # 记录实际加载的模型名称（用于 device）
+
 def get_whisper():
-    global _whisper_model
-    if _whisper_model is None:
+    global _WHISPER_MODEL, _WHISPER_NAME
+    if _WHISPER_MODEL is None:
+        for name in ['medium', 'small']:
+            model_file = os.path.join(D_MODELS, f'{name}.pt')
+            if os.path.exists(model_file):
+                try:
+                    # 传文件路径而非名称，跳过 SHA256 校验
+                    _WHISPER_MODEL = _whisper.load_model(model_file)
+                    _WHISPER_NAME = name
+                    print(f"  Whisper {name} 加载成功: {model_file}")
+                    return _WHISPER_MODEL
+                except Exception as e:
+                    print(f"  Whisper {name} 加载失败，回退: {e}")
+                    continue
+
+        # 兜底：让 whisper 自动下载（medium 优先）
         try:
-            _whisper_model = whisper.load_model("medium")
-            print("  🎤 Whisper medium 加载成功")
+            _WHISPER_MODEL = _whisper.load_model('medium')
+            _WHISPER_NAME = 'medium'
+            print("  Whisper medium 加载成功（自动下载）")
         except Exception:
-            _whisper_model = whisper.load_model("small")
-            print("  🎤 Whisper medium 内存不足，回退 small")
-    return _whisper_model
+            _WHISPER_MODEL = _whisper.load_model('small')
+            _WHISPER_NAME = 'small'
+            print("  Whisper small 加载成功（回退）")
+    return _WHISPER_MODEL
 
 def _kill_playwright():
     """完全关闭 Playwright 浏览器，确保状态干净"""
@@ -157,6 +179,55 @@ def download_asr(audio_url, video_tag=""):
         return "\n".join(f"  · {e.strip()[:80]}" for e in events[:6] if len(e.strip()) > 10), url_hash
     return text[:500], url_hash
 
+def _scrape_page_desc(url):
+    """Playwright 打开页面，抓取视频描述文本（ASR 失败时的降级方案）"""
+    _kill_playwright()
+    try:
+        r = subprocess.run(
+            ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} open \"{url}\""],
+            capture_output=True, timeout=30, text=True, encoding="utf-8", errors="replace"
+        )
+        time.sleep(5)
+        
+        # 抓取页面可见文本，排除导航/按钮等噪音
+        js = """
+        (function(){
+            var t = document.body.innerText;
+            // 清理：去掉短行、链接、按钮文字、许可证信息
+            var lines = t.split('\\n').filter(function(l){
+                l = l.trim();
+                if (l.length < 8) return false;
+                if (/^(登录|注册|下载|打开|看更多|收藏|分享|评论|点赞|关注|粉丝|获赞|首页|推荐|朋友|我|合集|第\\d+集|ICP|许可证|京公网|网络文化|广播电视|增值电信)/.test(l)) return false;
+                if (/^\\d+$/.test(l)) return false;
+                if (/ICP备|公网安备|经营许可证|网络文化/.test(l)) return false;
+                return true;
+            });
+            // 取前15行有实质内容的，排除视频标题（通常第一行就是标题）
+            var desc = lines.slice(1, 15).join('\\n');
+            return desc.substring(0, 1000);
+        })()
+        """
+        r = subprocess.run(
+            ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} eval \"{js}\""],
+            capture_output=True, timeout=15, text=True, encoding="utf-8", errors="replace"
+        )
+        
+        # 提取引号内的结果
+        for line in r.stdout.split('\n'):
+            line = line.strip()
+            if line.startswith('"') and line.endswith('"'):
+                text = line[1:-1].replace('\\n', '\n')
+                if len(text) > 30:
+                    _kill_playwright()
+                    return text[:800]
+        
+        _kill_playwright()
+        return None
+    except Exception:
+        _kill_playwright()
+        return None
+
+
 def main():
     global _SEEN_AUDIO_URLS
     _SEEN_AUDIO_URLS = set()  # 每次运行重置
@@ -166,19 +237,30 @@ def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         d = json.load(f)
     
-    bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and "douyin.com" in (a.get("url") or "")]
+    # 只处理缺少 content_intro 的视频（不重复处理已有的）
+    all_bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and "douyin.com" in (a.get("url") or "")]
+    bloggers = [a for a in all_bloggers if not a.get("content_intro") or len(a.get("content_intro", "")) < 50]
     
-    print(f"\n🎉 免费 ASR: {len(bloggers)} 条视频\n")
+    print(f"\n🎉 免费 ASR: {len(bloggers)}/{len(all_bloggers)} 条待处理视频\n")
     
-    # 先收集所有已有的 content_intro，用于跨视频去重
+    if not bloggers:
+        print("所有视频已有文案，无需 ASR")
+        return
+    
+    # 收集已有的 content_intro 用于简单去重（仅检查完全相同）
     existing_intros = set()
-    for v in bloggers:
+    for v in all_bloggers:
         ci = v.get("content_intro", "")
-        if ci and len(ci) > 20:
-            existing_intros.add(ci)
+        if ci and len(ci) > 50:
+            existing_intros.add(ci[:100])  # 只比较前100字符
+    
+    def _save():
+        """原子保存: 每次成功就写入"""
+        with open("data.json", "w", encoding="utf-8") as f:
+            json.dump(d, f, ensure_ascii=False, indent=2)
     
     updated = 0
-    skipped_dup = 0
+    failed_no_audio = 0
     for i, v in enumerate(bloggers):
         url = v.get("url", "")
         name = v.get("blogger_name", "")
@@ -190,7 +272,17 @@ def main():
         try:
             audio_url = get_audio_url(url, expected_aweme_id=aweme_id)
             if not audio_url:
-                print(f"  ⚠️ 未截获音频")
+                print(f"  ⚠️ 未截获音频，尝试页面描述降级...")
+                # 降级：直接从页面抓取视频描述文本
+                desc = _scrape_page_desc(url)
+                if desc and len(desc) > 30:
+                    v["content_intro"] = desc
+                    updated += 1
+                    _save()
+                    print(f"  ✅ 页面描述 {len(desc)}字 (已保存)")
+                else:
+                    print(f"  ⚠️ 页面描述无有效内容")
+                    failed_no_audio += 1
                 continue
             
             summary, url_hash = download_asr(audio_url, video_tag=aweme_id or str(i))
@@ -198,41 +290,29 @@ def main():
                 print(f"  ⚠️ ASR 失败或无有效内容")
                 continue
             
-            # 跨视频去重：如果转录内容与已有内容高度相似，跳过
-            if summary in existing_intros:
-                print(f"  ⚠️ 内容与已有视频重复，跳过")
-                skipped_dup += 1
-                continue
-            
-            # 简单相似度检查：如果摘要的前50字符与已有内容的某条匹配
-            short = summary[:50]
-            is_dup = False
-            for ei in existing_intros:
-                if short in ei or ei[:50] in summary:
-                    print(f"  ⚠️ 内容与已有视频高度相似，跳过")
-                    skipped_dup += 1
-                    is_dup = True
-                    break
-            if is_dup:
+            # 简单去重：完全相同的摘要跳过
+            if summary[:100] in existing_intros:
+                print(f"  ⚠️ 内容与已有视频完全相同，跳过")
                 continue
             
             v["content_intro"] = summary
-            existing_intros.add(summary)
+            existing_intros.add(summary[:100])
             updated += 1
-            print(f"  ✅ {len(summary)}字")
+            _save()  # 逐条保存
+            print(f"  ✅ {len(summary)}字 (已保存)")
         except Exception as e:
             print(f"  ❌ {e}")
         print()
     
-    if updated:
-        with open("data.json", "w", encoding="utf-8") as f:
-            json.dump(d, f, ensure_ascii=False, indent=2)
+    _kill_playwright()
+    
+    # 最终重新生成 data.js
+    if updated or failed_no_audio > 0:
         r = subprocess.run([sys.executable, "gen_js_data.py"], cwd=WORK, capture_output=True, text=True)
         if r.returncode != 0:
             print(f"  ⚠️ gen_js_data 失败: {r.stderr[:200]}")
     
-    _kill_playwright()
-    print(f"\n✅ 更新 {updated}/{len(bloggers)}，跳过重复 {skipped_dup}")
+    print(f"\n✅ ASR 完成: 成功 {updated}/{len(bloggers)}，未截获音频 {failed_no_audio}")
 
 if __name__ == "__main__":
     main()
