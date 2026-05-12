@@ -10,7 +10,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -26,7 +26,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -42,7 +42,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -53,28 +53,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 11229619,
-"title": "马上评｜5A景区不该连基本的环境卫生都搞不好",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "17:55",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33156601",
-"likes": 20000,
-"comments": 200
-},
-{
 "id": 519662253,
 "title": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -90,7 +74,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -106,7 +90,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -117,28 +101,12 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 447617632,
-"title": "京沪高铁：对京沪高速线、合蚌高速线部分动车组列车公布票价上浮20%",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "17:55",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33156618",
-"likes": 20000,
-"comments": 200
-},
-{
 "id": 482208400,
 "title": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -154,7 +122,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "新闻",
 "社会",
@@ -165,20 +133,68 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
+"id": 856135707,
+"title": "从加法到减法：人工智能时代最难的，不是创新，而是割舍",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-12",
+"time": "20:07",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33149674",
+"likes": 20000,
+"comments": 200
+},
+{
+"id": 979674075,
+"title": "澎湃漫评｜“手搓汽车”把风险留给了社会",
+"summary": "",
+"source": "澎湃新闻",
+"date": "2026-05-12",
+"time": "20:07",
+"tags": [
+"新闻",
+"社会",
+"时政"
+],
+"url": "https://www.thepaper.cn/newsDetail_forward_33155484",
+"likes": 20000,
+"comments": 200
+},
+{
 "id": 356123224,
 "title": "商家曝光女孩演出完退礼服",
 "summary": "演出完退礼服被商家曝光，女孩发声：商家歪曲事实真相，不存在白嫖。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354207",
-"likes": 2706570,
-"comments": 2706570
+"likes": 2489284,
+"comments": 2489284
+},
+{
+"id": 551531712,
+"title": "汉坦病毒病人确认:系观鸟人",
+"summary": "汉坦病毒零号患者已确认，系70岁荷兰鸟类学家，疑在垃圾场吸入带病毒鼠粪颗粒感染。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "20:07",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354217",
+"likes": 1839861,
+"comments": 1839861
 },
 {
 "id": 88225147,
@@ -186,15 +202,15 @@ window.__HOT_DATA__ = {
 "summary": "宇树发布全球首款量产版载人机甲：售价390万起，可以变形，做民用交通工具",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354208",
-"likes": 1710660,
-"comments": 1710660
+"likes": 1325714,
+"comments": 1325714
 },
 {
 "id": 250878860,
@@ -202,15 +218,15 @@ window.__HOT_DATA__ = {
 "summary": "15岁男子在路上从背后加速冲撞女生，致其倒地膝盖部位受伤。江西南昌警方通报：违法行为人张某某正接受公安机关调查，案件正在进一步办理中。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354212",
-"likes": 1359126,
-"comments": 1359126
+"likes": 1083175,
+"comments": 1083175
 },
 {
 "id": 803357514,
@@ -218,15 +234,15 @@ window.__HOT_DATA__ = {
 "summary": "西班牙女主持自曝为儿子追星，与皇马门将交往，成功拿到其亲笔签名的手套。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354213",
-"likes": 1257334,
-"comments": 1257334
+"likes": 898128,
+"comments": 898128
 },
 {
 "id": 188587150,
@@ -234,15 +250,15 @@ window.__HOT_DATA__ = {
 "summary": "T1青训上单撞脸Faker，LPL破防：大魔王没熬走，2.0版本已经安排上了。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354209",
-"likes": 1111950,
-"comments": 1111950
+"likes": 719900,
+"comments": 719900
 },
 {
 "id": 789662911,
@@ -250,15 +266,15 @@ window.__HOT_DATA__ = {
 "summary": "漫展清退乙游男coser，当事人向12345举报，投诉工单被漫展主办方恶意曝光，警方已介入调查。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354195",
-"likes": 536382,
-"comments": 536382
+"likes": 582252,
+"comments": 582252
 },
 {
 "id": 140756911,
@@ -266,15 +282,15 @@ window.__HOT_DATA__ = {
 "summary": "物业费收缴率仅65%，物业直接撤场跑路。小区变不设防，老实人替刺头买单。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354200",
-"likes": 398790,
-"comments": 398790
+"likes": 573258,
+"comments": 573258
 },
 {
 "id": 444468267,
@@ -282,15 +298,15 @@ window.__HOT_DATA__ = {
 "summary": "央视科隆游戏宣传片因某游戏镜头太短，被部分网友集体狂怼。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354194",
-"likes": 326080,
-"comments": 326080
+"likes": 553540,
+"comments": 553540
 },
 {
 "id": 78339051,
@@ -298,31 +314,15 @@ window.__HOT_DATA__ = {
 "summary": "Scout直播自曝赔完EDG只剩20万，直言不会再回LPL。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "17:55",
+"time": "20:07",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
 "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354192",
-"likes": 247969,
-"comments": 247969
-},
-{
-"id": 552522676,
-"title": "太辣眼,B站主播躺路劈叉",
-"summary": "B站一主播在人行道上躺着劈叉直播，被批低俗。",
-"source": "贴吧",
-"date": "2026-05-12",
-"time": "17:55",
-"tags": [
-"热议",
-"社会",
-"网友"
-],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354198",
-"likes": 194454,
-"comments": 194454
+"likes": 399551,
+"comments": 399551
 },
 {
 "id": 882068945,
@@ -4286,53 +4286,53 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读澎湃回声｜云南砚背后的商业逻辑\""
 },
 {
-"topic": "马上评｜5A景区不该连基本的环境卫生都搞不好",
-"source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！马上评｜5A景区！\"制造话题",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之马上评｜5A景区全程高能\""
-},
-{
 "topic": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点重庆巫山通报服农的几个名场面\"",
-"aqi_style": "速览型: 用\"关于重庆巫山通报服农的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读重庆巫山通报服农背后的商业逻辑\""
+"wangba_style": "感叹型: 用\"再见！重庆巫山通报服农！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之重庆巫山通报服农全程高能\""
 },
 {
 "topic": "宇树发布首款载人变形机甲：一拳能锤倒砖墙，售价390万元起",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！宇树发布首款载人\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之宇树发布首款载人全程高能\""
+"wangba_style": "盘点型: 用\"盘点宇树发布首款载人的几个名场面\"",
+"aqi_style": "速览型: 用\"关于宇树发布首款载人的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读宇树发布首款载人背后的商业逻辑\""
 },
 {
 "topic": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
 "source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 中美关系的潜力、\"引发共鸣",
-"aqi_style": "速览型: 用\"关于中美关系的潜力、的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读中美关系的潜力、背后的商业逻辑\""
-},
-{
-"topic": "京沪高铁：对京沪高速线、合蚌高速线部分动车组列车公布票价上浮20%",
-"source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！京沪高铁：对京沪！\"制造话题",
+"wangba_style": "悬念型: 用\"难不成是真的！中美关系的潜力、\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之京沪高铁：对京沪全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之中美关系的潜力、全程高能\""
 },
 {
 "topic": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点一图看懂｜特朗普的几个名场面\"",
+"wangba_style": "故事型: 用\"能理解能理解 一图看懂｜特朗普\"引发共鸣",
 "aqi_style": "速览型: 用\"关于一图看懂｜特朗普的几点思考\"",
 "chen_style": "独家解读: 用\"独家解读一图看懂｜特朗普背后的商业逻辑\""
 },
 {
 "topic": "马上测｜被“刮码”的产品：真伪难辨，“消码神器”随意卖",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！马上测｜被“刮码\"制造好奇",
+"wangba_style": "感叹型: 用\"再见！马上测｜被“刮码！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
 "chen_style": "大型纪录片: 用\"大型纪录片之马上测｜被“刮码全程高能\""
+},
+{
+"topic": "从加法到减法：人工智能时代最难的，不是创新，而是割舍",
+"source": "澎湃新闻",
+"wangba_style": "盘点型: 用\"盘点从加法到减法：人的几个名场面\"",
+"aqi_style": "速览型: 用\"关于从加法到减法：人的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读从加法到减法：人背后的商业逻辑\""
+},
+{
+"topic": "澎湃漫评｜“手搓汽车”把风险留给了社会",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！澎湃漫评｜“手搓\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之澎湃漫评｜“手搓全程高能\""
 },
 {
 "topic": "商家曝光女孩演出完退礼服",
@@ -4342,12 +4342,12 @@ window.__HOT_DATA__ = {
 "chen_style": "独家解读: 用\"独家解读商家曝光女孩演出背后的商业逻辑\""
 },
 {
-"topic": "钢铁侠成真!宇树发布载人机甲",
+"topic": "汉坦病毒病人确认:系观鸟人",
 "source": "贴吧",
-"wangba_style": "感叹型: 用\"再见！钢铁侠成真!宇树！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！汉坦病毒病人确认！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之钢铁侠成真!宇树全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之汉坦病毒病人确认全程高能\""
 }
 ],
-"updated_at": "2026-05-12T17:56:04.785364"
+"updated_at": "2026-05-12T20:07:31.132752"
 };
