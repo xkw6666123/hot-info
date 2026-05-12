@@ -5,82 +5,18 @@ window.__HOT_DATA__ = {
 },
 "articles": [
 {
-"id": 750589873,
-"title": "美国总统特朗普将于5月13日至15日访华",
+"id": 695292229,
+"title": "视频丨18年前汶川地震时，一位母亲留给孩子最后的短信",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
 "时政"
 ],
-"url": "https://www.thepaper.cn/newsDetail_forward_33154395",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 941213639,
-"title": "马上评｜拉黑反映问题的网友，不是解决问题是制造问题",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "09:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33154557",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 83030865,
-"title": "受贿数额特别巨大，中巡组原副部级巡视专员许传智被提起公诉",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "09:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33154566",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 457164328,
-"title": "奢侈品牌MIU MIU多款产品被指也有“限购区”，杭州多个街道地址无法下单",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "09:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33154396",
-"likes": 20000,
-"comments": 200
-},
-{
-"id": 799425052,
-"title": "给5A体个检｜澎湃暗访广府古城水域乱象，官方回应数日内完成整改",
-"summary": "",
-"source": "澎湃新闻",
-"date": "2026-05-12",
-"time": "09:00",
-"tags": [
-"新闻",
-"社会",
-"时政"
-],
-"url": "https://www.thepaper.cn/newsDetail_forward_33155673",
+"url": "https://www.thepaper.cn/newsDetail_forward_33160325",
 "likes": 20000,
 "comments": 200
 },
@@ -90,7 +26,7 @@ window.__HOT_DATA__ = {
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
@@ -101,228 +37,292 @@ window.__HOT_DATA__ = {
 "comments": 200
 },
 {
-"id": 684206476,
-"title": "阵容厚度变薄了，但国乒依旧还是那个国乒",
+"id": 507015180,
+"title": "澎湃回声｜云南砚山：一个月内完成整改，并对相关责任人追责问责",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
 "时政"
 ],
-"url": "https://www.thepaper.cn/newsDetail_forward_33154987",
+"url": "https://www.thepaper.cn/newsDetail_forward_33158602",
 "likes": 20000,
 "comments": 200
 },
 {
-"id": 27456801,
-"title": "台湾方面再次无法参加世卫大会，国台办：这一局面完全是民进党当局造成的",
+"id": 11229619,
+"title": "马上评｜5A景区不该连基本的环境卫生都搞不好",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
 "时政"
 ],
-"url": "https://www.thepaper.cn/newsDetail_forward_33156355",
+"url": "https://www.thepaper.cn/newsDetail_forward_33156601",
 "likes": 20000,
 "comments": 200
 },
 {
-"id": 339710607,
-"title": "【社论】商家“拉黑”整条街道不可取",
+"id": 519662253,
+"title": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
 "时政"
 ],
-"url": "https://www.thepaper.cn/newsDetail_forward_33156093",
+"url": "https://www.thepaper.cn/newsDetail_forward_33158233",
 "likes": 20000,
 "comments": 200
 },
 {
-"id": 469088535,
-"title": "世界大学生围棋赛首进中国内地，让全球青年了解中国文化",
+"id": 511013280,
+"title": "宇树发布首款载人变形机甲：一拳能锤倒砖墙，售价390万元起",
 "summary": "",
 "source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "新闻",
 "社会",
 "时政"
 ],
-"url": "https://www.thepaper.cn/newsDetail_forward_33155012",
+"url": "https://www.thepaper.cn/newsDetail_forward_33162316",
 "likes": 20000,
 "comments": 200
 },
 {
-"id": 16158413,
-"title": "米游严打皮套论,造谣者赔43w",
-"summary": "博主“自由人米八”等2人编造“皮套论”谣言，引发大量针对米哈游员工及游戏玩家的恶意辱骂、人身攻击，被判赔偿43万元。",
-"source": "贴吧",
+"id": 485830853,
+"title": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
+"summary": "",
+"source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
-"热议",
+"新闻",
 "社会",
-"网友"
+"时政"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354176",
-"likes": 1803870,
-"comments": 1803870
+"url": "https://www.thepaper.cn/newsDetail_forward_33156316",
+"likes": 20000,
+"comments": 200
 },
 {
-"id": 887503870,
-"title": "憋大号一周,男生肠痉挛送医",
-"summary": "高三一男生抗拒在校如厕，憋了一周不排便，最终肠痉挛送医急救。",
-"source": "贴吧",
+"id": 447617632,
+"title": "京沪高铁：对京沪高速线、合蚌高速线部分动车组列车公布票价上浮20%",
+"summary": "",
+"source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
-"热议",
+"新闻",
 "社会",
-"网友"
+"时政"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354186",
-"likes": 1320225,
-"comments": 1320225
+"url": "https://www.thepaper.cn/newsDetail_forward_33156618",
+"likes": 20000,
+"comments": 200
 },
 {
-"id": 69539509,
-"title": "韩留子暴论:Faker地位输女团",
-"summary": "韩国留学生称Faker热度远低于顶流女团成员，出了LOL圈子根本无人在意。",
-"source": "贴吧",
+"id": 482208400,
+"title": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
+"summary": "",
+"source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
-"热议",
+"新闻",
 "社会",
-"网友"
+"时政"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354164",
-"likes": 991900,
-"comments": 991900
+"url": "https://www.thepaper.cn/newsDetail_forward_33157149",
+"likes": 20000,
+"comments": 200
 },
 {
-"id": 233664480,
-"title": "1亿烧十年!昭和米国磨洋工",
-"summary": "1亿人民币烧十年，为何2A的昭和米国物语，工期远超3A？",
-"source": "贴吧",
+"id": 921716372,
+"title": "马上测｜被“刮码”的产品：真伪难辨，“消码神器”随意卖",
+"summary": "",
+"source": "澎湃新闻",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
-"热议",
+"新闻",
 "社会",
-"网友"
+"时政"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354181",
-"likes": 833139,
-"comments": 833139
+"url": "https://www.thepaper.cn/newsDetail_forward_33139663",
+"likes": 20000,
+"comments": 200
 },
 {
-"id": 31038133,
-"title": "半月获利58亿,faker赚麻",
-"summary": "faker所持的T15.66%股份从1560万美元涨到1960万美元，仅仅半个月光T1股权就给faker赚了58亿韩元",
+"id": 356123224,
+"title": "商家曝光女孩演出完退礼服",
+"summary": "演出完退礼服被商家曝光，女孩发声：商家歪曲事实真相，不存在白嫖。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354188",
-"likes": 807118,
-"comments": 807118
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354207",
+"likes": 2706570,
+"comments": 2706570
 },
 {
-"id": 228117811,
-"title": "异环男角色同居,玩家吵疯了",
-"summary": "异环1.1版本更新，男角色同居系统正式上线，国内外玩家吵疯了",
+"id": 802443442,
+"title": "网约车司机被暴打,忍气不还手",
+"summary": "江苏一名乘客在街头殴打网约车司机，扇脸踹人累得瘫倒在地，司机全程没还手也没还嘴。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354187",
-"likes": 745250,
-"comments": 745250
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354210",
+"likes": 2422805,
+"comments": 2422805
 },
 {
-"id": 516072809,
-"title": "爱国网红疑塌房,花600w移民",
-"summary": "爱国网红“徐州大表哥”被曝花600万移民法国，本人晒户口本自证，网友仍然不买账。",
+"id": 88225147,
+"title": "钢铁侠成真!宇树发布载人机甲",
+"summary": "宇树发布全球首款量产版载人机甲：售价390万起，可以变形，做民用交通工具",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354183",
-"likes": 742704,
-"comments": 742704
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354208",
+"likes": 1710660,
+"comments": 1710660
 },
 {
-"id": 883214693,
-"title": "弃LPL蹭足球,骆歆转粉阿森纳",
-"summary": "LPL热度低迷，骆歆火速弃电竞转粉阿森纳。",
+"id": 250878860,
+"title": "撞人族?黑衣小伙街头猛撞女生",
+"summary": "15岁男子在路上从背后加速冲撞女生，致其倒地膝盖部位受伤。江西南昌警方通报：违法行为人张某某正接受公安机关调查，案件正在进一步办理中。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354177",
-"likes": 609960,
-"comments": 609960
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354212",
+"likes": 1359126,
+"comments": 1359126
 },
 {
-"id": 796379866,
-"title": "美国富豪遇仙人跳,被讹12亿",
-"summary": "美国亿万富豪、NBA雄鹿队老板艾登斯卷入丑闻：他与华裔女子发生关系后遭到勒索，要求分得12亿美元财产。",
+"id": 803357514,
+"title": "肉身开团!硬核老外替娃追星",
+"summary": "西班牙女主持自曝为儿子追星，与皇马门将交往，成功拿到其亲笔签名的手套。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354172",
-"likes": 602250,
-"comments": 602250
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354213",
+"likes": 1257334,
+"comments": 1257334
 },
 {
-"id": 120852130,
-"title": "败犬女主作者:男主被撬是亮点",
-"summary": "《败犬女主太多了》作者直言男主被撬墙角才是剧情亮点。吧友：只能说很符合这作品的趣味性。",
+"id": 188587150,
+"title": "T1新人撞脸Faker,LPL破防",
+"summary": "T1青训上单撞脸Faker，LPL破防：大魔王没熬走，2.0版本已经安排上了。",
 "source": "贴吧",
 "date": "2026-05-12",
-"time": "09:00",
+"time": "17:28",
 "tags": [
 "热议",
 "社会",
 "网友"
 ],
-"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354184",
-"likes": 496440,
-"comments": 496440
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354209",
+"likes": 1111950,
+"comments": 1111950
+},
+{
+"id": 455479927,
+"title": "南审研究生偷拍学妹裙底",
+"summary": "网曝南京审计大学一研究生男子偷拍女生裙底。网帖还称，该男子已被国家税务总局江苏省税务局拟录用公务员，并进行了公示。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "17:28",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354214",
+"likes": 922512,
+"comments": 922512
+},
+{
+"id": 422404308,
+"title": "日本缺油墨,薯片包装变黑白",
+"summary": "日本零食巨头卡乐比因油墨短缺，宣布将彩色薯片包装改为黑白色。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "17:28",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354193",
+"likes": 758264,
+"comments": 758264
+},
+{
+"id": 789662911,
+"title": "漫展开盒乙游coser被查",
+"summary": "漫展清退乙游男coser，当事人向12345举报，投诉工单被漫展主办方恶意曝光，警方已介入调查。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "17:28",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354195",
+"likes": 536382,
+"comments": 536382
+},
+{
+"id": 140756911,
+"title": "刺头拒交费,物业弃盘走人",
+"summary": "物业费收缴率仅65%，物业直接撤场跑路。小区变不设防，老实人替刺头买单。",
+"source": "贴吧",
+"date": "2026-05-12",
+"time": "17:28",
+"tags": [
+"热议",
+"社会",
+"网友"
+],
+"url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28354200",
+"likes": 398790,
+"comments": 398790
 },
 {
 "id": 882068945,
@@ -4265,39 +4265,11 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之你就是猫猫？ #全程高能\""
 },
 {
-"topic": "美国总统特朗普将于5月13日至15日访华",
+"topic": "视频丨18年前汶川地震时，一位母亲留给孩子最后的短信",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点美国总统特朗普将的几个名场面\"",
-"aqi_style": "速览型: 用\"关于美国总统特朗普将的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读美国总统特朗普将背后的商业逻辑\""
-},
-{
-"topic": "马上评｜拉黑反映问题的网友，不是解决问题是制造问题",
-"source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！马上评｜拉黑反映\"制造好奇",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之马上评｜拉黑反映全程高能\""
-},
-{
-"topic": "受贿数额特别巨大，中巡组原副部级巡视专员许传智被提起公诉",
-"source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 受贿数额特别巨大\"引发共鸣",
-"aqi_style": "速览型: 用\"关于受贿数额特别巨大的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读受贿数额特别巨大背后的商业逻辑\""
-},
-{
-"topic": "奢侈品牌MIU MIU多款产品被指也有“限购区”，杭州多个街道地址无法下单",
-"source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！奢侈品牌MIU ！\"制造话题",
-"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之奢侈品牌MIU 全程高能\""
-},
-{
-"topic": "给5A体个检｜澎湃暗访广府古城水域乱象，官方回应数日内完成整改",
-"source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点给5A体个检｜澎的几个名场面\"",
-"aqi_style": "速览型: 用\"关于给5A体个检｜澎的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读给5A体个检｜澎背后的商业逻辑\""
+"wangba_style": "盘点型: 用\"盘点视频丨18年前汶的几个名场面\"",
+"aqi_style": "速览型: 用\"关于视频丨18年前汶的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读视频丨18年前汶背后的商业逻辑\""
 },
 {
 "topic": "影子调查｜5.56公里高标准农田沟渠的来回“折腾”",
@@ -4307,47 +4279,75 @@ window.__HOT_DATA__ = {
 "chen_style": "大型纪录片: 用\"大型纪录片之影子调查｜5.5全程高能\""
 },
 {
-"topic": "阵容厚度变薄了，但国乒依旧还是那个国乒",
+"topic": "澎湃回声｜云南砚山：一个月内完成整改，并对相关责任人追责问责",
 "source": "澎湃新闻",
-"wangba_style": "故事型: 用\"能理解能理解 阵容厚度变薄了，\"引发共鸣",
-"aqi_style": "速览型: 用\"关于阵容厚度变薄了，的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读阵容厚度变薄了，背后的商业逻辑\""
+"wangba_style": "故事型: 用\"能理解能理解 澎湃回声｜云南砚\"引发共鸣",
+"aqi_style": "速览型: 用\"关于澎湃回声｜云南砚的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读澎湃回声｜云南砚背后的商业逻辑\""
 },
 {
-"topic": "台湾方面再次无法参加世卫大会，国台办：这一局面完全是民进党当局造成的",
+"topic": "马上评｜5A景区不该连基本的环境卫生都搞不好",
 "source": "澎湃新闻",
-"wangba_style": "感叹型: 用\"再见！台湾方面再次无法！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！马上评｜5A景区！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之台湾方面再次无法全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之马上评｜5A景区全程高能\""
 },
 {
-"topic": "【社论】商家“拉黑”整条街道不可取",
+"topic": "重庆巫山通报服农药中毒老人救治情况，对涉嫌延误诊治医护人员立案调查",
 "source": "澎湃新闻",
-"wangba_style": "盘点型: 用\"盘点【社论】商家“拉的几个名场面\"",
-"aqi_style": "速览型: 用\"关于【社论】商家“拉的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读【社论】商家“拉背后的商业逻辑\""
+"wangba_style": "盘点型: 用\"盘点重庆巫山通报服农的几个名场面\"",
+"aqi_style": "速览型: 用\"关于重庆巫山通报服农的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读重庆巫山通报服农背后的商业逻辑\""
 },
 {
-"topic": "世界大学生围棋赛首进中国内地，让全球青年了解中国文化",
+"topic": "宇树发布首款载人变形机甲：一拳能锤倒砖墙，售价390万元起",
 "source": "澎湃新闻",
-"wangba_style": "悬念型: 用\"难不成是真的！世界大学生围棋赛\"制造好奇",
+"wangba_style": "悬念型: 用\"难不成是真的！宇树发布首款载人\"制造好奇",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之世界大学生围棋赛全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之宇树发布首款载人全程高能\""
 },
 {
-"topic": "米游严打皮套论,造谣者赔43w",
+"topic": "中美关系的潜力、张力、角力｜谁在“只有特朗普”的对华政策决策圈中发挥作用",
+"source": "澎湃新闻",
+"wangba_style": "故事型: 用\"能理解能理解 中美关系的潜力、\"引发共鸣",
+"aqi_style": "速览型: 用\"关于中美关系的潜力、的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读中美关系的潜力、背后的商业逻辑\""
+},
+{
+"topic": "京沪高铁：对京沪高速线、合蚌高速线部分动车组列车公布票价上浮20%",
+"source": "澎湃新闻",
+"wangba_style": "感叹型: 用\"再见！京沪高铁：对京沪！\"制造话题",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之京沪高铁：对京沪全程高能\""
+},
+{
+"topic": "一图看懂｜特朗普时隔9年再访华，回顾中美元首历次会晤",
+"source": "澎湃新闻",
+"wangba_style": "盘点型: 用\"盘点一图看懂｜特朗普的几个名场面\"",
+"aqi_style": "速览型: 用\"关于一图看懂｜特朗普的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读一图看懂｜特朗普背后的商业逻辑\""
+},
+{
+"topic": "马上测｜被“刮码”的产品：真伪难辨，“消码神器”随意卖",
+"source": "澎湃新闻",
+"wangba_style": "悬念型: 用\"难不成是真的！马上测｜被“刮码\"制造好奇",
+"aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
+"chen_style": "大型纪录片: 用\"大型纪录片之马上测｜被“刮码全程高能\""
+},
+{
+"topic": "商家曝光女孩演出完退礼服",
 "source": "贴吧",
-"wangba_style": "故事型: 用\"能理解能理解 米游严打皮套论,\"引发共鸣",
-"aqi_style": "速览型: 用\"关于米游严打皮套论,的几点思考\"",
-"chen_style": "独家解读: 用\"独家解读米游严打皮套论,背后的商业逻辑\""
+"wangba_style": "故事型: 用\"能理解能理解 商家曝光女孩演出\"引发共鸣",
+"aqi_style": "速览型: 用\"关于商家曝光女孩演出的几点思考\"",
+"chen_style": "独家解读: 用\"独家解读商家曝光女孩演出背后的商业逻辑\""
 },
 {
-"topic": "憋大号一周,男生肠痉挛送医",
+"topic": "网约车司机被暴打,忍气不还手",
 "source": "贴吧",
-"wangba_style": "感叹型: 用\"再见！憋大号一周,男生！\"制造话题",
+"wangba_style": "感叹型: 用\"再见！网约车司机被暴打！\"制造话题",
 "aqi_style": "日期型: 用\"2026-05-12社会热点信息差\"",
-"chen_style": "大型纪录片: 用\"大型纪录片之憋大号一周,男生全程高能\""
+"chen_style": "大型纪录片: 用\"大型纪录片之网约车司机被暴打全程高能\""
 }
 ],
-"updated_at": "2026-05-12T09:00:26.074732"
+"updated_at": "2026-05-12T17:28:57.009914"
 };
