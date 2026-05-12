@@ -31,7 +31,7 @@ TIKHUB_TIMEOUT = 30
 TRACKED_BLOGGERS = [
     "网吧信息差",
     "阿七大型纪录片",
-    {"name": "陈先生", "user_id": ""},  # TODO: 填入8.9万粉丝陈先生的 sec_uid
+    {"name": "陈先生", "user_id": "MS4wLjABAAAAnusbdI9PboQ_wCdWkwe12i9evUts7z8ibbkOe6HVludyd3hGjDqKegLU8Bp7_5ZF"},  # chenxiansheng274 8.9万粉丝
     "信息黑板报",
     "人类观察菌",
 ]
