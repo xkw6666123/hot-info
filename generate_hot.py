@@ -535,7 +535,7 @@ class BlogSearcher:
                 self.results.append(parsed)
     
     def _search_user(self):
-        """搜索用户，返回 user_id（即 sec_uid）"""
+        """搜索用户，返回 (user_id, 匹配得分)"""
         # TikHub v2 搜索 API（POST）
         result = tikhub_request(
             "/api/v1/douyin/search/fetch_user_search_v2",
@@ -547,13 +547,39 @@ class BlogSearcher:
             if isinstance(inner, dict):
                 users = inner.get("data", {})
                 user_list = users.get("user_list", []) if isinstance(users, dict) else []
+                
+                # 对搜索结果排序：精确匹配优先，粉丝数高的优先
+                candidates = []
                 for u in user_list:
                     if not isinstance(u, dict):
                         continue
                     nick = u.get("nick_name", "")
                     uid = u.get("user_id", "")
-                    if uid and (nick == self.name or self.name in nick):
-                        return uid
+                    if not uid:
+                        continue
+                    
+                    # 计算匹配得分
+                    score = 0
+                    if nick == self.name:
+                        score = 100  # 精确匹配
+                    elif self.name in nick:
+                        # 名字被包含在内，扣分取决于额外字符长度
+                        extra = len(nick) - len(self.name)
+                        score = max(80 - extra * 2, 50)
+                    
+                    if score >= 50:
+                        followers = u.get("follower_count", 0) or 0
+                        candidates.append((score, followers, uid, nick))
+                
+                if candidates:
+                    # 高分优先，同分粉丝多优先
+                    candidates.sort(key=lambda x: (-x[0], -x[1]))
+                    best_score, followers, uid, matched_nick = candidates[0]
+                    
+                    # 如果最佳匹配得分 < 90 且名字很短（容易误匹配），打印警告
+                    if best_score < 90 and len(self.name) <= 3:
+                        print(f"    ⚠️ 模糊匹配: 搜索'{self.name}' → '{matched_nick}' (得分:{best_score}, 粉丝:{followers})")
+                    return uid
         
         return None
     
@@ -905,28 +931,15 @@ def main(mode="full"):
 
 
 def _generate_video_intro(v, all_articles):
-    """基于视频 desc + 分析数据生成内容简介"""
+    """基于视频 desc 生成内容简介（不在没有 ASR 时伪造内容）"""
     desc = (v.get("summary") or v.get("title") or "").strip()
-    analysis = v.get("analysis", {})
-    title = v.get("title", "")
     
-    # 如果有长描述（作者写了详细文案），直接返回
-    if len(desc) > 30 and desc != title:
-        return desc
+    # 有长描述就用描述
+    if len(desc) > 20:
+        return desc[:300]
     
-    # 用分析数据生成简介
-    parts = []
-    if analysis.get("video_type"):
-        parts.append(f"类型：{analysis['video_type']}")
-    if analysis.get("keywords"):
-        kw = "、".join(analysis["keywords"][:4])
-        parts.append(f"关键词：{kw}")
-    if analysis.get("replicable_tip"):
-        parts.append(f"创作要点：{analysis['replicable_tip']}")
-    
-    if parts:
-        return "。".join(parts)
-    return desc
+    # 描述太短时，标记为"有待提取"
+    return ""
 
 
 if __name__ == "__main__":
