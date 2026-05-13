@@ -608,6 +608,8 @@ def scrape_weixin():
         for a in wb:
             a["source"] = "公众号热点"
             a["id"] = make_id("wx_fb", a["title"]) % 10**9
+            # 链接改为搜狗微信搜索，避免微博链接打不开
+            a["url"] = "https://weixin.sogou.com/weixin?type=2&query=" + urllib.parse.quote(a["title"])
         return wb
 
 
