@@ -58,6 +58,28 @@ def _kill_playwright():
     time.sleep(1)
 
 # ═══ 文本清洗 ═══
+# Whisper 常见误识别 → 正确词
+_WHISPER_FIXES = {
+    '虎帐': 'coser',
+    '虎帐优人': 'coser',
+    '虎帐办演者': 'cosplay表演者',
+    '炼铜皮': '恋童癖',
+    '无警广员支队银门哨兵': '武警执勤',
+    '黑闪酒机': '黑闪连击',
+    '枪都已经向堂了': '枪都已经上膛了',
+    '拒留': '拘留',
+    '罩人男子': '肇事男子',
+    '首部受伤': '头部受伤',
+    '毒瘤女孩': '失明女孩',
+    '将警快核实': '将尽快核实',
+    '全之龙': '权志龙',
+    '其不来的': '起不来的',
+    '图件进攻': '推荐进攻',
+    '彼此根': '培根',
+    '鲜耳朵': '馅儿多',
+    '鲜耳朵皮': '馅儿多的皮',
+}
+
 _NOISE_PATTERNS = [
     r'互联网宗教.*?许可证',
     r'药品医疗.*?备案',
@@ -96,6 +118,10 @@ def _clean_text(text):
             text = _CC.convert(text)
         except Exception:
             pass
+    
+    # Whisper 常见误识别修复
+    for wrong, right in _WHISPER_FIXES.items():
+        text = text.replace(wrong, right)
     
     lines = [l.strip() for l in text.split('\n')]
     clean = []
