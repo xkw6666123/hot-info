@@ -56,6 +56,16 @@
 :root.light header{
   background:rgba(255,255,255,0.88);
 }
+/* 亮色主题 - 全局覆盖 */
+:root.light .card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08)}
+:root.light .inspire,
+:root.light .prediction-card,
+:root.light .analysis-card,
+:root.light .ai-card{background:linear-gradient(135deg,#F8FAFC,#EEF1F5)}
+:root.light .analysis-item{background:rgba(0,0,0,0.03)}
+:root.light .structure-box{background:rgba(0,0,0,0.025)}
+:root.light footer{background:rgba(255,255,255,0.94)}
+:root.light .mobile-nav{background:rgba(255,255,255,0.94)}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -241,7 +251,7 @@ header{
 .inspire h3 .badge-w{background:var(--gold-dim);color:var(--gold)}
 .inspire h3 .badge-a{background:var(--blue-dim);color:var(--blue)}
 .inspire h3 .badge-c{background:rgba(216,90,48,0.12);color:#D85A30}
-.inspire .suggestion{font-size:13px;color:#C9D1D9;line-height:1.6;padding:6px 0 4px;font-style:italic}
+.inspire .suggestion{font-size:13px;color:var(--text-sec);line-height:1.6;padding:6px 0 4px;font-style:italic}
 
 /* blogger prediction card */
 .prediction-card{background:linear-gradient(135deg,#1A1F2E,#161C27);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:12px;border-left:3px solid}
@@ -273,7 +283,7 @@ header{
 .analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .analysis-item{background:rgba(122,130,148,0.06);border-radius:var(--radius-sm);padding:10px 12px}
 .analysis-item .label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-.analysis-item .value{font-size:13px;color:#C9D1D9;line-height:1.5}
+.analysis-item .value{font-size:13px;color:var(--text-pri);line-height:1.5}
 .analysis-item .tag-list{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
 .analysis-item .tag-list span{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--blue-dim);color:var(--blue)}
 .analysis-tip{background:linear-gradient(90deg,var(--gold-dim),transparent);border-left:3px solid var(--gold);padding:10px 14px;margin-top:10px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:13px;color:#E8D5CD;line-height:1.6}
@@ -282,7 +292,7 @@ header{
 .ai-card{background:linear-gradient(135deg,#1A1F2E,#161C27);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 22px;margin-bottom:14px}
 .ai-card .topic{font-size:12px;color:var(--blue);margin-bottom:6px;font-weight:500}
 .ai-card h4{font-size:14px;color:var(--text-pri);margin-bottom:8px}
-.ai-card .ai-suggestion{font-size:13px;color:#C9D1D9;line-height:1.6;padding:8px 12px;background:var(--blue-dim);border-radius:var(--radius-sm);margin:6px 0}
+.ai-card .ai-suggestion{font-size:13px;color:var(--text-sec);line-height:1.6;padding:8px 12px;background:var(--blue-dim);border-radius:var(--radius-sm);margin:6px 0}
 .ai-card .ai-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;background:var(--blue-dim);color:var(--blue);margin-right:4px}
 .structure-box{background:rgba(122,130,148,0.04);border-radius:var(--radius-sm);padding:8px 10px;margin:8px 0 4px}
 
@@ -485,7 +495,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605131834" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605131858" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -1260,7 +1270,7 @@ function renderAnalysis(){
     h+=`</div><h3 style="font-size:16px;margin-bottom:6px;color:var(--text-pri)">${esc(v.title)}</h3>`;
     // 内容介绍：所有博主视频均有 content_intro（支持多行）
     if(v.content_intro){
-      h+=`<div style="font-size:13px;color:#C9D1D9;line-height:1.8;padding:10px 14px;background:rgba(122,130,148,0.06);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid ${isWangba?'var(--gold)':'var(--blue)'}">📝 ${esc(v.content_intro).replace(/\n/g,'<br>')}</div>`;
+      h+=`<div style="font-size:13px;color:var(--text-sec);line-height:1.8;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid ${isWangba?'var(--gold)':'var(--blue)'}">📝 ${esc(v.content_intro).replace(/\n/g,'<br>')}</div>`;
     }
     if(a){
       const kw = a.keywords;
