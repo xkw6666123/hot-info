@@ -937,6 +937,24 @@ def main(mode="full"):
             a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # 构建 data.json
+    # ═══ 只保留最近 3 天数据 ═══
+    from datetime import timedelta
+    cutoff = datetime.now().date() - timedelta(days=3)
+    fresh = []
+    removed = 0
+    for a in all_articles:
+        try:
+            d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
+            if d < cutoff:
+                removed += 1
+                continue
+        except:
+            pass
+        fresh.append(a)
+    if removed:
+        print(f"  🗑 过期数据: {removed} 条")
+    all_articles = fresh
+
     output = {
         "site": {
             "name": SITE_NAME,

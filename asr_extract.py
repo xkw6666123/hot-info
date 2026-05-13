@@ -2,6 +2,13 @@
 """免费 ASR：Playwright 拦截音频 → ffmpeg下载 → Whisper → 摘要"""
 import json, os, subprocess, time, re, sys, shutil, hashlib
 import whisper as _whisper
+
+# 繁简转换
+try:
+    from opencc import OpenCC
+    _CC = OpenCC('t2s')  # 繁体→简体
+except Exception:
+    _CC = None
 D_WHISPER = os.environ.get('D_WHISPER', r'D:\AI\whisper')
 D_MODELS = os.path.join(D_WHISPER, 'models')
 D_TEMP = os.path.join(D_WHISPER, 'asr_temp')
@@ -49,6 +56,61 @@ def _kill_playwright():
     subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} kill-all"],
                    capture_output=True, timeout=10)
     time.sleep(1)
+
+# ═══ 文本清洗 ═══
+_NOISE_PATTERNS = [
+    r'互联网宗教.*?许可证',
+    r'药品医疗.*?备案',
+    r'互联网新闻.*?许可证',
+    r'网上有害信息举报',
+    r'违法和不良.*?举报.*?\d+',
+    r'算法推荐.*?举报',
+    r'网络内容从业人员.*?举报',
+    r'体育饭圈.*?举报',
+    r'ICP备\d+',
+    r'公网安备\d+',
+    r'经营许可证',
+    r'网络文化经营',
+    r'增值电信',
+    r'广播电视节目制作',
+    r'^\d{1,2}:\d{2}\s*/\s*\d{1,2}:\d{2}',   # 时间戳
+    r'^因浏览器限制.*静音',
+    r'^作者声明',
+    r'^发布时间',
+    r'^请先登录后发表评论',
+    r'^@\S+',                                    # @username
+    r'^\d+条评论',
+    r'^展开$',
+    r'^收起$',
+    r'^\.{3,}$',                                 # 纯省略号
+]
+
+def _clean_text(text):
+    """清洗文本：繁体→简体、去备案与UI噪音、去除过短行"""
+    if not text:
+        return text
+    
+    # 繁体→简体
+    if _CC:
+        try:
+            text = _CC.convert(text)
+        except Exception:
+            pass
+    
+    lines = [l.strip() for l in text.split('\n')]
+    clean = []
+    for line in lines:
+        if not line or len(line) < 3:
+            continue
+        skip = False
+        for pat in _NOISE_PATTERNS:
+            if re.search(pat, line):
+                skip = True
+                break
+        if not skip:
+            clean.append(line)
+    
+    return '\n'.join(clean).strip()
 
 def get_audio_url(video_url, expected_aweme_id=""):
     """Playwright 打开视频页，从网络请求中截获音频 URL
@@ -158,8 +220,7 @@ def download_asr(audio_url, video_tag=""):
     model = get_whisper()
     r = model.transcribe(wav, language="zh", fp16=False, verbose=False)
     text = r["text"].strip()
-    
-    # 清理临时文件
+    text = _clean_text(text)
     for f in [mp4, wav]:
         try: os.remove(f)
         except: pass
@@ -189,7 +250,7 @@ def _scrape_page_desc(url):
         )
         time.sleep(5)
         
-        # 抓取页面可见文本，排除导航/按钮等噪音
+        # 抓取页面可见文本，排除导航/按钮/页脚等噪音
         js = """
         (function(){
             var t = document.body.innerText;
@@ -199,7 +260,7 @@ def _scrape_page_desc(url):
                 if (l.length < 8) return false;
                 if (/^(登录|注册|下载|打开|看更多|收藏|分享|评论|点赞|关注|粉丝|获赞|首页|推荐|朋友|我|合集|第\\d+集|ICP|许可证|京公网|网络文化|广播电视|增值电信)/.test(l)) return false;
                 if (/^\\d+$/.test(l)) return false;
-                if (/ICP备|公网安备|经营许可证|网络文化/.test(l)) return false;
+                if (/ICP备|公网安备|经营许可证|网络文化|互联网宗教|药品医疗|互联网新闻|违法和不良|算法推荐|网络内容从业人员|体育饭圈/.test(l)) return false;
                 return true;
             });
             // 取前15行有实质内容的，排除视频标题（通常第一行就是标题）
@@ -219,7 +280,7 @@ def _scrape_page_desc(url):
                 text = line[1:-1].replace('\\n', '\n')
                 if len(text) > 30:
                     _kill_playwright()
-                    return text[:800]
+                    return _clean_text(text[:800])
         
         _kill_playwright()
         return None
@@ -237,9 +298,27 @@ def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         d = json.load(f)
     
-    # 只处理缺少 content_intro 的视频（不重复处理已有的）
+    # 只处理缺少 content_intro 或文案被污染的（备案信息/过短/非中文）
     all_bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and "douyin.com" in (a.get("url") or "")]
-    bloggers = [a for a in all_bloggers if not a.get("content_intro") or len(a.get("content_intro", "")) < 50]
+    
+    def _is_polluted(ci):
+        """检测文案是否被备案信息/垃圾内容污染"""
+        if not ci or len(ci) < 50:
+            return True
+        # 整行备案信息匹配
+        garbage_lines = 0
+        for line in ci.split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+            if re.search(r'互联网宗教|药品医疗|互联网新闻|网上有害|不良信息举报|算法推荐.*?举报|网络内容.*?举报|体育饭圈|ICP备|公网安备|经营许可证|网络文化|广播电视|增值电信', line):
+                garbage_lines += 1
+        total_lines = max(len([l for l in ci.split('\n') if l.strip()]), 1)
+        if garbage_lines >= 3 or garbage_lines / total_lines > 0.25:
+            return True
+        return False
+    
+    bloggers = [a for a in all_bloggers if _is_polluted(a.get("content_intro", ""))]
     
     print(f"\n🎉 免费 ASR: {len(bloggers)}/{len(all_bloggers)} 条待处理视频\n")
     

@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""每小时自动爬数据 → 推送 GitHub（替代 auto_run.bat，解决编码/路径问题）"""
+"""每3小时自动爬数据 → 推送 GitHub（替代 auto_run.bat，解决编码/路径问题）"""
 import subprocess, sys, os, json, time
 from datetime import datetime
 
 WORK = os.path.dirname(os.path.abspath(__file__))
 LOG = os.path.join(WORK, "auto_run.log")
-PYTHON = sys.executable
+# 显式指定 Python 路径，避免 Windows Store 假 Python 覆盖
+PYTHON = r"C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe"
+if not os.path.exists(PYTHON):
+    PYTHON = sys.executable
 
 def log(msg):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -55,7 +58,7 @@ def main():
     code, out = run([PYTHON, "gen_js_data.py"], timeout=30)
     if code != 0:
         log(f"ERROR: gen_js_data.py failed: {out[:200]}")
-        return
+        sys.exit(1)
     log(f"gen_js_data OK")
 
     # Step 3.5: 从视频描述生成 content_intro（描述 → 文案，仅填充无真实转录的）
@@ -67,11 +70,18 @@ def main():
         log(f"WARNING: gen_content_intro failed: {e}")
 
     # Step 4: ASR 提取博主视频真实文案
-    # 触发条件：content_intro 为空 OR 长度<50（可能是模板假文案）
+    # 触发条件：content_intro 为空/过短/被污染
     try:
+        import re
         data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
-        need_asr = [a for a in data.get("articles", [])
-                    if a.get("source") == "blogger" and len(a.get("content_intro", "")) < 50]
+        garbage_re = re.compile(r'互联网宗教|备案|许可证|网上有害|不良信息举报')
+        need_asr = []
+        for a in data.get("articles", []):
+            if a.get("source") != "blogger":
+                continue
+            ci = a.get("content_intro", "")
+            if len(ci) < 50 or garbage_re.search(ci):
+                need_asr.append(a)
         if need_asr:
             bloggers_need = set(a.get("blogger_name", "") for a in need_asr)
             log(f"ASR needed for {len(need_asr)} videos: {bloggers_need}")
@@ -80,12 +90,11 @@ def main():
                 log(f"WARNING: ASR failed: {out[:200]}")
             else:
                 log(f"ASR OK")
-                # ASR 更新了 data.json，重新生成 data.js
                 code2, out2 = run([PYTHON, "gen_js_data.py"], timeout=30)
                 if code2 != 0:
                     log(f"ERROR: gen_js_data re-run failed: {out2[:200]}")
         else:
-            log("all videos have content_intro (>=50 chars), no ASR needed")
+            log("all videos have clean content_intro, no ASR needed")
     except Exception as e:
         log(f"WARNING: ASR check failed: {e}")
 
@@ -94,7 +103,7 @@ def main():
         data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
         count = len(data.get("articles", []))
         log(f"articles: {count}")
-        if count < 50:
+        if count < 30:
             log(f"WARNING: only {count} articles, skipping push")
             return
     except Exception as e:

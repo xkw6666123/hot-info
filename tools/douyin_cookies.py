@@ -6,19 +6,28 @@
 3. cookies 自动保存到 douyin_cookies.txt
 4. 之后 yt-dlp --cookies douyin_cookies.txt 免费下载
 """
-import subprocess, os, time, json
+import subprocess, os, time, json, shutil
 
 WORK = os.path.dirname(os.path.abspath(__file__))
 COOKIE_FILE = os.path.join(WORK, "douyin_cookies.txt")
+
+# playwright-cli 在 Windows 上是 .CMD wrapper
+PCLI = shutil.which("playwright-cli") or r"C:\Users\Kevin\.workbuddy\binaries\node\versions\22.12.0\playwright-cli.cmd"
+
+def pwcli(*args):
+    """调用 playwright-cli"""
+    return subprocess.run([PCLI] + list(args), env={**os.environ, "NODE_OPTIONS": ""})
+
+def pwcli_capture(*args):
+    """带输出捕获的 playwright-cli 调用"""
+    return subprocess.run([PCLI] + list(args), capture_output=True, text=True, env={**os.environ, "NODE_OPTIONS": ""})
 
 print("=" * 50)
 print("  打开浏览器 → 请在 60 秒内扫码登录抖音")
 print("=" * 50)
 
 # 打开抖音首页
-subprocess.run([
-    "playwright-cli", "open", "https://www.douyin.com/"
-], env={**os.environ, "NODE_OPTIONS": ""})
+pwcli("open", "https://www.douyin.com/")
 
 time.sleep(3)
 
@@ -30,9 +39,7 @@ print()
 
 # 保存 cookies
 print("保存 cookies...")
-result = subprocess.run([
-    "playwright-cli", "state-save", COOKIE_FILE.replace(".txt", ".json")
-], capture_output=True, text=True, env={**os.environ, "NODE_OPTIONS": ""})
+result = pwcli_capture("state-save", COOKIE_FILE.replace(".txt", ".json"))
 
 # 转换为 Netscape 格式给 yt-dlp
 import json as j
@@ -60,4 +67,4 @@ try:
 except Exception as e:
     print(f"❌ 保存失败: {e}")
 
-subprocess.run(["playwright-cli", "close"], env={**os.environ, "NODE_OPTIONS": ""})
+pwcli("close")
