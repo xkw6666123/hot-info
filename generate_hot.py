@@ -1144,9 +1144,9 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=3)
-    rescue_cutoff = datetime.now().date() - timedelta(days=7)  # 失败平台保留7天
-    blog_cutoff = datetime.now().date() - timedelta(days=3)    # 博主同样3天
+    cutoff = datetime.now().date() - timedelta(days=7)           # 新闻保留7天
+    rescue_cutoff = datetime.now().date() - timedelta(days=14)   # 失败平台保留14天
+    blog_cutoff = datetime.now().date() - timedelta(days=3)      # 博主3天
     fresh = []
     bloggers_kept = {}
     blog_removed = 0
