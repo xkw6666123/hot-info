@@ -601,10 +601,17 @@ def scrape_weixin():
                 })
             return articles
     
-    # API失败：不降级到微博，救援逻辑会自动保留旧微信文章
-    print("  ⚠️ API不可达，将保留旧数据")
+    # API失败：用微博热搜 + 搜狗微信搜索链接（搜索链接不会过期）
+    print("  ⚠️ API不可达，用微博热搜+搜狗搜索")
+    wb = scrape_weibo()
+    if wb:
+        for a in wb:
+            a["source"] = "公众号热点"
+            a["id"] = make_id("wx_fb", a["title"]) % 10**9
+            # 搜狗微信搜索链接（非跳转链接，不会过期）
+            a["url"] = "https://weixin.sogou.com/weixin?type=2&query=" + urllib.parse.quote(a["title"].split("#")[0])
+        return wb[:10]
     return []
-
 
 class BlogSearcher:
     """搜索博主 + 获取最新视频的辅助类"""
