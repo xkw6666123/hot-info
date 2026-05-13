@@ -28,6 +28,8 @@ jobs:
 
       - name: Run remote scrapers (TikHub + B站 bloggers)
         run: python generate_hot.py --remote
+        env:
+          TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
 
       - name: Generate data.js
         run: python gen_js_data.py

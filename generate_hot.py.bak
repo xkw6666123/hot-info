@@ -44,22 +44,9 @@ BILI_BLOGGERS = [
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
 
-def refresh_time():
-    """刷新时间变量（在main()开头调用，避免跨日运行日期错误）"""
-    global today, now_time
-    today = datetime.now().strftime("%Y-%m-%d")
-    now_time = datetime.now().strftime("%H:%M")
-
 # ── 确定性 ID 生成（hashlib.md5，跨运行一致）──
 def make_id(prefix, seed):
     return int(hashlib.md5(f"{prefix}_{seed}".encode()).hexdigest()[:8], 16) % 10**9
-
-def safe_int(val, default=0):
-    """安全整数转换，失败返回默认值"""
-    try:
-        return int(val)
-    except (ValueError, TypeError):
-        return default
 
 # ── 网络策略：国内平台直连，TikHub 走代理 ──
 # fetch() 用直连 opener（忽略系统代理如 v2ray）
@@ -112,9 +99,6 @@ def fetch_json(url, headers=None, referer=None):
 
 def tikhub_request(endpoint, params=None, method="GET"):
     """调用 TikHub API（支持 GET/POST）"""
-    if not TIKHUB_API_KEY:
-        print("  ⚠️ TIKHUB_API_KEY 未设置，跳过 TikHub 请求")
-        return None
     url = f"{TIKHUB_BASE}{endpoint}"
     headers = {
         "Authorization": f"Bearer {TIKHUB_API_KEY}",
@@ -182,67 +166,33 @@ def scrape_baidu():
                 "time": now_time,
                 "tags": ["社会", "热点", "资讯"],
                 "url": f"https://www.baidu.com/s?wd={item.get('word','')}",
-                "likes": safe_int(item.get("hotScore"), 10000),
+                "likes": item.get("hotScore", 10000),
                 "comments": 0,
             })
     return articles
 
 def scrape_zhihu():
-    """知乎热榜（使用Playwright爬取）"""
+    """知乎热榜"""
     print("📡 知乎热榜...")
-    try:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto("https://www.zhihu.com/hot", timeout=30000)
-            page.wait_for_selector('.HotList-list', timeout=10000)
-            
-            articles = []
-            items = page.query_selector_all('.HotItem-content')[:10]
-            for i, item in enumerate(items):
-                title_el = item.query_selector('.HotItem-title')
-                title = title_el.inner_text() if title_el else f"知乎热榜第{i+1}位"
-                
-                link_el = item.query_selector('a[href*="question"]')
-                url = link_el.get_attribute('href') if link_el else f"https://www.zhihu.com/question/{i}"
-                if url and not url.startswith('http'):
-                    url = 'https://www.zhihu.com' + url
-                
-                excerpt_el = item.query_selector('.HotItem-excerpt')
-                summary = excerpt_el.inner_text()[:100] if excerpt_el else ""
-                
-                metrics_el = item.query_selector('.HotItem-metrics')
-                likes = 50000
-                if metrics_el:
-                    text = metrics_el.inner_text()
-                    import re
-                    m = re.search(r'(\d+\.?\d*)万', text)
-                    if m:
-                        likes = int(float(m.group(1)) * 10000)
-                    else:
-                        m = re.search(r'(\d+)', text)
-                        if m:
-                            likes = int(m.group(1))
-                
-                articles.append({
-                    "id": make_id("zhihu", url) % 10**9,
-                    "title": title,
-                    "summary": summary,
-                    "source": "知乎",
-                    "date": today,
-                    "time": now_time,
-                    "tags": ["热议", "观点", "深挖"],
-                    "url": url,
-                    "likes": likes,
-                    "comments": 500,
-                })
-            
-            browser.close()
-            return articles
-    except Exception as e:
-        print(f"  ⚠️ Playwright爬取失败: {e}")
+    data = fetch_json("https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10", referer="https://www.zhihu.com/")
+    if not data:
         return []
+    articles = []
+    for item in data.get("data", [])[:10]:
+        target = item.get("target", {})
+        articles.append({
+            "id": make_id("zhihu", target.get('id','')) % 10**9,
+            "title": target.get("title", ""),
+            "summary": target.get("excerpt", "")[:100],
+            "source": "知乎",
+            "date": today,
+            "time": now_time,
+            "tags": ["热议", "观点", "深挖"],
+            "url": target.get("url", f"https://www.zhihu.com/question/{target.get('id','')}"),
+            "likes": 50000,
+            "comments": 500,
+        })
+    return articles
 
 def scrape_bilibili():
     """B站热搜"""
@@ -344,8 +294,8 @@ def scrape_bilibili_bloggers():
                 "time": datetime.fromtimestamp(created).strftime("%H:%M") if created else now_time,
                 "tags": ["B站", "博主", "热点"],
                 "url": f"https://www.bilibili.com/video/{v.get('bvid','')}",
-                "likes": safe_int(v.get("favorites"), 0),
-                "comments": safe_int(v.get("comment"), 0),
+                "likes": v.get("favorites", 0),
+                "comments": v.get("comment", 0),
                 "play_count": v.get("play", 0),
                 "aweme_id": v.get("bvid", ""),
                 "create_time": created,
@@ -364,13 +314,13 @@ def scrape_toutiao():
         articles.append({
             "id": make_id("toutiao", item.get('ClusterId','')) % 10**9,
             "title": item.get("Title", ""),
-            "summary": item.get("Abstract", item.get("Title", ""))[:100],
+            "summary": item.get("Label", "")[:100],
             "source": "今日头条",
             "date": today,
             "time": now_time,
             "tags": ["社会", "资讯", "热议"],
             "url": f"https://www.toutiao.com/trending/{item.get('ClusterId','')}/",
-            "likes": safe_int(item.get("HotValue"), 10000),
+            "likes": int(item.get("HotValue", 10000)),
             "comments": 100,
         })
     return articles
@@ -384,11 +334,10 @@ def scrape_thepaper():
         return []
     articles = []
     for item in data.get("data", {}).get("hotNews", [])[:10]:
-        node_info = item.get("nodeInfo", {}) or {}
         articles.append({
             "id": make_id("paper", item.get('contId','')) % 10**9,
             "title": item.get("name", ""),
-            "summary": node_info.get("desc", "")[:100],
+            "summary": "",
             "source": "澎湃新闻",
             "date": today,
             "time": now_time,
@@ -402,19 +351,14 @@ def scrape_thepaper():
 def scrape_wallstreetcn():
     """华尔街见闻"""
     print("📡 华尔街见闻...")
-    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/articles?limit=10",
+    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=10",
                       referer="https://wallstreetcn.com/")
     if not data:
         return []
     articles = []
-    seen_ids = set()
     for item in data.get("data", {}).get("items", [])[:10]:
-        item_id = item.get('id', '')
-        if item_id in seen_ids:
-            continue
-        seen_ids.add(item_id)
         articles.append({
-            "id": make_id("ws", item_id) % 10**9,
+            "id": make_id("ws", item.get('id','')) % 10**9,
             "title": item.get("title", ""),
             "summary": item.get("content_text", "")[:100],
             "source": "华尔街见闻",
@@ -456,45 +400,21 @@ def scrape_ifeng():
     text = fetch("https://news.ifeng.com/")
     if not text:
         return []
-    # 从首页提取新闻标题和链接
-    # 匹配模式：<a href="..." title="新闻标题" 或 <a class="..." href="..." title="新闻标题"
-    pattern = r'<a[^>]*href="([^"]*)"[^>]*title="([^"]*)"'
-    matches = re.findall(pattern, text)
-    
-    # 过滤掉非新闻链接（如导航栏、品牌栏目等）
-    news_items = []
-    for url, title in matches:
-        # 跳过空标题、过短标题、导航栏标题
-        if not title or len(title) < 8:
-            continue
-        # 跳过明显的导航栏标题
-        skip_titles = ["首页", "资讯", "视频", "直播", "凤凰卫视", "财经", "娱乐", "体育", "时尚", "汽车", "房产", "科技", "军事", "文化", "旅游", "佛教", "国学", "数码", "健康", "公益", "教育", "酒业", "美食", "品牌主场", "更多>"]
-        if title in skip_titles:
-            continue
-        # 跳过重复标题
-        if title in [item["title"] for item in news_items]:
-            continue
-        # 处理URL
-        if url.startswith("//"):
-            url = "https:" + url
-        elif not url.startswith("http"):
-            url = "https://news.ifeng.com/" + url
-        
-        news_items.append({"title": title, "url": url})
-        if len(news_items) >= 10:
-            break
-    
+    # 简陋版：从首页提取标题
+    titles = re.findall(r'"title":"([^"]+)"', text)[:10]
+    urls = re.findall(r'"url":"(https://[^"]+)"', text)[:10]
     articles = []
-    for i, item in enumerate(news_items):
+    for i, title in enumerate(titles):
+        url = urls[i] if i < len(urls) else "#"
         articles.append({
             "id": make_id("ifeng", i) % 10**9,
-            "title": item["title"],
+            "title": title,
             "summary": "",
             "source": "凤凰网",
             "date": today,
             "time": now_time,
             "tags": ["新闻", "国际", "时政"],
-            "url": item["url"],
+            "url": url,
             "likes": 10000,
             "comments": 100,
         })
@@ -518,8 +438,8 @@ def scrape_tieba():
             "time": now_time,
             "tags": ["热议", "社会", "网友"],
             "url": f"https://tieba.baidu.com/hottopic/browse/hottopic?topic_id={tid}",
-            "likes": safe_int(item.get("discuss_num"), 10000),
-            "comments": safe_int(item.get("discuss_num"), 100),
+            "likes": int(item.get("discuss_num", 10000)),
+            "comments": int(item.get("discuss_num", 100)),
         })
     return articles
 
@@ -550,7 +470,7 @@ def scrape_weibo():
             "time": now_time,
             "tags": ["热议", "娱乐", "社会"],
             "url": f"https://s.weibo.com/weibo?q=%23{word}%23",
-            "likes": safe_int(item.get("raw_hot"), 50000),
+            "likes": int(item.get("raw_hot", 50000)),
             "comments": 500,
         })
     return articles
@@ -573,7 +493,7 @@ def scrape_douyin():
             "time": now_time,
             "tags": ["爆款", "短视频", "热门"],
             "url": f"https://www.douyin.com/hot/{item.get('sentence_id','')}",
-            "likes": safe_int(item.get("hot_value"), 100000),
+            "likes": int(item.get("hot_value", 100000)),
             "comments": 1000,
         })
     return articles
@@ -600,7 +520,7 @@ def scrape_weixin():
             "time": now_time,
             "tags": ["公众号", "社会热点", "热议"],
             "url": item.get("url", "#"),
-            "likes": safe_int(item.get("hot"), 10000),
+            "likes": int(item.get("hot", 10000)),
             "comments": 100,
         })
     return articles
@@ -710,8 +630,8 @@ class BlogSearcher:
             "desc": desc,
             "date": datetime.fromtimestamp(create_time).strftime("%Y-%m-%d") if create_time else today,
             "time": datetime.fromtimestamp(create_time).strftime("%H:%M") if create_time else now_time,
-            "likes": safe_int(stats.get("digg_count", stats.get("diggCount")), 0),
-            "comments": safe_int(stats.get("comment_count", stats.get("commentCount")), 0),
+            "likes": stats.get("digg_count", stats.get("diggCount", 0)),
+            "comments": stats.get("comment_count", stats.get("commentCount", 0)),
             "create_time": create_time,
         }
 
@@ -759,57 +679,6 @@ def scrape_bloggers():
             print(f"    ⚠️ 未找到，将保留已有数据")
     
     return articles
-
-
-def generate_blogger_analysis(article):
-    """为博主视频自动生成analysis（基于标题和描述的规则匹配）"""
-    title = (article.get("title") or "").lower()
-    desc = (article.get("content_intro") or article.get("summary") or "").lower()
-    blogger = article.get("blogger_name", "")
-    
-    # 关键词提取
-    keywords = []
-    hot_words = ["热点", "信息差", "社会", "新闻", "爆料", "离谱", "逆天", "迷惑", "搞笑", "玩梗", 
-                 "大学生", "打工人", "职场", "恋爱", "婚姻", "教育", "医疗", "房价", "就业", "科技"]
-    for w in hot_words:
-        if w in title or w in desc:
-            keywords.append(w)
-    
-    # 视频类型判断
-    video_type = "社会热点信息快报"
-    if any(w in title for w in ["合集", "盘点", "top", "排名"]):
-        video_type = "热点合集盘点"
-    elif any(w in title for w in ["搞笑", "沙雕", "离谱", "迷惑"]):
-        video_type = "搞笑/沙雕向"
-    elif any(w in title for w in ["教程", "教学", "怎么做"]):
-        video_type = "教程/干货向"
-    elif any(w in title for w in ["测评", "评测", "体验"]):
-        video_type = "测评/体验向"
-    
-    # 封面风格判断
-    cover_style = "新闻截图+醒目标签"
-    if "搞笑" in title or "沙雕" in title:
-        cover_style = "表情包/搞笑截图"
-    elif "教程" in title:
-        cover_style = "步骤图+大字标题"
-    
-    # 发布规律判断
-    publish_pattern = "日更"
-    if "周" in title or "weekly" in title.lower():
-        publish_pattern = "周更"
-    elif "月" in title:
-        publish_pattern = "月更"
-    
-    # 可复制建议
-    replicable_tip = f"精选今日热门{keywords[0] if keywords else '社会'}新闻做合集，标题用#{'#'.join(keywords[:3])}标签引流"
-    
-    return {
-        "video_type": video_type,
-        "cover_style": cover_style,
-        "publish_pattern": publish_pattern,
-        "keywords": keywords[:5] if keywords else ["热点", "社会"],
-        "replicable_tip": replicable_tip,
-    }
 
 
 # ═══════════════════════════════════════════════════════
@@ -865,7 +734,6 @@ def main(mode="full"):
     """
     mode: "full"=全部爬虫, "local"=跳过TikHub/B站博主, "remote"=只跑TikHub/B站+合并已有数据
     """
-    refresh_time()  # 刷新时间，避免跨日运行日期错误
     print("=" * 50)
     print(f"  热点数据自动采集 - {today} {now_time} [{mode}]")
     print("=" * 50)
@@ -936,7 +804,6 @@ def main(mode="full"):
         pass
     # full/local 模式：救援逻辑（防爬虫失败归零）
     # remote 模式已在前面合并过旧数据，跳过
-    failed_sources = set()  # 始终初始化
     if mode != "remote" and old_data:
         old_articles = old_data.get("articles", [])
         # 1. 保留旧的博主数据
@@ -1087,19 +954,13 @@ def main(mode="full"):
         if a.get("source") == "blogger" and not a.get("content_intro"):
             a["content_intro"] = _generate_video_intro(a, all_articles)
 
-    # 为缺少 analysis 的博主视频自动生成
-    for a in all_articles:
-        if a.get("source") == "blogger" and not a.get("analysis"):
-            a["analysis"] = generate_blogger_analysis(a)
-
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
     cutoff = datetime.now().date() - timedelta(days=3)
-    rescue_cutoff = datetime.now().date() - timedelta(days=7)  # 失败平台保留7天
-    blog_cutoff = datetime.now().date() - timedelta(days=7)
+    blog_cutoff = datetime.now().date() - timedelta(days=7)  # 博主最多7天
     fresh = []
-    bloggers_kept = {}
+    bloggers_kept = {}  # 每位博主保留最新3条
     blog_removed = 0
     news_removed = 0
     for a in all_articles:
@@ -1108,12 +969,9 @@ def main(mode="full"):
             lst = bloggers_kept.setdefault(name, [])
             lst.append(a)
         else:
-            src = a.get("source", "")
-            # 失败平台：7天保护期，成功平台：3天
-            limit = rescue_cutoff if src in failed_sources else cutoff
             try:
                 d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
-                if d < limit:
+                if d < cutoff:
                     news_removed += 1
                     continue
             except:
