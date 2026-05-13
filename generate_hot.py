@@ -958,6 +958,7 @@ def main(mode="full"):
     # ═══ 数据过滤 ═══
     from datetime import timedelta
     cutoff = datetime.now().date() - timedelta(days=3)
+    blog_cutoff = datetime.now().date() - timedelta(days=7)  # 博主最多7天
     fresh = []
     bloggers_kept = {}  # 每位博主保留最新3条
     blog_removed = 0
@@ -968,7 +969,6 @@ def main(mode="full"):
             lst = bloggers_kept.setdefault(name, [])
             lst.append(a)
         else:
-            # 新闻类：只保留3天内
             try:
                 d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
                 if d < cutoff:
@@ -977,11 +977,23 @@ def main(mode="full"):
             except:
                 pass
             fresh.append(a)
-    # 每位博主保留最新3条
+    # 博主：保留7天内最新3条
     for name, lst in bloggers_kept.items():
-        lst.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
-        fresh.extend(lst[:3])
-        blog_removed += max(0, len(lst) - 3)
+        # 只保留7天内的
+        recent = []
+        old = 0
+        for a in lst:
+            try:
+                d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
+                if d < blog_cutoff:
+                    old += 1
+                    continue
+                recent.append(a)
+            except:
+                recent.append(a)
+        recent.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
+        fresh.extend(recent[:3])
+        blog_removed += old + max(0, len(recent) - 3)
     if blog_removed:
         print(f"  🗑 博主过期: {blog_removed} 条")
     if news_removed:
