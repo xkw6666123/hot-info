@@ -188,64 +188,41 @@ def scrape_baidu():
     return articles
 
 def scrape_zhihu():
-    """知乎热榜（API + Playwright双重）"""
+    """知乎热榜（guest feed API，无需登录）"""
     print("📡 知乎热榜...")
-    # 先试API
-    for url, ver in [("https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10&desktop=true", "v3")]:
-        data = fetch_json(url, referer="https://www.zhihu.com/")
-        if data and data.get("data"):
-            items = data["data"]
-            articles = []
-            for item in items[:10]:
-                target = item.get("target", item)
-                title = target.get("title", target.get("title_area", {}).get("text", ""))
-                articles.append({
-                    "id": make_id("zh", title) % 10**9,
-                    "title": title,
-                    "summary": target.get("excerpt", "")[:100],
-                    "source": "知乎", "date": today, "time": now_time,
-                    "tags": ["知乎", "热榜"], "url": target.get("url", ""),
-                    "likes": 50000, "comments": 100,
-                })
-            if articles:
-                return articles
-    
-    # Playwright兜底
-    try:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            ctx_pw = browser.new_context(
-                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                locale='zh-CN'
-            )
-            page = ctx_pw.new_page()
-            page.goto("https://www.zhihu.com/hot", timeout=30000, wait_until="networkidle")
-            page.wait_for_timeout(3000)
-            items = page.query_selector_all('.HotItem-content, .HotList-item')[:10]
-            articles = []
-            for i, item in enumerate(items):
-                try:
-                    title_el = item.query_selector('h2, .HotItem-title')
-                    title = title_el.inner_text().strip() if title_el else f"知乎#{i}"
-                    link = item.query_selector('a')
-                    url = link.get_attribute('href') if link else ""
-                    if url and not url.startswith('http'): url = 'https://www.zhihu.com' + url
-                    articles.append({
-                        "id": make_id("zh", title) % 10**9,
-                        "title": title, "summary": "",
-                        "source": "知乎", "date": today, "time": now_time,
-                        "tags": ["知乎", "热榜"], "url": url,
-                        "likes": 50000, "comments": 100,
-                    })
-                except:
-                    continue
-            browser.close()
-            if articles:
-                return articles
-    except Exception as e:
-        print(f"  ⚠️ Playwright: {e}")
-    return []
+    data = fetch_json("https://www.zhihu.com/api/v3/explore/guest/feeds?limit=10",
+                      referer="https://www.zhihu.com/explore")
+    if not data:
+        return []
+    items = data.get("data", [])
+    if not items:
+        return []
+    articles = []
+    for item in items[:10]:
+        target = (item.get("target") or {})
+        title = ""
+        url = ""
+        # 从嵌套结构中提取标题
+        if isinstance(target, dict):
+            question = target.get("question", target)
+            if isinstance(question, dict):
+                title = question.get("title", "")
+                qid = question.get("id", "")
+                url = f"https://www.zhihu.com/question/{qid}" if qid else ""
+        if not title:
+            title = target.get("title", "")
+        if not title:
+            continue
+        articles.append({
+            "id": make_id("zh", title) % 10**9,
+            "title": title,
+            "summary": "",
+            "source": "知乎", "date": today, "time": now_time,
+            "tags": ["知乎", "热榜"],
+            "url": url or f"https://www.zhihu.com/search?type=content&q={urllib.parse.quote(title)}",
+            "likes": 50000, "comments": 100,
+        })
+    return articles
 
 def scrape_bilibili():
     """B站热搜"""
@@ -403,27 +380,28 @@ def scrape_thepaper():
     return articles
 
 def scrape_wallstreetcn():
-    """华尔街见闻"""
+    """华尔街见闻（实时快讯API，无重复）"""
     print("📡 华尔街见闻...")
-    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/articles?limit=10&channel=global",
+    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=10&channel=global-channel",
                       referer="https://wallstreetcn.com/")
     if not data:
         return []
     articles = []
     seen_ids = set()
     for item in data.get("data", {}).get("items", [])[:10]:
-        item_id = item.get('id', '')
+        item_id = str(item.get('id', ''))
         if item_id in seen_ids:
             continue
         seen_ids.add(item_id)
+        content = item.get("content", "") or item.get("title", "")
         articles.append({
-            "id": make_id("ws", str(item_id)) % 10**9,
-            "title": item.get("title", ""),
-            "summary": item.get("content_text", "")[:100],
+            "id": make_id("ws", item_id) % 10**9,
+            "title": content[:200],
+            "summary": "",
             "source": "华尔街见闻",
             "date": today, "time": now_time,
-            "tags": ["财经", "金融", "科技"],
-            "url": item.get("uri", "#"),
+            "tags": ["财经", "金融", "实时"],
+            "url": f"https://wallstreetcn.com/livenews/{item_id}",
             "likes": 15000, "comments": 150,
         })
     return articles
