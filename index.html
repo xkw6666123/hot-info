@@ -336,7 +336,7 @@ footer a:hover{color:var(--gold-hover)}
 .mobile-nav a.active{color:var(--gold)}
 .mobile-nav a .nav-icon{font-size:20px;display:block;margin-bottom:3px}
 body{padding-bottom:0}
-@media(max-width:768px){body{padding-bottom:70px}.mobile-nav{display:flex}}
+@media(max-width:768px){body{overflow-x:hidden;padding-bottom:70px}.mobile-nav{display:flex}}
 @media(min-width:769px){.mobile-nav{display:none}}
 
 /* scrollbar */
@@ -367,7 +367,7 @@ body{padding-bottom:0}
   #searchInput{width:80px}
   #searchInput:focus{width:120px}
   .header-tabs a{padding:5px 10px;font-size:11px}
-  .chart-wrap{margin:0 -14px;width:calc(100% + 28px);border-radius:0}
+  .chart-wrap{margin:0 -14px;max-width:calc(100% + 28px);border-radius:0;overflow-x:hidden}
 }
 
 @media(max-width:640px){
@@ -390,6 +390,8 @@ body{padding-bottom:0}
   .analysis-grid{grid-template-columns:1fr}
   footer{flex-direction:column;gap:8px;text-align:center}
   .chart-wrap{padding:14px}
+  .card,.card *{max-width:100%}
+  a,h3,p,.analysis-item .value{word-break:break-word;overflow-wrap:break-word}
 }
 
 @media(max-width:480px){
@@ -495,7 +497,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605131915" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605131927" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -796,6 +798,26 @@ function getRecommended(){
 
 function fmt(n){const v=Number(n)||0;return v>=10000?(v/10000).toFixed(1)+'万':v.toString()}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// 一键复制功能
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='✅ 已复制';
+    btn.style.color='var(--gold)';
+    setTimeout(()=>{btn.textContent=orig;btn.style.color=''},1500);
+  }).catch(()=>{
+    // 降级方案
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig=btn.textContent;
+    btn.textContent='✅ 已复制';
+    btn.style.color='var(--gold)';
+    setTimeout(()=>{btn.textContent=orig;btn.style.color=''},1500);
+  });
+}
 
 // tab switching
 document.querySelectorAll('.header-tabs a,.mobile-nav a').forEach(tab=>{

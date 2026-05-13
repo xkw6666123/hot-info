@@ -579,31 +579,36 @@ def scrape_douyin():
     return articles
 
 def scrape_weixin():
-    """公众号热点（聚合平台）"""
+    """公众号热点（主API + 微博降级）"""
     print("📡 公众号热点...")
-    # 使用公共热榜API获取微信热点
+    # 主API: vvhan
     data = fetch_json("https://api.vvhan.com/api/hotlist/weixin", referer="https://api.vvhan.com/")
-    if not data:
-        return []
-    articles = []
-    items = data.get("data", [])
-    if not items:
-        return []
-    for item in items[:10]:
-        title = item.get("title", "")
-        articles.append({
-            "id": make_id("wx", title) % 10**9,
-            "title": title,
-            "summary": item.get("desc", "")[:100] if item.get("desc") else "",
-            "source": "公众号热点",
-            "date": today,
-            "time": now_time,
-            "tags": ["公众号", "社会热点", "热议"],
-            "url": item.get("url", "#"),
-            "likes": safe_int(item.get("hot"), 10000),
-            "comments": 100,
-        })
-    return articles
+    if data:
+        items = data.get("data", [])
+        if items:
+            articles = []
+            for item in items[:10]:
+                articles.append({
+                    "id": make_id("wx", item.get("title","")) % 10**9,
+                    "title": item.get("title", ""),
+                    "summary": item.get("desc", "")[:100] if item.get("desc") else "",
+                    "source": "公众号热点",
+                    "date": today, "time": now_time,
+                    "tags": ["公众号", "社会热点", "热议"],
+                    "url": item.get("url", "#"),
+                    "likes": safe_int(item.get("hot"), 10000),
+                    "comments": 100,
+                })
+            return articles
+    
+    # 降级: 直接复用微博热搜数据（内容高度重叠）
+    print("  ⚠️ 主API失败，复用微博热搜")
+    wb = scrape_weibo()
+    if wb:
+        for a in wb:
+            a["source"] = "公众号热点"
+            a["id"] = make_id("wx_fb", a["title"]) % 10**9
+        return wb
 
 
 class BlogSearcher:
