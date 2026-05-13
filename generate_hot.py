@@ -1087,6 +1087,38 @@ def main(mode="full"):
         if a.get("source") == "blogger" and not a.get("content_intro"):
             a["content_intro"] = _generate_video_intro(a, all_articles)
 
+    # ═══ 文案清洗：繁转简 + Whisper误识别修复 ═══
+    _clean_fixes = [
+        ('无警广员支队银门哨兵','武警执勤'),('虎帐办演者','cosplay表演者'),
+        ('虎帐优人','coser'),('枪都已经向堂了','枪都已经上膛了'),
+        ('托落','脱落'),('昏觉','昏厥'),('灯上热搜','登上热搜'),
+        ('推桑','推搡'),('设施六人','涉案六人'),('户在身后','护在身后'),
+        ('富哨','副哨'),('烫手山狱','烫手山芋'),('切开的稀釉','切开的西瓜'),
+        ('六官王','六冠王'),('对势','对峙'),('慢展','漫展'),('苏行定徽','苏醒后'),
+        ('炼铜皮','恋童癖'),('黑闪酒机','黑闪连击'),('拒留','拘留'),
+        ('罩人男子','肇事男子'),('首部受伤','头部受伤'),('毒瘤女孩','盲人女孩'),
+        ('将警快核实','将尽快核实'),('全之龙','权志龙'),('其不来的','起不来的'),
+        ('图件进攻','推荐进攻'),('彼此根','培根'),('鲜耳朵','馅儿多'),
+        ('三娘我请我来哦',''),('你爆一个四十','你爆一个试试'),
+        ('浓的要小','弄的要死'),('恰人中等急救措施','掐人中急救'),
+        ('不是陷入','不适陷入'),
+    ]
+    _zhe = [('想著','想着'),('握著','握着'),('看著','看着'),('对著','对着'),
+            ('拿著','拿着'),('跟著','跟着'),('推著','推着'),('抱著','抱着'),
+            ('走著','走着'),('笑著','笑着'),('吃著','吃着'),('站著','站着')]
+    try:
+        from opencc import OpenCC
+        _cc = OpenCC('t2s')
+        for a in all_articles:
+            ci = a.get('content_intro','')
+            if not ci: continue
+            try: ci = _cc.convert(ci)
+            except: pass
+            for w,r in _zhe: ci=ci.replace(w,r)
+            for w,r in _clean_fixes: ci=ci.replace(w,r)
+            a['content_intro'] = ci.strip()
+    except ImportError:
+        pass
     # 为缺少 analysis 的博主视频自动生成
     for a in all_articles:
         if a.get("source") == "blogger" and not a.get("analysis"):
