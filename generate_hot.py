@@ -1146,7 +1146,7 @@ def main(mode="full"):
     from datetime import timedelta
     cutoff = datetime.now().date() - timedelta(days=3)
     rescue_cutoff = datetime.now().date() - timedelta(days=7)  # 失败平台保留7天
-    blog_cutoff = datetime.now().date() - timedelta(days=7)
+    blog_cutoff = datetime.now().date() - timedelta(days=3)    # 博主同样3天
     fresh = []
     bloggers_kept = {}
     blog_removed = 0
@@ -1168,9 +1168,9 @@ def main(mode="full"):
             except:
                 pass
             fresh.append(a)
-    # 博主：保留7天内最新3条
+    # 博主：保留3天内最新3条
     for name, lst in bloggers_kept.items():
-        # 只保留7天内的
+        # 只保留3天内的
         recent = []
         old = 0
         for a in lst:
