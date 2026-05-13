@@ -601,16 +601,9 @@ def scrape_weixin():
                 })
             return articles
     
-    # 降级: 直接复用微博热搜数据（内容高度重叠）
-    print("  ⚠️ 主API失败，复用微博热搜")
-    wb = scrape_weibo()
-    if wb:
-        for a in wb:
-            a["source"] = "公众号热点"
-            a["id"] = make_id("wx_fb", a["title"]) % 10**9
-            # 链接改为搜狗微信搜索，避免微博链接打不开
-            a["url"] = "https://weixin.sogou.com/weixin?type=2&query=" + urllib.parse.quote(a["title"])
-        return wb
+    # API失败：不降级到微博，救援逻辑会自动保留旧微信文章
+    print("  ⚠️ API不可达，将保留旧数据")
+    return []
 
 
 class BlogSearcher:
