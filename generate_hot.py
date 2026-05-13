@@ -601,16 +601,48 @@ def scrape_weixin():
                 })
             return articles
     
-    # API失败：用微博热搜 + 搜狗微信搜索链接（搜索链接不会过期）
+    # API失败：用微博热搜 + 搜狗微信搜索链接，只保留社会争议性话题
     print("  ⚠️ API不可达，用微博热搜+搜狗搜索")
     wb = scrape_weibo()
     if wb:
+        # 过滤娱乐/明星/广告/无争议内容，只留社会/政治/争议/财经类
+        skip_words = ['表白', '520', '礼物', '新歌', '新剧', '综艺', '演唱会', '直播', 
+                      '穿搭', '发型', '妆容', '减肥', '健身', '美食', '旅游', '星座',
+                      '磕糖', 'CP', '同框', '发箍', '下班', '剧组', '海报', '预告',
+                      '淘宝', '折扣', '红包', '代言', '广告', '上映', '定档']
+        keep_words = ['特朗普', '访华', '中美', '习近平', '国务院', '外交部', '国台办',
+                      'A股', '芯片', '存储', '涨价', '银行', '房贷', '房价', '政策',
+                      '法院', '刑拘', '偷拍', '猥亵', '强奸', '杀人', '死亡', '事故',
+                      '爆炸', '火灾', '地震', '台风', '高温', '暴雨', '洪水',
+                      '争议', '举报', '投诉', '维权', '霸王', '离职', '辞职',
+                      '收费', '涨价', '取消', '禁止', '限制', '新规',
+                      '曝光', '黑幕', '回应', '道歉', '警方', '公安', '司机',
+                      '留学生', '国际', '美国', '日本', '欧洲', '中东',
+                      '科技', 'AI', '人工智能', '大模型', '芯片', '新机']
+        
+        result = []
         for a in wb:
+            title = a.get("title", "")
+            # 跳过低质量内容
+            if any(w in title for w in skip_words):
+                continue
+            # 优先保留社会类
+            result.append(a)
+        
+        # 如果没有足够社会类，补几个高质量的
+        if len(result) < 8:
+            for a in wb:
+                if a not in result:
+                    result.append(a)
+                    if len(result) >= 10:
+                        break
+        
+        result = result[:10]
+        for a in result:
             a["source"] = "公众号热点"
             a["id"] = make_id("wx_fb", a["title"]) % 10**9
-            # 搜狗微信搜索链接（非跳转链接，不会过期）
             a["url"] = "https://weixin.sogou.com/weixin?type=2&query=" + urllib.parse.quote(a["title"].split("#")[0])
-        return wb[:10]
+        return result
     return []
 
 class BlogSearcher:
