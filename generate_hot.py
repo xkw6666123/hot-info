@@ -436,7 +436,7 @@ def scrape_cls():
     if not data or not data.get("data"):
         return []
     articles = []
-    items = data.get("data", [])
+    items = data.get("data", {}).get("roll_data", [])
     for item in items[:10]:
         articles.append({
             "id": make_id("cls", str(item.get('id',''))) % 10**9,
