@@ -188,61 +188,62 @@ def scrape_baidu():
     return articles
 
 def scrape_zhihu():
-    """知乎热榜（使用Playwright爬取）"""
+    """知乎热榜（多API尝试）"""
     print("📡 知乎热榜...")
+    # 尝试多个API
+    apis = [
+        ("https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10&desktop=true", "v3"),
+        ("https://www.zhihu.com/api/v4/topstory/hot-lists/total?limit=10", "v4"),
+    ]
+    for url, ver in apis:
+        data = fetch_json(url, referer="https://www.zhihu.com/")
+        if data and data.get("data"):
+            items = data["data"]
+            articles = []
+            for item in items[:10]:
+                target = item.get("target", item)
+                title = target.get("title", target.get("title_area", {}).get("text", ""))
+                articles.append({
+                    "id": make_id("zh", title) % 10**9,
+                    "title": title,
+                    "summary": target.get("excerpt", "")[:100] if target.get("excerpt") else "",
+                    "source": "知乎",
+                    "date": today, "time": now_time,
+                    "tags": ["知乎", "热榜", "热议"],
+                    "url": target.get("url", f"https://www.zhihu.com/question/{item.get('id','')}"),
+                    "likes": safe_int(target.get("answer_count", target.get("follower_count", 0)), 50000),
+                    "comments": safe_int(target.get("comment_count", 0), 100),
+                })
+            return articles
+    
+    # 最后尝试 Playwright
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-            page.goto("https://www.zhihu.com/hot", timeout=30000)
-            page.wait_for_selector('.HotList-list', timeout=10000)
-            
-            articles = []
+            page.goto("https://www.zhihu.com/hot", timeout=30000, wait_until="domcontentloaded")
+            page.wait_for_timeout(5000)
             items = page.query_selector_all('.HotItem-content')[:10]
+            articles = []
             for i, item in enumerate(items):
                 title_el = item.query_selector('.HotItem-title')
                 title = title_el.inner_text() if title_el else f"知乎热榜第{i+1}位"
-                
-                link_el = item.query_selector('a[href*="question"]')
-                url = link_el.get_attribute('href') if link_el else f"https://www.zhihu.com/question/{i}"
-                if url and not url.startswith('http'):
-                    url = 'https://www.zhihu.com' + url
-                
-                excerpt_el = item.query_selector('.HotItem-excerpt')
-                summary = excerpt_el.inner_text()[:100] if excerpt_el else ""
-                
-                metrics_el = item.query_selector('.HotItem-metrics')
-                likes = 50000
-                if metrics_el:
-                    text = metrics_el.inner_text()
-                    import re
-                    m = re.search(r'(\d+\.?\d*)万', text)
-                    if m:
-                        likes = int(float(m.group(1)) * 10000)
-                    else:
-                        m = re.search(r'(\d+)', text)
-                        if m:
-                            likes = int(m.group(1))
-                
+                link_el = item.query_selector('a[href*=\"question\"]')
+                url = link_el.get_attribute('href') if link_el else ""
+                if url and not url.startswith('http'): url = 'https://www.zhihu.com' + url
                 articles.append({
-                    "id": make_id("zhihu", url) % 10**9,
-                    "title": title,
-                    "summary": summary,
-                    "source": "知乎",
-                    "date": today,
-                    "time": now_time,
-                    "tags": ["热议", "观点", "深挖"],
-                    "url": url,
-                    "likes": likes,
-                    "comments": 500,
+                    "id": make_id("zh", title) % 10**9,
+                    "title": title, "summary": "",
+                    "source": "知乎", "date": today, "time": now_time,
+                    "tags": ["知乎", "热榜"], "url": url,
+                    "likes": 50000, "comments": 100,
                 })
-            
             browser.close()
             return articles
     except Exception as e:
         print(f"  ⚠️ Playwright爬取失败: {e}")
-        return []
+    return []
 
 def scrape_bilibili():
     """B站热搜"""
@@ -428,27 +429,34 @@ def scrape_wallstreetcn():
     return articles
 
 def scrape_cls():
-    """财联社"""
+    """财联社（多API尝试）"""
     print("📡 财联社...")
-    data = fetch_json("https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4.6",
-                      referer="https://www.cls.cn/")
-    if not data:
-        return []
-    articles = []
-    for item in data.get("data", {}).get("roll_data", [])[:10]:
-        articles.append({
-            "id": make_id("cls", item.get('id','')) % 10**9,
-            "title": item.get("title", ""),
-            "summary": item.get("brief", "")[:100],
-            "source": "财联社热门",
-            "date": today,
-            "time": now_time,
-            "tags": ["财经", "金融", "投资"],
-            "url": f"https://www.cls.cn/detail/{item.get('id','')}",
-            "likes": 20000,
-            "comments": 200,
-        })
-    return articles
+    # 尝试多个API端点
+    urls = [
+        "https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4.6",
+        "https://www.cls.cn/api/sw?app=CailianpressWeb&os=web&sv=8.4.8",
+        "https://www.cls.cn/v1/roll/get_roll_list?app=CailianpressWeb&os=web&sv=8.4.6",
+    ]
+    for url in urls:
+        data = fetch_json(url, referer="https://www.cls.cn/")
+        if not data or not data.get("data"):
+            continue
+        articles = []
+        items = data.get("data", {}).get("roll_data", []) or data.get("data", [])
+        for item in items[:10]:
+            articles.append({
+                "id": make_id("cls", str(item.get('id',''))) % 10**9,
+                "title": item.get("title", ""),
+                "summary": item.get("brief", "")[:100],
+                "source": "财联社热门",
+                "date": today, "time": now_time,
+                "tags": ["财经", "金融", "投资"],
+                "url": f"https://www.cls.cn/detail/{item.get('id','')}",
+                "likes": 20000, "comments": 200,
+            })
+        if articles:
+            return articles
+    return []
 
 def scrape_ifeng():
     """凤凰网"""
