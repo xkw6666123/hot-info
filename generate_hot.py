@@ -811,12 +811,30 @@ def main(mode="full"):
         #    - local 模式：无条件保留全部（博主爬虫被跳过，所有旧数据都需要）
         if mode == "local":
             old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
+            # 把旧 ASR 文案迁移到新条目（TikHub 数据无高质量文案）
+            old_intro_map = {}
+            for b in old_bloggers:
+                key = b.get("url") or str(b.get("id"))
+                if b.get("content_intro") and len(b["content_intro"]) >= 50:
+                    old_intro_map[key] = b["content_intro"]
+            preserved = 0
+            for a in all_articles:
+                if a.get("source") != "blogger":
+                    continue
+                key = a.get("url") or str(a.get("id"))
+                if key in old_intro_map and len(a.get("content_intro", "")) < 50:
+                    a["content_intro"] = old_intro_map[key]
+                    preserved += 1
+            if preserved:
+                print(f"  \U0001f4dd 保留 {preserved} 条旧 ASR 文案")
         else:
             old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
         new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
+        new_blogger_urls = {a.get("url", "") for a in all_articles if a.get("source") == "blogger"}
         rescued_bloggers = 0
         for b in old_bloggers:
-            if str(b["id"]) not in new_blogger_ids:
+            # 保留新数据中没有的旧条目（按ID和URL双重去重）
+            if str(b["id"]) not in new_blogger_ids and b.get("url", "") not in new_blogger_urls:
                 all_articles.append(b)
                 rescued_bloggers += 1
         if rescued_bloggers:
@@ -937,22 +955,37 @@ def main(mode="full"):
             a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # 构建 data.json
-    # ═══ 只保留最近 3 天数据 ═══
+    # ═══ 数据过滤 ═══
     from datetime import timedelta
     cutoff = datetime.now().date() - timedelta(days=3)
     fresh = []
-    removed = 0
+    bloggers_kept = {}  # 每位博主保留最新3条
+    blog_removed = 0
+    news_removed = 0
     for a in all_articles:
-        try:
-            d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
-            if d < cutoff:
-                removed += 1
-                continue
-        except:
-            pass
-        fresh.append(a)
-    if removed:
-        print(f"  🗑 过期数据: {removed} 条")
+        if a.get("source") == "blogger":
+            name = a.get("blogger_name", "")
+            lst = bloggers_kept.setdefault(name, [])
+            lst.append(a)
+        else:
+            # 新闻类：只保留3天内
+            try:
+                d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
+                if d < cutoff:
+                    news_removed += 1
+                    continue
+            except:
+                pass
+            fresh.append(a)
+    # 每位博主保留最新3条
+    for name, lst in bloggers_kept.items():
+        lst.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
+        fresh.extend(lst[:3])
+        blog_removed += max(0, len(lst) - 3)
+    if blog_removed:
+        print(f"  🗑 博主过期: {blog_removed} 条")
+    if news_removed:
+        print(f"  🗑 新闻过期: {news_removed} 条")
     all_articles = fresh
 
     output = {
