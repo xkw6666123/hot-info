@@ -54,12 +54,13 @@ _no_proxy_handler = urllib.request.ProxyHandler({})
 _no_proxy_opener = urllib.request.build_opener(_no_proxy_handler)
 
 def fetch(url, headers=None, referer=None):
-    """HTTP GET（带 3 次重试），返回解码后的字符串。强制直连，不走系统代理"""
+    """HTTP GET（带 3 次重试），返回解码后的字符串。强制直连，不走系统代理
+    自动处理 gzip 压缩（自定义 ProxyHandler opener 不自动解压）"""
+    import gzip as _gzip
     default_headers = {
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/json,application/xhtml+xml,*/*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "Accept-Encoding": "gzip, deflate",
         "Cache-Control": "no-cache",
     }
     if referer:
@@ -72,7 +73,12 @@ def fetch(url, headers=None, referer=None):
         try:
             req = urllib.request.Request(url, headers=default_headers)
             with _no_proxy_opener.open(req, timeout=TIMEOUT) as resp:
-                return resp.read().decode("utf-8", errors="replace")
+                raw = resp.read()
+                # 手动解压 gzip（自定义 opener 不自动处理）
+                encoding = resp.headers.get("Content-Encoding", "")
+                if "gzip" in encoding:
+                    raw = _gzip.decompress(raw)
+                return raw.decode("utf-8", errors="replace")
         except Exception as e:
             last_error = e
             if attempt < RETRIES - 1:
@@ -135,8 +141,17 @@ def tikhub_request(endpoint, params=None, method="GET"):
 def scrape_baidu():
     """百度热搜"""
     print("📡 百度热搜...")
-    data = fetch_json("https://top.baidu.com/board?tab=realtime", referer="https://top.baidu.com/")
-    if not data:
+    text = fetch("https://top.baidu.com/board?tab=realtime", referer="https://top.baidu.com/")
+    if not text:
+        return []
+    # 百度把 JSON 数据嵌在 HTML comment 中
+    import re
+    m = re.search(r'<!--s-data:(.*?)-->', text)
+    if not m:
+        return []
+    try:
+        data = json.loads(m.group(1))
+    except json.JSONDecodeError:
         return []
     cards = data.get("data", {}).get("cards", [])
     articles = []
@@ -743,8 +758,9 @@ def main(mode="full"):
     ]
     
     if mode == "local":
-        # 跳过海外依赖的爬虫（TikHub + B站博主）
-        scrapers = [(n, s) for n, s in scrapers if n not in ("博主追踪", "B站博主")]
+        # local 模式也跑博主追踪：TikHub API 国内直连可用，B站 API 国内直连
+        # 只跳过需要 cookie/签名的抖音直抓
+        scrapers = [(n, s) for n, s in scrapers if n not in ("抖音",)]
     elif mode == "remote":
         # 只跑海外爬虫，并合并已有 data.json
         scrapers = [(n, s) for n, s in scrapers if n in ("博主追踪", "B站博主")]
