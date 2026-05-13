@@ -463,7 +463,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605131416" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605131714" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 if(typeof dataJsFailed==='undefined') dataJsFailed=false;
 var data=[],allTags=[],json={},dataError=null;
@@ -515,7 +515,7 @@ function loadData(){
 function initPage(){
   try {
   const tagSet=new Set();
-  data.forEach(a=>a.tags.forEach(t=>tagSet.add(t)));
+  data.forEach(a=>(a.tags||[]).forEach(t=>tagSet.add(t)));
   allTags=['全部',...tagSet];
 
   // 更新统计数据
@@ -554,7 +554,7 @@ function renderTags(active){
     btn.onclick=()=>{
       const tag=btn.dataset.tag;
       renderTags(tag);
-      const filtered=tag==='全部'?data:data.filter(a=>a.tags.includes(tag));
+      const filtered=tag==='全部'?data:data.filter(a=>(a.tags||[]).includes(tag));
       render(filtered);
     };
   });
@@ -642,7 +642,7 @@ function renderCard(a){
   const badge=isViral?'🔥':(isHot?'💥':'');
   return `<div style="position:relative">
     <button class="fav-btn ${isFav(a.id)?'active':''}" onclick="event.preventDefault();event.stopPropagation();toggleFav('${a.id}')">${isFav(a.id)?'⭐':'☆'}</button>
-    ${isBlogger?`<button class="fav-btn" style="right:40px;${liked?'background:var(--gold-dim);color:var(--gold)':'color:var(--text-muted)'}" onclick="event.preventDefault();event.stopPropagation();toggleLike('${a.id}','${a.tags?JSON.stringify(a.tags).replace(/'/g,"\\'"):'[]'}')">${liked?'❤️':'🤍'}</button>`:''}
+    ${isBlogger?`<button class="fav-btn" style="right:40px;${liked?'background:var(--gold-dim);color:var(--gold)':'color:var(--text-muted)'}" data-id="${a.id}" data-tags='${esc(JSON.stringify(a.tags||[]))}' onclick="event.preventDefault();event.stopPropagation();toggleLike(this.dataset.id,this.dataset.tags)">${liked?'❤️':'🤍'}</button>`:''}
     <a href="${a.url||'#'}" target="_blank" class="card" style="display:block;color:inherit">
       <div class="card-time">
         <span class="dot"></span>${a.date} ${a.time}
@@ -720,7 +720,9 @@ function renderFav(){
       }
     }
   }catch(e){}
-  const total=f.length+((JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0);
+  let inspFavCount=0;
+  try{inspFavCount=(JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0}catch(e){}
+  const total=f.length+inspFavCount;
   if(total===0){
     el.innerHTML='<div class="empty-state"><div class="icon">⭐</div><p>还没有收藏内容</p><p style="font-size:12px">在文章点⭐收藏或在视频点❤️喜欢，会推荐相关热点</p></div>';
   }else{
@@ -741,7 +743,7 @@ function getRecommended(){
   return data.filter(a=>a.source!=='blogger'&&a.tags&&a.tags.some(t=>likeTags.includes(t))).slice(0,5)
 }
 
-function fmt(n){return n>=10000?(n/10000).toFixed(1)+'万':n.toString()}
+function fmt(n){const v=Number(n)||0;return v>=10000?(v/10000).toFixed(1)+'万':v.toString()}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
 // tab switching
@@ -1163,7 +1165,7 @@ function renderAnalysis(){
 
   h+='<div class="analysis-card"><h3>📂 视频类型分布</h3><div style="display:flex;gap:8px;flex-wrap:wrap">';
   Object.entries(typeCount).forEach(([t,c])=>{
-    const pct=Math.round(c/analyzedVids.length*100);
+    const pct=analyzedVids.length?Math.round(c/analyzedVids.length*100):0;
     h+=`<div style="background:rgba(74,143,228,0.06);border:1px solid rgba(74,143,228,0.2);border-radius:var(--radius-sm);padding:10px 16px;flex:1;min-width:120px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--blue)">${pct}%</div><div style="font-size:11px;color:var(--text-sec);margin-top:4px">${t}</div></div>`;
   });
   h+='</div></div>';
@@ -1229,7 +1231,7 @@ function renderAnalysis(){
           h+=`<div class="analysis-item" style="grid-column:span 2"><div class="label">热门标签</div><div class="tag-list">${v.tags.map(t=>'<span>#'+t+'</span>').join('')}</div></div>`;
         }
         h+='</div>';
-        h+=`<div class="analysis-tip">💡 可复制建议：${a.replicable_tip}</div>`;
+        h+=`<div class="analysis-tip">💡 可复制建议：${a.replicable_tip||'暂无建议'}</div>`;
       }
     }
     h+='</div></a>';
@@ -1274,11 +1276,11 @@ function renderTrend(){
 
   h+='<div class="chart-wrap"><h3>🔖 热门标签 Top 10</h3><div class="sub">出现频率最高的标签</div><canvas id="chartTag"></canvas></div>';
 
-  el.innerHTML=h;
-
-  // 清理旧图表（避免 "Canvas is already in use" 报错）
+  // 先销毁旧图表（避免内存泄漏和 "Canvas is already in use" 报错）
   if(window._charts){window._charts.forEach(c=>{try{c.destroy()}catch(e){}});}
   window._charts=[];
+
+  el.innerHTML=h;
 
   // 画图
   setTimeout(()=>{
