@@ -498,7 +498,7 @@ body{padding-bottom:0}
 </div>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=202605140917" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
+<script src="data.js?v=202605140943" onerror="dataJsFailed=true;var el=document.getElementById('jsError');el.style.display='block';el.innerHTML='❌ data.js 加载失败(404/网络错误)<br>请检查 Cloudflare Pages 部署中是否包含 data.js 文件'"></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -507,47 +507,15 @@ function toggleTheme(){
   localStorage.setItem('theme',isLight?'light':'dark');
   document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
 }
-// 一键更新
-async function triggerUpdate(){
+// 一键更新：直接刷新页面拉最新数据（最简单）
+function triggerUpdate(){
   const btn=document.getElementById('updateBtn');
   btn.textContent='⏳ 更新中...';btn.disabled=true;
-  
-  // 调用 GitHub Actions workflow dispatch
-  const repo='xkw6666123/hot-info';
-  const wfid='auto-update.yml';
-  
-  // 尝试用已缓存的 token，没有就弹窗让用户输入
-  let token=localStorage.getItem('gh_token')||'';
-  if(!token){
-    token=prompt('请输入 GitHub Personal Access Token (仅需 actions:write 权限):\n\n去 https://github.com/settings/tokens 创建\nToken 只存在你浏览器，不会上传服务器');
-    if(!token){btn.textContent='🔄 更新';btn.disabled=false;return;}
-    localStorage.setItem('gh_token',token);
-  }
-  
-  try{
-    const r=await fetch(`https://api.github.com/repos/${repo}/actions/workflows/${wfid}/dispatches`,{
-      method:'POST',
-      headers:{'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json'},
-      body:JSON.stringify({ref:'main'})
-    });
-    if(r.status===204){
-      btn.textContent='✅ 已触发!';btn.style.background='#4CAF50';
-      setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='var(--gold)'},3000);
-      // 40秒后自动刷新页面查看新数据
-      setTimeout(()=>{location.reload()},45000);
-    }else if(r.status===401){
-      localStorage.removeItem('gh_token');
-      btn.textContent='🔄 更新';btn.disabled=false;
-      alert('Token 无效，请重新输入');
-    }else{
-      const info=await r.json().catch(()=>({}));
-      btn.textContent='🔄 更新';btn.disabled=false;
-      alert('触发失败: '+(info.message||r.status));
-    }
-  }catch(e){
-    btn.textContent='🔄 更新';btn.disabled=false;
-    alert('网络错误: '+e.message);
-  }
+  // 给 data.js 加时间戳强制刷新
+  const s=document.querySelector('script[src*="data.js"]');
+  if(s) s.src='data.js?v='+Date.now();
+  // 3秒后刷新页面
+  setTimeout(()=>location.reload(),3000);
 }
 // 初始化主题
 (function(){
