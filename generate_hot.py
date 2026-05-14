@@ -1011,20 +1011,18 @@ def main(mode="full"):
                 print(f"  🛟 保留 {len(old_rescue)} 条旧数据 (来自: {', '.join(failed_sources)})")
                 all_articles.extend(old_rescue)
         
-        # 3. 如果新数据太少，额外保留所有旧的非博主数据
-        new_count = len([a for a in all_articles if a.get("source") != "blogger"])
-        old_count = len([a for a in old_articles if a.get("source") != "blogger"])
-        if new_count < 30 and old_count > 50:
-            extra = [a for a in old_articles if a.get("source") != "blogger"]
-            existing_ids = {str(a["id"]) for a in all_articles}
-            added = 0
-            for a in extra:
-                if str(a["id"]) not in existing_ids:
-                    all_articles.append(a)
-                    existing_ids.add(str(a["id"]))
-                    added += 1
-            if added:
-                print(f"  🛟 新数据太少({new_count}条)，额外保留 {added} 条旧数据")
+        # 3. 始终合并旧的非博主数据（按URL去重），确保保留7天历史
+        old_non_blogger = [a for a in old_articles if a.get("source") != "blogger"]
+        new_non_blogger_urls = {a.get("url", "") for a in all_articles if a.get("source") != "blogger"}
+        merged_old = 0
+        for a in old_non_blogger:
+            old_url = a.get("url", "")
+            if old_url and old_url not in new_non_blogger_urls:
+                all_articles.append(a)
+                new_non_blogger_urls.add(old_url)
+                merged_old += 1
+        if merged_old:
+            print(f"  📦 合并 {merged_old} 条旧新闻数据（保留7天历史）")
     
     # 去重（按id）
     seen = set()
