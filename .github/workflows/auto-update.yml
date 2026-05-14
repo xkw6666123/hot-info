@@ -14,8 +14,8 @@ jobs:
   merge-bloggers:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    # schedule/workflow_dispatch 始终执行；push 时跳过机器人自己的commit避免无限循环
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'auto: merge') }}
+    # 非push事件始终执行；push事件跳过机器人自己的commit避免无限循环
+    if: "${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'auto: merge') }}"
 
     steps:
       - name: Checkout
