@@ -26,8 +26,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run remote scrapers (TikHub + B站 bloggers)
-        run: python generate_hot.py --remote
+      - name: Run scrapers (全平台抓取)
+        run: python generate_hot.py --local
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
 
