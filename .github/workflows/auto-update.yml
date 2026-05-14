@@ -46,3 +46,4 @@ jobs:
             git commit -m "auto: merge bloggers ${TS}"
             git push
           fi
+
