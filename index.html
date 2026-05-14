@@ -507,49 +507,13 @@ function toggleTheme(){
   localStorage.setItem('theme',isLight?'light':'dark');
   document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
 }
-// 一键更新：触发 GitHub Actions 重新抓数据
-async function triggerUpdate(){
+// 一键更新：跳转到 GitHub Actions 手动触发
+function triggerUpdate(){
   const btn=document.getElementById('updateBtn');
-  btn.textContent='⏳ 更新中...';btn.disabled=true;
-
-  let token = localStorage.getItem('gh_token')||'';
-  if(!token){
-    const input = prompt(
-      '请输入 GitHub Personal Access Token（一次性设置）：\n\n'+
-      '1. 打开 https://github.com/settings/tokens\n'+
-      '2. 点击 "Generate new token (classic)"\n'+
-      '3. 勾选 scope: "workflows"\n'+
-      '4. 点击 Generate，复制 token 粘贴进来\n\n'+
-      'Token 只存在你本地浏览器，不会上传到任何服务器。'
-    );
-    if(!input || !input.trim()){ btn.textContent='🔄 更新'; btn.disabled=false; return; }
-    token = input.trim();
-    localStorage.setItem('gh_token', token);
-  }
-
-  const repo = 'xkw6666123/hot-info';
-  try {
-    const r = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/auto-update.yml/dispatches`,{
-      method:'POST',
-      headers:{'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
-      body: JSON.stringify({ref:'main'})
-    });
-    if(r.status===204 || r.status===200){
-      btn.textContent='✅ 已触发!';btn.style.background='#4CAF50';
-      setTimeout(()=>location.reload(),5000);
-    }else if(r.status===401 || r.status===403){
-      localStorage.removeItem('gh_token');
-      btn.textContent='🔄 更新';btn.disabled=false;
-      alert('Token 无效或权限不足，请重新设置。\n\n去 https://github.com/settings/tokens 创建，勾选 "workflows" scope');
-    }else{
-      const err = await r.json().catch(()=>({}));
-      btn.textContent='🔄 更新';btn.disabled=false;
-      alert('触发失败: '+(err.message||r.status));
-    }
-  }catch(e){
-    btn.textContent='🔄 更新';btn.disabled=false;
-    alert('网络错误: '+e.message);
-  }
+  btn.textContent='⏳ 跳转中...';btn.disabled=true;
+  // 打开 GitHub Actions 页面，用户手动点 "Run workflow"
+  window.open('https://github.com/xkw6666123/hot-info/actions/workflows/auto-update.yml','_blank');
+  setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;},2000);
 }
 // 初始化主题
 (function(){
