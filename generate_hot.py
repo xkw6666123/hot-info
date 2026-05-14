@@ -1011,7 +1011,7 @@ def main(mode="full"):
                 print(f"  🛟 保留 {len(old_rescue)} 条旧数据 (来自: {', '.join(failed_sources)})")
                 all_articles.extend(old_rescue)
         
-        # 3. 始终合并旧的非博主数据（按URL去重），确保保留7天历史
+        # 3. 始终合并旧的非博主数据（按URL去重），确保保留3天历史
         old_non_blogger = [a for a in old_articles if a.get("source") != "blogger"]
         new_non_blogger_urls = {a.get("url", "") for a in all_articles if a.get("source") != "blogger"}
         merged_old = 0
@@ -1022,7 +1022,7 @@ def main(mode="full"):
                 new_non_blogger_urls.add(old_url)
                 merged_old += 1
         if merged_old:
-            print(f"  📦 合并 {merged_old} 条旧新闻数据（保留7天历史）")
+            print(f"  📦 合并 {merged_old} 条旧新闻数据（保留3天历史）")
     
     # 去重（按id）
     seen = set()
@@ -1097,6 +1097,12 @@ def main(mode="full"):
     insp_sources = blogger_items[:3] + other_items[:12]
     inspirations = generate_inspirations(insp_sources[:15])
 
+    # ═══ 消毒：移除所有字符串中的换行符、回车、制表符（防止 HTML 内联 JSON 出错）═══
+    for a in all_articles:
+        for k in ('title', 'summary', 'content_intro'):
+            if k in a and isinstance(a[k], str):
+                a[k] = a[k].replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+    
     # 为缺少 content_intro 的博主视频补充基础简介（不覆盖 ASR 已提取的内容）
     for a in all_articles:
         if a.get("source") == "blogger" and not a.get("content_intro"):
@@ -1142,8 +1148,8 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=7)           # 新闻保留7天
-    rescue_cutoff = datetime.now().date() - timedelta(days=14)   # 失败平台保留14天
+    cutoff = datetime.now().date() - timedelta(days=3)           # 新闻保留3天
+    rescue_cutoff = datetime.now().date() - timedelta(days=7)    # 失败平台保留7天
     blog_cutoff = datetime.now().date() - timedelta(days=3)      # 博主3天
     fresh = []
     bloggers_kept = {}
