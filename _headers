@@ -1,9 +1,13 @@
-# 禁止 Cloudflare 自动压缩/转换 JS 和 HTML（避免破坏内联脚本）
+# 强制即时刷新，禁止 Cloudflare 缓存
 /*.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
 
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
   ! Auto-Minify
 
 /*
