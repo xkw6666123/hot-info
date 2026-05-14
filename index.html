@@ -507,13 +507,27 @@ function toggleTheme(){
   localStorage.setItem('theme',isLight?'light':'dark');
   document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
 }
-// 一键更新：跳转到 GitHub Actions 手动触发
+// 一键更新：通过 Cloudflare Pages Function 触发 GitHub Actions
 function triggerUpdate(){
   const btn=document.getElementById('updateBtn');
-  btn.textContent='⏳ 跳转中...';btn.disabled=true;
-  // 打开 GitHub Actions 页面，用户手动点 "Run workflow"
-  window.open('https://github.com/xkw6666123/hot-info/actions/workflows/auto-update.yml','_blank');
-  setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;},2000);
+  btn.textContent='⏳ 触发中...';btn.disabled=true;
+  fetch('/api/trigger-update',{method:'POST'})
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.ok){
+        btn.textContent='✅ 已触发';btn.style.background='#22c55e';
+        setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
+      }else{
+        btn.textContent='❌ 失败';btn.style.background='#ef4444';
+        alert('更新失败: '+d.msg);
+        setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
+      }
+    })
+    .catch(e=>{
+      btn.textContent='❌ 失败';btn.style.background='#ef4444';
+      alert('网络错误: '+e.message);
+      setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
+    });
 }
 // 初始化主题
 (function(){
