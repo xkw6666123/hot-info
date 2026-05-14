@@ -28,12 +28,28 @@ jobs:
 
       - name: Run scrapers (全平台抓取)
         id: scrape
-        run: python generate_hot.py --local
+        run: |
+          echo "=== ENV ==="
+          python --version
+          which python
+          pwd
+          ls -la data.json 2>/dev/null || echo "data.json not found"
+          echo ""
+          python generate_hot.py --local
+          EXIT=$?
+          echo "EXIT_CODE=$EXIT"
+          ls -la data.json 2>/dev/null || echo "data.json missing after script"
+          exit $EXIT
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
 
       - name: Generate data.js
-        run: python gen_js_data.py
+        run: |
+          echo "=== data.json size: $(wc -c < data.json) bytes ==="
+          head -c 500 data.json
+          echo ""
+          python gen_js_data.py
+          echo "=== data.js generated ==="
 
       - name: Commit and push
         run: |
@@ -47,4 +63,3 @@ jobs:
             git commit -m "auto: merge ${TS}"
             git push origin HEAD:main
           fi
-
