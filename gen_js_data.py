@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""数据写入 data.js，原子化防损坏 + 缓存版本号更新"""
+"""数据写入：把 data.json 直接嵌入 index.html 内联脚本，消除外部文件依赖"""
 import json, os, re
 from datetime import datetime
 
 def atomic_write(path, content, mode="w", encoding="utf-8", newline=None):
-    """原子写入：先写临时文件，再 replace 到目标"""
     tmp = path + ".tmp"
     kwargs = {"encoding": encoding}
     if newline: kwargs["newline"] = newline
@@ -18,16 +17,21 @@ def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
     
-    js = f"window.__HOT_DATA__ = {json.dumps(data, ensure_ascii=False, indent=0)};\n"
-    atomic_write("data.js", js, newline="\n")
+    # 生成内联脚本内容
+    inline_js = f"\nwindow.__HOT_DATA__ = {json.dumps(data, ensure_ascii=False, indent=0)};\n"
     
-    ver = datetime.now().strftime("%Y%m%d%H%M")
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
-    html = re.sub(r'data\.js\?v=\d+', f'data.js?v={ver}', html)
+    
+    # 替换旧的 data.js 引用 -> 内联脚本
+    # 匹配: <script src="data.js?v=...">...onerror...</script>
+    old_pattern = r'<script src="data\.js\?v=\d+"[^>]*>[\s\S]*?</script>'
+    new_tag = f'<script data-embed>{inline_js}</script>'
+    html = re.sub(old_pattern, new_tag, html)
+    
     atomic_write("index.html", html, newline="\n")
     
-    print(f"[OK] data.js done ({len(js)} bytes)")
+    print(f"[OK] 数据已嵌入 index.html ({len(inline_js)} bytes) 取代外部 data.js")
 
 if __name__ == "__main__":
     main()

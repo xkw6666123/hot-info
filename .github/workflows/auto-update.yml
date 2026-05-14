@@ -43,19 +43,17 @@ jobs:
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
 
-      - name: Generate data.js
+      - name: 嵌入数据到HTML
         run: |
           echo "=== data.json size: $(wc -c < data.json) bytes ==="
-          head -c 500 data.json
-          echo ""
           python gen_js_data.py
-          echo "=== data.js generated ==="
+          echo "=== 数据已嵌入 index.html ==="
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json data.js index.html
+          git add data.json index.html
           if git diff --staged --quiet; then
             echo "No changes, skipping commit"
           else
