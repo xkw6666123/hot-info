@@ -65,7 +65,6 @@
 :root.light .analysis-item{background:rgba(0,0,0,0.03)}
 :root.light .structure-box{background:rgba(0,0,0,0.025)}
 :root.light footer{background:rgba(255,255,255,0.94)}
-:root.light .mobile-nav{background:rgba(255,255,255,0.94)}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -322,22 +321,6 @@ footer{
 footer a{color:var(--gold);text-decoration:none;transition:color var(--transition)}
 footer a:hover{color:var(--gold-hover)}
 
-/* ===== Mobile Nav ===== */
-.mobile-nav{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(10,14,23,0.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-top:1px solid var(--border);
-  display:flex;z-index:100;padding:8px 0;padding-bottom:calc(8px + env(safe-area-inset-bottom));
-}
-.mobile-nav a{
-  flex:1;text-align:center;font-size:11px;color:var(--text-muted);
-  padding:8px 0;transition:color var(--transition);text-decoration:none;
-}
-.mobile-nav a.active{color:var(--gold)}
-.mobile-nav a .nav-icon{font-size:20px;display:block;margin-bottom:3px}
-body{padding-bottom:0}
-@media(max-width:768px){body{overflow-x:hidden;padding-bottom:70px}.mobile-nav{display:flex}}
-@media(min-width:769px){.mobile-nav{display:none}}
 
 /* scrollbar */
 ::-webkit-scrollbar{width:6px;height:6px}
@@ -486,16 +469,6 @@ body{padding-bottom:0}
 <span>© 2026 热点信息差 · 用信息差做内容 · v20260514.7</span>
 <span>数据来源：抖音 · 知乎 · 微博 · 百度 · 贴吧 · 凤凰网 · 财联社 · bilibili</span>
 </footer>
-
-<!-- ===== Mobile Bottom Nav ===== -->
-<div class="mobile-nav" id="mobileNav">
-<a href="#" class="active" data-filter="all"><span class="nav-icon">🔥</span>精选</a>
-<a href="#" data-filter="hot"><span class="nav-icon">📰</span>热点</a>
-<a href="#" data-filter="inspire"><span class="nav-icon">💡</span>灵感</a>
-<a href="#" data-filter="trend"><span class="nav-icon">📈</span>趋势</a>
-<a href="#" data-filter="analysis"><span class="nav-icon">🔬</span>拆解</a>
-<a href="#" data-filter="fav"><span class="nav-icon">⭐</span>收藏</a>
-</div>
 
 <!-- ===== Script ===== -->
 <script data-embed>
@@ -863,11 +836,11 @@ function copyText(text, btn){
 }
 
 // tab switching
-document.querySelectorAll('.header-tabs a,.mobile-nav a').forEach(tab=>{
+document.querySelectorAll('.header-tabs a').forEach(tab=>{
   tab.onclick=e=>{
     e.preventDefault();
     if(!data||!json)return;
-    document.querySelectorAll('.header-tabs a,.mobile-nav a').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.header-tabs a').forEach(x=>x.classList.remove('active'));
     tab.classList.add('active');
     const filter=tab.dataset.filter;
     currentFilter=filter;
