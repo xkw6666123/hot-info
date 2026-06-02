@@ -1159,12 +1159,17 @@ def main(mode="full"):
             # 失败平台：7天保护期，成功平台：3天
             limit = rescue_cutoff if src in failed_sources else cutoff
             try:
-                d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
+                date_str = (a.get("date") or a.get("published_at") or "")[:10]
+                if not date_str:
+                    news_removed += 1
+                    continue
+                d = datetime.strptime(date_str, "%Y-%m-%d").date()
                 if d < limit:
                     news_removed += 1
                     continue
-            except:
-                pass
+            except ValueError:
+                news_removed += 1
+                continue
             fresh.append(a)
     # 博主：保留3天内最新3条
     for name, lst in bloggers_kept.items():
@@ -1172,14 +1177,19 @@ def main(mode="full"):
         recent = []
         old = 0
         for a in lst:
-            try:
-                d = datetime.strptime((a.get("date") or a.get("published_at") or "")[:10], "%Y-%m-%d").date()
-                if d < blog_cutoff:
-                    old += 1
-                    continue
-                recent.append(a)
-            except:
-                recent.append(a)
+        try:
+            date_str = (a.get("date") or a.get("published_at") or "")[:10]
+            if not date_str:
+                old += 1
+                continue
+            d = datetime.strptime(date_str, "%Y-%m-%d").date()
+            if d < blog_cutoff:
+                old += 1
+                continue
+            recent.append(a)
+        except ValueError:
+            old += 1
+            continue
         recent.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
         fresh.extend(recent[:3])
         blog_removed += old + max(0, len(recent) - 3)

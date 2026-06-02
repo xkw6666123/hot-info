@@ -40,8 +40,8 @@ def run(cmd, timeout=120, cwd=WORK, use_proxy=False):
 def main():
     log("start")
 
-    # Step 1: git pull（需要代理连 GitHub）
-    code, out = run(["git", "pull", "--ff-only", "origin", "main"], timeout=30, use_proxy=True)
+    # Step 1: git pull（直连 GitHub）
+    code, out = run(["git", "pull", "--ff-only", "origin", "main"], timeout=30)
     if code != 0:
         log(f"WARNING: git pull failed: {out[:200]}")
     else:
@@ -87,7 +87,8 @@ def main():
             log(f"ASR needed for {len(need_asr)} videos: {bloggers_need}")
             code, out = run([PYTHON, "asr_extract.py"], timeout=600)
             if code != 0:
-                log(f"WARNING: ASR failed: {out[:200]}")
+                # 取错误信息最后500字符（traceback通常在末尾）
+                log(f"WARNING: ASR failed: ...{out[-500:]}")
             else:
                 log(f"ASR OK")
                 code2, out2 = run([PYTHON, "gen_js_data.py"], timeout=30)
@@ -110,13 +111,13 @@ def main():
         log(f"ERROR: can't read data.json: {e}")
         return
 
-    # Step 5: git commit & push（需要代理）
-    code, _ = run(["git", "add", "data.json", "data.js", "index.html"], timeout=10, use_proxy=True)
-    code2, diff = run(["git", "diff", "--cached", "--stat"], timeout=10, use_proxy=True)
+    # Step 5: git commit & push（直连 GitHub）
+    code, _ = run(["git", "add", "data.json", "data.js", "index.html"], timeout=10)
+    code2, diff = run(["git", "diff", "--cached", "--stat"], timeout=10)
     
     if "file changed" in diff or "files changed" in diff:
-        code3, out3 = run(["git", "commit", "-m", "auto: update (local)"], timeout=10, use_proxy=True)
-        code4, out4 = run(["git", "push", "origin", "main"], timeout=60, use_proxy=True)
+        code3, out3 = run(["git", "commit", "-m", "auto: update (local)"], timeout=10)
+        code4, out4 = run(["git", "push", "origin", "main"], timeout=60)
         if code4 != 0:
             log(f"ERROR: git push failed: {out4[:200]}")
         else:
