@@ -484,25 +484,12 @@ function toggleTheme(){
 }
 // 一键更新：通过 Cloudflare Pages Function 触发 GitHub Actions
 function triggerUpdate(){
-  const btn=document.getElementById('updateBtn');
-  btn.textContent='⏳ 触发中...';btn.disabled=true;
-  fetch('/api/trigger-update',{method:'POST'})
-    .then(r=>r.json())
-    .then(d=>{
-      if(d.ok){
-        btn.textContent='✅ 已触发';btn.style.background='#22c55e';
-        setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
-      }else{
-        btn.textContent='❌ 失败';btn.style.background='#ef4444';
-        alert('更新失败: '+d.msg);
-        setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
-      }
-    })
-    .catch(e=>{
-      btn.textContent='❌ 失败';btn.style.background='#ef4444';
-      alert('网络错误: '+e.message);
-      setTimeout(()=>{btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
-    });
+  var btn=document.getElementById('updateBtn');
+  btn.textContent='⏳ 刷新中...';btn.disabled=true;
+  btn.style.background='var(--blue)';
+  var url=new URL(location.href);
+  url.searchParams.set('t',Date.now());
+  location.replace(url.toString());
 }
 // 初始化主题
 (function(){
