@@ -1183,19 +1183,19 @@ def main(mode="full"):
         recent = []
         old = 0
         for a in lst:
-        try:
-            date_str = (a.get("date") or a.get("published_at") or "")[:10]
-            if not date_str:
+            try:
+                date_str = (a.get("date") or a.get("published_at") or "")[:10]
+                if not date_str:
+                    old += 1
+                    continue
+                d = datetime.strptime(date_str, "%Y-%m-%d").date()
+                if d < blog_cutoff:
+                    old += 1
+                    continue
+                recent.append(a)
+            except ValueError:
                 old += 1
                 continue
-            d = datetime.strptime(date_str, "%Y-%m-%d").date()
-            if d < blog_cutoff:
-                old += 1
-                continue
-            recent.append(a)
-        except ValueError:
-            old += 1
-            continue
         recent.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
         fresh.extend(recent[:3])
         blog_removed += old + max(0, len(recent) - 3)
