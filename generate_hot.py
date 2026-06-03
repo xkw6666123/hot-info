@@ -1034,6 +1034,18 @@ def main(mode="full"):
             unique_articles.append(a)
     all_articles = unique_articles
     
+    # ═══ 全局清洗：去掉 HTML 标签 + 过滤空标题 ═══
+    for a in all_articles:
+        # 清洗标题和摘要中的 HTML 标签
+        a["title"] = re.sub(r"<[^>]+>", "", a.get("title", "") or "").strip()
+        a["summary"] = re.sub(r"<[^>]+>", "", a.get("summary", "") or "").strip()
+    # 过滤无标题的文章
+    before = len(all_articles)
+    all_articles = [a for a in all_articles if (a.get("title") or "").strip()]
+    if len(all_articles) < before:
+        print(f"  U0001f9f9 过滤 {before - len(all_articles)} 条空标题")
+
+    
     # 每个博主：先按标题去重（同一视频可能因 ID 不同产生两条），再保留最新 3 条
     blogger_by_name = {}
     for a in all_articles:
