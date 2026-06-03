@@ -60,78 +60,159 @@ def _kill_playwright():
 # ═══ 文本清洗 ═══
 # Whisper 常见误识别 → 正确词（长匹配优先，避免短词先替换破坏长匹配）
 _WHISPER_FIXES = [
-    # 长匹配优先
-    ('无警广员支队银门哨兵', '武警执勤'),
-    ('虎帐办演者', 'cosplay表演者'),
-    ('虎帐优人', 'coser'),
-    ('虎天地', '保安'),
-    ('枪都已经向堂了', '枪都已经上膛了'),
-    ('全机打向导', '司机打向导'),
-    ('托落', '脱落'),
-    ('昏觉', '昏厥'),
-    ('灯上热搜', '登上热搜'),
-    ('推桑', '推搡'),
-    ('设施六人', '涉案六人'),
-    ('户在身后', '护在身后'),
-    ('富哨', '副哨'),
-    ('前人不顾是在无警银门口嚣张', '嫌疑人不顾是在武警营门口嚣张'),
-    ('烫手山狱', '烫手山芋'),
-    ('切开的稀釉', '切开的西瓜'),
-    ('六官王', '六冠王'),
-    ('对势', '对峙'),
-    ('慢展', '漫展'),
-    ('苏行定徽', '苏醒后'),
-    ('炼铜皮', '恋童癖'),
-    ('炼铜', '恋童'),
-    ('黑闪酒机', '黑闪连击'),
-    ('拒留', '拘留'),
-    ('罩人男子', '肇事男子'),
-    ('首部受伤', '头部受伤'),
-    ('毒瘤女孩', '盲人女孩'),
-    ('将警快核实', '将尽快核实'),
-    ('全之龙', '权志龙'),
-    ('其不来的', '起不来的'),
-    ('图件进攻', '推荐进攻'),
-    ('彼此根', '培根'),
-    ('鲜耳朵皮', '馅儿多的皮'),
-    ('鲜耳朵', '馅儿多'),
-    ('虎帐', 'coser'),
-    ('虎杖', 'coser'),
-    ('不是陷入', '不适陷入'),
-    ('你是肖申克', '你是肖申克的救赎男主叫什么'),
-    ('不是我', '不'),
-    # 著→着 常见模式
-    ('想著', '想着'),
-    ('握著', '握着'),
-    ('看著', '看着'),
-    ('听著', '听着'),
-    ('拿著', '拿着'),
-    ('跟著', '跟着'),
-    ('带著', '带着'),
-    ('提著', '提着'),
-    ('对著', '对着'),
-    ('抱著', '抱着'),
-    ('坐著', '坐着'),
-    ('站著', '站着'),
-    ('走著', '走着'),
-    ('笑著', '笑着'),
-    ('吃著', '吃着'),
-    ('喝著', '喝着'),
-    ('写著', '写着'),
-    ('说著', '说着'),
-    ('唱著', '唱着'),
-    ('跑著', '跑着'),
-    ('拉著', '拉着'),
-    ('推著', '推着'),
-    ('装著', '装着'),
-    ('藏著', '藏着'),
-    ('放著', '放着'),
-    ('留著', '留着'),
-    # 杂项
-    ('三娘我请我来哦', ''),
+    # ═══ 高频口语/语气词修正 ═══
+    ('巴查', '八成'), ('巴扎', '八成'), ('巴拉', '八成'),
+    ('这到吧', '这把'),
+    ('那首线第一', '那首先第一'), ('加手先定着', '加上先定着'),
+    
+    # ═══ 专有名词 ═══
+    ('山母', '山姆'), ('山姆超市', '山姆超市'),
+    ('瑞幸在这段', '瑞幸在这段'),
+    ('Hello Kitty', 'Hello Kitty'),
+    ('H11Hello Kitty', 'Hello Kitty'),
+    ('KT嘛', 'Kitty嘛'),
+    ('何地着', '黑皮的'),
+    
+    # ═══ 常见错误词修正 ═══
+    ('借王学校', '戒网学校'), ('戒网', '戒网'),
+    ('多心肠保全', '多新鲜保全'),
+    ('门位式', '门卫室'), ('减肥品', '捡废品'),
+    ('龙餐', '弄散'), ('减肥品', '捡废品'),
+    ('减废品', '捡废品'),
+    ('玉章书院', '豫章书院'),
+    ('新宿大二代', '新四大发明'),
+    ('离他', '吉他'), ('厘他', '吉他'),
+    ('一觉', '一脚'), 
+    ('晴便', '倾翻'),
+    ('自压裂嘴', '龇牙咧嘴'),
+    ('眼我服了', '演技服了'),
+    ('拔起了卖', '把起了脉'),
+    ('死服伤', '救死扶伤'), ('救死负伤', '救死扶伤'),
+    ('晴负伤', '救死扶伤'),
+    
+    # ═══ 常见动作/动词修正 ═══
+    ('全讲', '拳脚'), ('全脚', '拳脚'),
+    ('把刑法当日武兰州', '把刑法当日舞兰州'),
+    ('摔车', '摔车'), ('害我摔车', '害我摔车'),
+    ('撑死', '撑死'), ('我单手就能拎起来', '我单手就能拎起来'),
+    ('蛇行定徽', '苏醒后'),
+    ('阴阴静妹', '隐隐姐妹'),
+    ('蓝头尸', '两头狮'), ('缝合', '缝合'),
+    ('原币', '原地退役'), ('原币了', '原地退役了'),
+    ('顶攻查', '顶公茬'),
+    ('反守', '反手'), ('反守掏出', '反手掏出'),
+    ('放狠狠', '放狠话'),
+    ('前美感额', '钱没敢讹'),
+    ('压著线', '压着线'),
+    ('好屈服', '好欺负'),
+    ('顺暴', '瞬爆'),
+    ('云落', '陨落'),
+    ('堕礁鱼头', '大脚鱼头'),
+    ('照视者', '肇事者'),
+    ('寡蹭', '剐蹭'),
+    ('权责', '全责'),
+    ('竞事', '沉浸'),
+    ('三角钟', '三角洲'),
+    ('成竞事', '沉浸式'),
+    ('网管小姐', '网管小姐姐'),
+    ('教怪', '叫怪'),
+    ('硬是给骗', '硬是被骗'),
+    ('出对象', '处对象'),
+    ('品学兼优', '品学兼优'),
+    ('千钢筋', '牵钢筋'),
+    ('月老给你俩千钢筋', '月老给你俩牵钢筋'),
+    
+    # ═══ 常见名词修正 ═══
+    ('基督犬', '缉毒犬'), ('基督', '缉毒'),
+    ('海军将领', '海军将领'), ('海军', '海军'),
+    ('训犬员', '训犬员'), ('训犬', '训犬'),
+    ('警犬', '警犬'), ('狗子', '狗子'),
+    ('罪名的', '最灵敏的'),
+    ('死嘴', '死嘴'),
+    ('人情事故', '人情世故'),
+    ('贪心病', '贪心病'),
+    ('新一件', '新一件'),
+    ('美国护照', '美国护照'),
+    ('大使馆', '大使馆'),
+    ('翻译器', '翻译器'),
+    ('加塞', '加塞'),
+    ('网约车', '网约车'),
+    ('电动车', '电动车'), ('反电动车', '反电动车'),
+    ('头盔', '头盔'), ('带头盔', '戴头盔'),
+    ('快递车', '快递车'), ('货车', '货车'),
+    ('信信号灯', '信号灯'), ('红灯', '红灯'), ('绿灯', '绿灯'),
+    ('泥潭', '泥潭'), ('油门', '油门'),
+    ('后车', '后车'), ('前车', '前车'),
+    ('奥迪', '奥迪'), ('绿车', '绿车'),
+    ('大货车', '大货车'), ('路口', '路口'),
+    ('电动车', '电动车'), ('镜子', '镜子'), ('臭美', '臭美'),
+    ('白车', '白车'), ('路障', '路障'), ('路灯', '路灯'),
+    ('施工师傅', '施工师傅'), ('外卖小哥', '外卖小哥'),
+    ('倒霉熊', '倒霉熊'), ('续集', '续集'),
+    ('沙发', '沙发'), ('手机', '手机'),
+    
+    # ═══ 气候/天气 ═══
+    ('强队', '强对流'), ('强队的天气', '强对流的天气'),
+    ('风果', '风裹'), ('云层', '云层'), ('沙尘', '沙尘'),
+    ('过山车', '过山车'), ('演唱会', '演唱会'),
+    ('棚顶', '棚顶'), ('停业', '停业'),
+    
+    # ═══ 人物/身份 ═══
+    ('小公然', '小姑娘'), ('品学兼优', '品学兼优'),
+    ('中医事家', '中医世家'), ('实名', '石铭'),
+    ('甜妹', '甜妹'), ('软软糯糯', '软软糯糯'),
+    ('高扫腿', '高扫腿'), ('解收员', '解说员'),
+    ('木乃伊', '木乃伊'),
+    ('印度一节托马尔', '印度一姐托马尔'),
+    ('患者不是等来的', '患者不是等来的'),
+    
+    # ═══ 高频错误词对 ═══
+    ('公然的', '姑娘的'), ('公然', '姑娘'),
+    ('博主的', '博主的'), ('车牌', '车牌'), ('驾照', '驾照'),
+    ('贴膜', '贴膜'), ('自驾', '自驾'),
+    ('停车场', '停车场'), ('考驾照', '考驾照'),
+    ('风土人情', '风土人情'),
+    ('走人', '走人'), ('被斩一刀', '被宰一刀'),
+    ('先领后兵', '先礼后兵'),
+    ('一秒天黑', '一秒天黑'),
+    ('擦边冒牌', '擦边冒牌'),
+    ('归根结底', '归根结底'),
+    ('试验过的', '试验过的'),
+    ('诗言社', '实验室'),
+    ('丑话', '丑化'), ('丑话人家', '丑化人家'),
+    ('高视整面', '好事正面'),
+    ('感情牌', '感情牌'), ('攻列', '攻略'),
+    
+    # ═══ 常见品牌/平台 ═══
+    ('Mimi发家', '小米发家'), ('Mimi', '小米'),
+    ('优用', '优惠券'),
+    ('七四九', '749'), ('749局', '749局'),
+    
+    # ═══ 哈尔滨相关 ═══
+    ('哈尔滨', '哈尔滨'), ('13级', '13级'), ('14级', '14级'),
+    
+    # ═══ 集合词修复 ═══
+    ('UFC', 'UFC'), ('OK', 'OK'), ('KO', 'KO'),
+    ('oooh my gosh', 'oh my gosh'),
+    
+    # ═══ 日语句修正 ═══
     ('你爆一个四十', '你爆一个试试'),
     ('浓的要小', '弄的要死'),
     ('豆豆里头', '豆豆里'),
+    
+    # 著→着 常见模式
+    ('想著', '想着'), ('握著', '握着'), ('看著', '看着'),
+    ('听著', '听着'), ('拿著', '拿着'), ('跟著', '跟着'),
+    ('带著', '带着'), ('提著', '提着'), ('对著', '对着'),
+    ('抱著', '抱着'), ('坐著', '坐着'), ('站著', '站着'),
+    ('走著', '走着'), ('笑著', '笑着'), ('吃著', '吃着'),
+    ('喝著', '喝着'), ('写著', '写着'), ('说著', '说着'),
+    ('唱著', '唱着'), ('跑著', '跑着'), ('拉著', '拉着'),
+    ('推著', '推着'), ('装著', '装着'), ('藏著', '藏着'),
+    ('放著', '放着'), ('留著', '留着'),
+    
+    # 杂项
+    ('三娘我请我来哦', ''),
 ]
 
 _NOISE_PATTERNS = [
@@ -212,7 +293,15 @@ def get_audio_url(video_url, expected_aweme_id=""):
                 _kill_playwright()
                 time.sleep(3)
     
-    time.sleep(7)  # 给页面足够时间加载和发起音频请求
+    time.sleep(10)  # 抖音需要时间触发视频加载，10秒更可靠
+    
+    # 尝试点击页面触发视频播放（抖音延迟加载）
+    try:
+        subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} click e1"],
+                       capture_output=True, timeout=5, text=True)
+        time.sleep(5)  # 额外等待播放触发后的请求
+    except Exception:
+        pass
     
     # 获取网络请求列表
     r = subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} requests"],
@@ -245,27 +334,44 @@ def get_audio_url(video_url, expected_aweme_id=""):
         _kill_playwright()
         return best_audio
     
-    # 如果没找到音频，找 video URL（MP4，后续用 ffmpeg 提取音频）
+    # 如果没找到分离音频，找 video URL（新版抖音合并流或旧版 mp4）
+    # 新版抖音 douyinvod.com URL 可能同时含音视频
+    video_urls = []
     for line in requests_output.split("\n"):
-        if "media-video-avc1" in line and "douyinvod.com" in line:
+        if ("media-video-avc1" in line and "douyinvod.com" in line) or \
+           ("douyinvod.com" in line and ("/video/" in line or br_match(line))):
             parts = line.split("=>")
             for part in parts:
                 if "douyinvod.com" in part:
                     url_raw = part.strip().split(" ")[-1].strip("[]")
                     url = urllib.parse.unquote(url_raw)
-                    _kill_playwright()
-                    return url
+                    # 去重，优先匹配 aweme_id
+                    if url not in [u for u, _ in video_urls]:
+                        priority = 1 if (expected_aweme_id and expected_aweme_id in url) else 0
+                        video_urls.append((url, priority))
+    
+    # 优先返回匹配 aweme_id 的 URL
+    for u, p in sorted(video_urls, key=lambda x: -x[1]):
+        if u and "douyinvod.com" in u:
+            _kill_playwright()
+            return u
     
     _kill_playwright()
     return None
 
+def br_match(line):
+    """检查行中是否有 douyinvod.com URL（新版格式）"""
+    import re as _re
+    return bool(_re.search(r'douyinvod\.com/[^?\s]+\?[^?\s]*br=\d+', line))
+
 # 全局去重：记录已处理的音频 URL，防止跨视频复用
 _SEEN_AUDIO_URLS = set()
 
-def download_asr(audio_url, video_tag=""):
-    """下载音频 → ASR → 摘要
+def download_asr(audio_url, video_tag="", max_sec=120):
+    """下载音频 → ASR → 完整原文案
     video_tag: 用于区分不同视频的临时文件标识
-    返回 (summary, audio_url_hash) 或 ("", "")
+    max_sec: 最大音频时长（秒），短视频120s足够
+    返回 (transcript, audio_url_hash) 或 ("", "")
     """
     global _SEEN_AUDIO_URLS
     
@@ -280,14 +386,17 @@ def download_asr(audio_url, video_tag=""):
     mp4 = os.path.join(TMP, f"_pw_{tag}.mp4")
     wav = os.path.join(TMP, f"_pw_{tag}.wav")
     
-    # ffmpeg 下载
-    subprocess.run([FFMPEG, "-y", "-i", audio_url, "-c", "copy", "-t", "180", mp4],
-                   capture_output=True, timeout=60)
+    # ffmpeg 下载（抖音合并流需要 Referer header）
+    ffmpeg_cmd = [FFMPEG, "-y", "-i", audio_url, "-c", "copy", "-t", str(max_sec), mp4]
+    if "douyinvod.com" in audio_url or "douyin.com" in audio_url:
+        ffmpeg_cmd = [FFMPEG, "-y", "-headers", "Referer: https://www.douyin.com/\r\n", 
+                      "-i", audio_url, "-c", "copy", "-t", str(max_sec), mp4]
+    subprocess.run(ffmpeg_cmd, capture_output=True, timeout=60)
     if not os.path.exists(mp4) or os.path.getsize(mp4) < 1000:
         return "", ""
     
     # 转 WAV
-    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "16000", "-t", "180", wav],
+    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "16000", "-t", str(max_sec), wav],
                    capture_output=True, timeout=30)
     
     if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
@@ -314,11 +423,9 @@ def download_asr(audio_url, video_tag=""):
         print(f"    ⚠️ 转录质量过低（中文占比 {alpha_ratio:.1%}），丢弃")
         return "", url_hash
     
-    # 摘要
-    events = re.split(r'(?=第[一二三四五六七八九十\d]+[件事个]|首先|另外|还有|接下来|最后|OK|下一件事)', text)
-    if len(events) > 1:
-        return "\n".join(f"  · {e.strip()[:80]}" for e in events[:6] if len(e.strip()) > 10), url_hash
-    return text[:500], url_hash
+    # 返回完整 cleaned 文案（最多2000字），而不是事件摘要
+    # 用户需要 1:1 原文案，不是简介
+    return text[:2000], url_hash
 
 def _scrape_page_desc(url):
     """Playwright 打开页面，抓取视频描述文本（ASR 失败时的降级方案）"""
@@ -547,27 +654,29 @@ def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         d = json.load(f)
     
-    # 只处理缺少 content_intro 或文案被污染的（备案信息/过短/非中文）
+    # 需要重新提取的视频：ASR失败/过短/AI摘要/页面噪声
     all_bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and ("douyin.com" in (a.get("url") or "") or "bilibili.com" in (a.get("url") or ""))]
     
-    def _is_polluted(ci):
-        """检测文案是否被备案信息/垃圾内容污染"""
-        if not ci or len(ci) < 50:
+    def _needs_re_extract(ci):
+        """判断文案是否需要重新提取（非1:1原文案）"""
+        if not ci or len(ci) < 100:
+            return True  # 过短→空壳
+        # AI摘要特征：章节要点/今日热点包括/热点事件包括
+        if any(kw in ci[:50] for kw in ['章节要点', '今日热点包括', '热点事件包括', '5月', '6月']):
             return True
-        # 整行备案信息匹配
-        garbage_lines = 0
-        for line in ci.split('\n'):
-            line = line.strip()
-            if not line:
-                continue
-            if re.search(r'互联网宗教|药品医疗|互联网新闻|网上有害|不良信息举报|算法推荐.*?举报|网络内容.*?举报|体育饭圈|ICP备|公网安备|经营许可证|网络文化|广播电视|增值电信', line):
-                garbage_lines += 1
-        total_lines = max(len([l for l in ci.split('\n') if l.strip()]), 1)
-        if garbage_lines >= 3 or garbage_lines / total_lines > 0.25:
+        # 抓取噪声特征：含商业推广/备案/无关内容
+        noise_kw = ['网络谣言曝光台', '抖音神曲', '特斯拉', '#汽车知识', 'ICP备', '俄语', 
+                     '日语教学', '灌录盘', '马拉松', '肺动脉高压', '华贸鞋业']
+        noise_count = sum(1 for kw in noise_kw if kw in ci)
+        if noise_count >= 2:
+            return True
+        # 仅标题+标签
+        if ci.count('\n') <= 2 and ('话题：' in ci or '#' in ci):
             return True
         return False
     
-    bloggers = [a for a in all_bloggers if _is_polluted(a.get("content_intro", ""))]
+    # 全部重新提取，确保得到完整原文案（非旧版500字截断）
+    bloggers = all_bloggers
     
     print(f"\n🎉 免费 ASR: {len(bloggers)}/{len(all_bloggers)} 条待处理视频\n")
     
