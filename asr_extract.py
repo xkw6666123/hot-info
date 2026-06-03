@@ -27,7 +27,7 @@ _WHISPER_NAME = None  # 记录实际加载的模型名称（用于 device）
 def get_whisper():
     global _WHISPER_MODEL, _WHISPER_NAME
     if _WHISPER_MODEL is None:
-        for name in ['medium', 'small']:
+        for name in ['small', 'medium']:
             model_file = os.path.join(D_MODELS, f'{name}.pt')
             if os.path.exists(model_file):
                 try:
@@ -392,12 +392,80 @@ def _fetch_url(url, headers=None, timeout=15):
         print(f"    ⚠️ fetch失败: {e}")
         return None
 
+def _bilibili_asr(url):
+    """B站视频ASR：API获取音频URL + ffmpeg下载 + Whisper识别"""
+    bv_match = re.search(r'BV[\w]+', url)
+    if not bv_match:
+        return None
+    bvid = bv_match.group(0)
+    
+    try:
+        # Step 1: Get video info
+        info_text = _fetch_url("https://api.bilibili.com/x/web-interface/view?bvid=" + bvid)
+        if not info_text:
+            return None
+        info = json.loads(info_text)
+        if info.get("code") != 0:
+            return None
+        data = info.get("data", {})
+        cid = data.get("cid", 0)
+        if not cid:
+            return None
+        
+        # Step 2: Get audio stream URL
+        play_text = _fetch_url(
+            "https://api.bilibili.com/x/player/playurl?bvid=" + bvid + "&cid=" + str(cid) + "&qn=16&fnval=16"
+        )
+        if not play_text:
+            return None
+        play = json.loads(play_text)
+        if play.get("code") != 0:
+            return None
+        audios = play.get("data", {}).get("dash", {}).get("audio", [])
+        if not audios:
+            return None
+        audio_url = audios[0].get("baseUrl") or audios[0].get("base_url", "")
+        if not audio_url:
+            return None
+        
+        # Step 3: Download audio with ffmpeg
+        import tempfile
+        audio_path = os.path.join(tempfile.gettempdir(), "bili_asr_" + bvid + ".mp3")
+        ref = "Referer: https://www.bilibili.com/"
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", audio_url, "-headers", ref + chr(13) + chr(10),
+             "-ac", "1", "-ar", "16000", "-t", "180", audio_path],
+            capture_output=True, timeout=60
+        )
+        if not os.path.exists(audio_path) or os.path.getsize(audio_path) < 1000:
+            return None
+        
+        # Step 4: Whisper ASR
+        model = get_whisper()
+        result = model.transcribe(audio_path, language="zh", fp16=False, verbose=False)
+        text = result.get("text", "").strip()
+        
+        try: os.remove(audio_path)
+        except: pass
+        
+        if len(text) < 10:
+            return None
+        return _clean_text(text[:2000])
+    except Exception as e:
+        print("    B站ASR: " + str(e))
+        return None
+
 def get_bilibili_content(url):
     """B站视频内容提取：API获取描述和字幕"""
     bv_match = re.search(r'BV[\w]+', url)
     if not bv_match:
         return None
     bvid = bv_match.group(0)
+    
+    # 方法0：ASR音频识别（最可靠）
+    asr_text = _bilibili_asr(url)
+    if asr_text and len(asr_text) > 30:
+        return asr_text
     
     # B站 API 获取视频信息
     try:
