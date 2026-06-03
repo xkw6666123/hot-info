@@ -1239,15 +1239,33 @@ def main(mode="full"):
 
 
 def _generate_video_intro(v, all_articles):
-    """基于视频 desc 生成内容简介（不在没有 ASR 时伪造内容）"""
+    """基于视频信息生成内容简介：有描述用描述，没有则用标题+标签组合"""
     desc = (v.get("summary") or v.get("title") or "").strip()
+    title = (v.get("title") or "").strip()
+    tags = v.get("tags", [])
+    platform = v.get("platform", "抖音")
+    blogger = v.get("blogger_name", "")
     
     # 有长描述就用描述
     if len(desc) > 20:
         return desc[:300]
     
-    # 描述太短时，标记为"有待提取"
-    return ""
+    # 没有描述，用标题+上下文生成简介
+    parts = []
+    if title:
+        parts.append(title)
+    
+    # 从 tags 中提取有效标签
+    useful_tags = [t for t in tags if t not in ("博主", "爆款", "拆解", "B站", "热点") and len(t) > 1]
+    if useful_tags:
+        parts.append("话题：" + " ".join("#" + t for t in useful_tags[:5]))
+    
+    # 补充博主和平台信息
+    if blogger and platform:
+        parts.append(f"来源：{blogger}（{platform}）")
+    
+    result = chr(10).join(parts) if parts else ""
+    return result[:300]
 
 
 if __name__ == "__main__":

@@ -177,7 +177,7 @@ def _clean_text(text):
     for wrong, right in _WHISPER_FIXES:
         text = text.replace(wrong, right)
     
-    lines = [l.strip() for l in text.split('\n')]
+    lines = [l.strip() for l in text.split(chr(10))]
     clean = []
     for line in lines:
         if not line or len(line) < 3:
@@ -354,7 +354,7 @@ def _scrape_page_desc(url):
         )
         
         # 提取引号内的结果
-        for line in r.stdout.split('\n'):
+        for line in r.stdout.split(chr(10)):
             line = line.strip()
             if line.startswith('"') and line.endswith('"'):
                 text = line[1:-1].replace('\\n', '\n')
@@ -369,6 +369,112 @@ def _scrape_page_desc(url):
         return None
 
 
+def _fetch_url(url, headers=None, timeout=15):
+    """HTTP GET (本地版本，用于B站API等)"""
+    import urllib.request, urllib.error, gzip as _gzip
+    default_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/json,*/*",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+    }
+    if headers:
+        default_headers.update(headers)
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    try:
+        req = urllib.request.Request(url, headers=default_headers)
+        with opener.open(req, timeout=timeout) as resp:
+            raw = resp.read()
+            encoding = resp.headers.get("Content-Encoding", "")
+            if "gzip" in encoding:
+                raw = _gzip.decompress(raw)
+            return raw.decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"    ⚠️ fetch失败: {e}")
+        return None
+
+def get_bilibili_content(url):
+    """B站视频内容提取：API获取描述和字幕"""
+    bv_match = re.search(r'BV[\w]+', url)
+    if not bv_match:
+        return None
+    bvid = bv_match.group(0)
+    
+    # B站 API 获取视频信息
+    try:
+        info_url = "https://api.bilibili.com/x/web-interface/view?bvid=" + bvid
+        info_text = _fetch_url(info_url)
+        if not info_text:
+            return None
+        info = json.loads(info_text)
+        if info.get("code") != 0:
+            return None
+        data = info.get("data", {})
+        desc = data.get("desc", "")
+        cid = data.get("cid", 0)
+        
+        # 尝试获取字幕
+        if cid:
+            sub_url = "https://api.bilibili.com/x/player/v2?bvid=" + bvid + "&cid=" + str(cid)
+            sub_text = _fetch_url(sub_url)
+            if sub_text:
+                sub_data = json.loads(sub_text)
+                if sub_data.get("code") == 0:
+                    subtitles = sub_data.get("data", {}).get("subtitle", {}).get("subtitles", [])
+                    if subtitles:
+                        sub_url_path = subtitles[0].get("subtitle_url", "")
+                        if sub_url_path:
+                            if sub_url_path.startswith("//"):
+                                sub_url_path = "https:" + sub_url_path
+                            sub_content = _fetch_url(sub_url_path)
+                            if sub_content:
+                                sub_json = json.loads(sub_content)
+                                body = sub_json.get("body", [])
+                                parts = [item.get("content", "") for item in body if item.get("content")]
+                                if parts:
+                                    return _clean_text(chr(10).join(parts[:50])[:2000])
+        
+        # 没有字幕，用描述
+        if desc and len(desc) > 20:
+            return _clean_text(desc[:500])
+        
+        # 都没有，用标题+标签
+        title = data.get("title", "")
+        tags = [t.get("tag_name","") for t in data.get("tag", {}).get("tag_list", []) if t.get("tag_name")]
+        if title:
+            result = title
+            if tags:
+                result += "。标签：" + "、".join(tags[:5])
+            return _clean_text(result[:300])
+    except Exception as e:
+        print("    B站API: " + str(e))
+    
+    # 方法2：Playwright 抓取页面内容
+    try:
+        _kill_playwright()
+        subprocess.run(
+            ["bash", "-c", "unset NODE_OPTIONS && " + PCLI + " open \"" + url + "\"" ],
+            capture_output=True, timeout=30, text=True, encoding="utf-8", errors="replace"
+        )
+        time.sleep(6)
+        js_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_bili_eval.js")
+        r = subprocess.run(
+            ["bash", "-c", "unset NODE_OPTIONS && " + PCLI + " eval \"\$(cat \"" + js_file + "\"" ],
+            capture_output=True, timeout=15, text=True, encoding="utf-8", errors="replace"
+        )
+        for line in r.stdout.split(chr(10)):
+            line = line.strip()
+            if line.startswith('"') and line.endswith('"'):
+                text = line[1:-1]
+                if len(text) > 30:
+                    _kill_playwright()
+                    return _clean_text(text[:2000])
+        _kill_playwright()
+    except Exception as e:
+        print("    B站PW: " + str(e))
+        _kill_playwright()
+    
+    return None
+
 def main():
     global _SEEN_AUDIO_URLS
     _SEEN_AUDIO_URLS = set()  # 每次运行重置
@@ -379,7 +485,7 @@ def main():
         d = json.load(f)
     
     # 只处理缺少 content_intro 或文案被污染的（备案信息/过短/非中文）
-    all_bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and "douyin.com" in (a.get("url") or "")]
+    all_bloggers = [a for a in d["articles"] if a.get("source") == "blogger" and ("douyin.com" in (a.get("url") or "") or "bilibili.com" in (a.get("url") or ""))]
     
     def _is_polluted(ci):
         """检测文案是否被备案信息/垃圾内容污染"""
@@ -429,6 +535,21 @@ def main():
         print(f"[{i+1}/{len(bloggers)}] {name} | {title}")
         
         try:
+            # B站视频：用字幕API提取
+            if "bilibili.com" in url:
+                print(f"  📺 B站视频，提取字幕/描述...")
+                bili_text = get_bilibili_content(url)
+                if bili_text and len(bili_text) > 30:
+                    v["content_intro"] = bili_text
+                    existing_intros.add(bili_text[:100])
+                    updated += 1
+                    _save()
+                    print(f"  ✅ B站内容 {len(bili_text)}字 (已保存)")
+                else:
+                    print(f"  ⚠️ B站内容提取失败或过短")
+                    failed_no_audio += 1
+                continue
+            
             audio_url = get_audio_url(url, expected_aweme_id=aweme_id)
             if not audio_url:
                 print(f"  ⚠️ 未截获音频，尝试页面描述降级...")
