@@ -393,61 +393,56 @@ def _fetch_url(url, headers=None, timeout=15):
         return None
 
 def _bilibili_asr(url):
-    """B站视频ASR：API获取音频URL + ffmpeg下载 + Whisper识别"""
+    """B站视频ASR：遍历所有音频流，下载后用Whisper识别"""
     bv_match = re.search(r'BV[\w]+', url)
     if not bv_match:
         return None
     bvid = bv_match.group(0)
-    
     try:
-        # Step 1: Get video info
-        info_text = _fetch_url("https://api.bilibili.com/x/web-interface/view?bvid=" + bvid)
-        if not info_text:
-            return None
-        info = json.loads(info_text)
+        info = json.loads(_fetch_url("https://api.bilibili.com/x/web-interface/view?bvid=" + bvid))
         if info.get("code") != 0:
             return None
         data = info.get("data", {})
         cid = data.get("cid", 0)
         if not cid:
             return None
-        
-        # Step 2: Get audio stream URL
-        play_text = _fetch_url(
-            "https://api.bilibili.com/x/player/playurl?bvid=" + bvid + "&cid=" + str(cid) + "&qn=16&fnval=16"
-        )
-        if not play_text:
-            return None
-        play = json.loads(play_text)
+        play = json.loads(_fetch_url("https://api.bilibili.com/x/player/playurl?bvid=" + bvid + "&cid=" + str(cid) + "&qn=16&fnval=16"))
         if play.get("code") != 0:
             return None
         audios = play.get("data", {}).get("dash", {}).get("audio", [])
         if not audios:
             return None
-        audio_url = audios[0].get("baseUrl") or audios[0].get("base_url", "")
-        if not audio_url:
+        # Try all audio streams
+        audio_path = None
+        for a_entry in audios:
+            au = a_entry.get("baseUrl") or a_entry.get("base_url", "")
+            bu = a_entry.get("backupUrl") or a_entry.get("backup_url", [])
+            if isinstance(bu, str):
+                bu = [bu]
+            for u in [au] + (bu if bu else []):
+                if not u:
+                    continue
+                import tempfile
+                path = os.path.join(tempfile.gettempdir(), "bili_" + bvid + ".mp3")
+                subprocess.run(
+                    ["ffmpeg", "-y", "-i", u, "-headers", "Referer: https://www.bilibili.com/" + chr(13) + chr(10),
+                     "-ac", "1", "-ar", "16000", "-t", "180", path],
+                    capture_output=True, timeout=60)
+                if os.path.exists(path) and os.path.getsize(path) > 1000:
+                    audio_path = path
+                    break
+                elif os.path.exists(path):
+                    try: os.remove(path)
+                    except: pass
+            if audio_path:
+                break
+        if not audio_path:
             return None
-        
-        # Step 3: Download audio with ffmpeg
-        import tempfile
-        audio_path = os.path.join(tempfile.gettempdir(), "bili_asr_" + bvid + ".mp3")
-        ref = "Referer: https://www.bilibili.com/"
-        subprocess.run(
-            ["ffmpeg", "-y", "-i", audio_url, "-headers", ref + chr(13) + chr(10),
-             "-ac", "1", "-ar", "16000", "-t", "180", audio_path],
-            capture_output=True, timeout=60
-        )
-        if not os.path.exists(audio_path) or os.path.getsize(audio_path) < 1000:
-            return None
-        
-        # Step 4: Whisper ASR
         model = get_whisper()
         result = model.transcribe(audio_path, language="zh", fp16=False, verbose=False)
         text = result.get("text", "").strip()
-        
         try: os.remove(audio_path)
         except: pass
-        
         if len(text) < 10:
             return None
         return _clean_text(text[:2000])
