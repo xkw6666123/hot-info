@@ -475,7 +475,7 @@ button:active{transform:scale(0.97)}
 
 <!-- ===== Footer ===== -->
 <footer>
-<span>© 2026 热点信息差 · 用信息差做内容 · " + (function(){var d=new Date(json.updated_at||Date.now());return "v"+d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")})() + "</span>
+<span id="footerVersion">© 2026 热点信息差 · 用信息差做内容</span>
 <span>数据来源：抖音 · 知乎 · 微博 · 百度 · 贴吧 · 凤凰网 · 财联社 · bilibili</span>
 </footer>
 
@@ -581,6 +581,13 @@ function initPage(){
   allTags=['全部',...tagSet];
 
   // 更新统计数据
+  // 更新页脚版本
+  if(json.updated_at){
+    const fd=new Date(json.updated_at);
+    const ver='v'+fd.getFullYear()+String(fd.getMonth()+1).padStart(2,'0')+String(fd.getDate()).padStart(2,'0');
+    const fv=document.getElementById('footerVersion');
+    if(fv)fv.innerHTML='© 2026 热点信息差 · 用信息差做内容 · '+ver;
+  }
   const hotCount=data.filter(a=>a.source!=='blogger').length;
   const bloggerCount=new Set(data.filter(a=>a.source==='blogger').map(a=>a.blogger_name)).size;
   const inspCount=(json.inspirations||[]).length;
@@ -1349,7 +1356,7 @@ function renderAnalysis(){
 }
 
 function renderTrend(){
-  if(!window._chartLoaded){document.getElementById('content').innerHTML='<div class='empty-state'><div class='icon'>⏳</div><p>加载图表中...</p></div>';window._loadChart().then(function(){renderTrend()});return;}
+  if(!window._chartLoaded){document.getElementById('content').innerHTML='<div class="empty-state"><div class="icon">⏳</div><p>加载图表中...</p></div>';window._loadChart().then(function(){renderTrend()});return;}
   try {
   const el=document.getElementById('content');
   let h='<div class="section-title">📈 热点趋势 <span style="font-size:11px;color:var(--text-muted);font-weight:400">基于近3天数据自动统计</span></div>';
