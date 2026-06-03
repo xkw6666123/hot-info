@@ -405,9 +405,11 @@ def download_asr(audio_url, video_tag="", max_sec=120):
             except: pass
         return "", ""
     
-    # Whisper
+    # Whisper（优化参数：零温度+beam search 追求最高精度）
     model = get_whisper()
-    r = model.transcribe(wav, language="zh", fp16=False, verbose=False)
+    r = model.transcribe(wav, language="zh", fp16=False, verbose=False,
+                         temperature=0.0, beam_size=5, best_of=5,
+                         condition_on_previous_text=False)
     text = r["text"].strip()
     text = _clean_text(text)
     for f in [mp4, wav]:
@@ -546,7 +548,9 @@ def _bilibili_asr(url):
         if not audio_path:
             return None
         model = get_whisper()
-        result = model.transcribe(audio_path, language="zh", fp16=False, verbose=False)
+        result = model.transcribe(audio_path, language="zh", fp16=False, verbose=False,
+                                  temperature=0.0, beam_size=5, best_of=5,
+                                  condition_on_previous_text=False)
         text = result.get("text", "").strip()
         try: os.remove(audio_path)
         except: pass
