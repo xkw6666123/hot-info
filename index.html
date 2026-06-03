@@ -583,7 +583,8 @@ function initPage(){
   // 更新统计数据
   // 更新页脚版本
   if(json.updated_at){
-    const fd=new Date(json.updated_at);
+    const ts=json.updated_at.endsWith('Z')?json.updated_at:json.updated_at+'Z';
+    const fd=new Date(ts);
     const ver='v'+fd.getFullYear()+String(fd.getMonth()+1).padStart(2,'0')+String(fd.getDate()).padStart(2,'0');
     const fv=document.getElementById('footerVersion');
     if(fv)fv.innerHTML='© 2026 热点信息差 · 用信息差做内容 · '+ver;
@@ -597,7 +598,9 @@ function initPage(){
 
   // 更新时间（显示友好格式）
   if(json.updated_at){
-    const d=new Date(json.updated_at);
+    // GitHub Actions 生成的 updated_at 为 UTC 时间但无 Z 后缀，补齐时区标记
+    const ts=json.updated_at.endsWith('Z')?json.updated_at:json.updated_at+'Z';
+    const d=new Date(ts);
     const now=new Date();
     const diffMs=now-d;
     const diffMin=Math.floor(diffMs/60000);
