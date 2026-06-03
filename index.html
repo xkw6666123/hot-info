@@ -9,8 +9,13 @@
 <meta name="description" content="每日社会热点聚合 + 爆款视频拆解 + AI选题灵感，帮你用信息差做内容。覆盖抖音、知乎、微博、百度等平台热点。">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>热点信息差 — 用信息差做内容</title>
+<meta property="og:title" content="热点信息差">
+<meta property="og:description" content="每日聚合全网热点 + 爆款视频拆解 + AI 选题灵感">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rediancha.online/">
+<meta name="twitter:card" content="summary">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>window._chartLoaded=false;window._loadChart=function(){if(window._chartLoaded)return Promise.resolve();return new Promise(function(r){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";s.onload=function(){window._chartLoaded=true;r()};document.head.appendChild(s)})};</script>
 <script>window.Chart||document.write('<script src="data:application/javascript,window.Chart=class{constructor(){}}"><\/script>')</script>
 <style>
 /* ===== Variables ===== */
@@ -390,6 +395,10 @@ footer a:hover{color:var(--gold-hover)}
   .card-title{font-size:15px}
   .card-summary{font-size:13px}
 }
+
+.card:active{transform:scale(0.98);opacity:0.9}
+.fav-btn:active{transform:scale(1.2)}
+button:active{transform:scale(0.97)}
 </style>
 </head>
 <body>
@@ -420,7 +429,7 @@ footer a:hover{color:var(--gold-hover)}
 <h1>信息差即<span>生产力</span></h1>
 <p>每天聚合全网热点 + 爆款视频拆解 + AI 选题灵感，帮你用信息差做内容</p>
 <div class="hero-stats">
-<div class="hero-stat"><div class="num" id="heroArticles">—</div><div class="lbl">近3日热点</div></div>
+<div class="hero-stat"><div class="num" id="heroArticles">—</div><div class="lbl">近7日热点</div></div>
 <div class="hero-stat"><div class="num" id="heroBloggers">—</div><div class="lbl">博主拆解</div></div>
 <div class="hero-stat"><div class="num" id="heroIdeas">—</div><div class="lbl">创作灵感</div></div>
 </div>
@@ -466,7 +475,7 @@ footer a:hover{color:var(--gold-hover)}
 
 <!-- ===== Footer ===== -->
 <footer>
-<span>© 2026 热点信息差 · 用信息差做内容 · v20260603</span>
+<span>© 2026 热点信息差 · 用信息差做内容 · " + (function(){var d=new Date(json.updated_at||Date.now());return "v"+d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")})() + "</span>
 <span>数据来源：抖音 · 知乎 · 微博 · 百度 · 贴吧 · 凤凰网 · 财联社 · bilibili</span>
 </footer>
 
@@ -718,7 +727,7 @@ function renderCard(a){
         ${newBadge}
       </div>
       <div class="card-title">${esc(a.title)}</div>
-      <div class="card-summary">${esc(a.summary||'')}</div>
+      <div class="card-summary">${esc(a.summary||'来自'+(a.source||'')+'的热点资讯')}</div>
       <div class="card-footer">
         <div class="card-tags">${tags.map(t=>{
           let extra='';
@@ -1340,6 +1349,7 @@ function renderAnalysis(){
 }
 
 function renderTrend(){
+  if(!window._chartLoaded){document.getElementById('content').innerHTML='<div class='empty-state'><div class='icon'>⏳</div><p>加载图表中...</p></div>';window._loadChart().then(function(){renderTrend()});return;}
   try {
   const el=document.getElementById('content');
   let h='<div class="section-title">📈 热点趋势 <span style="font-size:11px;color:var(--text-muted);font-weight:400">基于近3天数据自动统计</span></div>';
