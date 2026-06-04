@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""免费 ASR：Playwright 拦截音频 → ffmpeg下载 → Whisper → 摘要"""
+"""ASR：Playwright 拦截音频 → ffmpeg下载 → 小米 MiMo ASR API → 摘要"""
 import json, os, subprocess, time, re, sys, shutil, hashlib
-import whisper as _whisper
+import base64, urllib.request, urllib.error
 
 # 繁简转换
 try:
@@ -9,47 +9,77 @@ try:
     _CC = OpenCC('t2s')  # 繁体→简体
 except Exception:
     _CC = None
-D_WHISPER = os.environ.get('D_WHISPER', r'D:\AI\whisper')
-D_MODELS = os.path.join(D_WHISPER, 'models')
-D_TEMP = os.path.join(D_WHISPER, 'asr_temp')
-os.makedirs(D_MODELS, exist_ok=True)
+
+# 小米 MiMo ASR 配置
+MIMO_API_KEY = os.environ.get('MIMO_API_KEY', 'tp-ct56cpxdmbbfsvma531fntsj2ru0a3584nz44oh3hxzodh6z')
+MIMO_BASE_URL = 'https://token-plan-cn.xiaomimimo.com/v1'
+
+D_TEMP = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'asr_temp')
 os.makedirs(D_TEMP, exist_ok=True)
 TMP = D_TEMP
 WORK = os.path.dirname(os.path.abspath(__file__))
 FFMPEG = shutil.which("ffmpeg") or shutil.which("ffmpeg.exe") or "ffmpeg"
 PCLI = "playwright-cli"
 
-# Whisper 模型全局单例（只加载一次，优先 medium，内存不够用 small）
-# 直接传 .pt 文件路径，绕过 WHISPER_CACHE_DIR 的 checksum 校验
-_WHISPER_MODEL = None
-_WHISPER_NAME = None  # 记录实际加载的模型名称（用于 device）
-
-def get_whisper():
-    global _WHISPER_MODEL, _WHISPER_NAME
-    if _WHISPER_MODEL is None:
-        for name in ['small', 'medium']:
-            model_file = os.path.join(D_MODELS, f'{name}.pt')
-            if os.path.exists(model_file):
-                try:
-                    # 传文件路径而非名称，跳过 SHA256 校验
-                    _WHISPER_MODEL = _whisper.load_model(model_file)
-                    _WHISPER_NAME = name
-                    print(f"  Whisper {name} 加载成功: {model_file}")
-                    return _WHISPER_MODEL
-                except Exception as e:
-                    print(f"  Whisper {name} 加载失败，回退: {e}")
-                    continue
-
-        # 兜底：让 whisper 自动下载（medium 优先）
+def mimo_asr(audio_path, language='zh'):
+    """调用小米 MiMo ASR API 识别音频，返回文本"""
+    # 读取音频并 base64 编码
+    with open(audio_path, 'rb') as f:
+        audio_bytes = f.read()
+    
+    if len(audio_bytes) < 1000:
+        return ''
+    
+    audio_b64 = base64.b64encode(audio_bytes).decode('utf-8')
+    
+    # 判断 MIME 类型
+    if audio_path.endswith('.mp3'):
+        mime = 'audio/mpeg'
+    elif audio_path.endswith('.wav'):
+        mime = 'audio/wav'
+    else:
+        mime = 'audio/mpeg'
+    
+    payload = json.dumps({
+        'model': 'mimo-v2.5-asr',
+        'messages': [{
+            'role': 'user',
+            'content': [{
+                'type': 'input_audio',
+                'input_audio': {
+                    'data': f'data:{mime};base64,{audio_b64}'
+                }
+            }]
+        }],
+        'asr_options': {'language': language},
+        'max_tokens': 500
+    }).encode('utf-8')
+    
+    headers = {
+        'Authorization': f'Bearer {MIMO_API_KEY}',
+        'Content-Type': 'application/json'
+    }
+    
+    for attempt in range(3):
         try:
-            _WHISPER_MODEL = _whisper.load_model('medium')
-            _WHISPER_NAME = 'medium'
-            print("  Whisper medium 加载成功（自动下载）")
-        except Exception:
-            _WHISPER_MODEL = _whisper.load_model('small')
-            _WHISPER_NAME = 'small'
-            print("  Whisper small 加载成功（回退）")
-    return _WHISPER_MODEL
+            req = urllib.request.Request(
+                f'{MIMO_BASE_URL}/chat/completions',
+                data=payload, headers=headers, method='POST'
+            )
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                result = json.loads(resp.read().decode('utf-8'))
+            
+            text = ''
+            if result.get('choices') and result['choices'][0].get('message'):
+                text = result['choices'][0]['message'].get('content', '')
+            return text.strip()
+        except Exception as e:
+            if attempt < 2:
+                print(f'    MiMo ASR 重试 {attempt+2}/3: {e}')
+                time.sleep(3)
+            else:
+                print(f'    MiMo ASR 失败: {e}')
+                return ''
 
 def _kill_playwright():
     """完全关闭 Playwright 浏览器，确保状态干净"""
@@ -368,7 +398,7 @@ def br_match(line):
 _SEEN_AUDIO_URLS = set()
 
 def download_asr(audio_url, video_tag="", max_sec=120):
-    """下载音频 → ASR → 完整原文案
+    """下载音频 → MiMo ASR → 完整原文案
     video_tag: 用于区分不同视频的临时文件标识
     max_sec: 最大音频时长（秒），短视频120s足够
     返回 (transcript, audio_url_hash) 或 ("", "")
@@ -384,7 +414,7 @@ def download_asr(audio_url, video_tag="", max_sec=120):
     
     tag = video_tag or url_hash
     mp4 = os.path.join(TMP, f"_pw_{tag}.mp4")
-    wav = os.path.join(TMP, f"_pw_{tag}.wav")
+    mp3 = os.path.join(TMP, f"_pw_{tag}.mp3")
     
     # ffmpeg 下载（抖音合并流需要 Referer header）
     ffmpeg_cmd = [FFMPEG, "-y", "-i", audio_url, "-c", "copy", "-t", str(max_sec), mp4]
@@ -395,38 +425,33 @@ def download_asr(audio_url, video_tag="", max_sec=120):
     if not os.path.exists(mp4) or os.path.getsize(mp4) < 1000:
         return "", ""
     
-    # 转 WAV
-    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "16000", "-t", str(max_sec), wav],
+    # 转 MP3（MiMo API 支持 mp3/wav，mp3 体积更小）
+    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "16000", "-b:a", "32k", "-t", str(max_sec), mp3],
                    capture_output=True, timeout=30)
     
-    if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
-        for f in [mp4, wav]:
+    if not os.path.exists(mp3) or os.path.getsize(mp3) < 1000:
+        for f in [mp4, mp3]:
             try: os.remove(f)
             except: pass
         return "", ""
     
-    # Whisper（优化参数：零温度+beam search 追求最高精度）
-    model = get_whisper()
-    r = model.transcribe(wav, language="zh", fp16=False, verbose=False,
-                         temperature=0.0, beam_size=5, best_of=5,
-                         condition_on_previous_text=False)
-    text = r["text"].strip()
+    # 小米 MiMo ASR
+    text = mimo_asr(mp3, language='zh')
     text = _clean_text(text)
-    for f in [mp4, wav]:
+    for f in [mp4, mp3]:
         try: os.remove(f)
         except: pass
     
     # 质量检查：无明显内容的转录丢弃
     if len(text) < 10:
         return "", url_hash
-    # 检查是否全是噪声（随机字符比例过高）
+    # 检查是否全是噪声（中文字符比例过低）
     alpha_ratio = sum(1 for c in text if '\u4e00' <= c <= '\u9fff' or '\u3040' <= c <= '\u30ff') / max(len(text), 1)
     if alpha_ratio < 0.3:
         print(f"    ⚠️ 转录质量过低（中文占比 {alpha_ratio:.1%}），丢弃")
         return "", url_hash
     
-    # 返回完整 cleaned 文案（最多2000字），而不是事件摘要
-    # 用户需要 1:1 原文案，不是简介
+    # 返回完整 cleaned 文案（最多2000字）
     return text[:2000], url_hash
 
 def _scrape_page_desc(url):
@@ -502,7 +527,7 @@ def _fetch_url(url, headers=None, timeout=15):
         return None
 
 def _bilibili_asr(url):
-    """B站视频ASR：遍历所有音频流，下载后用Whisper识别"""
+    """B站视频ASR：遍历所有音频流，下载后用 MiMo API 识别"""
     bv_match = re.search(r'BV[\w]+', url)
     if not bv_match:
         return None
@@ -535,7 +560,7 @@ def _bilibili_asr(url):
                 path = os.path.join(tempfile.gettempdir(), "bili_" + bvid + ".mp3")
                 subprocess.run(
                     ["ffmpeg", "-y", "-i", u, "-headers", "Referer: https://www.bilibili.com/" + chr(13) + chr(10),
-                     "-ac", "1", "-ar", "16000", "-t", "180", path],
+                     "-ac", "1", "-ar", "16000", "-b:a", "32k", "-t", "180", path],
                     capture_output=True, timeout=60)
                 if os.path.exists(path) and os.path.getsize(path) > 1000:
                     audio_path = path
@@ -547,11 +572,7 @@ def _bilibili_asr(url):
                 break
         if not audio_path:
             return None
-        model = get_whisper()
-        result = model.transcribe(audio_path, language="zh", fp16=False, verbose=False,
-                                  temperature=0.0, beam_size=5, best_of=5,
-                                  condition_on_previous_text=False)
-        text = result.get("text", "").strip()
+        text = mimo_asr(audio_path, language='zh')
         try: os.remove(audio_path)
         except: pass
         if len(text) < 10:
