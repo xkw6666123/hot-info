@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://rediancha.online/">
 <meta name="twitter:card" content="summary">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script>window._chartLoaded=false;window._loadChart=function(){if(window._chartLoaded)return Promise.resolve();return new Promise(function(r){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";s.onload=function(){window._chartLoaded=true;r()};document.head.appendChild(s)})};</script>
+<script>window._chartLoaded=false;window._chartError=false;window._loadChart=function(){if(window._chartLoaded)return Promise.resolve();if(window._chartError)return Promise.reject();return new Promise(function(r,e){var t=setTimeout(function(){window._chartError=true;e(new Error('Chart.js加载超时'))},8000);var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";s.onload=function(){clearTimeout(t);window._chartLoaded=true;r()};s.onerror=function(){clearTimeout(t);window._chartError=true;e(new Error('Chart.js加载失败'))};document.head.appendChild(s)})};</script>
 <script>window.Chart||document.write('<script src="data:application/javascript,window.Chart=class{constructor(){}}"><\/script>')</script>
 <style>
 /* ===== Variables ===== */
@@ -1359,7 +1359,13 @@ function renderAnalysis(){
 }
 
 function renderTrend(){
-  if(!window._chartLoaded){document.getElementById('content').innerHTML='<div class="empty-state"><div class="icon">⏳</div><p>加载图表中...</p></div>';window._loadChart().then(function(){renderTrend()});return;}
+  if(!window._chartLoaded){
+    document.getElementById('content').innerHTML='<div class="empty-state"><div class="icon">⏳</div><p>加载图表中...</p></div>';
+    window._loadChart().then(function(){renderTrend()}).catch(function(){
+      document.getElementById('content').innerHTML='<div class="empty-state"><div class="icon">📊</div><p>图表加载失败</p><p style="font-size:12px;color:var(--text-muted)">CDN可能无法访问，请检查网络</p></div>';
+    });
+    return;
+  }
   try {
   const el=document.getElementById('content');
   let h='<div class="section-title">📈 热点趋势 <span style="font-size:11px;color:var(--text-muted);font-weight:400">基于近3天数据自动统计</span></div>';

@@ -83,24 +83,67 @@ def mimo_asr(audio_path, language='zh'):
 
 def _kill_playwright():
     """完全关闭 Playwright 浏览器 + 强制杀 Chrome/Node 进程"""
-    # 1. playwright-cli 正常关闭
-    subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} kill-all"],
-                   capture_output=True, timeout=10)
+    # 1. playwright-cli 正常关闭（bash 可能不在 PATH，容错）
+    try:
+        subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} kill-all"],
+                       capture_output=True, timeout=10)
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        pass
     time.sleep(2)
     # 2. 强制杀残留 Chrome/Node（确保干净状态）
     try:
         subprocess.run(["taskkill", "/F", "/IM", "chrome.exe"], capture_output=True, timeout=5)
-    except Exception:
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
         pass
     try:
         subprocess.run(["taskkill", "/F", "/IM", "node.exe"], capture_output=True, timeout=5)
-    except Exception:
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
         pass
     time.sleep(2)
 
 # 连续 Playwright 失败计数器（超过阈值则跳过后续视频，只用降级方案）
 _PW_FAIL_COUNT = 0
 _PW_FAIL_MAX = 3
+
+# bash/playwright-cli 可用性缓存
+_BASH_OK = None
+
+def _has_bash():
+    """检测 bash 和 playwright-cli 是否可用，结果缓存"""
+    global _BASH_OK
+    if _BASH_OK is not None:
+        return _BASH_OK
+    try:
+        r = subprocess.run(["bash", "--version"], capture_output=True, timeout=5)
+        _BASH_OK = (r.returncode == 0)
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        _BASH_OK = False
+    if _BASH_OK:
+        try:
+            r = subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} --version"],
+                               capture_output=True, timeout=10)
+            _BASH_OK = (r.returncode == 0)
+        except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+            _BASH_OK = False
+    return _BASH_OK
+
+def _run_pw(cmd_args, timeout=30):
+    """安全运行 playwright-cli 命令，bash/playwright 不可用时返回空"""
+    if not _has_bash():
+        return None
+    global _PW_FAIL_COUNT
+    try:
+        r = subprocess.run(
+            ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} {' '.join(cmd_args)}"],
+            capture_output=True, text=True, timeout=timeout,
+            encoding="utf-8", errors="replace"
+        )
+        if r.returncode == 0:
+            _PW_FAIL_COUNT = 0
+        return r
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        _PW_FAIL_COUNT += 1
+        return None
 
 # ═══ 文本清洗 ═══
 # Whisper 常见误识别 → 正确词（长匹配优先，避免短词先替换破坏长匹配）
@@ -319,55 +362,47 @@ def _clean_text(text):
     return '\n'.join(clean).strip()
 
 def get_audio_url(video_url, expected_aweme_id=""):
-    """Playwright 打开视频页，从网络请求中截获音频 URL
-    返回 (audio_url, response_html_len) 或 (None, 0)
-    expected_aweme_id: 用于验证截获的音频是否属于当前视频
-    """
+    """Playwright 打开视频页，从网络请求中截获音频 URL"""
     global _PW_FAIL_COUNT
     
-    # 连续失败太多，直接跳过
+    # 连续失败太多或 bash 不可用，直接跳过
     if _PW_FAIL_COUNT >= _PW_FAIL_MAX:
         print(f"    ⚠️ Playwright 连续失败{_PW_FAIL_COUNT}次，跳过")
+        return None
+    if not _has_bash():
+        _PW_FAIL_COUNT = _PW_FAIL_MAX
+        print(f"    ⚠️ bash/playwright-cli 不可用，跳过所有抖音视频")
         return None
     
     _kill_playwright()
     
-    # 打开页面，用 longer wait + retry if page fails to load
+    # 打开页面
     success = False
-    for attempt in range(2):  # 减少重试次数从3到2
-        try:
-            r = subprocess.run(
-                ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} open \"{video_url}\""],
-                capture_output=True, timeout=25, text=True, encoding="utf-8", errors="replace"
-            )
+    for attempt in range(2):
+        r = _run_pw(["open", video_url], timeout=25)
+        if r is not None:
             success = True
             break
-        except subprocess.TimeoutExpired:
-            if attempt < 1:
-                _kill_playwright()
-                time.sleep(3)
+        if attempt < 1:
+            _kill_playwright()
+            time.sleep(3)
     
     if not success:
-        _PW_FAIL_COUNT += 1
         print(f"    ⚠️ Playwright open 超时 (失败{_PW_FAIL_COUNT}/{_PW_FAIL_MAX})")
         _kill_playwright()
         return None
     
-    _PW_FAIL_COUNT = 0  # 成功则重置计数器
     time.sleep(8)  # 抖音需要时间触发视频加载
     
-    # 尝试点击页面触发视频播放（抖音延迟加载）
-    try:
-        subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} click e1"],
-                       capture_output=True, timeout=5, text=True)
-        time.sleep(5)  # 额外等待播放触发后的请求
-    except Exception:
-        pass
+    # 尝试点击页面触发视频播放
+    _run_pw(["click", "e1"], timeout=5)
+    time.sleep(5)
     
     # 获取网络请求列表
-    r = subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} requests"],
-                       capture_output=True, text=True, timeout=15, encoding="utf-8", errors="replace")
-    
+    r = _run_pw(["requests"], timeout=15)
+    if r is None:
+        _kill_playwright()
+        return None
     requests_output = r.stdout
     
     # 找到 audio URL (media-audio-und-mp4a)，验证是否包含当前视频的 aweme_id
@@ -486,17 +521,16 @@ def download_asr(audio_url, video_tag="", max_sec=120):
     return text[:2000], url_hash
 
 def _scrape_page_desc(url):
-    """Playwright 打开页面，抓取视频描述文本（ASR 失败时的降级方案）"""
+    """Playwright 打开页面，抓取视频描述文本"""
     global _PW_FAIL_COUNT
-    if _PW_FAIL_COUNT >= _PW_FAIL_MAX:
+    if _PW_FAIL_COUNT >= _PW_FAIL_MAX or not _has_bash():
         return None
     
     _kill_playwright()
     try:
-        r = subprocess.run(
-            ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} open \"{url}\""],
-            capture_output=True, timeout=25, text=True, encoding="utf-8", errors="replace"
-        )
+        r = _run_pw(["open", url], timeout=25)
+        if r is None:
+            return None
         time.sleep(5)
         
         # 抓取页面可见文本，排除导航/按钮/页脚等噪音
@@ -517,10 +551,9 @@ def _scrape_page_desc(url):
             return desc.substring(0, 1000);
         })()
         """
-        r = subprocess.run(
-            ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} eval \"{js}\""],
-            capture_output=True, timeout=15, text=True, encoding="utf-8", errors="replace"
-        )
+        r = _run_pw(["eval", js], timeout=15)
+        if r is None:
+            return None
         
         # 提取引号内的结果
         for line in r.stdout.split(chr(10)):
@@ -681,16 +714,16 @@ def get_bilibili_content(url):
     # 方法2：Playwright 抓取页面内容
     try:
         _kill_playwright()
-        subprocess.run(
-            ["bash", "-c", "unset NODE_OPTIONS && " + PCLI + " open \"" + url + "\"" ],
-            capture_output=True, timeout=30, text=True, encoding="utf-8", errors="replace"
-        )
+        r = _run_pw(["open", url], timeout=30)
+        if r is None:
+            _kill_playwright()
+            return None
         time.sleep(6)
         js_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_bili_eval.js")
-        r = subprocess.run(
-            ["bash", "-c", "unset NODE_OPTIONS && " + PCLI + " eval \"\$(cat \"" + js_file + "\"" ],
-            capture_output=True, timeout=15, text=True, encoding="utf-8", errors="replace"
-        )
+        r = _run_pw(["eval", f'$(cat "{js_file}")'], timeout=15)
+        if r is None:
+            _kill_playwright()
+            return None
         for line in r.stdout.split(chr(10)):
             line = line.strip()
             if line.startswith('"') and line.endswith('"'):
