@@ -82,10 +82,25 @@ def mimo_asr(audio_path, language='zh'):
                 return ''
 
 def _kill_playwright():
-    """完全关闭 Playwright 浏览器，确保状态干净"""
+    """完全关闭 Playwright 浏览器 + 强制杀 Chrome/Node 进程"""
+    # 1. playwright-cli 正常关闭
     subprocess.run(["bash", "-c", f"unset NODE_OPTIONS && {PCLI} kill-all"],
                    capture_output=True, timeout=10)
-    time.sleep(1)
+    time.sleep(2)
+    # 2. 强制杀残留 Chrome/Node（确保干净状态）
+    try:
+        subprocess.run(["taskkill", "/F", "/IM", "chrome.exe"], capture_output=True, timeout=5)
+    except Exception:
+        pass
+    try:
+        subprocess.run(["taskkill", "/F", "/IM", "node.exe"], capture_output=True, timeout=5)
+    except Exception:
+        pass
+    time.sleep(2)
+
+# 连续 Playwright 失败计数器（超过阈值则跳过后续视频，只用降级方案）
+_PW_FAIL_COUNT = 0
+_PW_FAIL_MAX = 3
 
 # ═══ 文本清洗 ═══
 # Whisper 常见误识别 → 正确词（长匹配优先，避免短词先替换破坏长匹配）
@@ -308,22 +323,38 @@ def get_audio_url(video_url, expected_aweme_id=""):
     返回 (audio_url, response_html_len) 或 (None, 0)
     expected_aweme_id: 用于验证截获的音频是否属于当前视频
     """
+    global _PW_FAIL_COUNT
+    
+    # 连续失败太多，直接跳过
+    if _PW_FAIL_COUNT >= _PW_FAIL_MAX:
+        print(f"    ⚠️ Playwright 连续失败{_PW_FAIL_COUNT}次，跳过")
+        return None
+    
     _kill_playwright()
     
     # 打开页面，用 longer wait + retry if page fails to load
-    for attempt in range(3):
+    success = False
+    for attempt in range(2):  # 减少重试次数从3到2
         try:
             r = subprocess.run(
                 ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} open \"{video_url}\""],
-                capture_output=True, timeout=30, text=True, encoding="utf-8", errors="replace"
+                capture_output=True, timeout=25, text=True, encoding="utf-8", errors="replace"
             )
+            success = True
             break
         except subprocess.TimeoutExpired:
-            if attempt < 2:
+            if attempt < 1:
                 _kill_playwright()
                 time.sleep(3)
     
-    time.sleep(10)  # 抖音需要时间触发视频加载，10秒更可靠
+    if not success:
+        _PW_FAIL_COUNT += 1
+        print(f"    ⚠️ Playwright open 超时 (失败{_PW_FAIL_COUNT}/{_PW_FAIL_MAX})")
+        _kill_playwright()
+        return None
+    
+    _PW_FAIL_COUNT = 0  # 成功则重置计数器
+    time.sleep(8)  # 抖音需要时间触发视频加载
     
     # 尝试点击页面触发视频播放（抖音延迟加载）
     try:
@@ -456,11 +487,15 @@ def download_asr(audio_url, video_tag="", max_sec=120):
 
 def _scrape_page_desc(url):
     """Playwright 打开页面，抓取视频描述文本（ASR 失败时的降级方案）"""
+    global _PW_FAIL_COUNT
+    if _PW_FAIL_COUNT >= _PW_FAIL_MAX:
+        return None
+    
     _kill_playwright()
     try:
         r = subprocess.run(
             ["bash", "-c", f"unset NODE_OPTIONS && {PCLI} open \"{url}\""],
-            capture_output=True, timeout=30, text=True, encoding="utf-8", errors="replace"
+            capture_output=True, timeout=25, text=True, encoding="utf-8", errors="replace"
         )
         time.sleep(5)
         
@@ -671,8 +706,9 @@ def get_bilibili_content(url):
     return None
 
 def main():
-    global _SEEN_AUDIO_URLS
+    global _SEEN_AUDIO_URLS, _PW_FAIL_COUNT
     _SEEN_AUDIO_URLS = set()  # 每次运行重置
+    _PW_FAIL_COUNT = 0        # 重置失败计数器
     
     _kill_playwright()
     
@@ -700,8 +736,8 @@ def main():
             return True
         return False
     
-    # 全部重新提取，确保得到完整原文案（非旧版500字截断）
-    bloggers = all_bloggers
+    # 只处理需要重新提取的视频（空/过短/噪声）
+    bloggers = [v for v in all_bloggers if _needs_re_extract(v.get("content_intro", ""))]
     
     print(f"\n🎉 免费 ASR: {len(bloggers)}/{len(all_bloggers)} 条待处理视频\n")
     
@@ -723,11 +759,18 @@ def main():
     
     updated = 0
     failed_no_audio = 0
+    skipped_pw = 0
     for i, v in enumerate(bloggers):
         url = v.get("url", "")
         name = v.get("blogger_name", "")
         title = v.get("title", "")[:30]
         aweme_id = v.get("aweme_id", "")
+        ci = v.get("content_intro", "")
+        
+        # 如果已有高质量文案(>300字非噪声)，跳过
+        if len(ci) > 300 and not _needs_re_extract(ci):
+            print(f"[{i+1}/{len(bloggers)}] {name} | {title[:20]}... ⏭️ 已有{len(ci)}字文案")
+            continue
         
         print(f"[{i+1}/{len(bloggers)}] {name} | {title}")
         
@@ -746,6 +789,12 @@ def main():
                     print(f"  ⚠️ B站内容提取失败或过短")
                     failed_no_audio += 1
                 continue
+            
+            # 抖音视频：Playwright 连续失败太多，跳过
+            if _PW_FAIL_COUNT >= _PW_FAIL_MAX:
+                print(f"  ⚠️ Playwright已连续失败{_PW_FAIL_COUNT}次，跳过剩余抖音视频")
+                skipped_pw += len(bloggers) - i
+                break
             
             audio_url = get_audio_url(url, expected_aweme_id=aweme_id)
             if not audio_url:
@@ -789,7 +838,7 @@ def main():
         if r.returncode != 0:
             print(f"  ⚠️ gen_js_data 失败: {r.stderr[:200]}")
     
-    print(f"\n✅ ASR 完成: 成功 {updated}/{len(bloggers)}，未截获音频 {failed_no_audio}")
+    print(f"\n✅ ASR 完成: 成功 {updated}/{len(bloggers)}，未截获音频 {failed_no_audio}，Playwright跳过 {skipped_pw}")
 
 if __name__ == "__main__":
     main()
