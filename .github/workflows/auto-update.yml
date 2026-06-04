@@ -49,6 +49,43 @@ jobs:
           python gen_js_data.py
           echo "=== 数据已嵌入 index.html ==="
 
+      - name: 生成视频内容简介
+        run: |
+          echo "=== 生成 content_intro ==="
+          python gen_content_intro.py || echo "gen_content_intro skipped"
+
+      - name: B站视频 ASR (MiMo API)
+        run: |
+          echo "=== B站视频文案提取 ==="
+          python -c "
+          import json, sys, os
+          sys.path.insert(0, '.')
+          os.environ['MIMO_API_KEY'] = '${{ secrets.MIMO_API_KEY }}'
+          from asr_extract import get_bilibili_content
+          with open('data.json','r',encoding='utf-8-sig') as f:
+              d = json.load(f)
+          updated = 0
+          for a in d.get('articles',[]):
+              if a.get('source') != 'blogger' or 'bilibili.com' not in (a.get('url') or ''):
+                  continue
+              ci = a.get('content_intro','')
+              if len(ci) > 100:
+                  continue
+              text = get_bilibili_content(a['url'])
+              if text and len(text) > 30:
+                  a['content_intro'] = text
+                  updated += 1
+                  print(f'  B站 {a[\"blogger_name\"]}: {len(text)}字')
+          if updated:
+              with open('data.json','w',encoding='utf-8') as f:
+                  json.dump(d, f, ensure_ascii=False, indent=2)
+              import subprocess
+              subprocess.run(['python','gen_js_data.py'])
+              print(f'B站 ASR: {updated}条更新')
+          else:
+              print('B站视频文案已完整，无需更新')
+          " || echo "B站 ASR skipped"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
