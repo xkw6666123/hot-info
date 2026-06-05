@@ -45,6 +45,14 @@ BILI_BLOGGERS = [
     {"name": "沙漠一之雕", "mid": "283204224"},
 ]
 
+# 抖音博主 sec_uid 映射（免费Playwright方案用）
+BLOGGER_SEC_UIDS = {
+    "网吧信息差": "MS4wLjABAAAAokpF28xzuEX1XD968NZhGTOytSqQbDBf0kPjRTeBtVyooNhnCicUdWZYMZh8oUpv",
+    "阿七大型纪录片": "MS4wLjABAAAAptvL9jL0lV_qhvEnHAhZRs5yEekpupXZUwucqRqrhBvMv2XUWQgxBNMRwcIP6Evf",
+    "陈先生": "MS4wLjABAAAAnusbdI9PboQ_wCdWkwe12i9evUts7z8ibbkOe6HVludyd3hGjDqKegLU8Bp7_5ZF",
+    "人类观察菌": "MS4wLjABAAAA7ie_zvIQ19AWP_ZDg7heFEoQMAY3K3E9UOGYn_UKZzODbWxHxj5tnD3HGjg9sZlN",
+}
+
 today = datetime.now().strftime("%Y-%m-%d")
 now_time = datetime.now().strftime("%H:%M")
 
@@ -767,6 +775,92 @@ class BlogSearcher:
         }
 
 
+def scrape_bloggers_pw():
+    """免费的 Playwright 博主视频抓取（TikHub 替代方案）
+    调用 pw_scrape_blogger.sh 脚本，逐个博主抓取视频列表
+    """
+    import subprocess as _sp
+    
+    # 检测 bash 是否可用
+    try:
+        r = _sp.run(["bash", "--version"], capture_output=True, timeout=5)
+        if r.returncode != 0:
+            return []
+    except Exception:
+        return []
+    
+    scrape_script = os.path.join(BASE_DIR, "pw_scrape_blogger.sh")
+    if not os.path.exists(scrape_script):
+        return []
+    
+    articles = []
+    
+    for entry in TRACKED_BLOGGERS:
+        name = entry["name"] if isinstance(entry, dict) else entry
+        sec_uid = BLOGGER_SEC_UIDS.get(name, "")
+        if not sec_uid:
+            continue
+        
+        print(f"  📹 PW: {name}...")
+        
+        try:
+            r = _sp.run(
+                ["bash", scrape_script, name, sec_uid],
+                capture_output=True, text=True, timeout=45,
+                encoding="utf-8", errors="replace"
+            )
+            
+            output = r.stdout
+            
+            # 检查验证码
+            if "验证码" in output:
+                print(f"    ⚠️ 触发验证码，跳过")
+                continue
+            
+            # 从输出中提取 JSON 数组
+            import re as _re
+            m = _re.search(r'\[.*\]', output, _re.DOTALL)
+            if not m:
+                continue
+            
+            videos = json.loads(m.group(0))
+            
+            for v in videos[:5]:
+                aweme_id = v.get("id", "")
+                title_text = v.get("title", "")
+                
+                # 从标题提取点赞数（格式: "22.4万标题文本"）
+                likes = 0
+                likes_match = _re.match(r'([\d.]+)万', title_text)
+                if likes_match:
+                    likes = int(float(likes_match.group(1)) * 10000)
+                    title_text = title_text[likes_match.end():].strip()
+                
+                if not title_text:
+                    title_text = f"{name} 最新视频"
+                
+                articles.append({
+                    "id": make_id("pw_blogger", f"{name}_{aweme_id}") % 10**9,
+                    "title": title_text[:80],
+                    "summary": title_text[:200],
+                    "source": "blogger",
+                    "blogger_name": name,
+                    "date": today, "time": now_time,
+                    "tags": ["博主", "爆款", "拆解"],
+                    "url": f"https://www.douyin.com/video/{aweme_id}",
+                    "likes": likes,
+                    "comments": max(likes // 100, 10),
+                    "aweme_id": aweme_id,
+                })
+            
+            print(f"    ✅ PW: {len(videos)}条")
+            
+        except Exception as e:
+            print(f"    ⚠️ PW失败: {e}")
+    
+    return articles
+
+
 def scrape_bloggers():
     """通过 TikHub API 获取博主最新 3 条视频"""
     print("📡 博主追踪 (TikHub)...")
@@ -937,7 +1031,7 @@ def main(mode="full"):
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
         ("公众号", scrape_weixin),
-        ("博主追踪", scrape_bloggers),
+        ("博主追踪", lambda: scrape_bloggers() or scrape_bloggers_pw()),
     ]
     
     if mode == "local":
