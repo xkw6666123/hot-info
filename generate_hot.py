@@ -806,7 +806,7 @@ def scrape_bloggers_pw():
         try:
             r = _sp.run(
                 ["bash", scrape_script, name, sec_uid],
-                capture_output=True, text=True, timeout=45,
+                capture_output=True, text=True, timeout=90,
                 encoding="utf-8", errors="replace"
             )
             
