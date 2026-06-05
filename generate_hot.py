@@ -18,8 +18,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_FILE = os.path.join(BASE_DIR, "data.json")
 SITE_NAME = "热点信息差"
 SITE_DESC = "每日社会热点聚合 + 爆款视频拆解 + AI选题灵感"
-TIMEOUT = 15
-RETRIES = 3
+TIMEOUT = 10
+RETRIES = 2
+
+# 全局时间预算：160秒内必须完成（给 git+json 留 20s）
+IMPORT_DEADLINE = time.time() + 160
+FAILED_PLATFORMS = []  # 记录失败的平台
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ── TikHub 博主追踪 ──
@@ -407,25 +411,55 @@ def scrape_wallstreetcn():
     return articles
 
 def scrape_cls():
-    """财联社"""
+    """财联社（API不可用时从HTML抓取）"""
     print("📡 财联社...")
-    data = fetch_json("https://www.cls.cn/nodeapi/updateTelegraphList",
+    # 尝试 API（可能已迁移）
+    data = fetch_json("https://www.cls.cn/v1/roll/get_roll_list?app=CailianpressWeb&os=web&sv=8.4.6",
                       referer="https://www.cls.cn/")
-    if not data or not data.get("data"):
+    if data and data.get("data"):
+        items = data.get("data", {}).get("roll_data", []) or data.get("data", [])
+        if items:
+            articles = []
+            for item in items[:10]:
+                articles.append({
+                    "id": make_id("cls", str(item.get('id',''))) % 10**9,
+                    "title": item.get("title", "") or item.get("content", "")[:200],
+                    "summary": item.get("brief", "")[:100] if item.get("brief") else "",
+                    "source": "财联社热门",
+                    "date": today, "time": now_time,
+                    "tags": ["财经", "金融", "投资"],
+                    "url": f"https://www.cls.cn/detail/{item.get('id','')}",
+                    "likes": 20000, "comments": 200,
+                })
+            return articles
+    
+    # 降级：从首页HTML提取
+    print("  ⚠️ API不可用，从HTML降级抓取...")
+    html = fetch("https://www.cls.cn/", referer="https://www.cls.cn/")
+    if not html:
         return []
+    # 匹配首页新闻标题和链接
+    pattern = r'<a[^>]*href="(/detail/\d+)"[^>]*>([^<]{8,200})</a>'
+    matches = re.findall(pattern, html)
     articles = []
-    items = data.get("data", {}).get("roll_data", [])
-    for item in items[:10]:
+    seen = set()
+    for url, title in matches:
+        title = re.sub(r'<[^>]+>', '', title).strip()
+        if not title or len(title) < 8 or title in seen:
+            continue
+        seen.add(title)
         articles.append({
-            "id": make_id("cls", str(item.get('id',''))) % 10**9,
-            "title": item.get("title", ""),
-            "summary": item.get("brief", "")[:100],
+            "id": make_id("cls", url) % 10**9,
+            "title": title,
+            "summary": "",
             "source": "财联社热门",
             "date": today, "time": now_time,
             "tags": ["财经", "金融", "投资"],
-            "url": f"https://www.cls.cn/detail/{item.get('id','')}",
+            "url": f"https://www.cls.cn{url}" if url.startswith("/") else url,
             "likes": 20000, "comments": 200,
         })
+        if len(articles) >= 10:
+            break
     return articles
 
 def scrape_ifeng():
@@ -924,12 +958,19 @@ def main(mode="full"):
 
     all_articles = []
     for name, scraper in scrapers:
+        # 时间预算：剩余时间 < 10s 跳过后续平台
+        if time.time() > IMPORT_DEADLINE - 10:
+            print(f"  ⏭️ {name}: 时间不足，跳过")
+            FAILED_PLATFORMS.append(name)
+            continue
         try:
+            t0 = time.time()
             result = scraper()
-            all_articles.extend(result)
-            print(f"  ✅ {name}: {len(result)} 条")
+            elapsed = time.time() - t0
+            print(f"  ✅ {name}: {len(result)} 条 ({elapsed:.0f}s)")
         except Exception as e:
             print(f"  ❌ {name}: {e}")
+            FAILED_PLATFORMS.append(name)
 
     # remote 模式：合并新博主数据到已有 data.json
     if mode == "remote" and old_articles:
@@ -1225,6 +1266,7 @@ def main(mode="full"):
         "articles": all_articles,
         "inspirations": inspirations,
         "updated_at": datetime.now().isoformat(),
+        "failed_platforms": FAILED_PLATFORMS if FAILED_PLATFORMS else None,
     }
 
     tmp_file = OUTPUT_FILE + ".tmp"
