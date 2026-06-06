@@ -43,11 +43,16 @@ def main():
         new_intro = generate_intro(a)
         old_intro = a.get("content_intro", "")
         
-        # 只在有实质性内容时更新；不覆盖已有的真实转录
+        # 已有真实 ASR 结果 → 永远不覆盖
+        if old_intro and len(old_intro) > 80:
+            continue
+        
+        # 新生成的太短 → 不写入，留空等 ASR
+        if len(new_intro) < 80:
+            continue
+        
+        # 写入有实质内容的新文案
         if new_intro and new_intro != old_intro:
-            # 检查是否已有真实转录（ASR 结果），不要覆盖
-            if old_intro and len(old_intro) > 50 and not old_intro.startswith("视频描述"):
-                continue  # 保留已有的真实转录
             a["content_intro"] = new_intro
             count += 1
     

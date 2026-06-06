@@ -35,14 +35,14 @@ async def scrape_all():
     for name, sec_uid in BLOGGERS.items():
         print(f"📹 {name}...")
         try:
-            response = await crawler.fetch_user_post_videos(sec_uid, max_cursor=0, count=5)
+            response = await crawler.fetch_user_post_videos(sec_uid, max_cursor=0, count=20)
         except Exception as e:
             print(f"  ❌ {type(e).__name__}: {e}")
             continue
 
         aweme_list = response.get("aweme_list", [])
         print(f"  {len(aweme_list)}条")
-        for v in aweme_list[:5]:
+        for v in aweme_list[:20]:
             aweme_id = str(v.get("aweme_id", ""))
             desc = (v.get("desc", "") or "")[:200]
             stats = v.get("statistics", {}) or {}
@@ -104,10 +104,9 @@ async def main():
 
         final = []
         for name, items in by_name.items():
+            # 按日期倒序，每博主只保留最新3条
             items.sort(key=lambda x: str(x.get("date", "")) + str(x.get("id", "")), reverse=True)
-            good = [a for a in items if len(a.get("content_intro", "")) > 100]
-            rest = [a for a in items if a not in good]
-            final.extend((good + rest)[:3])
+            final.extend(items[:3])
 
         data["articles"] = [a for a in data["articles"] if a.get("source") != "blogger"] + final
 

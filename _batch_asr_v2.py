@@ -60,7 +60,7 @@ for i, v in enumerate(videos):
             continue
         
         t0 = time.time()
-        text, uh = asr_extract.download_asr(vurl, aweme_id or str(i), max_sec=150)
+        text, uh = download_asr(vurl, aweme_id or str(i), max_sec=150)
         elapsed = time.time() - t0
         
         if text and len(text) > 30:
