@@ -1443,6 +1443,18 @@ def main(mode="full"):
     print(f"\n✅ 生成完成: {len(all_articles)} 条热点 + {len(inspirations)} 条灵感")
     print(f"   输出文件: {OUTPUT_FILE}")
 
+    # ═══ 自动更新 index.html + data.js（外部引用，支持 CDN 缓存） ═══
+    try:
+        import subprocess as _sp
+        gen_js = os.path.join(BASE_DIR, "gen_js_data.py")
+        r = _sp.run([sys.executable, gen_js], cwd=BASE_DIR, capture_output=True, text=True, timeout=30)
+        if r.returncode == 0:
+            print(f"   {r.stdout.strip()}")
+        else:
+            print(f"   ⚠️ gen_js_data 失败: {r.stderr[:100]}")
+    except Exception as e:
+        print(f"   ⚠️ gen_js_data 异常: {e}")
+
     return len(all_articles) > 0
 
 
