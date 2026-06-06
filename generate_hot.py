@@ -967,48 +967,90 @@ def generate_blogger_analysis(article):
 # ═══════════════════════════════════════════════════════
 
 def generate_inspirations(articles):
-    """基于热点生成创作灵感"""
-    templates_wangba = [
-        "悬念型: 用\"难不成是真的！{hint}\"制造好奇",
-        "故事型: 用\"能理解能理解 {hint}\"引发共鸣",
-        "感叹型: 用\"再见！{hint}！\"制造话题",
-        "盘点型: 用\"盘点{hint}的几个名场面\"",
-        "反转型: 用\"{hint}——但真相是……\"制造悬念",
-        "情绪型: 用\"看到{hint}的瞬间我破防了\"引发共情",
-        "偷拍型: 用\"不小心拍到了{hint}的现场\"增加真实感",
-        "挑战型: 用\"{hint}到底有多难？我试了一下\"互动引导",
-    ]
-    templates_aqi = [
-        "日期型: 用\"{date}社会热点信息差\"",
-        "速览型: 用\"关于{hint}的几点思考\"",
-        "对比型: 用\"{hint}前后的变化让人意外\"",
-        "数据型: 用\"{hint}的数据告诉你真相\"",
-        "科普型: 用\"带你了解{hint}背后的原理\"",
-    ]
-    templates_chen = [
-        "大型纪录片: 用\"大型纪录片之{hint}全程高能\"",
-        "独家解读: 用\"独家解读{hint}背后的商业逻辑\"",
-        "深挖型: 用\"深挖{hint}你不知道的内幕\"",
-        "拆解型: 用\"拆解{hint}的三个关键点\"",
-        "预言型: 用\"{hint}释放了什么信号\"",
-    ]
+    """基于热点生成创作灵感——直接产出各博主风格的完整文案草稿"""
+    
+    # ═══ 风格模板：直接写出可用的文案开头 ═══
+    
+    # 网吧信息差风格：口语化、讲故事、带"巴沙"人设
+    def wangba_style(topic):
+        t = topic.replace("[", "").replace("]", "")[:30]
+        patterns = [
+            f"说到{datetime.now().strftime('%Y年%m月%d日')}呢，首先第一个事儿，{t}。巴沙刷到这新闻的时候人都傻了，你说这事儿离谱不离谱？",
+            f"OK，聊个事儿啊。{t}。巴沙看完只能说一句，不是，这凭啥啊？你让评论区评评理。",
+            f"最近发生了一个让所有人都没想到的事。{t}。巴沙给你们捋一捋啊，这里头的水可深了。",
+            f"哎，各位，{t}。巴沙就好奇了，到底是谁给他们的勇气？梁静茹吗？",
+            f"不是，{t}这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。",
+            f"说到这个{t}，巴沙第一反应是：编的吧？结果一查，诶，真事儿！给你讲讲前因后果。",
+            f"我跟你们讲，{t}。巴沙看了三遍才敢确认这居然是真的，不是AI编的。",
+            f"来，吃个瓜。{t}。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。",
+            f"巴沙今天刷到一条新闻，{t}。说实话我一开始也以为是段子，直到看到后续。",
+            f"这波操作给巴沙整不会了。{t}。你让巴沙说什么好呢？只能说，真有你的。",
+        ]
+        return patterns[hash(t) % len(patterns)]
+    
+    # 阿七大型纪录片风格：日期锚点+信息差速览+庄严叙事
+    def aqi_style(topic):
+        t = topic.replace("[", "").replace("]", "")[:30]
+        patterns = [
+            f"热点信息差，为什么{t}？这个问题的答案可能和你想的完全不一样。先说背景……",
+            f"就在昨天，一条关于{t}的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。",
+            f"这可能是近期最被低估的一条新闻：{t}。如果你只看标题就会错过这些关键信息。",
+            f"关于{t}的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。",
+            f"{t}——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。",
+        ]
+        return patterns[hash(t) % len(patterns)]
+    
+    # 人类观察菌风格：对话体+社会观察+人间真实
+    def guancha_style(topic):
+        t = topic.replace("[", "").replace("]", "")[:30]
+        patterns = [
+            f"今日热点信息快报。先说个{t}的事儿。不是，这波操作我是真的没想到。你说他图啥呢？",
+            f"来，看看这位。{t}。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。",
+            f"刷到一条{t}的视频。评论区炸了。有说离谱的，有说活该的，还有说\"换我我也这么干\"的。你怎么看？",
+            f"分享一个{t}的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。",
+            f"这届网友的观察力我是服的。{t}。就这种细节，你不说我都注意不到，一说我豁然开朗。",
+        ]
+        return patterns[hash(t) % len(patterns)]
+    
+    # 陈先生风格：大型纪录片体+深度拆解+商业逻辑
+    def chen_style(topic):
+        t = topic.replace("[", "").replace("]", "")[:30]
+        patterns = [
+            f"大型纪录片之{t}全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。",
+            f"独家解读{t}背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。",
+            f"深挖{t}你不知道的内幕。表面上看是偶然事件，实际上每一次\"巧合\"背后都有迹可循。",
+            f"拆解{t}的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。",
+            f"{t}释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。",
+        ]
+        return patterns[hash(t) % len(patterns)]
+    
+    # 沙漠一之雕风格：B站日更快报+唠嗑式+多事件串联
+    def shadi_style(topic):
+        t = topic.replace("[", "").replace("]", "")[:30]
+        patterns = [
+            f"一夜之间发生了啥？今日热点快报，先唠第一件事，{t}。这事儿你得听我细说，开头离谱，结尾更离谱。",
+            f"来，坐稳了。今天的热点快报先从{t}说起。不是我说，这年头什么人都有。",
+            f"今日热点快报开唠。第一件事关于{t}。说实话我一开始还以为是洋葱新闻，结果是真的。",
+            f"老规矩，今天的热点全给你盘一遍。先说{t}这件。这事儿吧，说大不大，说小不小，但耐人寻味。",
+            f"又是离谱的一天。热点快报，第一件事：{t}。我只能说，这届人民群众的创造力是无限的。",
+        ]
+        return patterns[hash(t) % len(patterns)]
     
     inspirations = []
     for i, a in enumerate(articles[:50]):
-        hint = a["title"][:8] if len(a["title"]) > 8 else a["title"]
+        topic = a["title"]
         source = a["source"]
         
-        w_fmt = templates_wangba[i % len(templates_wangba)]
-        a_fmt = templates_aqi[i % len(templates_aqi)]
-        c_fmt = templates_chen[i % len(templates_chen)]
-        
         inspirations.append({
-            "topic": a["title"],
+            "topic": topic,
             "source": source,
-            "wangba_style": w_fmt.format(hint=hint, date=today),
-            "aqi_style": a_fmt.format(hint=hint, date=today),
-            "chen_style": c_fmt.format(hint=hint, date=today),
+            "wangba": wangba_style(topic),
+            "aqi": aqi_style(topic),
+            "chen": chen_style(topic),
+            "guancha": guancha_style(topic),
+            "shadi": shadi_style(topic),
         })
+    
     return inspirations
 
 

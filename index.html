@@ -481,7 +481,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1780754057"></script>
+<script src="data.js?v=1780755731"></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -802,7 +802,7 @@ function renderFav(){
       const liked=raw.ids.map(i=>json.inspirations[i]).filter(Boolean);
       if(liked.length>0){
         inspHtml='<div class="section-title">收藏的灵感 ('+raw.ids.length+')</div>'+
-        liked.map(d=>'<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div><h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3><div class="suggestion">'+esc(d.wangba_style)+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七大型纪录片风格</span></h3><div class="suggestion">'+esc(d.aqi_style)+'</div>'+(d.chen_style?'<h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生风格</span></h3><div class="suggestion" style="color:#D85A30">'+esc(d.chen_style)+'</div>':'')+'</div>').join('');
+        liked.map(d=>'<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div><h3><span class="badge badge-w">🏪 网吧信息差</span></h3><div class="suggestion">'+esc(d.wangba)+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七纪录片</span></h3><div class="suggestion">'+esc(d.aqi)+'</div><h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生</span></h3><div class="suggestion" style="color:#D85A30">'+esc(d.chen)+'</div><h3 style="margin-top:12px"><span class="badge badge-g">🔍 人类观察菌</span></h3><div class="suggestion" style="color:#A78BFA">'+esc(d.guancha)+'</div><h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕</span></h3><div class="suggestion" style="color:#C9A96E">'+esc(d.shadi)+'</div></div>').join('');
       }
     }
   }catch(e){}
@@ -1230,15 +1230,18 @@ function renderInspire(){
         <div class="topic">📌 ${esc(a.topic)}</div>
         <div class="source-tag">来源: ${esc(a.source||'')}</div>
         <h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3>
-        <div class="suggestion">${esc(a.wangba_style)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
+        <div class="suggestion">${esc(a.wangba)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
         <h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七大型纪录片风格</span></h3>
-        <div class="suggestion">${esc(a.aqi_style)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
-        ${a.chen_style ? `
+        <div class="suggestion">${esc(a.aqi)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
         <h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生风格</span></h3>
-        <div class="suggestion" style="color:#D85A30">${esc(a.chen_style)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>` : ''}
+        <div class="suggestion" style="color:#D85A30">${esc(a.chen)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
+        <h3 style="margin-top:12px"><span class="badge badge-g">🔍 人类观察菌风格</span></h3>
+        <div class="suggestion" style="color:#A78BFA">${esc(a.guancha)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
+        <h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕风格</span></h3>
+        <div class="suggestion" style="color:#C9A96E">${esc(a.shadi)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
         <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
           <button onclick="toggleInspFav(${i})" style="padding:4px 16px;border-radius:20px;border:1px solid ${isFaved?'var(--gold)':'var(--border)'};background:${isFaved?'var(--gold-dim)':'transparent'};color:${isFaved?'var(--gold)':'var(--text-sec)'};cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">${isFaved?'👍 已标记有趣':'🤔 这个有意思'}</button>
-          <button onclick="copyText('选题：${esc(a.topic).replace(/'/g,"\\'")}\\n网吧信息差风格：${esc(a.wangba_style).replace(/'/g,"\\'")}\\n阿七纪录片风格：${esc(a.aqi_style).replace(/'/g,"\\'")}${a.chen_style?'\\n陈先生风格：'+esc(a.chen_style).replace(/'/g,"\\'"):''}',this)" style="padding:4px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">📋 复制全部</button>
+          <button onclick="copyText('选题：${esc(a.topic).replace(/'/g,\"\\\\\"')}\\n网吧信息差：${esc(a.wangba).replace(/'/g,\"\\\\\"')}\\n阿七纪录片：${esc(a.aqi).replace(/'/g,\"\\\\\"')}\\n陈先生：${esc(a.chen).replace(/'/g,\"\\\\\"')}\\n人类观察菌：${esc(a.guancha).replace(/'/g,\"\\\\\"')}\\n沙漠一之雕：${esc(a.shadi).replace(/'/g,\"\\\\\"')}',this)" style="padding:4px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">📋 复制全部</button>
         </div>
       </div>`;
     }).join('');
