@@ -1094,26 +1094,46 @@ def main(mode="full"):
         # 1. 保留旧的博主数据
         #    - full 模式：只保留有 analysis 的（新数据已重新抓取，analysis 是额外附加值）
         #    - local 模式：无条件保留全部（博主爬虫被跳过，所有旧数据都需要）
-        if mode == "local":
-            old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
-            # 把旧 ASR 文案迁移到新条目（TikHub 数据无高质量文案）
-            old_intro_map = {}
-            for b in old_bloggers:
+        #
+        # ⚠️ ASR 文案迁移必须在所有模式运行，否则新抓条目会覆盖掉旧 ASR 结果
+        old_intro_map = {}
+        for b in old_articles:
+            if b.get("source") == "blogger":
                 key = b.get("url") or str(b.get("id"))
                 if b.get("content_intro") and len(b["content_intro"]) >= 50:
                     old_intro_map[key] = b["content_intro"]
-            preserved = 0
-            for a in all_articles:
-                if a.get("source") != "blogger":
-                    continue
-                key = a.get("url") or str(a.get("id"))
-                if key in old_intro_map and len(a.get("content_intro", "")) < 50:
-                    a["content_intro"] = old_intro_map[key]
-                    preserved += 1
-            if preserved:
-                print(f"  \U0001f4dd 保留 {preserved} 条旧 ASR 文案")
+        preserved = 0
+        for a in all_articles:
+            if a.get("source") != "blogger":
+                continue
+            key = a.get("url") or str(a.get("id"))
+            if key in old_intro_map and len(a.get("content_intro", "")) < 50:
+                a["content_intro"] = old_intro_map[key]
+                preserved += 1
+        if preserved:
+            print(f"  \U0001f4dd 迁移 {preserved} 条旧 ASR 文案")
+        # 同时保留旧条目中 analysis 数据
+        old_analysis_map = {}
+        for b in old_articles:
+            if b.get("source") == "blogger" and b.get("analysis"):
+                key = b.get("url") or str(b.get("id"))
+                if key not in old_analysis_map:
+                    old_analysis_map[key] = b["analysis"]
+        preserved_a = 0
+        for a in all_articles:
+            if a.get("source") != "blogger":
+                continue
+            key = a.get("url") or str(a.get("id"))
+            if key in old_analysis_map and not a.get("analysis"):
+                a["analysis"] = old_analysis_map[key]
+                preserved_a += 1
+        if preserved_a:
+            print(f"  \U0001f4ca 迁移 {preserved_a} 条旧 analysis 数据")
+        # 按模式决定保留哪些旧博主条目
+        if mode == "local":
+            old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
         else:
-            old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and a.get("analysis")]
+            old_bloggers = [a for a in old_articles if a.get("source") == "blogger" and (a.get("analysis") or a.get("content_intro"))]
         new_blogger_ids = {str(a["id"]) for a in all_articles if a.get("source") == "blogger"}
         new_blogger_urls = {a.get("url", "") for a in all_articles if a.get("source") == "blogger"}
         rescued_bloggers = 0
