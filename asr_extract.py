@@ -52,7 +52,7 @@ def mimo_asr(audio_path, language='zh'):
             }]
         }],
         'asr_options': {'language': language},
-        'max_tokens': 500
+        'max_tokens': 3000
     }).encode('utf-8')
     
     headers = {
@@ -491,8 +491,8 @@ def download_asr(audio_url, video_tag="", max_sec=120):
     if not os.path.exists(mp4) or os.path.getsize(mp4) < 1000:
         return "", ""
     
-    # 转 MP3（MiMo API 支持 mp3/wav，mp3 体积更小）
-    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "16000", "-b:a", "32k", "-t", str(max_sec), mp3],
+    # 转 MP3（MiMo API 支持 mp3/wav，64kbps 保证语音清晰度）
+    subprocess.run([FFMPEG, "-y", "-i", mp4, "-ac", "1", "-ar", "22050", "-b:a", "64k", "-t", str(max_sec), mp3],
                    capture_output=True, timeout=30)
     
     if not os.path.exists(mp3) or os.path.getsize(mp3) < 1000:
@@ -627,8 +627,8 @@ def _bilibili_asr(url):
                 import tempfile
                 path = os.path.join(tempfile.gettempdir(), "bili_" + bvid + ".mp3")
                 subprocess.run(
-                    ["ffmpeg", "-y", "-i", u, "-headers", "Referer: https://www.bilibili.com/" + chr(13) + chr(10),
-                     "-ac", "1", "-ar", "16000", "-b:a", "32k", "-t", "180", path],
+                     ["ffmpeg", "-y", "-i", u, "-headers", "Referer: https://www.bilibili.com/" + chr(13) + chr(10),
+                     "-ac", "1", "-ar", "22050", "-b:a", "64k", "-t", "180", path],
                     capture_output=True, timeout=60)
                 if os.path.exists(path) and os.path.getsize(path) > 1000:
                     audio_path = path
