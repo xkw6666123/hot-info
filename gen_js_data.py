@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""数据写入：生成独立 data.js + 外部引用，让浏览器和 CDN 各自缓存"""
+"""数据写入：内联嵌入 + 同时生成 data.js 兜底"""
 import json, os, re, time
 from datetime import datetime
 
@@ -13,25 +13,29 @@ def atomic_write(path, content, mode="w", encoding="utf-8", newline=None):
         with open(tmp, mode, **kwargs) as f: f.write(content)
     os.replace(tmp, path)
 
+def sanitize_for_js(obj):
+    if isinstance(obj, str):
+        return re.sub(r'</script>', r'<\/script>', obj, flags=re.IGNORECASE)
+    elif isinstance(obj, dict):
+        return {k: sanitize_for_js(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [sanitize_for_js(item) for item in obj]
+    return obj
+
 def optimize_articles(articles):
-    """精简非博主文章：去掉 comments，缩短摘要，减少体积"""
     optimized = []
     for a in articles:
         if a.get("source") == "blogger":
             optimized.append(a)
         else:
             item = {
-                "id": a.get("id"),
-                "title": a.get("title"),
-                "source": a.get("source"),
-                "date": a.get("date"),
-                "time": a.get("time"),
-                "url": a.get("url"),
+                "id": a.get("id"), "title": a.get("title"),
+                "source": a.get("source"), "date": a.get("date"),
+                "time": a.get("time"), "url": a.get("url"),
                 "likes": a.get("likes", 0),
             }
             s = str(a.get("summary", "") or "")
-            if len(s) > 80:
-                s = s[:80] + "..."
+            if len(s) > 80: s = s[:80] + "..."
             item["summary"] = s
             tags = a.get("tags", [])
             if isinstance(tags, list) and tags:
@@ -43,36 +47,29 @@ def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
     
-    # 精简非博主文章
     data["articles"] = optimize_articles(data["articles"])
+    data = sanitize_for_js(data)
     
-    # 生成紧凑 JSON
     js_body = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     version = str(int(time.time()))
     
-    # 写入独立 data.js（带版本号防缓存）
-    data_js = f"window.__HOT_DATA__={js_body};\n"
-    atomic_write("data.js", data_js, newline="\n")
-    print(f"[OK] data.js: {len(data_js)//1024}KB (v={version})")
+    # 同时写 data.js（给 loadData 做兜底）
+    atomic_write("data.js", f"window.__HOT_DATA__={js_body};\n", newline="\n")
     
-    # 更新 index.html：用外部引用替代内联
+    # 内联嵌入到 index.html
+    inline_tag = f'<script data-embed>\nwindow.__HOT_DATA__={js_body};\n</script>'
+    
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
     
-    script_tag = f'<script src="data.js?v={version}"></script>'
-    
-    # 替换内联 data-embed
-    old_inline = r'<script data-embed>[\s\S]*?</script>'
-    html = re.sub(old_inline, lambda m: script_tag, html)
-    
-    # 替换旧版外部引用
-    old_ext = r'<script src="data\.js\?v=\d+"[^>]*></script>'
-    html = re.sub(old_ext, lambda m: script_tag, html)
+    # 替换外部引用 → 内联
+    html = re.sub(r'<script src="data\.js\?v=\d+"[^>]*></script>', lambda m: inline_tag, html)
+    # 替换旧内联
+    html = re.sub(r'<script data-embed>[\s\S]*?</script>', lambda m: inline_tag, html)
     
     atomic_write("index.html", html, newline="\n")
     
-    html_size = len(html.replace(script_tag, ""))  # 不含数据的大小
-    print(f"[OK] index.html: {html_size//1024}KB (模板) + data.js 外部引用")
+    print(f"[OK] index.html: {len(html)//1024}KB (内联数据 {len(js_body)//1024}KB)")
 
 if __name__ == "__main__":
     main()
