@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""数据写入：把 data.json 直接嵌入 index.html 内联脚本，消除外部文件依赖"""
-import json, os, re
+"""数据写入：生成独立 data.js + 外部引用，让浏览器和 CDN 各自缓存"""
+import json, os, re, time
 from datetime import datetime
 
 def atomic_write(path, content, mode="w", encoding="utf-8", newline=None):
@@ -13,51 +13,66 @@ def atomic_write(path, content, mode="w", encoding="utf-8", newline=None):
         with open(tmp, mode, **kwargs) as f: f.write(content)
     os.replace(tmp, path)
 
-def sanitize_for_js(obj):
-    """递归处理对象，确保可以安全嵌入 <script> 标签内的 JS 赋值语句。
-
-    核心问题：
-    - JSON 字符串里的 </script>（任意大小写）会让 HTML 解析器提前关闭 script 标签
-    - 解决方式：把 '/' 转义为 '\/' (JS 字符串里 \/ 等于 /)
-    - json.dumps 已经处理了引号/换行等，只需额外处理 </script>
-    """
-    if isinstance(obj, str):
-        # 大小写不敏感替换所有 </script> 变体为 <\/script>
-        return re.sub(r'</script>', r'<\/script>', obj, flags=re.IGNORECASE)
-    elif isinstance(obj, dict):
-        return {k: sanitize_for_js(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [sanitize_for_js(item) for item in obj]
-    return obj
+def optimize_articles(articles):
+    """精简非博主文章：去掉 comments，缩短摘要，减少体积"""
+    optimized = []
+    for a in articles:
+        if a.get("source") == "blogger":
+            optimized.append(a)
+        else:
+            item = {
+                "id": a.get("id"),
+                "title": a.get("title"),
+                "source": a.get("source"),
+                "date": a.get("date"),
+                "time": a.get("time"),
+                "url": a.get("url"),
+                "likes": a.get("likes", 0),
+            }
+            s = str(a.get("summary", "") or "")
+            if len(s) > 80:
+                s = s[:80] + "..."
+            item["summary"] = s
+            tags = a.get("tags", [])
+            if isinstance(tags, list) and tags:
+                item["tags"] = tags[:3]
+            optimized.append(item)
+    return optimized
 
 def main():
     with open("data.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
     
-    # 预处理：转义 </script>，防止嵌入 JS 时打断 HTML 解析
-    data = sanitize_for_js(data)
+    # 精简非博主文章
+    data["articles"] = optimize_articles(data["articles"])
     
-    # 生成内联脚本（紧凑JSON，单行，无换行问题）
+    # 生成紧凑 JSON
     js_body = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
-    inline_js = f"\nwindow.__HOT_DATA__={js_body};\n"
+    version = str(int(time.time()))
     
+    # 写入独立 data.js（带版本号防缓存）
+    data_js = f"window.__HOT_DATA__={js_body};\n"
+    atomic_write("data.js", data_js, newline="\n")
+    print(f"[OK] data.js: {len(data_js)//1024}KB (v={version})")
+    
+    # 更新 index.html：用外部引用替代内联
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
     
-    # 替换旧的 data.js 引用 -> 内联脚本
-    old_pattern = r'<script src="data\.js\?v=\d+"[^>]*>[\s\S]*?</script>'
-    new_tag = f'<script data-embed>\nwindow.__HOT_DATA__={js_body};\n</script>'
-    html_before = html
-    html = re.sub(old_pattern, lambda m: new_tag, html)
+    script_tag = f'<script src="data.js?v={version}"></script>'
     
-    if html == html_before:
-        # 旧模式没匹配到，替换已有的 data-embed 标签
-        old2 = r'<script data-embed>[\s\S]*?</script>'
-        html = re.sub(old2, lambda m: new_tag, html)
+    # 替换内联 data-embed
+    old_inline = r'<script data-embed>[\s\S]*?</script>'
+    html = re.sub(old_inline, lambda m: script_tag, html)
+    
+    # 替换旧版外部引用
+    old_ext = r'<script src="data\.js\?v=\d+"[^>]*></script>'
+    html = re.sub(old_ext, lambda m: script_tag, html)
     
     atomic_write("index.html", html, newline="\n")
     
-    print(f"[OK] 数据已嵌入 index.html ({len(inline_js)} bytes) 取代外部 data.js")
+    html_size = len(html.replace(script_tag, ""))  # 不含数据的大小
+    print(f"[OK] index.html: {html_size//1024}KB (模板) + data.js 外部引用")
 
 if __name__ == "__main__":
     main()
