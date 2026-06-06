@@ -973,18 +973,28 @@ def generate_inspirations(articles):
         "故事型: 用\"能理解能理解 {hint}\"引发共鸣",
         "感叹型: 用\"再见！{hint}！\"制造话题",
         "盘点型: 用\"盘点{hint}的几个名场面\"",
+        "反转型: 用\"{hint}——但真相是……\"制造悬念",
+        "情绪型: 用\"看到{hint}的瞬间我破防了\"引发共情",
+        "偷拍型: 用\"不小心拍到了{hint}的现场\"增加真实感",
+        "挑战型: 用\"{hint}到底有多难？我试了一下\"互动引导",
     ]
     templates_aqi = [
         "日期型: 用\"{date}社会热点信息差\"",
         "速览型: 用\"关于{hint}的几点思考\"",
+        "对比型: 用\"{hint}前后的变化让人意外\"",
+        "数据型: 用\"{hint}的数据告诉你真相\"",
+        "科普型: 用\"带你了解{hint}背后的原理\"",
     ]
     templates_chen = [
         "大型纪录片: 用\"大型纪录片之{hint}全程高能\"",
         "独家解读: 用\"独家解读{hint}背后的商业逻辑\"",
+        "深挖型: 用\"深挖{hint}你不知道的内幕\"",
+        "拆解型: 用\"拆解{hint}的三个关键点\"",
+        "预言型: 用\"{hint}释放了什么信号\"",
     ]
     
     inspirations = []
-    for i, a in enumerate(articles[:15]):
+    for i, a in enumerate(articles[:50]):
         hint = a["title"][:8] if len(a["title"]) > 8 else a["title"]
         source = a["source"]
         
@@ -1261,8 +1271,8 @@ def main(mode="full"):
     # 生成灵感（优先博主内容）
     blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
     other_items = [a for a in all_articles if a.get("source") != "blogger"]
-    insp_sources = blogger_items[:3] + other_items[:12]
-    inspirations = generate_inspirations(insp_sources[:15])
+    insp_sources = blogger_items[:3] + other_items[:47]
+    inspirations = generate_inspirations(insp_sources[:50])
 
     # ═══ 消毒：移除所有字符串中的换行符、回车、制表符（防止 HTML 内联 JSON 出错）═══
     for a in all_articles:
