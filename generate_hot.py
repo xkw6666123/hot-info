@@ -6,6 +6,7 @@
 import json
 import os
 import re
+import sys
 import time
 import hashlib
 import urllib.request
@@ -21,8 +22,8 @@ SITE_DESC = "每日社会热点聚合 + 爆款视频拆解 + AI选题灵感"
 TIMEOUT = 10
 RETRIES = 2
 
-# 全局时间预算：160秒内必须完成（给 git+json 留 20s）
-IMPORT_DEADLINE = time.time() + 160
+# 全局时间预算：在 main() 中动态设置
+IMPORT_DEADLINE = 0
 FAILED_PLATFORMS = []  # 记录失败的平台
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
@@ -394,15 +395,15 @@ def scrape_thepaper():
     return articles
 
 def scrape_wallstreetcn():
-    """华尔街见闻（实时快讯API，无重复）"""
+    """华尔街见闻（实时快讯API，只取5条避免财经内容过多）"""
     print("📡 华尔街见闻...")
-    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=10&channel=global-channel",
+    data = fetch_json("https://api-one.wallstcn.com/apiv1/content/lives?limit=5&channel=global-channel",
                       referer="https://wallstreetcn.com/")
     if not data:
         return []
     articles = []
     seen_ids = set()
-    for item in data.get("data", {}).get("items", [])[:10]:
+    for item in data.get("data", {}).get("items", [])[:5]:
         item_id = str(item.get('id', ''))
         if item_id in seen_ids:
             continue
@@ -416,7 +417,7 @@ def scrape_wallstreetcn():
             "date": today, "time": now_time,
             "tags": ["财经", "金融", "实时"],
             "url": f"https://wallstreetcn.com/livenews/{item_id}",
-            "likes": 15000, "comments": 150,
+            "likes": 5000, "comments": 50,
         })
     return articles
 
@@ -793,11 +794,27 @@ def scrape_bloggers_pw():
     except Exception:
         return []
     
+    # 找到 playwright-cli 路径（bash 子进程需要无扩展名的 shell 版本）
+    import shutil as _shutil
+    _pw_cli = _shutil.which("playwright-cli") or "playwright-cli"
+    # Windows: shutil.which 可能返回 .CMD 版本，bash 用不了
+    # 优先从 node 全局 bin 目录查找无扩展名版本
+    _try_paths = [
+        os.path.expanduser("~/.workbuddy/binaries/node/versions/22.12.0/playwright-cli"),
+        "/usr/local/bin/playwright-cli",
+    ]
+    for _p in _try_paths:
+        if os.path.isfile(_p):
+            _pw_cli = _p
+            break
+    
     scrape_script = os.path.join(BASE_DIR, "pw_scrape_blogger.sh")
     if not os.path.exists(scrape_script):
         return []
     
     articles = []
+    _env = os.environ.copy()
+    _env["PLAYWRIGHT_CLI"] = _pw_cli
     
     for entry in TRACKED_BLOGGERS:
         name = entry["name"] if isinstance(entry, dict) else entry
@@ -811,7 +828,8 @@ def scrape_bloggers_pw():
             r = _sp.run(
                 ["bash", scrape_script, name, sec_uid],
                 capture_output=True, text=True, timeout=90,
-                encoding="utf-8", errors="replace"
+                encoding="utf-8", errors="replace",
+                env=_env
             )
             
             output = r.stdout
@@ -821,13 +839,16 @@ def scrape_bloggers_pw():
                 print(f"    ⚠️ 触发验证码，跳过")
                 continue
             
-            # 从输出中提取 JSON 数组
+            # 从输出中提取 JSON 数组（非贪婪匹配，防止匹配到 playwright-cli 的其他输出）
             import re as _re
-            m = _re.search(r'\[.*\]', output, _re.DOTALL)
+            m = _re.search(r'\[.*?\]', output, _re.DOTALL)
             if not m:
                 continue
             
-            videos = json.loads(m.group(0))
+            json_str = m.group(0)
+            # 修复 playwright-cli 输出中的转义引号
+            json_str = json_str.replace('\\"', '"')
+            videos = json.loads(json_str)
             
             for v in videos[:5]:
                 aweme_id = v.get("id", "")
@@ -1179,6 +1200,8 @@ def main(mode="full"):
     """
     mode: "full"=全部爬虫, "local"=跳过TikHub/B站博主, "remote"=只跑TikHub/B站+合并已有数据
     """
+    global IMPORT_DEADLINE
+    IMPORT_DEADLINE = time.time() + 600  # 10分钟预算，给博主爬虫留足时间
     refresh_time()  # 刷新时间，避免跨日运行日期错误
     print("=" * 50)
     print(f"  热点数据自动采集 - {today} {now_time} [{mode}]")
@@ -1229,6 +1252,7 @@ def main(mode="full"):
         try:
             t0 = time.time()
             result = scraper()
+            all_articles.extend(result)
             elapsed = time.time() - t0
             print(f"  ✅ {name}: {len(result)} 条 ({elapsed:.0f}s)")
         except Exception as e:
@@ -1482,8 +1506,8 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=6)           # 新闻保留7天
-    rescue_cutoff = datetime.now().date() - timedelta(days=10)   # 失败平台保留10天
+    cutoff = datetime.now().date() - timedelta(days=2)           # 新闻保留3天（今天+2天前=3天窗口）
+    rescue_cutoff = datetime.now().date() - timedelta(days=6)   # 失败平台保留7天
     blog_cutoff = datetime.now().date() - timedelta(days=3)      # 博主3天
     fresh = []
     bloggers_kept = {}
