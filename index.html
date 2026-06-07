@@ -801,16 +801,24 @@ function renderFav(){
   let inspHtml='';
   try{
     const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
-    if(raw.ids&&raw.ids.length>0&&json.inspirations){
-      const liked=raw.ids.map(i=>json.inspirations[i]).filter(Boolean);
+    const favKeys=raw.keys||raw.ids||[];
+    if(favKeys.length>0&&json.inspirations){
+      // 用 hash key 匹配灵感
+      function ik(t,s){var k=(t||'')+'|'+(s||'');var h=0;for(var j=0;j<k.length;j++){h=((h<<5)-h)+k.charCodeAt(j);h|=0;}return'k'+Math.abs(h);}
+      const liked=[];
+      favKeys.forEach(function(key){
+        json.inspirations.forEach(function(a){
+          if(ik(a.topic,a.source)===key) liked.push(a);
+        });
+      });
       if(liked.length>0){
-        inspHtml='<div class="section-title">收藏的灵感 ('+raw.ids.length+')</div>'+
+        inspHtml='<div class="section-title">收藏的灵感 ('+liked.length+')</div>'+
         liked.map(d=>'<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div><h3><span class="badge badge-w">🏪 网吧信息差</span></h3><div class="suggestion">'+esc(d.wangba)+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七纪录片</span></h3><div class="suggestion">'+esc(d.aqi)+'</div><h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生</span></h3><div class="suggestion" style="color:#D85A30">'+esc(d.chen)+'</div><h3 style="margin-top:12px"><span class="badge badge-g">🔍 人类观察菌</span></h3><div class="suggestion" style="color:#A78BFA">'+esc(d.guancha)+'</div><h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕</span></h3><div class="suggestion" style="color:#C9A96E">'+esc(d.shadi)+'</div></div>').join('');
       }
     }
   }catch(e){}
   let inspFavCount=0;
-  try{inspFavCount=(JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0}catch(e){}
+  try{inspFavCount=(JSON.parse(localStorage.getItem('inspire_favs')||'{}').keys||JSON.parse(localStorage.getItem('inspire_favs')||'{}').ids||[]).length||0}catch(e){}
   const total=f.length+inspFavCount;
   if(total===0){
     el.innerHTML='<div class="empty-state"><div class="icon">⭐</div><p>还没有收藏内容</p><p style="font-size:12px">在文章点⭐收藏或在视频点❤️喜欢，会推荐相关热点</p></div>';
@@ -1223,7 +1231,7 @@ function renderInspire(){
     let inspFavs=[];
     try{
       const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
-      inspFavs=raw.ids||[];
+      inspFavs=raw.keys||raw.ids||[];  // keys 新格式, ids 兼容旧数据
     }catch(e){inspFavs=[]}
     // 已发布/已用标记
     let dismissed=[];
@@ -1232,10 +1240,15 @@ function renderInspire(){
     // 刷新种子：每次刷新或换种子时重新排序
     let refreshSeed=parseInt(sessionStorage.getItem('inspire_seed')||'0');
     
-    // 按收藏喜好推荐排序：收藏过的话题类型排前面
+    // 计算 hash key
+    function inspKey(t,s){var k=(t||'')+'|'+(s||'');var h=0;for(var j=0;j<k.length;j++){h=((h<<5)-h)+k.charCodeAt(j);h|=0;}return'k'+Math.abs(h);}
+    
+    // 按收藏喜好推荐排序
     let favTopics=[];
-    inspFavs.forEach(function(idx){
-      if(json.inspirations[idx]) favTopics.push(json.inspirations[idx].topic||'');
+    inspFavs.forEach(function(key){
+      json.inspirations.forEach(function(a){
+        if(inspKey(a.topic,a.source)===key) favTopics.push(a.topic||'');
+      });
     });
     // 评估每条灵感的抖音爆火潜力（前端简化版 douyin_score）
     function viralityScore(a){
@@ -1262,7 +1275,7 @@ function renderInspire(){
     // 计算每条灵感的总分 = 收藏分 + 爆火分
     let ranked=json.inspirations.map(function(a,i){
       let favBoost=0;
-      if(inspFavs.includes(i)) favBoost=100;
+      if(inspFavs.includes(inspKey(a.topic,a.source))) favBoost=100;
       else if(favTopics.length>0){
         favTopics.forEach(function(ft){
           var words=ft.split('').filter(function(c){return /[\u4e00-\u9fff]/.test(c)});
@@ -1291,7 +1304,7 @@ function renderInspire(){
     window.__INSP_DATA__=[];for(var _j=0;_j<json.inspirations.length;_j++)window.__INSP_DATA__.push(null);
     h += ranked.map(function(r,i){
       var a=r.item;var oi=r.idx;
-      var isFaved=inspFavs.includes(oi);window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
+      var isFaved=inspFavs.includes(inspKey(a.topic,a.source));window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
       var isDone=dismissed.includes(oi);
       return `
       <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.boost>=60?'border-left:3px solid var(--orange)':r.viral>=30?'border-left:3px solid var(--blue)':''}">
@@ -1492,12 +1505,20 @@ function renderTrend(){
 }
 
 function toggleInspFav(idx){
-  let raw;
+  // 获取稳定的 key（topic + source 的简单 hash，数据刷新后不变）
+  var insp=json.inspirations[idx];
+  var key=(insp.topic||'')+'|'+(insp.source||'');
+  var hash=0;for(var k=0;k<key.length;k++){hash=((hash<<5)-hash)+key.charCodeAt(k);hash|=0;}
+  var hk='k'+Math.abs(hash);
+  
+  var raw;
   try{raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}')}catch(e){raw={}}
-  const ids=raw.ids||[];
-  const i=ids.indexOf(idx);
-  if(i>-1){ids.splice(i,1)}else{ids.push(idx)}
-  raw.ids=ids;
+  var keys=raw.keys||raw.ids||[];  // 兼容旧格式
+  
+  var i=keys.indexOf(hk);
+  if(i>-1){keys.splice(i,1)}else{keys.push(hk)}
+  
+  raw.keys=keys;delete raw.ids;  // 迁移到新格式
   localStorage.setItem('inspire_favs',JSON.stringify(raw));
   renderInspire();
 }
