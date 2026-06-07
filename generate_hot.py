@@ -867,24 +867,20 @@ def scrape_bloggers_f2():
                         digg = stats.get('digg_count', 0) or 0
                         comment = stats.get('comment_count', 0) or 0
                         share = stats.get('share_count', 0) or 0
-                        collect = stats.get('collect_count', 0) or 0
+                        
+                        # 发布时间：F2 返回的时间戳格式非标准Unix（use today as safe fallback）
+                        ts = v.get('create_time', 0) or 0
+                        pub_date = today
+                        pub_time = now_time
                         
                         # 构建丰富的 content_intro
-                        intro_parts = []
-                        if desc:
-                            intro_parts.append(desc)
+                        intro_parts = [desc]
                         if digg > 0:
-                            if digg >= 10000:
-                                intro_parts.append(f"👍 {digg//10000}万赞")
-                            else:
-                                intro_parts.append(f"👍 {digg}赞")
+                            intro_parts.append(f"👍 {digg//10000}万赞" if digg >= 10000 else f"👍 {digg}赞")
                         if comment > 0:
                             intro_parts.append(f"💬 {comment}评论")
                         if share > 0:
-                            if share >= 10000:
-                                intro_parts.append(f"🔄 {share//10000}万分享")
-                            else:
-                                intro_parts.append(f"🔄 {share}分享")
+                            intro_parts.append(f"🔄 {share//10000}万分享" if share >= 10000 else f"🔄 {share}分享")
                         
                         articles.append({
                             "id": make_id("f2", f"{name}_{aweme_id}") % 10**9,
@@ -892,18 +888,19 @@ def scrape_bloggers_f2():
                             "summary": desc[:200],
                             "source": "blogger",
                             "blogger_name": name,
-                            "date": today, "time": now_time,
+                            "date": pub_date, "time": pub_time,
                             "tags": ["博主", "爆款", "拆解"],
                             "url": f"https://www.douyin.com/video/{aweme_id}",
                             "likes": digg,
                             "comments": comment,
                             "aweme_id": aweme_id,
+                            "create_time": ts,
                             "content_intro": "\n".join(intro_parts)[:300],
                         })
             except Exception as e:
                 print(f"    ⚠️ F2失败: {e}")
     
-    # 运行异步抓取
+    # 运行异步抓取（容错：任何异常都返回已获取的部分数据）
     import asyncio as _asyncio
     try:
         loop = _asyncio.get_event_loop()
@@ -911,8 +908,8 @@ def scrape_bloggers_f2():
             import nest_asyncio
             nest_asyncio.apply()
         _asyncio.run(_fetch())
-    except RuntimeError:
-        _asyncio.run(_fetch())
+    except Exception as e:
+        print(f"    ⚠️ F2运行异常(返回已获取的{len(articles)}条): {e}")
     
     return articles
 
@@ -1387,7 +1384,7 @@ def main(mode="full"):
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
         ("公众号", scrape_weixin),
-        ("博主追踪", lambda: scrape_bloggers() or scrape_bloggers_f2() or scrape_bloggers_pw()),
+        ("博主追踪", lambda: scrape_bloggers_f2() or scrape_bloggers() or scrape_bloggers_pw()),
     ]
     
     if mode == "local":
