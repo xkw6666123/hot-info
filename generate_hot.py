@@ -1154,7 +1154,7 @@ def generate_inspirations(all_articles):
         ]
         return pick(patterns, topic + 'shadi_v4' + str(idx))
 
-        inspirations = []
+    inspirations = []
     for i, a in enumerate(selected[:50]):
         topic = a.get("title", "")
         if not topic:
