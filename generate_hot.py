@@ -995,6 +995,16 @@ def generate_inspirations(articles):
                 return t[:idx]
         return t[:12]
 
+    def topic_label(t, s):
+        """给话题加合适的标签前缀，防止太短的话题直接塞进模板"""
+        t = prep(t)
+        if len(t) >= 8:
+            return t
+        # 短标题：如果是博主内容，用"这条视频"包装；否则用原标题
+        if s == "blogger":
+            return f"「{t}」这条视频"
+        return t
+
     def pick(patterns, seed):
         return patterns[abs(hash(seed)) % len(patterns)]
 
@@ -1134,14 +1144,16 @@ def generate_inspirations(articles):
         if not topic:
             continue
         source = a.get("source", "")
+        # 对短标题做包装，避免"不是，X？"这种不自然的拼接
+        ctx = topic_label(topic, source)
         inspirations.append({
             "topic": topic,
             "source": source,
-            "wangba": wangba_style(topic),
-            "aqi": aqi_style(topic),
-            "chen": chen_style(topic),
-            "guancha": guancha_style(topic),
-            "shadi": shadi_style(topic),
+            "wangba": wangba_style(ctx),
+            "aqi": aqi_style(ctx),
+            "chen": chen_style(ctx),
+            "guancha": guancha_style(ctx),
+            "shadi": shadi_style(ctx),
         })
     return inspirations
 
