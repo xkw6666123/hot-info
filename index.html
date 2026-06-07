@@ -1106,12 +1106,12 @@ function renderAnalysis(){
     h+=`<a href="${esc(v.url||'#')}" target="_blank" style="margin-left:auto;font-size:11px;color:var(--blue);text-decoration:none" onclick="event.stopPropagation()">🔗 查看原视频</a>`;
     h+=`<span style="font-size:11px;color:var(--text-muted)">👍 ${fmt(v.likes)} · 💬 ${fmt(v.comments)}</span></div>`;
     h+=`<a href="${esc(v.url||'#')}" target="_blank" style="text-decoration:none;color:inherit"><h3 style="font-size:16px;margin-bottom:6px;color:var(--text-pri)">${esc(v.title)}</h3></a>`;
-    // 内容介绍：截断前 200 字 + 点击展开，避免全文渲染卡顿
+    // 内容介绍：>80字可展开，有文字的显示字数提示
     if(v.content_intro){
-      const full=v.content_intro;const preview=full.length>200?full.substring(0,200)+'...':full;
+      const full=v.content_intro;const preview=full.length>80?full.substring(0,80)+'……':full;
       const cid='ci_'+v.id;
-      h+=`<div style="font-size:13px;color:var(--text-sec);line-height:1.8;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid ${isWangba?'var(--gold)':'var(--blue)'}">📝 <span id="${cid}">${esc(preview)}</span>`;
-      if(full.length>200) h+=`<button onclick="event.stopPropagation();event.preventDefault();var el=document.getElementById('${cid}');if(el.dataset.expanded){el.textContent='${esc(preview)}';el.dataset.expanded='';this.textContent='展开全文'}else{el.textContent='${esc(full)}';el.dataset.expanded='1';this.textContent='收起'}" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:12px;margin-left:6px">展开全文</button>`;
+      h+=`<div style="font-size:13px;color:var(--text-sec);line-height:1.8;padding:10px 14px;background:var(--bg-elevated);border-radius:var(--radius-sm);margin:6px 0 14px;border-left:3px solid ${isWangba?'var(--gold)':'var(--blue)'}"><b>📝 视频文案：</b><span id="${cid}">${esc(preview)}</span>`;
+      if(full.length>80) h+=` <button onclick="event.stopPropagation();event.preventDefault();var el=document.getElementById('${cid}');if(el.dataset.expanded){el.textContent=el.dataset.orig;el.dataset.expanded='';this.textContent='展开全文 ('+full.length+'字)'}else{el.dataset.orig=el.textContent;el.textContent='${esc(full)}';el.dataset.expanded='1';this.textContent='收起'}" style="background:none;border:none;color:var(--blue);cursor:pointer;font-size:12px">展开全文 (${full.length}字)</button>`;
       h+=`</div>`;
     }
     if(a){
