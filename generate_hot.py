@@ -856,26 +856,49 @@ def scrape_bloggers_f2():
             
             print(f"  📹 F2: {name}...")
             try:
-                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 3, 3):
-                    videos = data._to_list()
-                    print(f"    ✅ {len(videos)}条")
-                    for v in videos:
-                        desc = (v.get('desc') or '')[:80].strip()
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 5, 5):
+                    raw = data._to_raw()
+                    aweme_list = raw.get('aweme_list', [])
+                    print(f"    ✅ {len(aweme_list)}条")
+                    for v in aweme_list:
+                        desc = (v.get('desc') or '').strip()
                         stats = v.get('statistics', {}) or {}
                         aweme_id = str(v.get('aweme_id', ''))
+                        digg = stats.get('digg_count', 0) or 0
+                        comment = stats.get('comment_count', 0) or 0
+                        share = stats.get('share_count', 0) or 0
+                        collect = stats.get('collect_count', 0) or 0
+                        
+                        # 构建丰富的 content_intro
+                        intro_parts = []
+                        if desc:
+                            intro_parts.append(desc)
+                        if digg > 0:
+                            if digg >= 10000:
+                                intro_parts.append(f"👍 {digg//10000}万赞")
+                            else:
+                                intro_parts.append(f"👍 {digg}赞")
+                        if comment > 0:
+                            intro_parts.append(f"💬 {comment}评论")
+                        if share > 0:
+                            if share >= 10000:
+                                intro_parts.append(f"🔄 {share//10000}万分享")
+                            else:
+                                intro_parts.append(f"🔄 {share}分享")
+                        
                         articles.append({
                             "id": make_id("f2", f"{name}_{aweme_id}") % 10**9,
-                            "title": desc if desc else f"{name} 最新视频",
-                            "summary": (v.get('desc') or '')[:200],
+                            "title": desc[:80] if desc else f"{name} 最新视频",
+                            "summary": desc[:200],
                             "source": "blogger",
                             "blogger_name": name,
                             "date": today, "time": now_time,
                             "tags": ["博主", "爆款", "拆解"],
                             "url": f"https://www.douyin.com/video/{aweme_id}",
-                            "likes": stats.get('digg_count', 0) or 0,
-                            "comments": stats.get('comment_count', 0) or 0,
+                            "likes": digg,
+                            "comments": comment,
                             "aweme_id": aweme_id,
-                            "content_intro": (v.get('desc') or f"{name}最新视频")[:300],
+                            "content_intro": "\n".join(intro_parts)[:300],
                         })
             except Exception as e:
                 print(f"    ⚠️ F2失败: {e}")
@@ -1601,12 +1624,12 @@ def main(mode="full"):
             if k in a and isinstance(a[k], str):
                 a[k] = a[k].replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
     
-    # 为缺少/过短 content_intro 的博主视频补充基础简介（不覆盖 ASR 已提取的实质内容）
+    # 为缺少/过短 content_intro 的博主视频补充基础简介（不覆盖 F2/ASR 已提取的实质内容）
     for a in all_articles:
         if a.get("source") == "blogger":
             ci = a.get("content_intro", "")
-            # 空或过短（<80字且无实质内容）→ 重新生成
-            if not ci or (len(ci) < 80 and not any(kw in ci for kw in ['进行了','描述了','讲述了','还原','经过','视频中','完整'])):
+            # 空或过短（<80字且无真实F2/ASR内容标识）→ 重新生成
+            if not ci or (len(ci) < 80 and not any(kw in ci for kw in ['进行了','描述了','讲述了','还原','经过','视频中','完整','👍','赞','评论','分享'])):
                 a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # ═══ 文案清洗：繁转简 + Whisper误识别修复 ═══
