@@ -30,16 +30,28 @@ if echo "$TITLE" | grep -qi "验证码"; then
     exit 0
 fi
 
-# 提取视频列表
+# 提取博主本人的视频列表（优先获取标题+点赞+话题标签）
 $PCLI eval '
 (function(){
     var r=[],s={};
-    document.querySelectorAll("a[href*=\"/video/\"]").forEach(function(a){
+    // 优先用作品列表容器
+    var postList = document.querySelector("[data-e2e=\"user-post-list\"]") 
+               || document.querySelector(".route-home") 
+               || document.querySelector("[class*=\"post\"]");
+    var scope = postList || document;
+    
+    scope.querySelectorAll("a[href*=\"/video/\"]").forEach(function(a){
         var m=a.href.match(/video\/(\d+)/);
         if(!m||s[m[1]])return;
         s[m[1]]=true;
-        var t=(a.textContent||"").trim().replace(/\s+/g," ").substring(0,120);
-        r.push({id:m[1],title:t,url:a.href});
+        // 提取标题（清理多余空格和特殊字符）
+        var t=(a.textContent||"").trim().replace(/\s+/g," ").substring(0,200);
+        if(t.length<3) return;
+        // 尝试提取点赞数（从附近的span中）
+        var likeEl=a.parentElement? a.parentElement.querySelector("[class*=\"count\"], [class*=\"like\"]") : null;
+        var likes=0;
+        if(likeEl){var lk=likeEl.textContent.match(/([\d.]+)万?/);if(lk){var n=parseFloat(lk[1]);likes=lk[0].indexOf("万")>0?Math.round(n*10000):Math.round(n);}}
+        r.push({id:m[1],title:t,url:a.href,likes:likes});
     });
     return JSON.stringify(r.slice(0,8));
 })()' 2>/dev/null

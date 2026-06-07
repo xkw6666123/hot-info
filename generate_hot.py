@@ -893,22 +893,27 @@ def scrape_bloggers_pw():
             
             for v in videos[:5]:
                 aweme_id = v.get("id", "")
-                title_text = v.get("title", "")
+                title_text = v.get("title", "").strip()
                 
-                # 从标题提取点赞数（格式: "22.4万标题文本"）
-                likes = 0
-                likes_match = _re.match(r'([\d.]+)万', title_text)
-                if likes_match:
-                    likes = int(float(likes_match.group(1)) * 10000)
-                    title_text = title_text[likes_match.end():].strip()
+                # 点赞数：优先用 PW 脚本提取的（更准确），降级从标题提取
+                likes = v.get("likes", 0) or 0
+                if not likes:
+                    likes_match = _re.match(r'([\d.]+)万', title_text)
+                    if likes_match:
+                        likes = int(float(likes_match.group(1)) * 10000)
+                        title_text = title_text[likes_match.end():].strip()
                 
                 if not title_text:
                     title_text = f"{name} 最新视频"
                 
+                # 从标题中提取话题标签用于 content_intro
+                hashtags = _re.findall(r'#\S+', title_text)
+                desc_text = title_text[:200]
+                
                 articles.append({
                     "id": make_id("pw_blogger", f"{name}_{aweme_id}") % 10**9,
                     "title": title_text[:80],
-                    "summary": title_text[:200],
+                    "summary": f"{name}：{title_text}"[:200],
                     "source": "blogger",
                     "blogger_name": name,
                     "date": today, "time": now_time,
@@ -917,6 +922,7 @@ def scrape_bloggers_pw():
                     "likes": likes,
                     "comments": max(likes // 100, 10),
                     "aweme_id": aweme_id,
+                    "content_intro": f"📹 {name}最新视频：{title_text}"[:200],
                 })
             
             print(f"    ✅ PW: {len(videos)}条")
@@ -1298,9 +1304,8 @@ def main(mode="full"):
     ]
     
     if mode == "local":
-        # local 模式也跑博主追踪：TikHub API 国内直连可用，B站 API 国内直连
-        # 只跳过需要 cookie/签名的抖音直抓
-        scrapers = [(n, s) for n, s in scrapers if n not in ("抖音",)]
+        # local 模式：抖音API国内直连可用（已验证2026-06-07）
+        pass
     elif mode == "remote":
         # 只跑海外爬虫，并合并已有 data.json
         scrapers = [(n, s) for n, s in scrapers if n in ("博主追踪", "B站博主")]
