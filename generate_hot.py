@@ -966,6 +966,65 @@ def generate_blogger_analysis(article):
 #  创作灵感生成
 # ═══════════════════════════════════════════════════════
 
+def douyin_score(a):
+    """评估一篇文章在抖音的爆火潜力，返回 0-100 的分数"""
+    score = 0
+    title = a.get("title", "")
+    likes = a.get("likes", 0) or 0
+    comments = a.get("comments", 0) or 0
+    source = a.get("source", "")
+    tags = a.get("tags", []) or []
+
+    # 1. 热度分（对数尺度，防止极端值主导）
+    import math
+    if likes > 0:
+        score += min(35, math.log2(likes + 1) * 2)
+    if comments > 0:
+        score += min(25, math.log2(comments + 1) * 1.8)
+
+    # 2. 情绪冲击分（标题含强情绪词 = 更容易在抖音传播）
+    emotional_words = ['泪崩', '震惊', '怒了', '崩溃', '炸裂', '反转', '意外', '惊人',
+                      '离谱', '逆天', '离谱', '破防', '沉默', '不敢相信', '谁都没想到']
+    for w in emotional_words:
+        if w in title:
+            score += 12
+            break
+
+    # 3. 争议性分（争议/对立话题在抖音天然有流量）
+    controversy_keywords = ['回应', '道歉', '曝光', '争议', '投诉', '维权', '实名举报',
+                           '偷税', '造假', '道歉信', '通报', '声明', '发酵']
+    for w in controversy_keywords:
+        if w in title:
+            score += 10
+            break
+
+    # 4. 标题短小精悍（<20字更适合抖音）
+    clean_title = re.sub(r'\[.*?\]|#\S+', '', title).strip()
+    if len(clean_title) <= 12:
+        score += 10
+    elif len(clean_title) <= 20:
+        score += 6
+
+    # 5. 话题类型分（娱乐/社会/奇闻在抖音天然流量 > 财经/科技）
+    entertainment_tags = {'娱乐', '搞笑', '奇闻', '八卦', '明星', '综艺', '网红'}
+    social_tags = {'社会', '争议', '热议', '热点', '爆款'}
+    if tags and (set(tags) & entertainment_tags):
+        score += 8
+    elif tags and (set(tags) & social_tags):
+        score += 5
+
+    # 6. 平台分（某些平台的热搜天然更"抖音化"）
+    source_boost = {'百度热搜': 8, '微博': 7, '知乎': 6, 'bilibili': 6,
+                   '今日头条': 5, '贴吧': 5, '公众号热点': 3}
+    score += source_boost.get(source, 2)
+
+    # 7. 博主内容保底（博主最新视频至少给一些分数）
+    if source == "blogger":
+        score += 15
+
+    return score
+
+
 def generate_inspirations(articles):
     """基于热点生成创作灵感——模仿各博主真实风格去写文案"""
 
@@ -1409,10 +1468,23 @@ def main(mode="full"):
             all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
             print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
 
-    # 生成灵感（优先博主内容）
+    # 生成灵感（优先博主内容，其余按抖音爆火潜力排序，保证来源多样性）
     blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
     other_items = [a for a in all_articles if a.get("source") != "blogger"]
-    insp_sources = blogger_items[:3] + other_items[:47]
+    # 非博主内容按抖音爆火潜力打分排序
+    other_items.sort(key=douyin_score, reverse=True)
+    # 保证来源多样性：每个来源最多取 8 条
+    diverse = []
+    seen_sources = {}
+    for a in other_items:
+        src = a.get("source", "其他")
+        n = seen_sources.get(src, 0)
+        if n < 8:
+            diverse.append(a)
+            seen_sources[src] = n + 1
+        if len(diverse) >= 47:
+            break
+    insp_sources = blogger_items[:3] + diverse[:47]
     inspirations = generate_inspirations(insp_sources[:50])
 
     # ═══ 消毒：移除所有字符串中的换行符、回车、制表符（防止 HTML 内联 JSON 出错）═══
