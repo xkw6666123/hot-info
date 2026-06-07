@@ -740,6 +740,38 @@ def get_bilibili_content(url):
     
     return None
 
+def get_douyin_content(url):
+    """抖音视频内容提取：通过Playwright拦截音频 → 下载 → MiMo ASR"""
+    if not MIMO_API_KEY:
+        print("    ⚠️ MIMO_API_KEY 未设置，跳过抖音ASR")
+        return None
+    
+    # 提取 aweme_id
+    m = re.search(r'/video/(\d+)', url)
+    aweme_id = m.group(1) if m else ""
+    if not aweme_id:
+        return None
+    
+    # 方法1：尝试获取页面描述中的全文（有些博主在描述里写脚本）
+    try:
+        desc = _scrape_page_desc(url)
+        if desc and len(desc) > 50:
+            return _clean_text(desc[:2000])
+    except Exception:
+        pass
+    
+    # 方法2：ASR音频识别
+    try:
+        audio_url = get_audio_url(url, aweme_id)
+        if audio_url:
+            text, _ = download_asr(audio_url, f"dy_{aweme_id}", max_sec=180)
+            if text and len(text) > 30:
+                return _clean_text(text[:2000])
+    except Exception as e:
+        print(f"    抖音ASR失败: {e}")
+    
+    return None
+
 def main():
     global _SEEN_AUDIO_URLS, _PW_FAIL_COUNT
     _SEEN_AUDIO_URLS = set()  # 每次运行重置

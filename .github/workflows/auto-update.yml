@@ -86,6 +86,41 @@ jobs:
               print('B站视频文案已完整，无需更新')
           " || echo "B站 ASR skipped"
 
+      - name: 抖音视频 ASR (MiMo API)
+        run: |
+          echo "=== 抖音视频文案提取 ==="
+          python -c "
+          import json, sys, os
+          sys.path.insert(0, '.')
+          os.environ['MIMO_API_KEY'] = '${{ secrets.MIMO_API_KEY }}'
+          from asr_extract import get_douyin_content
+          with open('data.json','r',encoding='utf-8-sig') as f:
+              d = json.load(f)
+          updated = 0
+          for a in d.get('articles',[]):
+              if a.get('source') != 'blogger' or 'douyin.com' not in (a.get('url') or ''):
+                  continue
+              ci = a.get('content_intro','')
+              if len(ci) > 80:
+                  continue
+              print(f'  抖音 {a[\"blogger_name\"]}: 提取中...')
+              text = get_douyin_content(a['url'])
+              if text and len(text) > 30:
+                  a['content_intro'] = text
+                  updated += 1
+                  print(f'    提取成功: {len(text)}字')
+              else:
+                  print(f'    ASR未获取到内容，保留现有文案')
+          if updated:
+              import subprocess
+              with open('data.json','w',encoding='utf-8') as f:
+                  json.dump(d, f, ensure_ascii=False, indent=2)
+              subprocess.run(['python','gen_js_data.py'])
+              print(f'抖音 ASR: {updated}条更新')
+          else:
+              print('抖音视频文案已完整或ASR不可用，跳过')
+          " || echo "抖音 ASR skipped"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"

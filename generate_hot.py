@@ -1433,18 +1433,18 @@ def main(mode="full"):
         #    - full 模式：只保留有 analysis 的（新数据已重新抓取，analysis 是额外附加值）
         #    - local 模式：无条件保留全部（博主爬虫被跳过，所有旧数据都需要）
         #
-        # ⚠️ ASR 文案迁移必须在所有模式运行，否则新抓条目会覆盖掉旧 ASR 结果
+        # ⚠️ ASR 文案迁移：用 aweme_id 做 key（F2/PW/TikHub 的 aweme_id 一致）
         old_intro_map = {}
         for b in old_articles:
             if b.get("source") == "blogger":
-                key = b.get("url") or str(b.get("id"))
+                key = b.get("aweme_id") or b.get("url") or str(b.get("id"))
                 if b.get("content_intro") and len(b["content_intro"]) >= 50:
-                    old_intro_map[key] = b["content_intro"]
+                    old_intro_map[str(key)] = b["content_intro"]
         preserved = 0
         for a in all_articles:
             if a.get("source") != "blogger":
                 continue
-            key = a.get("url") or str(a.get("id"))
+            key = str(a.get("aweme_id") or a.get("url") or str(a.get("id")))
             if key in old_intro_map and len(a.get("content_intro", "")) < 50:
                 a["content_intro"] = old_intro_map[key]
                 preserved += 1
