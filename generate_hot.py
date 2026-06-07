@@ -1025,8 +1025,34 @@ def douyin_score(a):
     return score
 
 
-def generate_inspirations(articles):
-    """基于热点生成创作灵感——模仿各博主真实风格去写文案"""
+def generate_inspirations(all_articles):
+    """从全量热点中按抖音爆火潜力选50条，生成各博主风格的完整创作草稿"""
+
+    # ── 内部评分和筛选 ──
+    # 直接使用本文件的 douyin_score 函数
+    _ds = douyin_score
+
+    # 分离博主和非博主
+    blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
+    other_items = [a for a in all_articles if a.get("source") != "blogger"]
+
+    # 非博主内容按评分排序
+    other_items.sort(key=_ds, reverse=True)
+
+    # 来源多样性：每源最多8条
+    diverse = []
+    seen_sources = {}
+    for a in other_items:
+        src = a.get("source", "其他")
+        n = seen_sources.get(src, 0)
+        if n < 8:
+            diverse.append(a)
+            seen_sources[src] = n + 1
+        if len(diverse) >= 47:
+            break
+
+    # 合并：优先博主内容（最多3条）
+    selected = blogger_items[:3] + diverse[:47]
 
     # ── 标题预处理 ──
     def prep(t):
@@ -1034,7 +1060,17 @@ def generate_inspirations(articles):
         t = re.sub(r'#\S+', '', t)
         return t.strip()
 
-    def short(t, n=18):
+    def keyword(t, n=12):
+        t = prep(t)
+        for sep in '，。！？；、:： ':
+            idx = t.find(sep)
+            if 3 <= idx <= 15:
+                return t[:idx]
+        if len(t) <= 6:
+            return t
+        return t[:n]
+
+    def short(t, n=30):
         t = prep(t)
         if len(t) <= n:
             return t
@@ -1042,25 +1078,14 @@ def generate_inspirations(articles):
             idx = t[:n].rfind(sep)
             if idx > n//2:
                 return t[:idx]
-        # 没找到标点就在中文字数处截断
         return t[:n]
 
-    def keyword(t):
+    def ctx(t, s, blogger_name=""):
+        """上下文包装：短标题用博主名或引号丰富"""
         t = prep(t)
-        # 取第一个逗号/空格前的内容作为关键词
-        for sep in '，。！？；、:： ':
-            idx = t.find(sep)
-            if 3 <= idx <= 15:
-                return t[:idx]
-        return t[:12]
-
-    def topic_label(t, s):
-        """给话题加合适的标签前缀，防止太短的话题直接塞进模板"""
-        t = prep(t)
-        if len(t) >= 8:
-            return t
-        # 短标题：如果是博主内容，用"这条视频"包装；否则用原标题
-        if s == "blogger":
+        if len(t) < 8:
+            if blogger_name:
+                return f"{blogger_name}的{t}"
             return f"「{t}」这条视频"
         return t
 
@@ -1069,152 +1094,135 @@ def generate_inspirations(articles):
 
     today_str = datetime.now().strftime("%m月%d日")
 
-    # ═════════════════════════════════════════════════
-    # 网吧信息差：大学生的嘴替，荒诞解构日常
-    # 核心公式：制造悬念 → 荒诞解读 → 评论区接梗
-    # ═════════════════════════════════════════════════
-    def wangba_style(topic):
+    # ═══════════════════════════════════════════════════
+    #  网吧信息差：大学生荒诞解构 + 开篇/收尾/提示
+    # ═══════════════════════════════════════════════════
+    def wangba_style(topic, source, title, idx=0):
         k = keyword(topic)
-        s = short(topic, 20)
-        # 根据话题情感倾向选择不同模板池
-        positive_words = ['夺冠', '首胜', '发现', '治愈', '暖心', '感动', '逆袭', '好消息', '获奖',
-                         '成功', '创新', '进步', '纪录', '新纪录', '冠军', '金牌', '开门红', '利好', '拿奖']
-        negative_words = ['偷税', '被罚', '暴跌', '抛弃', '事故', '争议', '崩溃', '造假', '丑闻', '曝光',
-                         '投诉', '维权', '失控', '崩盘', '暴雷', '停职', '下架', '封禁', '遇难', '死亡']
-        is_positive = any(w in topic for w in positive_words)
-        is_negative = any(w in topic for w in negative_words)
+        s = short(topic, 25)
+        t = ctx(topic, source)
 
-        if is_positive:
-            # 正面/励志话题：用惊叹+调侃
-            patterns = [
-                f"兄弟们，{k}！巴沙刷到的时候直接从椅子上跳起来了，你们感受一下。",
-                f"不是，{s}？巴沙确认了三遍——这居然是真的，而且比想象中还牛。",
-                f"讲到{k}，巴沙只能说：燃起来了兄弟们。评论区刷个懂你意思。",
-                f"{s}，巴沙看完只想说两个字：排面！这波操作给满分。",
-                f"来，吃个瓜（西瓜味）。{k}。这次是真香，不是段子。",
-                f"巴沙今天要讲一个让所有人都竖大拇指的事。{k}。谁说离谱只能是坏事？",
+        # 情感判断
+        pos_words = ['夺冠', '首胜', '突破', '治愈', '暖心', '逆袭', '好消息', '冠军', '金牌', '拿奖', '创新', '纪录']
+        neg_words = ['偷税', '被罚', '暴跌', '抛弃', '事故', '争议', '造假', '丑闻', '曝光', '投诉', '崩盘', '封禁']
+        is_pos = any(w in topic for w in pos_words)
+        is_neg = any(w in topic for w in neg_words)
+
+        # 完整文案（标题式 + 开篇语 + 结构提示）
+        if is_pos:
+            title_line = f"兄弟们，{k}！燃起来了🔥"
+            openers = [
+                f"我刷到这条的时候直接从椅子上弹起来了。{k}，巴沙确认了三遍——这不是做梦，是真的。",
+                f"今天不讲段子，讲一个让人竖大拇指的事。{k}。巴沙看完只想说两个字：排面。",
             ]
-        elif is_negative:
-            # 负面/争议话题：用荒诞+吐槽
-            patterns = [
-                f"兄弟们，{k}这事儿你们刷到没？巴沙看完直接傻了，凭啥啊？",
-                f"给兄弟们讲个事儿。{k}。巴沙第一反应：编的吧？然后一查——来真的。",
-                f"讲到{k}，巴沙只能说：懂你意思，但这也太离谱了吧。",
-                f"说实话，{k}这事儿巴沙笑了三秒，然后沉默了。你们懂那种感觉吗？",
-                f"巴沙刷到一条关于{k}的。开头以为是搞笑视频，看到后半段笑不出来了。",
-                f"来，吃个瓜。{k}。你细品，这合理吗？评论区说说。",
-                f"正所谓！{k}。巴沙翻译一下：就是你好好的走在路上，突然被生活踹了一脚。",
+            structure = "正面案例怎么讲：先抛出结果让人惊叹 → 讲细节让人服气 → 结尾升华「谁说离谱只能是坏事」"
+            closing = "评论区刷个「懂你意思」，让巴沙看看有多少人跟我一样激动。"
+        elif is_neg:
+            title_line = f"{s}，巴沙看完直接傻了"
+            openers = [
+                f"给兄弟们讲个事。{k}。巴沙第一反应：编的吧？然后一搜——卧槽，来真的。",
+                f"不是，{k}？巴沙确认了三遍才敢信。你品，你细品，这事儿离谱程度我给满分。",
             ]
+            structure = "争议事件怎么讲：先用「巴沙傻了」制造悬念 → 用大白话讲发生了啥 → 用大学生日常类比「你要是遇到这事你也懵」→ 留白让评论区吐槽"
+            closing = "巴沙把话筒给评论区——这事你怎么看？"
         else:
-            # 中性/猎奇话题：用好奇心驱动
-            patterns = [
-                f"兄弟们，{k}这事儿你们刷到没？巴沙看完直接傻了，凭啥啊？",
-                f"不是，{s}？巴沙确认了三遍，这居然不是段子。",
-                f"巴沙刷到一条关于{k}的，开头以为普通新闻，结果越看越上头。",
-                f"{s}，难不成是真的！巴沙当时就这表情——",
-                f"能理解能理解。{k}这事儿放谁身上不懵？",
-                f"再见！{k}！巴沙只能说，这届吃瓜群众的想象力是无限的。",
-                f"来，吃个瓜。{k}。你细品，评论区已经在整活了。",
+            title_line = f"{s}，这事你们刷到没？"
+            openers = [
+                f"巴沙刷到一条关于{k}的，开头以为普通新闻，结果越看越上头。给你们捋一捋。",
+                f"来，吃个瓜。{k}。巴沙跟你们说，这事比段子精彩，全程高能。",
             ]
-        return pick(patterns, topic + "wangba")
+            structure = "猎奇内容怎么讲：先用「巴沙刷到」制造真实感 → 按时间线讲发生了什么 → 在每个转折点加「然后就离谱了」「你以为完了？还有」→ 结尾留疑问"
+            closing = "评论区一人一条：你第一次看到这新闻什么反应？"
 
-    # ═════════════════════════════════════════════════
-    # 阿七大型纪录片：纯热点聚合，极简零人格
-    # 核心公式：日期锚点 × 社会热点 × 固定格式
-    # ═════════════════════════════════════════════════
-    def aqi_style(topic):
+        return pick(openers, topic + "wangba_open" + str(idx))
+
+    # ═══════════════════════════════════════════════════
+    #  阿七大型纪录片：日期锚点 + 标题列表
+    # ═══════════════════════════════════════════════════
+    def aqi_style(topic, source, title, idx=0):
         k = keyword(topic)
         s = short(topic, 30)
-        # 93.3% 的内容就是"X月X日社会热点信息差"，偶尔加点内容标识
-        base = [
-            f"{today_str}社会热点信息差",
-            f"热点信息差 {today_str}",
-            f"{today_str}社会热点速览",
+        t = ctx(topic, source)
+        patterns = [
+            f"{today_str}社会热点信息差｜{k}。这条很多人只看到标题就走了，但背后的信息差才是重点。先说背景——{s}，你细品。",
+            f"热点信息差 {today_str}。今天讲一个被低估的事件：{s}。如果你只看热搜标题，会错过这三个关键信息。第一——",
+            f"{today_str}｜{k}。这事比表面复杂。我们先拉时间线：一开始——然后——最后——三条线一交叉，真相浮出水面。",
         ]
-        with_topic = [
-            f"{today_str}社会热点信息差｜{k}",
-            f"{today_str}｜{s}",
-            f"信息差速递 {today_str}：{s}",
-        ]
-        return pick(base * 2 + with_topic, topic + "aqi")
+        return pick(patterns, topic + "aqi" + str(idx))
 
-    # ═════════════════════════════════════════════════
-    # 陈先生：大型纪录片体，拆解商业/社会逻辑
-    # ═════════════════════════════════════════════════
-    def chen_style(topic):
+    # ═══════════════════════════════════════════════════
+    #  陈先生：大型纪录片体 + 深度拆解框架
+    # ═══════════════════════════════════════════════════
+    def chen_style(topic, source, title, idx=0):
         k = keyword(topic)
         s = short(topic, 25)
-        # 判断话题类型
-        if any(w in topic for w in ['股', '跌', '涨', '基金', '投资', '消费', '降价', '收购', '上市', '经济']):
-            lens = '商业'
-        elif any(w in topic for w in ['AI', '芯片', '科技', '手机', '苹果', '华为', '特斯拉']):
-            lens = '科技'
+        t = ctx(topic, source)
+
+        # 话题分类
+        if any(w in topic for w in ['股', '跌', '涨', '基金', '投资', '消费', '收购', '经济']):
+            lens, angle = '商业', '资本运作的逻辑'
+        elif any(w in topic for w in ['AI', '芯片', '科技', '手机', '华为', '特斯拉']):
+            lens, angle = '科技', '技术话语权的争夺'
         elif any(w in topic for w in ['教育', '医疗', '养老', '结婚', '就业']):
-            lens = '社会'
+            lens, angle = '社会', '被忽视的深层信号'
         else:
-            lens = '深度'
-        patterns = [
-            f"大型纪录片之《{k}》。先说一个很多人没注意到的细节——",
-            f"独家拆解：{k}。拆开来看，这事儿分三步走。第一步——",
-            f"深扒{k}。你以为的偶然，每一步都踩在点上。",
-            f"{lens}逻辑拆解｜{s}。三个维度看本质。",
-            f"大型纪录片：《{k}》持续为您播出。把时间线拉长，你会发现——",
-            f"关于{k}，这事比表面看起来复杂十倍。我们从头说。",
-        ]
-        return pick(patterns, topic + "chen")
+            lens, angle = '深度', '事件背后的隐线'
 
-    # ═════════════════════════════════════════════════
-    # 人类观察菌：对话体人间观察，评论区互动感
-    # ═════════════════════════════════════════════════
-    def guancha_style(topic):
-        k = keyword(topic)
-        s = short(topic, 25)
         patterns = [
-            f"来看看这条：{k}。评论区已经分两派了，一边说活该一边说冤枉——你怎么看？",
-            f"人间真实。{s}。这种人属于是你跟他讲道理他跟你讲感情，你跟他讲感情他跟你谈法律。",
-            f"{k}，这经历你遇到过没？反正我是又想笑又心酸。",
-            f"刷到一条{k}的。高赞第一条直接破防。你们也去看看。",
-            f"不是，{k}？这人以为自己在第五层，实际上连门都没找到。",
-            f"分享一个{k}的观察。越看越觉得——这世界上没有离谱的事，只有离谱的人。",
-            f"今日份人类样本：{s}。你说他图啥呢？我到现在也没想明白。",
+            f"大型纪录片之《{k}》持续为您播出。先说一个很多人没注意到的细节——{s}。把时间线拉回到原点，你会发现每一步都踩在了点上。拆开来看，这事分三步走。第一步，时机。第二步，动机。第三步——结果。",
+            f"独家拆解：{k}。{lens}视角来看，{angle}。我们先看三个数据——第一组数据说明问题在哪，第二组告诉你谁在推动，第三组——告诉你接下来会发生什么。",
+            f"关于{k}，有一件事比表面看起来复杂十倍。我们从头说：{s}。如果关注过近期几个类似事件，你会发现一条清晰的隐线。这条隐线指向的，是一个更大的趋势。",
         ]
-        return pick(patterns, topic + "guancha")
+        return pick(patterns, topic + "chen" + str(idx))
 
-    # ═════════════════════════════════════════════════
-    # 沙漠一之雕：B站唠嗑式日更快报
-    # ═════════════════════════════════════════════════
-    def shadi_style(topic):
+    # ═══════════════════════════════════════════════════
+    #  人类观察菌：对话体 + 评论区互动设计
+    # ═══════════════════════════════════════════════════
+    def guancha_style(topic, source, title, idx=0):
         k = keyword(topic)
-        s = short(topic, 25)
+        s = short(topic, 30)
+        t = ctx(topic, source)
         patterns = [
-            f"来，坐稳了。第一个瓜：{k}。我第一眼看还以为洋葱新闻，结果是真的。",
-            f"又是离谱的一天朋友们。先说{k}这事儿。好家伙我直接好家伙。",
-            f"今日热点开唠。第一个：{s}。这瓜你得慢慢吃，开头和结尾是两个故事。",
-            f"老规矩，热点全给你盘一遍。首当其冲：{k}。不是我说，这年头——",
-            f"唠个热乎的：{s}。精彩程度不亚于八点档。咱们从头说。",
-            f"一夜之间发生了啥？{k}。来，我给你捋捋前因后果。",
-            f"今天的快报第一站：{k}。说大不大说小不小，但就是让人想吐槽。",
+            f"来看看这条：{k}。评论区已经分两派了——一边说活该，一边说冤枉。我把高赞评论翻了一遍，发现一个规律：站哪边不取决于事实，取决于你代入的是谁。{s}。你怎么看？评论区说说，我挑三条置顶。",
+            f"人间真实。{s}。这种人属于什么水平呢——你跟他讲道理他跟你讲感情，你跟他说感情他跟你谈法律，你说法律他说「你不懂」。视频后半段我放了当事人的回应，看完之后——我不知道该说啥。评论区帮我总结一下，这波到底谁的问题？",
+            f"今日份人类样本：{s}。我们先还原一下现场：{k}。好，现在问题来了——他图啥呢？我认真想了三个可能，但每一个都让我更困惑。你们觉得呢？评论区一人一个离谱动机，我看谁的最有道理。",
         ]
-        return pick(patterns, topic + "shadi")
+        return pick(patterns, topic + "guancha" + str(idx))
+
+    # ═══════════════════════════════════════════════════
+    #  沙漠一之雕：B站唠嗑式快报 + 多事件串联
+    # ═══════════════════════════════════════════════════
+    def shadi_style(topic, source, title, idx=0):
+        k = keyword(topic)
+        s = short(topic, 30)
+        t = ctx(topic, source)
+        patterns = [
+            f"来，坐稳了。今天第一个瓜：{k}。我第一眼看还以为是洋葱新闻——结果你猜怎么着，是真的。好家伙我直接好家伙。这事简单概括就是：{s}。但精彩的在后头，往后看——哎呀，后面的操作我都不好意思说，你们自己品。",
+            f"又是离谱的一天，朋友们。先说{k}这事。不是我说，这年头啊——{s}。我给你们捋捋前因后果，保证比八点档还精彩。开头你可能觉得「就这？」——别急，中间有反转，结尾有惊喜。",
+            f"唠个热乎的：{s}。这个瓜吧，说大不大说小不小，但我越扒越觉得有东西。{k}，表面看是个体事件，翻开来看——能串起好几个前阵子的热搜。来，我给你连起来看看，你就知道这事为什么值得唠。",
+        ]
+        return pick(patterns, topic + "shadi" + str(idx))
 
     inspirations = []
-    for i, a in enumerate(articles[:50]):
+    for i, a in enumerate(selected[:50]):
         topic = a.get("title", "")
         if not topic:
             continue
         source = a.get("source", "")
-        # 对短标题做包装，避免"不是，X？"这种不自然的拼接
-        ctx = topic_label(topic, source)
+        blogger_name = a.get("blogger_name", "")
+        seed = f"{topic}_{source}_{i}"
         inspirations.append({
             "topic": topic,
             "source": source,
-            "wangba": wangba_style(ctx),
-            "aqi": aqi_style(ctx),
-            "chen": chen_style(ctx),
-            "guancha": guancha_style(ctx),
-            "shadi": shadi_style(ctx),
+            "blogger_name": blogger_name,
+            "wangba": wangba_style(topic, source, topic, i),
+            "aqi": aqi_style(topic, source, topic, i),
+            "chen": chen_style(topic, source, topic, i),
+            "guancha": guancha_style(topic, source, topic, i),
+            "shadi": shadi_style(topic, source, topic, i),
         })
     return inspirations
+
 
 def main(mode="full"):
     """
@@ -1468,24 +1476,9 @@ def main(mode="full"):
             all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
             print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
 
-    # 生成灵感（优先博主内容，其余按抖音爆火潜力排序，保证来源多样性）
-    blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
-    other_items = [a for a in all_articles if a.get("source") != "blogger"]
-    # 非博主内容按抖音爆火潜力打分排序
-    other_items.sort(key=douyin_score, reverse=True)
-    # 保证来源多样性：每个来源最多取 8 条
-    diverse = []
-    seen_sources = {}
-    for a in other_items:
-        src = a.get("source", "其他")
-        n = seen_sources.get(src, 0)
-        if n < 8:
-            diverse.append(a)
-            seen_sources[src] = n + 1
-        if len(diverse) >= 47:
-            break
-    insp_sources = blogger_items[:3] + diverse[:47]
-    inspirations = generate_inspirations(insp_sources[:50])
+    # 生成灵感（函数内部自动按抖音爆火潜力从全量筛50条）
+    # 生成灵感（函数内部自动按抖音爆火潜力从全量筛50条）
+    inspirations = generate_inspirations(all_articles)
 
     # ═══ 消毒：移除所有字符串中的换行符、回车、制表符（防止 HTML 内联 JSON 出错）═══
     for a in all_articles:
