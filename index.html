@@ -1228,17 +1228,55 @@ function renderInspire(){
     // 已发布/已用标记
     let dismissed=[];
     try{dismissed=JSON.parse(localStorage.getItem('inspire_dismissed')||'[]')}catch(e){dismissed=[]}
+    
+    // 刷新种子：每次刷新或换种子时重新排序
+    let refreshSeed=parseInt(sessionStorage.getItem('inspire_seed')||'0');
+    
+    // 按收藏喜好推荐排序：收藏过的话题类型排前面
+    let favTopics=[];
+    inspFavs.forEach(function(idx){
+      if(json.inspirations[idx]) favTopics.push(json.inspirations[idx].topic||'');
+    });
+    // 计算每条灵感与收藏喜好的相似度
+    let ranked=json.inspirations.map(function(a,i){
+      let boost=0;
+      if(inspFavs.includes(i)) boost=100; // 已收藏排最前
+      else if(favTopics.length>0){
+        // 话题相似度（简单按关键词匹配）
+        favTopics.forEach(function(ft){
+          let words=ft.split('').filter(function(c){return /[\u4e00-\u9fff]/.test(c)});
+          let hit=words.filter(function(w){return (a.topic||'').indexOf(w)>=0}).length;
+          if(hit>=3) boost+=30;
+          else if(hit>=1) boost+=10;
+        });
+      }
+      return {item:a, idx:i, boost:boost};
+    });
+    // 排序：boost高的在前，同boost用refreshSeed随机
+    ranked.sort(function(x,y){
+      if(y.boost!==x.boost) return y.boost-x.boost;
+      // Fisher-Yates deterministic shuffle by seed+index
+      let sx=(refreshSeed+x.idx)*2654435761>>>0;
+      let sy=(refreshSeed+y.idx)*2654435761>>>0;
+      return sx-sy;
+    });
+    
     const activeCount=json.inspirations.length-dismissed.length;
     
-    h += `<div class="section-title" style="margin-top:24px">📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">标记有趣优先推荐 · 共${json.inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}</span></div>`;
-    window.__INSP_DATA__=[];h += json.inspirations.map((a,i)=>{
-      const isFaved=inspFavs.includes(i);window.__INSP_DATA__.push({topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi});
-      const isDone=dismissed.includes(i);
+    h += `<div class="section-title" style="margin-top:24px;display:flex;justify-content:space-between;align-items:center">
+      <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">共${json.inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
+      <button onclick="refreshInspirations()" style="padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:11px;font-family:inherit;transition:all .2s" title="换一批灵感排序">🔄 换一批</button>
+    </div>`;
+    window.__INSP_DATA__=[];for(var _j=0;_j<json.inspirations.length;_j++)window.__INSP_DATA__.push(null);
+    h += ranked.map(function(r,i){
+      var a=r.item;var oi=r.idx;
+      var isFaved=inspFavs.includes(oi);window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
+      var isDone=dismissed.includes(oi);
       return `
-      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}">
+      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=30?'border-left:3px solid var(--blue)':''}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}</div>
-          <button onclick="event.stopPropagation();toggleInspDismiss(${i})" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:var(--text-muted);opacity:0.6" title="${isDone?'撤销标记':'标记为已发布'}">${isDone?'↩':'✕'}</button>
+          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
+          <button onclick="event.stopPropagation();toggleInspDismiss(${oi})" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:var(--text-muted);opacity:0.6" title="${isDone?'撤销标记':'标记为已发布'}">${isDone?'↩':'✕'}</button>
         </div>
         <div class="source-tag">来源: ${esc(a.source||'')}</div>
         <h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3>
@@ -1252,8 +1290,8 @@ function renderInspire(){
         <h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕风格</span></h3>
         <div class="suggestion" style="color:#C9A96E">${esc(a.shadi)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
         <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-          <button onclick="toggleInspFav(${i})" style="padding:4px 16px;border-radius:20px;border:1px solid ${isFaved?'var(--gold)':'var(--border)'};background:${isFaved?'var(--gold-dim)':'transparent'};color:${isFaved?'var(--gold)':'var(--text-sec)'};cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">${isFaved?'👍 已标记有趣':'🤔 这个有意思'}</button>
-          <button onclick="copyInspText(${i},this)" style="padding:4px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">📋 复制全部</button>
+          <button onclick="toggleInspFav(${oi})" style="padding:4px 16px;border-radius:20px;border:1px solid ${isFaved?'var(--gold)':'var(--border)'};background:${isFaved?'var(--gold-dim)':'transparent'};color:${isFaved?'var(--gold)':'var(--text-sec)'};cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">${isFaved?'⭐ 取消收藏':'☆ 收藏'}</button>
+          <button onclick="copyInspText(${oi},this)" style="padding:4px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">📋 复制全部</button>
         </div>
       </div>`;
     }).join('');
@@ -1449,6 +1487,12 @@ function toggleInspDismiss(idx){
   const i=dismissed.indexOf(idx);
   if(i>-1){dismissed.splice(i,1)}else{dismissed.push(idx)}
   localStorage.setItem('inspire_dismissed',JSON.stringify(dismissed));
+  renderInspire();
+}
+
+function refreshInspirations(){
+  var seed=parseInt(sessionStorage.getItem('inspire_seed')||'0');
+  sessionStorage.setItem('inspire_seed',seed+1);
   renderInspire();
 }
 
