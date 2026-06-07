@@ -592,7 +592,7 @@ def scrape_douyin():
     if not data:
         return []
     articles = []
-    for item in data.get("data", {}).get("word_list", [])[:10]:
+    for item in data.get("data", {}).get("word_list", []):
         word = item.get("word", "")
         articles.append({
             "id": make_id("douyin", word) % 10**9,
@@ -1537,10 +1537,13 @@ def main(mode="full"):
             if k in a and isinstance(a[k], str):
                 a[k] = a[k].replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
     
-    # 为缺少 content_intro 的博主视频补充基础简介（不覆盖 ASR 已提取的内容）
+    # 为缺少/过短 content_intro 的博主视频补充基础简介（不覆盖 ASR 已提取的实质内容）
     for a in all_articles:
-        if a.get("source") == "blogger" and not a.get("content_intro"):
-            a["content_intro"] = _generate_video_intro(a, all_articles)
+        if a.get("source") == "blogger":
+            ci = a.get("content_intro", "")
+            # 空或过短（<80字且无实质内容）→ 重新生成
+            if not ci or (len(ci) < 80 and not any(kw in ci for kw in ['进行了','描述了','讲述了','还原','经过','视频中','完整'])):
+                a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # ═══ 文案清洗：繁转简 + Whisper误识别修复 ═══
     _clean_fixes = [
@@ -1674,32 +1677,36 @@ def main(mode="full"):
 
 
 def _generate_video_intro(v, all_articles):
-    """基于视频信息生成内容简介：有描述用描述，没有则用标题+标签组合"""
+    """基于视频信息生成内容简介：有描述用描述，没有则用标题+标签+来源组合"""
     desc = (v.get("summary") or v.get("title") or "").strip()
     title = (v.get("title") or "").strip()
     tags = v.get("tags", [])
-    platform = v.get("platform", "抖音")
+    platform = v.get("platform", "") or "抖音"
     blogger = v.get("blogger_name", "")
     
     # 有长描述就用描述
-    if len(desc) > 20:
+    if len(desc) > 50:
         return desc[:300]
     
-    # 没有描述，用标题+上下文生成简介
-    parts = []
+    # 没有长描述，从标题+标签+上下文构建
+    parts = [f"📹 {blogger}最新发布"]
     if title:
-        parts.append(title)
+        parts.append(f"标题：{title}")
     
     # 从 tags 中提取有效标签
-    useful_tags = [t for t in tags if t not in ("博主", "爆款", "拆解", "B站", "热点") and len(t) > 1]
+    useful_tags = [t for t in tags if t not in ("博主", "爆款", "拆解", "B站", "热点", "资讯", "社会") and len(t) > 1]
     if useful_tags:
-        parts.append("话题：" + " ".join("#" + t for t in useful_tags[:5]))
+        parts.append("标签：" + " ".join("#" + t for t in useful_tags[:6]))
     
-    # 补充博主和平台信息
-    if blogger and platform:
+    # 补充点赞数
+    likes = v.get("likes", 0)
+    if likes > 1000:
+        parts.append(f"👍 {likes//10000}万赞" if likes >= 10000 else f"👍 {likes}赞")
+    
+    if blogger and platform and platform not in str(parts[-1]):
         parts.append(f"来源：{blogger}（{platform}）")
     
-    result = chr(10).join(parts) if parts else ""
+    result = "\n".join(parts) if parts else desc
     return result[:300]
 
 
