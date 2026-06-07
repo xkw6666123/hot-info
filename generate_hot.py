@@ -785,6 +785,35 @@ class BlogSearcher:
         }
 
 
+
+def _build_pw_article(name, v):
+    """从PW脚本返回的视频数据构建文章条目"""
+    import re
+    aweme_id = v.get("id", "")
+    title_text = v.get("title", "").strip()
+    likes = v.get("likes", 0) or 0
+    if not likes:
+        m = re.match(r'([\d.]+)万', title_text)
+        if m:
+            likes = int(float(m.group(1)) * 10000)
+            title_text = title_text[m.end():].strip()
+    if not title_text:
+        title_text = f"{name} 最新视频"
+    return {
+        "id": make_id("pw_blogger", f"{name}_{aweme_id}") % 10**9,
+        "title": title_text[:80],
+        "summary": f"{name}：{title_text}"[:200],
+        "source": "blogger",
+        "blogger_name": name,
+        "date": today, "time": now_time,
+        "tags": ["博主", "爆款", "拆解"],
+        "url": f"https://www.douyin.com/video/{aweme_id}",
+        "likes": likes,
+        "comments": max(likes // 100, 10),
+        "aweme_id": aweme_id,
+        "content_intro": f"📹 {name}最新视频：{title_text}"[:200],
+    }
+
 def scrape_bloggers_pw():
     """免费的 Playwright 博主视频抓取（TikHub 替代方案）
     调用 pw_scrape_blogger.sh 脚本，逐个博主抓取视频列表
@@ -813,120 +842,75 @@ def scrape_bloggers_pw():
             _pw_cli = _p
             break
     
-    scrape_script = os.path.join(BASE_DIR, "pw_scrape_blogger.sh")
-    if not os.path.exists(scrape_script):
+    scrape_script_v2 = os.path.join(BASE_DIR, "pw_scrape_blogger_v2.sh")
+    scrape_script_v1 = os.path.join(BASE_DIR, "pw_scrape_blogger.sh")
+    if not os.path.exists(scrape_script_v1):
         return []
     
     articles = []
     _env = os.environ.copy()
     _env["PLAYWRIGHT_CLI"] = _pw_cli
-    _search_script = os.path.join(BASE_DIR, "pw_search_user.sh")
-    _cache_file = os.path.join(BASE_DIR, ".sec_uid_cache.json")
     
-    # 加载缓存
-    _sec_uid_cache = {}
-    try:
-        if os.path.exists(_cache_file):
-            with open(_cache_file, "r") as f:
-                _sec_uid_cache = json.load(f)
-    except: pass
-    
+    # 收集需要抓取的博主
+    blogger_list = []
     for entry in TRACKED_BLOGGERS:
         name = entry["name"] if isinstance(entry, dict) else entry
-        sec_uid = BLOGGER_SEC_UIDS.get(name, "") or _sec_uid_cache.get(name, "")
-        
-        # 如果 sec_uid 缺失，尝试通过搜索获取
-        if not sec_uid and os.path.exists(_search_script):
-            print(f"  🔍 搜索抖音用户: {name}...")
-            try:
-                sr = _sp.run(
-                    ["bash", _search_script, name],
-                    capture_output=True, text=True, timeout=60,
-                    encoding="utf-8", errors="replace",
-                    env=_env
-                )
-                found = (sr.stdout or "").strip()
-                if found and found.startswith("MS4w"):
-                    sec_uid = found
-                    _sec_uid_cache[name] = sec_uid
-                    # 保存缓存
-                    try:
-                        with open(_cache_file, "w") as f:
-                            json.dump(_sec_uid_cache, f)
-                    except: pass
-                    print(f"    ✅ 找到 sec_uid: {sec_uid[:20]}...")
-                else:
-                    print(f"    ⚠️ 未找到，跳过（请在BLOGGER_SEC_UIDS中手动添加sec_uid）")
-            except Exception as e:
-                print(f"    ⚠️ 搜索失败: {e}")
-        
-        if not sec_uid:
-            continue
-        
-        print(f"  📹 PW: {name}...")
-        
+        sec_uid = BLOGGER_SEC_UIDS.get(name, "")
+        if sec_uid:
+            blogger_list.append((name, sec_uid))
+    
+    if not blogger_list:
+        return []
+    
+    import re as _re
+    use_v2 = os.path.exists(scrape_script_v2)
+    
+    if use_v2:
+        print(f"  📹 PW批量: {len(blogger_list)}位博主（单会话防限流）...")
+        args = ["bash", scrape_script_v2]
+        for n, u in blogger_list:
+            args.extend([n, u])
         try:
-            r = _sp.run(
-                ["bash", scrape_script, name, sec_uid],
-                capture_output=True, text=True, timeout=90,
-                encoding="utf-8", errors="replace",
-                env=_env
-            )
-            
+            r = _sp.run(args, capture_output=True, text=True, timeout=360,
+                       encoding="utf-8", errors="replace", env=_env)
             output = r.stdout
-            
-            # 检查验证码
+            if "验证码拦截" in output or "验证码" in r.stderr:
+                print("    ⚠️ 验证码拦截，降级v1...")
+            else:
+                json_match = _re.search(r'\{.*\}', output, _re.DOTALL)
+                if json_match:
+                    try:
+                        results = json.loads(json_match.group(0))
+                        for name, videos in results.items():
+                            if isinstance(videos, list) and len(videos) > 0:
+                                print(f"    ✅ {name}: {len(videos)}条")
+                                for v in videos[:5]:
+                                    articles.append(_build_pw_article(name, v))
+                        if articles:
+                            return articles
+                    except json.JSONDecodeError:
+                        print("    ⚠️ v2 JSON解析失败，降级v1...")
+        except Exception as e:
+            print(f"    ⚠️ v2失败: {e}，降级v1...")
+    
+    # v1 降级
+    for name, sec_uid in blogger_list:
+        print(f"  📹 PW: {name}...")
+        try:
+            r = _sp.run(["bash", scrape_script_v1, name, sec_uid],
+                       capture_output=True, text=True, timeout=90,
+                       encoding="utf-8", errors="replace", env=_env)
+            output = r.stdout
             if "验证码" in output:
-                print(f"    ⚠️ 触发验证码，跳过")
                 continue
-            
-            # 从输出中提取 JSON 数组（非贪婪匹配，防止匹配到 playwright-cli 的其他输出）
-            import re as _re
             m = _re.search(r'\[.*?\]', output, _re.DOTALL)
             if not m:
                 continue
-            
-            json_str = m.group(0)
-            # 修复 playwright-cli 输出中的转义引号
-            json_str = json_str.replace('\\"', '"')
+            json_str = m.group(0).replace('\\"', '"')
             videos = json.loads(json_str)
-            
             for v in videos[:5]:
-                aweme_id = v.get("id", "")
-                title_text = v.get("title", "").strip()
-                
-                # 点赞数：优先用 PW 脚本提取的（更准确），降级从标题提取
-                likes = v.get("likes", 0) or 0
-                if not likes:
-                    likes_match = _re.match(r'([\d.]+)万', title_text)
-                    if likes_match:
-                        likes = int(float(likes_match.group(1)) * 10000)
-                        title_text = title_text[likes_match.end():].strip()
-                
-                if not title_text:
-                    title_text = f"{name} 最新视频"
-                
-                # 从标题中提取话题标签用于 content_intro
-                hashtags = _re.findall(r'#\S+', title_text)
-                desc_text = title_text[:200]
-                
-                articles.append({
-                    "id": make_id("pw_blogger", f"{name}_{aweme_id}") % 10**9,
-                    "title": title_text[:80],
-                    "summary": f"{name}：{title_text}"[:200],
-                    "source": "blogger",
-                    "blogger_name": name,
-                    "date": today, "time": now_time,
-                    "tags": ["博主", "爆款", "拆解"],
-                    "url": f"https://www.douyin.com/video/{aweme_id}",
-                    "likes": likes,
-                    "comments": max(likes // 100, 10),
-                    "aweme_id": aweme_id,
-                    "content_intro": f"📹 {name}最新视频：{title_text}"[:200],
-                })
-            
-            print(f"    ✅ PW: {len(videos)}条")
-            
+                articles.append(_build_pw_article(name, v))
+            print(f"    ✅ {len(videos)}条")
         except Exception as e:
             print(f"    ⚠️ PW失败: {e}")
     
