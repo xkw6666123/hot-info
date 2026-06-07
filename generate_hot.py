@@ -292,25 +292,31 @@ def scrape_bilibili_bloggers():
         url = f"https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=5&pn=1&order=pubdate"
         
         data = None
-        for attempt in range(3):
+        for attempt in range(5):
             try:
                 req = urllib.request.Request(url, headers={
-                    "User-Agent": "Mozilla/5.0",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
                     "Referer": f"https://space.bilibili.com/{mid}",
+                    "Accept": "application/json, text/plain, */*",
+                    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
                 })
                 opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-                with opener.open(req, timeout=TIMEOUT) as resp:
+                with opener.open(req, timeout=15) as resp:
                     data = json.loads(resp.read().decode("utf-8", errors="replace"))
                     code = data.get("code")
                     if code == 0:
                         break
                     elif code == -799:
-                        time.sleep(8 * (attempt + 1))
+                        wait = 15 * (attempt + 1)
+                        print(f"    ⏳ 限流，等待{wait}s后重试({attempt+1}/5)...")
+                        time.sleep(wait)
                     else:
                         time.sleep(2)
             except Exception as e:
-                if attempt < 2:
-                    time.sleep(8 * (attempt + 1))
+                if attempt < 4:
+                    wait = 15 * (attempt + 1)
+                    print(f"    ⏳ 网络异常，等待{wait}s后重试({attempt+1}/5)...")
+                    time.sleep(wait)
                 else:
                     print(f"    ⚠️ 获取失败: {e}")
         
@@ -815,10 +821,46 @@ def scrape_bloggers_pw():
     articles = []
     _env = os.environ.copy()
     _env["PLAYWRIGHT_CLI"] = _pw_cli
+    _search_script = os.path.join(BASE_DIR, "pw_search_user.sh")
+    _cache_file = os.path.join(BASE_DIR, ".sec_uid_cache.json")
+    
+    # 加载缓存
+    _sec_uid_cache = {}
+    try:
+        if os.path.exists(_cache_file):
+            with open(_cache_file, "r") as f:
+                _sec_uid_cache = json.load(f)
+    except: pass
     
     for entry in TRACKED_BLOGGERS:
         name = entry["name"] if isinstance(entry, dict) else entry
-        sec_uid = BLOGGER_SEC_UIDS.get(name, "")
+        sec_uid = BLOGGER_SEC_UIDS.get(name, "") or _sec_uid_cache.get(name, "")
+        
+        # 如果 sec_uid 缺失，尝试通过搜索获取
+        if not sec_uid and os.path.exists(_search_script):
+            print(f"  🔍 搜索抖音用户: {name}...")
+            try:
+                sr = _sp.run(
+                    ["bash", _search_script, name],
+                    capture_output=True, text=True, timeout=60,
+                    encoding="utf-8", errors="replace",
+                    env=_env
+                )
+                found = (sr.stdout or "").strip()
+                if found and found.startswith("MS4w"):
+                    sec_uid = found
+                    _sec_uid_cache[name] = sec_uid
+                    # 保存缓存
+                    try:
+                        with open(_cache_file, "w") as f:
+                            json.dump(_sec_uid_cache, f)
+                    except: pass
+                    print(f"    ✅ 找到 sec_uid: {sec_uid[:20]}...")
+                else:
+                    print(f"    ⚠️ 未找到，跳过（请在BLOGGER_SEC_UIDS中手动添加sec_uid）")
+            except Exception as e:
+                print(f"    ⚠️ 搜索失败: {e}")
+        
         if not sec_uid:
             continue
         
