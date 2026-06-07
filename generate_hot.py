@@ -814,9 +814,89 @@ def _build_pw_article(name, v):
         "content_intro": f"📹 {name}最新视频：{title_text}"[:200],
     }
 
+def scrape_bloggers_f2():
+    """使用 F2 库 + Chrome Cookie 抓取抖音博主视频（免登录API替代方案）"""
+    try:
+        import asyncio, browser_cookie3
+        from f2.apps.douyin.handler import DouyinHandler
+    except ImportError:
+        print("    ⚠️ F2/browser_cookie3 未安装，跳过")
+        return []
+    
+    # 从Chrome提取抖音cookie
+    try:
+        cj = browser_cookie3.chrome(domain_name='douyin.com')
+        cookie_str = '; '.join(f'{c.name}={c.value}' for c in cj if 'douyin' in c.domain)
+        if not cookie_str:
+            print("    ⚠️ 未找到Chrome抖音cookie，请先登录网页版抖音")
+            return []
+    except Exception as e:
+        print(f"    ⚠️ 读取Chrome cookie失败: {e}")
+        return []
+    
+    kwargs = {
+        'headers': {
+            'User-Agent': USER_AGENT,
+            'Referer': 'https://www.douyin.com/',
+        },
+        'proxies': {'http://': None, 'https://': None},
+        'timeout': 10,
+        'cookie': cookie_str,
+    }
+    
+    articles = []
+    
+    async def _fetch():
+        nonlocal articles
+        for entry in TRACKED_BLOGGERS:
+            name = entry["name"] if isinstance(entry, dict) else entry
+            sec_uid = BLOGGER_SEC_UIDS.get(name, "")
+            if not sec_uid:
+                continue
+            
+            print(f"  📹 F2: {name}...")
+            try:
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 3, 3):
+                    videos = data._to_list()
+                    print(f"    ✅ {len(videos)}条")
+                    for v in videos:
+                        desc = (v.get('desc') or '')[:80].strip()
+                        stats = v.get('statistics', {}) or {}
+                        aweme_id = str(v.get('aweme_id', ''))
+                        articles.append({
+                            "id": make_id("f2", f"{name}_{aweme_id}") % 10**9,
+                            "title": desc if desc else f"{name} 最新视频",
+                            "summary": (v.get('desc') or '')[:200],
+                            "source": "blogger",
+                            "blogger_name": name,
+                            "date": today, "time": now_time,
+                            "tags": ["博主", "爆款", "拆解"],
+                            "url": f"https://www.douyin.com/video/{aweme_id}",
+                            "likes": stats.get('digg_count', 0) or 0,
+                            "comments": stats.get('comment_count', 0) or 0,
+                            "aweme_id": aweme_id,
+                            "content_intro": (v.get('desc') or f"{name}最新视频")[:300],
+                        })
+            except Exception as e:
+                print(f"    ⚠️ F2失败: {e}")
+    
+    # 运行异步抓取
+    import asyncio as _asyncio
+    try:
+        loop = _asyncio.get_event_loop()
+        if loop.is_running():
+            import nest_asyncio
+            nest_asyncio.apply()
+        _asyncio.run(_fetch())
+    except RuntimeError:
+        _asyncio.run(_fetch())
+    
+    return articles
+
+
 def scrape_bloggers_pw():
-    """免费的 Playwright 博主视频抓取（TikHub 替代方案）
-    调用 pw_scrape_blogger.sh 脚本，逐个博主抓取视频列表
+    """Playwright 回退方案：F2 失败时使用
+    优先用 v2 单会话批量抓取，降级到 v1 逐条抓取
     """
     import subprocess as _sp
     
@@ -1284,7 +1364,7 @@ def main(mode="full"):
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
         ("公众号", scrape_weixin),
-        ("博主追踪", lambda: scrape_bloggers() or scrape_bloggers_pw()),
+        ("博主追踪", lambda: scrape_bloggers() or scrape_bloggers_f2() or scrape_bloggers_pw()),
     ]
     
     if mode == "local":
