@@ -11,7 +11,9 @@ except Exception:
     _CC = None
 
 # 小米 MiMo ASR 配置
-MIMO_API_KEY = os.environ.get('MIMO_API_KEY', 'tp-ct56cpxdmbbfsvma531fntsj2ru0a3584nz44oh3hxzodh6z')
+MIMO_API_KEY = os.environ.get('MIMO_API_KEY')
+if not MIMO_API_KEY:
+    print("  ⚠️ MIMO_API_KEY 未设置，将通过 GitHub Secrets 注入")
 MIMO_BASE_URL = 'https://token-plan-cn.xiaomimimo.com/v1'
 
 D_TEMP = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'asr_temp')

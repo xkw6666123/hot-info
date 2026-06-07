@@ -27,7 +27,9 @@ FAILED_PLATFORMS = []  # 记录失败的平台
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 
 # ── TikHub 博主追踪 ──
-TIKHUB_API_KEY = os.environ.get("TIKHUB_API_KEY", "srAlG/ROjGy6h0XKAoib+DTMbQKKX6Ns/SbJvkumTaW8jVOVPVyHSROeOw==")
+TIKHUB_API_KEY = os.environ.get("TIKHUB_API_KEY")
+if not TIKHUB_API_KEY:
+    print("  ⚠️ 安全提示: TIKHUB_API_KEY 未在环境变量中设置，将通过 GitHub Secrets 注入")
 TIKHUB_BASE = "https://api.tikhub.io"
 TIKHUB_TIMEOUT = 30
 
@@ -549,8 +551,10 @@ def scrape_weibo():
     # 微博热榜页面
     headers = {
         "User-Agent": USER_AGENT,
-        "Cookie": "SUB=_2AkMRK_L_f8NxqwJRmP4WyG3haYh0wgnEieKkZxRJRMxHRl-yT9kqmgntRB6OJuL3Q2LFz2Jko5w4o7B3eMUZJQoL_5PW;"
+        "Cookie": os.environ.get("WEIBO_COOKIE", "")
     }
+    if not headers["Cookie"]:
+        print("  ⚠️ WEIBO_COOKIE 未设置，微博可能抓取失败，将通过 GitHub Secrets 注入")
     text = fetch("https://weibo.com/ajax/side/hotSearch", headers=headers, referer="https://weibo.com/")
     if not text:
         return []
