@@ -1237,34 +1237,55 @@ function renderInspire(){
     inspFavs.forEach(function(idx){
       if(json.inspirations[idx]) favTopics.push(json.inspirations[idx].topic||'');
     });
-    // 计算每条灵感与收藏喜好的相似度
+    // 评估每条灵感的抖音爆火潜力（前端简化版 douyin_score）
+    function viralityScore(a){
+      var t=a.topic||'';
+      var s=a.source||'';
+      var score=0;
+      // 1. 情绪冲击词（破防/离谱/泪崩/炸裂/惊呆/笑死/反转）
+      if(/破防|离谱|泪崩|炸裂|惊呆|笑死|反转|意外|震惊|怒了|崩溃|不敢相信|谁都没想到/.test(t)) score+=25;
+      // 2. 争议/冲突词（曝光/回应/道歉/通报/声明/打脸/乱套/投诉）
+      if(/曝光|回应|道歉|通报|声明|打脸|乱套|投诉|维权|举报|发酵|到底/.test(t)) score+=20;
+      // 3. 标题精炼度（≤12字+15, ≤20字+8）
+      var clean=t.replace(/\[.*?\]|#\S+/g,'').trim();
+      if(clean.length<=12) score+=15;
+      else if(clean.length<=20) score+=8;
+      // 4. 对立结构（VS/却/竟/反而/居然）
+      if(/VS|却|竟|反而|居然|不如|吊打|碾压/.test(t)) score+=12;
+      // 5. 来源平台权重
+      var srcBoost={百度热搜:8,微博:8,贴吧:7,bilibili:7,知乎:5,今日头条:4,公众号热点:3,博客:5};
+      score+=srcBoost[s]||2;
+      // 6. 博主内容适合二创
+      if(s==='blogger') score+=8;
+      return score;
+    }
+    // 计算每条灵感的总分 = 收藏分 + 爆火分
     let ranked=json.inspirations.map(function(a,i){
-      let boost=0;
-      if(inspFavs.includes(i)) boost=100; // 已收藏排最前
+      let favBoost=0;
+      if(inspFavs.includes(i)) favBoost=100;
       else if(favTopics.length>0){
-        // 话题相似度（简单按关键词匹配）
         favTopics.forEach(function(ft){
-          let words=ft.split('').filter(function(c){return /[\u4e00-\u9fff]/.test(c)});
-          let hit=words.filter(function(w){return (a.topic||'').indexOf(w)>=0}).length;
-          if(hit>=3) boost+=30;
-          else if(hit>=1) boost+=10;
+          var words=ft.split('').filter(function(c){return /[\u4e00-\u9fff]/.test(c)});
+          var hit=words.filter(function(w){return (a.topic||'').indexOf(w)>=0}).length;
+          if(hit>=3) favBoost=35;
+          else if(hit>=1) favBoost=15;
         });
       }
-      return {item:a, idx:i, boost:boost};
+      var viral=viralityScore(a);
+      return {item:a, idx:i, boost:favBoost+viral, viral:viral};
     });
-    // 排序：boost高的在前，同boost用refreshSeed随机
+    // 排序：总分高的在前，同分用refreshSeed随机
     ranked.sort(function(x,y){
       if(y.boost!==x.boost) return y.boost-x.boost;
-      // Fisher-Yates deterministic shuffle by seed+index
-      let sx=(refreshSeed+x.idx)*2654435761>>>0;
-      let sy=(refreshSeed+y.idx)*2654435761>>>0;
+      var sx=(refreshSeed+x.idx)*2654435761>>>0;
+      var sy=(refreshSeed+y.idx)*2654435761>>>0;
       return sx-sy;
     });
     
     const activeCount=json.inspirations.length-dismissed.length;
     
     h += `<div class="section-title" style="margin-top:24px;display:flex;justify-content:space-between;align-items:center">
-      <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">共${json.inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
+      <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">按🔥爆火度排序 · 共${json.inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
       <button onclick="refreshInspirations()" style="padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:11px;font-family:inherit;transition:all .2s" title="换一批灵感排序">🔄 换一批</button>
     </div>`;
     window.__INSP_DATA__=[];for(var _j=0;_j<json.inspirations.length;_j++)window.__INSP_DATA__.push(null);
@@ -1273,9 +1294,9 @@ function renderInspire(){
       var isFaved=inspFavs.includes(oi);window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
       var isDone=dismissed.includes(oi);
       return `
-      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=30?'border-left:3px solid var(--blue)':''}">
+      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.boost>=60?'border-left:3px solid var(--orange)':r.viral>=30?'border-left:3px solid var(--blue)':''}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
+          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${r.viral>=35?' <span style=\"font-size:9px;background:var(--orange-dim, rgba(255,152,0,0.15));color:var(--orange, #FF9800);padding:1px 5px;border-radius:6px\">🔥 高爆火</span>':''}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
           <button onclick="event.stopPropagation();toggleInspDismiss(${oi})" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:var(--text-muted);opacity:0.6" title="${isDone?'撤销标记':'标记为已发布'}">${isDone?'↩':'✕'}</button>
         </div>
         <div class="source-tag">来源: ${esc(a.source||'')}</div>
