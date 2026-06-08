@@ -857,52 +857,90 @@ def scrape_bloggers_f2():
             
             print(f"  📹 F2: {name}...")
             try:
-                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 3, 3):
+                # 多拉几条(最多10条)，过滤置顶帖后取最新的3条
+                raw_videos = []
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 10, 3):
                     raw = data._to_raw()
                     vlist = data._to_list()
                     aweme_list = raw.get('aweme_list', [])
-                    print(f"    ✅ {len(vlist)}条")
                     for i, v in enumerate(aweme_list):
                         lt = vlist[i] if i < len(vlist) else {}
-                        desc = (v.get('desc') or '').strip()
-                        stats = v.get('statistics', {}) or {}
-                        aweme_id = str(v.get('aweme_id', ''))
-                        digg = stats.get('digg_count', 0) or 0
-                        comment = stats.get('comment_count', 0) or 0
-                        share = stats.get('share_count', 0) or 0
-                        
-                        # 发布时间：_to_list() 返回 YYYY-MM-DD HH-MM-SS 格式(正确转换)
-                        ct = lt.get('create_time', '')
-                        try:
-                            pub_date = ct[:10]
-                            pub_time = ct[11:16].replace('-', ':')
-                        except:
-                            pub_date, pub_time = today, now_time
-                        
-                        # 构建丰富的 content_intro
-                        intro_parts = [desc]
-                        if digg > 0:
-                            intro_parts.append(f"👍 {digg//10000}万赞" if digg >= 10000 else f"👍 {digg}赞")
-                        if comment > 0:
-                            intro_parts.append(f"💬 {comment}评论")
-                        if share > 0:
-                            intro_parts.append(f"🔄 {share//10000}万分享" if share >= 10000 else f"🔄 {share}分享")
-                        
-                        articles.append({
-                            "id": make_id("f2", f"{name}_{aweme_id}") % 10**9,
-                            "title": desc[:80] if desc else f"{name} 最新视频",
-                            "summary": desc[:200],
-                            "source": "blogger",
-                            "blogger_name": name,
-                            "date": pub_date, "time": pub_time,
-                            "tags": ["博主", "爆款", "拆解"],
-                            "url": f"https://www.douyin.com/video/{aweme_id}",
-                            "likes": digg,
-                            "comments": comment,
-                            "aweme_id": aweme_id,
-                            "create_time": ct,
-                            "content_intro": "\n".join(intro_parts)[:300],
-                        })
+                        raw_videos.append((v, lt))
+                
+                print(f"    F2返回: {len(raw_videos)}条")
+                
+                # 过滤置顶帖：排除30天前的旧视频（已被新视频替代）、排除广告/心得帖
+                from datetime import datetime, timedelta
+                cutoff = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+                
+                # 阿七特判：过滤"分享一些短视频心得"等非日常热点内容
+                skip_keywords = []
+                if name == "阿七大型纪录片":
+                    skip_keywords = ["分享一些短视频心得", "短视频创业"]
+                
+                filtered = []
+                for v, lt in raw_videos:
+                    ct = lt.get('create_time', '') if lt else ''
+                    try:
+                        pub_date = ct[:10]
+                    except:
+                        pub_date = "2000-01-01"
+                    
+                    desc = (v.get('desc', '') or '').strip()
+                    
+                    # 跳过超过30天的置顶帖
+                    if pub_date < cutoff:
+                        continue
+                    
+                    # 跳过非热点内容
+                    if any(kw in desc for kw in skip_keywords):
+                        continue
+                    
+                    filtered.append((v, lt))
+                
+                # 取过滤后的最新3条（已按时间降序）
+                top3 = filtered[:3]
+                print(f"    ✅ 过滤后: {len(top3)}条 (跳过{len(raw_videos)-len(filtered)}条置顶)")
+                
+                for v, lt in top3:
+                    desc = (v.get('desc') or '').strip()
+                    stats = v.get('statistics', {}) or {}
+                    aweme_id = str(v.get('aweme_id', ''))
+                    digg = stats.get('digg_count', 0) or 0
+                    comment = stats.get('comment_count', 0) or 0
+                    share = stats.get('share_count', 0) or 0
+                    
+                    ct = lt.get('create_time', '') if lt else ''
+                    try:
+                        pub_date = ct[:10]
+                        pub_time = ct[11:16].replace('-', ':')
+                    except:
+                        pub_date, pub_time = today, now_time
+                    
+                    # 构建 content_intro
+                    intro_parts = [desc]
+                    if digg > 0:
+                        intro_parts.append(f"👍 {digg//10000}万赞" if digg >= 10000 else f"👍 {digg}赞")
+                    if comment > 0:
+                        intro_parts.append(f"💬 {comment}评论")
+                    if share > 0:
+                        intro_parts.append(f"🔄 {share//10000}万分享" if share >= 10000 else f"🔄 {share}分享")
+                    
+                    articles.append({
+                        "id": make_id("f2", f"{name}_{aweme_id}") % 10**9,
+                        "title": desc[:80] if desc else f"{name} 最新视频",
+                        "summary": desc[:200],
+                        "source": "blogger",
+                        "blogger_name": name,
+                        "date": pub_date, "time": pub_time,
+                        "tags": ["博主", "爆款", "拆解"],
+                        "url": f"https://www.douyin.com/video/{aweme_id}",
+                        "likes": digg,
+                        "comments": comment,
+                        "aweme_id": aweme_id,
+                        "create_time": ct,
+                        "content_intro": "\n".join(intro_parts)[:300],
+                    })
             except Exception as e:
                 print(f"    ⚠️ F2失败: {e}")
     
