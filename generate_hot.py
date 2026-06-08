@@ -869,13 +869,9 @@ def scrape_bloggers_f2():
                         comment = stats.get('comment_count', 0) or 0
                         share = stats.get('share_count', 0) or 0
                         
-                        # 发布时间：F2 timestamp_2_str 正确转换抖音时间戳
+                        # 发布时间：F2时间戳非标准(douyin内部格式)，暂用抓取日期
                         ts = v.get('create_time', 0) or 0
-                        try:
-                            pub_str = _ts2str(ts, format="%Y-%m-%d %H:%M")
-                            pub_date, pub_time = pub_str.split(" ", 1) if " " in pub_str else (today, now_time)
-                        except:
-                            pub_date, pub_time = today, now_time
+                        pub_date, pub_time = today, now_time
                         
                         # 构建丰富的 content_intro
                         intro_parts = [desc]
@@ -1660,7 +1656,7 @@ def main(mode="full"):
     from datetime import timedelta
     cutoff = datetime.now().date() - timedelta(days=2)           # 新闻保留3天（今天+2天前=3天窗口）
     rescue_cutoff = datetime.now().date() - timedelta(days=6)   # 失败平台保留7天
-    blog_cutoff = datetime.now().date() - timedelta(days=3)      # 博主3天
+    blog_cutoff = datetime.now().date() - timedelta(days=30)      # F2时间戳非标准，放宽防误删
     fresh = []
     bloggers_kept = {}
     blog_removed = 0
