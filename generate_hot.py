@@ -848,6 +848,7 @@ def scrape_bloggers_f2():
     
     async def _fetch():
         nonlocal articles
+        from f2.utils.utils import timestamp_2_str as _ts2str
         for entry in TRACKED_BLOGGERS:
             name = entry["name"] if isinstance(entry, dict) else entry
             sec_uid = BLOGGER_SEC_UIDS.get(name, "")
@@ -856,7 +857,7 @@ def scrape_bloggers_f2():
             
             print(f"  📹 F2: {name}...")
             try:
-                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 5, 5):
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 3, 3):
                     raw = data._to_raw()
                     aweme_list = raw.get('aweme_list', [])
                     print(f"    ✅ {len(aweme_list)}条")
@@ -868,10 +869,13 @@ def scrape_bloggers_f2():
                         comment = stats.get('comment_count', 0) or 0
                         share = stats.get('share_count', 0) or 0
                         
-                        # 发布时间：F2 返回的时间戳格式非标准Unix（use today as safe fallback）
+                        # 发布时间：F2 timestamp_2_str 正确转换抖音时间戳
                         ts = v.get('create_time', 0) or 0
-                        pub_date = today
-                        pub_time = now_time
+                        try:
+                            pub_str = _ts2str(ts, format="%Y-%m-%d %H:%M")
+                            pub_date, pub_time = pub_str.split(" ", 1) if " " in pub_str else (today, now_time)
+                        except:
+                            pub_date, pub_time = today, now_time
                         
                         # 构建丰富的 content_intro
                         intro_parts = [desc]
