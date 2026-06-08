@@ -1556,6 +1556,7 @@ def main(mode="full"):
     
     for name, items in blogger_by_name.items():
         # 按标题去重：如果 title_A 包含 title_B 或 title_B 包含 title_A，保留 ID 较短的那个（新数据）
+        # ⚠️ 关键修复：同一博主不同日期的同名标题不算重复（如人类观察菌每日"今日热点信息快报"）
         deduped = []
         removed_ids = set()
         for item in items:
@@ -1572,6 +1573,15 @@ def main(mode="full"):
                         shorter = clean_a if len(clean_a) < len(clean_b) else clean_b
                         longer = clean_b if len(clean_a) < len(clean_b) else clean_a
                         if shorter in longer and len(shorter) >= len(longer) * 0.8:
+                            # 额外检查：同标题不同日期/aweme_id = 不同视频，不去重
+                            item_date = item.get("create_time", "") or item.get("date", "")
+                            ext_date = existing.get("create_time", "") or existing.get("date", "")
+                            if item_date and ext_date and item_date != ext_date:
+                                continue  # 不同日期，不是重复
+                            item_aid = item.get("aweme_id", "")
+                            ext_aid = existing.get("aweme_id", "")
+                            if item_aid and ext_aid and item_aid != ext_aid:
+                                continue  # 不同aweme_id，不是重复
                             dup = True
                             break
             if not dup:
