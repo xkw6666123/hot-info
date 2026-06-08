@@ -1774,6 +1774,13 @@ def main(mode="full"):
     except Exception as e:
         print(f"   ⚠️ gen_js_data 异常: {e}")
 
+    # ═══ 飞书通知 ═══
+    try:
+        import feishu_notify
+        feishu_notify.notify()
+    except Exception:
+        pass  # 通知失败不影响主流程
+
     return len(all_articles) > 0
 
 
