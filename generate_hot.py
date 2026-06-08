@@ -823,15 +823,25 @@ def scrape_bloggers_f2():
         print("    ⚠️ F2/browser_cookie3 未安装，跳过")
         return []
     
-    # 从Chrome提取抖音cookie
-    try:
-        cj = browser_cookie3.chrome(domain_name='douyin.com')
-        cookie_str = '; '.join(f'{c.name}={c.value}' for c in cj if 'douyin' in c.domain)
-        if not cookie_str:
-            print("    ⚠️ 未找到Chrome抖音cookie，请先登录网页版抖音")
-            return []
-    except Exception as e:
-        print(f"    ⚠️ 读取Chrome cookie失败: {e}")
+    # 从浏览器提取抖音cookie（优先 Edge → 降级 Chrome）
+    cookie_str = None
+    for browser_name, browser_fn in [("Edge", lambda: browser_cookie3.edge(domain_name='douyin.com')),
+                                      ("Chrome", lambda: browser_cookie3.chrome(domain_name='douyin.com'))]:
+        try:
+            cj = browser_fn()
+            cookie_str = '; '.join(f'{c.name}={c.value}' for c in cj if 'douyin' in c.domain)
+            if cookie_str and len(cookie_str) > 100:
+                print(f"    ✅ 从{browser_name}读取cookie成功 (长度:{len(cookie_str)})")
+                break
+            else:
+                cookie_str = None
+                print(f"    ⚠️ {browser_name}未找到抖音cookie，尝试下一个...")
+        except Exception as e:
+            print(f"    ⚠️ 读取{browser_name}cookie失败: {e}")
+            cookie_str = None
+
+    if not cookie_str or len(cookie_str) < 100:
+        print("    ⚠️ 未找到有效浏览器cookie（需要管理员权限读取Edge/Chrome），跳过F2")
         return []
     
     kwargs = {
@@ -857,9 +867,10 @@ def scrape_bloggers_f2():
             
             print(f"  📹 F2: {name}...")
             try:
-                # 多拉几条(最多10条)，过滤置顶帖后取最新的3条
+                # 多拉20条（抖音API在cookie状态下可能返回热门排序而非时间排序）
+                # 客户端按create_time严格降序后再取最新3条，确保拿到的是真正最新发布的视频
                 raw_videos = []
-                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 10, 3):
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 20, 20):
                     raw = data._to_raw()
                     vlist = data._to_list()
                     aweme_list = raw.get('aweme_list', [])
@@ -897,10 +908,13 @@ def scrape_bloggers_f2():
                         continue
                     
                     filtered.append((v, lt))
-                
-                # 取过滤后的最新3条（已按时间降序）
+
+                # ★ 按create_time严格降序排序（抖音API可能返回热门排序而非时间排序）
+                filtered.sort(key=lambda x: x[1].get('create_time', '') if x[1] else '', reverse=True)
+
+                # 取排序后的最新3条
                 top3 = filtered[:3]
-                print(f"    ✅ 过滤后: {len(top3)}条 (跳过{len(raw_videos)-len(filtered)}条置顶)")
+                print(f"    ✅ 过滤后: {len(top3)}条 (拉取{len(raw_videos)}条, 跳过{len(raw_videos)-len(filtered)}条置顶/旧帖)")
                 
                 for v, lt in top3:
                     desc = (v.get('desc') or '').strip()
@@ -954,7 +968,16 @@ def scrape_bloggers_f2():
         _asyncio.run(_fetch())
     except Exception as e:
         print(f"    ⚠️ F2运行异常(返回已获取的{len(articles)}条): {e}")
-    
+
+    # ★ F2 数据为空时，自动降级到 Playwright Edge 兜底
+    if not articles:
+        print("    🔄 F2 未获取到数据，尝试 Playwright Edge 兜底...")
+        articles = scrape_bloggers_pw()
+        if articles:
+            print(f"    ✅ Playwright 兜底成功: {len(articles)}条")
+        else:
+            print("    ⚠️ Playwright 兜底也失败")
+
     return articles
 
 
