@@ -859,9 +859,11 @@ def scrape_bloggers_f2():
             try:
                 async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 3, 3):
                     raw = data._to_raw()
+                    vlist = data._to_list()
                     aweme_list = raw.get('aweme_list', [])
-                    print(f"    ✅ {len(aweme_list)}条")
-                    for v in aweme_list:
+                    print(f"    ✅ {len(vlist)}条")
+                    for i, v in enumerate(aweme_list):
+                        lt = vlist[i] if i < len(vlist) else {}
                         desc = (v.get('desc') or '').strip()
                         stats = v.get('statistics', {}) or {}
                         aweme_id = str(v.get('aweme_id', ''))
@@ -869,9 +871,13 @@ def scrape_bloggers_f2():
                         comment = stats.get('comment_count', 0) or 0
                         share = stats.get('share_count', 0) or 0
                         
-                        # 发布时间：F2时间戳非标准(douyin内部格式)，暂用抓取日期
-                        ts = v.get('create_time', 0) or 0
-                        pub_date, pub_time = today, now_time
+                        # 发布时间：_to_list() 返回 YYYY-MM-DD HH-MM-SS 格式(正确转换)
+                        ct = lt.get('create_time', '')
+                        try:
+                            pub_date = ct[:10]
+                            pub_time = ct[11:16].replace('-', ':')
+                        except:
+                            pub_date, pub_time = today, now_time
                         
                         # 构建丰富的 content_intro
                         intro_parts = [desc]
@@ -894,7 +900,7 @@ def scrape_bloggers_f2():
                             "likes": digg,
                             "comments": comment,
                             "aweme_id": aweme_id,
-                            "create_time": ts,
+                            "create_time": ct,
                             "content_intro": "\n".join(intro_parts)[:300],
                         })
             except Exception as e:
