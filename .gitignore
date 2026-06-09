@@ -5,3 +5,19 @@ douyin_cookies.txt
 *.tmp
 auto_run.log
 auto_run.log
+
+# 安全相关
+.env
+*.key
+*_cookie.txt
+_valid_cookie.txt
+feishu_webhook.txt
+
+# 临时文件
+temp_*.mp3
+test_*.mp3
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db

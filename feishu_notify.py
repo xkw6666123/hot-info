@@ -2,7 +2,7 @@
 """飞书通知：博主视频更新检测 & 推送"""
 import json, urllib.request, os, sys
 
-FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/a93ecc6b-0ab2-402f-9c87-636da7f5622a"
+FEISHU_WEBHOOK = os.environ.get("FEISHU_WEBHOOK", "")
 DATA_FILE = os.path.join(os.path.dirname(__file__), "data.json")
 
 def send_card(title, elements, color="blue"):

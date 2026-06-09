@@ -1,0 +1,19 @@
+# 热点信息差网站 - 依赖清单
+# 锁定版本确保CI稳定性
+
+# 核心依赖
+playwright>=1.40.0
+opencc-python-reimplemented>=0.1.7
+browser_cookie3>=1.0.0
+openai-whisper>=20231117
+
+# HTTP请求
+requests>=2.31.0
+httpx>=0.25.0
+
+# 数据处理
+pandas>=2.1.0
+
+# 其他
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
