@@ -42,6 +42,7 @@ jobs:
           exit $EXIT
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
+          DOUYIN_COOKIE: ${{ secrets.DOUYIN_COOKIE }}
 
       - name: 嵌入数据到HTML
         run: |

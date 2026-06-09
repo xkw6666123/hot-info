@@ -817,32 +817,43 @@ def _build_pw_article(name, v):
 def scrape_bloggers_f2():
     """使用 F2 库 + Chrome Cookie 抓取抖音博主视频（免登录API替代方案）"""
     try:
-        import asyncio, browser_cookie3
+        import asyncio
         from f2.apps.douyin.handler import DouyinHandler
     except ImportError:
-        print("    ⚠️ F2/browser_cookie3 未安装，跳过")
+        print("    ⚠️ F2 未安装，跳过")
         return []
     
-    # 从浏览器提取抖音cookie（优先 Edge → 降级 Chrome）
-    cookie_str = None
-    for browser_name, browser_fn in [("Edge", lambda: browser_cookie3.edge(domain_name='douyin.com')),
-                                      ("Chrome", lambda: browser_cookie3.chrome(domain_name='douyin.com'))]:
+    # 优先从环境变量读取cookie（GitHub Actions 等 CI 环境）
+    cookie_str = os.environ.get("DOUYIN_COOKIE", "")
+    
+    if not cookie_str or len(cookie_str) < 100:
+        # 从浏览器提取抖音cookie（优先 Edge → 降级 Chrome）
         try:
-            cj = browser_fn()
-            cookie_str = '; '.join(f'{c.name}={c.value}' for c in cj if 'douyin' in c.domain)
-            if cookie_str and len(cookie_str) > 100:
-                print(f"    ✅ 从{browser_name}读取cookie成功 (长度:{len(cookie_str)})")
-                break
-            else:
+            import browser_cookie3
+        except ImportError:
+            print("    ⚠️ browser_cookie3 未安装且无环境变量cookie，跳过F2")
+            return []
+        
+        for browser_name, browser_fn in [("Edge", lambda: browser_cookie3.edge(domain_name='douyin.com')),
+                                          ("Chrome", lambda: browser_cookie3.chrome(domain_name='douyin.com'))]:
+            try:
+                cj = browser_fn()
+                cookie_str = '; '.join(f'{c.name}={c.value}' for c in cj if 'douyin' in c.domain)
+                if cookie_str and len(cookie_str) > 100:
+                    print(f"    ✅ 从{browser_name}读取cookie成功 (长度:{len(cookie_str)})")
+                    break
+                else:
+                    cookie_str = None
+                    print(f"    ⚠️ {browser_name}未找到抖音cookie，尝试下一个...")
+            except Exception as e:
+                print(f"    ⚠️ 读取{browser_name}cookie失败: {e}")
                 cookie_str = None
-                print(f"    ⚠️ {browser_name}未找到抖音cookie，尝试下一个...")
-        except Exception as e:
-            print(f"    ⚠️ 读取{browser_name}cookie失败: {e}")
-            cookie_str = None
 
     if not cookie_str or len(cookie_str) < 100:
-        print("    ⚠️ 未找到有效浏览器cookie（需要管理员权限读取Edge/Chrome），跳过F2")
+        print("    ⚠️ 未找到有效cookie（需要设置DOUYIN_COOKIE环境变量或浏览器cookie），跳过F2")
         return []
+    else:
+        print(f"    ✅ 使用cookie (长度:{len(cookie_str)})")
     
     kwargs = {
         'headers': {
