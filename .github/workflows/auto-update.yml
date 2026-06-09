@@ -196,11 +196,21 @@ jobs:
               print('\\n✅ 数据完整性检查通过')
           "
 
+      - name: 自动学习文案
+        run: |
+          echo "=== 自动学习文案 ==="
+          python auto_learn.py || echo "Auto learn skipped"
+
+      - name: 生成灵感库
+        run: |
+          echo "=== 生成灵感库 ==="
+          python learn_and_generate.py || echo "Inspiration generation skipped"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html
+          git add data.json index.html blogger_content_learn.json
           if git diff --staged --quiet; then
             echo "No changes, skipping commit"
           else
