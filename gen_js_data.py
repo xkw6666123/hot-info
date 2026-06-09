@@ -44,32 +44,37 @@ def optimize_articles(articles):
     return optimized
 
 def main():
-    with open("data.json", "r", encoding="utf-8-sig") as f:
-        data = json.load(f)
-    
-    data["articles"] = optimize_articles(data["articles"])
-    data = sanitize_for_js(data)
-    
-    js_body = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
-    version = str(int(time.time()))
-    
-    # 同时写 data.js（给 loadData 做兜底）
-    atomic_write("data.js", f"window.__HOT_DATA__={js_body};\n", newline="\n")
-    
-    # 内联嵌入到 index.html
-    inline_tag = f'<script data-embed>\nwindow.__HOT_DATA__={js_body};\n</script>'
-    
-    with open("index.html", "r", encoding="utf-8") as f:
-        html = f.read()
-    
-    # 替换外部引用 → 内联
-    html = re.sub(r'<script src="data\.js\?v=\d+"[^>]*></script>', lambda m: inline_tag, html)
-    # 替换旧内联
-    html = re.sub(r'<script data-embed>[\s\S]*?</script>', lambda m: inline_tag, html)
-    
-    atomic_write("index.html", html, newline="\n")
-    
-    print(f"[OK] index.html: {len(html)//1024}KB (内联数据 {len(js_body)//1024}KB)")
+    try:
+        with open("data.json", "r", encoding="utf-8-sig") as f:
+            data = json.load(f)
+        
+        data["articles"] = optimize_articles(data["articles"])
+        data = sanitize_for_js(data)
+        
+        js_body = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
+        version = str(int(time.time()))
+        
+        # 同时写 data.js（给 loadData 做兜底）
+        atomic_write("data.js", f"window.__HOT_DATA__={js_body};\n", newline="\n")
+        
+        # 内联嵌入到 index.html
+        inline_tag = f'<script data-embed>\nwindow.__HOT_DATA__={js_body};\n</script>'
+        
+        with open("index.html", "r", encoding="utf-8") as f:
+            html = f.read()
+        
+        # 替换外部引用 → 内联
+        html = re.sub(r'<script src="data\.js\?v=\d+"[^>]*></script>', lambda m: inline_tag, html)
+        # 替换旧内联
+        html = re.sub(r'<script data-embed>[\s\S]*?</script>', lambda m: inline_tag, html)
+        
+        atomic_write("index.html", html, newline="\n")
+        
+        print(f"[OK] index.html: {len(html)//1024}KB (内联数据 {len(js_body)//1024}KB)")
+    except Exception as e:
+        print(f"[ERROR] gen_js_data.py failed: {e}")
+        import sys
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
