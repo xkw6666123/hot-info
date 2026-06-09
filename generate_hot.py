@@ -867,73 +867,15 @@ def scrape_bloggers_f2():
             
             print(f"  📹 F2: {name}...")
             try:
-                # ★ 使用 sort_type=0 强制按时间排序（而非热门排序）
-                # F2 的 UserPost 模型不支持 sort_type，直接调用抖音API
+                # ★ F2 UserPost 模型已添加 sort_type=0（按时间排序），自动生效
                 raw_videos = []
-                try:
-                    # 方案1：直接调用抖音API，指定 sort_type=0
-                    import httpx
-                    from f2.apps.douyin.api import DouyinAPIEndpoints as dyendpoint
-                    from f2.apps.douyin.utils import XBogusManager, ABogusManager
-                    
-                    # 构建请求参数（包含 sort_type=0）
-                    params = {
-                        'device_platform': 'webapp',
-                        'aid': '6383',
-                        'channel': 'channel_pc_web',
-                        'sec_user_id': sec_uid,
-                        'max_cursor': 0,
-                        'count': 20,
-                        'sort_type': 0,  # 0=按时间排序, 1=按热度排序
-                    }
-                    
-                    # 生成签名
-                    endpoint = XBogusManager.model_2_endpoint(
-                        kwargs.get('headers', {}).get('User-Agent', ''),
-                        dyendpoint.USER_POST,
-                        params,
-                    )
-                    
-                    # 发送请求（cookie需要转为字典格式）
-                    cookie_str = kwargs.get('cookie', '')
-                    cookie_dict = {}
-                    if cookie_str:
-                        for item in cookie_str.split(';'):
-                            item = item.strip()
-                            if '=' in item:
-                                k, v = item.split('=', 1)
-                                cookie_dict[k.strip()] = v.strip()
-                    
-                    async with httpx.AsyncClient(
-                        headers=kwargs.get('headers', {}),
-                        cookies=cookie_dict,
-                        timeout=15,
-                    ) as client:
-                        resp = await client.get(endpoint)
-                        data = resp.json()
-                        aweme_list = data.get('aweme_list', [])
-                        for v in aweme_list:
-                            # 构建与F2兼容的数据格式
-                            ct = v.get('create_time', 0)
-                            if ct:
-                                from datetime import datetime
-                                ct_str = datetime.fromtimestamp(ct).strftime('%Y-%m-%d %H:%M:%S')
-                            else:
-                                ct_str = ''
-                            lt = {'create_time': ct_str}
-                            raw_videos.append((v, lt))
-                    
-                    print(f"    ✅ 使用 sort_type=0 按时间排序")
-                except Exception as e:
-                    # 方案2：降级到F2默认（热门排序），但多拉50条以覆盖更多
-                    print(f"    ⚠️ 直接API调用失败({e})，降级到F2默认")
-                    async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 20, 50):
-                        raw = data._to_raw()
-                        vlist = data._to_list()
-                        aweme_list = raw.get('aweme_list', [])
-                        for i, v in enumerate(aweme_list):
-                            lt = vlist[i] if i < len(vlist) else {}
-                            raw_videos.append((v, lt))
+                async for data in DouyinHandler(kwargs).fetch_user_post_videos(sec_uid, 0, 0, 20, 20):
+                    raw = data._to_raw()
+                    vlist = data._to_list()
+                    aweme_list = raw.get('aweme_list', [])
+                    for i, v in enumerate(aweme_list):
+                        lt = vlist[i] if i < len(vlist) else {}
+                        raw_videos.append((v, lt))
                 
                 print(f"    F2返回: {len(raw_videos)}条")
                 
