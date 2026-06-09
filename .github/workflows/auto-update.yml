@@ -26,6 +26,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: |
+          pip install playwright opencc-python-reimplemented browser_cookie3
+          playwright install chromium
+          playwright install-deps chromium
+
       - name: Run scrapers (全平台抓取)
         id: scrape
         run: |
@@ -70,10 +76,10 @@ jobs:
               if a.get('source') != 'blogger' or 'bilibili.com' not in (a.get('url') or ''):
                   continue
               ci = a.get('content_intro','')
-              if len(ci) > 100:
+              if len(ci) > 200:
                   continue
               text = get_bilibili_content(a['url'])
-              if text and len(text) > 30:
+              if text and len(text) > 50:
                   a['content_intro'] = text
                   updated += 1
                   print(f'  B站 {a[\"blogger_name\"]}: {len(text)}字')
@@ -102,11 +108,11 @@ jobs:
               if a.get('source') != 'blogger' or 'douyin.com' not in (a.get('url') or ''):
                   continue
               ci = a.get('content_intro','')
-              if len(ci) > 80:
+              if len(ci) > 200:
                   continue
               print(f'  抖音 {a[\"blogger_name\"]}: 提取中...')
               text = get_douyin_content(a['url'])
-              if text and len(text) > 30:
+              if text and len(text) > 50:
                   a['content_intro'] = text
                   updated += 1
                   print(f'    提取成功: {len(text)}字')
