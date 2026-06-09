@@ -13,7 +13,7 @@ permissions:
 jobs:
   merge-bloggers:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     # 非push事件始终执行；push事件跳过机器人自己的commit避免无限循环
     if: "${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'auto: merge') }}"
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install playwright opencc-python-reimplemented browser_cookie3
+          pip install playwright opencc-python-reimplemented browser_cookie3 openai-whisper
           playwright install chromium
           playwright install-deps chromium
 
@@ -61,16 +61,20 @@ jobs:
           echo "=== 生成 content_intro ==="
           python gen_content_intro.py || echo "gen_content_intro skipped"
 
-      - name: B站视频 ASR (MiMo API)
+      - name: B站视频 ASR (Whisper base)
         run: |
-          echo "=== B站视频文案提取 ==="
+          echo "=== B站视频文案提取（Whisper base）==="
           python -c "
-          import json, sys, os
-          sys.path.insert(0, '.')
-          os.environ['MIMO_API_KEY'] = '${{ secrets.MIMO_API_KEY }}'
-          from asr_extract import get_bilibili_content
+          import json, sys, os, subprocess, whisper
+          from opencc import OpenCC
+          cc = OpenCC('t2s')
+          
+          print('Loading Whisper base model...')
+          model = whisper.load_model('base')
+          
           with open('data.json','r',encoding='utf-8-sig') as f:
               d = json.load(f)
+          
           updated = 0
           for a in d.get('articles',[]):
               if a.get('source') != 'blogger' or 'bilibili.com' not in (a.get('url') or ''):
@@ -78,11 +82,19 @@ jobs:
               ci = a.get('content_intro','')
               if len(ci) > 200:
                   continue
-              text = get_bilibili_content(a['url'])
-              if text and len(text) > 50:
-                  a['content_intro'] = text
-                  updated += 1
-                  print(f'  B站 {a[\"blogger_name\"]}: {len(text)}字')
+              
+              print(f'  B站 {a[\"blogger_name\"]}: 提取中...')
+              # 使用asr_extract.py的B站提取函数
+              try:
+                  from asr_extract import get_bilibili_content
+                  text = get_bilibili_content(a['url'])
+                  if text and len(text) > 50:
+                      a['content_intro'] = cc.convert(text)
+                      updated += 1
+                      print(f'    提取成功: {len(text)}字')
+              except Exception as e:
+                  print(f'    提取失败: {e}')
+          
           if updated:
               with open('data.json','w',encoding='utf-8') as f:
                   json.dump(d, f, ensure_ascii=False, indent=2)
@@ -93,16 +105,20 @@ jobs:
               print('B站视频文案已完整，无需更新')
           " || echo "B站 ASR skipped"
 
-      - name: 抖音视频 ASR (MiMo API)
+      - name: 抖音视频 ASR (Whisper base)
         run: |
-          echo "=== 抖音视频文案提取 ==="
+          echo "=== 抖音视频文案提取（Whisper base）==="
           python -c "
-          import json, sys, os
-          sys.path.insert(0, '.')
-          os.environ['MIMO_API_KEY'] = '${{ secrets.MIMO_API_KEY }}'
-          from asr_extract import get_douyin_content
+          import json, sys, os, subprocess, whisper
+          from opencc import OpenCC
+          cc = OpenCC('t2s')
+          
+          print('Loading Whisper base model...')
+          model = whisper.load_model('base')
+          
           with open('data.json','r',encoding='utf-8-sig') as f:
               d = json.load(f)
+          
           updated = 0
           for a in d.get('articles',[]):
               if a.get('source') != 'blogger' or 'douyin.com' not in (a.get('url') or ''):
@@ -110,23 +126,67 @@ jobs:
               ci = a.get('content_intro','')
               if len(ci) > 200:
                   continue
+              
               print(f'  抖音 {a[\"blogger_name\"]}: 提取中...')
-              text = get_douyin_content(a['url'])
-              if text and len(text) > 50:
-                  a['content_intro'] = text
-                  updated += 1
-                  print(f'    提取成功: {len(text)}字')
-              else:
-                  print(f'    ASR未获取到内容，保留现有文案')
+              # 使用asr_extract.py的抖音提取函数
+              try:
+                  from asr_extract import get_douyin_content
+                  text = get_douyin_content(a['url'])
+                  if text and len(text) > 50:
+                      a['content_intro'] = cc.convert(text)
+                      updated += 1
+                      print(f'    提取成功: {len(text)}字')
+              except Exception as e:
+                  print(f'    提取失败: {e}')
+          
           if updated:
-              import subprocess
               with open('data.json','w',encoding='utf-8') as f:
                   json.dump(d, f, ensure_ascii=False, indent=2)
+              import subprocess
               subprocess.run(['python','gen_js_data.py'])
               print(f'抖音 ASR: {updated}条更新')
           else:
               print('抖音视频文案已完整或ASR不可用，跳过')
           " || echo "抖音 ASR skipped"
+
+      - name: 数据完整性检查
+        run: |
+          echo "=== 数据完整性检查 ==="
+          python -c "
+          import json
+          
+          with open('data.json','r',encoding='utf-8') as f:
+              d = json.load(f)
+          
+          # 检查博主视频
+          bloggers = {}
+          for a in d.get('articles',[]):
+              if a.get('source') != 'blogger':
+                  continue
+              name = a.get('blogger_name','')
+              if name not in bloggers:
+                  bloggers[name] = []
+              bloggers[name].append(a)
+          
+          print('博主视频统计:')
+          issues = []
+          for name, videos in bloggers.items():
+              print(f'  {name}: {len(videos)}条')
+              if len(videos) != 3:
+                  issues.append(f'{name}: {len(videos)}条（应为3条）')
+              for v in videos:
+                  ci = v.get('content_intro','')
+                  if len(ci) < 200:
+                      issues.append(f'{name} {v.get(\"date\",\"\")}: 文案过短({len(ci)}字)')
+          
+          if issues:
+              print('\\n发现问题:')
+              for i in issues:
+                  print(f'  ⚠️ {i}')
+              print('\\n请检查数据完整性')
+          else:
+              print('\\n✅ 数据完整性检查通过')
+          "
 
       - name: Commit and push
         run: |
@@ -142,4 +202,4 @@ jobs:
           fi
 
       - name: 飞书通知
-        run: python feishu_notify.py
+        run: python feishu_notify.py || echo "飞书通知 skipped"
