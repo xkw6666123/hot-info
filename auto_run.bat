@@ -24,15 +24,20 @@ if errorlevel 1 (
     exit /b 1
 )
 
+:: 数据合并保护：确保不丢失博主数据和灵感库
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
+
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe gen_js_data.py >> auto_run.log 2>&1
 if errorlevel 1 (
     echo [%date% %time%] ERROR: gen_js_data.py failed >> auto_run.log
     exit /b 1
 )
 
-:: 检查数据完整性（至少 50 条才推送）
-for /f %%i in ('C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe -c "import json;print(len(json.load(open('data.json',encoding='utf-8-sig'))['articles']))"') do set ART_COUNT=%%i
-echo [%date% %time%] articles: %ART_COUNT% >> auto_run.log
+:: 检查数据完整性（至少 50 条文章 + 博主数据 + 灵感库）
+for /f %%i in ('C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe -c "import json;d=json.load(open('data.json',encoding='utf-8-sig'));print(len(d.get('articles',[])))"') do set ART_COUNT=%%i
+for /f %%i in ('C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe -c "import json;d=json.load(open('data.json',encoding='utf-8-sig'));print(len([a for a in d.get('articles',[]) if a.get('source')=='blogger']))"') do set BLOG_COUNT=%%i
+for /f %%i in ('C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe -c "import json;d=json.load(open('data.json',encoding='utf-8-sig'));print(len(d.get('inspirations',[])))"') do set INSP_COUNT=%%i
+echo [%date% %time%] articles: %ART_COUNT%, bloggers: %BLOG_COUNT%, inspirations: %INSP_COUNT% >> auto_run.log
 if %ART_COUNT% LSS 50 (
     echo [%date% %time%] WARNING: only %ART_COUNT% articles, skipping push >> auto_run.log
     exit /b 1
