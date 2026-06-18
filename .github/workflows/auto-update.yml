@@ -30,15 +30,22 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          key: ${{ runner.os }}-pip-v2-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-v2-
 
-      - name: Install dependencies
+      - name: Install pip dependencies
         run: |
-          pip install -r requirements.txt
-          playwright install chromium
-          playwright install-deps chromium
+          echo "=== Installing pip packages ==="
+          pip install -r requirements.txt 2>&1
+          echo "=== pip install done ==="
+
+      - name: Install Playwright
+        run: |
+          echo "=== Installing Playwright Chromium ==="
+          playwright install chromium 2>&1 || echo "Playwright chromium install failed (non-fatal)"
+          echo "=== Installing Playwright system deps ==="
+          playwright install-deps chromium 2>&1 || echo "Playwright deps install failed (non-fatal)"
 
       - name: Install Whisper (optional, for ASR)
         run: |
