@@ -72,7 +72,37 @@ def merge_data():
 
     merged = False
 
-    # 3. 如果新数据缺少博主文章，从旧数据补充
+    # 3. ASR 文案迁移：把旧博主的完整文案迁移到新数据（按 aweme_id/URL 匹配）
+    old_asr_map = {}
+    for a in old_articles:
+        if a.get("source") != "blogger":
+            continue
+        ci = a.get("content_intro", "")
+        if len(ci) < 100:
+            continue
+        # 用 aweme_id 和 URL 做 key
+        for key in [a.get("aweme_id", ""), a.get("url", ""), str(a.get("id", ""))]:
+            if key:
+                old_asr_map[key] = ci
+
+    migrated = 0
+    for a in new_articles:
+        if a.get("source") != "blogger":
+            continue
+        ci = a.get("content_intro", "")
+        if len(ci) >= 100:
+            continue  # 已有完整文案，跳过
+        # 查找匹配的旧文案
+        for key in [a.get("aweme_id", ""), a.get("url", ""), str(a.get("id", ""))]:
+            if key in old_asr_map:
+                a["content_intro"] = old_asr_map[key]
+                migrated += 1
+                break
+    if migrated:
+        merged = True
+        print(f"  ✅ 迁移 {migrated} 条旧 ASR 文案到新数据")
+
+    # 4. 如果新数据缺少博主文章，从旧数据补充
     if len(new_bloggers) < 3 and len(old_bloggers) > 0:
         # 移除新数据中可能存在的不完整博主数据
         new_articles = [a for a in new_articles if a.get("source") != "blogger"]

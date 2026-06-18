@@ -41,181 +41,62 @@ jobs:
           python -m playwright install chromium 2>&1 || echo "Playwright chromium install failed (non-fatal)"
           python -m playwright install-deps chromium 2>&1 || echo "Playwright deps install failed (non-fatal)"
 
-      - name: Install Whisper (optional, for ASR)
-        run: |
-          pip install openai-whisper 2>&1 || echo "Whisper install failed, ASR steps will be skipped"
-
       - name: Run scrapers (全平台抓取)
         id: scrape
         run: |
           echo "=== ENV ==="
           python --version
-          which python
           pwd
-          ls -la data.json 2>/dev/null || echo "data.json not found"
-          echo ""
           python generate_hot.py --local
-          EXIT=$?
-          echo "EXIT_CODE=$EXIT"
-          ls -la data.json 2>/dev/null || echo "data.json missing after script"
-          exit $EXIT
+          echo "EXIT_CODE=$?"
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
           DOUYIN_COOKIE: ${{ secrets.DOUYIN_COOKIE }}
-          MIMO_API_KEY: ${{ secrets.MIMO_API_KEY }}
 
-      - name: 数据合并保护 (防止覆盖博主/灵感)
+      - name: 数据合并保护 (迁移ASR文案+保留博主/灵感)
         run: |
-          echo "=== 合并保护：确保不丢失博主数据和灵感库 ==="
+          echo "=== 合并保护：迁移旧ASR文案，确保不丢失博主数据和灵感库 ==="
           python merge_data.py 2>&1 || echo "merge_data skipped"
 
       - name: 嵌入数据到HTML
         run: |
           echo "=== data.json size: $(wc -c < data.json) bytes ==="
           python gen_js_data.py
-          echo "=== 数据已嵌入 index.html ==="
 
       - name: 生成视频内容简介
-        run: |
-          echo "=== 生成 content_intro ==="
-          python gen_content_intro.py || echo "gen_content_intro skipped"
-
-      - name: B站视频 ASR (Whisper base)
-        run: |
-          echo "=== B站视频文案提取（Whisper base）==="
-          python -c "
-          import json, sys, os, subprocess, whisper
-          from opencc import OpenCC
-          cc = OpenCC('t2s')
-          
-          print('Loading Whisper base model...')
-          model = whisper.load_model('base')
-          
-          with open('data.json','r',encoding='utf-8-sig') as f:
-              d = json.load(f)
-          
-          updated = 0
-          for a in d.get('articles',[]):
-              if a.get('source') != 'blogger' or 'bilibili.com' not in (a.get('url') or ''):
-                  continue
-              ci = a.get('content_intro','')
-              if len(ci) > 200:
-                  continue
-              
-              print(f'  B站 {a[\"blogger_name\"]}: 提取中...')
-              # 使用asr_extract.py的B站提取函数
-              try:
-                  from asr_extract import get_bilibili_content
-                  text = get_bilibili_content(a['url'])
-                  if text and len(text) > 50:
-                      a['content_intro'] = cc.convert(text)
-                      updated += 1
-                      print(f'    提取成功: {len(text)}字')
-              except Exception as e:
-                  print(f'    提取失败: {e}')
-          
-          if updated:
-              with open('data.json','w',encoding='utf-8') as f:
-                  json.dump(d, f, ensure_ascii=False, indent=2)
-              import subprocess
-              subprocess.run(['python','gen_js_data.py'])
-              print(f'B站 ASR: {updated}条更新')
-          else:
-              print('B站视频文案已完整，无需更新')
-          " || echo "B站 ASR skipped"
-
-      - name: 抖音视频 ASR (Whisper base)
-        run: |
-          echo "=== 抖音视频文案提取（Whisper base）==="
-          python -c "
-          import json, sys, os, subprocess, whisper
-          from opencc import OpenCC
-          cc = OpenCC('t2s')
-          
-          print('Loading Whisper base model...')
-          model = whisper.load_model('base')
-          
-          with open('data.json','r',encoding='utf-8-sig') as f:
-              d = json.load(f)
-          
-          updated = 0
-          for a in d.get('articles',[]):
-              if a.get('source') != 'blogger' or 'douyin.com' not in (a.get('url') or ''):
-                  continue
-              ci = a.get('content_intro','')
-              if len(ci) > 200:
-                  continue
-              
-              print(f'  抖音 {a[\"blogger_name\"]}: 提取中...')
-              # 使用asr_extract.py的抖音提取函数
-              try:
-                  from asr_extract import get_douyin_content
-                  text = get_douyin_content(a['url'])
-                  if text and len(text) > 50:
-                      a['content_intro'] = cc.convert(text)
-                      updated += 1
-                      print(f'    提取成功: {len(text)}字')
-              except Exception as e:
-                  print(f'    提取失败: {e}')
-          
-          if updated:
-              with open('data.json','w',encoding='utf-8') as f:
-                  json.dump(d, f, ensure_ascii=False, indent=2)
-              import subprocess
-              subprocess.run(['python','gen_js_data.py'])
-              print(f'抖音 ASR: {updated}条更新')
-          else:
-              print('抖音视频文案已完整或ASR不可用，跳过')
-          " || echo "抖音 ASR skipped"
+        run: python gen_content_intro.py || echo "gen_content_intro skipped"
 
       - name: 数据完整性检查
         run: |
           echo "=== 数据完整性检查 ==="
           python -c "
           import json
-          
-          with open('data.json','r',encoding='utf-8') as f:
-              d = json.load(f)
-          
-          # 检查博主视频
+          d = json.load(open('data.json','r',encoding='utf-8'))
           bloggers = {}
           for a in d.get('articles',[]):
-              if a.get('source') != 'blogger':
-                  continue
+              if a.get('source') != 'blogger': continue
               name = a.get('blogger_name','')
-              if name not in bloggers:
-                  bloggers[name] = []
+              if name not in bloggers: bloggers[name] = []
               bloggers[name].append(a)
-          
           print('博主视频统计:')
           issues = []
           for name, videos in bloggers.items():
               print(f'  {name}: {len(videos)}条')
-              if len(videos) != 3:
-                  issues.append(f'{name}: {len(videos)}条（应为3条）')
+              if len(videos) != 3: issues.append(f'{name}: {len(videos)}条')
               for v in videos:
                   ci = v.get('content_intro','')
-                  if len(ci) < 200:
-                      issues.append(f'{name} {v.get(\"date\",\"\")}: 文案过短({len(ci)}字)')
-          
+                  if len(ci) < 200: issues.append(f'{name} {v.get(\"date\",\"\")}: 文案过短({len(ci)}字)')
           if issues:
-              print('\\n发现问题:')
-              for i in issues:
-                  print(f'  ⚠️ {i}')
-              print('\\n请检查数据完整性')
+              for i in issues: print(f'  ⚠️ {i}')
           else:
-              print('\\n✅ 数据完整性检查通过')
+              print('✅ 数据完整性检查通过')
           "
 
       - name: 自动学习文案
-        run: |
-          echo "=== 自动学习文案 ==="
-          python auto_learn.py || echo "Auto learn skipped"
+        run: python auto_learn.py || echo "Auto learn skipped"
 
       - name: 生成灵感库
-        run: |
-          echo "=== 生成灵感库 ==="
-          python learn_and_generate.py || echo "Inspiration generation skipped"
+        run: python learn_and_generate.py || echo "Inspiration generation skipped"
 
       - name: Commit and push
         run: |
