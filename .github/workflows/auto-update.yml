@@ -26,30 +26,22 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Cache pip packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-clean-${{ hashFiles('requirements.txt') }}
-
       - name: Install pip dependencies
         run: |
           echo "=== pip version ==="
           pip --version
-          echo "=== Installing pip packages ==="
-          pip install --no-cache-dir -r requirements.txt 2>&1
-          echo "=== pip install exit code: $? ==="
+          echo "=== Installing core packages ==="
+          pip install playwright opencc-python-reimplemented requests httpx pandas beautifulsoup4 lxml 2>&1
+          echo "=== pip install done, exit: $? ==="
 
-      - name: Install Playwright
+      - name: Install Playwright browser
         run: |
-          echo "=== Installing Playwright Chromium ==="
-          playwright install chromium 2>&1 || echo "Playwright chromium install failed (non-fatal)"
-          echo "=== Installing Playwright system deps ==="
-          playwright install-deps chromium 2>&1 || echo "Playwright deps install failed (non-fatal)"
+          python -m playwright install chromium 2>&1 || echo "Playwright chromium install failed (non-fatal)"
+          python -m playwright install-deps chromium 2>&1 || echo "Playwright deps install failed (non-fatal)"
 
       - name: Install Whisper (optional, for ASR)
         run: |
-          pip install openai-whisper || echo "Whisper install failed, ASR steps will be skipped"
+          pip install openai-whisper 2>&1 || echo "Whisper install failed, ASR steps will be skipped"
 
       - name: Run scrapers (全平台抓取)
         id: scrape
