@@ -1,11 +1,9 @@
 # 热点信息差网站 - 依赖清单
-# 锁定版本确保CI稳定性
-# 注意: openai-whisper 依赖 torch(~2GB)，单独安装，避免 CI 依赖阶段超时
+# CI 和本地通用（browser_cookie3 仅本地需要，不在此文件中）
 
 # 核心依赖
 playwright>=1.40.0
 opencc-python-reimplemented>=0.1.7
-browser_cookie3>=1.0.0
 
 # HTTP请求
 requests>=2.31.0
