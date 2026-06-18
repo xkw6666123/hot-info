@@ -30,15 +30,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-v2-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-v2-
+          key: ${{ runner.os }}-pip-clean-${{ hashFiles('requirements.txt') }}
 
       - name: Install pip dependencies
         run: |
+          echo "=== pip version ==="
+          pip --version
           echo "=== Installing pip packages ==="
-          pip install -r requirements.txt 2>&1
-          echo "=== pip install done ==="
+          pip install --no-cache-dir -r requirements.txt 2>&1
+          echo "=== pip install exit code: $? ==="
 
       - name: Install Playwright
         run: |
