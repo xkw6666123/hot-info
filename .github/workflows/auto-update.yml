@@ -40,6 +40,10 @@ jobs:
           playwright install chromium
           playwright install-deps chromium
 
+      - name: Install Whisper (optional, for ASR)
+        run: |
+          pip install openai-whisper || echo "Whisper install failed, ASR steps will be skipped"
+
       - name: Run scrapers (全平台抓取)
         id: scrape
         run: |
