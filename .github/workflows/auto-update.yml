@@ -33,7 +33,7 @@ jobs:
           echo "=== pip version ==="
           pip --version
           echo "=== Installing core packages ==="
-          pip install playwright opencc-python-reimplemented requests httpx pandas beautifulsoup4 lxml 2>&1
+          pip install playwright opencc-python-reimplemented requests httpx pandas beautifulsoup4 lxml yt-dlp 2>&1
           echo "=== pip install done, exit: $? ==="
 
       - name: Install Playwright browser
