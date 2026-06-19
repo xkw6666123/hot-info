@@ -43,7 +43,7 @@ if %ART_COUNT% LSS 50 (
     exit /b 1
 )
 
-git add data.json data.js index.html >> auto_run.log 2>&1
+git add data.json data.js index.html asr_content.json >> auto_run.log 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     git commit -m "auto: update (local)" >> auto_run.log 2>&1

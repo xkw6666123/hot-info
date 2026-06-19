@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """
-数据合并保护层：在 CI 环境中确保不丢失博主数据和灵感库。
+数据合并保护层：在 CI 环境中确保不丢失博主数据、灵感库和 ASR 文案。
 
-问题：CI 环境没有抖音 Cookie，抓不到博主视频，generate_hot.py 的救援逻辑
-     可能因为各种原因不生效，导致 data.json 缺少博主拆解和灵感库。
-
-解决：在 generate_hot.py 运行后、gen_js_data.py 运行前，对比新旧数据，
-     如果新数据缺少博主/灵感，从旧数据中补充。
+核心机制：
+- ASR 文案存储在独立的 asr_content.json 中（不受 CI 数据覆盖）
+- merge_data.py 在每次数据生成后运行，从 asr_content.json 迁移文案
+- 本地 auto_run.bat 也会更新 asr_content.json
 """
 import json
 import os
 import sys
 from datetime import datetime
 
-DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.path.join(BASE_DIR, "data.json")
+ASR_FILE = os.path.join(BASE_DIR, "asr_content.json")
 
 
 def load_json(path):
@@ -31,10 +32,70 @@ def save_json(path, data):
     os.replace(tmp, path)
 
 
-def merge_data():
-    """合并新旧数据，确保不丢失博主文章和灵感库"""
+def update_asr_backup(data):
+    """把 data.json 中的完整 ASR 文案同步到 asr_content.json"""
+    asr_backup = load_json(ASR_FILE) or {}
+    articles = data.get("articles", [])
+    updated = 0
+    for a in articles:
+        if a.get("source") != "blogger":
+            continue
+        ci = a.get("content_intro", "")
+        if len(ci) < 100:
+            continue
+        key = a.get("aweme_id", "") or a.get("url", "") or str(a.get("id", ""))
+        if not key:
+            continue
+        existing = asr_backup.get(key, {})
+        # 只更新更长的文案
+        if len(ci) > len(existing.get("content_intro", "")):
+            asr_backup[key] = {
+                "content_intro": ci,
+                "blogger_name": a.get("blogger_name", ""),
+                "title": a.get("title", ""),
+                "url": a.get("url", ""),
+                "aweme_id": a.get("aweme_id", ""),
+            }
+            updated += 1
+    if updated:
+        save_json(ASR_FILE, asr_backup)
+        print(f"  💾 更新 asr_content.json: +{updated} 条 (共 {len(asr_backup)} 条)")
+    return asr_backup
 
-    # 1. 从 git 获取旧的 data.json（CI checkout 后的版本）
+
+def restore_asr_content(data, asr_backup):
+    """从 asr_content.json 恢复 ASR 文案到 data.json"""
+    if not asr_backup:
+        return 0
+    articles = data.get("articles", [])
+    restored = 0
+    for a in articles:
+        if a.get("source") != "blogger":
+            continue
+        ci = a.get("content_intro", "")
+        if len(ci) >= 100:
+            continue  # 已有完整文案
+        # 按 aweme_id 和 URL 匹配
+        for key in [a.get("aweme_id", ""), a.get("url", ""), str(a.get("id", ""))]:
+            if key and key in asr_backup:
+                backup_ci = asr_backup[key].get("content_intro", "")
+                if len(backup_ci) > len(ci):
+                    a["content_intro"] = backup_ci
+                    restored += 1
+                    break
+    return restored
+
+
+def merge_data():
+    """合并新旧数据，确保不丢失博主文章、灵感库和 ASR 文案"""
+
+    # 1. 读取新生成的 data.json
+    new_data = load_json(DATA_FILE)
+    if not new_data:
+        print("  ❌ 新数据读取失败，跳过合并")
+        return
+
+    # 2. 从 git 获取旧的 data.json（用于补充博主和灵感）
     old_data = None
     try:
         import subprocess
@@ -48,91 +109,65 @@ def merge_data():
     except Exception as e:
         print(f"  ⚠️ 读取旧 git 数据失败: {e}")
 
-    if not old_data:
-        print("  ℹ️ 没有旧数据，跳过合并")
-        return
-
-    # 2. 读取新生成的 data.json
-    new_data = load_json(DATA_FILE)
-    if not new_data:
-        print("  ❌ 新数据读取失败，跳过合并")
-        return
+    # 3. 加载 ASR 文案备份
+    asr_backup = load_json(ASR_FILE) or {}
+    print(f"  📂 ASR 文案备份: {len(asr_backup)} 条")
 
     new_articles = new_data.get("articles", [])
-    old_articles = old_data.get("articles", [])
-
-    # 统计
     new_bloggers = [a for a in new_articles if a.get("source") == "blogger"]
-    old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
     new_inspirations = new_data.get("inspirations", [])
-    old_inspirations = old_data.get("inspirations", [])
 
     print(f"  📊 新数据: {len(new_articles)} 条文章, {len(new_bloggers)} 条博主, {len(new_inspirations)} 条灵感")
-    print(f"  📊 旧数据: {len(old_articles)} 条文章, {len(old_bloggers)} 条博主, {len(old_inspirations)} 条灵感")
 
     merged = False
 
-    # 3. ASR 文案迁移：把旧博主的完整文案迁移到新数据（按 aweme_id/URL 匹配）
-    old_asr_map = {}
-    for a in old_articles:
-        if a.get("source") != "blogger":
-            continue
-        ci = a.get("content_intro", "")
-        if len(ci) < 100:
-            continue
-        # 用 aweme_id 和 URL 做 key
-        for key in [a.get("aweme_id", ""), a.get("url", ""), str(a.get("id", ""))]:
-            if key:
-                old_asr_map[key] = ci
-
-    migrated = 0
-    for a in new_articles:
-        if a.get("source") != "blogger":
-            continue
-        ci = a.get("content_intro", "")
-        if len(ci) >= 100:
-            continue  # 已有完整文案，跳过
-        # 查找匹配的旧文案
-        for key in [a.get("aweme_id", ""), a.get("url", ""), str(a.get("id", ""))]:
-            if key in old_asr_map:
-                a["content_intro"] = old_asr_map[key]
-                migrated += 1
-                break
-    if migrated:
+    # 4. 从 ASR 备份恢复文案（核心：不受 CI 覆盖影响）
+    restored = restore_asr_content(new_data, asr_backup)
+    if restored:
         merged = True
-        print(f"  ✅ 迁移 {migrated} 条旧 ASR 文案到新数据")
+        print(f"  ✅ 从 ASR 备份恢复 {restored} 条文案")
 
-    # 4. 如果新数据缺少博主文章，从旧数据补充
-    if len(new_bloggers) < 3 and len(old_bloggers) > 0:
-        # 移除新数据中可能存在的不完整博主数据
-        new_articles = [a for a in new_articles if a.get("source") != "blogger"]
-        # 添加旧的博主数据
-        new_articles.extend(old_bloggers)
-        new_data["articles"] = new_articles
-        merged = True
-        print(f"  ✅ 补充 {len(old_bloggers)} 条旧博主数据")
+    # 5. 从旧数据补充缺失的博主文章
+    if old_data:
+        old_articles = old_data.get("articles", [])
+        old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
+        if len(new_bloggers) < 3 and len(old_bloggers) > 0:
+            new_articles = [a for a in new_articles if a.get("source") != "blogger"]
+            new_articles.extend(old_bloggers)
+            new_data["articles"] = new_articles
+            merged = True
+            print(f"  ✅ 补充 {len(old_bloggers)} 条旧博主数据")
+            # 再次恢复 ASR 文案
+            restore_asr_content(new_data, asr_backup)
 
-    # 4. 如果新数据缺少灵感库，从旧数据补充
-    if len(new_inspirations) < 10 and len(old_inspirations) > 0:
-        new_data["inspirations"] = old_inspirations
-        merged = True
-        print(f"  ✅ 补充 {len(old_inspirations)} 条旧灵感数据")
+    # 6. 从旧数据补充灵感库
+    if old_data:
+        old_inspirations = old_data.get("inspirations", [])
+        if len(new_inspirations) < 10 and len(old_inspirations) > 0:
+            new_data["inspirations"] = old_inspirations
+            merged = True
+            print(f"  ✅ 补充 {len(old_inspirations)} 条旧灵感数据")
 
-    # 5. 确保 updated_at 存在
+    # 7. 确保 updated_at 存在
     if not new_data.get("updated_at"):
         new_data["updated_at"] = datetime.now().isoformat()
         merged = True
 
-    # 6. 写回
+    # 8. 写回
     if merged:
         save_json(DATA_FILE, new_data)
-        # 重新统计
         final_articles = new_data.get("articles", [])
         final_bloggers = [a for a in final_articles if a.get("source") == "blogger"]
         final_inspirations = new_data.get("inspirations", [])
+        short_ci = [b for b in final_bloggers if len(b.get("content_intro", "")) < 100]
         print(f"  📦 合并后: {len(final_articles)} 条文章, {len(final_bloggers)} 条博主, {len(final_inspirations)} 条灵感")
+        if short_ci:
+            print(f"  ⚠️ {len(short_ci)} 条博主文案仍较短（新视频，本地ASR未处理）")
     else:
         print("  ℹ️ 数据完整，无需合并")
+
+    # 9. 更新 ASR 备份（把新的完整文案同步到 asr_content.json）
+    update_asr_backup(new_data)
 
 
 if __name__ == "__main__":
