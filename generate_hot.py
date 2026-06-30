@@ -1398,6 +1398,44 @@ def generate_inspirations(all_articles):
         ]
         return pick(patterns, topic + 'sd_v7' + str(idx))
 
+    # 尝试加载学习到的博主风格
+    style_file = os.path.join(os.path.dirname(__file__), "blogger_style_learned.json")
+    learned_styles = {}
+    if os.path.exists(style_file):
+        try:
+            with open(style_file, "r", encoding="utf-8") as f:
+                learned_styles = json.load(f)
+        except:
+            pass
+
+    # 如果有学习到的风格，使用学习到的风格生成灵感
+    if learned_styles:
+        from learn_blogger_style import generate_inspiration_from_style
+        inspirations = []
+        for i, a in enumerate(selected[:50]):
+            topic = a.get("title", "")
+            if not topic:
+                continue
+            source = a.get("source", "")
+            blogger_name = a.get("blogger_name", "")
+            seed = f"{topic}_{source}_{i}"
+            
+            # 使用学习到的风格生成灵感
+            style_inspirations = generate_inspiration_from_style(topic, source, learned_styles)
+            
+            inspirations.append({
+                "topic": topic,
+                "source": source,
+                "blogger_name": blogger_name,
+                "wangba": style_inspirations.get("网吧信息差", wangba_style(topic, source, topic, i)),
+                "aqi": style_inspirations.get("阿七大型纪录片", aqi_style(topic, source, topic, i)),
+                "chen": style_inspirations.get("陈先生", chen_style(topic, source, topic, i)),
+                "guancha": style_inspirations.get("人类观察菌", guancha_style(topic, source, topic, i)),
+                "shadi": style_inspirations.get("沙漠一之雕", shadi_style(topic, source, topic, i)),
+            })
+        return inspirations
+    
+    # 否则使用原有的硬编码模式
     inspirations = []
     for i, a in enumerate(selected[:50]):
         topic = a.get("title", "")

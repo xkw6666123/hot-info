@@ -27,6 +27,9 @@ if errorlevel 1 (
 :: 数据合并保护：确保不丢失博主数据和灵感库
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
 
+:: 学习博主风格（用于生成更真实的灵感内容）
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe learn_blogger_style.py >> auto_run.log 2>&1
+
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe gen_js_data.py >> auto_run.log 2>&1
 if errorlevel 1 (
     echo [%date% %time%] ERROR: gen_js_data.py failed >> auto_run.log

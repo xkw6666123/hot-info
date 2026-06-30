@@ -91,6 +91,9 @@ jobs:
       - name: 自动学习文案
         run: python auto_learn.py || echo "Auto learn skipped"
 
+      - name: 学习博主风格
+        run: python learn_blogger_style.py || echo "Style learning skipped"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
