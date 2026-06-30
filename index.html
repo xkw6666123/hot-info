@@ -492,25 +492,34 @@ function toggleTheme(){
   localStorage.setItem('theme',isLight?'light':'dark');
   document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
 }
-// 一键更新：通过 Cloudflare Pages Function 触发 GitHub Actions
+// 一键更新：通过 GitHub API 触发 workflow_dispatch
 function triggerUpdate(){
   var btn=document.getElementById('updateBtn');
   btn.textContent='⏳ 触发中...';btn.disabled=true;
   btn.style.background='var(--blue)';
-  fetch('/api/trigger-update',{method:'POST'})
-    .then(function(r){return r.json();})
-    .then(function(d){
-      if(d.ok){
+  // 使用 GitHub API 触发 workflow_dispatch
+  fetch('https://api.github.com/repos/xkw6666123/hot-info/actions/workflows/auto-update.yml/dispatches',{
+    method:'POST',
+    headers:{
+      'Accept':'application/vnd.github.v3+json',
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({ref:'main'})
+  })
+    .then(function(r){
+      if(r.ok||r.status===204){
         btn.textContent='✅ 已触发';btn.style.background='#22c55e';
-        setTimeout(function(){location.reload();},2000);
+        setTimeout(function(){location.reload();},3000);
       }else{
-        btn.textContent='❌ 失败';btn.style.background='#ef4444';
-        setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
+        // GitHub API 需要认证，改用提示方式
+        btn.textContent='⚠️ 请手动运行';btn.style.background='#f59e0b';
+        setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},5000);
       }
     })
     .catch(function(e){
-      btn.textContent='❌ 失败';btn.style.background='#ef4444';
-      setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
+      // 网络错误时提示手动运行
+      btn.textContent='⚠️ 请手动运行';btn.style.background='#f59e0b';
+      setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},5000);
     });
 }
 // 初始化主题
