@@ -290,6 +290,15 @@ def scrape_bilibili_bloggers():
         print(f"  📹 {name} (mid={mid})...")
         url = f"https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=5&pn=1&order=pubdate"
         
+        # B站API需要cookie才能正常访问
+        bili_cookie = ''
+        try:
+            import browser_cookie3
+            cj = browser_cookie3.chrome(domain_name='bilibili.com')
+            bili_cookie = '; '.join(f'{c.name}={c.value}' for c in cj if 'bilibili' in c.domain)
+        except:
+            pass
+        
         data = None
         for attempt in range(5):
             try:
@@ -298,6 +307,7 @@ def scrape_bilibili_bloggers():
                     "Referer": f"https://space.bilibili.com/{mid}",
                     "Accept": "application/json, text/plain, */*",
                     "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+                    "Cookie": bili_cookie,
                 })
                 opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
                 with opener.open(req, timeout=15) as resp:
@@ -306,14 +316,14 @@ def scrape_bilibili_bloggers():
                     if code == 0:
                         break
                     elif code == -799:
-                        wait = 15 * (attempt + 1)
+                        wait = 30 * (attempt + 1)
                         print(f"    ⏳ 限流，等待{wait}s后重试({attempt+1}/5)...")
                         time.sleep(wait)
                     else:
-                        time.sleep(2)
+                        time.sleep(5)
             except Exception as e:
                 if attempt < 4:
-                    wait = 15 * (attempt + 1)
+                    wait = 30 * (attempt + 1)
                     print(f"    ⏳ 网络异常，等待{wait}s后重试({attempt+1}/5)...")
                     time.sleep(wait)
                 else:
