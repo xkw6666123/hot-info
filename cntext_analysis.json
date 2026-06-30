@@ -1,0 +1,32 @@
+{
+  "阿七大型纪录片": [
+    {
+      "keywords": [
+        "精神",
+        "妹妹",
+        "黄毛",
+        "小伙",
+        "博主",
+        "他们",
+        "手机",
+        "路边",
+        "朋友",
+        "回去"
+      ],
+      "sentiment": {
+        "positive": 0.42857142857142855,
+        "negative": 0.5714285714285714,
+        "neutral": 0.0,
+        "sentiment": "neutral"
+      },
+      "readability": {
+        "avg_sentence_length": 29.08888888888889,
+        "sentence_count": 45,
+        "readability": "medium"
+      },
+      "length": 1360,
+      "title": "6月14日社会热点信息差#热点",
+      "date": "2026-06-14"
+    }
+  ]
+}
