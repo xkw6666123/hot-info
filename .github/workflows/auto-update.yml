@@ -95,9 +95,6 @@ jobs:
       - name: 自动学习文案
         run: python auto_learn.py || echo "Auto learn skipped"
 
-      - name: 生成灵感库
-        run: python learn_and_generate.py || echo "Inspiration generation skipped"
-
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
