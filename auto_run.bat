@@ -27,8 +27,8 @@ if errorlevel 1 (
 :: 数据合并保护：确保不丢失博主数据和灵感库
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
 
-:: 学习博主风格（用于生成更真实的灵感内容）
-C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe learn_blogger_style.py >> auto_run.log 2>&1
+:: 持续学习：归档文案 + 学习风格
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe continuous_learner.py >> auto_run.log 2>&1
 
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe gen_js_data.py >> auto_run.log 2>&1
 if errorlevel 1 (
@@ -46,7 +46,7 @@ if %ART_COUNT% LSS 50 (
     exit /b 1
 )
 
-git add data.json data.js index.html asr_content.json >> auto_run.log 2>&1
+git add data.json data.js index.html asr_content.json blogger_content_archive.json deep_style_learned.json >> auto_run.log 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     git commit -m "auto: update (local)" >> auto_run.log 2>&1

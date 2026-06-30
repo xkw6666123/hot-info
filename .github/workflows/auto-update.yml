@@ -91,14 +91,14 @@ jobs:
       - name: 自动学习文案
         run: python auto_learn.py || echo "Auto learn skipped"
 
-      - name: 学习博主风格
-        run: python learn_blogger_style.py || echo "Style learning skipped"
+      - name: 持续学习（归档+风格学习）
+        run: python continuous_learner.py || echo "Continuous learning skipped"
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html blogger_content_learn.json asr_content.json
+          git add data.json index.html blogger_content_learn.json asr_content.json blogger_content_archive.json deep_style_learned.json
           if git diff --staged --quiet; then
             echo "No changes, skipping commit"
           else
