@@ -261,105 +261,76 @@ def scrape_bilibili():
     return articles
 
 def scrape_bilibili_bloggers():
-    """B站博主追踪：搜索 UID → 获取最新视频"""
+    """B站博主追踪：使用 bilibili-api-python 获取最新视频"""
     if not BILI_BLOGGERS:
         return []
     
     print("📡 B站博主追踪...")
     articles = []
     
-    for blogger in BILI_BLOGGERS:
-        name = blogger["name"]
-        mid = blogger.get("mid", "")
-        
-        # 如果没有 mid，先搜索
-        if not mid:
-            url = f"https://api.bilibili.com/x/web-interface/search/type?search_type=bili_user&keyword={urllib.parse.quote(name)}"
-            data = fetch_json(url, referer="https://www.bilibili.com/")
-            if data and data.get("code") == 0:
-                users = data.get("data", {}).get("result", [])
-                for u in users:
-                    if isinstance(u, dict) and (u.get("uname") == name or name in u.get("uname", "")):
-                        mid = str(u.get("mid", ""))
-                        break
+    try:
+        from bilibili_api import user as bili_user
+        import asyncio
+    except ImportError:
+        print("  ⚠️ bilibili-api-python 未安装，跳过B站博主追踪")
+        return []
+    
+    async def fetch_bili_videos():
+        for blogger in BILI_BLOGGERS:
+            name = blogger["name"]
+            mid = blogger.get("mid", "")
+            
             if not mid:
-                print(f"  📹 {name}: 未找到 B站 UID")
+                print(f"  📹 {name}: 无 mid，跳过")
                 continue
-        
-        # 获取最新视频（B站 space API 需要新连接，复用 opener 可能触发 412）
-        print(f"  📹 {name} (mid={mid})...")
-        url = f"https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=5&pn=1&order=pubdate"
-        
-        # B站API需要cookie才能正常访问
-        bili_cookie = ''
-        try:
-            import browser_cookie3
-            cj = browser_cookie3.chrome(domain_name='bilibili.com')
-            bili_cookie = '; '.join(f'{c.name}={c.value}' for c in cj if 'bilibili' in c.domain)
-        except:
-            pass
-        
-        data = None
-        for attempt in range(5):
+            
+            print(f"  📹 {name} (mid={mid})...")
             try:
-                req = urllib.request.Request(url, headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-                    "Referer": f"https://space.bilibili.com/{mid}",
-                    "Accept": "application/json, text/plain, */*",
-                    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-                    "Cookie": bili_cookie,
-                })
-                opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-                with opener.open(req, timeout=15) as resp:
-                    data = json.loads(resp.read().decode("utf-8", errors="replace"))
-                    code = data.get("code")
-                    if code == 0:
-                        break
-                    elif code == -799:
-                        wait = 30 * (attempt + 1)
-                        print(f"    ⏳ 限流，等待{wait}s后重试({attempt+1}/5)...")
-                        time.sleep(wait)
-                    else:
-                        time.sleep(5)
+                u = bili_user.User(uid=int(mid))
+                videos = await u.get_videos(pn=1, ps=5)
+                vlist = videos.get('list', {}).get('vlist', [])
+                
+                if not vlist:
+                    print(f"    ⚠️ 无视频")
+                    continue
+                
+                print(f"    ✅ 找到 {len(vlist)} 条视频")
+                
+                for v in vlist[:3]:
+                    created = v.get("created", 0)
+                    articles.append({
+                        "id": make_id("bili_blogger", f"{name}_{v.get('bvid','')}") % 10**9,
+                        "title": v.get("title", f"{name} 最新视频")[:50],
+                        "summary": (v.get("description", "") or v.get("title", ""))[:200],
+                        "source": "blogger",
+                        "blogger_name": name,
+                        "platform": "bilibili",
+                        "date": datetime.fromtimestamp(created).strftime("%Y-%m-%d") if created else today,
+                        "time": datetime.fromtimestamp(created).strftime("%H:%M") if created else now_time,
+                        "tags": ["B站", "博主", "热点"],
+                        "url": f"https://www.bilibili.com/video/{v.get('bvid','')}",
+                        "likes": safe_int(v.get("favorites"), 0),
+                        "comments": safe_int(v.get("comment"), 0),
+                        "play_count": v.get("play", 0),
+                        "aweme_id": v.get("bvid", ""),
+                        "create_time": created,
+                    })
+                
+                # 避免请求过快
+                await asyncio.sleep(2)
+                
             except Exception as e:
-                if attempt < 4:
-                    wait = 30 * (attempt + 1)
-                    print(f"    ⏳ 网络异常，等待{wait}s后重试({attempt+1}/5)...")
-                    time.sleep(wait)
-                else:
-                    print(f"    ⚠️ 获取失败: {e}")
-        
-        if not data or data.get("code") != 0:
-            if data:
-                print(f"    ⚠️ code={data.get('code')}, msg={data.get('message','')}")
-            continue
-        
-        vlist = data.get("data", {}).get("list", {}).get("vlist", [])
-        if not vlist:
-            print(f"    ⚠️ 无视频")
-            continue
-        
-        print(f"    ✅ 找到 {len(vlist)} 条视频")
-        
-        for v in vlist[:3]:
-            created = v.get("created", 0)
-            articles.append({
-                "id": make_id("bili_blogger", f"{name}_{v.get('bvid','')}") % 10**9,
-                "title": v.get("title", f"{name} 最新视频")[:50],
-                "summary": (v.get("description", "") or v.get("title", ""))[:200],
-                "source": "blogger",
-                "blogger_name": name,
-                "platform": "bilibili",
-                "date": datetime.fromtimestamp(created).strftime("%Y-%m-%d") if created else today,
-                "time": datetime.fromtimestamp(created).strftime("%H:%M") if created else now_time,
-                "tags": ["B站", "博主", "热点"],
-                "url": f"https://www.bilibili.com/video/{v.get('bvid','')}",
-                "likes": safe_int(v.get("favorites"), 0),
-                "comments": safe_int(v.get("comment"), 0),
-                "play_count": v.get("play", 0),
-                "aweme_id": v.get("bvid", ""),
-                "create_time": created,
-            })
+                print(f"    ⚠️ 获取失败: {e}")
+    
+    # 运行异步函数
+    try:
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            import nest_asyncio
+            nest_asyncio.apply()
+        asyncio.run(fetch_bili_videos())
+    except Exception as e:
+        print(f"  ⚠️ B站博主追踪异常: {e}")
     
     return articles
 
