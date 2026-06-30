@@ -128,15 +128,26 @@ def merge_data():
         print(f"  ✅ 从 ASR 备份恢复 {restored} 条文案")
 
     # 5. 从旧数据补充缺失的博主文章
+    # 核心逻辑：新数据中博主数量 < 旧数据中博主数量 → 补充旧数据
+    # 这解决了 CI Cookie 过期导致抓不到部分博主的问题
     if old_data:
         old_articles = old_data.get("articles", [])
         old_bloggers = [a for a in old_articles if a.get("source") == "blogger"]
-        if len(new_bloggers) < 3 and len(old_bloggers) > 0:
+        new_blogger_names = set(b.get("blogger_name", "") for b in new_bloggers)
+        old_blogger_names = set(b.get("blogger_name", "") for b in old_bloggers)
+        missing_names = old_blogger_names - new_blogger_names
+        if missing_names:
+            # 新数据缺少部分博主，用旧数据补充
             new_articles = [a for a in new_articles if a.get("source") != "blogger"]
-            new_articles.extend(old_bloggers)
+            # 新数据中的博主保留
+            new_articles.extend(new_bloggers)
+            # 补充旧数据中缺失的博主
+            for b in old_bloggers:
+                if b.get("blogger_name", "") in missing_names:
+                    new_articles.append(b)
             new_data["articles"] = new_articles
             merged = True
-            print(f"  ✅ 补充 {len(old_bloggers)} 条旧博主数据")
+            print(f"  ✅ 补充缺失博主: {', '.join(missing_names)} ({len(old_bloggers)} 条旧数据)")
             # 再次恢复 ASR 文案
             restore_asr_content(new_data, asr_backup)
 
