@@ -749,7 +749,7 @@ function renderCard(a){
     ${isBlogger?`<button class="fav-btn" style="right:40px;${liked?'background:var(--gold-dim);color:var(--gold)':'color:var(--text-muted)'}" data-id="${a.id}" data-tags='${esc(JSON.stringify(a.tags||[]))}' onclick="event.preventDefault();event.stopPropagation();toggleLike(this.dataset.id,this.dataset.tags)">${liked?'❤️':'🤍'}</button>`:''}
     <a href="${esc(a.url||'#')}" target="_blank" class="card" style="display:block;color:inherit;${isNew?'border-left:3px solid var(--gold)':''}${sc>=50?'border-left:3px solid #FF5722':sc>=35?'border-left:3px solid #FF9800':''}">
       <div class="card-time">
-        <span class="dot"></span>${a.date} ${a.time}
+        <span class="dot"></span>${a.date}${a.time ? ' '+a.time : ''}
         <span class="source">${a.source||''}</span>
         ${heatBadge}
         ${newBadge}
@@ -1102,7 +1102,7 @@ function renderAnalysis(){
       h+=`<div style="margin-top:12px;margin-bottom:4px;padding:6px 10px;background:rgba(122,130,148,0.04);border-radius:6px;font-size:12px;font-weight:600;color:${bloggerColor};display:flex;align-items:center;gap:6px"><span>${bloggerIcon} ${blogger}</span><span style="font-size:10px;color:var(--text-muted);font-weight:400">${bloggerCountMap[blogger]}条视频</span></div>`;
     }
     h+=`<div class="analysis-card" style="position:relative;cursor:default"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">`;
-    h+=`<span style="font-size:11px;color:var(--text-muted)">${v.date} ${v.time}</span>`;
+    h+=`<span style="font-size:11px;color:var(--text-muted)">${v.date}${v.time ? ' '+v.time : ''}</span>`;
     h+=`<a href="${esc(v.url||'#')}" target="_blank" style="margin-left:auto;font-size:11px;color:var(--blue);text-decoration:none" onclick="event.stopPropagation()">🔗 查看原视频</a>`;
     h+=`<span style="font-size:11px;color:var(--text-muted)">👍 ${fmt(v.likes)} · 💬 ${fmt(v.comments)}</span></div>`;
     h+=`<a href="${esc(v.url||'#')}" target="_blank" style="text-decoration:none;color:inherit"><h3 style="font-size:16px;margin-bottom:6px;color:var(--text-pri)">${esc(v.title)}</h3></a>`;
