@@ -27,6 +27,10 @@ if errorlevel 1 (
 :: 数据合并保护：确保不丢失博主数据和灵感库
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
 
+:: 自动ASR：检测缺失文案并自动补提
+set MIMO_API_KEY=tp-ct56cpxdmbbfsvma531fntsj2ru0a3584nz44oh3hxzodh6z
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe auto_asr.py >> auto_run.log 2>&1
+
 :: 持续学习：归档文案 + 学习风格
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe continuous_learner.py >> auto_run.log 2>&1
 

@@ -54,6 +54,11 @@ jobs:
           echo "=== 合并保护：迁移旧ASR文案，确保不丢失博主数据和灵感库 ==="
           python merge_data.py 2>&1 || echo "merge_data skipped"
 
+      - name: 自动ASR文案补提
+        run: python auto_asr.py || echo "Auto ASR skipped"
+        env:
+          MIMO_API_KEY: ${{ secrets.MIMO_API_KEY }}
+
       - name: 嵌入数据到HTML
         run: |
           echo "=== data.json size: $(wc -c < data.json) bytes ==="
