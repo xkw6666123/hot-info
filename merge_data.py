@@ -136,25 +136,47 @@ def merge_data():
         new_blogger_names = set(b.get("blogger_name", "") for b in new_bloggers)
         old_blogger_names = set(b.get("blogger_name", "") for b in old_bloggers)
         missing_names = old_blogger_names - new_blogger_names
+        
+        # 也检查每个博主的视频数量是否减少
+        from collections import Counter
+        new_counts = Counter(b.get("blogger_name", "") for b in new_bloggers)
+        old_counts = Counter(b.get("blogger_name", "") for b in old_bloggers)
+        for name in old_blogger_names:
+            if name in new_blogger_names:
+                if old_counts[name] > new_counts[name]:
+                    missing_names.add(name)
+        
         if missing_names:
-            # 新数据缺少部分博主，用旧数据补充
+            # 新数据缺少部分博主或视频数量减少，用旧数据补充
             new_articles = [a for a in new_articles if a.get("source") != "blogger"]
             # 新数据中的博主保留
             new_articles.extend(new_bloggers)
             # 补充旧数据中缺失的博主
             for b in old_bloggers:
                 if b.get("blogger_name", "") in missing_names:
-                    new_articles.append(b)
+                    # 避免重复
+                    aweme_id = b.get("aweme_id", "")
+                    if not any(x.get("aweme_id") == aweme_id for x in new_articles):
+                        new_articles.append(b)
             new_data["articles"] = new_articles
             merged = True
-            print(f"  ✅ 补充缺失博主: {', '.join(missing_names)} ({len(old_bloggers)} 条旧数据)")
+            print(f"  ✅ 补充缺失博主: {', '.join(missing_names)}")
             # 再次恢复 ASR 文案
             restore_asr_content(new_data, asr_backup)
 
     # 6. 从旧数据补充灵感库
+    # 如果新数据灵感字段为空或数量不足，用旧数据补充
     if old_data:
         old_inspirations = old_data.get("inspirations", [])
-        if len(new_inspirations) < 10 and len(old_inspirations) > 0:
+        # 检查新灵感是否有内容
+        new_insp_has_content = any(
+            len(i.get("wangba", "")) > 10 for i in new_inspirations[:3]
+        ) if new_inspirations else False
+        old_insp_has_content = any(
+            len(i.get("wangba", "")) > 10 for i in old_inspirations[:3]
+        ) if old_inspirations else False
+        
+        if (len(new_inspirations) < 10 or not new_insp_has_content) and old_insp_has_content:
             new_data["inspirations"] = old_inspirations
             merged = True
             print(f"  ✅ 补充 {len(old_inspirations)} 条旧灵感数据")
