@@ -1398,19 +1398,37 @@ def generate_inspirations(all_articles):
         ]
         return pick(patterns, topic + 'sd_v7' + str(idx))
 
-    # 尝试加载学习到的博主风格
-    style_file = os.path.join(os.path.dirname(__file__), "blogger_style_learned.json")
+    # 尝试加载深度学习到的博主风格
+    deep_style_file = os.path.join(os.path.dirname(__file__), "deep_style_learned.json")
+    basic_style_file = os.path.join(os.path.dirname(__file__), "blogger_style_learned.json")
     learned_styles = {}
-    if os.path.exists(style_file):
+    
+    # 优先使用深度学习的风格
+    if os.path.exists(deep_style_file):
         try:
-            with open(style_file, "r", encoding="utf-8") as f:
+            with open(deep_style_file, "r", encoding="utf-8") as f:
+                learned_styles = json.load(f)
+        except:
+            pass
+    
+    # 如果没有深度学习的风格，使用基本学习的风格
+    if not learned_styles and os.path.exists(basic_style_file):
+        try:
+            with open(basic_style_file, "r", encoding="utf-8") as f:
                 learned_styles = json.load(f)
         except:
             pass
 
     # 如果有学习到的风格，使用学习到的风格生成灵感
     if learned_styles:
-        from learn_blogger_style import generate_inspiration_from_style
+        # 检查是否是深度学习的风格（有 sentence_patterns 字段）
+        is_deep = any("sentence_patterns" in v for v in learned_styles.values())
+        
+        if is_deep:
+            from deep_style_learner import generate_inspiration_from_deep_style as gen_func
+        else:
+            from learn_blogger_style import generate_inspiration_from_style as gen_func
+        
         inspirations = []
         for i, a in enumerate(selected[:50]):
             topic = a.get("title", "")
@@ -1421,7 +1439,7 @@ def generate_inspirations(all_articles):
             seed = f"{topic}_{source}_{i}"
             
             # 使用学习到的风格生成灵感
-            style_inspirations = generate_inspiration_from_style(topic, source, learned_styles)
+            style_inspirations = gen_func(topic, source, learned_styles)
             
             inspirations.append({
                 "topic": topic,
