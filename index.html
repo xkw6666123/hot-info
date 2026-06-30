@@ -599,9 +599,13 @@ function initPage(){
 
   // 更新时间（显示友好格式）
   if(json.updated_at){
-    // GitHub Actions 生成的 updated_at 为 UTC 时间但无 Z 后缀，补齐时区标记
-    const ts=json.updated_at.endsWith('Z')?json.updated_at:json.updated_at+'Z';
-    const d=new Date(ts);
+    // 直接解析时间字符串，不添加Z后缀（避免UTC转换）
+    const parts=json.updated_at.split('T');
+    const datePart=parts[0]||'';
+    const timePart=(parts[1]||'').split('+')[0].split('Z')[0];
+    const[dateY,dateM,dateD]=datePart.split('-').map(Number);
+    const[dateH,dateMin]=timePart.split(':').map(Number);
+    const d=new Date(dateY,dateM-1,dateD,dateH,dateMin);
     const now=new Date();
     const diffMs=now-d;
     const diffMin=Math.floor(diffMs/60000);
@@ -614,9 +618,9 @@ function initPage(){
     else timeText=diffDay+'天前更新';
     document.getElementById('updateTime').innerHTML=
       '🕐 '+timeText+' <span style="font-size:11px;opacity:0.6">'+
-      (d.getMonth()+1)+'/'+d.getDate()+' '+
-      d.getHours().toString().padStart(2,'0')+':'+
-      d.getMinutes().toString().padStart(2,'0')+'</span>';
+      dateM+'/'+dateD+' '+
+      dateH.toString().padStart(2,'0')+':'+
+      dateMin.toString().padStart(2,'0')+'</span>';
   }
 
   renderTags('全部');
