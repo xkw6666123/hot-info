@@ -1797,8 +1797,8 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=2)           # 新闻保留3天（今天+2天前=3天窗口）
-    rescue_cutoff = datetime.now().date() - timedelta(days=6)   # 失败平台保留7天
+    cutoff = datetime.now().date() - timedelta(days=6)           # 新闻保留7天（今天+6天前=7天窗口）
+    rescue_cutoff = datetime.now().date() - timedelta(days=13)   # 失败平台保留14天
     blog_cutoff = datetime.now().date() - timedelta(days=30)      # F2时间戳非标准，放宽防误删
     fresh = []
     bloggers_kept = {}
