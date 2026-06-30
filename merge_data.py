@@ -127,7 +127,34 @@ def merge_data():
         merged = True
         print(f"  ✅ 从 ASR 备份恢复 {restored} 条文案")
 
-    # 5. 从旧数据补充缺失的博主文章
+    # 5. 从旧数据补充近7天的热点文章（防止CI/CD丢失历史数据）
+    if old_data:
+        from datetime import datetime, timedelta
+        old_articles_all = old_data.get("articles", [])
+        cutoff = (datetime.now() - timedelta(days=6)).strftime("%Y-%m-%d")
+        
+        # 提取旧数据中近7天的非博主文章
+        old_hot = [a for a in old_articles_all 
+                   if a.get("source") != "blogger" 
+                   and a.get("date", "") >= cutoff]
+        
+        # 提取新数据中的非博主文章
+        new_hot = [a for a in new_articles if a.get("source") != "blogger"]
+        new_hot_ids = set(a.get("id") for a in new_hot)
+        
+        # 补充旧数据中缺失的文章
+        added = 0
+        for a in old_hot:
+            if a.get("id") not in new_hot_ids:
+                new_articles.append(a)
+                added += 1
+        
+        if added:
+            new_data["articles"] = new_articles
+            merged = True
+            print(f"  ✅ 补充近7天热点: +{added}条")
+    
+    # 6. 从旧数据补充缺失的博主文章
     # 核心逻辑：新数据中博主数量 < 旧数据中博主数量 → 补充旧数据
     # 这解决了 CI Cookie 过期导致抓不到部分博主的问题
     if old_data:
