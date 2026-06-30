@@ -614,7 +614,7 @@ function initPage(){
     else timeText=diffDay+'天前更新';
     document.getElementById('updateTime').innerHTML=
       '🕐 '+timeText+' <span style="font-size:11px;opacity:0.6">'+
-      d.getMonth()+1+'/'+d.getDate()+' '+
+      (d.getMonth()+1)+'/'+d.getDate()+' '+
       d.getHours().toString().padStart(2,'0')+':'+
       d.getMinutes().toString().padStart(2,'0')+'</span>';
   }
