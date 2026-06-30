@@ -1,0 +1,46 @@
+{
+  "阿七大型纪录片": {
+    "sample_count": 3,
+    "avg_length": 1107,
+    "avg_sentences": 34,
+    "avg_sentence_length": 31,
+    "vocabulary_richness": 0.993915643180349,
+    "emotional_intensity": 0.010101010101010102,
+    "interaction_level": 0.07275317275317275,
+    "storytelling_score": 0.11592851592851594,
+    "last_analyzed": "2026-06-30T21:17:31.909039"
+  },
+  "网吧信息差": {
+    "sample_count": 3,
+    "avg_length": 1346,
+    "avg_sentences": 44,
+    "avg_sentence_length": 30,
+    "vocabulary_richness": 0.7250362536958542,
+    "emotional_intensity": 0.011904761904761904,
+    "interaction_level": 0.032106782106782104,
+    "storytelling_score": 0.03391053391053391,
+    "last_analyzed": "2026-06-30T21:17:31.910668"
+  },
+  "陈先生": {
+    "sample_count": 3,
+    "avg_length": 355,
+    "avg_sentences": 10,
+    "avg_sentence_length": 31,
+    "vocabulary_richness": 0.9962121212121212,
+    "emotional_intensity": 0.027777777777777776,
+    "interaction_level": 0.027777777777777776,
+    "storytelling_score": 0.2698412698412698,
+    "last_analyzed": "2026-06-30T21:17:31.910668"
+  },
+  "人类观察菌": {
+    "sample_count": 3,
+    "avg_length": 1535,
+    "avg_sentences": 111,
+    "avg_sentence_length": 15,
+    "vocabulary_richness": 0.3354210801019311,
+    "emotional_intensity": 0.014524328249818445,
+    "interaction_level": 0.6623093681917211,
+    "storytelling_score": 0.04938271604938271,
+    "last_analyzed": "2026-06-30T21:17:31.912181"
+  }
+}
