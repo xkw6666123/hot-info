@@ -18,11 +18,17 @@ if errorlevel 1 (
     echo [%date% %time%] WARNING: git pull failed, continuing with local data >> auto_run.log
 )
 
+:: 归档当前数据（防止丢失）
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe data_archive.py >> auto_run.log 2>&1
+
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe generate_hot.py --local >> auto_run.log 2>&1
 if errorlevel 1 (
     echo [%date% %time%] ERROR: generate_hot.py failed >> auto_run.log
     exit /b 1
 )
+
+:: 从归档恢复历史数据
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe data_archive.py restore >> auto_run.log 2>&1
 
 :: 数据合并保护：确保不丢失博主数据和灵感库
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
@@ -50,7 +56,7 @@ if %ART_COUNT% LSS 50 (
     exit /b 1
 )
 
-git add data.json data.js index.html asr_content.json blogger_content_archive.json deep_style_learned.json >> auto_run.log 2>&1
+git add data.json data.js index.html asr_content.json blogger_content_archive.json deep_style_learned.json data_archive.json >> auto_run.log 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     git commit -m "auto: update (local)" >> auto_run.log 2>&1

@@ -37,6 +37,9 @@ jobs:
           python -m playwright install chromium 2>&1 || echo "Playwright chromium install failed (non-fatal)"
           python -m playwright install-deps chromium 2>&1 || echo "Playwright deps install failed (non-fatal)"
 
+      - name: 归档当前数据 (防止丢失)
+        run: python data_archive.py || echo "Archive skipped"
+
       - name: Run scrapers (全平台抓取)
         id: scrape
         run: |
@@ -48,6 +51,9 @@ jobs:
         env:
           TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
           DOUYIN_COOKIE: ${{ secrets.DOUYIN_COOKIE }}
+
+      - name: 从归档恢复历史数据
+        run: python data_archive.py restore || echo "Restore skipped"
 
       - name: 数据合并保护 (迁移ASR文案+保留博主/灵感)
         run: |
@@ -103,7 +109,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html blogger_content_learn.json asr_content.json blogger_content_archive.json deep_style_learned.json
+          git add data.json index.html blogger_content_learn.json asr_content.json blogger_content_archive.json deep_style_learned.json data_archive.json
           if git diff --staged --quiet; then
             echo "No changes, skipping commit"
           else
