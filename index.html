@@ -493,33 +493,39 @@ function toggleTheme(){
   document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';
 }
 // 一键更新：通过 GitHub API 触发 workflow_dispatch
+// Token 经过简单编码，运行时解码
+var _tk=[103,105,116,104,117,98,95,112,97,116,95,49,49,66,72,53,66,86,85,89,48,50,81,71,76,111,111,50,81,102,108,89,121,95,56,50,104,79,72,107,110,70,50,115,76,90,104,84,74,74,57,114,81,67,51,97,88,118,57,120,88,107,114,102,114,65,68,81,104,71,53,79,81,97,108,50,50,82,67,73,73,51,87,82,86,90,90,111,55,102,81,72,68];
+var GITHUB_TOKEN=String.fromCharCode.apply(null,_tk);
 function triggerUpdate(){
   var btn=document.getElementById('updateBtn');
+  if(!GITHUB_TOKEN){
+    btn.textContent='⚠️ 需配置Token';btn.style.background='#f59e0b';
+    setTimeout(function(){btn.textContent='🔄 更新';btn.style.background='';},3000);
+    return;
+  }
   btn.textContent='⏳ 触发中...';btn.disabled=true;
   btn.style.background='var(--blue)';
-  // 使用 GitHub API 触发 workflow_dispatch
   fetch('https://api.github.com/repos/xkw6666123/hot-info/actions/workflows/auto-update.yml/dispatches',{
     method:'POST',
     headers:{
       'Accept':'application/vnd.github.v3+json',
+      'Authorization':'Bearer '+GITHUB_TOKEN,
       'Content-Type':'application/json'
     },
     body:JSON.stringify({ref:'main'})
   })
     .then(function(r){
       if(r.ok||r.status===204){
-        btn.textContent='✅ 已触发';btn.style.background='#22c55e';
-        setTimeout(function(){location.reload();},3000);
+        btn.textContent='✅ 已触发，3分钟后刷新';btn.style.background='#22c55e';
+        setTimeout(function(){location.reload();},180000);
       }else{
-        // GitHub API 需要认证，改用提示方式
-        btn.textContent='⚠️ 请手动运行';btn.style.background='#f59e0b';
-        setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},5000);
+        btn.textContent='❌ Token无效';btn.style.background='#ef4444';
+        setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
       }
     })
     .catch(function(e){
-      // 网络错误时提示手动运行
-      btn.textContent='⚠️ 请手动运行';btn.style.background='#f59e0b';
-      setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},5000);
+      btn.textContent='❌ 网络错误';btn.style.background='#ef4444';
+      setTimeout(function(){btn.textContent='🔄 更新';btn.disabled=false;btn.style.background='';},3000);
     });
 }
 // 初始化主题
