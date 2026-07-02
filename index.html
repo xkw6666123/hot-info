@@ -589,14 +589,15 @@ function initPage(){
 
   // 更新时间（显示友好格式）
   if(json.updated_at){
-    // 解析UTC时间并转换为本地时间
+    // 检测是否是UTC时间（有Z后缀或+号）
+    const isUTC=json.updated_at.endsWith('Z')||json.updated_at.includes('+');
     const parts=json.updated_at.split('T');
     const datePart=parts[0]||'';
     const timePart=(parts[1]||'').split('+')[0].split('Z')[0];
     const[dateY,dateM,dateD]=datePart.split('-').map(Number);
     const[dateH,dateMin]=timePart.split(':').map(Number);
-    // 创建UTC时间对象，然后转换为本地时间
-    const d=new Date(Date.UTC(dateY,dateM-1,dateD,dateH,dateMin));
+    // 根据是否是UTC创建不同的时间对象
+    const d=isUTC ? new Date(Date.UTC(dateY,dateM-1,dateD,dateH,dateMin)) : new Date(dateY,dateM-1,dateD,dateH,dateMin);
     const now=new Date();
     const diffMs=now-d;
     const diffMin=Math.floor(diffMs/60000);
