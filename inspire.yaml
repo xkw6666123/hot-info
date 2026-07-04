@@ -1,0 +1,2052 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: 热点信息差
+      - generic [ref=e5]:
+        - button "🌙" [ref=e6] [cursor=pointer]
+        - button "🔄 更新" [ref=e7] [cursor=pointer]
+        - textbox "搜索文章..." [ref=e8]
+        - navigation [ref=e9]:
+          - link "精选" [ref=e10] [cursor=pointer]:
+            - /url: "#"
+          - link "热点" [ref=e11] [cursor=pointer]:
+            - /url: "#"
+          - link "灵感" [active] [ref=e12] [cursor=pointer]:
+            - /url: "#"
+          - link "📈趋势" [ref=e13] [cursor=pointer]:
+            - /url: "#"
+          - link "拆解" [ref=e14] [cursor=pointer]:
+            - /url: "#"
+          - link "收藏" [ref=e15] [cursor=pointer]:
+            - /url: "#"
+  - generic [ref=e16]:
+    - heading "信息差即生产力" [level=1] [ref=e17]
+    - paragraph [ref=e18]: 每天聚合全网热点 + 爆款视频拆解 + AI 选题灵感，帮你用信息差做内容
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: "2566"
+        - generic [ref=e22]: 近7日热点
+      - generic [ref=e23]:
+        - generic [ref=e24]: 5位
+        - generic [ref=e25]: 博主拆解
+      - generic [ref=e26]:
+        - generic [ref=e27]: "50"
+        - generic [ref=e28]: 创作灵感
+    - generic [ref=e29]: 🕐 1天前更新 51/6 23:17
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - button "全部" [ref=e32] [cursor=pointer]
+      - button "社会" [ref=e33] [cursor=pointer]
+      - button "热点" [ref=e34] [cursor=pointer]
+      - button "资讯" [ref=e35] [cursor=pointer]
+      - button "知乎" [ref=e36] [cursor=pointer]
+      - button "热榜" [ref=e37] [cursor=pointer]
+      - button "年轻" [ref=e38] [cursor=pointer]
+      - button "二次元" [ref=e39] [cursor=pointer]
+      - button "热门" [ref=e40] [cursor=pointer]
+      - button "热议" [ref=e41] [cursor=pointer]
+      - button "新闻" [ref=e42] [cursor=pointer]
+      - button "时政" [ref=e43] [cursor=pointer]
+      - button "财经" [ref=e44] [cursor=pointer]
+      - button "金融" [ref=e45] [cursor=pointer]
+      - button "实时" [ref=e46] [cursor=pointer]
+      - button "国际" [ref=e47] [cursor=pointer]
+      - button "网友" [ref=e48] [cursor=pointer]
+      - button "娱乐" [ref=e49] [cursor=pointer]
+      - button "投资" [ref=e50] [cursor=pointer]
+      - button "B站" [ref=e51] [cursor=pointer]
+      - button "博主" [ref=e52] [cursor=pointer]
+      - button "爆款" [ref=e53] [cursor=pointer]
+      - button "拆解" [ref=e54] [cursor=pointer]
+    - generic [ref=e55]:
+      - generic [ref=e47457]:
+        - text: 🎯 今日选题推荐
+        - generic [ref=e47458]: 基于最近6条热点自动生成 · 刷新页面换一组
+      - generic [ref=e47459]:
+        - generic [ref=e47460]: 📌 博主内容 · 阿七大型纪录片
+        - link "🔗 6月5日社会热点信息差#热点" [ref=e47461] [cursor=pointer]:
+          - /url: https://www.douyin.com/video/7647887906112324081
+        - generic [ref=e47462]: 🔥 热度 3.0万 · 💬 631
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47463]:
+          - generic [ref=e47464]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47465]: 再见！6月5日社会热点信息难不成是真的！
+        - generic [ref=e47466]:
+          - generic [ref=e47467]:
+            - generic [ref=e47468]:
+              - generic [ref=e47469]: 🎬 开篇
+              - generic [ref=e47470]: "\"能理解 能理解……这两天有个事儿挺离谱的。\" 假装淡定引出话题"
+            - generic [ref=e47471]:
+              - generic [ref=e47472]: 📖 正文
+              - generic [ref=e47473]: 逐条讲3个热点，每条先用一句话制造反差:"你就说离不离谱吧" → 给出信息差视角 → 用大学生日常做类比吐槽
+            - generic [ref=e47474]:
+              - generic [ref=e47475]: 🔚 结尾
+              - generic [ref=e47476]: "\"这你敢信？反正我是信了。点赞过万下期继续爆！\""
+          - generic [ref=e47477]: 💡 配乐用土嗨BGM，字幕加粗黄字，封面大字报风格
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47478]:
+          - generic [ref=e47479]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47480]: 6/8日社会热点信息差
+        - generic [ref=e47481]:
+          - generic [ref=e47482]:
+            - generic [ref=e47483]:
+              - generic [ref=e47484]: 🎬 开篇
+              - generic [ref=e47485]: "\"5月X日 社会热点信息差\" 播报式开场"
+            - generic [ref=e47486]:
+              - generic [ref=e47487]: 📖 正文
+              - generic [ref=e47488]: 3条社会热点+简单点评，每条30秒
+            - generic [ref=e47489]:
+              - generic [ref=e47490]: 🔚 结尾
+              - generic [ref=e47491]: "\"关注我，每天带你看懂热点\""
+          - generic [ref=e47492]: 💡 封面统一红色大字+新闻截图，保持系列感
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47493]:
+          - generic [ref=e47494]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47495]: 大型纪录片之6月5日社会热点信息差#持续为您播出
+        - generic [ref=e47496]:
+          - generic [ref=e47497]:
+            - generic [ref=e47498]:
+              - generic [ref=e47499]: 🎬 开篇
+              - generic [ref=e47500]: "\"大型纪录片持续为您播出……\" 标志性低沉开场"
+            - generic [ref=e47501]:
+              - generic [ref=e47502]: 📖 正文
+              - generic [ref=e47503]: 先讲事件核心要素 → 用"你知道吗"抛出信息差视角 → 用"离谱的是"递进爆点 → 最后给结论
+            - generic [ref=e47504]:
+              - generic [ref=e47505]: 🔚 结尾
+              - generic [ref=e47506]: "\"关注陈先生，带你看懂热点背后的门道。下期更精彩\""
+          - generic [ref=e47507]: 💡 封面用大字标题+人物表情截取，偏暗色调纪录片质感
+        - generic [ref=e47508]:
+          - generic [ref=e47509]: "#信息差"
+          - generic [ref=e47510]: "#热点选题"
+          - generic [ref=e47511]: "#博主拆解"
+      - generic [ref=e47512]:
+        - generic [ref=e47513]: 📌 博主内容 · 人类观察菌
+        - 'link "🔗 今日热点信息快报 #逆天 #离谱 #社会热点信息差" [ref=e47514] [cursor=pointer]':
+          - /url: https://www.douyin.com/video/7648047227328615665
+        - generic [ref=e47515]: 🔥 热度 10.0万 · 💬 1.2万
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47516]:
+          - generic [ref=e47517]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47518]: 今日热点信息快报？懂你意思
+        - generic [ref=e47519]:
+          - generic [ref=e47520]:
+            - generic [ref=e47521]:
+              - generic [ref=e47522]: 🎬 开篇
+              - generic [ref=e47523]: "\"不是吧兄弟们，这新闻你们刷到没？给我整不会了。\" 震惊开场拉近距离"
+            - generic [ref=e47524]:
+              - generic [ref=e47525]: 📖 正文
+              - generic [ref=e47526]: 抛出最劲爆的1条新闻详细讲 → 接2条快速过的小热点 → 每条结尾用"蚌埠住了""这波操作6"等大学生流行语
+            - generic [ref=e47527]:
+              - generic [ref=e47528]: 🔚 结尾
+              - generic [ref=e47529]: "\"你们还见过更逆天的吗？评论区发出来让大家开开眼。\""
+          - generic [ref=e47530]: 💡 视频前3秒截取最离谱的新闻片段做钩子
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47531]:
+          - generic [ref=e47532]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47533]: "本周TOP5热点事件：今日热点信息快报 #逆天..."
+        - generic [ref=e47534]:
+          - generic [ref=e47535]:
+            - generic [ref=e47536]:
+              - generic [ref=e47537]: 🎬 开篇
+              - generic [ref=e47538]: "\"今天这4件事 你一定要知道\" 痛点切入"
+            - generic [ref=e47539]:
+              - generic [ref=e47540]: 📖 正文
+              - generic [ref=e47541]: 选取民生相关度最高的新闻，逐个解读
+            - generic [ref=e47542]:
+              - generic [ref=e47543]: 🔚 结尾
+              - generic [ref=e47544]: "\"点赞收藏 明天继续\""
+          - generic [ref=e47545]: 💡 每条热点之间用转场特效+叮声音效
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47546]:
+          - generic [ref=e47547]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47548]: "今日热点信息快报 #，老板都坐不住了！"
+        - generic [ref=e47549]:
+          - generic [ref=e47550]:
+            - generic [ref=e47551]:
+              - generic [ref=e47552]: 🎬 开篇
+              - generic [ref=e47553]: "\"最近发生了一件让所有人都没想到的事……\" 悬念开场"
+            - generic [ref=e47554]:
+              - generic [ref=e47555]: 📖 正文
+              - generic [ref=e47556]: 先讲表面事实 → 然后"但是……"转折揭示另一面 → 拆解当事人/平台/资本的动机 → 穿插玩梗
+            - generic [ref=e47557]:
+              - generic [ref=e47558]: 🔚 结尾
+              - generic [ref=e47559]: "\"这波操作你怎么看？评论区说说。动动发财的小手点个赞。\""
+          - generic [ref=e47560]: 💡 语速中等偏慢，配沉重BGM制造严肃感
+        - generic [ref=e47561]:
+          - generic [ref=e47562]: "#信息差"
+          - generic [ref=e47563]: "#热点选题"
+          - generic [ref=e47564]: "#博主拆解"
+      - generic [ref=e47565]:
+        - generic [ref=e47566]: 📌 博主内容 · 陈先生
+        - link "🔗 继狗子限速器后，山羊界又迎来一大限制神奇！#搞笑#山羊#离谱#万万没想到#奇葩发" [ref=e47567] [cursor=pointer]:
+          - /url: https://www.douyin.com/video/7647930473172050623
+        - generic [ref=e47568]: 🔥 热度 134 · 💬 0
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47569]:
+          - generic [ref=e47570]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47571]: 能理解 能理解 继狗子限速器后，山羊...
+        - generic [ref=e47572]:
+          - generic [ref=e47573]:
+            - generic [ref=e47574]:
+              - generic [ref=e47575]: 🎬 开篇
+              - generic [ref=e47576]: "\"说实话，我刷到这条的时候整个人都麻了。\" 自嘲式开场"
+            - generic [ref=e47577]:
+              - generic [ref=e47578]: 📖 正文
+              - generic [ref=e47579]: 先讲最不可思议的新闻 → 讲完停顿"离谱吗？还没完" → 串第二个热点 → "第三个你们肯定没听过"制造期待
+            - generic [ref=e47580]:
+              - generic [ref=e47581]: 🔚 结尾
+              - generic [ref=e47582]: "\"关注网吧信息差，每天带你开眼界。下期更离谱。\""
+          - generic [ref=e47583]: 💡 每条新闻中间加游戏音效转场
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47584]:
+          - generic [ref=e47585]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47586]: 关于继狗子限速器后，山羊的几点思考
+        - generic [ref=e47587]:
+          - generic [ref=e47588]:
+            - generic [ref=e47589]:
+              - generic [ref=e47590]: 🎬 开篇
+              - generic [ref=e47591]: "\"最近发生了一件大事……\" 悬念开场"
+            - generic [ref=e47592]:
+              - generic [ref=e47593]: 📖 正文
+              - generic [ref=e47594]: 深度说透1-2个热门话题，配新闻截图
+            - generic [ref=e47595]:
+              - generic [ref=e47596]: 🔚 结尾
+              - generic [ref=e47597]: "\"对此你怎么看？评论区聊聊\""
+          - generic [ref=e47598]: 💡 字幕用关键词高亮，结论用大字弹出
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47599]:
+          - generic [ref=e47600]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47601]: 独家解读：继狗子限速器后，山羊界又背后的生意经
+        - generic [ref=e47602]:
+          - generic [ref=e47603]:
+            - generic [ref=e47604]:
+              - generic [ref=e47605]: 🎬 开篇
+              - generic [ref=e47606]: "\"兄弟们，这条新闻你们肯定刷到了，但背后的东西你们可能不知道。\" 信息差开场"
+            - generic [ref=e47607]:
+              - generic [ref=e47608]: 📖 正文
+              - generic [ref=e47609]: 重新梳理事件时间线 → 指出被忽略的关键细节 → 分析各方利益关系 → 抛出预判
+            - generic [ref=e47610]:
+              - generic [ref=e47611]: 🔚 结尾
+              - generic [ref=e47612]: "\"关注我，每天一个信息差。我们下期见。\""
+          - generic [ref=e47613]: 💡 关键数字用大字弹出，配合音效
+        - generic [ref=e47614]:
+          - generic [ref=e47615]: "#信息差"
+          - generic [ref=e47616]: "#热点选题"
+          - generic [ref=e47617]: "#博主拆解"
+      - generic [ref=e47618]:
+        - generic [ref=e47619]: 📌 博主内容 · 网吧信息差
+        - 'link "🔗 没事 咱让他一分 #内容过于真实#网吧信息差#搞笑#玩梗#万恶之源" [ref=e47620] [cursor=pointer]':
+          - /url: https://www.douyin.com/video/7647880051148475682
+        - generic [ref=e47621]: 🔥 热度 3.1万 · 💬 389
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47622]:
+          - generic [ref=e47623]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47624]: "没事 咱让他一分 #难不成是真的！"
+        - generic [ref=e47625]:
+          - generic [ref=e47626]:
+            - generic [ref=e47627]:
+              - generic [ref=e47628]: 🎬 开篇
+              - generic [ref=e47629]: "\"兄弟们，最近发生了件大事，你们绝对猜不到。\" 悬念钩子开场"
+            - generic [ref=e47630]:
+              - generic [ref=e47631]: 📖 正文
+              - generic [ref=e47632]: 先吊胃口"事情是这样的……" → 用大白话讲新闻本质 → 穿插"懂的都懂""懂的扣1"等互动
+            - generic [ref=e47633]:
+              - generic [ref=e47634]: 🔚 结尾
+              - generic [ref=e47635]: "\"这操作给几分？评论区说说你的看法。点赞过万更新下一期。\""
+          - generic [ref=e47636]: 💡 用大学生日常场景做切入增加共鸣
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47637]:
+          - generic [ref=e47638]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47639]: "没事 咱让他一分 #，你怎么看？"
+        - generic [ref=e47640]:
+          - generic [ref=e47641]:
+            - generic [ref=e47642]:
+              - generic [ref=e47643]: 🎬 开篇
+              - generic [ref=e47644]: "\"#今日热点速览\" 日期标注"
+            - generic [ref=e47645]:
+              - generic [ref=e47646]: 📖 正文
+              - generic [ref=e47647]: 5-6条简短快讯，每条一句话信息差
+            - generic [ref=e47648]:
+              - generic [ref=e47649]: 🔚 结尾
+              - generic [ref=e47650]: "\"我是阿七 帮你用信息差看世界\""
+          - generic [ref=e47651]: 💡 开头3秒放最劲爆的新闻片段做钩子
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47652]:
+          - generic [ref=e47653]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47654]: "大型纪录片没事 咱让他一分 #：全程高能"
+        - generic [ref=e47655]:
+          - generic [ref=e47656]:
+            - generic [ref=e47657]:
+              - generic [ref=e47658]: 🎬 开篇
+              - generic [ref=e47659]: "\"我就直说了，这事儿没那么简单。\" 开门见山"
+            - generic [ref=e47660]:
+              - generic [ref=e47661]: 📖 正文
+              - generic [ref=e47662]: 先否定大众认知 → 逐一反驳常见误解 → 用数据/事实说话 → 给出自己的解读
+            - generic [ref=e47663]:
+              - generic [ref=e47664]: 🔚 结尾
+              - generic [ref=e47665]: "\"你是怎么看的？评论区说说你的观点。点赞关注，下期继续。\""
+          - generic [ref=e47666]: 💡 每期结尾留钩子引导看下一期
+        - generic [ref=e47667]:
+          - generic [ref=e47668]: "#信息差"
+          - generic [ref=e47669]: "#热点选题"
+          - generic [ref=e47670]: "#博主拆解"
+      - generic [ref=e47671]:
+        - generic [ref=e47672]: 📌 博主内容 · 沙漠一之雕
+        - link "🔗 今日热点快报" [ref=e47673] [cursor=pointer]:
+          - /url: https://www.bilibili.com/video/BV1F47Q6bEvf
+        - generic [ref=e47674]: 🔥 热度 0 · 💬 5
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47675]:
+          - generic [ref=e47676]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47677]: 不是 今日热点快报就离谱
+        - generic [ref=e47678]:
+          - generic [ref=e47679]:
+            - generic [ref=e47680]:
+              - generic [ref=e47681]: 🎬 开篇
+              - generic [ref=e47682]: "\"刷手机刷到一个逆天新闻，不行我一定要跟你们说说。\" 偶遇式开场"
+            - generic [ref=e47683]:
+              - generic [ref=e47684]: 📖 正文
+              - generic [ref=e47685]: 制造"我刚好刷到"的真实感 → 用吐槽语气讲新闻 → 加入"我要是那谁我早就……"的假设吐槽 → 过渡到下一条
+            - generic [ref=e47686]:
+              - generic [ref=e47687]: 🔚 结尾
+              - generic [ref=e47688]: "\"你们还遇到过更离谱的吗？我已经准备好瓜子准备看评论区了。\""
+          - generic [ref=e47689]: 💡 配乐用土嗨BGM，字幕加粗黄字，封面大字报风格
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47690]:
+          - generic [ref=e47691]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47692]: 今日热点速览：今日热点快报
+        - generic [ref=e47693]:
+          - generic [ref=e47694]:
+            - generic [ref=e47695]:
+              - generic [ref=e47696]: 🎬 开篇
+              - generic [ref=e47697]: "\"看完这条视频 你也能跟朋友聊热点了\""
+            - generic [ref=e47698]:
+              - generic [ref=e47699]: 📖 正文
+              - generic [ref=e47700]: 精选3条社会/娱乐/国际热点，逐条解读
+            - generic [ref=e47701]:
+              - generic [ref=e47702]: 🔚 结尾
+              - generic [ref=e47703]: "\"明天同一时间 不见不散\""
+          - generic [ref=e47704]: 💡 封面统一红色大字+新闻截图，保持系列感
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47705]:
+          - generic [ref=e47706]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47707]: 关于今日热点快报这波操作，我想说两句
+        - generic [ref=e47708]:
+          - generic [ref=e47709]:
+            - generic [ref=e47710]:
+              - generic [ref=e47711]: 🎬 开篇
+              - generic [ref=e47712]: "\"今天要说的这件事，说出来你可能不信。\" 爆料式开场"
+            - generic [ref=e47713]:
+              - generic [ref=e47714]: 📖 正文
+              - generic [ref=e47715]: 抛出最刺激的片段当钩子 → 倒叙讲完整事件 → 中途埋悬念"最精彩的还在后面" → 最后给反转
+            - generic [ref=e47716]:
+              - generic [ref=e47717]: 🔚 结尾
+              - generic [ref=e47718]: "\"这波啊，这波是……（留白）。我是陈先生，下期见。\""
+          - generic [ref=e47719]: 💡 封面用大字标题+人物表情截取，偏暗色调纪录片质感
+        - generic [ref=e47720]:
+          - generic [ref=e47721]: "#信息差"
+          - generic [ref=e47722]: "#热点选题"
+          - generic [ref=e47723]: "#博主拆解"
+      - generic [ref=e47724]:
+        - generic [ref=e47725]: 📌 博主内容 · 沙漠一之雕
+        - link "🔗 今日热点快报" [ref=e47726] [cursor=pointer]:
+          - /url: https://www.bilibili.com/video/BV1cM7C6BEvi
+        - generic [ref=e47727]: 🔥 热度 0 · 💬 82
+        - heading "🏪 网吧信息差风格 (大学生/玩梗视角)" [level=3] [ref=e47728]:
+          - generic [ref=e47729]: 🏪 网吧信息差风格 (大学生/玩梗视角)
+        - generic [ref=e47730]: 再见！今日热点快报难不成是真的！
+        - generic [ref=e47731]:
+          - generic [ref=e47732]:
+            - generic [ref=e47733]:
+              - generic [ref=e47734]: 🎬 开篇
+              - generic [ref=e47735]: "\"能理解 能理解……这两天有个事儿挺离谱的。\" 假装淡定引出话题"
+            - generic [ref=e47736]:
+              - generic [ref=e47737]: 📖 正文
+              - generic [ref=e47738]: 逐条讲3个热点，每条先用一句话制造反差:"你就说离不离谱吧" → 给出信息差视角 → 用大学生日常做类比吐槽
+            - generic [ref=e47739]:
+              - generic [ref=e47740]: 🔚 结尾
+              - generic [ref=e47741]: "\"这你敢信？反正我是信了。点赞过万下期继续爆！\""
+          - generic [ref=e47742]: 💡 视频前3秒截取最离谱的新闻片段做钩子
+        - heading "🎬 阿七大型纪录片风格 (热点速览/信息差)" [level=3] [ref=e47743]:
+          - generic [ref=e47744]: 🎬 阿七大型纪录片风格 (热点速览/信息差)
+        - generic [ref=e47745]: 6/8日社会热点信息差
+        - generic [ref=e47746]:
+          - generic [ref=e47747]:
+            - generic [ref=e47748]:
+              - generic [ref=e47749]: 🎬 开篇
+              - generic [ref=e47750]: "\"5月X日 社会热点信息差\" 播报式开场"
+            - generic [ref=e47751]:
+              - generic [ref=e47752]: 📖 正文
+              - generic [ref=e47753]: 3条社会热点+简单点评，每条30秒
+            - generic [ref=e47754]:
+              - generic [ref=e47755]: 🔚 结尾
+              - generic [ref=e47756]: "\"关注我，每天带你看懂热点\""
+          - generic [ref=e47757]: 💡 每条热点之间用转场特效+叮声音效
+        - heading "📺 陈先生风格 (大型纪录片/热点解构)" [level=3] [ref=e47758]:
+          - generic [ref=e47759]: 📺 陈先生风格 (大型纪录片/热点解构)
+        - generic [ref=e47760]: 大型纪录片之今日热点快报持续为您播出
+        - generic [ref=e47761]:
+          - generic [ref=e47762]:
+            - generic [ref=e47763]:
+              - generic [ref=e47764]: 🎬 开篇
+              - generic [ref=e47765]: "\"大型纪录片持续为您播出……\" 标志性低沉开场"
+            - generic [ref=e47766]:
+              - generic [ref=e47767]: 📖 正文
+              - generic [ref=e47768]: 先讲事件核心要素 → 用"你知道吗"抛出信息差视角 → 用"离谱的是"递进爆点 → 最后给结论
+            - generic [ref=e47769]:
+              - generic [ref=e47770]: 🔚 结尾
+              - generic [ref=e47771]: "\"关注陈先生，带你看懂热点背后的门道。下期更精彩\""
+          - generic [ref=e47772]: 💡 语速中等偏慢，配沉重BGM制造严肃感
+        - generic [ref=e47773]:
+          - generic [ref=e47774]: "#信息差"
+          - generic [ref=e47775]: "#热点选题"
+          - generic [ref=e47776]: "#博主拆解"
+      - generic [ref=e47777]:
+        - text: 🎯 博主选题预测
+        - generic [ref=e47778]: 基于当前热点预估每位博主的下期选题 · 仅供参考
+      - generic [ref=e47779]:
+        - generic [ref=e47780]: 📌 难不成是真的！俩男孩到派出所休息被投喂后主
+        - generic [ref=e47781]: 俩男孩到派出所休息被投喂后主——用"难不成是真的！"句式制造悬念/共鸣，网吧信息差擅长用反差标题抓眼球
+        - generic [ref=e47782]:
+          - generic [ref=e47783]: "#网吧信息差"
+          - generic [ref=e47784]: "#信息差/社会热点解构"
+      - generic [ref=e47785]:
+        - generic [ref=e47786]: 📌 能理解能理解外交部回应加拿大军舰派至台湾
+        - generic [ref=e47787]: 外交部回应加拿大军舰派至台湾——用"能理解能理解"句式制造悬念/共鸣，网吧信息差擅长用反差标题抓眼球
+        - generic [ref=e47788]:
+          - generic [ref=e47789]: "#网吧信息差"
+          - generic [ref=e47790]: "#信息差/社会热点解构"
+      - generic [ref=e47791]:
+        - generic [ref=e47792]: 📌 再见！黄仁勋调侃女员工嫁联发科老公
+        - generic [ref=e47793]: 黄仁勋调侃女员工嫁联发科老公——用"再见！"句式制造悬念/共鸣，网吧信息差擅长用反差标题抓眼球
+        - generic [ref=e47794]:
+          - generic [ref=e47795]: "#网吧信息差"
+          - generic [ref=e47796]: "#信息差/社会热点解构"
+      - generic [ref=e47797]:
+        - generic [ref=e47798]: 📌 盘点31岁离异带4娃妈妈因自信走
+        - generic [ref=e47799]: 31岁离异带4娃妈妈因自信走——用"盘点"句式制造悬念/共鸣，网吧信息差擅长用反差标题抓眼球
+        - generic [ref=e47800]:
+          - generic [ref=e47801]: "#网吧信息差"
+          - generic [ref=e47802]: "#信息差/社会热点解构"
+      - generic [ref=e47803]:
+        - generic [ref=e47804]: 📌 6/8社会热点信息差
+        - generic [ref=e47805]: 精选今日10条热点做日更合集——阿七大型纪录片的标准日更格式，日期锚点+信息差速览
+        - generic [ref=e47806]:
+          - generic [ref=e47807]: "#阿七大型纪录片"
+          - generic [ref=e47808]: "#日期锚点日更热点"
+      - generic [ref=e47809]:
+        - generic [ref=e47810]: 📌 关于俩男孩到派出所休息被投喂的几点思考
+        - generic [ref=e47811]: 俩男孩到派出所休息被投喂热度飙升，阿七大型纪录片会用"关于XX的几点思考"做深度解读短评
+        - generic [ref=e47812]:
+          - generic [ref=e47813]: "#阿七大型纪录片"
+          - generic [ref=e47814]: "#日期锚点日更热点"
+      - generic [ref=e47815]:
+        - generic [ref=e47816]: 📌 关于外交部回应加拿大军舰派至的几点思考
+        - generic [ref=e47817]: 外交部回应加拿大军舰派至热度飙升，阿七大型纪录片会用"关于XX的几点思考"做深度解读短评
+        - generic [ref=e47818]:
+          - generic [ref=e47819]: "#阿七大型纪录片"
+          - generic [ref=e47820]: "#日期锚点日更热点"
+      - generic [ref=e47821]:
+        - generic [ref=e47822]: 📌 大型纪录片俩男孩到派出所休息被投喂后主动干全程高能
+        - generic [ref=e47823]: 俩男孩到派出所休息被投喂后主动干热度高，可以拆解背后的商业/社会逻辑
+        - generic [ref=e47824]:
+          - generic [ref=e47825]: "#陈先生"
+          - generic [ref=e47826]: "#大型纪录片/热点解构"
+      - generic [ref=e47827]:
+        - generic [ref=e47828]: 📌 大型纪录片外交部回应加拿大军舰派至台湾海峡全程高能
+        - generic [ref=e47829]: 外交部回应加拿大军舰派至台湾海峡热度高，可以拆解背后的商业/社会逻辑
+        - generic [ref=e47830]:
+          - generic [ref=e47831]: "#陈先生"
+          - generic [ref=e47832]: "#大型纪录片/热点解构"
+      - generic [ref=e47833]:
+        - generic [ref=e47834]: 📌 大型纪录片黄仁勋调侃女员工嫁联发科老公全程高能
+        - generic [ref=e47835]: 黄仁勋调侃女员工嫁联发科老公热度高，可以拆解背后的商业/社会逻辑
+        - generic [ref=e47836]:
+          - generic [ref=e47837]: "#陈先生"
+          - generic [ref=e47838]: "#大型纪录片/热点解构"
+      - generic [ref=e47839]:
+        - generic [ref=e47840]: 📌 6/8社会热点信息差速览
+        - generic [ref=e47841]: 精选5条今日高热度话题做合集：俩男孩到派出所休息被、外交部回应加拿大军舰、黄仁勋调侃女员工嫁联、31岁离异带4娃妈妈、神舟二十二号与空间站
+        - generic [ref=e47842]:
+          - generic [ref=e47843]: "#信息黑板报"
+          - generic [ref=e47844]: "#日期锚点热点合集"
+      - generic [ref=e47845]:
+        - generic [ref=e47846]: 📌 今日人类迷惑行为：俩男孩到派出所休息被投喂后主
+        - generic [ref=e47847]: 俩男孩到派出所休息被投喂后主热度高，人类观察菌会用"社会学视角"解读热点事件中的人类行为
+        - generic [ref=e47848]:
+          - generic [ref=e47849]: "#人类观察菌"
+          - generic [ref=e47850]: "#社会观察/人类行为分析"
+      - generic [ref=e47851]:
+        - generic [ref=e47852]: 📌 今日人类迷惑行为：外交部回应加拿大军舰派至台湾
+        - generic [ref=e47853]: 外交部回应加拿大军舰派至台湾热度高，人类观察菌会用"社会学视角"解读热点事件中的人类行为
+        - generic [ref=e47854]:
+          - generic [ref=e47855]: "#人类观察菌"
+          - generic [ref=e47856]: "#社会观察/人类行为分析"
+      - generic [ref=e47857]:
+        - generic [ref=e47858]: 📌 6/8今日热点快报
+        - generic [ref=e47859]: B站日更热点合集：精选5条热搜，配沙雕BGM+标题党封面，1分钟内过完
+        - generic [ref=e47860]:
+          - generic [ref=e47861]: "#沙漠一之雕(B站)"
+          - generic [ref=e47862]: "#热点搬运搞笑合集"
+      - generic [ref=e47863]: 博主选题基于历史风格+当前热点自动预测，实际内容以博主发布为准
+      - generic [ref=e47864]:
+        - text: 📚 灵感库
+        - generic [ref=e47865]: 标记有趣优先推荐 · 共50条
+      - generic [ref=e47866]:
+        - generic [ref=e47867]: 📌 今日热点快报
+        - generic [ref=e47868]: "来源: blogger"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47869]:
+          - generic [ref=e47870]: 🏪 网吧信息差风格
+        - generic [ref=e47871]:
+          - text: 最近发生了一个让所有人都没想到的事。今日热点快报。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e47872] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e47873]:
+          - generic [ref=e47874]: 🎬 阿七大型纪录片风格
+        - generic [ref=e47875]:
+          - text: 这可能是近期最被低估的一条新闻：今日热点快报。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e47876] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e47877]:
+          - generic [ref=e47878]: 📺 陈先生风格
+        - generic [ref=e47879]:
+          - text: 深挖今日热点快报你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e47880] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e47881]:
+          - generic [ref=e47882]: 🔍 人类观察菌风格
+        - generic [ref=e47883]:
+          - text: 刷到一条今日热点快报的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e47884] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e47885]:
+          - generic [ref=e47886]: 🎮 沙漠一之雕风格
+        - generic [ref=e47887]:
+          - text: 今日热点快报开唠。第一件事关于今日热点快报。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e47888] [cursor=pointer]
+        - generic [ref=e47889]:
+          - button "🤔 这个有意思" [ref=e47890] [cursor=pointer]
+          - button "📋 复制全部" [ref=e47891] [cursor=pointer]
+      - generic [ref=e47892]:
+        - generic [ref=e47893]: 📌 今日热点快报
+        - generic [ref=e47894]: "来源: blogger"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47895]:
+          - generic [ref=e47896]: 🏪 网吧信息差风格
+        - generic [ref=e47897]:
+          - text: 最近发生了一个让所有人都没想到的事。今日热点快报。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e47898] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e47899]:
+          - generic [ref=e47900]: 🎬 阿七大型纪录片风格
+        - generic [ref=e47901]:
+          - text: 这可能是近期最被低估的一条新闻：今日热点快报。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e47902] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e47903]:
+          - generic [ref=e47904]: 📺 陈先生风格
+        - generic [ref=e47905]:
+          - text: 深挖今日热点快报你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e47906] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e47907]:
+          - generic [ref=e47908]: 🔍 人类观察菌风格
+        - generic [ref=e47909]:
+          - text: 刷到一条今日热点快报的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e47910] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e47911]:
+          - generic [ref=e47912]: 🎮 沙漠一之雕风格
+        - generic [ref=e47913]:
+          - text: 今日热点快报开唠。第一件事关于今日热点快报。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e47914] [cursor=pointer]
+        - generic [ref=e47915]:
+          - button "🤔 这个有意思" [ref=e47916] [cursor=pointer]
+          - button "📋 复制全部" [ref=e47917] [cursor=pointer]
+      - generic [ref=e47918]:
+        - generic [ref=e47919]: 📌 今日热点快报
+        - generic [ref=e47920]: "来源: blogger"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47921]:
+          - generic [ref=e47922]: 🏪 网吧信息差风格
+        - generic [ref=e47923]:
+          - text: 最近发生了一个让所有人都没想到的事。今日热点快报。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e47924] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e47925]:
+          - generic [ref=e47926]: 🎬 阿七大型纪录片风格
+        - generic [ref=e47927]:
+          - text: 这可能是近期最被低估的一条新闻：今日热点快报。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e47928] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e47929]:
+          - generic [ref=e47930]: 📺 陈先生风格
+        - generic [ref=e47931]:
+          - text: 深挖今日热点快报你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e47932] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e47933]:
+          - generic [ref=e47934]: 🔍 人类观察菌风格
+        - generic [ref=e47935]:
+          - text: 刷到一条今日热点快报的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e47936] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e47937]:
+          - generic [ref=e47938]: 🎮 沙漠一之雕风格
+        - generic [ref=e47939]:
+          - text: 今日热点快报开唠。第一件事关于今日热点快报。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e47940] [cursor=pointer]
+        - generic [ref=e47941]:
+          - button "🤔 这个有意思" [ref=e47942] [cursor=pointer]
+          - button "📋 复制全部" [ref=e47943] [cursor=pointer]
+      - generic [ref=e47944]:
+        - generic [ref=e47945]: 📌 追求实实在在、没有水分的增长
+        - generic [ref=e47946]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47947]:
+          - generic [ref=e47948]: 🏪 网吧信息差风格
+        - generic [ref=e47949]:
+          - text: 最近发生了一个让所有人都没想到的事。追求实实在在、没有水分的增长。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e47950] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e47951]:
+          - generic [ref=e47952]: 🎬 阿七大型纪录片风格
+        - generic [ref=e47953]:
+          - text: 这可能是近期最被低估的一条新闻：追求实实在在、没有水分的增长。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e47954] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e47955]:
+          - generic [ref=e47956]: 📺 陈先生风格
+        - generic [ref=e47957]:
+          - text: 深挖追求实实在在、没有水分的增长你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e47958] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e47959]:
+          - generic [ref=e47960]: 🔍 人类观察菌风格
+        - generic [ref=e47961]:
+          - text: 刷到一条追求实实在在、没有水分的增长的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e47962] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e47963]:
+          - generic [ref=e47964]: 🎮 沙漠一之雕风格
+        - generic [ref=e47965]:
+          - text: 今日热点快报开唠。第一件事关于追求实实在在、没有水分的增长。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e47966] [cursor=pointer]
+        - generic [ref=e47967]:
+          - button "🤔 这个有意思" [ref=e47968] [cursor=pointer]
+          - button "📋 复制全部" [ref=e47969] [cursor=pointer]
+      - generic [ref=e47970]:
+        - generic [ref=e47971]: 📌 最后一堂课 班主任签永久假条后泪崩
+        - generic [ref=e47972]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47973]:
+          - generic [ref=e47974]: 🏪 网吧信息差风格
+        - generic [ref=e47975]:
+          - text: 说到2026年06月06日呢，首先第一个事儿，最后一堂课 班主任签永久假条后泪崩。巴沙刷到这新闻的时候人都傻了，你说这事儿离谱不离谱？
+          - button "📋" [ref=e47976] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e47977]:
+          - generic [ref=e47978]: 🎬 阿七大型纪录片风格
+        - generic [ref=e47979]:
+          - text: 热点信息差，为什么最后一堂课 班主任签永久假条后泪崩？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e47980] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e47981]:
+          - generic [ref=e47982]: 📺 陈先生风格
+        - generic [ref=e47983]:
+          - text: 大型纪录片之最后一堂课 班主任签永久假条后泪崩全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e47984] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e47985]:
+          - generic [ref=e47986]: 🔍 人类观察菌风格
+        - generic [ref=e47987]:
+          - text: 今日热点信息快报。先说个最后一堂课 班主任签永久假条后泪崩的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e47988] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e47989]:
+          - generic [ref=e47990]: 🎮 沙漠一之雕风格
+        - generic [ref=e47991]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，最后一堂课 班主任签永久假条后泪崩。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e47992] [cursor=pointer]
+        - generic [ref=e47993]:
+          - button "🤔 这个有意思" [ref=e47994] [cursor=pointer]
+          - button "📋 复制全部" [ref=e47995] [cursor=pointer]
+      - generic [ref=e47996]:
+        - generic [ref=e47997]: 📌 中国消费者抛弃耐克比想象中更快
+        - generic [ref=e47998]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e47999]:
+          - generic [ref=e48000]: 🏪 网吧信息差风格
+        - generic [ref=e48001]:
+          - text: 说到这个中国消费者抛弃耐克比想象中更快，巴沙第一反应是：编的吧？结果一查，诶，真事儿！给你讲讲前因后果。
+          - button "📋" [ref=e48002] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48003]:
+          - generic [ref=e48004]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48005]:
+          - text: 热点信息差，为什么中国消费者抛弃耐克比想象中更快？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e48006] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48007]:
+          - generic [ref=e48008]: 📺 陈先生风格
+        - generic [ref=e48009]:
+          - text: 大型纪录片之中国消费者抛弃耐克比想象中更快全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e48010] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48011]:
+          - generic [ref=e48012]: 🔍 人类观察菌风格
+        - generic [ref=e48013]:
+          - text: 今日热点信息快报。先说个中国消费者抛弃耐克比想象中更快的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e48014] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48015]:
+          - generic [ref=e48016]: 🎮 沙漠一之雕风格
+        - generic [ref=e48017]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，中国消费者抛弃耐克比想象中更快。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e48018] [cursor=pointer]
+        - generic [ref=e48019]:
+          - button "🤔 这个有意思" [ref=e48020] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48021] [cursor=pointer]
+      - generic [ref=e48022]:
+        - generic [ref=e48023]: 📌 多地开通考生办证“绿色通道”
+        - generic [ref=e48024]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48025]:
+          - generic [ref=e48026]: 🏪 网吧信息差风格
+        - generic [ref=e48027]:
+          - text: 巴沙今天刷到一条新闻，多地开通考生办证“绿色通道”。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48028] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48029]:
+          - generic [ref=e48030]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48031]:
+          - text: 关于多地开通考生办证“绿色通道”的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48032] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48033]:
+          - generic [ref=e48034]: 📺 陈先生风格
+        - generic [ref=e48035]:
+          - text: 拆解多地开通考生办证“绿色通道”的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48036] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48037]:
+          - generic [ref=e48038]: 🔍 人类观察菌风格
+        - generic [ref=e48039]:
+          - text: 分享一个多地开通考生办证“绿色通道”的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48040] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48041]:
+          - generic [ref=e48042]: 🎮 沙漠一之雕风格
+        - generic [ref=e48043]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说多地开通考生办证“绿色通道”这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48044] [cursor=pointer]
+        - generic [ref=e48045]:
+          - button "🤔 这个有意思" [ref=e48046] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48047] [cursor=pointer]
+      - generic [ref=e48048]:
+        - generic [ref=e48049]: 📌 央视曝光电诈洗钱新骗局
+        - generic [ref=e48050]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48051]:
+          - generic [ref=e48052]: 🏪 网吧信息差风格
+        - generic [ref=e48053]:
+          - text: 哎，各位，央视曝光电诈洗钱新骗局。巴沙就好奇了，到底是谁给他们的勇气？梁静茹吗？
+          - button "📋" [ref=e48054] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48055]:
+          - generic [ref=e48056]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48057]:
+          - text: 关于央视曝光电诈洗钱新骗局的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48058] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48059]:
+          - generic [ref=e48060]: 📺 陈先生风格
+        - generic [ref=e48061]:
+          - text: 拆解央视曝光电诈洗钱新骗局的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48062] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48063]:
+          - generic [ref=e48064]: 🔍 人类观察菌风格
+        - generic [ref=e48065]:
+          - text: 分享一个央视曝光电诈洗钱新骗局的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48066] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48067]:
+          - generic [ref=e48068]: 🎮 沙漠一之雕风格
+        - generic [ref=e48069]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说央视曝光电诈洗钱新骗局这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48070] [cursor=pointer]
+        - generic [ref=e48071]:
+          - button "🤔 这个有意思" [ref=e48072] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48073] [cursor=pointer]
+      - generic [ref=e48074]:
+        - generic [ref=e48075]: 📌 孙正义只当了3天亚洲首富
+        - generic [ref=e48076]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48077]:
+          - generic [ref=e48078]: 🏪 网吧信息差风格
+        - generic [ref=e48079]:
+          - text: 不是，孙正义只当了3天亚洲首富这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。
+          - button "📋" [ref=e48080] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48081]:
+          - generic [ref=e48082]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48083]:
+          - text: 孙正义只当了3天亚洲首富——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48084] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48085]:
+          - generic [ref=e48086]: 📺 陈先生风格
+        - generic [ref=e48087]:
+          - text: 孙正义只当了3天亚洲首富释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48088] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48089]:
+          - generic [ref=e48090]: 🔍 人类观察菌风格
+        - generic [ref=e48091]:
+          - text: 这届网友的观察力我是服的。孙正义只当了3天亚洲首富。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48092] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48093]:
+          - generic [ref=e48094]: 🎮 沙漠一之雕风格
+        - generic [ref=e48095]:
+          - text: 又是离谱的一天。热点快报，第一件事：孙正义只当了3天亚洲首富。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48096] [cursor=pointer]
+        - generic [ref=e48097]:
+          - button "🤔 这个有意思" [ref=e48098] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48099] [cursor=pointer]
+      - generic [ref=e48100]:
+        - generic [ref=e48101]: 📌 莫迪呼吁天热多喝水遭印度民众控诉
+        - generic [ref=e48102]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48103]:
+          - generic [ref=e48104]: 🏪 网吧信息差风格
+        - generic [ref=e48105]:
+          - text: 最近发生了一个让所有人都没想到的事。莫迪呼吁天热多喝水遭印度民众控诉。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e48106] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48107]:
+          - generic [ref=e48108]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48109]:
+          - text: 这可能是近期最被低估的一条新闻：莫迪呼吁天热多喝水遭印度民众控诉。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48110] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48111]:
+          - generic [ref=e48112]: 📺 陈先生风格
+        - generic [ref=e48113]:
+          - text: 深挖莫迪呼吁天热多喝水遭印度民众控诉你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48114] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48115]:
+          - generic [ref=e48116]: 🔍 人类观察菌风格
+        - generic [ref=e48117]:
+          - text: 刷到一条莫迪呼吁天热多喝水遭印度民众控诉的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48118] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48119]:
+          - generic [ref=e48120]: 🎮 沙漠一之雕风格
+        - generic [ref=e48121]:
+          - text: 今日热点快报开唠。第一件事关于莫迪呼吁天热多喝水遭印度民众控诉。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48122] [cursor=pointer]
+        - generic [ref=e48123]:
+          - button "🤔 这个有意思" [ref=e48124] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48125] [cursor=pointer]
+      - generic [ref=e48126]:
+        - generic [ref=e48127]: 📌 贵州一小区称考上清北终身免物业费
+        - generic [ref=e48128]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48129]:
+          - generic [ref=e48130]: 🏪 网吧信息差风格
+        - generic [ref=e48131]:
+          - text: 这波操作给巴沙整不会了。贵州一小区称考上清北终身免物业费。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e48132] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48133]:
+          - generic [ref=e48134]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48135]:
+          - text: 贵州一小区称考上清北终身免物业费——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48136] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48137]:
+          - generic [ref=e48138]: 📺 陈先生风格
+        - generic [ref=e48139]:
+          - text: 贵州一小区称考上清北终身免物业费释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48140] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48141]:
+          - generic [ref=e48142]: 🔍 人类观察菌风格
+        - generic [ref=e48143]:
+          - text: 这届网友的观察力我是服的。贵州一小区称考上清北终身免物业费。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48144] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48145]:
+          - generic [ref=e48146]: 🎮 沙漠一之雕风格
+        - generic [ref=e48147]:
+          - text: 又是离谱的一天。热点快报，第一件事：贵州一小区称考上清北终身免物业费。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48148] [cursor=pointer]
+        - generic [ref=e48149]:
+          - button "🤔 这个有意思" [ref=e48150] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48151] [cursor=pointer]
+      - generic [ref=e48152]:
+        - generic [ref=e48153]: 📌 人形机器人集体降价
+        - generic [ref=e48154]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48155]:
+          - generic [ref=e48156]: 🏪 网吧信息差风格
+        - generic [ref=e48157]:
+          - text: 不是，人形机器人集体降价这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。
+          - button "📋" [ref=e48158] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48159]:
+          - generic [ref=e48160]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48161]:
+          - text: 人形机器人集体降价——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48162] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48163]:
+          - generic [ref=e48164]: 📺 陈先生风格
+        - generic [ref=e48165]:
+          - text: 人形机器人集体降价释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48166] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48167]:
+          - generic [ref=e48168]: 🔍 人类观察菌风格
+        - generic [ref=e48169]:
+          - text: 这届网友的观察力我是服的。人形机器人集体降价。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48170] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48171]:
+          - generic [ref=e48172]: 🎮 沙漠一之雕风格
+        - generic [ref=e48173]:
+          - text: 又是离谱的一天。热点快报，第一件事：人形机器人集体降价。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48174] [cursor=pointer]
+        - generic [ref=e48175]:
+          - button "🤔 这个有意思" [ref=e48176] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48177] [cursor=pointer]
+      - generic [ref=e48178]:
+        - generic [ref=e48179]: 📌 日元沦为“全球最弱货币”
+        - generic [ref=e48180]: "来源: 百度热搜"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48181]:
+          - generic [ref=e48182]: 🏪 网吧信息差风格
+        - generic [ref=e48183]:
+          - text: 哎，各位，日元沦为“全球最弱货币”。巴沙就好奇了，到底是谁给他们的勇气？梁静茹吗？
+          - button "📋" [ref=e48184] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48185]:
+          - generic [ref=e48186]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48187]:
+          - text: 关于日元沦为“全球最弱货币”的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48188] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48189]:
+          - generic [ref=e48190]: 📺 陈先生风格
+        - generic [ref=e48191]:
+          - text: 拆解日元沦为“全球最弱货币”的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48192] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48193]:
+          - generic [ref=e48194]: 🔍 人类观察菌风格
+        - generic [ref=e48195]:
+          - text: 分享一个日元沦为“全球最弱货币”的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48196] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48197]:
+          - generic [ref=e48198]: 🎮 沙漠一之雕风格
+        - generic [ref=e48199]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说日元沦为“全球最弱货币”这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48200] [cursor=pointer]
+        - generic [ref=e48201]:
+          - button "🤔 这个有意思" [ref=e48202] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48203] [cursor=pointer]
+      - generic [ref=e48204]:
+        - generic [ref=e48205]: 📌 网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术有哪些优劣？会给国产折叠屏带来哪些冲击？
+        - generic [ref=e48206]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48207]:
+          - generic [ref=e48208]: 🏪 网吧信息差风格
+        - generic [ref=e48209]:
+          - text: 来，吃个瓜。网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48210] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48211]:
+          - generic [ref=e48212]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48213]:
+          - text: 这可能是近期最被低估的一条新闻：网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48214] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48215]:
+          - generic [ref=e48216]: 📺 陈先生风格
+        - generic [ref=e48217]:
+          - text: 深挖网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48218] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48219]:
+          - generic [ref=e48220]: 🔍 人类观察菌风格
+        - generic [ref=e48221]:
+          - text: 刷到一条网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48222] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48223]:
+          - generic [ref=e48224]: 🎮 沙漠一之雕风格
+        - generic [ref=e48225]:
+          - text: 今日热点快报开唠。第一件事关于网传苹果即将发布首款折叠屏手机，确认液态金属铰链方案，新技术。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48226] [cursor=pointer]
+        - generic [ref=e48227]:
+          - button "🤔 这个有意思" [ref=e48228] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48229] [cursor=pointer]
+      - generic [ref=e48230]:
+        - generic [ref=e48231]: 📌 如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互动环节的赛场义务，罚款15万？
+        - generic [ref=e48232]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48233]:
+          - generic [ref=e48234]: 🏪 网吧信息差风格
+        - generic [ref=e48235]:
+          - text: 不是，如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。
+          - button "📋" [ref=e48236] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48237]:
+          - generic [ref=e48238]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48239]:
+          - text: 如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48240] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48241]:
+          - generic [ref=e48242]: 📺 陈先生风格
+        - generic [ref=e48243]:
+          - text: 如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48244] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48245]:
+          - generic [ref=e48246]: 🔍 人类观察菌风格
+        - generic [ref=e48247]:
+          - text: 这届网友的观察力我是服的。如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48248] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48249]:
+          - generic [ref=e48250]: 🎮 沙漠一之雕风格
+        - generic [ref=e48251]:
+          - text: 又是离谱的一天。热点快报，第一件事：如何评价：BLG选手陈泽彬(ID：Bin)未按规定履行登场互。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48252] [cursor=pointer]
+        - generic [ref=e48253]:
+          - button "🤔 这个有意思" [ref=e48254] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48255] [cursor=pointer]
+      - generic [ref=e48256]:
+        - generic [ref=e48257]: 📌 网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要担责吗？手指受伤正确处理方法应该是怎样？
+        - generic [ref=e48258]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48259]:
+          - generic [ref=e48260]: 🏪 网吧信息差风格
+        - generic [ref=e48261]:
+          - text: 最近发生了一个让所有人都没想到的事。网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e48262] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48263]:
+          - generic [ref=e48264]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48265]:
+          - text: 这可能是近期最被低估的一条新闻：网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48266] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48267]:
+          - generic [ref=e48268]: 📺 陈先生风格
+        - generic [ref=e48269]:
+          - text: 深挖网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48270] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48271]:
+          - generic [ref=e48272]: 🔍 人类观察菌风格
+        - generic [ref=e48273]:
+          - text: 刷到一条网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48274] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48275]:
+          - generic [ref=e48276]: 🎮 沙漠一之雕风格
+        - generic [ref=e48277]:
+          - text: 今日热点快报开唠。第一件事关于网友称豆包误导老人断指泡生理盐水致终生残疾，这种情况下豆包要。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48278] [cursor=pointer]
+        - generic [ref=e48279]:
+          - button "🤔 这个有意思" [ref=e48280] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48281] [cursor=pointer]
+      - generic [ref=e48282]:
+        - generic [ref=e48283]: 📌 正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已经没落了吗？
+        - generic [ref=e48284]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48285]:
+          - generic [ref=e48286]: 🏪 网吧信息差风格
+        - generic [ref=e48287]:
+          - text: 来，吃个瓜。正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48288] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48289]:
+          - generic [ref=e48290]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48291]:
+          - text: 这可能是近期最被低估的一条新闻：正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48292] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48293]:
+          - generic [ref=e48294]: 📺 陈先生风格
+        - generic [ref=e48295]:
+          - text: 深挖正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48296] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48297]:
+          - generic [ref=e48298]: 🔍 人类观察菌风格
+        - generic [ref=e48299]:
+          - text: 刷到一条正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48300] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48301]:
+          - generic [ref=e48302]: 🎮 沙漠一之雕风格
+        - generic [ref=e48303]:
+          - text: 今日热点快报开唠。第一件事关于正午阳光出品的武侠剧《雨霖铃》播出后热度一般，武侠题材真的已。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48304] [cursor=pointer]
+        - generic [ref=e48305]:
+          - button "🤔 这个有意思" [ref=e48306] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48307] [cursor=pointer]
+      - generic [ref=e48308]:
+        - generic [ref=e48309]: 📌 如何评价《一人之下》漫画第765（817）话？
+        - generic [ref=e48310]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48311]:
+          - generic [ref=e48312]: 🏪 网吧信息差风格
+        - generic [ref=e48313]:
+          - text: 巴沙今天刷到一条新闻，如何评价《一人之下》漫画第765（817）话？。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48314] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48315]:
+          - generic [ref=e48316]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48317]:
+          - text: 关于如何评价《一人之下》漫画第765（817）话？的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48318] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48319]:
+          - generic [ref=e48320]: 📺 陈先生风格
+        - generic [ref=e48321]:
+          - text: 拆解如何评价《一人之下》漫画第765（817）话？的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48322] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48323]:
+          - generic [ref=e48324]: 🔍 人类观察菌风格
+        - generic [ref=e48325]:
+          - text: 分享一个如何评价《一人之下》漫画第765（817）话？的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48326] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48327]:
+          - generic [ref=e48328]: 🎮 沙漠一之雕风格
+        - generic [ref=e48329]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说如何评价《一人之下》漫画第765（817）话？这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48330] [cursor=pointer]
+        - generic [ref=e48331]:
+          - button "🤔 这个有意思" [ref=e48332] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48333] [cursor=pointer]
+      - generic [ref=e48334]:
+        - generic [ref=e48335]: 📌 《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有A股流通市值超过4万亿元，透露出哪些信号？
+        - generic [ref=e48336]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48337]:
+          - generic [ref=e48338]: 🏪 网吧信息差风格
+        - generic [ref=e48339]:
+          - text: 这波操作给巴沙整不会了。《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e48340] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48341]:
+          - generic [ref=e48342]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48343]:
+          - text: 《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48344] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48345]:
+          - generic [ref=e48346]: 📺 陈先生风格
+        - generic [ref=e48347]:
+          - text: 《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48348] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48349]:
+          - generic [ref=e48350]: 🔍 人类观察菌风格
+        - generic [ref=e48351]:
+          - text: 这届网友的观察力我是服的。《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48352] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48353]:
+          - generic [ref=e48354]: 🎮 沙漠一之雕风格
+        - generic [ref=e48355]:
+          - text: 又是离谱的一天。热点快报，第一件事：《新闻联播》披露明晟指数新纳入19只A股，各类境外投资者持有。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48356] [cursor=pointer]
+        - generic [ref=e48357]:
+          - button "🤔 这个有意思" [ref=e48358] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48359] [cursor=pointer]
+      - generic [ref=e48360]:
+        - generic [ref=e48361]: 📌 网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现象？
+        - generic [ref=e48362]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48363]:
+          - generic [ref=e48364]: 🏪 网吧信息差风格
+        - generic [ref=e48365]:
+          - text: OK，聊个事儿啊。网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现。巴沙看完只能说一句，不是，这凭啥啊？你让评论区评评理。
+          - button "📋" [ref=e48366] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48367]:
+          - generic [ref=e48368]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48369]:
+          - text: 就在昨天，一条关于网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48370] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48371]:
+          - generic [ref=e48372]: 📺 陈先生风格
+        - generic [ref=e48373]:
+          - text: 独家解读网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48374] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48375]:
+          - generic [ref=e48376]: 🔍 人类观察菌风格
+        - generic [ref=e48377]:
+          - text: 来，看看这位。网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48378] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48379]:
+          - generic [ref=e48380]: 🎮 沙漠一之雕风格
+        - generic [ref=e48381]:
+          - text: 来，坐稳了。今天的热点快报先从网友称对 AI 脸生理性厌恶，你有同感吗？为什么会出现这种现说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48382] [cursor=pointer]
+        - generic [ref=e48383]:
+          - button "🤔 这个有意思" [ref=e48384] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48385] [cursor=pointer]
+      - generic [ref=e48386]:
+        - generic [ref=e48387]: 📌 为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”的作者？
+        - generic [ref=e48388]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48389]:
+          - generic [ref=e48390]: 🏪 网吧信息差风格
+        - generic [ref=e48391]:
+          - text: 来，吃个瓜。为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48392] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48393]:
+          - generic [ref=e48394]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48395]:
+          - text: 这可能是近期最被低估的一条新闻：为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48396] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48397]:
+          - generic [ref=e48398]: 📺 陈先生风格
+        - generic [ref=e48399]:
+          - text: 深挖为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48400] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48401]:
+          - generic [ref=e48402]: 🔍 人类观察菌风格
+        - generic [ref=e48403]:
+          - text: 刷到一条为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48404] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48405]:
+          - generic [ref=e48406]: 🎮 沙漠一之雕风格
+        - generic [ref=e48407]:
+          - text: 今日热点快报开唠。第一件事关于为什么新大众文艺中，越来越多的好作品来自“有过真实从业经历”。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48408] [cursor=pointer]
+        - generic [ref=e48409]:
+          - button "🤔 这个有意思" [ref=e48410] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48411] [cursor=pointer]
+      - generic [ref=e48412]:
+        - generic [ref=e48413]: 📌 游泳既不伤膝盖又减肥，为何没太多人选择？
+        - generic [ref=e48414]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48415]:
+          - generic [ref=e48416]: 🏪 网吧信息差风格
+        - generic [ref=e48417]:
+          - text: 我跟你们讲，游泳既不伤膝盖又减肥，为何没太多人选择？。巴沙看了三遍才敢确认这居然是真的，不是AI编的。
+          - button "📋" [ref=e48418] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48419]:
+          - generic [ref=e48420]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48421]:
+          - text: 就在昨天，一条关于游泳既不伤膝盖又减肥，为何没太多人选择？的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48422] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48423]:
+          - generic [ref=e48424]: 📺 陈先生风格
+        - generic [ref=e48425]:
+          - text: 独家解读游泳既不伤膝盖又减肥，为何没太多人选择？背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48426] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48427]:
+          - generic [ref=e48428]: 🔍 人类观察菌风格
+        - generic [ref=e48429]:
+          - text: 来，看看这位。游泳既不伤膝盖又减肥，为何没太多人选择？。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48430] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48431]:
+          - generic [ref=e48432]: 🎮 沙漠一之雕风格
+        - generic [ref=e48433]:
+          - text: 来，坐稳了。今天的热点快报先从游泳既不伤膝盖又减肥，为何没太多人选择？说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48434] [cursor=pointer]
+        - generic [ref=e48435]:
+          - button "🤔 这个有意思" [ref=e48436] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48437] [cursor=pointer]
+      - generic [ref=e48438]:
+        - generic [ref=e48439]: 📌 孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭，让给她点外卖或送饭，是真的做不成饭吗？
+        - generic [ref=e48440]: "来源: 知乎"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48441]:
+          - generic [ref=e48442]: 🏪 网吧信息差风格
+        - generic [ref=e48443]:
+          - text: 哎，各位，孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭。巴沙就好奇了，到底是谁给他们的勇气？梁静茹吗？
+          - button "📋" [ref=e48444] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48445]:
+          - generic [ref=e48446]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48447]:
+          - text: 关于孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48448] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48449]:
+          - generic [ref=e48450]: 📺 陈先生风格
+        - generic [ref=e48451]:
+          - text: 拆解孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48452] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48453]:
+          - generic [ref=e48454]: 🔍 人类观察菌风格
+        - generic [ref=e48455]:
+          - text: 分享一个孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48456] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48457]:
+          - generic [ref=e48458]: 🎮 沙漠一之雕风格
+        - generic [ref=e48459]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说孩子两岁两个月，白天我上班，婆婆带孩子，婆婆总是说她吃不上饭这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48460] [cursor=pointer]
+        - generic [ref=e48461]:
+          - button "🤔 这个有意思" [ref=e48462] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48463] [cursor=pointer]
+      - generic [ref=e48464]:
+        - generic [ref=e48465]: 📌 尼克斯为何能在G1克制马刺
+        - generic [ref=e48466]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48467]:
+          - generic [ref=e48468]: 🏪 网吧信息差风格
+        - generic [ref=e48469]:
+          - text: 说到这个尼克斯为何能在G1克制马刺，巴沙第一反应是：编的吧？结果一查，诶，真事儿！给你讲讲前因后果。
+          - button "📋" [ref=e48470] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48471]:
+          - generic [ref=e48472]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48473]:
+          - text: 热点信息差，为什么尼克斯为何能在G1克制马刺？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e48474] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48475]:
+          - generic [ref=e48476]: 📺 陈先生风格
+        - generic [ref=e48477]:
+          - text: 大型纪录片之尼克斯为何能在G1克制马刺全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e48478] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48479]:
+          - generic [ref=e48480]: 🔍 人类观察菌风格
+        - generic [ref=e48481]:
+          - text: 今日热点信息快报。先说个尼克斯为何能在G1克制马刺的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e48482] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48483]:
+          - generic [ref=e48484]: 🎮 沙漠一之雕风格
+        - generic [ref=e48485]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，尼克斯为何能在G1克制马刺。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e48486] [cursor=pointer]
+        - generic [ref=e48487]:
+          - button "🤔 这个有意思" [ref=e48488] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48489] [cursor=pointer]
+      - generic [ref=e48490]:
+        - generic [ref=e48491]: 📌 天禄击败Sharks进入2-2组
+        - generic [ref=e48492]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48493]:
+          - generic [ref=e48494]: 🏪 网吧信息差风格
+        - generic [ref=e48495]:
+          - text: 巴沙今天刷到一条新闻，天禄击败Sharks进入2-2组。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48496] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48497]:
+          - generic [ref=e48498]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48499]:
+          - text: 关于天禄击败Sharks进入2-2组的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48500] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48501]:
+          - generic [ref=e48502]: 📺 陈先生风格
+        - generic [ref=e48503]:
+          - text: 拆解天禄击败Sharks进入2-2组的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48504] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48505]:
+          - generic [ref=e48506]: 🔍 人类观察菌风格
+        - generic [ref=e48507]:
+          - text: 分享一个天禄击败Sharks进入2-2组的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48508] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48509]:
+          - generic [ref=e48510]: 🎮 沙漠一之雕风格
+        - generic [ref=e48511]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说天禄击败Sharks进入2-2组这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48512] [cursor=pointer]
+        - generic [ref=e48513]:
+          - button "🤔 这个有意思" [ref=e48514] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48515] [cursor=pointer]
+      - generic [ref=e48516]:
+        - generic [ref=e48517]: 📌 中国成功发射千帆极轨11组卫星
+        - generic [ref=e48518]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48519]:
+          - generic [ref=e48520]: 🏪 网吧信息差风格
+        - generic [ref=e48521]:
+          - text: 巴沙今天刷到一条新闻，中国成功发射千帆极轨11组卫星。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48522] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48523]:
+          - generic [ref=e48524]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48525]:
+          - text: 关于中国成功发射千帆极轨11组卫星的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48526] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48527]:
+          - generic [ref=e48528]: 📺 陈先生风格
+        - generic [ref=e48529]:
+          - text: 拆解中国成功发射千帆极轨11组卫星的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48530] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48531]:
+          - generic [ref=e48532]: 🔍 人类观察菌风格
+        - generic [ref=e48533]:
+          - text: 分享一个中国成功发射千帆极轨11组卫星的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48534] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48535]:
+          - generic [ref=e48536]: 🎮 沙漠一之雕风格
+        - generic [ref=e48537]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说中国成功发射千帆极轨11组卫星这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48538] [cursor=pointer]
+        - generic [ref=e48539]:
+          - button "🤔 这个有意思" [ref=e48540] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48541] [cursor=pointer]
+      - generic [ref=e48542]:
+        - generic [ref=e48543]: 📌 高考智驾
+        - generic [ref=e48544]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48545]:
+          - generic [ref=e48546]: 🏪 网吧信息差风格
+        - generic [ref=e48547]:
+          - text: OK，聊个事儿啊。高考智驾。巴沙看完只能说一句，不是，这凭啥啊？你让评论区评评理。
+          - button "📋" [ref=e48548] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48549]:
+          - generic [ref=e48550]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48551]:
+          - text: 就在昨天，一条关于高考智驾的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48552] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48553]:
+          - generic [ref=e48554]: 📺 陈先生风格
+        - generic [ref=e48555]:
+          - text: 独家解读高考智驾背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48556] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48557]:
+          - generic [ref=e48558]: 🔍 人类观察菌风格
+        - generic [ref=e48559]:
+          - text: 来，看看这位。高考智驾。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48560] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48561]:
+          - generic [ref=e48562]: 🎮 沙漠一之雕风格
+        - generic [ref=e48563]:
+          - text: 来，坐稳了。今天的热点快报先从高考智驾说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48564] [cursor=pointer]
+        - generic [ref=e48565]:
+          - button "🤔 这个有意思" [ref=e48566] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48567] [cursor=pointer]
+      - generic [ref=e48568]:
+        - generic [ref=e48569]: 📌 钓鱼路上发现燃气泄漏
+        - generic [ref=e48570]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48571]:
+          - generic [ref=e48572]: 🏪 网吧信息差风格
+        - generic [ref=e48573]:
+          - text: 这波操作给巴沙整不会了。钓鱼路上发现燃气泄漏。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e48574] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48575]:
+          - generic [ref=e48576]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48577]:
+          - text: 钓鱼路上发现燃气泄漏——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48578] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48579]:
+          - generic [ref=e48580]: 📺 陈先生风格
+        - generic [ref=e48581]:
+          - text: 钓鱼路上发现燃气泄漏释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48582] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48583]:
+          - generic [ref=e48584]: 🔍 人类观察菌风格
+        - generic [ref=e48585]:
+          - text: 这届网友的观察力我是服的。钓鱼路上发现燃气泄漏。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48586] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48587]:
+          - generic [ref=e48588]: 🎮 沙漠一之雕风格
+        - generic [ref=e48589]:
+          - text: 又是离谱的一天。热点快报，第一件事：钓鱼路上发现燃气泄漏。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48590] [cursor=pointer]
+        - generic [ref=e48591]:
+          - button "🤔 这个有意思" [ref=e48592] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48593] [cursor=pointer]
+      - generic [ref=e48594]:
+        - generic [ref=e48595]: 📌 蛋黄派伪装摄影师突袭周深
+        - generic [ref=e48596]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48597]:
+          - generic [ref=e48598]: 🏪 网吧信息差风格
+        - generic [ref=e48599]:
+          - text: 来，吃个瓜。蛋黄派伪装摄影师突袭周深。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48600] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48601]:
+          - generic [ref=e48602]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48603]:
+          - text: 这可能是近期最被低估的一条新闻：蛋黄派伪装摄影师突袭周深。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48604] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48605]:
+          - generic [ref=e48606]: 📺 陈先生风格
+        - generic [ref=e48607]:
+          - text: 深挖蛋黄派伪装摄影师突袭周深你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48608] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48609]:
+          - generic [ref=e48610]: 🔍 人类观察菌风格
+        - generic [ref=e48611]:
+          - text: 刷到一条蛋黄派伪装摄影师突袭周深的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48612] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48613]:
+          - generic [ref=e48614]: 🎮 沙漠一之雕风格
+        - generic [ref=e48615]:
+          - text: 今日热点快报开唠。第一件事关于蛋黄派伪装摄影师突袭周深。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48616] [cursor=pointer]
+        - generic [ref=e48617]:
+          - button "🤔 这个有意思" [ref=e48618] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48619] [cursor=pointer]
+      - generic [ref=e48620]:
+        - generic [ref=e48621]: 📌 青年大学习之高考注意事项
+        - generic [ref=e48622]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48623]:
+          - generic [ref=e48624]: 🏪 网吧信息差风格
+        - generic [ref=e48625]:
+          - text: 巴沙今天刷到一条新闻，青年大学习之高考注意事项。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48626] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48627]:
+          - generic [ref=e48628]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48629]:
+          - text: 关于青年大学习之高考注意事项的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48630] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48631]:
+          - generic [ref=e48632]: 📺 陈先生风格
+        - generic [ref=e48633]:
+          - text: 拆解青年大学习之高考注意事项的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48634] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48635]:
+          - generic [ref=e48636]: 🔍 人类观察菌风格
+        - generic [ref=e48637]:
+          - text: 分享一个青年大学习之高考注意事项的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48638] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48639]:
+          - generic [ref=e48640]: 🎮 沙漠一之雕风格
+        - generic [ref=e48641]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说青年大学习之高考注意事项这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48642] [cursor=pointer]
+        - generic [ref=e48643]:
+          - button "🤔 这个有意思" [ref=e48644] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48645] [cursor=pointer]
+      - generic [ref=e48646]:
+        - generic [ref=e48647]: 📌 火星海洋迎来最新证据
+        - generic [ref=e48648]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48649]:
+          - generic [ref=e48650]: 🏪 网吧信息差风格
+        - generic [ref=e48651]:
+          - text: 我跟你们讲，火星海洋迎来最新证据。巴沙看了三遍才敢确认这居然是真的，不是AI编的。
+          - button "📋" [ref=e48652] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48653]:
+          - generic [ref=e48654]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48655]:
+          - text: 就在昨天，一条关于火星海洋迎来最新证据的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48656] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48657]:
+          - generic [ref=e48658]: 📺 陈先生风格
+        - generic [ref=e48659]:
+          - text: 独家解读火星海洋迎来最新证据背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48660] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48661]:
+          - generic [ref=e48662]: 🔍 人类观察菌风格
+        - generic [ref=e48663]:
+          - text: 来，看看这位。火星海洋迎来最新证据。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48664] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48665]:
+          - generic [ref=e48666]: 🎮 沙漠一之雕风格
+        - generic [ref=e48667]:
+          - text: 来，坐稳了。今天的热点快报先从火星海洋迎来最新证据说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48668] [cursor=pointer]
+        - generic [ref=e48669]:
+          - button "🤔 这个有意思" [ref=e48670] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48671] [cursor=pointer]
+      - generic [ref=e48672]:
+        - generic [ref=e48673]: 📌 联合国在当今形势下为何重要
+        - generic [ref=e48674]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48675]:
+          - generic [ref=e48676]: 🏪 网吧信息差风格
+        - generic [ref=e48677]:
+          - text: 我跟你们讲，联合国在当今形势下为何重要。巴沙看了三遍才敢确认这居然是真的，不是AI编的。
+          - button "📋" [ref=e48678] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48679]:
+          - generic [ref=e48680]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48681]:
+          - text: 就在昨天，一条关于联合国在当今形势下为何重要的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48682] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48683]:
+          - generic [ref=e48684]: 📺 陈先生风格
+        - generic [ref=e48685]:
+          - text: 独家解读联合国在当今形势下为何重要背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48686] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48687]:
+          - generic [ref=e48688]: 🔍 人类观察菌风格
+        - generic [ref=e48689]:
+          - text: 来，看看这位。联合国在当今形势下为何重要。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48690] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48691]:
+          - generic [ref=e48692]: 🎮 沙漠一之雕风格
+        - generic [ref=e48693]:
+          - text: 来，坐稳了。今天的热点快报先从联合国在当今形势下为何重要说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48694] [cursor=pointer]
+        - generic [ref=e48695]:
+          - button "🤔 这个有意思" [ref=e48696] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48697] [cursor=pointer]
+      - generic [ref=e48698]:
+        - generic [ref=e48699]: 📌 王鹤棣白鹿剧情人设引热议
+        - generic [ref=e48700]: "来源: bilibili"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48701]:
+          - generic [ref=e48702]: 🏪 网吧信息差风格
+        - generic [ref=e48703]:
+          - text: OK，聊个事儿啊。王鹤棣白鹿剧情人设引热议。巴沙看完只能说一句，不是，这凭啥啊？你让评论区评评理。
+          - button "📋" [ref=e48704] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48705]:
+          - generic [ref=e48706]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48707]:
+          - text: 就在昨天，一条关于王鹤棣白鹿剧情人设引热议的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e48708] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48709]:
+          - generic [ref=e48710]: 📺 陈先生风格
+        - generic [ref=e48711]:
+          - text: 独家解读王鹤棣白鹿剧情人设引热议背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e48712] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48713]:
+          - generic [ref=e48714]: 🔍 人类观察菌风格
+        - generic [ref=e48715]:
+          - text: 来，看看这位。王鹤棣白鹿剧情人设引热议。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e48716] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48717]:
+          - generic [ref=e48718]: 🎮 沙漠一之雕风格
+        - generic [ref=e48719]:
+          - text: 来，坐稳了。今天的热点快报先从王鹤棣白鹿剧情人设引热议说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e48720] [cursor=pointer]
+        - generic [ref=e48721]:
+          - button "🤔 这个有意思" [ref=e48722] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48723] [cursor=pointer]
+      - generic [ref=e48724]:
+        - generic [ref=e48725]: 📌 两日本人在吉林处理日军遗弃武器受伤
+        - generic [ref=e48726]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48727]:
+          - generic [ref=e48728]: 🏪 网吧信息差风格
+        - generic [ref=e48729]:
+          - text: 来，吃个瓜。两日本人在吉林处理日军遗弃武器受伤。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48730] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48731]:
+          - generic [ref=e48732]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48733]:
+          - text: 这可能是近期最被低估的一条新闻：两日本人在吉林处理日军遗弃武器受伤。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48734] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48735]:
+          - generic [ref=e48736]: 📺 陈先生风格
+        - generic [ref=e48737]:
+          - text: 深挖两日本人在吉林处理日军遗弃武器受伤你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48738] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48739]:
+          - generic [ref=e48740]: 🔍 人类观察菌风格
+        - generic [ref=e48741]:
+          - text: 刷到一条两日本人在吉林处理日军遗弃武器受伤的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48742] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48743]:
+          - generic [ref=e48744]: 🎮 沙漠一之雕风格
+        - generic [ref=e48745]:
+          - text: 今日热点快报开唠。第一件事关于两日本人在吉林处理日军遗弃武器受伤。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48746] [cursor=pointer]
+        - generic [ref=e48747]:
+          - button "🤔 这个有意思" [ref=e48748] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48749] [cursor=pointer]
+      - generic [ref=e48750]:
+        - generic [ref=e48751]: 📌 非洲遍地都是中国同款校服
+        - generic [ref=e48752]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48753]:
+          - generic [ref=e48754]: 🏪 网吧信息差风格
+        - generic [ref=e48755]:
+          - text: 说到这个非洲遍地都是中国同款校服，巴沙第一反应是：编的吧？结果一查，诶，真事儿！给你讲讲前因后果。
+          - button "📋" [ref=e48756] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48757]:
+          - generic [ref=e48758]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48759]:
+          - text: 热点信息差，为什么非洲遍地都是中国同款校服？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e48760] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48761]:
+          - generic [ref=e48762]: 📺 陈先生风格
+        - generic [ref=e48763]:
+          - text: 大型纪录片之非洲遍地都是中国同款校服全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e48764] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48765]:
+          - generic [ref=e48766]: 🔍 人类观察菌风格
+        - generic [ref=e48767]:
+          - text: 今日热点信息快报。先说个非洲遍地都是中国同款校服的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e48768] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48769]:
+          - generic [ref=e48770]: 🎮 沙漠一之雕风格
+        - generic [ref=e48771]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，非洲遍地都是中国同款校服。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e48772] [cursor=pointer]
+        - generic [ref=e48773]:
+          - button "🤔 这个有意思" [ref=e48774] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48775] [cursor=pointer]
+      - generic [ref=e48776]:
+        - generic [ref=e48777]: 📌 智能技术守护电网安全
+        - generic [ref=e48778]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48779]:
+          - generic [ref=e48780]: 🏪 网吧信息差风格
+        - generic [ref=e48781]:
+          - text: 巴沙今天刷到一条新闻，智能技术守护电网安全。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48782] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48783]:
+          - generic [ref=e48784]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48785]:
+          - text: 关于智能技术守护电网安全的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48786] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48787]:
+          - generic [ref=e48788]: 📺 陈先生风格
+        - generic [ref=e48789]:
+          - text: 拆解智能技术守护电网安全的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48790] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48791]:
+          - generic [ref=e48792]: 🔍 人类观察菌风格
+        - generic [ref=e48793]:
+          - text: 分享一个智能技术守护电网安全的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48794] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48795]:
+          - generic [ref=e48796]: 🎮 沙漠一之雕风格
+        - generic [ref=e48797]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说智能技术守护电网安全这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48798] [cursor=pointer]
+        - generic [ref=e48799]:
+          - button "🤔 这个有意思" [ref=e48800] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48801] [cursor=pointer]
+      - generic [ref=e48802]:
+        - generic [ref=e48803]: 📌 中国女排世联赛首胜
+        - generic [ref=e48804]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48805]:
+          - generic [ref=e48806]: 🏪 网吧信息差风格
+        - generic [ref=e48807]:
+          - text: 不是，中国女排世联赛首胜这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。
+          - button "📋" [ref=e48808] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48809]:
+          - generic [ref=e48810]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48811]:
+          - text: 中国女排世联赛首胜——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48812] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48813]:
+          - generic [ref=e48814]: 📺 陈先生风格
+        - generic [ref=e48815]:
+          - text: 中国女排世联赛首胜释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48816] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48817]:
+          - generic [ref=e48818]: 🔍 人类观察菌风格
+        - generic [ref=e48819]:
+          - text: 这届网友的观察力我是服的。中国女排世联赛首胜。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e48820] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48821]:
+          - generic [ref=e48822]: 🎮 沙漠一之雕风格
+        - generic [ref=e48823]:
+          - text: 又是离谱的一天。热点快报，第一件事：中国女排世联赛首胜。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e48824] [cursor=pointer]
+        - generic [ref=e48825]:
+          - button "🤔 这个有意思" [ref=e48826] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48827] [cursor=pointer]
+      - generic [ref=e48828]:
+        - generic [ref=e48829]: 📌 女子花2万查丈夫出轨揪出辅警内鬼
+        - generic [ref=e48830]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48831]:
+          - generic [ref=e48832]: 🏪 网吧信息差风格
+        - generic [ref=e48833]:
+          - text: 最近发生了一个让所有人都没想到的事。女子花2万查丈夫出轨揪出辅警内鬼。巴沙给你们捋一捋啊，这里头的水可深了。
+          - button "📋" [ref=e48834] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48835]:
+          - generic [ref=e48836]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48837]:
+          - text: 这可能是近期最被低估的一条新闻：女子花2万查丈夫出轨揪出辅警内鬼。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48838] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48839]:
+          - generic [ref=e48840]: 📺 陈先生风格
+        - generic [ref=e48841]:
+          - text: 深挖女子花2万查丈夫出轨揪出辅警内鬼你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48842] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48843]:
+          - generic [ref=e48844]: 🔍 人类观察菌风格
+        - generic [ref=e48845]:
+          - text: 刷到一条女子花2万查丈夫出轨揪出辅警内鬼的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48846] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48847]:
+          - generic [ref=e48848]: 🎮 沙漠一之雕风格
+        - generic [ref=e48849]:
+          - text: 今日热点快报开唠。第一件事关于女子花2万查丈夫出轨揪出辅警内鬼。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48850] [cursor=pointer]
+        - generic [ref=e48851]:
+          - button "🤔 这个有意思" [ref=e48852] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48853] [cursor=pointer]
+      - generic [ref=e48854]:
+        - generic [ref=e48855]: 📌 燃油车价格大幅跳水
+        - generic [ref=e48856]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48857]:
+          - generic [ref=e48858]: 🏪 网吧信息差风格
+        - generic [ref=e48859]:
+          - text: 说到这个燃油车价格大幅跳水，巴沙第一反应是：编的吧？结果一查，诶，真事儿！给你讲讲前因后果。
+          - button "📋" [ref=e48860] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48861]:
+          - generic [ref=e48862]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48863]:
+          - text: 热点信息差，为什么燃油车价格大幅跳水？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e48864] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48865]:
+          - generic [ref=e48866]: 📺 陈先生风格
+        - generic [ref=e48867]:
+          - text: 大型纪录片之燃油车价格大幅跳水全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e48868] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48869]:
+          - generic [ref=e48870]: 🔍 人类观察菌风格
+        - generic [ref=e48871]:
+          - text: 今日热点信息快报。先说个燃油车价格大幅跳水的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e48872] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48873]:
+          - generic [ref=e48874]: 🎮 沙漠一之雕风格
+        - generic [ref=e48875]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，燃油车价格大幅跳水。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e48876] [cursor=pointer]
+        - generic [ref=e48877]:
+          - button "🤔 这个有意思" [ref=e48878] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48879] [cursor=pointer]
+      - generic [ref=e48880]:
+        - generic [ref=e48881]: 📌 孙正义的亚洲首富只当了三天
+        - generic [ref=e48882]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48883]:
+          - generic [ref=e48884]: 🏪 网吧信息差风格
+        - generic [ref=e48885]:
+          - text: 哎，各位，孙正义的亚洲首富只当了三天。巴沙就好奇了，到底是谁给他们的勇气？梁静茹吗？
+          - button "📋" [ref=e48886] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48887]:
+          - generic [ref=e48888]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48889]:
+          - text: 关于孙正义的亚洲首富只当了三天的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48890] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48891]:
+          - generic [ref=e48892]: 📺 陈先生风格
+        - generic [ref=e48893]:
+          - text: 拆解孙正义的亚洲首富只当了三天的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48894] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48895]:
+          - generic [ref=e48896]: 🔍 人类观察菌风格
+        - generic [ref=e48897]:
+          - text: 分享一个孙正义的亚洲首富只当了三天的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48898] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48899]:
+          - generic [ref=e48900]: 🎮 沙漠一之雕风格
+        - generic [ref=e48901]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说孙正义的亚洲首富只当了三天这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48902] [cursor=pointer]
+        - generic [ref=e48903]:
+          - button "🤔 这个有意思" [ref=e48904] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48905] [cursor=pointer]
+      - generic [ref=e48906]:
+        - generic [ref=e48907]: 📌 宝宝不知妈妈去世 爸爸选择“撒谎”
+        - generic [ref=e48908]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48909]:
+          - generic [ref=e48910]: 🏪 网吧信息差风格
+        - generic [ref=e48911]:
+          - text: 说到2026年06月06日呢，首先第一个事儿，宝宝不知妈妈去世 爸爸选择“撒谎”。巴沙刷到这新闻的时候人都傻了，你说这事儿离谱不离谱？
+          - button "📋" [ref=e48912] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48913]:
+          - generic [ref=e48914]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48915]:
+          - text: 热点信息差，为什么宝宝不知妈妈去世 爸爸选择“撒谎”？这个问题的答案可能和你想的完全不一样。先说背景……
+          - button "📋" [ref=e48916] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48917]:
+          - generic [ref=e48918]: 📺 陈先生风格
+        - generic [ref=e48919]:
+          - text: 大型纪录片之宝宝不知妈妈去世 爸爸选择“撒谎”全程高能。先说背景：这事儿能发展到今天这个地步，背后有三股力量在推动。
+          - button "📋" [ref=e48920] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48921]:
+          - generic [ref=e48922]: 🔍 人类观察菌风格
+        - generic [ref=e48923]:
+          - text: 今日热点信息快报。先说个宝宝不知妈妈去世 爸爸选择“撒谎”的事儿。不是，这波操作我是真的没想到。你说他图啥呢？
+          - button "📋" [ref=e48924] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48925]:
+          - generic [ref=e48926]: 🎮 沙漠一之雕风格
+        - generic [ref=e48927]:
+          - text: 一夜之间发生了啥？今日热点快报，先唠第一件事，宝宝不知妈妈去世 爸爸选择“撒谎”。这事儿你得听我细说，开头离谱，结尾更离谱。
+          - button "📋" [ref=e48928] [cursor=pointer]
+        - generic [ref=e48929]:
+          - button "🤔 这个有意思" [ref=e48930] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48931] [cursor=pointer]
+      - generic [ref=e48932]:
+        - generic [ref=e48933]: 📌 女子27万买车正常行驶四年成“假车”
+        - generic [ref=e48934]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48935]:
+          - generic [ref=e48936]: 🏪 网吧信息差风格
+        - generic [ref=e48937]:
+          - text: 来，吃个瓜。女子27万买车正常行驶四年成“假车”。巴沙跟你们说，这事儿比电视剧精彩一百倍，全程高能。
+          - button "📋" [ref=e48938] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48939]:
+          - generic [ref=e48940]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48941]:
+          - text: 这可能是近期最被低估的一条新闻：女子27万买车正常行驶四年成“假车”。如果你只看标题就会错过这些关键信息。
+          - button "📋" [ref=e48942] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48943]:
+          - generic [ref=e48944]: 📺 陈先生风格
+        - generic [ref=e48945]:
+          - text: 深挖女子27万买车正常行驶四年成“假车”你不知道的内幕。表面上看是偶然事件，实际上每一次"巧合"背后都有迹可循。
+          - button "📋" [ref=e48946] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48947]:
+          - generic [ref=e48948]: 🔍 人类观察菌风格
+        - generic [ref=e48949]:
+          - text: 刷到一条女子27万买车正常行驶四年成“假车”的视频。评论区炸了。有说离谱的，有说活该的，还有说"换我我也这么干"的。你怎么看？
+          - button "📋" [ref=e48950] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48951]:
+          - generic [ref=e48952]: 🎮 沙漠一之雕风格
+        - generic [ref=e48953]:
+          - text: 今日热点快报开唠。第一件事关于女子27万买车正常行驶四年成“假车”。说实话我一开始还以为是洋葱新闻，结果是真的。
+          - button "📋" [ref=e48954] [cursor=pointer]
+        - generic [ref=e48955]:
+          - button "🤔 这个有意思" [ref=e48956] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48957] [cursor=pointer]
+      - generic [ref=e48958]:
+        - generic [ref=e48959]: 📌 窗边的背手负鼠 年轻人咋就共情了呢
+        - generic [ref=e48960]: "来源: 今日头条"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48961]:
+          - generic [ref=e48962]: 🏪 网吧信息差风格
+        - generic [ref=e48963]:
+          - text: 巴沙今天刷到一条新闻，窗边的背手负鼠 年轻人咋就共情了呢。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e48964] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48965]:
+          - generic [ref=e48966]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48967]:
+          - text: 关于窗边的背手负鼠 年轻人咋就共情了呢的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e48968] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48969]:
+          - generic [ref=e48970]: 📺 陈先生风格
+        - generic [ref=e48971]:
+          - text: 拆解窗边的背手负鼠 年轻人咋就共情了呢的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e48972] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48973]:
+          - generic [ref=e48974]: 🔍 人类观察菌风格
+        - generic [ref=e48975]:
+          - text: 分享一个窗边的背手负鼠 年轻人咋就共情了呢的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e48976] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e48977]:
+          - generic [ref=e48978]: 🎮 沙漠一之雕风格
+        - generic [ref=e48979]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说窗边的背手负鼠 年轻人咋就共情了呢这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e48980] [cursor=pointer]
+        - generic [ref=e48981]:
+          - button "🤔 这个有意思" [ref=e48982] [cursor=pointer]
+          - button "📋 复制全部" [ref=e48983] [cursor=pointer]
+      - generic [ref=e48984]:
+        - generic [ref=e48985]: 📌 专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗
+        - generic [ref=e48986]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e48987]:
+          - generic [ref=e48988]: 🏪 网吧信息差风格
+        - generic [ref=e48989]:
+          - text: 这波操作给巴沙整不会了。专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e48990] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e48991]:
+          - generic [ref=e48992]: 🎬 阿七大型纪录片风格
+        - generic [ref=e48993]:
+          - text: 专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e48994] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e48995]:
+          - generic [ref=e48996]: 📺 陈先生风格
+        - generic [ref=e48997]:
+          - text: 专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e48998] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e48999]:
+          - generic [ref=e49000]: 🔍 人类观察菌风格
+        - generic [ref=e49001]:
+          - text: 这届网友的观察力我是服的。专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e49002] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49003]:
+          - generic [ref=e49004]: 🎮 沙漠一之雕风格
+        - generic [ref=e49005]:
+          - text: 又是离谱的一天。热点快报，第一件事：专访因耳环被网暴的女村支书：我格局很大的，从不计较、从不内耗。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e49006] [cursor=pointer]
+        - generic [ref=e49007]:
+          - button "🤔 这个有意思" [ref=e49008] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49009] [cursor=pointer]
+      - generic [ref=e49010]:
+        - generic [ref=e49011]: 📌 马上评｜摆拍蹭热岂能成“流量密码”
+        - generic [ref=e49012]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49013]:
+          - generic [ref=e49014]: 🏪 网吧信息差风格
+        - generic [ref=e49015]:
+          - text: 这波操作给巴沙整不会了。马上评｜摆拍蹭热岂能成“流量密码”。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e49016] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49017]:
+          - generic [ref=e49018]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49019]:
+          - text: 马上评｜摆拍蹭热岂能成“流量密码”——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e49020] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49021]:
+          - generic [ref=e49022]: 📺 陈先生风格
+        - generic [ref=e49023]:
+          - text: 马上评｜摆拍蹭热岂能成“流量密码”释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e49024] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49025]:
+          - generic [ref=e49026]: 🔍 人类观察菌风格
+        - generic [ref=e49027]:
+          - text: 这届网友的观察力我是服的。马上评｜摆拍蹭热岂能成“流量密码”。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e49028] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49029]:
+          - generic [ref=e49030]: 🎮 沙漠一之雕风格
+        - generic [ref=e49031]:
+          - text: 又是离谱的一天。热点快报，第一件事：马上评｜摆拍蹭热岂能成“流量密码”。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e49032] [cursor=pointer]
+        - generic [ref=e49033]:
+          - button "🤔 这个有意思" [ref=e49034] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49035] [cursor=pointer]
+      - generic [ref=e49036]:
+        - generic [ref=e49037]: 📌 多地要求高考期间KTV暂停K歌经营业务
+        - generic [ref=e49038]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49039]:
+          - generic [ref=e49040]: 🏪 网吧信息差风格
+        - generic [ref=e49041]:
+          - text: 不是，多地要求高考期间KTV暂停K歌经营业务这事儿巴沙必须说道说道。你品，你细品。这里头的离谱程度堪比八点档。
+          - button "📋" [ref=e49042] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49043]:
+          - generic [ref=e49044]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49045]:
+          - text: 多地要求高考期间KTV暂停K歌经营业务——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e49046] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49047]:
+          - generic [ref=e49048]: 📺 陈先生风格
+        - generic [ref=e49049]:
+          - text: 多地要求高考期间KTV暂停K歌经营业务释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e49050] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49051]:
+          - generic [ref=e49052]: 🔍 人类观察菌风格
+        - generic [ref=e49053]:
+          - text: 这届网友的观察力我是服的。多地要求高考期间KTV暂停K歌经营业务。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e49054] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49055]:
+          - generic [ref=e49056]: 🎮 沙漠一之雕风格
+        - generic [ref=e49057]:
+          - text: 又是离谱的一天。热点快报，第一件事：多地要求高考期间KTV暂停K歌经营业务。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e49058] [cursor=pointer]
+        - generic [ref=e49059]:
+          - button "🤔 这个有意思" [ref=e49060] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49061] [cursor=pointer]
+      - generic [ref=e49062]:
+        - generic [ref=e49063]: 📌 花500万改造体育场，跑道多处破损？河南泌阳通报
+        - generic [ref=e49064]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49065]:
+          - generic [ref=e49066]: 🏪 网吧信息差风格
+        - generic [ref=e49067]:
+          - text: 这波操作给巴沙整不会了。花500万改造体育场，跑道多处破损？河南泌阳通报。你让巴沙说什么好呢？只能说，真有你的。
+          - button "📋" [ref=e49068] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49069]:
+          - generic [ref=e49070]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49071]:
+          - text: 花500万改造体育场，跑道多处破损？河南泌阳通报——这条消息刚出来的时候没人在意，但随后的事态发展让所有人都坐不住了。
+          - button "📋" [ref=e49072] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49073]:
+          - generic [ref=e49074]: 📺 陈先生风格
+        - generic [ref=e49075]:
+          - text: 花500万改造体育场，跑道多处破损？河南泌阳通报释放了什么信号？如果你关注过近期的几个事件，就能清晰地看到一条隐线。
+          - button "📋" [ref=e49076] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49077]:
+          - generic [ref=e49078]: 🔍 人类观察菌风格
+        - generic [ref=e49079]:
+          - text: 这届网友的观察力我是服的。花500万改造体育场，跑道多处破损？河南泌阳通报。就这种细节，你不说我都注意不到，一说我豁然开朗。
+          - button "📋" [ref=e49080] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49081]:
+          - generic [ref=e49082]: 🎮 沙漠一之雕风格
+        - generic [ref=e49083]:
+          - text: 又是离谱的一天。热点快报，第一件事：花500万改造体育场，跑道多处破损？河南泌阳通报。我只能说，这届人民群众的创造力是无限的。
+          - button "📋" [ref=e49084] [cursor=pointer]
+        - generic [ref=e49085]:
+          - button "🤔 这个有意思" [ref=e49086] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49087] [cursor=pointer]
+      - generic [ref=e49088]:
+        - generic [ref=e49089]: 📌 杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯
+        - generic [ref=e49090]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49091]:
+          - generic [ref=e49092]: 🏪 网吧信息差风格
+        - generic [ref=e49093]:
+          - text: 巴沙今天刷到一条新闻，杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯。说实话我一开始也以为是段子，直到看到后续。
+          - button "📋" [ref=e49094] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49095]:
+          - generic [ref=e49096]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49097]:
+          - text: 关于杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯的几点思考。先说结论：这事比表面看起来复杂得多。我们用数据说话。
+          - button "📋" [ref=e49098] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49099]:
+          - generic [ref=e49100]: 📺 陈先生风格
+        - generic [ref=e49101]:
+          - text: 拆解杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯的三个关键点。第一，时机。第二，动机。第三，结果。我们一个一个说。
+          - button "📋" [ref=e49102] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49103]:
+          - generic [ref=e49104]: 🔍 人类观察菌风格
+        - generic [ref=e49105]:
+          - text: 分享一个杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯的真实案例。看完你就明白了，这世上最难猜的不是彩票，是人心。
+          - button "📋" [ref=e49106] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49107]:
+          - generic [ref=e49108]: 🎮 沙漠一之雕风格
+        - generic [ref=e49109]:
+          - text: 老规矩，今天的热点全给你盘一遍。先说杨梅进入集中上市期，全国最大产地浙江发文要求确保批批可追溯这件。这事儿吧，说大不大，说小不小，但耐人寻味。
+          - button "📋" [ref=e49110] [cursor=pointer]
+        - generic [ref=e49111]:
+          - button "🤔 这个有意思" [ref=e49112] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49113] [cursor=pointer]
+      - generic [ref=e49114]:
+        - generic [ref=e49115]: 📌 核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧
+        - generic [ref=e49116]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49117]:
+          - generic [ref=e49118]: 🏪 网吧信息差风格
+        - generic [ref=e49119]:
+          - text: 我跟你们讲，核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧。巴沙看了三遍才敢确认这居然是真的，不是AI编的。
+          - button "📋" [ref=e49120] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49121]:
+          - generic [ref=e49122]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49123]:
+          - text: 就在昨天，一条关于核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e49124] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49125]:
+          - generic [ref=e49126]: 📺 陈先生风格
+        - generic [ref=e49127]:
+          - text: 独家解读核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e49128] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49129]:
+          - generic [ref=e49130]: 🔍 人类观察菌风格
+        - generic [ref=e49131]:
+          - text: 来，看看这位。核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e49132] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49133]:
+          - generic [ref=e49134]: 🎮 沙漠一之雕风格
+        - generic [ref=e49135]:
+          - text: 来，坐稳了。今天的热点快报先从核观察｜韩国公布核潜艇研发计划，东北亚水下核竞赛加剧说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e49136] [cursor=pointer]
+        - generic [ref=e49137]:
+          - button "🤔 这个有意思" [ref=e49138] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49139] [cursor=pointer]
+      - generic [ref=e49140]:
+        - generic [ref=e49141]: 📌 释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？
+        - generic [ref=e49142]: "来源: 澎湃新闻"
+        - heading "🏪 网吧信息差风格" [level=3] [ref=e49143]:
+          - generic [ref=e49144]: 🏪 网吧信息差风格
+        - generic [ref=e49145]:
+          - text: 我跟你们讲，释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？。巴沙看了三遍才敢确认这居然是真的，不是AI编的。
+          - button "📋" [ref=e49146] [cursor=pointer]
+        - heading "🎬 阿七大型纪录片风格" [level=3] [ref=e49147]:
+          - generic [ref=e49148]: 🎬 阿七大型纪录片风格
+        - generic [ref=e49149]:
+          - text: 就在昨天，一条关于释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？的消息悄然刷屏。很多人只看到了表面，但背后的信息差才是关键。
+          - button "📋" [ref=e49150] [cursor=pointer]
+        - heading "📺 陈先生风格" [level=3] [ref=e49151]:
+          - generic [ref=e49152]: 📺 陈先生风格
+        - generic [ref=e49153]:
+          - text: 独家解读释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？背后的商业逻辑。很多人只看到了热闹，但真正值得关注的是这几个数据。
+          - button "📋" [ref=e49154] [cursor=pointer]
+        - heading "🔍 人类观察菌风格" [level=3] [ref=e49155]:
+          - generic [ref=e49156]: 🔍 人类观察菌风格
+        - generic [ref=e49157]:
+          - text: 来，看看这位。释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？。这人属于是什么水平呢？就是你跟他讲道理，他跟你讲感情，你跟他讲感情，他跟你讲法律。
+          - button "📋" [ref=e49158] [cursor=pointer]
+        - heading "🎮 沙漠一之雕风格" [level=3] [ref=e49159]:
+          - generic [ref=e49160]: 🎮 沙漠一之雕风格
+        - generic [ref=e49161]:
+          - text: 来，坐稳了。今天的热点快报先从释新闻｜德国未能赢得联合国安理会席位，为何遭遇“重大失败”？说起。不是我说，这年头什么人都有。
+          - button "📋" [ref=e49162] [cursor=pointer]
+        - generic [ref=e49163]:
+          - button "🤔 这个有意思" [ref=e49164] [cursor=pointer]
+          - button "📋 复制全部" [ref=e49165] [cursor=pointer]
+  - generic [ref=e47434]:
+    - generic [ref=e47435]: About
+    - generic [ref=e47436]:
+      - generic [ref=e47437]:
+        - generic [ref=e47438]: 📡
+        - heading "热点聚合" [level=3] [ref=e47439]
+        - paragraph [ref=e47440]: 从抖音、知乎、微博、百度等平台实时聚合社会热点，让你每天 3 分钟掌握全网信息差。
+      - generic [ref=e47441]:
+        - generic [ref=e47442]: 🔬
+        - heading "爆款拆解" [level=3] [ref=e47443]
+        - paragraph [ref=e47444]: 拆解抖音头部博主的爆款视频，分析关键词、封面风格、发布规律、选题策略，帮你复刻爆款。
+      - generic [ref=e47445]:
+        - generic [ref=e47446]: 💡
+        - heading "AI 灵感" [level=3] [ref=e47447]
+        - paragraph [ref=e47448]: 基于今日热点自动生成两种风格的选题建议——网吧信息差式解构和阿七大型纪录片式搬运。
+      - generic [ref=e47449]:
+        - generic [ref=e47450]: ⚡
+        - heading "自动追踪" [level=3] [ref=e47451]
+        - paragraph [ref=e47452]: 每3小时自动检查博主新视频，提取内容、生成分析、实时更新到网站，信息差永不掉线。
+  - contentinfo [ref=e47453]:
+    - generic [ref=e47454]: © 2026 热点信息差 · 用信息差做内容 · v20260606
+    - generic [ref=e47455]: 数据来源：抖音 · 知乎 · 微博 · 百度 · 贴吧 · 凤凰网 · 财联社 · bilibili
+  - generic [ref=e47456]: ↓ 下拉刷新
