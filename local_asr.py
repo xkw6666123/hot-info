@@ -153,6 +153,77 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
     return text[:5000]
 
 
+# ── B站视频处理 ──
+
+async def process_bilibili(url: str, tag: str = "") -> str:
+    """B站视频：使用yt-dlp下载音频 + MiMo ASR"""
+    import yt_dlp
+
+    print(f"  [1/3] yt-dlp 下载音频 {tag}...")
+    wav = os.path.join(TEMP, f"bili_{tag}.wav")
+
+    # yt-dlp 配置
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': wav.replace('.wav', '.%(ext)s'),
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'wav',
+            'preferredquality': '16',
+        }],
+        'quiet': True,
+        'no_warnings': True,
+        'socket_timeout': 30,
+    }
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+    except Exception as e:
+        print(f"    ❌ yt-dlp 失败: {e}")
+        return ""
+
+    # 检查文件是否存在
+    if not os.path.exists(wav):
+        # 尝试查找其他格式
+        for ext in ['wav', 'mp3', 'm4a', 'webm']:
+            alt = wav.replace('.wav', f'.{ext}')
+            if os.path.exists(alt):
+                wav = alt
+                break
+        else:
+            print(f"    ❌ 音频文件不存在")
+            return ""
+
+    file_size = os.path.getsize(wav)
+    if file_size < 1000:
+        print(f"    ❌ 音频文件过小: {file_size}字节")
+        return ""
+    print(f"    ✅ {file_size//1024}KB")
+
+    print(f"  [2/3] MiMo ASR...")
+    text = mimo_asr(wav)
+    text = _clean(text)
+
+    # 清理临时文件
+    try:
+        os.remove(wav)
+    except Exception:
+        pass
+
+    if len(text) < 20:
+        print(f"    ⚠️ 过短 ({len(text)}字)")
+        return ""
+
+    chinese = sum(1 for c in text if "\u4e00" <= c <= "\u9fff")
+    if chinese / max(len(text), 1) < 0.3:
+        print(f"    ⚠️ 中文占比低 ({chinese}/{len(text)})")
+        return ""
+
+    print(f"    ✅ {len(text)}字: {text[:60]}...")
+    return text[:5000]
+
+
 # ── 主流程 ──
 
 async def main():
@@ -180,18 +251,29 @@ async def main():
         aweme_id = v.get("aweme_id", "")
         url = v.get("url", "")
 
-        if "douyin.com" not in url:
-            continue
-
-        print(f"[{i+1}/{len(need)}] {name} | {title}")
-        try:
-            text = await process_one(aweme_id, url, tag=aweme_id or str(i))
-            if text:
-                v["content_intro"] = text
-                updated += 1
-        except Exception as e:
-            print(f"    ❌ {type(e).__name__}: {e}")
-        print()
+        # 根据URL类型选择处理方式
+        if "douyin.com" in url:
+            # 抖音视频：使用Playwright拦截
+            print(f"[{i+1}/{len(need)}] {name} | {title}")
+            try:
+                text = await process_one(aweme_id, url, tag=aweme_id or str(i))
+                if text:
+                    v["content_intro"] = text
+                    updated += 1
+            except Exception as e:
+                print(f"    ❌ {type(e).__name__}: {e}")
+            print()
+        elif "bilibili.com" in url:
+            # B站视频：使用yt-dlp下载音频 + ASR
+            print(f"[{i+1}/{len(need)}] {name} | {title} [B站]")
+            try:
+                text = await process_bilibili(url, tag=str(i))
+                if text:
+                    v["content_intro"] = text
+                    updated += 1
+            except Exception as e:
+                print(f"    ❌ {type(e).__name__}: {e}")
+            print()
 
     if updated:
         data["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
