@@ -550,7 +550,7 @@ def scrape_weibo():
         return []
     try:
         data = json.loads(text)
-    except:
+    except Exception:
         return []
     articles = []
     for item in data.get("data", {}).get("realtime", [])[:10]:
@@ -592,28 +592,62 @@ def scrape_douyin():
         })
     return articles
 
+def _fetch_weixin_api():
+    """尝试从多个公众号热点API获取数据"""
+    import ssl
+    
+    # API列表：主API + 备用API
+    apis = [
+        ("https://api.vvhan.com/api/hotlist/weixin", "https://api.vvhan.com/"),
+        ("https://api.vvhan.com/api/hotlist/weixin", None),  # 无referer重试
+    ]
+    
+    for url, referer in apis:
+        try:
+            # 尝试跳过SSL验证（处理证书过期问题）
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            
+            headers = {
+                "User-Agent": USER_AGENT,
+                "Accept": "application/json,*/*",
+            }
+            if referer:
+                headers["Referer"] = referer
+            
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=10, context=ctx) as resp:
+                data = json.loads(resp.read().decode("utf-8", errors="replace"))
+                items = data.get("data", [])
+                if items and len(items) > 0:
+                    return items
+        except Exception:
+            continue
+    
+    return None
+
 def scrape_weixin():
-    """公众号热点（主API + 微博降级）"""
+    """公众号热点（多API + 微博降级）"""
     print("📡 公众号热点...")
-    # 主API: vvhan
-    data = fetch_json("https://api.vvhan.com/api/hotlist/weixin", referer="https://api.vvhan.com/")
-    if data:
-        items = data.get("data", [])
-        if items:
-            articles = []
-            for item in items[:10]:
-                articles.append({
-                    "id": make_id("wx", item.get("title","")) % 10**9,
-                    "title": item.get("title", ""),
-                    "summary": item.get("desc", "")[:100] if item.get("desc") else "",
-                    "source": "公众号热点",
-                    "date": today, "time": "",
-                    "tags": ["公众号", "社会热点", "热议"],
-                    "url": item.get("url", "#"),
-                    "likes": safe_int(item.get("hot"), 10000),
-                    "comments": 100,
-                })
-            return articles
+    
+    # 主API: 尝试多个公众号热点API
+    items = _fetch_weixin_api()
+    if items:
+        articles = []
+        for item in items[:10]:
+            articles.append({
+                "id": make_id("wx", item.get("title","")) % 10**9,
+                "title": item.get("title", ""),
+                "summary": item.get("desc", "")[:100] if item.get("desc") else "",
+                "source": "公众号热点",
+                "date": today, "time": "",
+                "tags": ["公众号", "社会热点", "热议"],
+                "url": item.get("url", "#"),
+                "likes": safe_int(item.get("hot"), 10000),
+                "comments": 100,
+            })
+        return articles
     
     # API失败：用微博热搜 + 搜狗微信搜索链接，只保留社会争议性话题
     print("  ⚠️ API不可达，用微博热搜+搜狗搜索")
@@ -888,7 +922,7 @@ def scrape_bloggers_f2():
                     ct = lt.get('create_time', '') if lt else ''
                     try:
                         pub_date = ct[:10]
-                    except:
+                    except Exception:
                         pub_date = "2000-01-01"
                     
                     desc = (v.get('desc', '') or '').strip()
@@ -922,7 +956,7 @@ def scrape_bloggers_f2():
                     try:
                         pub_date = ct[:10]
                         pub_time = ct[11:16].replace('-', ':')
-                    except:
+                    except Exception:
                         pub_date, pub_time = today, now_time
                     
                     # 构建 content_intro
@@ -1395,7 +1429,7 @@ def generate_inspirations(all_articles):
         try:
             with open(deep_style_file, "r", encoding="utf-8") as f:
                 learned_styles = json.load(f)
-        except:
+        except Exception:
             pass
     
     # 如果没有深度学习的风格，使用基本学习的风格
@@ -1403,7 +1437,7 @@ def generate_inspirations(all_articles):
         try:
             with open(basic_style_file, "r", encoding="utf-8") as f:
                 learned_styles = json.load(f)
-        except:
+        except Exception:
             pass
 
     # 如果有学习到的风格，使用学习到的风格生成灵感
@@ -1542,7 +1576,7 @@ def main(mode="full"):
     try:
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
             old_data = json.load(f)
-    except:
+    except Exception:
         pass
     # full/local 模式：救援逻辑（防爬虫失败归零）
     # remote 模式已在前面合并过旧数据，跳过
@@ -1770,7 +1804,7 @@ def main(mode="full"):
             ci = a.get('content_intro','')
             if not ci: continue
             try: ci = _cc.convert(ci)
-            except: pass
+            except Exception: pass
             for w,r in _zhe: ci=ci.replace(w,r)
             for w,r in _clean_fixes: ci=ci.replace(w,r)
             a['content_intro'] = ci.strip()
