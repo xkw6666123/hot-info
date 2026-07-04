@@ -162,7 +162,7 @@ async def process_bilibili(url: str, tag: str = "") -> str:
     print(f"  [1/3] yt-dlp 下载音频 {tag}...")
     wav = os.path.join(TEMP, f"bili_{tag}.wav")
 
-    # yt-dlp 配置
+    # yt-dlp 配置（使用浏览器cookies绕过B站限制）
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': wav.replace('.wav', '.%(ext)s'),
@@ -174,6 +174,9 @@ async def process_bilibili(url: str, tag: str = "") -> str:
         'quiet': True,
         'no_warnings': True,
         'socket_timeout': 30,
+        'cookiesfrombrowser': ('chrome',),  # 从Chrome读取cookies
+        'download_ranges': lambda info, ydl: [{'start_time': 0, 'end_time': 180}],  # 只取前3分钟
+        'force_keyframes_at_cuts': True,
     }
 
     try:
@@ -200,6 +203,14 @@ async def process_bilibili(url: str, tag: str = "") -> str:
         print(f"    ❌ 音频文件过小: {file_size}字节")
         return ""
     print(f"    ✅ {file_size//1024}KB")
+
+    # 转换为16kHz单声道（MiMo ASR要求）
+    wav_16k = wav.replace('.wav', '_16k.wav')
+    cmd = [FFMPEG, '-y', '-i', wav, '-ac', '1', '-ar', '16000', '-t', '180', wav_16k]
+    subprocess.run(cmd, capture_output=True, timeout=60)
+    if os.path.exists(wav_16k) and os.path.getsize(wav_16k) > 1000:
+        wav = wav_16k
+        print(f"    ✅ 转换为16kHz: {os.path.getsize(wav)//1024}KB")
 
     print(f"  [2/3] MiMo ASR...")
     text = mimo_asr(wav)
