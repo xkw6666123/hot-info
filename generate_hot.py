@@ -324,10 +324,13 @@ def scrape_bilibili_bloggers():
     
     # 运行异步函数
     try:
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            import nest_asyncio
-            nest_asyncio.apply()
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                import nest_asyncio
+                nest_asyncio.apply()
+        except RuntimeError:
+            pass  # Python 3.12+: no current event loop
         asyncio.run(fetch_bili_videos())
     except Exception as e:
         print(f"  ⚠️ B站博主追踪异常: {e}")
@@ -952,10 +955,13 @@ def scrape_bloggers_f2():
     # 运行异步抓取（容错：任何异常都返回已获取的部分数据）
     import asyncio as _asyncio
     try:
-        loop = _asyncio.get_event_loop()
-        if loop.is_running():
-            import nest_asyncio
-            nest_asyncio.apply()
+        try:
+            loop = _asyncio.get_event_loop()
+            if loop.is_running():
+                import nest_asyncio
+                nest_asyncio.apply()
+        except RuntimeError:
+            pass  # Python 3.12+: no current event loop, asyncio.run() will create one
         _asyncio.run(_fetch())
     except Exception as e:
         print(f"    ⚠️ F2运行异常(返回已获取的{len(articles)}条): {e}")
