@@ -47,9 +47,9 @@ def main():
             data = json.load(f)
         
         # ═══ 分离灵感到独立文件 ═══
-        inspirations = data.pop("inspirations", []) if "inspirations" in data else data.get("inspirations", [])
-        if "inspirations" in data:
-            del data["inspirations"]
+        inspirations = data.pop("inspirations", []) if "inspirations" in data else []
+        insp_count = len(inspirations)
+        data["inspiration_count"] = insp_count  # 页面显示数量，但不在首屏加载
         
         data["articles"] = optimize_articles(data["articles"])
         data = sanitize(data)

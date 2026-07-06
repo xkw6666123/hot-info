@@ -484,7 +484,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1783346722"></script>
+<script src="data.js?v=1783346760" defer></script></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -583,7 +583,7 @@ function initPage(){
   }
   const hotCount=data.filter(a=>a.source!=='blogger').length;
   const bloggerCount=new Set(data.filter(a=>a.source==='blogger').map(a=>a.blogger_name)).size;
-  const inspCount=(json.inspirations||json.inspiration_count||'—');
+  const inspCount=(inspirations||json.inspiration_count||'—');
   document.getElementById('heroArticles').textContent=hotCount;
   document.getElementById('heroBloggers').textContent=bloggerCount+'位';
   document.getElementById('heroIdeas').textContent=inspCount;
@@ -817,12 +817,12 @@ function renderFav(){
   try{
     const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
     const favKeys=raw.keys||raw.ids||[];
-    if(favKeys.length>0&&json.inspirations){
+    if(favKeys.length>0&&inspirations){
       // 用 hash key 匹配灵感
       function ik(t,s){var k=(t||'')+'|'+(s||'');var h=0;for(var j=0;j<k.length;j++){h=((h<<5)-h)+k.charCodeAt(j);h|=0;}return'k'+Math.abs(h);}
       const liked=[];
       favKeys.forEach(function(key){
-        json.inspirations.forEach(function(a){
+        inspirations.forEach(function(a){
           if(ik(a.topic,a.source)===key) liked.push(a);
         });
       });
@@ -919,7 +919,7 @@ function renderInspire(){
   const el=document.getElementById('content');
   let h='';
   // === 已有灵感库 ===
-  if(json.inspirations && json.inspirations.length){
+  if(inspirations && inspirations.length){
     const today=new Date().toDateString();
     let inspFavs=[];
     try{
@@ -939,7 +939,7 @@ function renderInspire(){
     // 按收藏喜好推荐排序
     let favTopics=[];
     inspFavs.forEach(function(key){
-      json.inspirations.forEach(function(a){
+      inspirations.forEach(function(a){
         if(inspKey(a.topic,a.source)===key) favTopics.push(a.topic||'');
       });
     });
@@ -966,7 +966,7 @@ function renderInspire(){
       return score;
     }
     // 计算每条灵感的总分 = 收藏分 + 爆火分
-    let ranked=json.inspirations.map(function(a,i){
+    let ranked=inspirations.map(function(a,i){
       let favBoost=0;
       if(inspFavs.includes(inspKey(a.topic,a.source))) favBoost=100;
       else if(favTopics.length>0){
@@ -988,13 +988,13 @@ function renderInspire(){
       return sx-sy;
     });
     
-    const activeCount=json.inspirations.length-dismissed.length;
+    const activeCount=inspirations.length-dismissed.length;
     
     h += `<div class="section-title" style="margin-top:24px;display:flex;justify-content:space-between;align-items:center">
-      <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">按🔥爆火度排序 · 共${json.inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
+      <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">按🔥爆火度排序 · 共${inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
       <button onclick="refreshInspirations()" style="padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:11px;font-family:inherit;transition:all .2s" title="换一批灵感排序">🔄 换一批</button>
     </div>`;
-    window.__INSP_DATA__=[];for(var _j=0;_j<json.inspirations.length;_j++)window.__INSP_DATA__.push(null);
+    window.__INSP_DATA__=[];for(var _j=0;_j<inspirations.length;_j++)window.__INSP_DATA__.push(null);
     h += ranked.map(function(r,i){
       var a=r.item;var oi=r.idx;
       var isFaved=inspFavs.includes(inspKey(a.topic,a.source));window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
@@ -1207,7 +1207,7 @@ function renderTrend(){
 
 function toggleInspFav(idx){
   // 获取稳定的 key（topic + source 的简单 hash，数据刷新后不变）
-  var insp=json.inspirations[idx];
+  var insp=inspirations[idx];
   var key=(insp.topic||'')+'|'+(insp.source||'');
   var hash=0;for(var k=0;k<key.length;k++){hash=((hash<<5)-hash)+key.charCodeAt(k);hash|=0;}
   var hk='k'+Math.abs(hash);
