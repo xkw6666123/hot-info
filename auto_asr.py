@@ -53,7 +53,7 @@ def main():
             capture_output=True,
             text=True,
             timeout=600,
-            env={**os.environ, "MIMO_API_KEY": os.environ.get("MIMO_API_KEY", "tp-ct56cpxdmbbfsvma531fntsj2ru0a3584nz44oh3hxzodh6z")}
+            env={**os.environ}
         )
         print(result.stdout)
         if result.stderr:

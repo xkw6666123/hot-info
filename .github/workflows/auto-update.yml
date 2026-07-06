@@ -19,6 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Git 同步最新代码
+        run: |
+          git fetch origin main
+          git rebase origin/main || git rebase --abort || echo "Rebase skipped"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -55,10 +60,16 @@ jobs:
       - name: 从归档恢复历史数据
         run: python data_archive.py restore || echo "Restore skipped"
 
+      - name: 数据清理（确保博主3条、新闻3天）
+        run: python fix_data.py || echo "fix_data skipped"
+
       - name: 数据合并保护 (迁移ASR文案+保留博主/灵感)
         run: |
           echo "=== 合并保护：迁移旧ASR文案，确保不丢失博主数据和灵感库 ==="
           python merge_data.py 2>&1 || echo "merge_data skipped"
+
+      - name: 生成改进版灵感内容
+        run: python inspiration_generator.py || echo "Inspiration generation skipped"
 
       - name: 自动ASR文案补提
         run: python auto_asr.py || echo "Auto ASR skipped"
@@ -109,12 +120,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html blogger_content_learn.json asr_content.json blogger_content_archive.json deep_style_learned.json data_archive.json
+          git add data.json data.js index.html blogger_content_learn.json asr_content.json blogger_content_archive.json deep_style_learned.json data_archive.json
           if git diff --staged --quiet; then
             echo "No changes, skipping commit"
           else
             TS=$(TZ='Asia/Shanghai' date +'%m-%d %H:%M')
-            git commit -m "auto: merge ${TS}"
+            git commit -m "auto: update ${TS}"
             git push origin HEAD:main
           fi
 

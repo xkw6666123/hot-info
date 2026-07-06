@@ -6,6 +6,12 @@
   ],
   "headers": [
     {
+      "source": "/data\\.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=600, s-maxage=600" }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""数据写入：内联嵌入 + 同时生成 data.js 兜底"""
+"""数据写入：生成外部 data.js，index.html 通过 <script src> 异步加载"""
 import json, os, re, time
 from datetime import datetime
 
 def atomic_write(path, content, mode="w", encoding="utf-8", newline=None):
-    tmp = path + ".tmp"
+    # Windows 沙盒可能禁止在目标目录创建 .tmp，先写到当前工作目录再移动
+    base = os.path.basename(path)
+    tmp = os.path.join(os.getcwd(), base + ".tmp")
     kwargs = {"encoding": encoding}
     if newline: kwargs["newline"] = newline
     if "b" in mode:
@@ -54,23 +56,23 @@ def main():
         js_body = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
         version = str(int(time.time()))
         
-        # 同时写 data.js（给 loadData 做兜底）
+        # 只写外部 data.js，不再内联到 index.html
         atomic_write("data.js", f"window.__HOT_DATA__={js_body};\n", newline="\n")
         
-        # 内联嵌入到 index.html
-        inline_tag = f'<script data-embed>\nwindow.__HOT_DATA__={js_body};\n</script>'
+        # 更新 index.html 中的 script src 版本号（兼容有/无版本号、单双引号）
+        html_path = "index.html"
+        if os.path.exists(html_path):
+            with open(html_path, "r", encoding="utf-8") as f:
+                html = f.read()
+            # 替换已有 data.js 引用（兼容 defer/async/无版本号/单双引号）
+            new_html = re.sub(r'<script src=["\']data\.js(?:\?v=[^"\']*)?["\'][^>]*>', f'<script src="data.js?v={version}" defer>', html)
+            # 如果没有 data.js 引用但存在其他 script 标签前，插入引用
+            if 'data.js' not in new_html:
+                new_html = new_html.replace('<script>', f'<script src="data.js?v={version}" defer></script>\n<script>', 1)
+            if new_html != html:
+                atomic_write(html_path, new_html, newline="\n")
         
-        with open("index.html", "r", encoding="utf-8") as f:
-            html = f.read()
-        
-        # 替换外部引用 → 内联
-        html = re.sub(r'<script src="data\.js\?v=\d+"[^>]*></script>', lambda m: inline_tag, html)
-        # 替换旧内联
-        html = re.sub(r'<script data-embed>[\s\S]*?</script>', lambda m: inline_tag, html)
-        
-        atomic_write("index.html", html, newline="\n")
-        
-        print(f"[OK] index.html: {len(html)//1024}KB (内联数据 {len(js_body)//1024}KB)")
+        print(f"[OK] data.js: {len(js_body)//1024}KB (v={version})")
     except Exception as e:
         print(f"[ERROR] gen_js_data.py failed: {e}")
         import sys

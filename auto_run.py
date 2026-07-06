@@ -42,10 +42,15 @@ def main():
 
     # Step 1: git pull（直连 GitHub）
     code, out = run(["git", "pull", "--ff-only", "origin", "main"], timeout=30)
-    if code != 0:
-        log(f"WARNING: git pull failed: {out[:200]}")
+    if code == 0:
+        log("git pull OK")
     else:
-        log(f"git pull OK")
+        log(f"WARNING: git pull --ff-only failed, trying rebase: {out[:200]}")
+        code2, out2 = run(["git", "pull", "--rebase", "origin", "main"], timeout=30)
+        if code2 == 0:
+            log("git rebase OK")
+        else:
+            log(f"WARNING: git rebase also failed: {out2[:200]}")
 
     # Step 2: generate_hot.py
     code, out = run([PYTHON, "generate_hot.py", "--local"], timeout=180)
@@ -53,6 +58,16 @@ def main():
         log(f"ERROR: generate_hot.py failed: {out[:200]}")
         sys.exit(1)
     log(f"generate_hot OK ({out.strip()[-100:]})")
+
+    # Step 2.5: 数据清理（确保博主3条、新闻3天、总量可控）
+    try:
+        code_fd, out_fd = run([PYTHON, "fix_data.py"], timeout=60)
+        if code_fd == 0:
+            log("fix_data OK")
+        else:
+            log(f"WARNING: fix_data.py failed: {out_fd[:200]}")
+    except Exception as e:
+        log(f"WARNING: fix_data.py error: {e}")
 
     # Step 3: gen_js_data.py
     code, out = run([PYTHON, "gen_js_data.py"], timeout=30)

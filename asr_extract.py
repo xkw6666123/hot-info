@@ -465,10 +465,10 @@ def br_match(line):
 # 全局去重：记录已处理的音频 URL，防止跨视频复用
 _SEEN_AUDIO_URLS = set()
 
-def download_asr(audio_url, video_tag="", max_sec=120):
+def download_asr(audio_url, video_tag="", max_sec=300):
     """下载音频 → MiMo ASR → 完整原文案
     video_tag: 用于区分不同视频的临时文件标识
-    max_sec: 最大音频时长（秒），短视频120s足够
+    max_sec: 最大音频时长（秒），默认5分钟覆盖绝大多数博主视频
     返回 (transcript, audio_url_hash) 或 ("", "")
     """
     global _SEEN_AUDIO_URLS
@@ -630,7 +630,7 @@ def _bilibili_asr(url):
                 path = os.path.join(tempfile.gettempdir(), "bili_" + bvid + ".mp3")
                 subprocess.run(
                      ["ffmpeg", "-y", "-i", u, "-headers", "Referer: https://www.bilibili.com/" + chr(13) + chr(10),
-                     "-ac", "1", "-ar", "22050", "-b:a", "64k", "-t", "180", path],
+                     "-ac", "1", "-ar", "22050", "-b:a", "64k", "-t", "300", path],
                     capture_output=True, timeout=60)
                 if os.path.exists(path) and os.path.getsize(path) > 1000:
                     audio_path = path
@@ -764,7 +764,7 @@ def get_douyin_content(url):
     try:
         audio_url = get_audio_url(url, aweme_id)
         if audio_url:
-            text, _ = download_asr(audio_url, f"dy_{aweme_id}", max_sec=180)
+            text, _ = download_asr(audio_url, f"dy_{aweme_id}", max_sec=300)
             if text and len(text) > 30:
                 return _clean_text(text[:2000])
     except Exception as e:

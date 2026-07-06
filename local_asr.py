@@ -12,7 +12,7 @@
 import asyncio, json, os, sys, subprocess, re, shutil, base64, urllib.request, urllib.error, time
 
 # ── 路径 ──
-DT_PATH = r"D:\AI\2026-06-06-23-33-48\douyin-transcribe"
+DT_PATH = r"D:\AI\hotinfo\douyin-transcribe"
 sys.path.insert(0, DT_PATH)
 import server  # _get_douyin_video_object, _pick_url_for_transcription
 
@@ -119,12 +119,12 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
     cmd = [
         FFMPEG, "-y",
         "-headers", "Referer: https://www.douyin.com/\r\n",
-        "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "180", wav,
+        "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "300", wav,
     ]
     subprocess.run(cmd, capture_output=True, timeout=120)
 
     if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
-        subprocess.run([FFMPEG, "-y", "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "180", wav],
+        subprocess.run([FFMPEG, "-y", "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "300", wav],
                        capture_output=True, timeout=120)
 
     if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
@@ -175,7 +175,7 @@ async def process_bilibili(url: str, tag: str = "") -> str:
         'no_warnings': True,
         'socket_timeout': 30,
         'cookiesfrombrowser': ('chrome',),  # 从Chrome读取cookies
-        'download_ranges': lambda info, ydl: [{'start_time': 0, 'end_time': 180}],  # 只取前3分钟
+        'download_ranges': lambda info, ydl: [{'start_time': 0, 'end_time': 300}],  # 取前5分钟
         'force_keyframes_at_cuts': True,
     }
 
@@ -206,7 +206,7 @@ async def process_bilibili(url: str, tag: str = "") -> str:
 
     # 转换为16kHz单声道（MiMo ASR要求）
     wav_16k = wav.replace('.wav', '_16k.wav')
-    cmd = [FFMPEG, '-y', '-i', wav, '-ac', '1', '-ar', '16000', '-t', '180', wav_16k]
+    cmd = [FFMPEG, '-y', '-i', wav, '-ac', '1', '-ar', '16000', '-t', '300', wav_16k]
     subprocess.run(cmd, capture_output=True, timeout=60)
     if os.path.exists(wav_16k) and os.path.getsize(wav_16k) > 1000:
         wav = wav_16k

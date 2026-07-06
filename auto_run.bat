@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul 2>&1
 set PYTHONIOENCODING=utf-8
-cd /d D:\AI\2026-06-06-23-33-48\hot-info
+cd /d D:\AI\hotinfo\hot-info
 
 echo [%date% %time%] start >> auto_run.log
 
@@ -34,7 +34,7 @@ C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe data_archive.p
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
 
 :: 自动ASR：检测缺失文案并自动补提
-set MIMO_API_KEY=tp-ct56cpxdmbbfsvma531fntsj2ru0a3584nz44oh3hxzodh6z
+set MIMO_API_KEY=
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe auto_asr.py >> auto_run.log 2>&1
 
 :: 持续学习：归档文案 + 学习风格
