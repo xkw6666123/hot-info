@@ -1818,9 +1818,9 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=3)           # 新闻保留3天
-    rescue_cutoff = datetime.now().date() - timedelta(days=5)    # 失败平台保留5天救援
-    blog_cutoff = datetime.now().date() - timedelta(days=7)      # 博主保留7天（更严格）
+    cutoff = datetime.now().date() - timedelta(days=6)           # 新闻保留7天（今天+6天前=7天窗口）
+    rescue_cutoff = datetime.now().date() - timedelta(days=13)   # 失败平台保留14天
+    blog_cutoff = datetime.now().date() - timedelta(days=30)      # F2时间戳非标准，放宽防误删
     fresh = []
     bloggers_kept = {}
     blog_removed = 0
@@ -1832,7 +1832,7 @@ def main(mode="full"):
             lst.append(a)
         else:
             src = a.get("source", "")
-            # 失败平台：5天保护期，成功平台：3天
+            # 失败平台：7天保护期，成功平台：3天
             limit = rescue_cutoff if src in failed_sources else cutoff
             try:
                 date_str = (a.get("date") or a.get("published_at") or "")[:10]
@@ -1847,8 +1847,9 @@ def main(mode="full"):
                 news_removed += 1
                 continue
             fresh.append(a)
-    # 博主：保留7天内最新3条
+    # 博主：保留3天内最新3条
     for name, lst in bloggers_kept.items():
+        # 只保留3天内的
         recent = []
         old = 0
         for a in lst:
@@ -1868,19 +1869,6 @@ def main(mode="full"):
         recent.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
         fresh.extend(recent[:3])
         blog_removed += old + max(0, len(recent) - 3)
-    # 限制新闻数量：每源最多40条，总计最多400条，按热度保留
-    news_items = [a for a in fresh if a.get("source") != "blogger"]
-    blogger_items = [a for a in fresh if a.get("source") == "blogger"]
-    news_by_source = defaultdict(list)
-    for a in news_items:
-        news_by_source[a.get("source", "其他")].append(a)
-    limited_news = []
-    for src, items in news_by_source.items():
-        items.sort(key=lambda x: x.get("likes", 0) or 0, reverse=True)
-        limited_news.extend(items[:40])
-    limited_news.sort(key=lambda x: x.get("likes", 0) or 0, reverse=True)
-    limited_news = limited_news[:400]
-    fresh = limited_news + blogger_items
     if blog_removed:
         print(f"  🗑 博主过期: {blog_removed} 条")
     if news_removed:
