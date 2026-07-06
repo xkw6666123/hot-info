@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """
-灵感生成器 v7 —— 基于真实事件背景，用博主口吻完整讲述
-- 从 summary 提取时间/来历/结果
-- 每个博主按自己的开头/中间/结尾模式串起来
-- 像真实视频文案一样：有起因经过结果
+灵感生成器 v8 —— 结构化叙事模板
+从summary提取 时间/起因/结果，填入博主专属叙事结构
 """
 import json, os, re, random
 from datetime import datetime
@@ -32,18 +30,40 @@ def extract_topic(topic, n=20):
     return topic[:n] if len(topic) > n else topic
 
 def clean_summary(text):
-    """清洗摘要：去掉HTML标签，截取合适长度"""
-    if not text:
-        return ""
+    if not text: return ""
     text = re.sub(r'<[^>]+>', '', text)
-    text = re.sub(r'[\n\r\t]', '', text).strip()
-    if len(text) > 300:
-        for sep in '。！？':
-            idx = text[:300].rfind(sep)
-            if idx > 150:
-                return text[:idx+1]
-        return text[:300]
-    return text
+    text = re.sub(r'[\n\r\t]', ' ', text).strip()
+    # 拆句，只取前2句
+    sents = re.split(r'[。！？]', text)
+    result = ""
+    for s in sents[:3]:
+        s = s.strip()
+        if len(s) > 10:
+            result += s + "。"
+    return result[:300]
+
+def parse_event(summary, date):
+    """从summary中提取 时间/起因/结果"""
+    info = {"time": date or "", "what": "", "result": ""}
+    s = clean_summary(summary or "")
+    if not s:
+        return info
+    
+    # 提取时间
+    tm = re.search(r'(\d{1,2}月\d{1,2}日|\d{4}年\d{1,2}月\d{1,2}日|近日|目前)', s)
+    if tm:
+        info["time"] = tm.group(0)
+    
+    # 分成两半：起因 + 结果
+    sents = re.split(r'[。]', s)
+    sents = [x.strip() for x in sents if len(x.strip()) > 10]
+    if len(sents) >= 2:
+        info["what"] = sents[0]
+        info["result"] = sents[1] if len(sents) >= 2 else ""
+    else:
+        info["what"] = s
+    
+    return info
 
 def douyin_score(a):
     import math
@@ -58,8 +78,8 @@ def douyin_score(a):
         if w in title: score += 10; break
     clean = re.sub(r'\[.*?\]|#\S+','', title).strip()
     if len(clean) <= 12: score += 10
-    source_boost = {'百度热搜':8,'微博':7,'知乎':6,'bilibili':6,'今日头条':5}
-    score += source_boost.get(source, 2)
+    boost = {'百度热搜':8,'微博':7,'知乎':6,'bilibili':6,'今日头条':5}
+    score += boost.get(source, 2)
     return score
 
 def select_topics(data, n=200):
@@ -74,134 +94,95 @@ def select_topics(data, n=200):
     return unique[:n]
 
 # ═══════════════════════════════════════════════════════
-#  基于事件背景 + 博主口吻 生成完整叙事
+#  博主专属叙事模板（结构化：时间+起因+经过+结果+互动）
 # ═══════════════════════════════════════════════════════
 
-def build_context(topic, summary, date, source):
-    """从summary建立事件上下文：时间+起因+经过+结果"""
-    ctx = {"time": "", "cause": "", "result": "", "full": ""}
-    s = clean_summary(summary or "")
-    if not s:
-        ctx["full"] = topic
-        return ctx
-    
-    d = date or ""
-    # 提取时间
-    time_match = re.search(r'(\d{1,2}月\d{1,2}日|\d{4}年\d{1,2}月\d{1,2}日|近日|目前|今天|昨晚|北京时间\d{1,2}月\d{1,2}日)', s)
-    if time_match:
-        ctx["time"] = time_match.group(0)
-    elif d:
-        ctx["time"] = d
-    
-    ctx["full"] = s
-    return ctx
-
-def wangba_write(topic, summary, date, source):
-    """网吧信息差：口语化长文案，完整事件叙事"""
+def wangba_write(topic, info):
+    """网吧信息差：口语叙事，三段式"""
     today = datetime.now().strftime("%m月%d日")
     kw = extract_topic(topic)
-    ctx = build_context(topic, summary, date, source)
-    s = ctx["full"]
-    t = ctx["time"] or today
+    what = info["what"] or topic
+    result = info["result"] or ""
+    dt = info["time"] or "最近"
     
-    # 开场
-    openers = [
-        f"那么嘛，先说{today}呢，首先第一个，{topic}。",
-        f"说到吧，今天是{today}呢，咱首先第一个事儿，巴沙是真没想到啊，{topic}。",
+    opens = [
+        f"那么嘛，先说{today}呢，首先第一个，巴沙是真没想到啊，{topic}。",
+        f"说到吧，今天是{today}呢，咱首先第一个事儿，{topic}。",
         f"说回到新闻，{today}呢，首先第一个，{topic}。",
     ]
-    random.seed(topic + "_wbo")
-    opening = random.choice(openers)
+    random.seed(topic + "wb")
+    o = random.choice(opens)
     
-    # 中间——讲述事件（用summary填充，去除官方语气）
-    if len(s) > 40:
-        # 把官方摘要改写为口语化
-        story = s.replace("经审理查明", "说是") \
-                 .replace("经调查", "说是") \
-                 .replace("据报道", "说") \
-                 .replace("据悉", "说") \
-                 .replace("目前", "截止到现在啊") \
-                 .replace("近日", "就这两天")[:250]
-        # 加博主评论
-        mid_phrases = [
-            f"{story}。那听到这儿，各位不用问了啊。这事儿一出来，网友们直接就绷不住了。",
-            f"{story}。哎，不过有意思的来了。",
-            f"{story}。那我说白了，{kw}这事儿，评论区也吵翻了。",
-        ]
-    else:
-        mid_phrases = [
-            f"这事儿一出来，网友们直接就绷不住了。有人说这也太离谱了，有人说这背后肯定有故事。",
-            f"那我说白了，{kw}这事儿，真就让人整不会了。",
-        ]
+    # 事件描述（口语化改写）
+    story = what.replace("经审理查明", "简单来说就是").replace("经调查", "据了解").replace("据报道", "").replace("据悉", "").replace("目前", "截止到现在啊")
     
-    random.seed(topic + "_wbm")
-    mid = random.choice(mid_phrases)
-    
-    # 结尾
-    closers = [
-        "但不管怎么说，这事儿确实挺有意思的。你们遇到过类似的事吗？评论区分享一下。",
-        "OK下事儿。各位评论区聊聊，你们怎么看这个事。",
-        "这事儿后续巴沙还会跟进的，评论区聊聊你们的看法。",
+    # 博主评论 + 结果
+    comments = [
+        f"那听到这儿，各位不用问了啊。{result}。网友们直接就绷不住了，有人说这也太离谱了，有人说这背后肯定有故事。",
+        f"那我说白了，{kw}这事儿，{result}。评论区也吵翻了，有人说是剧本，有人说是真的。",
+        f"哎，不过有意思的来了。{result}。说白了，这事儿就是典型的你从标题看不出水有多深的那种。",
     ]
-    random.seed(topic + "_wbc")
-    close = random.choice(closers)
+    if not result:
+        comments = [
+            f"那听到这儿，各位不用问了啊。网友们直接就绷不住了。",
+            f"那我说白了，这事儿真就让人整不会了。",
+            f"欧亚这，这事儿巴沙真都懒得喷。评论区也吵翻了。",
+        ]
+    random.seed(topic + "wbc")
+    c = random.choice(comments)
     
-    return f"{opening}{mid}。{close}"
+    closes = [
+        "你们遇到过类似的事吗？评论区分享一下。",
+        "OK下事儿。评论区聊聊你们怎么看。",
+        "这事儿后续巴沙还会跟进的。评论区聊聊。",
+    ]
+    random.seed(topic + "wbe")
+    cl = random.choice(closes)
+    
+    return f"{o}{story}。{c}。{cl}"
 
-def aqi_write(topic, summary, date, source):
-    """阿七大型纪录片：信息差视角，完整时间线+各方回应"""
+def aqi_write(topic, info):
+    """阿七纪录片：信息差深度分析"""
     today = datetime.now().strftime("%m月%d日")
-    ctx = build_context(topic, summary, date, source)
-    s = ctx["full"]
-    t = ctx["time"] or today
+    what = info["what"] or topic
+    result = info["result"] or ""
     
-    if len(s) > 40:
-        story = s.replace("经审理查明", "").replace("经调查", "").replace("据报道", "").replace("据悉", "").replace("目前", "截止到现在")[:200]
-        return f"{today}社会热点信息差。今天先讲一个其实挺重要但没什么人深聊的事：{topic}。事情是这样的——{story}。你可能觉得这跟你没什么关系，但巴沙帮你理一下：不同平台在讲这件事的时候，侧重点完全不一样。微博在强调情绪，知乎在分析逻辑，评论区的大哥在科普背景。每个版本都只说了一半的事实。另一半在哪里？就在信息差里。OK下一件事。"
-    else:
-        return f"热点信息差，{topic}。这事儿一出来，很多朋友可能只是看了一眼标题就划走了。但巴沙注意到一个细节：不同平台讲的角度完全不一样。有人看到情绪，有人看到逻辑，还有人看到背景。巴沙花了半天把这些版本都看了一遍，发现每个版本都只说了一半的事实。OK下一件事。"
+    return f"{today}社会热点信息差。今天先讲一件其实挺重要但没什么人深聊的事：{topic}。事情是这样的——{what}。{result}。你可能觉得这跟你没什么关系，但巴沙帮你理一下：不同平台在讲这件事的时候，侧重点完全不一样。微博在强调情绪，知乎在分析逻辑，每个版本都只说了一半的事实。另一半在哪里？就在你没看到的信息差里。OK下一件事。"
 
-def chen_write(topic, summary, date, source):
-    """陈先生：纪录片旁白，事件+反转"""
+def chen_write(topic, info):
+    """陈先生：纪录片旁白体"""
     kw = extract_topic(topic)
-    ctx = build_context(topic, summary, date, source)
-    s = ctx["full"]
-    t = ctx["time"] or ""
+    what = info["what"] or topic
+    result = info["result"] or ""
     
-    if len(s) > 40:
-        story = s[:150]
-        return f"大型纪录片之《{kw}》。{story}。讲真的，这个事发生的时候我一点都不意外。在过去几个月里，类似的事情已经不是第一次了。大家觉得这是小概率事件，其实完全不是——只是以前没人统计罢了。现在统计出来了，数字摆在那里。你怎么看？"
+    if result:
+        return f"大型纪录片之《{kw}》持续为您播出。{what}。{result}。讲真的，这个事发生的时候我一点都不意外。在过去几个月里，类似的事情已经不是第一次了。大家觉得是小概率事件，其实完全不是——只是以前没人统计罢了。现在统计出来了，数字摆在那里，不信也得信。"
     else:
-        return f"大型纪录片之《{kw}》持续为您播出。{topic}，这件事如果放在三年前没有人会信。但现在它真实地发生了。你怎么看？"
+        return f"今天讲一个现象级的新闻：{topic}。{what}。有意思的不是事件本身，而是各方的反应。甲方说——乙方说——网友说——。这场争论其实没有赢家。"
 
-def guancha_write(topic, summary, date, source):
-    """人类观察菌：客观呈现，公开信息整理"""
-    kw = extract_topic(topic)
-    ctx = build_context(topic, summary, date, source)
-    s = ctx["full"]
-    t = ctx["time"] or ""
+def guancha_write(topic, info):
+    """人类观察菌：客观整理"""
+    what = info["what"] or topic
+    result = info["result"] or ""
     
-    if len(s) > 40:
-        story = s[:200]
-        return f"今日热点信息快报。先说基本事实——{story}。然后有意思的部分来了：官方说——当事人说——网友说——三个版本，三个世界。我不告诉你谁对谁错，把所有能找到的公开信息放在下面，你自己比对，自己判断。评论区聊聊你的分析。"
+    if result:
+        return f"今日热点信息快报。先说基本事实——{what}。{result}。然后有意思的部分来了：不同来源的说法完全不一样。我不告诉你谁对谁错，把所有能找到的公开信息放在下面，你自己比对，自己判断。评论区聊聊你的分析。"
     else:
-        return f"今日热点信息快报。{topic}。我整理了一下公开信息的时间线。今天我不给结论，只呈现信息，结论交给你。评论区聊聊。"
+        return f"今日热点信息快报。{topic}。{what}。我整理了一下公开信息的时间线，发现几个容易被忽略的细节。今天我不给结论，只呈现信息，评论区聊聊你的视角。"
 
-def shadi_write(topic, summary, date, source):
-    """沙漠一之雕：快节奏，一个接一个讲"""
+def shadi_write(topic, info):
+    """沙漠一之雕：快节奏连播"""
     today = datetime.now().strftime("%m月%d日")
-    kw = extract_topic(topic)
-    ctx = build_context(topic, summary, date, source)
-    s = ctx["full"]
+    what = info["what"] or topic
+    result = info["result"] or ""
     
-    if len(s) > 40:
-        story = s[:180]
-        return f"一夜之间发生了啥？{today}热点快报。第一条——{topic}。{story}。目前这件事还在发酵，后续值得盯一下。来评论区一人一句。"
+    if result:
+        return f"一夜之间发生了啥？{today}热点快报。第一条——{topic}。{what}。{result}。目前这件事还在发酵，后续值得盯一下。来评论区一人一句。"
     else:
-        return f"{today}热点开唠。先唠第一个：{topic}。起因很简单，但后面发生的事完全出乎意料。后续还在跟进。来评论区一人一句。"
+        return f"{today}热点开唠。先唠第一个：{topic}。{what}。起因很简单，但后面发生的事完全出乎意料。后续还在跟进。来评论区一人一句。"
 
 def main():
-    print("=== 灵感生成器 v7（基于事件背景+博主口吻） ===\n")
+    print("=== 灵感生成器 v8 结构化叙事 ===\n")
     data = load_json(DATA_FILE)
     topics = select_topics(data, n=200)
     print(f"筛选 {len(topics)} 个高爆火话题\n")
@@ -217,11 +198,11 @@ def main():
         source = a.get("source", "")
         summary = a.get("summary", "")
         date = a.get("date", "")
-        if not topic:
-            continue
-        insp = {"topic": topic, "source": source, "score": douyin_score(a), "date": date}
+        if not topic: continue
+        info = parse_event(summary, date)
+        insp = {"topic": topic, "source": source, "score": douyin_score(a)}
         for key, writer in writers.items():
-            insp[key] = writer(topic, summary, date, source)
+            insp[key] = writer(topic, info)
         inspirations.append(insp)
     
     inspirations.sort(key=lambda x: x.get("score", 0), reverse=True)
@@ -231,10 +212,10 @@ def main():
     
     print(f"✅ 已生成 {len(inspirations)} 条灵感")
     for i in range(3):
-        insp = inspirations[i]
-        print(f"  {i+1}. [{insp['score']:.0f}分] {insp['topic'][:25]}")
-        wb = insp['wangba'][:100]
-        print(f"     → {wb}...")
+        ins = inspirations[i]
+        print(f"  {i+1}. [{ins['score']:.0f}分] {ins['topic'][:25]}")
+        print(f"     🗣 {ins['wangba'][:120]}")
+        print()
 
 if __name__ == "__main__":
     main()
