@@ -484,7 +484,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1783345536"></script>
+<script src="data.js?v=1783346722"></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -583,7 +583,7 @@ function initPage(){
   }
   const hotCount=data.filter(a=>a.source!=='blogger').length;
   const bloggerCount=new Set(data.filter(a=>a.source==='blogger').map(a=>a.blogger_name)).size;
-  const inspCount=(json.inspirations||[]).length;
+  const inspCount=(json.inspirations||json.inspiration_count||'—');
   document.getElementById('heroArticles').textContent=hotCount;
   document.getElementById('heroBloggers').textContent=bloggerCount+'位';
   document.getElementById('heroIdeas').textContent=inspCount;
@@ -890,7 +890,12 @@ document.querySelectorAll('.header-tabs a').forEach(tab=>{
     currentFilter=filter;
     try{
     if(filter==='inspire'){
-      renderInspire();
+      if(window.__INSP_DATA__){renderInspire();return;}
+      var s=document.createElement('script');
+      s.src='inspiration.js?v='+(window.__DATA_VERSION__||'');
+      s.onload=function(){renderInspire()};
+      s.onerror=function(){document.getElementById('content').innerHTML='<div class=\"empty-state\"><div class=\"icon\">⚠️</div><p>灵感加载失败</p></div>'};
+      document.head.appendChild(s);
     }else if(filter==='trend'){
       renderTrend();
     }else if(filter==='analysis'){
