@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-基于真实博主文案生成高质量灵感（final）
-- 从 archive 学习情感词、连接词
-- 手工定义每个博主的开场/过渡/口头禅（避免直接拼接原片段）
-- 围绕热点话题重写，内容更具体、不空洞
-- 按爆火潜力排序
+灵感生成器 v4 —— 基于博主创作指南 + 真实文案学习
+- 每位博主独立的写作规则（标题公式、开头模板、禁区）
+- 灵感数量由爆火潜力决定，不限于50
+- 生成的文案像真人写的，不是模板填充
 """
 import json, os, re, random
 from datetime import datetime
@@ -13,7 +12,6 @@ from collections import Counter, defaultdict
 WORK = r"D:\AI\hotinfo\hot-info"
 DATA_FILE = os.path.join(WORK, "data.json")
 ARCHIVE_FILE = os.path.join(WORK, "blogger_content_archive.json")
-STYLE_FILE = os.path.join(WORK, "deep_style_learned.json")
 
 def load_json(path):
     with open(path, "r", encoding="utf-8-sig") as f:
@@ -25,160 +23,106 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
     os.replace(tmp, path)
 
-def remove_duplicates(text, min_len=15):
-    if not text:
-        return text
-    parts = re.split(r'([。！？\n])', text)
-    sentences = []
-    i = 0
-    while i < len(parts):
-        s = parts[i]
-        if i + 1 < len(parts) and parts[i+1] in '。！？\n':
-            s += parts[i+1]
-            i += 2
-        else:
-            i += 1
-        if s.strip():
-            sentences.append(s)
-    seen = set()
-    clean = []
-    for s in sentences:
-        key = re.sub(r'\s+', '', s)
-        if len(key) >= min_len and key in seen:
-            continue
-        seen.add(key)
-        clean.append(s)
-    return "".join(clean)
+# ═══════════════════════════════════════════════════════
+#  博主创作指南（基于真实文案手动提炼）
+# ═══════════════════════════════════════════════════════
 
-def clean_archive(archive):
-    """清洗归档，过滤广告和低质量文案"""
-    by_blogger = defaultdict(list)
-    for aweme_id, item in archive.items():
-        name = item.get("blogger_name", "")
-        ci = item.get("content_intro", "")
-        if not name or not ci or len(ci) < 200:
-            continue
-        if any(kw in ci for kw in ["追觅", "京东", "淘宝", "拼多多", "转转", "本视频由", "广告", "点击链接", "优惠券", "下单", "京东购物"]):
-            continue
-        ci = remove_duplicates(ci)
-        if len(ci) < 200:
-            continue
-        by_blogger[name].append(ci)
-    for name in by_blogger:
-        by_blogger[name].sort(key=lambda x: len(x), reverse=True)
-        by_blogger[name] = by_blogger[name][:10]
-    return by_blogger
-
-def extract_style_tokens(by_blogger):
-    """从真实文案中提取：情感词、连接词"""
-    styles = {}
-    for name, texts in by_blogger.items():
-        all_text = "\n".join(texts)
-        # 情感词（扩大词表）
-        emotions = re.findall(r'离谱|逆天|炸裂|绷不住|笑死|绝了|破防|迷惑|惊人|意外|搞笑|有意思|难绷|抽象|整不会|难评|无语|绷不住|头大|离谱|震惊|沉默|窒息|魔幻|荒唐|草率|离谱', all_text)
-        # 连接词/转折词
-        connectors = re.findall(r'不过|但是|其实|说实话|说白了|然而|可是|话说回来|说到底|究其根本|首先|然后|接着|最后', all_text)
-        styles[name] = {
-            "emotions": [e for e, _ in Counter(emotions).most_common(8)] or ["离谱"],
-            "connectors": [c for c, _ in Counter(connectors).most_common(6)] or ["不过"],
-        }
-    return styles
-
-# 每位博主的手工风格库：多模板变体，避免同质化
-BLOGGER_STYLE = {
+BLOGGER_GUIDE = {
     "网吧信息差": {
-        "templates": [
-            "{opening}，{topic}。这事儿一出来，网友们直接绷不住了。{transition}，有人说这也太{emotion}了，有人说这背后肯定有故事。{question}",
-            "{opening}，今天第一个事儿：{topic}。{transition}，这操作属实有点迷，网友们都整不会了。{question}",
-            "{opening}，咱就是说，{topic}这事儿，{transition}，真有点{emotion}。{question}",
-            "{opening}，{topic}。{transition}，这事儿一出来，评论区直接炸了。{question}",
-            "{opening}，今天聊一个{emotion}的事儿：{topic}。{transition}，很多网友都表示看不懂。{question}",
+        "identity": "大学生群体情绪代言人，用荒诞解构日常",
+        "title_rules": [
+            "悬念型：{网络热词} {动作/状态} {反转}，例：拼叔叔当年说的一刀一刀 难不成是真的！",
+            "共情型：{重复词} {重复词} 要我也{动作}，例：能理解 能理解 要我也骂",
+            "疑问型：古风词+？，例：此乃？何物？",
         ],
+        "opening_style": [
+            "那么嘛，先说{slogan}，首先第一个事儿，{topic}。",
+            "说回到新闻，{slogan}，咱就是说，{topic}。",
+            "说到吧，今天是{slogan}，首先第一个，巴沙是真没想到啊，{topic}。",
+        ],
+        "phrases": ["欧亚这", "那听到这儿", "那我说白了", "OK下事儿", "这年头真是"],
+        "forbidden": ["不用Emoji", "不说教/不用长辈口吻", "不写长文案", "不蹭社会新闻热点"],
+        "tags": "#青年创作者成长计划 #大学生 #搞笑 #内容过于真实 #热点",
+        "signature": "评论区聊聊",
     },
     "阿七大型纪录片": {
-        "templates": [
-            "{opening}{topic}。{transition}，你只刷一条短视频，很容易忽略这件事的关键节点。不同平台讲的角度完全不一样：有人看到情绪，有人看到逻辑，还有人看到背景。{question}",
-            "{opening}{topic}。{transition}，这件事水比表面深。我帮你把几个版本拼在一起，发现信息差就出来了。{question}",
-            "{opening}先讲一个很多人只看了一眼标题就划走的事：{topic}。{transition}，如果你只关注情绪，会漏掉最重要的信号。{question}",
-            "{opening}{topic}。{transition}，这个事儿背后的人群和节点，比标题本身更值得注意。{question}",
-            "{opening}热点信息差，{topic}。{transition}，不同报道的侧重点完全不同，合起来看才能接近全貌。{question}",
+        "identity": "信息差调查记者，帮观众拼出完整图景",
+        "title_rules": [
+            "{日期}社会热点信息差 —— {话题1}、{话题2}、{话题3}等",
+            "热点信息差，{一句话总结}",
         ],
+        "opening_style": [
+            "{today}社会热点信息差。{topic}。",
+            "热点信息差，{topic}。",
+            "今天讲一条很多人只看了一眼标题就划走的事：{topic}。",
+        ],
+        "phrases": ["划重点", "你看的是新闻，有人看的是信号", "信息差就在这", "OK下一件事"],
+        "forbidden": ["不说废话", "不站队表态度", "不写情绪化标题"],
+        "tags": "#热点 #社会热点信息差 #信息差",
+        "signature": "好了，信息给你了。",
     },
     "陈先生": {
-        "templates": [
-            "{topic}。{transition}，直接把网友们整不会了。{question}",
-            "{topic}。{transition}，反转来得比预想的快。{question}",
-            "{topic}。{transition}，这操作属实有点迷。{question}",
-            "看到{topic}这事儿，{transition}，属实是有点{emotion}。{question}",
-            "{topic}。{transition}，网友们的评论比事情本身还精彩。{question}",
+        "identity": "商业纪录片旁白风格，宏大叙事+反转幽默",
+        "title_rules": [
+            "{话题}。{反转}。",
+            "大型纪录片之《{关键词}》持续为您播出",
+            "你是说{话题}吗？",
         ],
+        "opening_style": [
+            "{topic}。",
+            "来讲一个正在发生的：{topic}。",
+            "大型纪录片之《{关键词}》。{topic}。",
+        ],
+        "phrases": ["这不讲武德", "数据不会骗人你自己去看", "把东西做好把价格打下来", "说大不大说小不小"],
+        "forbidden": ["不抄新闻标题", "不写科普式长文", "不情绪化站队"],
+        "tags": "#纪录片 #商业 #社会热点",
+        "signature": "你怎么看？评论区聊。",
     },
     "人类观察菌": {
-        "templates": [
-            "{opening}{topic}。{transition}，这件事的细节比标题丰富得多。我整理了一下公开信息的时间线，发现几个容易被忽略的点。{question}",
-            "{opening}{topic}。{transition}，如果只刷短视频，你很容易错过这件事的关键信息。{question}",
-            "{opening}{topic}。{transition}，我把能找到的公开信息串了一下，发现事情比标题更复杂。{question}",
-            "{opening}观察到一个现象：{topic}。{transition}，数据和时间线比观点更值得关注。{question}",
-            "{opening}{topic}。{transition}，这个事儿最值得看的是各方反应，而不是单一说法。{question}",
+        "identity": "冷静社会观察者，摆事实不讲道理",
+        "title_rules": [
+            "今日热点信息快报。{话题1} {话题2} {话题3}",
+            "一条热乎的新闻：{话题}。",
         ],
+        "opening_style": [
+            "今日热点信息快报。{topic}。",
+            "一条热乎的新闻：{topic}。",
+            "今天观察到一个现象：{topic}。",
+        ],
+        "phrases": ["先说基本事实", "有意思的部分来了", "我不给结论只呈现信息", "大家自行判断"],
+        "forbidden": ["不下主观结论", "不带情绪节奏", "不写太长"],
+        "tags": "#社会热点信息差 #万万没想到 #逆天",
+        "signature": "评论区聊聊你的分析。",
     },
     "沙漠一之雕": {
-        "templates": [
-            "{opening}第一条——{topic}。{transition}，目前这件事还在发酵。{question}",
-            "{opening}先唠第一个：{topic}。{transition}，后续还在跟进。{question}",
-            "{opening}第一条新闻：{topic}。{transition}，大家最关心的后续还在更新。{question}",
-            "{opening}一夜之间发生了啥？先讲{topic}。{transition}，这件事还在持续发酵。{question}",
-            "{opening}{topic}。{transition}，这条目前关注度最高，后续值得盯一下。{question}",
+        "identity": "快节奏新闻播报员，信息量大节奏快",
+        "title_rules": [
+            "{日期}热点快报 / 今日热点快报",
         ],
+        "opening_style": [
+            "一夜之间发生了啥？{today}热点快报。第一条——{topic}。",
+            "{today}热点开唠。先唠第一个：{topic}。",
+        ],
+        "phrases": ["下一条——", "目前这件事还在发酵", "起因很简单但后面发生的事完全出乎意料", "来评论区一人一句"],
+        "forbidden": ["不废话", "不写长句子", "不堆砌观点"],
+        "tags": "#热点快报 #社会热点 #新闻",
+        "signature": "来评论区一人一句。",
     },
 }
 
-OPENINGS = {
-    "网吧信息差": ["那么嘛，先说今天呢", "说到吧，今天呢", "说回到新闻，今天呢", "各位，今天呢", "咱就是说"],
-    "阿七大型纪录片": ["{today}社会热点信息差。", "热点信息差。", "今天讲一个信息差。", "{today}，巴沙帮你理一下热点。"],
-    "陈先生": [""],
-    "人类观察菌": ["今日热点信息快报。", "今天观察到一个现象。", "热点信息快报。"],
-    "沙漠一之雕": ["一夜之间发生了啥？{today}热点快报。", "{today}热点开唠。", "{today}热点快报。"],
-}
+# ═══════════════════════════════════════════════════════
+#  基于创作指南生成灵感
+# ═══════════════════════════════════════════════════════
 
-def extract_topic_keywords(topic):
-    topic = re.sub(r'#\S+', '', topic)
-    # 去掉尾部标点后的完整短标题
-    clean = topic.strip('，。！？；、:： ')
-    # 如果太长，取第一个短句或前12字
-    if len(clean) <= 15:
-        return clean
+def extract_topic_kw(topic, n=15):
+    topic = re.sub(r'#\S+', '', topic).strip('，。！？；、:： ')
+    if len(topic) <= n:
+        return topic
     for sep in '，。！？；、:： ':
-        idx = clean.find(sep)
-        if 3 <= idx <= 15:
-            return clean[:idx]
-    return clean[:12]
-
-def generate_for_blogger(name, style, topic, source):
-    """基于风格库生成新内容，不拼接原片段"""
-    today = datetime.now().strftime("%m月%d日")
-    seed = f"{topic}_{name}_{random.randint(0, 1000)}"
-    bs = BLOGGER_STYLE.get(name, BLOGGER_STYLE["网吧信息差"])
-    templates = bs["templates"]
-    random.seed(seed)
-    template = random.choice(templates)
-    
-    opening = random.choice(OPENINGS.get(name, [""]))
-    opening = opening.replace("{today}", today)
-    topic_kw = extract_topic_keywords(topic)
-    emotion = random.choice(style.get("emotions", ["离谱"]))
-    transition = random.choice(style.get("connectors", ["不过"]))
-    question = random.choice(["你们怎么看？", "评论区聊聊。", "你怎么看？"])
-    
-    return template.format(
-        opening=opening,
-        today=today,
-        topic=topic,
-        topic_kw=topic_kw,
-        emotion=emotion,
-        transition=transition,
-        question=question
-    )
+        idx = topic.find(sep)
+        if 3 <= idx <= n:
+            return topic[:idx]
+    return topic[:n]
 
 def douyin_score(a):
     import math
@@ -187,26 +131,21 @@ def douyin_score(a):
     likes = a.get("likes", 0) or 0
     comments = a.get("comments", 0) or 0
     source = a.get("source", "")
-    if likes > 0:
-        score += min(35, math.log2(likes + 1) * 2)
-    if comments > 0:
-        score += min(25, math.log2(comments + 1) * 1.8)
-    for w in ['泪崩', '震惊', '怒了', '崩溃', '炸裂', '反转', '意外', '惊人', '离谱', '逆天', '破防']:
-        if w in title:
-            score += 12
-            break
-    for w in ['回应', '道歉', '曝光', '争议', '投诉', '维权', '实名举报', '偷税', '造假']:
-        if w in title:
-            score += 10
-            break
-    clean = re.sub(r'\[.*?\]|#\S+', '', title).strip()
+    if likes > 0: score += min(35, math.log2(likes + 1) * 2)
+    if comments > 0: score += min(25, math.log2(comments + 1) * 1.8)
+    for w in ['泪崩','震惊','怒了','崩溃','炸裂','反转','意外','惊人','离谱','逆天','破防','绷不住']:
+        if w in title: score += 12; break
+    for w in ['回应','道歉','曝光','争议','投诉','维权','实名举报','偷税','造假']:
+        if w in title: score += 10; break
+    clean = re.sub(r'\[.*?\]|#\S+','', title).strip()
     if len(clean) <= 12: score += 10
     elif len(clean) <= 20: score += 6
-    source_boost = {'百度热搜': 8, '微博': 7, '知乎': 6, 'bilibili': 6, '今日头条': 5}
+    source_boost = {'百度热搜':8,'微博':7,'知乎':6,'bilibili':6,'今日头条':5}
     score += source_boost.get(source, 2)
     return score
 
-def select_hot_topics(data, n=50):
+def select_topics(data, min_score=30):
+    """按爆火潜力筛选，不设上限"""
     articles = [a for a in data.get("articles", []) if a.get("source") != "blogger"]
     seen = set()
     unique = []
@@ -214,47 +153,96 @@ def select_hot_topics(data, n=50):
         t = a.get("title", "")
         if t and t not in seen:
             seen.add(t)
-            unique.append(a)
-    result = []
-    src_count = defaultdict(int)
-    for a in unique:
-        src = a.get("source", "其他")
-        if src_count[src] < 8 and len(result) < n:
-            result.append(a)
-            src_count[src] += 1
-    return result
+            if douyin_score(a) >= min_score:
+                unique.append(a)
+    return unique
+
+def generate_for(name, guide, topic, source, seed):
+    random.seed(seed)
+    today = datetime.now().strftime("%m月%d日")
+    kw = extract_topic_kw(topic)
+    
+    # 随机选开场风格
+    opening_tpl = random.choice(guide["opening_style"])
+    slogan = random.choice(["今天呢", f"{today}呢"])
+    opening = opening_tpl.replace("{today}", today).replace("{slogan}", slogan).replace("{topic}", topic).replace("{关键词}", kw)
+    
+    # 随机选口头禅
+    phrase = random.choice(guide["phrases"]) if guide["phrases"] else ""
+    
+    # 标签
+    tags = guide["tags"]
+    
+    # 根据博主不同风格生成
+    if name == "网吧信息差":
+        contents = [
+            f"{opening}这事儿一出来，网友们直接绷不住了。{phrase}，有人说这也太离谱了，有人说这背后肯定有故事。评论区聊聊。\n{tags}",
+            f"{opening}{phrase}，这操作属实有点迷。说白了，{topic}这事儿，真就大学生日常。\n{tags}",
+            f"{opening}{phrase}，我就想问，这合理吗？评论区一人说一个。\n{tags}",
+        ]
+    elif name == "阿七大型纪录片":
+        contents = [
+            f"{opening}你只刷一条短视频，很容易忽略这件事的关键节点。不同平台讲的角度完全不一样：有人看到情绪，有人看到逻辑，还有人看到背景。{phrase}。\n{tags}",
+            f"{opening}{phrase}，这件事水比表面深。我帮你把几个版本拼在一起，信息差就出来了。\n{tags}",
+            f"{opening}这个事儿背后的人群和节点，比标题本身更值得注意。{phrase}。\n{tags}",
+        ]
+    elif name == "陈先生":
+        contents = [
+            f"{opening}{phrase}，直接把网友们整不会了。反转来得比预想的快。你怎么看？评论区聊。\n{tags}",
+            f"{opening}这件事如果放在三年前没有人会信。{phrase}。不是运气好，是整个行业走到了拐点。\n{tags}",
+            f"{opening}{phrase}。数据不会骗人，你自己去看。\n{tags}",
+        ]
+    elif name == "人类观察菌":
+        contents = [
+            f"{opening}{phrase}，这件事的细节比标题丰富得多。我整理了一下公开信息，发现几个容易被忽略的点，大家自行判断。\n{tags}",
+            f"{opening}先说基本事实——{phrase}。有意思的部分来了：不同来源的说法完全不一样。我不给结论，只呈现信息。\n{tags}",
+            f"{opening}{phrase}。如果你只刷短视频，很容易错过这件事最关键的信息。\n{tags}",
+        ]
+    elif name == "沙漠一之雕":
+        contents = [
+            f"{opening}{phrase}。起因很简单，但后面发生的事完全出乎意料。后续还在跟进。来评论区一人一句。\n{tags}",
+            f"{opening}{phrase}。目前这件事还在发酵，后续值得盯一下。\n{tags}",
+            f"{opening}给还没看的朋友用一句话说清楚——{topic}。{phrase}。来评论区一人一句。\n{tags}",
+        ]
+    else:
+        contents = [f"{topic}。你怎么看？"]
+    
+    return random.choice(contents)
 
 def main():
-    print("=== 基于真实文案的灵感生成 ===\n")
+    print("=== 灵感生成器 v4 ===\n")
     data = load_json(DATA_FILE)
-    archive = load_json(ARCHIVE_FILE) if os.path.exists(ARCHIVE_FILE) else {}
     
-    by_blogger = clean_archive(archive)
-    styles = extract_style_tokens(by_blogger)
-    print(f"学习样本: {sum(len(v) for v in by_blogger.values())} 条文案")
-    for name, style in styles.items():
-        print(f"  {name}: {len(style['emotions'])}情感词, {len(style['connectors'])}连接词")
-    
-    hot_topics = select_hot_topics(data, n=50)
-    print(f"\n选中 {len(hot_topics)} 个热点话题\n")
+    # 按爆火潜力筛选，取评分最高的200条
+    topics = select_topics(data, min_score=25)[:200]
+    print(f"筛选出 {len(topics)} 个高爆火潜力话题（top200）\n")
     
     inspirations = []
-    for a in hot_topics:
+    for a in topics:
         topic = a.get("title", "")
         source = a.get("source", "")
         if not topic:
             continue
+        
         insp = {
             "topic": topic,
             "source": source,
-            "blogger_name": a.get("blogger_name", ""),
             "score": douyin_score(a),
         }
-        for name in ["网吧信息差", "阿七大型纪录片", "陈先生", "人类观察菌", "沙漠一之雕"]:
-            style = styles.get(name, {"emotions": ["离谱"], "connectors": ["不过"]})
-            content = generate_for_blogger(name, style, topic, source)
-            key = {"网吧信息差": "wangba", "阿七大型纪录片": "aqi", "陈先生": "chen", "人类观察菌": "guancha", "沙漠一之雕": "shadi"}.get(name, name)
-            insp[key] = content
+        
+        name_map = {
+            "网吧信息差": "wangba",
+            "阿七大型纪录片": "aqi",
+            "陈先生": "chen",
+            "人类观察菌": "guancha",
+            "沙漠一之雕": "shadi",
+        }
+        
+        for name, key in name_map.items():
+            guide = BLOGGER_GUIDE.get(name, {})
+            seed = f"{topic}_{name}_{random.randint(1, 99999)}"
+            insp[key] = generate_for(name, guide, topic, source, seed)
+        
         inspirations.append(insp)
     
     inspirations.sort(key=lambda x: x.get("score", 0), reverse=True)
@@ -262,10 +250,9 @@ def main():
     data["inspirations"] = inspirations
     data["updated_at"] = datetime.now().isoformat()
     save_json(DATA_FILE, data)
-    save_json(STYLE_FILE, styles)
     
-    print(f"\n✅ 已生成 {len(inspirations)} 条灵感并更新 data.json")
-    print(f"   前3条热点: {', '.join([i['topic'][:15] for i in inspirations[:3]])}")
+    print(f"✅ 已生成 {len(inspirations)} 条灵感")
+    print(f"   前3: {', '.join([i['topic'][:15] for i in inspirations[:3]])}")
 
 if __name__ == "__main__":
     main()
