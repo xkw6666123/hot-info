@@ -59,6 +59,16 @@ def main():
         sys.exit(1)
     log(f"generate_hot OK ({out.strip()[-100:]})")
 
+    # Step 2.5: 持续学习（归档最新文案 + 学习风格）
+    try:
+        code_cl, out_cl = run([PYTHON, "continuous_learner.py"], timeout=60)
+        if code_cl == 0:
+            log("continuous_learner OK")
+        else:
+            log(f"WARNING: continuous_learner failed: {out_cl[:200]}")
+    except Exception as e:
+        log(f"WARNING: continuous_learner error: {e}")
+
     # Step 3: gen_js_data.py
     code, out = run([PYTHON, "gen_js_data.py"], timeout=30)
     if code != 0:
@@ -104,7 +114,17 @@ def main():
     except Exception as e:
         log(f"WARNING: ASR check failed: {e}")
 
-    # Step 5: 检查数据完整性
+    # Step 5: 生成灵感（基于最新博主文案学习，不限50条）
+    try:
+        code_insp, out_insp = run([PYTHON, "inspiration_generator.py"], timeout=60)
+        if code_insp == 0:
+            log("inspiration_generator OK")
+        else:
+            log(f"WARNING: inspiration_generator failed: {out_insp[:200]}")
+    except Exception as e:
+        log(f"WARNING: inspiration_generator error: {e}")
+
+    # Step 5.5: 检查数据完整性
     try:
         data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
         count = len(data.get("articles", []))

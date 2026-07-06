@@ -17,7 +17,8 @@ def load_json(path):
         return json.load(f)
 
 def save_json(path, data):
-    tmp = path + ".tmp"
+    base = os.path.basename(path)
+    tmp = os.path.join(os.getcwd(), base + ".tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     os.replace(tmp, path)

@@ -25,9 +25,21 @@ def load_archive():
 
 
 def save_archive(archive):
-    """保存归档数据"""
-    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
+    """保存归档数据（原子写入）"""
+    base = os.path.basename(ARCHIVE_FILE)
+    tmp = os.path.join(os.getcwd(), base + ".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(archive, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, ARCHIVE_FILE)
+
+
+def save_style(styles):
+    """保存学习结果（原子写入）"""
+    base = os.path.basename(STYLE_FILE)
+    tmp = os.path.join(os.getcwd(), base + ".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(styles, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, STYLE_FILE)
 
 
 def archive_content():
@@ -189,9 +201,7 @@ def learn_from_archive():
 
         print(f"✅ {name}: {len(texts)}条样本, 平均{styles[name]['avg_length']}字")
 
-    # 保存学习结果
-    with open(STYLE_FILE, "w", encoding="utf-8") as f:
-        json.dump(styles, f, ensure_ascii=False, indent=2)
+    save_style(styles)
 
     print(f"\n📚 学习完成: {len(styles)} 位博主")
     return styles
