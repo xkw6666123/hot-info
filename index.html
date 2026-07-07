@@ -484,7 +484,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1783431829" defer></script>
+<script src="data.js?v=1783433058" defer></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -945,8 +945,9 @@ function renderInspire(){
         if(inspKey(a.topic,a.source)===key) favTopics.push(a.topic||'');
       });
     });
-    // 评估每条灵感的抖音爆火潜力（前端简化版 douyin_score）
+    // 评估每条灵感的抖音爆火潜力（优先用后端 hot_score）
     function viralityScore(a){
+      if(a.hot_score>0) return a.hot_score;  // 后端已计算，直接使用
       var t=a.topic||'';
       var s=a.source||'';
       var score=0;
@@ -1001,9 +1002,9 @@ function renderInspire(){
       var isFaved=inspFavs.includes(inspKey(a.topic,a.source));
       var isDone=dismissed.includes(oi);
       return `
-      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.boost>=60?'border-left:3px solid var(--orange)':r.viral>=30?'border-left:3px solid var(--blue)':''}">
+      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.viral>=80?'border-left:3px solid #FF6B6B':r.viral>=65?'border-left:3px solid var(--orange)':r.viral>=58?'border-left:3px solid var(--blue)':''}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${r.viral>=35?' <span style=\"font-size:9px;background:var(--orange-dim, rgba(255,152,0,0.15));color:var(--orange, #FF9800);padding:1px 5px;border-radius:6px\">🔥 高爆火</span>':''}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
+          <div class="topic" style="flex:1">📌 ${esc(a.topic)}${r.viral>=80?' <span style=\"font-size:9px;background:#FF6B6B;color:#fff;padding:1px 5px;border-radius:6px\">🔥🔥🔥 '+r.viral+'分</span>':r.viral>=65?' <span style=\"font-size:9px;background:var(--orange-dim, rgba(255,152,0,0.15));color:var(--orange, #FF9800);padding:1px 5px;border-radius:6px\">🔥🔥 '+r.viral+'分</span>':r.viral>=58?' <span style=\"font-size:9px;background:var(--blue-dim, rgba(74,143,228,0.12));color:var(--blue);padding:1px 5px;border-radius:6px\">🔥 '+r.viral+'分</span>':''}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
           <button onclick="event.stopPropagation();toggleInspDismiss(${oi})" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:var(--text-muted);opacity:0.6" title="${isDone?'撤销标记':'标记为已发布'}">${isDone?'↩':'✕'}</button>
         </div>
         <div class="source-tag">来源: ${esc(a.source||'')}</div>

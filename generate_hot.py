@@ -1280,33 +1280,35 @@ def douyin_score(a):
 
 
 def generate_inspirations(all_articles):
-    """从全量热点中按抖音爆火潜力选50条，生成各博主风格的完整创作草稿"""
+    """按🔥爆火度动态筛选：只保留高分话题，数量不设上限，爆火度越高排越前"""
 
     # ── 内部评分和筛选 ──
-    # 直接使用本文件的 douyin_score 函数
     _ds = douyin_score
 
-    # 分离博主和非博主
-    blogger_items = [a for a in all_articles if a.get("source") == "blogger"]
-    other_items = [a for a in all_articles if a.get("source") != "blogger"]
+    # 1. 全部打分，只保留爆火潜力高的话题（score >= 58）
+    scored = []
+    for a in all_articles:
+        s = _ds(a)
+        if s >= 58:
+            scored.append((s, a))
 
-    # 非博主内容按评分排序
-    other_items.sort(key=_ds, reverse=True)
+    # 2. 按🔥爆火度降序排列
+    scored.sort(key=lambda x: x[0], reverse=True)
 
-    # 来源多样性：每源最多8条
-    diverse = []
-    seen_sources = {}
-    for a in other_items:
+    # 3. 来源多样性：每平台最多8条，博主内容不限
+    selected = []
+    seen_non_blogger = {}
+    for score, a in scored:
         src = a.get("source", "其他")
-        n = seen_sources.get(src, 0)
-        if n < 8:
-            diverse.append(a)
-            seen_sources[src] = n + 1
-        if len(diverse) >= 47:
-            break
+        if a.get("source") == "blogger":
+            selected.append(a)
+        else:
+            n = seen_non_blogger.get(src, 0)
+            if n < 8:
+                selected.append(a)
+                seen_non_blogger[src] = n + 1
 
-    # 合并：优先博主内容（最多3条）
-    selected = blogger_items[:3] + diverse[:47]
+    print(f"  💡 灵感筛选: {len(selected)} 条 (阈值≥58, {sum(1 for s,a in scored)} 条候选, {len(seen_non_blogger)} 个来源)")
 
     # ── 标题预处理 ──
     def prep(t):
@@ -1451,7 +1453,7 @@ def generate_inspirations(all_articles):
             from learn_blogger_style import generate_inspiration_from_style as gen_func
         
         inspirations = []
-        for i, a in enumerate(selected[:50]):
+        for i, a in enumerate(selected):
             topic = a.get("title", "")
             if not topic:
                 continue
@@ -1466,6 +1468,7 @@ def generate_inspirations(all_articles):
                 "topic": topic,
                 "source": source,
                 "blogger_name": blogger_name,
+                "hot_score": douyin_score(a),  # 🔥爆火度分数
                 "wangba": style_inspirations.get("网吧信息差", wangba_style(topic, source, topic, i)),
                 "aqi": style_inspirations.get("阿七大型纪录片", aqi_style(topic, source, topic, i)),
                 "chen": style_inspirations.get("陈先生", chen_style(topic, source, topic, i)),
@@ -1476,7 +1479,7 @@ def generate_inspirations(all_articles):
     
     # 否则使用原有的硬编码模式
     inspirations = []
-    for i, a in enumerate(selected[:50]):
+    for i, a in enumerate(selected):
         topic = a.get("title", "")
         if not topic:
             continue
@@ -1487,6 +1490,7 @@ def generate_inspirations(all_articles):
             "topic": topic,
             "source": source,
             "blogger_name": blogger_name,
+            "hot_score": douyin_score(a),  # 🔥爆火度分数
             "wangba": wangba_style(topic, source, topic, i),
             "aqi": aqi_style(topic, source, topic, i),
             "chen": chen_style(topic, source, topic, i),
@@ -1760,8 +1764,7 @@ def main(mode="full"):
             all_articles = [a for a in all_articles if str(a["id"]) not in removed_ids]
             print(f"  🧹 {name}: 保留 {len(kept)} 条，移除 {len(removed)} 条旧数据")
 
-    # 生成灵感（函数内部自动按抖音爆火潜力从全量筛50条）
-    # 生成灵感（函数内部自动按抖音爆火潜力从全量筛50条）
+    # 生成灵感（按🔥爆火度动态筛选，只保留高潜力话题）
     inspirations = generate_inspirations(all_articles)
 
     # ═══ 消毒：移除所有字符串中的换行符、回车、制表符（防止 HTML 内联 JSON 出错）═══
