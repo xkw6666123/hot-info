@@ -71,7 +71,7 @@ def main():
             with open(html_path, "r", encoding="utf-8") as f:
                 html = f.read()
             new_html = re.sub(
-                r'<script src=["\']data\.js(?:\?v=[^"\']*)?["\'][^>]*>',
+                r'<script src=["\']data\.js(?:\?v=[^"\']*)?["\'][^>]*>\s*</script>',
                 f'<script src="data.js?v={version}" defer></script>',
                 html
             )

@@ -17,8 +17,8 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">" onload="this.onload=null;this.rel=\'stylesheet\'">
-<noscript><link rel="stylesheet" href="<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"></noscript>
 <script>window._chartLoaded=false;window._chartError=false;window._loadChart=function(){if(window._chartLoaded)return Promise.resolve();if(window._chartError)return Promise.reject();return new Promise(function(r,e){var t=setTimeout(function(){window._chartError=true;e(new Error('Chart.js加载超时'))},8000);var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";s.onload=function(){clearTimeout(t);window._chartLoaded=true;r()};s.onerror=function(){clearTimeout(t);window._chartError=true;e(new Error('Chart.js加载失败'))};document.head.appendChild(s)})};</script>
 <script>window.Chart||document.write('<script src="data:application/javascript,window.Chart=class{constructor(){}}"><\/script>')</script>
 <style>
@@ -484,7 +484,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1783418529" defer></script></script></script></script></script></script></script></script></script></script></script></script></script>
+<script src="data.js?v=1783431829" defer></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -583,7 +583,7 @@ function initPage(){
   }
   const hotCount=data.filter(a=>a.source!=='blogger').length;
   const bloggerCount=new Set(data.filter(a=>a.source==='blogger').map(a=>a.blogger_name)).size;
-  const inspCount=(inspirations||json.inspiration_count||'—');
+  const inspCount=(typeof window.__INSP_DATA__!=='undefined'&&window.__INSP_DATA__?window.__INSP_DATA__.length:json.inspiration_count||'—');
   document.getElementById('heroArticles').textContent=hotCount;
   document.getElementById('heroBloggers').textContent=bloggerCount+'位';
   document.getElementById('heroIdeas').textContent=inspCount;
@@ -817,6 +817,7 @@ function renderFav(){
   try{
     const raw=JSON.parse(localStorage.getItem('inspire_favs')||'{}');
     const favKeys=raw.keys||raw.ids||[];
+    const inspirations = window.__INSP_DATA__ || [];
     if(favKeys.length>0&&inspirations){
       // 用 hash key 匹配灵感
       function ik(t,s){var k=(t||'')+'|'+(s||'');var h=0;for(var j=0;j<k.length;j++){h=((h<<5)-h)+k.charCodeAt(j);h|=0;}return'k'+Math.abs(h);}
@@ -916,6 +917,7 @@ document.querySelectorAll('.header-tabs a').forEach(tab=>{
 
 function renderInspire(){
   try {
+  const inspirations = window.__INSP_DATA__ || [];
   const el=document.getElementById('content');
   let h='';
   // === 已有灵感库 ===
@@ -994,10 +996,9 @@ function renderInspire(){
       <span>📚 灵感库 <span style="font-size:11px;color:var(--text-muted);font-weight:400">按🔥爆火度排序 · 共${inspirations.length}条${dismissed.length>0?'（已用'+dismissed.length+'条）':''}${inspFavs.length>0?' · 已收藏'+inspFavs.length+'条':''}</span></span>
       <button onclick="refreshInspirations()" style="padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:11px;font-family:inherit;transition:all .2s" title="换一批灵感排序">🔄 换一批</button>
     </div>`;
-    window.__INSP_DATA__=[];for(var _j=0;_j<inspirations.length;_j++)window.__INSP_DATA__.push(null);
     h += ranked.map(function(r,i){
       var a=r.item;var oi=r.idx;
-      var isFaved=inspFavs.includes(inspKey(a.topic,a.source));window.__INSP_DATA__[oi]={topic:a.topic,wangba:a.wangba,aqi:a.aqi,chen:a.chen,guancha:a.guancha,shadi:a.shadi};
+      var isFaved=inspFavs.includes(inspKey(a.topic,a.source));
       var isDone=dismissed.includes(oi);
       return `
       <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.boost>=60?'border-left:3px solid var(--orange)':r.viral>=30?'border-left:3px solid var(--blue)':''}">
@@ -1207,7 +1208,9 @@ function renderTrend(){
 
 function toggleInspFav(idx){
   // 获取稳定的 key（topic + source 的简单 hash，数据刷新后不变）
+  var inspirations = window.__INSP_DATA__ || [];
   var insp=inspirations[idx];
+  if(!insp) return;
   var key=(insp.topic||'')+'|'+(insp.source||'');
   var hash=0;for(var k=0;k<key.length;k++){hash=((hash<<5)-hash)+key.charCodeAt(k);hash|=0;}
   var hk='k'+Math.abs(hash);
