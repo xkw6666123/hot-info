@@ -578,6 +578,9 @@ def scrape_douyin():
     articles = []
     for item in data.get("data", {}).get("word_list", []):
         word = item.get("word", "")
+        # 使用搜索URL而非hot topic页——hot topic的sentence_id会过期导致"视频不存在"
+        # 搜索URL永久有效，用户点进去能看到该话题的最新视频
+        search_url = "https://www.douyin.com/search/" + urllib.parse.quote(word)
         articles.append({
             "id": make_id("douyin", word) % 10**9,
             "title": item.get("word", ""),
@@ -586,7 +589,7 @@ def scrape_douyin():
             "date": today,
             "time": "",
             "tags": ["爆款", "短视频", "热门"],
-            "url": f"https://www.douyin.com/hot/{item.get('sentence_id','')}",
+            "url": search_url,
             "likes": safe_int(item.get("hot_value"), 100000),
             "comments": 1000,
         })
