@@ -469,7 +469,6 @@ def scrape_ifeng():
     if not text:
         return []
     # 从首页提取新闻标题和链接
-    # 匹配模式：<a href="..." title="新闻标题" 或 <a class="..." href="..." title="新闻标题"
     pattern = r'<a[^>]*href="([^"]*)"[^>]*title="([^"]*)"'
     matches = re.findall(pattern, text)
     
@@ -477,9 +476,8 @@ def scrape_ifeng():
     news_items = []
     for url, title in matches:
         # 跳过空标题、过短标题、导航栏标题
-        if not title or len(title) < 8:
+        if not title or len(title) < 6:
             continue
-        # 跳过明显的导航栏标题
         skip_titles = ["首页", "资讯", "视频", "直播", "凤凰卫视", "财经", "娱乐", "体育", "时尚", "汽车", "房产", "科技", "军事", "文化", "旅游", "佛教", "国学", "数码", "健康", "公益", "教育", "酒业", "美食", "品牌主场", "更多>"]
         if title in skip_titles:
             continue
@@ -493,13 +491,14 @@ def scrape_ifeng():
             url = "https://news.ifeng.com/" + url
         
         news_items.append({"title": title, "url": url})
-        if len(news_items) >= 10:
+        if len(news_items) >= 15:
             break
     
     articles = []
-    for i, item in enumerate(news_items):
+    for item in news_items:
+        # 使用标题做ID种子，不同标题=不同ID，避免每日相同位置覆盖旧数据
         articles.append({
-            "id": make_id("ifeng", i) % 10**9,
+            "id": make_id("ifeng", item["title"]) % 10**9,
             "title": item["title"],
             "summary": "",
             "source": "凤凰网",
@@ -1824,9 +1823,9 @@ def main(mode="full"):
     # 构建 data.json
     # ═══ 数据过滤 ═══
     from datetime import timedelta
-    cutoff = datetime.now().date() - timedelta(days=6)           # 新闻保留7天（今天+6天前=7天窗口）
-    rescue_cutoff = datetime.now().date() - timedelta(days=13)   # 失败平台保留14天
-    blog_cutoff = datetime.now().date() - timedelta(days=30)      # F2时间戳非标准，放宽防误删
+    cutoff = datetime.now().date() - timedelta(days=2)           # 新闻保留3天（今天+昨天+前天）
+    rescue_cutoff = datetime.now().date() - timedelta(days=6)    # 失败平台保留7天（给足够窗口恢复）
+    blog_cutoff = datetime.now().date() - timedelta(days=30)      # 博主保留30天（不限，每人限3条）
     fresh = []
     bloggers_kept = {}
     blog_removed = 0

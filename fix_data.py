@@ -65,8 +65,8 @@ def main():
     data = load_json(DATA_FILE)
     articles = data.get("articles", [])
     today = datetime.now().date()
-    news_cutoff = today - timedelta(days=3)  # 新闻保留3天
-    blog_cutoff = today - timedelta(days=5)  # 博主保留5天
+    news_cutoff = today - timedelta(days=2)  # 新闻保留3天（今天+昨天+前天）
+    blog_cutoff = today - timedelta(days=30)  # 博主不跟3天，保留30天
 
     blogger_groups = {}
     news = []
