@@ -6,7 +6,7 @@
 - 完整叙事：起因→经过→结果
 """
 import json, os, re, random
-from datetime import datetime
+from datetime import datetime, timezone
 
 WORK = r"D:\AI\hotinfo\hot-info"
 DATA_FILE = os.path.join(WORK, "data.json")
@@ -225,7 +225,7 @@ def main():
     
     inspirations.sort(key=lambda x: x.get("score",0), reverse=True)
     data["inspirations"] = inspirations
-    data["updated_at"] = datetime.now().isoformat()
+    data["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S") + "Z"
     save_json(DATA_FILE, data)
     
     print(f"✅ {len(inspirations)} 条")

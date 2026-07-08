@@ -7,7 +7,7 @@
 4. 更新 data.json / data.js / index.html
 """
 import json, os, re, time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 WORK = r"D:\AI\hotinfo\hot-info"
 DATA_FILE = os.path.join(WORK, "data.json")
@@ -132,7 +132,7 @@ def main():
             unique.append(a)
 
     data["articles"] = unique
-    data["updated_at"] = datetime.now().isoformat()
+    data["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S") + "Z"
     save_json(DATA_FILE, data)
     print(f"\n✅ 数据清理完成: {len(articles)} → {len(unique)} 条")
     print(f"   新闻: {len(news)} 条，博主: {len(cleaned_bloggers)} 条")

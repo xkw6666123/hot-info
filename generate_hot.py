@@ -12,7 +12,7 @@ import hashlib
 import urllib.request
 import urllib.error
 import urllib.parse
-from datetime import datetime
+from datetime import datetime, timezone
 
 # ── 配置 ──
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -1917,7 +1917,7 @@ def main(mode="full"):
         },
         "articles": all_articles,
         "inspirations": inspirations,
-        "updated_at": datetime.now().isoformat(),
+        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S") + "Z",
         "failed_platforms": FAILED_PLATFORMS if FAILED_PLATFORMS else None,
     }
 

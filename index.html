@@ -484,7 +484,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1783482352" defer></script>
+<script src="data.js?v=1783498116" defer></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -590,15 +590,15 @@ function initPage(){
 
   // 更新时间（显示友好格式）
   if(json.updated_at){
-    // 检测是否是UTC时间（有Z后缀或+号）
-    const isUTC=json.updated_at.endsWith('Z')||json.updated_at.includes('+');
+    // 后端统一输出 UTC 时间；无显式时区时也按 UTC 解析
+    const hasExplicitOffset=/[Z+]/.test(json.updated_at);
     const parts=json.updated_at.split('T');
     const datePart=parts[0]||'';
     const timePart=(parts[1]||'').split('+')[0].split('Z')[0];
     const[dateY,dateM,dateD]=datePart.split('-').map(Number);
     const[dateH,dateMin]=timePart.split(':').map(Number);
-    // 根据是否是UTC创建不同的时间对象
-    const d=isUTC ? new Date(Date.UTC(dateY,dateM-1,dateD,dateH,dateMin)) : new Date(dateY,dateM-1,dateD,dateH,dateMin);
+    // 统一按 UTC 解析，再显示为本地时间
+    const d=new Date(Date.UTC(dateY,dateM-1,dateD,dateH,dateMin));
     const now=new Date();
     const diffMs=now-d;
     const diffMin=Math.floor(diffMs/60000);
