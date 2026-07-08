@@ -1461,6 +1461,8 @@ def generate_inspirations(all_articles):
                 continue
             source = a.get("source", "")
             blogger_name = a.get("blogger_name", "")
+            url = a.get("url", "")
+            summary = a.get("summary", "") or ""
             seed = f"{topic}_{source}_{i}"
             
             # 使用学习到的风格生成灵感
@@ -1470,7 +1472,8 @@ def generate_inspirations(all_articles):
                 "topic": topic,
                 "source": source,
                 "blogger_name": blogger_name,
-                "hot_score": douyin_score(a),  # 🔥爆火度分数
+                "url": url,  # 原新闻链接
+                "hot_score": douyin_score(a),
                 "wangba": style_inspirations.get("网吧信息差", wangba_style(topic, source, topic, i)),
                 "aqi": style_inspirations.get("阿七大型纪录片", aqi_style(topic, source, topic, i)),
                 "chen": style_inspirations.get("陈先生", chen_style(topic, source, topic, i)),
@@ -1492,7 +1495,9 @@ def generate_inspirations(all_articles):
             "topic": topic,
             "source": source,
             "blogger_name": blogger_name,
-            "hot_score": douyin_score(a),  # 🔥爆火度分数
+            "url": a.get("url", ""),
+            "hot_score": douyin_score(a),
+            "summary": summary,  # 原文摘要，用于展示
             "wangba": wangba_style(topic, source, topic, i),
             "aqi": aqi_style(topic, source, topic, i),
             "chen": chen_style(topic, source, topic, i),
