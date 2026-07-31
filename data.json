@@ -17,7 +17,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=中国军队国际形象网宣片《当红》",
-      "likes": 7904571,
+      "likes": 7904235,
       "comments": 0
     },
     {
@@ -33,7 +33,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=低价大流量卡将集体退场",
-      "likes": 7809347,
+      "likes": 7808387,
       "comments": 0
     },
     {
@@ -49,7 +49,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=中国最高薪本科专业易主",
-      "likes": 7713917,
+      "likes": 7714228,
       "comments": 0
     },
     {
@@ -65,7 +65,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=下半年经济工作发力方向划重点",
-      "likes": 7616384,
+      "likes": 7618138,
       "comments": 0
     },
     {
@@ -81,7 +81,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=含鸡鸭粪便的烟流向全国各地",
-      "likes": 7521883,
+      "likes": 7522909,
       "comments": 0
     },
     {
@@ -97,7 +97,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=24小时内近4.9万移民进入西班牙休达",
-      "likes": 7427759,
+      "likes": 7426638,
       "comments": 0
     },
     {
@@ -113,7 +113,23 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=连云港消防回应火灾母女坠楼",
-      "likes": 7327750,
+      "likes": 7330810,
+      "comments": 0
+    },
+    {
+      "id": 728848216,
+      "title": "拿西瓜连环砸人头 不是硬气是傻气",
+      "summary": "",
+      "source": "百度热搜",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "热点",
+        "资讯"
+      ],
+      "url": "https://www.baidu.com/s?wd=拿西瓜连环砸人头 不是硬气是傻气",
+      "likes": 7235195,
       "comments": 0
     },
     {
@@ -129,23 +145,7 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=男子确诊“社交癌” 15分钟手术治愈",
-      "likes": 7232369,
-      "comments": 0
-    },
-    {
-      "id": 375052255,
-      "title": "董宇辉称看了500遍大话西游 星爷震惊",
-      "summary": "7月30日，董宇辉直播连线周星驰时称自己看《大话西游》不下500遍，引发热议。周星驰听后连连追问，露出震惊表情。董宇辉表示，从高中到工作后反复观看，对影片有着不同阶段的理解与感受。",
-      "source": "百度热搜",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "热点",
-        "资讯"
-      ],
-      "url": "https://www.baidu.com/s?wd=董宇辉称看了500遍大话西游 星爷震惊",
-      "likes": 7138478,
+      "likes": 7139540,
       "comments": 0
     },
     {
@@ -161,12 +161,12 @@
         "资讯"
       ],
       "url": "https://www.baidu.com/s?wd=八一建军节之际致敬中国军人",
-      "likes": 7042078,
+      "likes": 7042746,
       "comments": 0
     },
     {
-      "id": 164231553,
-      "title": "DeepSeek V4 flash 正式版发布，有哪些亮点值得关注？",
+      "id": 743377485,
+      "title": "至少 96 个足协抵制国际足联主席因凡蒂诺，他为什么犯了众怒？会被弹劾下台吗？",
       "summary": "",
       "source": "知乎",
       "date": "2026-07-31",
@@ -175,7 +175,7 @@
         "知乎",
         "热榜"
       ],
-      "url": "https://www.zhihu.com/question/2066521165246489298",
+      "url": "https://www.zhihu.com/question/2066479058599113686",
       "likes": 50000,
       "comments": 100
     },
@@ -195,21 +195,6 @@
       "comments": 100
     },
     {
-      "id": 743377485,
-      "title": "至少 96 个足协抵制国际足联主席因凡蒂诺，他为什么犯了众怒？会被弹劾下台吗？",
-      "summary": "",
-      "source": "知乎",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "知乎",
-        "热榜"
-      ],
-      "url": "https://www.zhihu.com/question/2066479058599113686",
-      "likes": 50000,
-      "comments": 100
-    },
-    {
       "id": 121271424,
       "title": "马特·达蒙中国宣传《奥德赛》，谈及电影《长城》直言「好莱坞让张艺谋失望了」，怎样理解这一说法？",
       "summary": "",
@@ -221,36 +206,6 @@
         "热榜"
       ],
       "url": "https://www.zhihu.com/question/2066461420372190170",
-      "likes": 50000,
-      "comments": 100
-    },
-    {
-      "id": 403065180,
-      "title": "周星驰反向采访董宇辉，口称「辉哥」，坦言已无太大动力再出演，年纪大了，体能跟不上，哪些信息值得关注？",
-      "summary": "",
-      "source": "知乎",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "知乎",
-        "热榜"
-      ],
-      "url": "https://www.zhihu.com/question/2066155942396350474",
-      "likes": 50000,
-      "comments": 100
-    },
-    {
-      "id": 589671103,
-      "title": "西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?",
-      "summary": "",
-      "source": "知乎",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "知乎",
-        "热榜"
-      ],
-      "url": "https://www.zhihu.com/question/2066407134779138989",
       "likes": 50000,
       "comments": 100
     },
@@ -270,8 +225,8 @@
       "comments": 100
     },
     {
-      "id": 111373524,
-      "title": "DeepSeek V4 正式版发布，使用体验如何？和降价后的 GPT5.6 luna 对比谁更有优势？",
+      "id": 403065180,
+      "title": "周星驰反向采访董宇辉，口称「辉哥」，坦言已无太大动力再出演，年纪大了，体能跟不上，哪些信息值得关注？",
       "summary": "",
       "source": "知乎",
       "date": "2026-07-31",
@@ -280,7 +235,67 @@
         "知乎",
         "热榜"
       ],
-      "url": "https://www.zhihu.com/question/2066526486505461299",
+      "url": "https://www.zhihu.com/question/2066155942396350474",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 312211629,
+      "title": "codex有哪些奇技淫巧？",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/2063557784394785882",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 164231553,
+      "title": "DeepSeek V4 flash 正式版发布，有哪些亮点值得关注？",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/2066521165246489298",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 243454924,
+      "title": "为什么梦幻西游端游能活将近 19 年？",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/550082623",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 589671103,
+      "title": "西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/2066407134779138989",
       "likes": 50000,
       "comments": 100
     },
@@ -296,21 +311,6 @@
         "热榜"
       ],
       "url": "https://www.zhihu.com/question/2066480100778963899",
-      "likes": 50000,
-      "comments": 100
-    },
-    {
-      "id": 967845556,
-      "title": "如何评价2026年7月米哈游《原神》7.0至冬音乐会？",
-      "summary": "",
-      "source": "知乎",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "知乎",
-        "热榜"
-      ],
-      "url": "https://www.zhihu.com/question/2066448714458312845",
       "likes": 50000,
       "comments": 100
     },
@@ -379,9 +379,9 @@
       "comments": 300
     },
     {
-      "id": 253447802,
-      "title": "UP主现场探访成吉思鸡",
-      "summary": "B站热搜: UP主现场探访成吉思鸡",
+      "id": 592765218,
+      "title": "为什么今年这么湿热",
+      "summary": "B站热搜: 为什么今年这么湿热",
       "source": "bilibili",
       "date": "2026-07-31",
       "time": "",
@@ -390,14 +390,14 @@
         "二次元",
         "热门"
       ],
-      "url": "https://search.bilibili.com/all?keyword=UP主现场探访成吉思鸡",
+      "url": "https://search.bilibili.com/all?keyword=为什么今年这么湿热",
       "likes": 30000,
       "comments": 300
     },
     {
-      "id": 189017685,
-      "title": "庆祝中国人民解放军建军99周年",
-      "summary": "B站热搜: 庆祝中国人民解放军建军99周年",
+      "id": 512020456,
+      "title": "如何评价奥登巅峰实力",
+      "summary": "B站热搜: 如何评价奥登巅峰实力",
       "source": "bilibili",
       "date": "2026-07-31",
       "time": "",
@@ -406,7 +406,7 @@
         "二次元",
         "热门"
       ],
-      "url": "https://search.bilibili.com/all?keyword=庆祝中国人民解放军建军99周年",
+      "url": "https://search.bilibili.com/all?keyword=如何评价奥登巅峰实力",
       "likes": 30000,
       "comments": 300
     },
@@ -427,9 +427,9 @@
       "comments": 300
     },
     {
-      "id": 52330356,
-      "title": "WE BLG",
-      "summary": "B站热搜: BLG战胜WE LPL第三赛段",
+      "id": 253447802,
+      "title": "UP主现场探访成吉思鸡",
+      "summary": "B站热搜: UP主现场探访成吉思鸡",
       "source": "bilibili",
       "date": "2026-07-31",
       "time": "",
@@ -438,14 +438,14 @@
         "二次元",
         "热门"
       ],
-      "url": "https://search.bilibili.com/all?keyword=WE BLG",
+      "url": "https://search.bilibili.com/all?keyword=UP主现场探访成吉思鸡",
       "likes": 30000,
       "comments": 300
     },
     {
-      "id": 648820532,
-      "title": "许愿柳是什么梗",
-      "summary": "B站热搜: 许愿柳是什么梗",
+      "id": 445429453,
+      "title": "帮100名癌症儿童实现心愿",
+      "summary": "B站热搜: 帮100名癌症儿童实现心愿",
       "source": "bilibili",
       "date": "2026-07-31",
       "time": "",
@@ -454,14 +454,14 @@
         "二次元",
         "热门"
       ],
-      "url": "https://search.bilibili.com/all?keyword=许愿柳是什么梗",
+      "url": "https://search.bilibili.com/all?keyword=帮100名癌症儿童实现心愿",
       "likes": 30000,
       "comments": 300
     },
     {
-      "id": 465580768,
-      "title": "DeepSeek Flash正式版强在哪",
-      "summary": "B站热搜: DeepSeek V4 Flash正式版强在哪",
+      "id": 189017685,
+      "title": "庆祝中国人民解放军建军99周年",
+      "summary": "B站热搜: 庆祝中国人民解放军建军99周年",
       "source": "bilibili",
       "date": "2026-07-31",
       "time": "",
@@ -470,14 +470,14 @@
         "二次元",
         "热门"
       ],
-      "url": "https://search.bilibili.com/all?keyword=DeepSeek Flash正式版强在哪",
+      "url": "https://search.bilibili.com/all?keyword=庆祝中国人民解放军建军99周年",
       "likes": 30000,
       "comments": 300
     },
     {
-      "id": 794248906,
-      "title": "消防回应火灾母女坠楼 还原救援过程",
-      "summary": "消防回应火灾母女坠楼 还原救援过程",
+      "id": 119668689,
+      "title": "50℃高温来了",
+      "summary": "50℃高温来了",
       "source": "今日头条",
       "date": "2026-07-31",
       "time": "",
@@ -486,8 +486,8 @@
         "资讯",
         "热议"
       ],
-      "url": "https://www.toutiao.com/trending/7668677068208475694/",
-      "likes": 13103084,
+      "url": "https://www.toutiao.com/trending/7668537827139780671/",
+      "likes": 14340127,
       "comments": 100
     },
     {
@@ -503,7 +503,7 @@
         "热议"
       ],
       "url": "https://www.toutiao.com/trending/7668687269330911270/",
-      "likes": 11856161,
+      "likes": 12975483,
       "comments": 100
     },
     {
@@ -519,7 +519,7 @@
         "热议"
       ],
       "url": "https://www.toutiao.com/trending/7668677040345910834/",
-      "likes": 10727898,
+      "likes": 11740703,
       "comments": 100
     },
     {
@@ -535,7 +535,23 @@
         "热议"
       ],
       "url": "https://www.toutiao.com/trending/7667567988811776036/",
-      "likes": 9707003,
+      "likes": 10623427,
+      "comments": 100
+    },
+    {
+      "id": 361135567,
+      "title": "网友两个夏天捡知了壳狂赚130万",
+      "summary": "网友两个夏天捡知了壳狂赚130万",
+      "source": "今日头条",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "资讯",
+        "热议"
+      ],
+      "url": "https://www.toutiao.com/trending/7667824772759715903/",
+      "likes": 9612474,
       "comments": 100
     },
     {
@@ -551,55 +567,7 @@
         "热议"
       ],
       "url": "https://www.toutiao.com/trending/7668642504205467691/",
-      "likes": 8783260,
-      "comments": 100
-    },
-    {
-      "id": 119668689,
-      "title": "50℃高温来了",
-      "summary": "50℃高温来了",
-      "source": "今日头条",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "资讯",
-        "热议"
-      ],
-      "url": "https://www.toutiao.com/trending/7668537827139780671/",
-      "likes": 7947422,
-      "comments": 100
-    },
-    {
-      "id": 338668255,
-      "title": "“台独”“汉奸”在美开“汉奸大会”",
-      "summary": "“台独”“汉奸”在美开“汉奸大会”",
-      "source": "今日头条",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "资讯",
-        "热议"
-      ],
-      "url": "https://www.toutiao.com/trending/7668601116059631670/",
-      "likes": 7191125,
-      "comments": 100
-    },
-    {
-      "id": 965072675,
-      "title": "陈天桥2.2亿“抄底”上海酒店",
-      "summary": "陈天桥2.2亿“抄底”上海酒店",
-      "source": "今日头条",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "资讯",
-        "热议"
-      ],
-      "url": "https://www.toutiao.com/trending/7667817500806086710/",
-      "likes": 6506799,
+      "likes": 8697726,
       "comments": 100
     },
     {
@@ -615,13 +583,13 @@
         "热议"
       ],
       "url": "https://www.toutiao.com/trending/7668212376966512686/",
-      "likes": 5887595,
+      "likes": 7870028,
       "comments": 100
     },
     {
-      "id": 332436526,
-      "title": "老挝为什么能向中国出口电力",
-      "summary": "老挝为什么能向中国出口电力",
+      "id": 338668255,
+      "title": "“台独”“汉奸”在美开“汉奸大会”",
+      "summary": "“台独”“汉奸”在美开“汉奸大会”",
       "source": "今日头条",
       "date": "2026-07-31",
       "time": "",
@@ -630,8 +598,40 @@
         "资讯",
         "热议"
       ],
-      "url": "https://www.toutiao.com/trending/7668609151718657546/",
-      "likes": 5327316,
+      "url": "https://www.toutiao.com/trending/7668601116059631670/",
+      "likes": 7121096,
+      "comments": 100
+    },
+    {
+      "id": 794248906,
+      "title": "消防回应火灾母女坠楼 还原救援过程",
+      "summary": "消防回应火灾母女坠楼 还原救援过程",
+      "source": "今日头条",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "资讯",
+        "热议"
+      ],
+      "url": "https://www.toutiao.com/trending/7668677068208475694/",
+      "likes": 6443434,
+      "comments": 100
+    },
+    {
+      "id": 115709161,
+      "title": "保时捷女销冠回应被AI合成不雅视频",
+      "summary": "保时捷女销冠回应被AI合成不雅视频",
+      "source": "今日头条",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "资讯",
+        "热议"
+      ],
+      "url": "https://www.toutiao.com/trending/7668540826486865930/",
+      "likes": 5830260,
       "comments": 100
     },
     {
@@ -647,22 +647,6 @@
         "时政"
       ],
       "url": "https://www.thepaper.cn/newsDetail_forward_33688472",
-      "likes": 20000,
-      "comments": 200
-    },
-    {
-      "id": 452721744,
-      "title": "欧足联宣布抵制所有国际足联赛事",
-      "summary": "看体育如何改变世界",
-      "source": "澎湃新闻",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "新闻",
-        "社会",
-        "时政"
-      ],
-      "url": "https://www.thepaper.cn/newsDetail_forward_33688311",
       "likes": 20000,
       "comments": 200
     },
@@ -795,8 +779,24 @@
       "comments": 200
     },
     {
-      "id": 258232962,
-      "title": "Anthropic与OpenAI的网络故障表明美国存在网络安全风险。",
+      "id": 428565171,
+      "title": "连云港一小区发生火灾母女两人不幸坠楼，相关部门还原救援过程",
+      "summary": "解读区域政情与财富故事",
+      "source": "澎湃新闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "社会",
+        "时政"
+      ],
+      "url": "https://www.thepaper.cn/newsDetail_forward_33691909",
+      "likes": 20000,
+      "comments": 200
+    },
+    {
+      "id": 502471054,
+      "title": "哥伦比亚启动了一项旨在积累高达40亿美元国际储备的计划，以促使该国货币从七年高点回落。7月31日，该国央行行长Leonardo Villar宣布了这项决定，就在政策制定者刚刚决定维持利率不变之后。该计划将从8月份初期开始通过每月的看跌期权拍卖进行，首次拍卖的上限为4亿美元。",
       "summary": "",
       "source": "华尔街见闻",
       "date": "2026-07-31",
@@ -806,13 +806,13 @@
         "金融",
         "实时"
       ],
-      "url": "https://wallstreetcn.com/livenews/3143443",
+      "url": "https://wallstreetcn.com/livenews/3143499",
       "likes": 5000,
       "comments": 50
     },
     {
-      "id": 826579002,
-      "title": "美国商品期货交易委员会（CFTC）发布了最新一期的交易者持仓报告（COT），数据截至周二收盘。投机性持仓的亮点如下：  外汇市场：美元综合多头头寸激增至刚刚超过500亿美元，创下历史最高纪录！投机客抛售了3.11万份欧元、1.13万份日元（哎呀！）、9300份英镑、1900份加元和2300份澳元。尽管有2300份新西兰元被买入，以及少量瑞郎和墨西哥比索的买盘，但美元综合多头头寸",
+      "id": 873656736,
+      "title": "在本季度财报季中，越来越多的美国公司盈利超出预期，其中医疗保健和科技行业是最大赢家。  根据彭博汇编的数据，在标准普尔500指数中已公布第三季度业绩的292家公司里，有87%的每股收益（EPS）超过了分析师预期，而去年同期整个财报季这一比例为86%。约13%的公司公布的盈利不及预期，而去年同期为14%。公司在营收方面未达预期的比例为23%，而超出预期的比例为77%。去年同期这两",
       "summary": "",
       "source": "华尔街见闻",
       "date": "2026-07-31",
@@ -822,13 +822,13 @@
         "金融",
         "实时"
       ],
-      "url": "https://wallstreetcn.com/livenews/3143442",
+      "url": "https://wallstreetcn.com/livenews/3143497",
       "likes": 5000,
       "comments": 50
     },
     {
-      "id": 514709653,
-      "title": "周五（7月31日）纽约尾盘，美元兑日元跌0.31%，报159.04日元，本周累计下跌2.91%、7月30日美股盘初急剧跳水，7月份累计下跌2.09%，整体交投区间为163.99-157.98日元，在平缓的持续上扬行情中、7月23日美股盘初达到顶部。  欧元兑日元跌0.28%，报183.40日元，本周累跌1.53%，7月份累跌1.22%；英镑兑日元跌0.17%，报214.466日",
+      "id": 173882443,
+      "title": "以色列前总理奥尔默特日前接受采访时指出，约旦河西岸地区确实存在“犹太恐怖主义”——由犹太人定居者实施，并且得到了以色列政府的支持。奥尔默特批评内塔尼亚胡政府纵容此类种族清洗的行径，并称千千万万以色列人都反对政府此种行为。  近期，约旦河西岸巴勒斯坦人频繁遭犹太人定居者侵扰。7月31日，据巴勒斯坦官方通讯社报道，一伙携带武器的犹太人定居者在以军保护下进入约旦河西岸城市纳布卢斯郊区",
       "summary": "",
       "source": "华尔街见闻",
       "date": "2026-07-31",
@@ -838,13 +838,13 @@
         "金融",
         "实时"
       ],
-      "url": "https://wallstreetcn.com/livenews/3143441",
+      "url": "https://wallstreetcn.com/livenews/3143495",
       "likes": 5000,
       "comments": 50
     },
     {
-      "id": 905077586,
-      "title": "美国商品期货交易委员会（CFTC）：7月28日当周，投机者所持COMEX黄金净多头头寸减少3,258手合约，至120,328手合约。  所持COMEX白银净多头头寸降低至8,387手合约，创21周新低。  所持NYMEX钯金净空头头寸降低至6,173手合约，创四周新低。",
+      "id": 977208086,
+      "title": "中国地震台网正式测定：8月1日5时24分在云南普洱市墨江县（北纬23.18度，东经101.45度）发生4.4级地震，震源深度10千米。（央视）",
       "summary": "",
       "source": "华尔街见闻",
       "date": "2026-07-31",
@@ -854,13 +854,13 @@
         "金融",
         "实时"
       ],
-      "url": "https://wallstreetcn.com/livenews/3143440",
+      "url": "https://wallstreetcn.com/livenews/3143494",
       "likes": 5000,
       "comments": 50
     },
     {
-      "id": 239370072,
-      "title": "美国商品期货交易委员会（CFTC）：7月28日当周，投机者所持NYMEX WTI原油净多头头寸增加21,402手合约，至108,307手合约，创六周新高。  所持布伦特与WTI原油净多头头寸增至308,385手合约，创七周新高。  所持NYMEX汽油净多头头寸增至73,967手合约，创19周新高。",
+      "id": 541457725,
+      "title": "日本（政府）、日本央行再次干预日元外汇市场。（日经新闻）",
       "summary": "",
       "source": "华尔街见闻",
       "date": "2026-07-31",
@@ -870,7 +870,7 @@
         "金融",
         "实时"
       ],
-      "url": "https://wallstreetcn.com/livenews/3143439",
+      "url": "https://wallstreetcn.com/livenews/3143493",
       "likes": 5000,
       "comments": 50
     },
@@ -1003,8 +1003,8 @@
       "comments": 200
     },
     {
-      "id": 516488976,
-      "title": "《蜘蛛侠》点映票房打破北美纪录，好莱坞冲击“重返2019”",
+      "id": 904032957,
+      "title": "“AI股神”最新表态：再也不碰杠杆了",
       "summary": "",
       "source": "财联社热门",
       "date": "2026-07-31",
@@ -1014,13 +1014,13 @@
         "金融",
         "投资"
       ],
-      "url": "https://www.cls.cn/detail/2443120",
+      "url": "https://www.cls.cn/detail/2443109",
       "likes": 20000,
       "comments": 200
     },
     {
-      "id": 795233550,
-      "title": "聚焦打鼾口服疗法 美生物科技公司上市首日股价跳涨",
+      "id": 207453993,
+      "title": "铁矿石贸易圈神秘新锐，又卷入“假票据”疑云",
       "summary": "",
       "source": "财联社热门",
       "date": "2026-07-31",
@@ -1030,9 +1030,57 @@
         "金融",
         "投资"
       ],
-      "url": "https://www.cls.cn/detail/2443112",
+      "url": "https://www.cls.cn/detail/2443135",
       "likes": 20000,
       "comments": 200
+    },
+    {
+      "id": 501027082,
+      "title": "凤凰女记者德黑兰日志丨这可能是当前美伊冲突最令人不安的地方",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8vDwIljTGQI",
+      "likes": 10000,
+      "comments": 100
+    },
+    {
+      "id": 445980135,
+      "title": "5万移民从摩洛哥涌入西班牙飞地，意法德多国采取措施",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8vDv1yU594K",
+      "likes": 10000,
+      "comments": 100
+    },
+    {
+      "id": 456660500,
+      "title": "罗晴秋：悦读，让张家界更硬核起来",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8sqojnHYmmN",
+      "likes": 10000,
+      "comments": 100
     },
     {
       "id": 84351311,
@@ -1067,8 +1115,8 @@
       "comments": 100
     },
     {
-      "id": 456660500,
-      "title": "罗晴秋：悦读，让张家界更硬核起来",
+      "id": 105012483,
+      "title": "特朗普否认和国际足联主席谈“出售世界杯股份”",
       "summary": "",
       "source": "凤凰网",
       "date": "2026-07-31",
@@ -1078,7 +1126,7 @@
         "国际",
         "时政"
       ],
-      "url": "https://news.ifeng.com/c/8sqojnHYmmN",
+      "url": "https://news.ifeng.com/c/8vDgnFnRBI8",
       "likes": 10000,
       "comments": 100
     },
@@ -1223,54 +1271,6 @@
         "时政"
       ],
       "url": "https://news.ifeng.com/c/8vDVTdVvrfK",
-      "likes": 10000,
-      "comments": 100
-    },
-    {
-      "id": 697303484,
-      "title": "日防相竟称有必要讨论核武器，广岛、长崎市长：你来核爆地看看",
-      "summary": "",
-      "source": "凤凰网",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "新闻",
-        "国际",
-        "时政"
-      ],
-      "url": "https://news.ifeng.com/c/8vDTrIqwj2n",
-      "likes": 10000,
-      "comments": 100
-    },
-    {
-      "id": 441337425,
-      "title": "爆料：马斯克拒绝泽连斯基",
-      "summary": "",
-      "source": "凤凰网",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "新闻",
-        "国际",
-        "时政"
-      ],
-      "url": "https://news.ifeng.com/c/8vDUUMEzPgw",
-      "likes": 10000,
-      "comments": 100
-    },
-    {
-      "id": 476512909,
-      "title": "国家电网原董事长辛保安被查",
-      "summary": "",
-      "source": "凤凰网",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "新闻",
-        "国际",
-        "时政"
-      ],
-      "url": "https://news.ifeng.com/c/8vDT4Ia0ovZ",
       "likes": 10000,
       "comments": 100
     },
@@ -1435,6 +1435,22 @@
       "comments": 332703
     },
     {
+      "id": 752428910,
+      "title": "火灾母女坠楼事发小区居民发声",
+      "summary": "#火灾母女坠楼事发小区居民发声#",
+      "source": "微博",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://s.weibo.com/weibo?q=%23火灾母女坠楼事发小区居民发声%23",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
       "id": 654789841,
       "title": "歌手排名",
       "summary": "歌手排名",
@@ -1447,22 +1463,6 @@
         "社会"
       ],
       "url": "https://s.weibo.com/weibo?q=%23歌手排名%23",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 365560214,
-      "title": "为什么感觉对方忽冷忽热的",
-      "summary": "为什么感觉对方忽冷忽热的",
-      "source": "微博",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://s.weibo.com/weibo?q=%23为什么感觉对方忽冷忽热的%23",
       "likes": 50000,
       "comments": 500
     },
@@ -1483,6 +1483,22 @@
       "comments": 500
     },
     {
+      "id": 660143639,
+      "title": "周星驰质疑董宇辉看大话西游500遍",
+      "summary": "周星驰质疑董宇辉看大话西游500遍",
+      "source": "微博",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://s.weibo.com/weibo?q=%23周星驰质疑董宇辉看大话西游500遍%23",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
       "id": 947556975,
       "title": "房主任被停演3个月",
       "summary": "#房主任被停演3个月#",
@@ -1499,9 +1515,9 @@
       "comments": 500
     },
     {
-      "id": 660143639,
-      "title": "周星驰质疑董宇辉看大话西游500遍",
-      "summary": "周星驰质疑董宇辉看大话西游500遍",
+      "id": 365560214,
+      "title": "为什么感觉对方忽冷忽热的",
+      "summary": "为什么感觉对方忽冷忽热的",
       "source": "微博",
       "date": "2026-07-31",
       "time": "",
@@ -1510,7 +1526,7 @@
         "娱乐",
         "社会"
       ],
-      "url": "https://s.weibo.com/weibo?q=%23周星驰质疑董宇辉看大话西游500遍%23",
+      "url": "https://s.weibo.com/weibo?q=%23为什么感觉对方忽冷忽热的%23",
       "likes": 50000,
       "comments": 500
     },
@@ -1531,9 +1547,9 @@
       "comments": 500
     },
     {
-      "id": 815767118,
-      "title": "美年达小黄人新包装官宣联动",
-      "summary": "",
+      "id": 208866708,
+      "title": "菲律宾严重侵犯中国领土主权",
+      "summary": "#菲律宾严重侵犯中国领土主权#",
       "source": "微博",
       "date": "2026-07-31",
       "time": "",
@@ -1542,39 +1558,7 @@
         "娱乐",
         "社会"
       ],
-      "url": "https://s.weibo.com/weibo?q=%23美年达小黄人新包装官宣联动%23",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 185459616,
-      "title": "客服 坏了他真会啊",
-      "summary": "客服 坏了他真会啊",
-      "source": "微博",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://s.weibo.com/weibo?q=%23客服 坏了他真会啊%23",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 271248523,
-      "title": "九门 鬼片",
-      "summary": "九门 鬼片",
-      "source": "微博",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://s.weibo.com/weibo?q=%23九门 鬼片%23",
+      "url": "https://s.weibo.com/weibo?q=%23菲律宾严重侵犯中国领土主权%23",
       "likes": 50000,
       "comments": 500
     },
@@ -1595,6 +1579,22 @@
       "comments": 500
     },
     {
+      "id": 185459616,
+      "title": "客服 坏了他真会啊",
+      "summary": "客服 坏了他真会啊",
+      "source": "微博",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://s.weibo.com/weibo?q=%23客服 坏了他真会啊%23",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
       "id": 773901403,
       "title": "吴宜泽无缘上海大师赛决赛",
       "summary": "抖音热搜: 吴宜泽无缘上海大师赛决赛",
@@ -1607,39 +1607,7 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E5%90%B4%E5%AE%9C%E6%B3%BD%E6%97%A0%E7%BC%98%E4%B8%8A%E6%B5%B7%E5%A4%A7%E5%B8%88%E8%B5%9B%E5%86%B3%E8%B5%9B",
-      "likes": 11298344,
-      "comments": 1000
-    },
-    {
-      "id": 204054161,
-      "title": "把盛夏交给火把节",
-      "summary": "抖音热搜: 把盛夏交给火把节",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%8A%8A%E7%9B%9B%E5%A4%8F%E4%BA%A4%E7%BB%99%E7%81%AB%E6%8A%8A%E8%8A%82",
-      "likes": 11101748,
-      "comments": 1000
-    },
-    {
-      "id": 640442820,
-      "title": "4万亿元将投向算力网建设",
-      "summary": "抖音热搜: 4万亿元将投向算力网建设",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/4%E4%B8%87%E4%BA%BF%E5%85%83%E5%B0%86%E6%8A%95%E5%90%91%E7%AE%97%E5%8A%9B%E7%BD%91%E5%BB%BA%E8%AE%BE",
-      "likes": 11006963,
+      "likes": 12101990,
       "comments": 1000
     },
     {
@@ -1655,13 +1623,13 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E5%85%AB%E4%B8%80%E5%BB%BA%E5%86%9B%E8%8A%82%E4%B9%8B%E9%99%85%E8%87%B4%E6%95%AC%E4%B8%AD%E5%9B%BD%E5%86%9B%E4%BA%BA",
-      "likes": 10948802,
+      "likes": 11902046,
       "comments": 1000
     },
     {
-      "id": 264188100,
-      "title": "AI生成的作品算艺术吗",
-      "summary": "抖音热搜: AI生成的作品算艺术吗",
+      "id": 640442820,
+      "title": "4万亿元将投向算力网建设",
+      "summary": "抖音热搜: 4万亿元将投向算力网建设",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -1670,14 +1638,14 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/AI%E7%94%9F%E6%88%90%E7%9A%84%E4%BD%9C%E5%93%81%E7%AE%97%E8%89%BA%E6%9C%AF%E5%90%97",
-      "likes": 10358447,
+      "url": "https://www.douyin.com/search/4%E4%B8%87%E4%BA%BF%E5%85%83%E5%B0%86%E6%8A%95%E5%90%91%E7%AE%97%E5%8A%9B%E7%BD%91%E5%BB%BA%E8%AE%BE",
+      "likes": 11400737,
       "comments": 1000
     },
     {
-      "id": 603123790,
-      "title": "日本政府正式设立“国家情报局”",
-      "summary": "抖音热搜: 日本政府正式设立“国家情报局”",
+      "id": 204054161,
+      "title": "把盛夏交给火把节",
+      "summary": "抖音热搜: 把盛夏交给火把节",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -1686,24 +1654,8 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E6%97%A5%E6%9C%AC%E6%94%BF%E5%BA%9C%E6%AD%A3%E5%BC%8F%E8%AE%BE%E7%AB%8B%E2%80%9C%E5%9B%BD%E5%AE%B6%E6%83%85%E6%8A%A5%E5%B1%80%E2%80%9D",
-      "likes": 10296748,
-      "comments": 1000
-    },
-    {
-      "id": 551280003,
-      "title": "AC米兰传奇队长巴雷西去世",
-      "summary": "抖音热搜: AC米兰传奇队长巴雷西去世",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/AC%E7%B1%B3%E5%85%B0%E4%BC%A0%E5%A5%87%E9%98%9F%E9%95%BF%E5%B7%B4%E9%9B%B7%E8%A5%BF%E5%8E%BB%E4%B8%96",
-      "likes": 9161426,
+      "url": "https://www.douyin.com/search/%E6%8A%8A%E7%9B%9B%E5%A4%8F%E4%BA%A4%E7%BB%99%E7%81%AB%E6%8A%8A%E8%8A%82",
+      "likes": 11124595,
       "comments": 1000
     },
     {
@@ -1719,7 +1671,55 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E9%9D%9E%E6%B3%95%E7%A7%BB%E6%B0%91%E5%86%B2%E5%87%BB%E8%A5%BF%E7%8F%AD%E7%89%99%E9%A3%9E%E5%9C%B0%E8%BE%B9%E5%A2%83",
-      "likes": 8270005,
+      "likes": 10563202,
+      "comments": 1000
+    },
+    {
+      "id": 551280003,
+      "title": "AC米兰传奇队长巴雷西去世",
+      "summary": "抖音热搜: AC米兰传奇队长巴雷西去世",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/AC%E7%B1%B3%E5%85%B0%E4%BC%A0%E5%A5%87%E9%98%9F%E9%95%BF%E5%B7%B4%E9%9B%B7%E8%A5%BF%E5%8E%BB%E4%B8%96",
+      "likes": 10533739,
+      "comments": 1000
+    },
+    {
+      "id": 603123790,
+      "title": "日本政府正式设立“国家情报局”",
+      "summary": "抖音热搜: 日本政府正式设立“国家情报局”",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%97%A5%E6%9C%AC%E6%94%BF%E5%BA%9C%E6%AD%A3%E5%BC%8F%E8%AE%BE%E7%AB%8B%E2%80%9C%E5%9B%BD%E5%AE%B6%E6%83%85%E6%8A%A5%E5%B1%80%E2%80%9D",
+      "likes": 9297715,
+      "comments": 1000
+    },
+    {
+      "id": 264188100,
+      "title": "AI生成的作品算艺术吗",
+      "summary": "抖音热搜: AI生成的作品算艺术吗",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/AI%E7%94%9F%E6%88%90%E7%9A%84%E4%BD%9C%E5%93%81%E7%AE%97%E8%89%BA%E6%9C%AF%E5%90%97",
+      "likes": 9166356,
       "comments": 1000
     },
     {
@@ -1735,7 +1735,7 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%88%91%E7%9A%84%E6%9A%91%E6%9C%9F%E9%99%90%E5%AE%9Asolotrip",
-      "likes": 8030022,
+      "likes": 9144243,
       "comments": 1000
     },
     {
@@ -1751,55 +1751,7 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%AC%A7%E8%B6%B3%E8%81%94%E5%AE%A3%E5%B8%83%E6%8A%B5%E5%88%B6%E6%89%80%E6%9C%89%E5%9B%BD%E9%99%85%E8%B6%B3%E8%81%94%E8%B5%9B%E4%BA%8B",
-      "likes": 7828411,
-      "comments": 1000
-    },
-    {
-      "id": 763641473,
-      "title": "国家电网原董事长辛保安被查",
-      "summary": "抖音热搜: 国家电网原董事长辛保安被查",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%9B%BD%E5%AE%B6%E7%94%B5%E7%BD%91%E5%8E%9F%E8%91%A3%E4%BA%8B%E9%95%BF%E8%BE%9B%E4%BF%9D%E5%AE%89%E8%A2%AB%E6%9F%A5",
-      "likes": 7815203,
-      "comments": 1000
-    },
-    {
-      "id": 65130977,
-      "title": "胡锡进谈连云港火灾母女坠楼事件",
-      "summary": "抖音热搜: 胡锡进谈连云港火灾母女坠楼事件",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E8%83%A1%E9%94%A1%E8%BF%9B%E8%B0%88%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC%E4%BA%8B%E4%BB%B6",
-      "likes": 7797801,
-      "comments": 1000
-    },
-    {
-      "id": 761508922,
-      "title": "何秋亊的兔子小火人上线啦",
-      "summary": "抖音热搜: 何秋亊的兔子小火人上线啦",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E4%BD%95%E7%A7%8B%E4%BA%8A%E7%9A%84%E5%85%94%E5%AD%90%E5%B0%8F%E7%81%AB%E4%BA%BA%E4%B8%8A%E7%BA%BF%E5%95%A6",
-      "likes": 7791139,
+      "likes": 9113732,
       "comments": 1000
     },
     {
@@ -1815,7 +1767,23 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E5%8E%9F%E7%A5%9E%E8%87%B3%E5%86%AC%E7%89%88%E6%9C%AC%E5%89%8D%E7%9E%BB",
-      "likes": 7752192,
+      "likes": 9094994,
+      "comments": 1000
+    },
+    {
+      "id": 763641473,
+      "title": "国家电网原董事长辛保安被查",
+      "summary": "抖音热搜: 国家电网原董事长辛保安被查",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%9B%BD%E5%AE%B6%E7%94%B5%E7%BD%91%E5%8E%9F%E8%91%A3%E4%BA%8B%E9%95%BF%E8%BE%9B%E4%BF%9D%E5%AE%89%E8%A2%AB%E6%9F%A5",
+      "likes": 9093933,
       "comments": 1000
     },
     {
@@ -1831,279 +1799,7 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%89%8B%E7%93%A6%E5%A2%A8%E6%AD%A6%E6%9B%9D%E5%85%89",
-      "likes": 7748754,
-      "comments": 1000
-    },
-    {
-      "id": 573513975,
-      "title": "阿哲自制综艺蜥蜴头造型太炸裂了",
-      "summary": "抖音热搜: 阿哲自制综艺蜥蜴头造型太炸裂了",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E9%98%BF%E5%93%B2%E8%87%AA%E5%88%B6%E7%BB%BC%E8%89%BA%E8%9C%A5%E8%9C%B4%E5%A4%B4%E9%80%A0%E5%9E%8B%E5%A4%AA%E7%82%B8%E8%A3%82%E4%BA%86",
-      "likes": 7748341,
-      "comments": 1000
-    },
-    {
-      "id": 107364293,
-      "title": "职场人通勤motd",
-      "summary": "抖音热搜: 职场人通勤motd",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E8%81%8C%E5%9C%BA%E4%BA%BA%E9%80%9A%E5%8B%A4motd",
-      "likes": 7739042,
-      "comments": 1000
-    },
-    {
-      "id": 839419457,
-      "title": "八月要走上坡路了",
-      "summary": "抖音热搜: 八月要走上坡路了",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%85%AB%E6%9C%88%E8%A6%81%E8%B5%B0%E4%B8%8A%E5%9D%A1%E8%B7%AF%E4%BA%86",
-      "likes": 7736558,
-      "comments": 1000
-    },
-    {
-      "id": 381080498,
-      "title": "歌手冲刺赛第二场舞台",
-      "summary": "抖音热搜: 歌手冲刺赛第二场舞台",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%AD%8C%E6%89%8B%E5%86%B2%E5%88%BA%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA%E8%88%9E%E5%8F%B0",
-      "likes": 7731764,
-      "comments": 1000
-    },
-    {
-      "id": 83716715,
-      "title": "蜘蛛侠4结尾神来之笔",
-      "summary": "抖音热搜: 蜘蛛侠4结尾神来之笔",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E8%9C%98%E8%9B%9B%E4%BE%A04%E7%BB%93%E5%B0%BE%E7%A5%9E%E6%9D%A5%E4%B9%8B%E7%AC%94",
-      "likes": 7724910,
-      "comments": 1000
-    },
-    {
-      "id": 407487058,
-      "title": "罗正甩衣架版冷笑话说唱",
-      "summary": "抖音热搜: 罗正甩衣架版冷笑话说唱",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E7%BD%97%E6%AD%A3%E7%94%A9%E8%A1%A3%E6%9E%B6%E7%89%88%E5%86%B7%E7%AC%91%E8%AF%9D%E8%AF%B4%E5%94%B1",
-      "likes": 7724664,
-      "comments": 1000
-    },
-    {
-      "id": 404092476,
-      "title": "窝囊five哪凉快哪去",
-      "summary": "抖音热搜: 窝囊five哪凉快哪去",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E7%AA%9D%E5%9B%8Afive%E5%93%AA%E5%87%89%E5%BF%AB%E5%93%AA%E5%8E%BB",
-      "likes": 7715265,
-      "comments": 1000
-    },
-    {
-      "id": 394200357,
-      "title": "把快乐装进云朵里",
-      "summary": "抖音热搜: 把快乐装进云朵里",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%8A%8A%E5%BF%AB%E4%B9%90%E8%A3%85%E8%BF%9B%E4%BA%91%E6%9C%B5%E9%87%8C",
-      "likes": 7714214,
-      "comments": 1000
-    },
-    {
-      "id": 183802537,
-      "title": "总是为路边的小猫驻足算幼稚吗",
-      "summary": "抖音热搜: 总是为路边的小猫驻足算幼稚吗",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%80%BB%E6%98%AF%E4%B8%BA%E8%B7%AF%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%8C%AB%E9%A9%BB%E8%B6%B3%E7%AE%97%E5%B9%BC%E7%A8%9A%E5%90%97",
-      "likes": 7712883,
-      "comments": 1000
-    },
-    {
-      "id": 380755759,
-      "title": "CORTIS新歌MOTION上线",
-      "summary": "抖音热搜: CORTIS新歌MOTION上线",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/CORTIS%E6%96%B0%E6%AD%8CMOTION%E4%B8%8A%E7%BA%BF",
-      "likes": 7710486,
-      "comments": 1000
-    },
-    {
-      "id": 58351560,
-      "title": "洛克王国武斗酷猫",
-      "summary": "抖音热搜: 洛克王国武斗酷猫",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD%E6%AD%A6%E6%96%97%E9%85%B7%E7%8C%AB",
-      "likes": 7709845,
-      "comments": 1000
-    },
-    {
-      "id": 14041756,
-      "title": "母单恋综就该听单身人士的看法",
-      "summary": "抖音热搜: 母单恋综就该听单身人士的看法",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%AF%8D%E5%8D%95%E6%81%8B%E7%BB%BC%E5%B0%B1%E8%AF%A5%E5%90%AC%E5%8D%95%E8%BA%AB%E4%BA%BA%E5%A3%AB%E7%9A%84%E7%9C%8B%E6%B3%95",
-      "likes": 7702025,
-      "comments": 1000
-    },
-    {
-      "id": 90424275,
-      "title": "九门吴老狗不识字",
-      "summary": "抖音热搜: 九门吴老狗不识字",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E4%B9%9D%E9%97%A8%E5%90%B4%E8%80%81%E7%8B%97%E4%B8%8D%E8%AF%86%E5%AD%97",
-      "likes": 7700211,
-      "comments": 1000
-    },
-    {
-      "id": 111042893,
-      "title": "凤凰传奇成都演唱会",
-      "summary": "抖音热搜: 凤凰传奇成都演唱会",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%E6%88%90%E9%83%BD%E6%BC%94%E5%94%B1%E4%BC%9A",
-      "likes": 7697045,
-      "comments": 1000
-    },
-    {
-      "id": 538430658,
-      "title": "我想要个潇洒的以后",
-      "summary": "抖音热搜: 我想要个潇洒的以后",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E6%88%91%E6%83%B3%E8%A6%81%E4%B8%AA%E6%BD%87%E6%B4%92%E7%9A%84%E4%BB%A5%E5%90%8E",
-      "likes": 7696954,
-      "comments": 1000
-    },
-    {
-      "id": 694926676,
-      "title": "看金靖访谈像是上了一课",
-      "summary": "抖音热搜: 看金靖访谈像是上了一课",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E7%9C%8B%E9%87%91%E9%9D%96%E8%AE%BF%E8%B0%88%E5%83%8F%E6%98%AF%E4%B8%8A%E4%BA%86%E4%B8%80%E8%AF%BE",
-      "likes": 7688368,
-      "comments": 1000
-    },
-    {
-      "id": 678575845,
-      "title": "台风白海豚最新路径有变",
-      "summary": "抖音热搜: 台风白海豚最新路径有变",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%8F%B0%E9%A3%8E%E7%99%BD%E6%B5%B7%E8%B1%9A%E6%9C%80%E6%96%B0%E8%B7%AF%E5%BE%84%E6%9C%89%E5%8F%98",
-      "likes": 7688122,
+      "likes": 8469320,
       "comments": 1000
     },
     {
@@ -2119,13 +1815,13 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E7%BD%97%E6%96%87%E4%BB%BB%E6%B2%B3%E5%8C%97%E7%9C%81%E5%A7%94%E4%B9%A6%E8%AE%B0",
-      "likes": 7680541,
+      "likes": 8275016,
       "comments": 1000
     },
     {
-      "id": 198504294,
-      "title": "随礼200还能听演唱会",
-      "summary": "抖音热搜: 随礼200还能听演唱会",
+      "id": 65130977,
+      "title": "胡锡进谈连云港火灾母女坠楼事件",
+      "summary": "抖音热搜: 胡锡进谈连云港火灾母女坠楼事件",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2134,8 +1830,232 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E9%9A%8F%E7%A4%BC200%E8%BF%98%E8%83%BD%E5%90%AC%E6%BC%94%E5%94%B1%E4%BC%9A",
-      "likes": 7675515,
+      "url": "https://www.douyin.com/search/%E8%83%A1%E9%94%A1%E8%BF%9B%E8%B0%88%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC%E4%BA%8B%E4%BB%B6",
+      "likes": 7778224,
+      "comments": 1000
+    },
+    {
+      "id": 574430617,
+      "title": "伊朗打击美军空中任务后勤保障枢纽",
+      "summary": "抖音热搜: 伊朗打击美军空中任务后勤保障枢纽",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E4%BC%8A%E6%9C%97%E6%89%93%E5%87%BB%E7%BE%8E%E5%86%9B%E7%A9%BA%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%90%8E%E5%8B%A4%E4%BF%9D%E9%9A%9C%E6%9E%A2%E7%BA%BD",
+      "likes": 7772835,
+      "comments": 1000
+    },
+    {
+      "id": 111042893,
+      "title": "凤凰传奇成都演唱会",
+      "summary": "抖音热搜: 凤凰传奇成都演唱会",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%E6%88%90%E9%83%BD%E6%BC%94%E5%94%B1%E4%BC%9A",
+      "likes": 7744276,
+      "comments": 1000
+    },
+    {
+      "id": 839419457,
+      "title": "八月要走上坡路了",
+      "summary": "抖音热搜: 八月要走上坡路了",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%85%AB%E6%9C%88%E8%A6%81%E8%B5%B0%E4%B8%8A%E5%9D%A1%E8%B7%AF%E4%BA%86",
+      "likes": 7743119,
+      "comments": 1000
+    },
+    {
+      "id": 761508922,
+      "title": "何秋亊的兔子小火人上线啦",
+      "summary": "抖音热搜: 何秋亊的兔子小火人上线啦",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E4%BD%95%E7%A7%8B%E4%BA%8A%E7%9A%84%E5%85%94%E5%AD%90%E5%B0%8F%E7%81%AB%E4%BA%BA%E4%B8%8A%E7%BA%BF%E5%95%A6",
+      "likes": 7720521,
+      "comments": 1000
+    },
+    {
+      "id": 381080498,
+      "title": "歌手冲刺赛第二场舞台",
+      "summary": "抖音热搜: 歌手冲刺赛第二场舞台",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%AD%8C%E6%89%8B%E5%86%B2%E5%88%BA%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA%E8%88%9E%E5%8F%B0",
+      "likes": 7712321,
+      "comments": 1000
+    },
+    {
+      "id": 83716715,
+      "title": "蜘蛛侠4结尾神来之笔",
+      "summary": "抖音热搜: 蜘蛛侠4结尾神来之笔",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E8%9C%98%E8%9B%9B%E4%BE%A04%E7%BB%93%E5%B0%BE%E7%A5%9E%E6%9D%A5%E4%B9%8B%E7%AC%94",
+      "likes": 7706453,
+      "comments": 1000
+    },
+    {
+      "id": 183802537,
+      "title": "总是为路边的小猫驻足算幼稚吗",
+      "summary": "抖音热搜: 总是为路边的小猫驻足算幼稚吗",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%80%BB%E6%98%AF%E4%B8%BA%E8%B7%AF%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%8C%AB%E9%A9%BB%E8%B6%B3%E7%AE%97%E5%B9%BC%E7%A8%9A%E5%90%97",
+      "likes": 7701357,
+      "comments": 1000
+    },
+    {
+      "id": 394200357,
+      "title": "把快乐装进云朵里",
+      "summary": "抖音热搜: 把快乐装进云朵里",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%8A%8A%E5%BF%AB%E4%B9%90%E8%A3%85%E8%BF%9B%E4%BA%91%E6%9C%B5%E9%87%8C",
+      "likes": 7696459,
+      "comments": 1000
+    },
+    {
+      "id": 573513975,
+      "title": "阿哲自制综艺蜥蜴头造型太炸裂了",
+      "summary": "抖音热搜: 阿哲自制综艺蜥蜴头造型太炸裂了",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E9%98%BF%E5%93%B2%E8%87%AA%E5%88%B6%E7%BB%BC%E8%89%BA%E8%9C%A5%E8%9C%B4%E5%A4%B4%E9%80%A0%E5%9E%8B%E5%A4%AA%E7%82%B8%E8%A3%82%E4%BA%86",
+      "likes": 7684856,
+      "comments": 1000
+    },
+    {
+      "id": 58351560,
+      "title": "洛克王国武斗酷猫",
+      "summary": "抖音热搜: 洛克王国武斗酷猫",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%B4%9B%E5%85%8B%E7%8E%8B%E5%9B%BD%E6%AD%A6%E6%96%97%E9%85%B7%E7%8C%AB",
+      "likes": 7684005,
+      "comments": 1000
+    },
+    {
+      "id": 14041756,
+      "title": "母单恋综就该听单身人士的看法",
+      "summary": "抖音热搜: 母单恋综就该听单身人士的看法",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E6%AF%8D%E5%8D%95%E6%81%8B%E7%BB%BC%E5%B0%B1%E8%AF%A5%E5%90%AC%E5%8D%95%E8%BA%AB%E4%BA%BA%E5%A3%AB%E7%9A%84%E7%9C%8B%E6%B3%95",
+      "likes": 7679504,
+      "comments": 1000
+    },
+    {
+      "id": 407487058,
+      "title": "罗正甩衣架版冷笑话说唱",
+      "summary": "抖音热搜: 罗正甩衣架版冷笑话说唱",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%BD%97%E6%AD%A3%E7%94%A9%E8%A1%A3%E6%9E%B6%E7%89%88%E5%86%B7%E7%AC%91%E8%AF%9D%E8%AF%B4%E5%94%B1",
+      "likes": 7675707,
+      "comments": 1000
+    },
+    {
+      "id": 678575845,
+      "title": "台风白海豚最新路径有变",
+      "summary": "抖音热搜: 台风白海豚最新路径有变",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%8F%B0%E9%A3%8E%E7%99%BD%E6%B5%B7%E8%B1%9A%E6%9C%80%E6%96%B0%E8%B7%AF%E5%BE%84%E6%9C%89%E5%8F%98",
+      "likes": 7672944,
+      "comments": 1000
+    },
+    {
+      "id": 404092476,
+      "title": "窝囊five哪凉快哪去",
+      "summary": "抖音热搜: 窝囊five哪凉快哪去",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%AA%9D%E5%9B%8Afive%E5%93%AA%E5%87%89%E5%BF%AB%E5%93%AA%E5%8E%BB",
+      "likes": 7664540,
       "comments": 1000
     },
     {
@@ -2151,13 +2071,13 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%97%A5%E6%9C%AC%E8%87%AA%E5%8D%AB%E9%98%9F%E8%AF%95%E5%B0%84%E6%88%98%E6%96%A7%E5%AF%BC%E5%BC%B9",
-      "likes": 7674300,
+      "likes": 7664435,
       "comments": 1000
     },
     {
-      "id": 185680930,
-      "title": "风雨飘摇转场",
-      "summary": "抖音热搜: 风雨飘摇转场",
+      "id": 107364293,
+      "title": "职场人通勤motd",
+      "summary": "抖音热搜: 职场人通勤motd",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2166,14 +2086,14 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E9%A3%8E%E9%9B%A8%E9%A3%98%E6%91%87%E8%BD%AC%E5%9C%BA",
-      "likes": 7672207,
+      "url": "https://www.douyin.com/search/%E8%81%8C%E5%9C%BA%E4%BA%BA%E9%80%9A%E5%8B%A4motd",
+      "likes": 7662364,
       "comments": 1000
     },
     {
-      "id": 944227636,
-      "title": "拉不动的箱子",
-      "summary": "抖音热搜: 拉不动的箱子",
+      "id": 90424275,
+      "title": "九门吴老狗不识字",
+      "summary": "抖音热搜: 九门吴老狗不识字",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2182,14 +2102,14 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E6%8B%89%E4%B8%8D%E5%8A%A8%E7%9A%84%E7%AE%B1%E5%AD%90",
-      "likes": 7667714,
+      "url": "https://www.douyin.com/search/%E4%B9%9D%E9%97%A8%E5%90%B4%E8%80%81%E7%8B%97%E4%B8%8D%E8%AF%86%E5%AD%97",
+      "likes": 7661275,
       "comments": 1000
     },
     {
-      "id": 74226999,
-      "title": "田嘉瑞正太扭腰",
-      "summary": "抖音热搜: 田嘉瑞正太扭腰",
+      "id": 538430658,
+      "title": "我想要个潇洒的以后",
+      "summary": "抖音热搜: 我想要个潇洒的以后",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2198,8 +2118,24 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E7%94%B0%E5%98%89%E7%91%9E%E6%AD%A3%E5%A4%AA%E6%89%AD%E8%85%B0",
-      "likes": 7665226,
+      "url": "https://www.douyin.com/search/%E6%88%91%E6%83%B3%E8%A6%81%E4%B8%AA%E6%BD%87%E6%B4%92%E7%9A%84%E4%BB%A5%E5%90%8E",
+      "likes": 7660733,
+      "comments": 1000
+    },
+    {
+      "id": 205970407,
+      "title": "九江文旅主打一个听劝",
+      "summary": "抖音热搜: 九江文旅主打一个听劝",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E4%B9%9D%E6%B1%9F%E6%96%87%E6%97%85%E4%B8%BB%E6%89%93%E4%B8%80%E4%B8%AA%E5%90%AC%E5%8A%9D",
+      "likes": 7658251,
       "comments": 1000
     },
     {
@@ -2215,13 +2151,13 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E7%A9%BF%E6%90%AD%E5%9B%9E%E5%BD%92%E4%B8%BB%E4%BD%93%E6%80%A7",
-      "likes": 7664603,
+      "likes": 7657491,
       "comments": 1000
     },
     {
-      "id": 364001988,
-      "title": "电影去你的岛开始下刀子了",
-      "summary": "抖音热搜: 电影去你的岛开始下刀子了",
+      "id": 694926676,
+      "title": "看金靖访谈像是上了一课",
+      "summary": "抖音热搜: 看金靖访谈像是上了一课",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2230,8 +2166,8 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E7%94%B5%E5%BD%B1%E5%8E%BB%E4%BD%A0%E7%9A%84%E5%B2%9B%E5%BC%80%E5%A7%8B%E4%B8%8B%E5%88%80%E5%AD%90%E4%BA%86",
-      "likes": 7661378,
+      "url": "https://www.douyin.com/search/%E7%9C%8B%E9%87%91%E9%9D%96%E8%AE%BF%E8%B0%88%E5%83%8F%E6%98%AF%E4%B8%8A%E4%BA%86%E4%B8%80%E8%AF%BE",
+      "likes": 7652861,
       "comments": 1000
     },
     {
@@ -2247,7 +2183,7 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E8%8D%94%E6%9E%9D%E5%AE%98%E5%AE%A3%E6%8A%96%E9%9F%B3%E9%A6%96%E7%A7%80",
-      "likes": 7659797,
+      "likes": 7651507,
       "comments": 1000
     },
     {
@@ -2263,13 +2199,13 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E5%A4%8F%E6%97%A5%E5%81%B7%E5%90%83%E7%82%B8%E9%B8%A1%E5%8F%9B%E9%80%86%E6%8C%91%E6%88%98",
-      "likes": 7657094,
+      "likes": 7648322,
       "comments": 1000
     },
     {
-      "id": 913033685,
-      "title": "东大高武秦雨逆袭校榜第一",
-      "summary": "抖音热搜: 东大高武秦雨逆袭校榜第一",
+      "id": 944227636,
+      "title": "拉不动的箱子",
+      "summary": "抖音热搜: 拉不动的箱子",
       "source": "抖音",
       "date": "2026-07-31",
       "time": "",
@@ -2278,40 +2214,8 @@
         "短视频",
         "热门"
       ],
-      "url": "https://www.douyin.com/search/%E4%B8%9C%E5%A4%A7%E9%AB%98%E6%AD%A6%E7%A7%A6%E9%9B%A8%E9%80%86%E8%A2%AD%E6%A0%A1%E6%A6%9C%E7%AC%AC%E4%B8%80",
-      "likes": 7650310,
-      "comments": 1000
-    },
-    {
-      "id": 636766384,
-      "title": "九门探秘好上头",
-      "summary": "抖音热搜: 九门探秘好上头",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E4%B9%9D%E9%97%A8%E6%8E%A2%E7%A7%98%E5%A5%BD%E4%B8%8A%E5%A4%B4",
-      "likes": 7645970,
-      "comments": 1000
-    },
-    {
-      "id": 204950216,
-      "title": "子华遇到了引导型恋人楚楚",
-      "summary": "抖音热搜: 子华遇到了引导型恋人楚楚",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%AD%90%E5%8D%8E%E9%81%87%E5%88%B0%E4%BA%86%E5%BC%95%E5%AF%BC%E5%9E%8B%E6%81%8B%E4%BA%BA%E6%A5%9A%E6%A5%9A",
-      "likes": 7643013,
+      "url": "https://www.douyin.com/search/%E6%8B%89%E4%B8%8D%E5%8A%A8%E7%9A%84%E7%AE%B1%E5%AD%90",
+      "likes": 7644393,
       "comments": 1000
     },
     {
@@ -2327,7 +2231,103 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%98%A5%E5%AD%90%E4%B8%A4%E6%AC%A1%E9%80%89%E6%8B%A9%E9%83%BD%E5%81%8F%E5%90%91%E9%9B%B7%E7%AB%A5",
-      "likes": 7640652,
+      "likes": 7643637,
+      "comments": 1000
+    },
+    {
+      "id": 913033685,
+      "title": "东大高武秦雨逆袭校榜第一",
+      "summary": "抖音热搜: 东大高武秦雨逆袭校榜第一",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E4%B8%9C%E5%A4%A7%E9%AB%98%E6%AD%A6%E7%A7%A6%E9%9B%A8%E9%80%86%E8%A2%AD%E6%A0%A1%E6%A6%9C%E7%AC%AC%E4%B8%80",
+      "likes": 7641175,
+      "comments": 1000
+    },
+    {
+      "id": 15847621,
+      "title": "特斯拉辟谣剥离中国业务",
+      "summary": "抖音热搜: 特斯拉辟谣剥离中国业务",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%89%B9%E6%96%AF%E6%8B%89%E8%BE%9F%E8%B0%A3%E5%89%A5%E7%A6%BB%E4%B8%AD%E5%9B%BD%E4%B8%9A%E5%8A%A1",
+      "likes": 7639566,
+      "comments": 1000
+    },
+    {
+      "id": 20775592,
+      "title": "白小白乌兰图雅苹果香",
+      "summary": "抖音热搜: 白小白乌兰图雅苹果香",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%99%BD%E5%B0%8F%E7%99%BD%E4%B9%8C%E5%85%B0%E5%9B%BE%E9%9B%85%E8%8B%B9%E6%9E%9C%E9%A6%99",
+      "likes": 7633003,
+      "comments": 1000
+    },
+    {
+      "id": 74226999,
+      "title": "田嘉瑞正太扭腰",
+      "summary": "抖音热搜: 田嘉瑞正太扭腰",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%94%B0%E5%98%89%E7%91%9E%E6%AD%A3%E5%A4%AA%E6%89%AD%E8%85%B0",
+      "likes": 7630977,
+      "comments": 1000
+    },
+    {
+      "id": 266434586,
+      "title": "奥德赛热点团直击现场",
+      "summary": "抖音热搜: 奥德赛热点团直击现场",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%A5%A5%E5%BE%B7%E8%B5%9B%E7%83%AD%E7%82%B9%E5%9B%A2%E7%9B%B4%E5%87%BB%E7%8E%B0%E5%9C%BA",
+      "likes": 7629067,
+      "comments": 1000
+    },
+    {
+      "id": 636766384,
+      "title": "九门探秘好上头",
+      "summary": "抖音热搜: 九门探秘好上头",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E4%B9%9D%E9%97%A8%E6%8E%A2%E7%A7%98%E5%A5%BD%E4%B8%8A%E5%A4%B4",
+      "likes": 7628590,
       "comments": 1000
     },
     {
@@ -2343,7 +2343,23 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/TopBarry%E5%A7%9A%E6%99%93%E6%A3%A0%E5%90%88%E4%BD%9C%E8%88%9E%E5%8F%B0",
-      "likes": 7639661,
+      "likes": 7628574,
+      "comments": 1000
+    },
+    {
+      "id": 270958361,
+      "title": "张启山吴老狗成饿死鬼",
+      "summary": "抖音热搜: 张启山吴老狗成饿死鬼",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%BC%A0%E5%90%AF%E5%B1%B1%E5%90%B4%E8%80%81%E7%8B%97%E6%88%90%E9%A5%BF%E6%AD%BB%E9%AC%BC",
+      "likes": 7626480,
       "comments": 1000
     },
     {
@@ -2359,24 +2375,24 @@
         "热门"
       ],
       "url": "https://www.douyin.com/search/%E6%B4%9B%E9%98%B3%E7%9A%84%E5%A4%A7%E7%9B%98%E9%B8%A1%E6%8A%8A%E6%88%91%E9%A6%99%E8%BF%B7%E7%B3%8A%E4%BA%86",
-      "likes": 7639392,
+      "likes": 7624091,
       "comments": 1000
     },
     {
-      "id": 519573231,
-      "title": "当彝族元素走进日常穿搭",
-      "summary": "抖音热搜: 当彝族元素走进日常穿搭",
-      "source": "抖音",
+      "id": 369738818,
+      "title": "火灾母女坠楼事发小区居民发声",
+      "summary": "#火灾母女坠楼事发小区居民发声#",
+      "source": "公众号热点",
       "date": "2026-07-31",
       "time": "",
       "tags": [
-        "爆款",
-        "短视频",
-        "热门"
+        "热议",
+        "娱乐",
+        "社会"
       ],
-      "url": "https://www.douyin.com/search/%E5%BD%93%E5%BD%9D%E6%97%8F%E5%85%83%E7%B4%A0%E8%B5%B0%E8%BF%9B%E6%97%A5%E5%B8%B8%E7%A9%BF%E6%90%AD",
-      "likes": 7638177,
-      "comments": 1000
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC%E4%BA%8B%E5%8F%91%E5%B0%8F%E5%8C%BA%E5%B1%85%E6%B0%91%E5%8F%91%E5%A3%B0",
+      "likes": 50000,
+      "comments": 500
     },
     {
       "id": 825997718,
@@ -2391,22 +2407,6 @@
         "社会"
       ],
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E6%AD%8C%E6%89%8B%E6%8E%92%E5%90%8D",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 116557637,
-      "title": "为什么感觉对方忽冷忽热的",
-      "summary": "为什么感觉对方忽冷忽热的",
-      "source": "公众号热点",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%BA%E4%BB%80%E4%B9%88%E6%84%9F%E8%A7%89%E5%AF%B9%E6%96%B9%E5%BF%BD%E5%86%B7%E5%BF%BD%E7%83%AD%E7%9A%84",
       "likes": 50000,
       "comments": 500
     },
@@ -2427,6 +2427,22 @@
       "comments": 500
     },
     {
+      "id": 574732147,
+      "title": "周星驰质疑董宇辉看大话西游500遍",
+      "summary": "周星驰质疑董宇辉看大话西游500遍",
+      "source": "公众号热点",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%91%A8%E6%98%9F%E9%A9%B0%E8%B4%A8%E7%96%91%E8%91%A3%E5%AE%87%E8%BE%89%E7%9C%8B%E5%A4%A7%E8%AF%9D%E8%A5%BF%E6%B8%B8500%E9%81%8D",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
       "id": 504846679,
       "title": "房主任被停演3个月",
       "summary": "#房主任被停演3个月#",
@@ -2443,9 +2459,9 @@
       "comments": 500
     },
     {
-      "id": 574732147,
-      "title": "周星驰质疑董宇辉看大话西游500遍",
-      "summary": "周星驰质疑董宇辉看大话西游500遍",
+      "id": 116557637,
+      "title": "为什么感觉对方忽冷忽热的",
+      "summary": "为什么感觉对方忽冷忽热的",
       "source": "公众号热点",
       "date": "2026-07-31",
       "time": "",
@@ -2454,7 +2470,7 @@
         "娱乐",
         "社会"
       ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%91%A8%E6%98%9F%E9%A9%B0%E8%B4%A8%E7%96%91%E8%91%A3%E5%AE%87%E8%BE%89%E7%9C%8B%E5%A4%A7%E8%AF%9D%E8%A5%BF%E6%B8%B8500%E9%81%8D",
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%BA%E4%BB%80%E4%B9%88%E6%84%9F%E8%A7%89%E5%AF%B9%E6%96%B9%E5%BF%BD%E5%86%B7%E5%BF%BD%E7%83%AD%E7%9A%84",
       "likes": 50000,
       "comments": 500
     },
@@ -2475,9 +2491,9 @@
       "comments": 500
     },
     {
-      "id": 915777250,
-      "title": "客服 坏了他真会啊",
-      "summary": "客服 坏了他真会啊",
+      "id": 79917922,
+      "title": "菲律宾严重侵犯中国领土主权",
+      "summary": "#菲律宾严重侵犯中国领土主权#",
       "source": "公众号热点",
       "date": "2026-07-31",
       "time": "",
@@ -2486,23 +2502,7 @@
         "娱乐",
         "社会"
       ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%AE%A2%E6%9C%8D%20%E5%9D%8F%E4%BA%86%E4%BB%96%E7%9C%9F%E4%BC%9A%E5%95%8A",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 619572055,
-      "title": "九门 鬼片",
-      "summary": "九门 鬼片",
-      "source": "公众号热点",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B9%9D%E9%97%A8%20%E9%AC%BC%E7%89%87",
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E8%8F%B2%E5%BE%8B%E5%AE%BE%E4%B8%A5%E9%87%8D%E4%BE%B5%E7%8A%AF%E4%B8%AD%E5%9B%BD%E9%A2%86%E5%9C%9F%E4%B8%BB%E6%9D%83",
       "likes": 50000,
       "comments": 500
     },
@@ -2523,9 +2523,9 @@
       "comments": 500
     },
     {
-      "id": 79917922,
-      "title": "菲律宾严重侵犯中国领土主权",
-      "summary": "#菲律宾严重侵犯中国领土主权#",
+      "id": 915777250,
+      "title": "客服 坏了他真会啊",
+      "summary": "客服 坏了他真会啊",
       "source": "公众号热点",
       "date": "2026-07-31",
       "time": "",
@@ -2534,7 +2534,453 @@
         "娱乐",
         "社会"
       ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E8%8F%B2%E5%BE%8B%E5%AE%BE%E4%B8%A5%E9%87%8D%E4%BE%B5%E7%8A%AF%E4%B8%AD%E5%9B%BD%E9%A2%86%E5%9C%9F%E4%B8%BB%E6%9D%83",
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%AE%A2%E6%9C%8D%20%E5%9D%8F%E4%BA%86%E4%BB%96%E7%9C%9F%E4%BC%9A%E5%95%8A",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
+      "id": 375052255,
+      "title": "董宇辉称看了500遍大话西游 星爷震惊",
+      "summary": "7月30日，董宇辉直播连线周星驰时称自己看《大话西游》不下500遍，引发热议。周星驰听后连连追问，露出震惊表情。董宇辉表示，从高中到工作后反复观看，对影片有着不同阶段的理解与感受。",
+      "source": "百度热搜",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "热点",
+        "资讯"
+      ],
+      "url": "https://www.baidu.com/s?wd=董宇辉称看了500遍大话西游 星爷震惊",
+      "likes": 7138478,
+      "comments": 0
+    },
+    {
+      "id": 111373524,
+      "title": "DeepSeek V4 正式版发布，使用体验如何？和降价后的 GPT5.6 luna 对比谁更有优势？",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/2066526486505461299",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 967845556,
+      "title": "如何评价2026年7月米哈游《原神》7.0至冬音乐会？",
+      "summary": "",
+      "source": "知乎",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "知乎",
+        "热榜"
+      ],
+      "url": "https://www.zhihu.com/question/2066448714458312845",
+      "likes": 50000,
+      "comments": 100
+    },
+    {
+      "id": 52330356,
+      "title": "WE BLG",
+      "summary": "B站热搜: BLG战胜WE LPL第三赛段",
+      "source": "bilibili",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "年轻",
+        "二次元",
+        "热门"
+      ],
+      "url": "https://search.bilibili.com/all?keyword=WE BLG",
+      "likes": 30000,
+      "comments": 300
+    },
+    {
+      "id": 648820532,
+      "title": "许愿柳是什么梗",
+      "summary": "B站热搜: 许愿柳是什么梗",
+      "source": "bilibili",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "年轻",
+        "二次元",
+        "热门"
+      ],
+      "url": "https://search.bilibili.com/all?keyword=许愿柳是什么梗",
+      "likes": 30000,
+      "comments": 300
+    },
+    {
+      "id": 465580768,
+      "title": "DeepSeek Flash正式版强在哪",
+      "summary": "B站热搜: DeepSeek V4 Flash正式版强在哪",
+      "source": "bilibili",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "年轻",
+        "二次元",
+        "热门"
+      ],
+      "url": "https://search.bilibili.com/all?keyword=DeepSeek Flash正式版强在哪",
+      "likes": 30000,
+      "comments": 300
+    },
+    {
+      "id": 965072675,
+      "title": "陈天桥2.2亿“抄底”上海酒店",
+      "summary": "陈天桥2.2亿“抄底”上海酒店",
+      "source": "今日头条",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "资讯",
+        "热议"
+      ],
+      "url": "https://www.toutiao.com/trending/7667817500806086710/",
+      "likes": 6506799,
+      "comments": 100
+    },
+    {
+      "id": 332436526,
+      "title": "老挝为什么能向中国出口电力",
+      "summary": "老挝为什么能向中国出口电力",
+      "source": "今日头条",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "社会",
+        "资讯",
+        "热议"
+      ],
+      "url": "https://www.toutiao.com/trending/7668609151718657546/",
+      "likes": 5327316,
+      "comments": 100
+    },
+    {
+      "id": 452721744,
+      "title": "欧足联宣布抵制所有国际足联赛事",
+      "summary": "看体育如何改变世界",
+      "source": "澎湃新闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "社会",
+        "时政"
+      ],
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688311",
+      "likes": 20000,
+      "comments": 200
+    },
+    {
+      "id": 258232962,
+      "title": "Anthropic与OpenAI的网络故障表明美国存在网络安全风险。",
+      "summary": "",
+      "source": "华尔街见闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "实时"
+      ],
+      "url": "https://wallstreetcn.com/livenews/3143443",
+      "likes": 5000,
+      "comments": 50
+    },
+    {
+      "id": 826579002,
+      "title": "美国商品期货交易委员会（CFTC）发布了最新一期的交易者持仓报告（COT），数据截至周二收盘。投机性持仓的亮点如下：  外汇市场：美元综合多头头寸激增至刚刚超过500亿美元，创下历史最高纪录！投机客抛售了3.11万份欧元、1.13万份日元（哎呀！）、9300份英镑、1900份加元和2300份澳元。尽管有2300份新西兰元被买入，以及少量瑞郎和墨西哥比索的买盘，但美元综合多头头寸",
+      "summary": "",
+      "source": "华尔街见闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "实时"
+      ],
+      "url": "https://wallstreetcn.com/livenews/3143442",
+      "likes": 5000,
+      "comments": 50
+    },
+    {
+      "id": 514709653,
+      "title": "周五（7月31日）纽约尾盘，美元兑日元跌0.31%，报159.04日元，本周累计下跌2.91%、7月30日美股盘初急剧跳水，7月份累计下跌2.09%，整体交投区间为163.99-157.98日元，在平缓的持续上扬行情中、7月23日美股盘初达到顶部。  欧元兑日元跌0.28%，报183.40日元，本周累跌1.53%，7月份累跌1.22%；英镑兑日元跌0.17%，报214.466日",
+      "summary": "",
+      "source": "华尔街见闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "实时"
+      ],
+      "url": "https://wallstreetcn.com/livenews/3143441",
+      "likes": 5000,
+      "comments": 50
+    },
+    {
+      "id": 905077586,
+      "title": "美国商品期货交易委员会（CFTC）：7月28日当周，投机者所持COMEX黄金净多头头寸减少3,258手合约，至120,328手合约。  所持COMEX白银净多头头寸降低至8,387手合约，创21周新低。  所持NYMEX钯金净空头头寸降低至6,173手合约，创四周新低。",
+      "summary": "",
+      "source": "华尔街见闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "实时"
+      ],
+      "url": "https://wallstreetcn.com/livenews/3143440",
+      "likes": 5000,
+      "comments": 50
+    },
+    {
+      "id": 239370072,
+      "title": "美国商品期货交易委员会（CFTC）：7月28日当周，投机者所持NYMEX WTI原油净多头头寸增加21,402手合约，至108,307手合约，创六周新高。  所持布伦特与WTI原油净多头头寸增至308,385手合约，创七周新高。  所持NYMEX汽油净多头头寸增至73,967手合约，创19周新高。",
+      "summary": "",
+      "source": "华尔街见闻",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "实时"
+      ],
+      "url": "https://wallstreetcn.com/livenews/3143439",
+      "likes": 5000,
+      "comments": 50
+    },
+    {
+      "id": 516488976,
+      "title": "《蜘蛛侠》点映票房打破北美纪录，好莱坞冲击“重返2019”",
+      "summary": "",
+      "source": "财联社热门",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "投资"
+      ],
+      "url": "https://www.cls.cn/detail/2443120",
+      "likes": 20000,
+      "comments": 200
+    },
+    {
+      "id": 795233550,
+      "title": "聚焦打鼾口服疗法 美生物科技公司上市首日股价跳涨",
+      "summary": "",
+      "source": "财联社热门",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "财经",
+        "金融",
+        "投资"
+      ],
+      "url": "https://www.cls.cn/detail/2443112",
+      "likes": 20000,
+      "comments": 200
+    },
+    {
+      "id": 697303484,
+      "title": "日防相竟称有必要讨论核武器，广岛、长崎市长：你来核爆地看看",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8vDTrIqwj2n",
+      "likes": 10000,
+      "comments": 100
+    },
+    {
+      "id": 441337425,
+      "title": "爆料：马斯克拒绝泽连斯基",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8vDUUMEzPgw",
+      "likes": 10000,
+      "comments": 100
+    },
+    {
+      "id": 476512909,
+      "title": "国家电网原董事长辛保安被查",
+      "summary": "",
+      "source": "凤凰网",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "新闻",
+        "国际",
+        "时政"
+      ],
+      "url": "https://news.ifeng.com/c/8vDT4Ia0ovZ",
+      "likes": 10000,
+      "comments": 100
+    },
+    {
+      "id": 815767118,
+      "title": "美年达小黄人新包装官宣联动",
+      "summary": "",
+      "source": "微博",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://s.weibo.com/weibo?q=%23美年达小黄人新包装官宣联动%23",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
+      "id": 271248523,
+      "title": "九门 鬼片",
+      "summary": "九门 鬼片",
+      "source": "微博",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://s.weibo.com/weibo?q=%23九门 鬼片%23",
+      "likes": 50000,
+      "comments": 500
+    },
+    {
+      "id": 380755759,
+      "title": "CORTIS新歌MOTION上线",
+      "summary": "抖音热搜: CORTIS新歌MOTION上线",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/CORTIS%E6%96%B0%E6%AD%8CMOTION%E4%B8%8A%E7%BA%BF",
+      "likes": 7710486,
+      "comments": 1000
+    },
+    {
+      "id": 198504294,
+      "title": "随礼200还能听演唱会",
+      "summary": "抖音热搜: 随礼200还能听演唱会",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E9%9A%8F%E7%A4%BC200%E8%BF%98%E8%83%BD%E5%90%AC%E6%BC%94%E5%94%B1%E4%BC%9A",
+      "likes": 7675515,
+      "comments": 1000
+    },
+    {
+      "id": 185680930,
+      "title": "风雨飘摇转场",
+      "summary": "抖音热搜: 风雨飘摇转场",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E9%A3%8E%E9%9B%A8%E9%A3%98%E6%91%87%E8%BD%AC%E5%9C%BA",
+      "likes": 7672207,
+      "comments": 1000
+    },
+    {
+      "id": 364001988,
+      "title": "电影去你的岛开始下刀子了",
+      "summary": "抖音热搜: 电影去你的岛开始下刀子了",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E7%94%B5%E5%BD%B1%E5%8E%BB%E4%BD%A0%E7%9A%84%E5%B2%9B%E5%BC%80%E5%A7%8B%E4%B8%8B%E5%88%80%E5%AD%90%E4%BA%86",
+      "likes": 7661378,
+      "comments": 1000
+    },
+    {
+      "id": 204950216,
+      "title": "子华遇到了引导型恋人楚楚",
+      "summary": "抖音热搜: 子华遇到了引导型恋人楚楚",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%AD%90%E5%8D%8E%E9%81%87%E5%88%B0%E4%BA%86%E5%BC%95%E5%AF%BC%E5%9E%8B%E6%81%8B%E4%BA%BA%E6%A5%9A%E6%A5%9A",
+      "likes": 7643013,
+      "comments": 1000
+    },
+    {
+      "id": 519573231,
+      "title": "当彝族元素走进日常穿搭",
+      "summary": "抖音热搜: 当彝族元素走进日常穿搭",
+      "source": "抖音",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "爆款",
+        "短视频",
+        "热门"
+      ],
+      "url": "https://www.douyin.com/search/%E5%BD%93%E5%BD%9D%E6%97%8F%E5%85%83%E7%B4%A0%E8%B5%B0%E8%BF%9B%E6%97%A5%E5%B8%B8%E7%A9%BF%E6%90%AD",
+      "likes": 7638177,
+      "comments": 1000
+    },
+    {
+      "id": 619572055,
+      "title": "九门 鬼片",
+      "summary": "九门 鬼片",
+      "source": "公众号热点",
+      "date": "2026-07-31",
+      "time": "",
+      "tags": [
+        "热议",
+        "娱乐",
+        "社会"
+      ],
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B9%9D%E9%97%A8%20%E9%AC%BC%E7%89%87",
       "likes": 50000,
       "comments": 500
     },
@@ -2904,22 +3350,6 @@
       "comments": 500
     },
     {
-      "id": 752428910,
-      "title": "火灾母女坠楼事发小区居民发声",
-      "summary": "#火灾母女坠楼事发小区居民发声#",
-      "source": "微博",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://s.weibo.com/weibo?q=%23火灾母女坠楼事发小区居民发声%23",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
       "id": 723658581,
       "title": "我的菌子之交",
       "summary": "",
@@ -3016,38 +3446,6 @@
       "comments": 1000
     },
     {
-      "id": 270958361,
-      "title": "张启山吴老狗成饿死鬼",
-      "summary": "抖音热搜: 张启山吴老狗成饿死鬼",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E5%BC%A0%E5%90%AF%E5%B1%B1%E5%90%B4%E8%80%81%E7%8B%97%E6%88%90%E9%A5%BF%E6%AD%BB%E9%AC%BC",
-      "likes": 7712254,
-      "comments": 1000
-    },
-    {
-      "id": 205970407,
-      "title": "九江文旅主打一个听劝",
-      "summary": "抖音热搜: 九江文旅主打一个听劝",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E4%B9%9D%E6%B1%9F%E6%96%87%E6%97%85%E4%B8%BB%E6%89%93%E4%B8%80%E4%B8%AA%E5%90%AC%E5%8A%9D",
-      "likes": 7705878,
-      "comments": 1000
-    },
-    {
       "id": 872018853,
       "title": "全网都在挑战这个扇风舞",
       "summary": "抖音热搜: 全网都在挑战这个扇风舞",
@@ -3092,22 +3490,6 @@
         "社会"
       ],
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%BD%8E%E4%BB%B7%E5%A4%A7%E6%B5%81%E9%87%8F%E5%8D%A1%E5%B0%86%E9%9B%86%E4%BD%93%E9%80%80%E5%9C%BA",
-      "likes": 50000,
-      "comments": 500
-    },
-    {
-      "id": 369738818,
-      "title": "火灾母女坠楼事发小区居民发声",
-      "summary": "#火灾母女坠楼事发小区居民发声#",
-      "source": "公众号热点",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "热议",
-        "娱乐",
-        "社会"
-      ],
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC%E4%BA%8B%E5%8F%91%E5%B0%8F%E5%8C%BA%E5%B1%85%E6%B0%91%E5%8F%91%E5%A3%B0",
       "likes": 50000,
       "comments": 500
     },
@@ -4287,22 +4669,6 @@
       ],
       "url": "https://www.toutiao.com/trending/7668638016357400626/",
       "likes": 4894450,
-      "comments": 100
-    },
-    {
-      "id": 115709161,
-      "title": "保时捷女销冠回应被AI合成不雅视频",
-      "summary": "保时捷女销冠回应被AI合成不雅视频",
-      "source": "今日头条",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "资讯",
-        "热议"
-      ],
-      "url": "https://www.toutiao.com/trending/7668540826486865930/",
-      "likes": 4428682,
       "comments": 100
     },
     {
@@ -6303,22 +6669,6 @@
       "comments": 1000
     },
     {
-      "id": 20775592,
-      "title": "白小白乌兰图雅苹果香",
-      "summary": "抖音热搜: 白小白乌兰图雅苹果香",
-      "source": "抖音",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "爆款",
-        "短视频",
-        "热门"
-      ],
-      "url": "https://www.douyin.com/search/%E7%99%BD%E5%B0%8F%E7%99%BD%E4%B9%8C%E5%85%B0%E5%9B%BE%E9%9B%85%E8%8B%B9%E6%9E%9C%E9%A6%99",
-      "likes": 7640235,
-      "comments": 1000
-    },
-    {
       "id": 377892745,
       "title": "百花奖",
       "summary": "百花奖",
@@ -6951,22 +7301,6 @@
       ],
       "url": "https://www.toutiao.com/trending/7668109216737165362/",
       "likes": 7843042,
-      "comments": 100
-    },
-    {
-      "id": 361135567,
-      "title": "网友两个夏天捡知了壳狂赚130万",
-      "summary": "网友两个夏天捡知了壳狂赚130万",
-      "source": "今日头条",
-      "date": "2026-07-31",
-      "time": "",
-      "tags": [
-        "社会",
-        "资讯",
-        "热议"
-      ],
-      "url": "https://www.toutiao.com/trending/7667824772759715903/",
-      "likes": 7096678,
       "comments": 100
     },
     {
@@ -24492,10 +24826,10 @@
       "blogger_name": "阿七大型纪录片",
       "url": "https://www.douyin.com/video/7658719591144973433",
       "hot_score": 102.56844872145024,
-      "wangba": "说回今天的新闻，第一个事儿：7月4日社会热点信息差。但是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
-      "aqi": "热点信息差。7月4日社会热点信息差。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
-      "chen": "来讲一个正在发生的变化：7月4日社会热点信息差。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "快报时间。7月4日社会热点信息差。不过巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "wangba": "OK下事儿。7月4日社会热点信息差。说实话表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。认为觉得呢？",
+      "aqi": "热点信息差。7月4日社会热点信息差这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。来们再看看原视频，注意那个时间点。",
+      "chen": "来讲一个正在发生的变化：7月4日社会热点信息差。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：7月4日社会热点信息差。7月4日社会热点信息差。然而我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。评论区觉得这说明什么？",
       "shadi": "07月31日热乎的新闻。7月4日社会热点信息差。7月4日社会热点信息差。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
@@ -24504,11 +24838,11 @@
       "blogger_name": "网吧信息差",
       "url": "https://www.douyin.com/video/7658281376218615092",
       "hot_score": 92.27649450029088,
-      "wangba": "说回今天的新闻，第一个事儿：世界上又多了一个热爱工作的人。说实话这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。你们你们品，细品。",
-      "aqi": "热点信息差。世界上又多了一个热爱工作的人。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。来们看完觉得哪个环节最离谱？",
-      "chen": "这波真的不讲武德。世界上又多了一个热爱工作的人。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今日热点快报：世界上又多了一个热爱工作的人。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：世界上又多了一个热爱工作的人。给还没看的朋友用一句话说清楚——世界上又多了一个热爱工作的人。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "世界上又多了一个热爱工作的人。不过我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。网友支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。世界上又多了一个热爱工作的人这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。评论区们再看看原视频，注意那个时间点。",
+      "chen": "来讲一个正在发生的变化：世界上又多了一个热爱工作的人。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "热点快报，先看数据：世界上又多了一个热爱工作的人。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "补一下今天的热搜。世界上又多了一个热爱工作的人。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "反转了,听泉辟谣家庭矛盾",
@@ -24516,11 +24850,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356650",
       "hot_score": 92,
-      "wangba": "来来来，最近有个事儿真给我整笑了。反转了,听泉辟谣家庭矛盾。但是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。觉得你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。反转了,听泉辟谣家庭矛盾。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。大家们追不追？我每集都给剪好了。",
-      "chen": "这波真的不讲武德。反转了,听泉辟谣家庭矛盾。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "热点快报，先看数据：反转了,听泉辟谣家庭矛盾。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。反转了,听泉辟谣家庭矛盾。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。网友觉得呢？"
+      "wangba": "说回今天的新闻，第一个事儿：反转了,听泉辟谣家庭矛盾。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。觉得你们品，细品。",
+      "aqi": "热点信息差。反转了,听泉辟谣家庭矛盾。哥们儿，这事儿搁以前谁能信？但是但现在它就是真的。评论区们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "来讲一个正在发生的变化：反转了,听泉辟谣家庭矛盾。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：反转了,听泉辟谣家庭矛盾。反转了,听泉辟谣家庭矛盾。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。评论区觉得这说明什么？",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：反转了,听泉辟谣家庭矛盾。给还没看的朋友用一句话说清楚——反转了,听泉辟谣家庭矛盾。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "Aiming回应宫斗:对方先骂人",
@@ -24528,11 +24862,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356666",
       "hot_score": 86,
-      "wangba": "不是，Aiming回应宫斗:对方先骂人？我反复确认了三遍，这事儿还真就发生在咱身边。但是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。认为们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。Aiming回应宫斗:对方先骂人。哥们儿，这事儿搁以前谁能信？但是但现在它就是真的。来们别光看，把这条转给你那个还不相信的朋友。",
-      "chen": "来讲一个正在发生的变化：Aiming回应宫斗:对方先骂人。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。Aiming回应宫斗:对方先骂人。其实所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。网友你能看到B吗？",
-      "shadi": "来了来了，07月31日时间线整理好了。Aiming回应宫斗:对方先骂人。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
+      "wangba": "说回今天的新闻，第一个事儿：Aiming回应宫斗:对方先骂人。不过这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。Aiming回应宫斗:对方先骂人。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但关注们不要急着下结论，证据链还没完整。",
+      "chen": "《Aiming回应宫斗:对方先骂人》这部纪录片更新了。Aiming回应宫斗:对方先骂人。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "一条热乎的新闻。Aiming回应宫斗:对方先骂人。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：Aiming回应宫斗:对方先骂人。给还没看的朋友用一句话说清楚——Aiming回应宫斗:对方先骂人。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "7月2日社会热点信息差#热点 #离谱 #逆天",
@@ -24540,11 +24874,11 @@
       "blogger_name": "阿七大型纪录片",
       "url": "https://www.douyin.com/video/7657920968547182181",
       "hot_score": 82.6196467803093,
-      "wangba": "7月2日社会热点信息差。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。7月2日社会热点信息差这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。来们再看看原视频，注意那个时间点。",
-      "chen": "今天讲一个现象级的新闻：7月2日社会热点信息差。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "wangba": "今天有个新闻我必须得讲讲。7月2日社会热点信息差。但是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？来告诉我。",
+      "aqi": "热点信息差。7月2日社会热点信息差这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。评论区们再看看原视频，注意那个时间点。",
+      "chen": "《7月2日社会热点信息差》这部纪录片更新了。7月2日社会热点信息差。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
       "guancha": "今日快报，注意一个容易被忽视的细节。7月2日社会热点信息差。然而所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。分享你能看到B吗？",
-      "shadi": "补一下今天的热搜。7月2日社会热点信息差。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：7月2日社会热点信息差。给还没看的朋友用一句话说清楚——7月2日社会热点信息差。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "张泽禹道歉",
@@ -24552,11 +24886,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23张泽禹道歉%23",
       "hot_score": 82.36293888384957,
-      "wangba": "不是，张泽禹道歉？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。网友们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。张泽禹道歉这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "来讲一个正在发生的变化：张泽禹道歉。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "快报时间。张泽禹道歉。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "来，今天的热点按时间串一下：张泽禹道歉。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "说回今天的新闻，第一个事儿：张泽禹道歉。虽然这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。张泽禹道歉。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。你们去评论区看看，已经有课代表总结了。",
+      "chen": "今天讲一个现象级的新闻：张泽禹道歉。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。张泽禹道歉。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——张泽禹道歉。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "女孩摆拍盲道被撞细节曝光",
@@ -24564,11 +24898,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23女孩摆拍盲道被撞细节曝光%23",
       "hot_score": 82.36293888384957,
-      "wangba": "女孩摆拍盲道被撞细节曝光。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。可是说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。女孩摆拍盲道被撞细节曝光。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。关注们追不追？我每集都给剪好了。",
-      "chen": "今天讲一个现象级的新闻：女孩摆拍盲道被撞细节曝光。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "热点快报，先看数据：女孩摆拍盲道被撞细节曝光。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：女孩摆拍盲道被撞细节曝光。给还没看的朋友用一句话说清楚——女孩摆拍盲道被撞细节曝光。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。女孩摆拍盲道被撞细节曝光。说实话表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。来觉得呢？",
+      "aqi": "热点信息差。女孩摆拍盲道被撞细节曝光。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但评论区们不要急着下结论，证据链还没完整。",
+      "chen": "《女孩摆拍盲道被撞细节曝光》这部纪录片更新了。女孩摆拍盲道被撞细节曝光。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "快报时间。女孩摆拍盲道被撞细节曝光。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。女孩摆拍盲道被撞细节曝光。女孩摆拍盲道被撞细节曝光。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "特鲁姆普长台准到离谱",
@@ -24576,11 +24910,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E7%89%B9%E9%B2%81%E5%A7%86%E6%99%AE%E9%95%BF%E5%8F%B0%E5%87%86%E5%88%B0%E7%A6%BB%E8%B0%B1",
       "hot_score": 81.94100726590479,
-      "wangba": "今天有个新闻我必须得讲讲。特鲁姆普长台准到离谱。说实话起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？认为告诉我。",
-      "aqi": "热点信息差。特鲁姆普长台准到离谱。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但你们们不要急着下结论，证据链还没完整。",
-      "chen": "这波真的不讲武德。特鲁姆普长台准到离谱。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今日热点快报：特鲁姆普长台准到离谱。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "来了来了，07月31日时间线整理好了。特鲁姆普长台准到离谱。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。你们觉得呢？"
+      "wangba": "今天有个新闻我必须得讲讲。特鲁姆普长台准到离谱。可是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？觉得告诉我。",
+      "aqi": "热点信息差。特鲁姆普长台准到离谱。起因是有位/特鲁姆普长台准到离谱的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。关注们你们觉得谁有理？评论区辩一辩。",
+      "chen": "《特鲁姆普长台准到离谱》这部纪录片更新了。特鲁姆普长台准到离谱。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "一条热乎的新闻。特鲁姆普长台准到离谱。然而根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：特鲁姆普长台准到离谱。特鲁姆普长台准到离谱。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "听见你说 #大学生#搞笑#内容过于真实#人类迷惑行为大赏#网吧信息差",
@@ -24588,10 +24922,10 @@
       "blogger_name": "网吧信息差",
       "url": "https://www.douyin.com/video/7659226640433663259",
       "hot_score": 81.04653439440719,
-      "wangba": "来来来，最近有个事儿真给我整笑了。听见你说。说白了你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。觉得你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。听见你说。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。觉得们看完觉得哪个环节最离谱？",
-      "chen": "大型纪录片之《听见你说》持续为您播出。听见你说，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "快报时间。听见你说。其实巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "wangba": "听见你说。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。不过说真的，这事儿搁谁身上都得懵。来们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。听见你说。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
+      "chen": "《听见你说》这部纪录片更新了。听见你说。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "快报时间。听见你说。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
       "shadi": "07月31日热乎的新闻。听见你说。听见你说。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
@@ -24600,11 +24934,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356671",
       "hot_score": 80,
-      "wangba": "男子健身时被他人指控偷拍。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。网友们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。男子健身时被他人指控偷拍。起因是有位/男子健身时被他人指控偷拍的事/在网上火了。说到底本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。大家们你们觉得谁有理？评论区辩一辩。",
+      "wangba": "说回今天的新闻，第一个事儿：男子健身时被他人指控偷拍。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。认为你们品，细品。",
+      "aqi": "热点信息差。男子健身时被他人指控偷拍。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但你们们不要急着下结论，证据链还没完整。",
       "chen": "今天讲一个现象级的新闻：男子健身时被他人指控偷拍。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "热点快报，先看数据：男子健身时被他人指控偷拍。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——男子健身时被他人指控偷拍。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
+      "guancha": "快报时间。男子健身时被他人指控偷拍。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。男子健身时被他人指控偷拍。男子健身时被他人指控偷拍。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "霓虹人迷上寄生虫生鱼片",
@@ -24612,11 +24946,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356683",
       "hot_score": 80,
-      "wangba": "霓虹人迷上寄生虫生鱼片。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。霓虹人迷上寄生虫生鱼片。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
-      "chen": "大型纪录片之《霓虹人迷上寄生虫生鱼片》持续为您播出。霓虹人迷上寄生虫生鱼片，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "热点快报，先看数据：霓虹人迷上寄生虫生鱼片。不过说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。霓虹人迷上寄生虫生鱼片。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。觉得觉得呢？"
+      "wangba": "霓虹人迷上寄生虫生鱼片。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说实话说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。霓虹人迷上寄生虫生鱼片。起因是有位/霓虹人迷上寄生虫生鱼片的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。网友们你们觉得谁有理？评论区辩一辩。",
+      "chen": "这波真的不讲武德。霓虹人迷上寄生虫生鱼片。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "快报时间。霓虹人迷上寄生虫生鱼片。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：霓虹人迷上寄生虫生鱼片。霓虹人迷上寄生虫生鱼片。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "刘北回归,星游记官宣重启",
@@ -24624,11 +24958,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356688",
       "hot_score": 80,
-      "wangba": "说回今天的新闻，第一个事儿：刘北回归,星游记官宣重启。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
-      "aqi": "热点信息差。刘北回归,星游记官宣重启。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。评论区们追不追？我每集都给剪好了。",
-      "chen": "今天讲一个现象级的新闻：刘北回归,星游记官宣重启。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。刘北回归,星游记官宣重启。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "补一下今天的热搜。刘北回归,星游记官宣重启。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "不是，刘北回归,星游记官宣重启？我反复确认了三遍，这事儿还真就发生在咱身边。虽然最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。刘北回归,星游记官宣重启。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。来去评论区看看，已经有课代表总结了。",
+      "chen": "《刘北回归,星游记官宣重启》这部纪录片更新了。刘北回归,星游记官宣重启。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "热点快报，先看数据：刘北回归,星游记官宣重启。不过说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "来，今天的热点按时间串一下：刘北回归,星游记官宣重启。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "俄罗斯导弹偏航砸进波兰",
@@ -24636,10 +24970,10 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356664",
       "hot_score": 80,
-      "wangba": "OK下事儿。俄罗斯导弹偏航砸进波兰。可是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。认为觉得呢？",
-      "aqi": "热点信息差。俄罗斯导弹偏航砸进波兰。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。评论区们追不追？我每集都给剪好了。",
-      "chen": "大型纪录片之《俄罗斯导弹偏航砸进波兰》持续为您播出。俄罗斯导弹偏航砸进波兰，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "一条热乎的新闻。俄罗斯导弹偏航砸进波兰。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "wangba": "OK下事儿。俄罗斯导弹偏航砸进波兰。虽然表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。网友觉得呢？",
+      "aqi": "热点信息差。俄罗斯导弹偏航砸进波兰。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。网友们追不追？我每集都给剪好了。",
+      "chen": "这波真的不讲武德。俄罗斯导弹偏航砸进波兰。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。俄罗斯导弹偏航砸进波兰。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。觉得你能看到B吗？",
       "shadi": "来，今天的热点按时间串一下：俄罗斯导弹偏航砸进波兰。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
@@ -24648,11 +24982,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356667",
       "hot_score": 80,
-      "wangba": "日本国家情报局正式成立。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。日本国家情报局正式成立。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但评论区们不要急着下结论，证据链还没完整。",
-      "chen": "这波真的不讲武德。日本国家情报局正式成立。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "热点快报，先看数据：日本国家情报局正式成立。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "补一下今天的热搜。日本国家情报局正式成立。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "说回今天的新闻，第一个事儿：日本国家情报局正式成立。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
+      "aqi": "热点信息差。日本国家情报局正式成立。哥们儿，这事儿搁以前谁能信？但是但现在它就是真的。关注们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "《日本国家情报局正式成立》这部纪录片更新了。日本国家情报局正式成立。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "一条热乎的新闻。日本国家情报局正式成立。说到底根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "来，今天的热点按时间串一下：日本国家情报局正式成立。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "韩男不帮提行李遭路人吐槽",
@@ -24660,11 +24994,11 @@
       "blogger_name": "",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356639",
       "hot_score": 80,
-      "wangba": "说回今天的新闻，第一个事儿：韩男不帮提行李遭路人吐槽。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。认为你们品，细品。",
-      "aqi": "热点信息差。韩男不帮提行李遭路人吐槽。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。关注们看完觉得哪个环节最离谱？",
-      "chen": "大型纪录片之《韩男不帮提行李遭路人吐槽》持续为您播出。韩男不帮提行李遭路人吐槽，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "一条热乎的新闻。韩男不帮提行李遭路人吐槽。不过根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "来了来了，07月31日时间线整理好了。韩男不帮提行李遭路人吐槽。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。你们觉得呢？"
+      "wangba": "说回今天的新闻，第一个事儿：韩男不帮提行李遭路人吐槽。但是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
+      "aqi": "热点信息差。韩男不帮提行李遭路人吐槽。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但来们不要急着下结论，证据链还没完整。",
+      "chen": "《韩男不帮提行李遭路人吐槽》这部纪录片更新了。韩男不帮提行李遭路人吐槽。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "一条热乎的新闻。韩男不帮提行李遭路人吐槽。其实根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "补一下今天的热搜。韩男不帮提行李遭路人吐槽。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "手瓦墨武曝光",
@@ -24672,11 +25006,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E6%89%8B%E7%93%A6%E5%A2%A8%E6%AD%A6%E6%9B%9D%E5%85%89",
       "hot_score": 79.94100726590479,
-      "wangba": "来来来，最近有个事儿真给我整笑了。手瓦墨武曝光。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。来你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。手瓦墨武曝光。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但觉得们不要急着下结论，证据链还没完整。",
-      "chen": "大型纪录片之《手瓦墨武曝光》持续为您播出。手瓦墨武曝光，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "快报时间。手瓦墨武曝光。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "补一下今天的热搜。手瓦墨武曝光。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "手瓦墨武曝光。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。可是说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。手瓦墨武曝光。起因是有位/手瓦墨武曝光的事/在网上火了。说到底本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。关注们你们觉得谁有理？评论区辩一辩。",
+      "chen": "这波真的不讲武德。手瓦墨武曝光。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日热点快报：手瓦墨武曝光。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——手瓦墨武曝光。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "多方回应智驾小蓝灯被禁用",
@@ -24684,11 +25018,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E5%A4%9A%E6%96%B9%E5%9B%9E%E5%BA%94%E6%99%BA%E9%A9%BE%E5%B0%8F%E8%93%9D%E7%81%AF%E8%A2%AB%E7%A6%81%E7%94%A8",
       "hot_score": 79.94100726590479,
-      "wangba": "多方回应智驾小蓝灯被禁用。可是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。多方回应智驾小蓝灯被禁用。哥们儿，这事儿搁以前谁能信？但是但现在它就是真的。评论区们别光看，把这条转给你那个还不相信的朋友。",
-      "chen": "大型纪录片之《多方回应智驾小蓝灯被禁用》持续为您播出。多方回应智驾小蓝灯被禁用，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "热点快报，先看数据：多方回应智驾小蓝灯被禁用。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。多方回应智驾小蓝灯被禁用。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。网友觉得呢？"
+      "wangba": "说回今天的新闻，第一个事儿：多方回应智驾小蓝灯被禁用。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。觉得你们品，细品。",
+      "aqi": "热点信息差。多方回应智驾小蓝灯被禁用。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但觉得们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。多方回应智驾小蓝灯被禁用。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "热点快报，先看数据：多方回应智驾小蓝灯被禁用。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "来了来了，07月31日时间线整理好了。多方回应智驾小蓝灯被禁用。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。你们觉得呢？"
     },
     {
       "topic": "官方通报网传玉米地有豹子",
@@ -24696,11 +25030,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E5%AE%98%E6%96%B9%E9%80%9A%E6%8A%A5%E7%BD%91%E4%BC%A0%E7%8E%89%E7%B1%B3%E5%9C%B0%E6%9C%89%E8%B1%B9%E5%AD%90",
       "hot_score": 79.94100726590479,
-      "wangba": "官方通报网传玉米地有豹子。说实话我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。官方通报网传玉米地有豹子。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。来们看完觉得哪个环节最离谱？",
-      "chen": "来讲一个正在发生的变化：官方通报网传玉米地有豹子。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "热点快报，先看数据：官方通报网传玉米地有豹子。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：官方通报网传玉米地有豹子。给还没看的朋友用一句话说清楚——官方通报网传玉米地有豹子。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "不是，官方通报网传玉米地有豹子？我反复确认了三遍，这事儿还真就发生在咱身边。但是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。觉得们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。官方通报网传玉米地有豹子。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但觉得们不要急着下结论，证据链还没完整。",
+      "chen": "今天讲一个现象级的新闻：官方通报网传玉米地有豹子。但是我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。官方通报网传玉米地有豹子。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "来，今天的热点按时间串一下：官方通报网传玉米地有豹子。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "张柏芝回应何时回归大银幕",
@@ -24708,11 +25042,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E5%BC%A0%E6%9F%8F%E8%8A%9D%E5%9B%9E%E5%BA%94%E4%BD%95%E6%97%B6%E5%9B%9E%E5%BD%92%E5%A4%A7%E9%93%B6%E5%B9%95",
       "hot_score": 79.94100726590479,
-      "wangba": "来来来，最近有个事儿真给我整笑了。张柏芝回应何时回归大银幕。说白了你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。张柏芝回应何时回归大银幕。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
-      "chen": "《张柏芝回应何时回归大银幕》这部纪录片更新了。张柏芝回应何时回归大银幕。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "快报时间。张柏芝回应何时回归大银幕。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "来了来了，07月31日时间线整理好了。张柏芝回应何时回归大银幕。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。觉得觉得呢？"
+      "wangba": "张柏芝回应何时回归大银幕。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。其实说真的，这事儿搁谁身上都得懵。网友们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。张柏芝回应何时回归大银幕。你以为你看的是新闻，其实是连续剧。不过今天是第三集，前两集在这里→。评论区们追不追？我每集都给剪好了。",
+      "chen": "来讲一个正在发生的变化：张柏芝回应何时回归大银幕。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：张柏芝回应何时回归大银幕。张柏芝回应何时回归大银幕。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。大家觉得这说明什么？",
+      "shadi": "来了来了，07月31日时间线整理好了。张柏芝回应何时回归大银幕。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
     },
     {
       "topic": "听见你说_________? #讲讲我遇到过的离谱事件#大学生#搞笑#内容过于真实#人类迷惑行为大赏",
@@ -24720,11 +25054,11 @@
       "blogger_name": "网吧信息差",
       "url": "https://www.douyin.com/video/7659196651797548303",
       "hot_score": 79.20742138494123,
-      "wangba": "OK下事儿。听见你说_________?。说实话表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。觉得觉得呢？",
-      "aqi": "热点信息差。听见你说_________?。起因是有位/听见你说_________?的事/在网上火了。说到底本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。评论区们你们觉得谁有理？评论区辩一辩。",
-      "chen": "大型纪录片之《听见你说_________?》持续为您播出。听见你说_________?，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "快报时间。听见你说_________?。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：听见你说_________?。给还没看的朋友用一句话说清楚——听见你说_________?。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "听见你说_________?。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。不过说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。听见你说_________?。你以为你看的是新闻，其实是连续剧。不过今天是第三集，前两集在这里→。觉得们追不追？我每集都给剪好了。",
+      "chen": "今天讲一个现象级的新闻：听见你说_________?。但是我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。听见你说_________?。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。听见你说_________?。听见你说_________?。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "连云港消防回应火灾母女坠楼",
@@ -24732,11 +25066,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23连云港消防回应火灾母女坠楼%23",
       "hot_score": 78.36293888384957,
-      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。可是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。觉得去评论区看看，已经有课代表总结了。",
-      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。但是说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。连云港消防回应火灾母女坠楼。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
+      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。大家们看完觉得哪个环节最离谱？",
+      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "07月31日热乎的新闻。连云港消防回应火灾母女坠楼。连云港消防回应火灾母女坠楼。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "张泽禹道歉",
@@ -24744,11 +25078,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%BC%A0%E6%B3%BD%E7%A6%B9%E9%81%93%E6%AD%89",
       "hot_score": 78.36293888384957,
-      "wangba": "不是，张泽禹道歉？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。网友们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。张泽禹道歉这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "来讲一个正在发生的变化：张泽禹道歉。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "快报时间。张泽禹道歉。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "来，今天的热点按时间串一下：张泽禹道歉。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "说回今天的新闻，第一个事儿：张泽禹道歉。虽然这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。张泽禹道歉。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。你们去评论区看看，已经有课代表总结了。",
+      "chen": "今天讲一个现象级的新闻：张泽禹道歉。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。张泽禹道歉。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——张泽禹道歉。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "女孩摆拍盲道被撞细节曝光",
@@ -24756,11 +25090,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%A5%B3%E5%AD%A9%E6%91%86%E6%8B%8D%E7%9B%B2%E9%81%93%E8%A2%AB%E6%92%9E%E7%BB%86%E8%8A%82%E6%9B%9D%E5%85%89",
       "hot_score": 78.36293888384957,
-      "wangba": "女孩摆拍盲道被撞细节曝光。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。可是说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。女孩摆拍盲道被撞细节曝光。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。关注们追不追？我每集都给剪好了。",
-      "chen": "今天讲一个现象级的新闻：女孩摆拍盲道被撞细节曝光。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "热点快报，先看数据：女孩摆拍盲道被撞细节曝光。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：女孩摆拍盲道被撞细节曝光。给还没看的朋友用一句话说清楚——女孩摆拍盲道被撞细节曝光。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。女孩摆拍盲道被撞细节曝光。说实话表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。来觉得呢？",
+      "aqi": "热点信息差。女孩摆拍盲道被撞细节曝光。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但评论区们不要急着下结论，证据链还没完整。",
+      "chen": "《女孩摆拍盲道被撞细节曝光》这部纪录片更新了。女孩摆拍盲道被撞细节曝光。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "快报时间。女孩摆拍盲道被撞细节曝光。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。女孩摆拍盲道被撞细节曝光。女孩摆拍盲道被撞细节曝光。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "初中生曝光侵华日军罪证被死亡威胁",
@@ -24768,11 +25102,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23初中生曝光侵华日军罪证被死亡威胁%23",
       "hot_score": 78.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：初中生曝光侵华日军罪证被死亡威胁。可是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
-      "aqi": "热点信息差。初中生曝光侵华日军罪证被死亡威胁。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但关注们不要急着下结论，证据链还没完整。",
-      "chen": "来讲一个正在发生的变化：初中生曝光侵华日军罪证被死亡威胁。但是很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "热点快报，先看数据：初中生曝光侵华日军罪证被死亡威胁。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来，今天的热点按时间串一下：初中生曝光侵华日军罪证被死亡威胁。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "说回今天的新闻，第一个事儿：初中生曝光侵华日军罪证被死亡威胁。虽然这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。初中生曝光侵华日军罪证被死亡威胁。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。网友们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "来讲一个正在发生的变化：初中生曝光侵华日军罪证被死亡威胁。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：初中生曝光侵华日军罪证被死亡威胁。初中生曝光侵华日军罪证被死亡威胁。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。觉得觉得这说明什么？",
+      "shadi": "补一下今天的热搜。初中生曝光侵华日军罪证被死亡威胁。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "阿哲自制综艺蜥蜴头造型太炸裂了",
@@ -24780,11 +25114,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E9%98%BF%E5%93%B2%E8%87%AA%E5%88%B6%E7%BB%BC%E8%89%BA%E8%9C%A5%E8%9C%B4%E5%A4%B4%E9%80%A0%E5%9E%8B%E5%A4%AA%E7%82%B8%E8%A3%82%E4%BA%86",
       "hot_score": 77.94100726590479,
-      "wangba": "来来来，最近有个事儿真给我整笑了。阿哲自制综艺蜥蜴头造型太炸裂了。其实你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。来你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。阿哲自制综艺蜥蜴头造型太炸裂了。你以为你看的是新闻，其实是连续剧。不过今天是第三集，前两集在这里→。来们追不追？我每集都给剪好了。",
-      "chen": "这波真的不讲武德。阿哲自制综艺蜥蜴头造型太炸裂了。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今天观察到一个有趣的现象：阿哲自制综艺蜥蜴头造型太炸裂了。阿哲自制综艺蜥蜴头造型太炸裂了。其实我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。觉得觉得这说明什么？",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：阿哲自制综艺蜥蜴头造型太炸裂了。给还没看的朋友用一句话说清楚——阿哲自制综艺蜥蜴头造型太炸裂了。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "来来来，最近有个事儿真给我整笑了。阿哲自制综艺蜥蜴头造型太炸裂了。但是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。阿哲自制综艺蜥蜴头造型太炸裂了。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。阿哲自制综艺蜥蜴头造型太炸裂了。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。阿哲自制综艺蜥蜴头造型太炸裂了。不过所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。分享你能看到B吗？",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——阿哲自制综艺蜥蜴头造型太炸裂了。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "今日热点信息快报 #逆天 #社会热点信息差 #离谱 #全女",
@@ -24792,10 +25126,10 @@
       "blogger_name": "人类观察菌",
       "url": "https://www.douyin.com/video/7658387836580736369",
       "hot_score": 76.57938944536374,
-      "wangba": "今日热点信息快报。其实我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。网友支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。今日热点信息快报。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。觉得们别光看，把这条转给你那个还不相信的朋友。",
-      "chen": "今天讲一个现象级的新闻：今日热点信息快报。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "快报时间。今日热点信息快报。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。今日热点信息快报。不过你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。评论区你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。今日热点信息快报。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。网友们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "大型纪录片之《今日热点信息快报》持续为您播出。今日热点信息快报，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今日热点快报：今日热点信息快报。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
       "shadi": "07月31日热乎的新闻。今日热点信息快报。今日热点信息快报。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
@@ -24804,10 +25138,10 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E6%B6%88%E9%98%B2%E5%9B%9E%E5%BA%94%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC",
       "hot_score": 75.94100726590479,
-      "wangba": "消防回应连云港火灾母女坠楼。但是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。你们支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。消防回应连云港火灾母女坠楼。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但评论区们不要急着下结论，证据链还没完整。",
-      "chen": "大型纪录片之《消防回应连云港火灾母女坠楼》持续为您播出。消防回应连云港火灾母女坠楼，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "热点快报，先看数据：消防回应连云港火灾母女坠楼。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "wangba": "今天有个新闻我必须得讲讲。消防回应连云港火灾母女坠楼。但是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？来告诉我。",
+      "aqi": "热点信息差。消防回应连云港火灾母女坠楼。起因是有位/消防回应连云港火灾母女坠楼的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。觉得们你们觉得谁有理？评论区辩一辩。",
+      "chen": "来讲一个正在发生的变化：消防回应连云港火灾母女坠楼。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：消防回应连云港火灾母女坠楼。消防回应连云港火灾母女坠楼。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。觉得觉得这说明什么？",
       "shadi": "来，今天的热点按时间串一下：消防回应连云港火灾母女坠楼。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
@@ -24816,11 +25150,11 @@
       "blogger_name": "",
       "url": "https://www.douyin.com/search/%E6%9F%AF%E6%B4%81%E5%9B%9E%E5%BA%94%E5%86%8D%E5%A4%BA%E7%8E%8B%E4%B8%AD%E7%8E%8B%E4%BA%89%E9%9C%B8%E8%B5%9B%E5%86%A0%E5%86%9B",
       "hot_score": 75.94100726590479,
-      "wangba": "柯洁回应再夺王中王争霸赛冠军。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说白了说真的，这事儿搁谁身上都得懵。来们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。柯洁回应再夺王中王争霸赛冠军。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。来们看完觉得哪个环节最离谱？",
-      "chen": "来讲一个正在发生的变化：柯洁回应再夺王中王争霸赛冠军。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "一条热乎的新闻。柯洁回应再夺王中王争霸赛冠军。说到底根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "来，今天的热点按时间串一下：柯洁回应再夺王中王争霸赛冠军。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "来来来，最近有个事儿真给我整笑了。柯洁回应再夺王中王争霸赛冠军。虽然你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。评论区你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。柯洁回应再夺王中王争霸赛冠军。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
+      "chen": "今天讲一个现象级的新闻：柯洁回应再夺王中王争霸赛冠军。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "热点快报，先看数据：柯洁回应再夺王中王争霸赛冠军。不过说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "来了来了，07月31日时间线整理好了。柯洁回应再夺王中王争霸赛冠军。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。觉得觉得呢？"
     },
     {
       "topic": "今日热点信息快报 #逆天 #离谱 #社会热点信息差 #iphone18",
@@ -24828,11 +25162,11 @@
       "blogger_name": "人类观察菌",
       "url": "https://www.douyin.com/video/7658760313919353265",
       "hot_score": 75.42015990743425,
-      "wangba": "今天有个新闻我必须得讲讲。今日热点信息快报。虽然起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？来告诉我。",
-      "aqi": "热点信息差。今日热点信息快报。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。觉得们追不追？我每集都给剪好了。",
-      "chen": "《今日热点信息快报》这部纪录片更新了。今日热点信息快报。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "今天观察到一个有趣的现象：今日热点信息快报。今日热点信息快报。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。网友觉得这说明什么？",
-      "shadi": "来，今天的热点按时间串一下：今日热点信息快报。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "今日热点信息快报。可是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。觉得支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。今日热点信息快报。哥们儿，这事儿搁以前谁能信？说到底但现在它就是真的。觉得们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "今天讲一个现象级的新闻：今日热点信息快报。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "一条热乎的新闻。今日热点信息快报。其实根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——今日热点信息快报。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "A股放量上涨是反弹还是反转",
@@ -24840,11 +25174,11 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7668655671906143798/",
       "hot_score": 74.98478066895323,
-      "wangba": "来来来，最近有个事儿真给我整笑了。A股放量上涨是反弹还是反转。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。认为你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。A股放量上涨是反弹还是反转。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。你们们追不追？我每集都给剪好了。",
-      "chen": "来讲一个正在发生的变化：A股放量上涨是反弹还是反转。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。A股放量上涨是反弹还是反转。不过所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。评论区你能看到B吗？",
-      "shadi": "补一下今天的热搜。A股放量上涨是反弹还是反转。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "今天有个新闻我必须得讲讲。A股放量上涨是反弹还是反转。其实起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？觉得告诉我。",
+      "aqi": "热点信息差。A股放量上涨是反弹还是反转。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但觉得们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。A股放量上涨是反弹还是反转。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今天观察到一个有趣的现象：A股放量上涨是反弹还是反转。A股放量上涨是反弹还是反转。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。你们觉得这说明什么？",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：A股放量上涨是反弹还是反转。A股放量上涨是反弹还是反转。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "南非标注“中国台湾” 台当局破防了",
@@ -24852,10 +25186,10 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7667535532785664010/",
       "hot_score": 74.98478066895323,
-      "wangba": "今天有个新闻我必须得讲讲。南非标注“中国台湾” 台当局破防了。不过起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？你们告诉我。",
-      "aqi": "热点信息差。南非标注“中国台湾” 台当局破防了。这事儿真的，一波三折都不足以形容。不过第一波——第二波——第三波——。目前最新的进展是——但大家们不要急着下结论，证据链还没完整。",
-      "chen": "今天讲一个现象级的新闻：南非标注“中国台湾” 台当局破防了。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。南非标注“中国台湾” 台当局破防了。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。你们你能看到B吗？",
+      "wangba": "南非标注“中国台湾” 台当局破防了。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。可是说真的，这事儿搁谁身上都得懵。认为们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。南非标注“中国台湾” 台当局破防了这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。评论区们再看看原视频，注意那个时间点。",
+      "chen": "大型纪录片之《南非标注“中国台湾” 台当局破防了》持续为您播出。南非标注“中国台湾” 台当局破防了，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今天观察到一个有趣的现象：南非标注“中国台湾” 台当局破防了。南非标注“中国台湾” 台当局破防了。说到底我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。分享觉得这说明什么？",
       "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：南非标注“中国台湾” 台当局破防了。给还没看的朋友用一句话说清楚——南非标注“中国台湾” 台当局破防了。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
@@ -24864,11 +25198,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E8%BF%9E%E4%BA%91%E6%B8%AF%E6%B6%88%E9%98%B2%E5%9B%9E%E5%BA%94%E7%81%AB%E7%81%BE%E6%AF%8D%E5%A5%B3%E5%9D%A0%E6%A5%BC",
       "hot_score": 74.36293888384957,
-      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。可是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。觉得去评论区看看，已经有课代表总结了。",
-      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。但是说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。连云港消防回应火灾母女坠楼。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
+      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。大家们看完觉得哪个环节最离谱？",
+      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "07月31日热乎的新闻。连云港消防回应火灾母女坠楼。连云港消防回应火灾母女坠楼。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "初中生曝光侵华日军罪证被死亡威胁",
@@ -24876,11 +25210,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%88%9D%E4%B8%AD%E7%94%9F%E6%9B%9D%E5%85%89%E4%BE%B5%E5%8D%8E%E6%97%A5%E5%86%9B%E7%BD%AA%E8%AF%81%E8%A2%AB%E6%AD%BB%E4%BA%A1%E5%A8%81%E8%83%81",
       "hot_score": 74.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：初中生曝光侵华日军罪证被死亡威胁。可是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
-      "aqi": "热点信息差。初中生曝光侵华日军罪证被死亡威胁。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但关注们不要急着下结论，证据链还没完整。",
-      "chen": "来讲一个正在发生的变化：初中生曝光侵华日军罪证被死亡威胁。但是很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "热点快报，先看数据：初中生曝光侵华日军罪证被死亡威胁。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来，今天的热点按时间串一下：初中生曝光侵华日军罪证被死亡威胁。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "说回今天的新闻，第一个事儿：初中生曝光侵华日军罪证被死亡威胁。虽然这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。初中生曝光侵华日军罪证被死亡威胁。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。网友们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "来讲一个正在发生的变化：初中生曝光侵华日军罪证被死亡威胁。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：初中生曝光侵华日军罪证被死亡威胁。初中生曝光侵华日军罪证被死亡威胁。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。觉得觉得这说明什么？",
+      "shadi": "补一下今天的热搜。初中生曝光侵华日军罪证被死亡威胁。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "今日热点信息快报 #逆天 #离谱 #社会热点信息差 #万万没想到",
@@ -24888,23 +25222,11 @@
       "blogger_name": "人类观察菌",
       "url": "https://www.douyin.com/video/7659136661862748529",
       "hot_score": 73.95169593601356,
-      "wangba": "OK下事儿。今日热点信息快报。但是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。认为觉得呢？",
-      "aqi": "热点信息差。今日热点信息快报这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "今天讲一个现象级的新闻：今日热点信息快报。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "快报时间。今日热点信息快报。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "wangba": "今日热点信息快报。可是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。你们支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。今日热点信息快报。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。评论区去评论区看看，已经有课代表总结了。",
+      "chen": "来讲一个正在发生的变化：今日热点信息快报。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：今日热点信息快报。今日热点信息快报。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。大家觉得这说明什么？",
       "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：今日热点信息快报。今日热点信息快报。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
-    },
-    {
-      "topic": "消防回应火灾母女坠楼 还原救援过程",
-      "source": "今日头条",
-      "blogger_name": "",
-      "url": "https://www.toutiao.com/trending/7668677068208475694/",
-      "hot_score": 72.98478066895323,
-      "wangba": "不是，消防回应火灾母女坠楼 还原救援过程？我反复确认了三遍，这事儿还真就发生在咱身边。可是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。认为们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。消防回应火灾母女坠楼 还原救援过程这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。关注们再看看原视频，注意那个时间点。",
-      "chen": "这波真的不讲武德。消防回应火灾母女坠楼 还原救援过程。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "一条热乎的新闻。消防回应火灾母女坠楼 还原救援过程。说到底根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：消防回应火灾母女坠楼 还原救援过程。消防回应火灾母女坠楼 还原救援过程。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "12306回应高铁为何会提前7分钟发车",
@@ -24912,23 +25234,23 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7668642504205467691/",
       "hot_score": 72.98478066895323,
-      "wangba": "今天有个新闻我必须得讲讲。12306回应高铁为何会提前7分钟发车。但是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？评论区告诉我。",
-      "aqi": "热点信息差。12306回应高铁为何会提前7分钟发车。起因是有位/12306回应高铁为何会提前7分钟发车的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。评论区们你们觉得谁有理？评论区辩一辩。",
-      "chen": "今天讲一个现象级的新闻：12306回应高铁为何会提前7分钟发车。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "快报时间。12306回应高铁为何会提前7分钟发车。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "07月31日热乎的新闻。12306回应高铁为何会提前7分钟发车。12306回应高铁为何会提前7分钟发车。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "wangba": "来来来，最近有个事儿真给我整笑了。12306回应高铁为何会提前7分钟发车。虽然你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。12306回应高铁为何会提前7分钟发车。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。评论区们追不追？我每集都给剪好了。",
+      "chen": "来讲一个正在发生的变化：12306回应高铁为何会提前7分钟发车。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "一条热乎的新闻。12306回应高铁为何会提前7分钟发车。不过根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "来，今天的热点按时间串一下：12306回应高铁为何会提前7分钟发车。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
-      "topic": "外交部回应日本设立“国家情报局”",
+      "topic": "消防回应火灾母女坠楼 还原救援过程",
       "source": "今日头条",
       "blogger_name": "",
-      "url": "https://www.toutiao.com/trending/7668650241578942502/",
+      "url": "https://www.toutiao.com/trending/7668677068208475694/",
       "hot_score": 72.98478066895323,
-      "wangba": "来来来，最近有个事儿真给我整笑了。外交部回应日本设立“国家情报局”。不过你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。评论区你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。外交部回应日本设立“国家情报局”这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。你们们再看看原视频，注意那个时间点。",
-      "chen": "大型纪录片之《外交部回应日本设立“国家情报局”》持续为您播出。外交部回应日本设立“国家情报局”，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。外交部回应日本设立“国家情报局”。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。网友你能看到B吗？",
-      "shadi": "补一下今天的热搜。外交部回应日本设立“国家情报局”。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "说回今天的新闻，第一个事儿：消防回应火灾母女坠楼 还原救援过程。说实话这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。消防回应火灾母女坠楼 还原救援过程这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。觉得们再看看原视频，注意那个时间点。",
+      "chen": "今天讲一个现象级的新闻：消防回应火灾母女坠楼 还原救援过程。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。消防回应火灾母女坠楼 还原救援过程。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "来，今天的热点按时间串一下：消防回应火灾母女坠楼 还原救援过程。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "保时捷女销冠回应被AI合成不雅视频",
@@ -24936,11 +25258,23 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7668540826486865930/",
       "hot_score": 72.98478066895323,
-      "wangba": "不是，保时捷女销冠回应被AI合成不雅视频？我反复确认了三遍，这事儿还真就发生在咱身边。虽然最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。觉得们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。保时捷女销冠回应被AI合成不雅视频。起因是有位/保时捷女销冠回应被AI合成不雅视频的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。评论区们你们觉得谁有理？评论区辩一辩。",
-      "chen": "今天讲一个现象级的新闻：保时捷女销冠回应被AI合成不雅视频。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。保时捷女销冠回应被AI合成不雅视频。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：保时捷女销冠回应被AI合成不雅视频。给还没看的朋友用一句话说清楚——保时捷女销冠回应被AI合成不雅视频。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "不是，保时捷女销冠回应被AI合成不雅视频？我反复确认了三遍，这事儿还真就发生在咱身边。其实最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。保时捷女销冠回应被AI合成不雅视频。你以为你看的是新闻，其实是连续剧。不过今天是第三集，前两集在这里→。评论区们追不追？我每集都给剪好了。",
+      "chen": "这波真的不讲武德。保时捷女销冠回应被AI合成不雅视频。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。保时捷女销冠回应被AI合成不雅视频。不过所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。大家你能看到B吗？",
+      "shadi": "补一下今天的热搜。保时捷女销冠回应被AI合成不雅视频。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+    },
+    {
+      "topic": "外交部回应日本设立“国家情报局”",
+      "source": "今日头条",
+      "blogger_name": "",
+      "url": "https://www.toutiao.com/trending/7668650241578942502/",
+      "hot_score": 72.98478066895323,
+      "wangba": "OK下事儿。外交部回应日本设立“国家情报局”。说白了表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。来觉得呢？",
+      "aqi": "热点信息差。外交部回应日本设立“国家情报局”。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。你们去评论区看看，已经有课代表总结了。",
+      "chen": "今天讲一个现象级的新闻：外交部回应日本设立“国家情报局”。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。外交部回应日本设立“国家情报局”。其实巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——外交部回应日本设立“国家情报局”。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "1.55升“哑铃矿泉水”走红 厂家回应",
@@ -24948,11 +25282,11 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7667350103325196342/",
       "hot_score": 72.98478066895323,
-      "wangba": "来来来，最近有个事儿真给我整笑了。1.55升“哑铃矿泉水”走红 厂家回应。不过你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。你们你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。1.55升“哑铃矿泉水”走红 厂家回应。这事儿真的，一波三折都不足以形容。不过第一波——第二波——第三波——。目前最新的进展是——但觉得们不要急着下结论，证据链还没完整。",
-      "chen": "今天讲一个现象级的新闻：1.55升“哑铃矿泉水”走红 厂家回应。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。1.55升“哑铃矿泉水”走红 厂家回应。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "07月31日热乎的新闻。1.55升“哑铃矿泉水”走红 厂家回应。1.55升“哑铃矿泉水”走红 厂家回应。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "wangba": "说回今天的新闻，第一个事儿：1.55升“哑铃矿泉水”走红 厂家回应。不过这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
+      "aqi": "热点信息差。1.55升“哑铃矿泉水”走红 厂家回应这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。觉得们再看看原视频，注意那个时间点。",
+      "chen": "《1.55升“哑铃矿泉水”走红 厂家回应》这部纪录片更新了。1.55升“哑铃矿泉水”走红 厂家回应。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。1.55升“哑铃矿泉水”走红 厂家回应。其实所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。评论区你能看到B吗？",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：1.55升“哑铃矿泉水”走红 厂家回应。1.55升“哑铃矿泉水”走红 厂家回应。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "中国向伊朗提供400枚导弹？外交部回应",
@@ -24960,11 +25294,11 @@
       "blogger_name": "",
       "url": "https://www.toutiao.com/trending/7668128346190053385/",
       "hot_score": 72.98478066895323,
-      "wangba": "来来来，最近有个事儿真给我整笑了。中国向伊朗提供400枚导弹？外交部回应。不过你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。中国向伊朗提供400枚导弹？外交部回应。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。关注们追不追？我每集都给剪好了。",
-      "chen": "《中国向伊朗提供400枚导弹？外交部回应》这部纪录片更新了。中国向伊朗提供400枚导弹？外交部回应。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "热点快报，先看数据：中国向伊朗提供400枚导弹？外交部回应。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：中国向伊朗提供400枚导弹？外交部回应。给还没看的朋友用一句话说清楚——中国向伊朗提供400枚导弹？外交部回应。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "说回今天的新闻，第一个事儿：中国向伊朗提供400枚导弹？外交部回应。但是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
+      "aqi": "热点信息差。中国向伊朗提供400枚导弹？外交部回应。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。网友去评论区看看，已经有课代表总结了。",
+      "chen": "来讲一个正在发生的变化：中国向伊朗提供400枚导弹？外交部回应。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：中国向伊朗提供400枚导弹？外交部回应。中国向伊朗提供400枚导弹？外交部回应。说到底我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。大家觉得这说明什么？",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——中国向伊朗提供400枚导弹？外交部回应。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "UP主组团离谱挑战过泥坑",
@@ -24972,11 +25306,11 @@
       "blogger_name": "",
       "url": "https://search.bilibili.com/all?keyword=UP主组团离谱挑战过泥坑",
       "hot_score": 72.5659613567751,
-      "wangba": "说回今天的新闻，第一个事儿：UP主组团离谱挑战过泥坑。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
-      "aqi": "热点信息差。UP主组团离谱挑战过泥坑。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。关注们看完觉得哪个环节最离谱？",
-      "chen": "今天讲一个现象级的新闻：UP主组团离谱挑战过泥坑。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。UP主组团离谱挑战过泥坑。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "来，今天的热点按时间串一下：UP主组团离谱挑战过泥坑。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "不是，UP主组团离谱挑战过泥坑？我反复确认了三遍，这事儿还真就发生在咱身边。说实话最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。觉得们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。UP主组团离谱挑战过泥坑。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。但是事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。觉得们看完觉得哪个环节最离谱？",
+      "chen": "来讲一个正在发生的变化：UP主组团离谱挑战过泥坑。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。UP主组团离谱挑战过泥坑。说到底所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。来你能看到B吗？",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：UP主组团离谱挑战过泥坑。给还没看的朋友用一句话说清楚——UP主组团离谱挑战过泥坑。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "歌手排名",
@@ -24984,23 +25318,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23歌手排名%23",
       "hot_score": 72.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：歌手排名。其实这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
-      "aqi": "热点信息差。歌手排名。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。评论区们看完觉得哪个环节最离谱？",
-      "chen": "今天讲一个现象级的新闻：歌手排名。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。歌手排名。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。评论区你能看到B吗？",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：歌手排名。给还没看的朋友用一句话说清楚——歌手排名。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
-    },
-    {
-      "topic": "为什么感觉对方忽冷忽热的",
-      "source": "微博",
-      "blogger_name": "",
-      "url": "https://s.weibo.com/weibo?q=%23为什么感觉对方忽冷忽热的%23",
-      "hot_score": 72.36293888384957,
-      "wangba": "来来来，最近有个事儿真给我整笑了。为什么感觉对方忽冷忽热的。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。为什么感觉对方忽冷忽热的。起因是有位/为什么感觉对方忽冷忽热的的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。来们你们觉得谁有理？评论区辩一辩。",
-      "chen": "《为什么感觉对方忽冷忽热的》这部纪录片更新了。为什么感觉对方忽冷忽热的。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "今日热点快报：为什么感觉对方忽冷忽热的。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "来，今天的热点按时间串一下：为什么感觉对方忽冷忽热的。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "不是，歌手排名？我反复确认了三遍，这事儿还真就发生在咱身边。虽然最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。歌手排名这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
+      "chen": "今天讲一个现象级的新闻：歌手排名。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。歌手排名。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：歌手排名。歌手排名。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "强军制胜不负荣光",
@@ -25008,11 +25330,11 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23强军制胜不负荣光%23",
       "hot_score": 72.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：强军制胜不负荣光。可是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
-      "aqi": "热点信息差。强军制胜不负荣光。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
-      "chen": "今天讲一个现象级的新闻：强军制胜不负荣光。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。强军制胜不负荣光。其实你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。你们你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。强军制胜不负荣光这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。关注们再看看原视频，注意那个时间点。",
+      "chen": "这波真的不讲武德。强军制胜不负荣光。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
       "guancha": "快报时间。强军制胜不负荣光。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：强军制胜不负荣光。给还没看的朋友用一句话说清楚——强军制胜不负荣光。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：强军制胜不负荣光。强军制胜不负荣光。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "房主任被停演3个月",
@@ -25020,11 +25342,23 @@
       "blogger_name": "",
       "url": "https://s.weibo.com/weibo?q=%23房主任被停演3个月%23",
       "hot_score": 72.36293888384957,
-      "wangba": "房主任被停演3个月。说白了我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。房主任被停演3个月这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "大型纪录片之《房主任被停演3个月》持续为您播出。房主任被停演3个月，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。但是只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "一条热乎的新闻。房主任被停演3个月。然而根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：房主任被停演3个月。房主任被停演3个月。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
+      "wangba": "今天有个新闻我必须得讲讲。房主任被停演3个月。可是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？觉得告诉我。",
+      "aqi": "热点信息差。房主任被停演3个月。起因是有位/房主任被停演3个月的事/在网上火了。说到底本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。大家们你们觉得谁有理？评论区辩一辩。",
+      "chen": "大型纪录片之《房主任被停演3个月》持续为您播出。房主任被停演3个月，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今日热点快报：房主任被停演3个月。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "来，今天的热点按时间串一下：房主任被停演3个月。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+    },
+    {
+      "topic": "为什么感觉对方忽冷忽热的",
+      "source": "微博",
+      "blogger_name": "",
+      "url": "https://s.weibo.com/weibo?q=%23为什么感觉对方忽冷忽热的%23",
+      "hot_score": 72.36293888384957,
+      "wangba": "为什么感觉对方忽冷忽热的。但是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。来支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。为什么感觉对方忽冷忽热的。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但大家们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。为什么感觉对方忽冷忽热的。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日热点快报：为什么感觉对方忽冷忽热的。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——为什么感觉对方忽冷忽热的。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "歌手排名",
@@ -25032,23 +25366,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E6%AD%8C%E6%89%8B%E6%8E%92%E5%90%8D",
       "hot_score": 68.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：歌手排名。其实这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
-      "aqi": "热点信息差。歌手排名。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。评论区们看完觉得哪个环节最离谱？",
-      "chen": "今天讲一个现象级的新闻：歌手排名。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。歌手排名。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。评论区你能看到B吗？",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：歌手排名。给还没看的朋友用一句话说清楚——歌手排名。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
-    },
-    {
-      "topic": "为什么感觉对方忽冷忽热的",
-      "source": "公众号热点",
-      "blogger_name": "",
-      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%BA%E4%BB%80%E4%B9%88%E6%84%9F%E8%A7%89%E5%AF%B9%E6%96%B9%E5%BF%BD%E5%86%B7%E5%BF%BD%E7%83%AD%E7%9A%84",
-      "hot_score": 68.36293888384957,
-      "wangba": "来来来，最近有个事儿真给我整笑了。为什么感觉对方忽冷忽热的。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。为什么感觉对方忽冷忽热的。起因是有位/为什么感觉对方忽冷忽热的的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。来们你们觉得谁有理？评论区辩一辩。",
-      "chen": "《为什么感觉对方忽冷忽热的》这部纪录片更新了。为什么感觉对方忽冷忽热的。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "今日热点快报：为什么感觉对方忽冷忽热的。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "来，今天的热点按时间串一下：为什么感觉对方忽冷忽热的。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "不是，歌手排名？我反复确认了三遍，这事儿还真就发生在咱身边。虽然最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。歌手排名这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
+      "chen": "今天讲一个现象级的新闻：歌手排名。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。歌手排名。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：歌手排名。歌手排名。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "强军制胜不负荣光",
@@ -25056,11 +25378,11 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E5%BC%BA%E5%86%9B%E5%88%B6%E8%83%9C%E4%B8%8D%E8%B4%9F%E8%8D%A3%E5%85%89",
       "hot_score": 68.36293888384957,
-      "wangba": "说回今天的新闻，第一个事儿：强军制胜不负荣光。可是这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
-      "aqi": "热点信息差。强军制胜不负荣光。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
-      "chen": "今天讲一个现象级的新闻：强军制胜不负荣光。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。强军制胜不负荣光。其实你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。你们你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。强军制胜不负荣光这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。关注们再看看原视频，注意那个时间点。",
+      "chen": "这波真的不讲武德。强军制胜不负荣光。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
       "guancha": "快报时间。强军制胜不负荣光。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：强军制胜不负荣光。给还没看的朋友用一句话说清楚——强军制胜不负荣光。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：强军制胜不负荣光。强军制胜不负荣光。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "房主任被停演3个月",
@@ -25068,11 +25390,23 @@
       "blogger_name": "",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E6%88%BF%E4%B8%BB%E4%BB%BB%E8%A2%AB%E5%81%9C%E6%BC%943%E4%B8%AA%E6%9C%88",
       "hot_score": 68.36293888384957,
-      "wangba": "房主任被停演3个月。说白了我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。房主任被停演3个月这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "大型纪录片之《房主任被停演3个月》持续为您播出。房主任被停演3个月，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。但是只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "一条热乎的新闻。房主任被停演3个月。然而根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：房主任被停演3个月。房主任被停演3个月。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
+      "wangba": "今天有个新闻我必须得讲讲。房主任被停演3个月。可是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？觉得告诉我。",
+      "aqi": "热点信息差。房主任被停演3个月。起因是有位/房主任被停演3个月的事/在网上火了。说到底本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。大家们你们觉得谁有理？评论区辩一辩。",
+      "chen": "大型纪录片之《房主任被停演3个月》持续为您播出。房主任被停演3个月，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今日热点快报：房主任被停演3个月。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "来，今天的热点按时间串一下：房主任被停演3个月。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+    },
+    {
+      "topic": "为什么感觉对方忽冷忽热的",
+      "source": "公众号热点",
+      "blogger_name": "",
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E4%B8%BA%E4%BB%80%E4%B9%88%E6%84%9F%E8%A7%89%E5%AF%B9%E6%96%B9%E5%BF%BD%E5%86%B7%E5%BF%BD%E7%83%AD%E7%9A%84",
+      "hot_score": 68.36293888384957,
+      "wangba": "为什么感觉对方忽冷忽热的。但是我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。来支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。为什么感觉对方忽冷忽热的。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但大家们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。为什么感觉对方忽冷忽热的。虽然我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日热点快报：为什么感觉对方忽冷忽热的。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——为什么感觉对方忽冷忽热的。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "中华人民共和国外交部声明",
@@ -25080,11 +25414,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=中华人民共和国外交部声明",
       "hot_score": 68,
-      "wangba": "中华人民共和国外交部声明。虽然我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。中华人民共和国外交部声明。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但关注们不要急着下结论，证据链还没完整。",
-      "chen": "大型纪录片之《中华人民共和国外交部声明》持续为您播出。中华人民共和国外交部声明，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。但是只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "今天观察到一个有趣的现象：中华人民共和国外交部声明。中华人民共和国外交部声明。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。觉得觉得这说明什么？",
-      "shadi": "来了来了，07月31日时间线整理好了。中华人民共和国外交部声明。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。分享觉得呢？"
+      "wangba": "说回今天的新闻，第一个事儿：中华人民共和国外交部声明。不过这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
+      "aqi": "热点信息差。中华人民共和国外交部声明。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。关注去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《中华人民共和国外交部声明》持续为您播出。中华人民共和国外交部声明，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今天观察到一个有趣的现象：中华人民共和国外交部声明。中华人民共和国外交部声明。说到底我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。分享觉得这说明什么？",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：中华人民共和国外交部声明。给还没看的朋友用一句话说清楚——中华人民共和国外交部声明。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "于正回应《凤囚凰》争议",
@@ -25092,11 +25426,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=于正回应《凤囚凰》争议",
       "hot_score": 68,
-      "wangba": "今天有个新闻我必须得讲讲。于正回应《凤囚凰》争议。说实话起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？认为告诉我。",
-      "aqi": "热点信息差。于正回应《凤囚凰》争议这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "今天讲一个现象级的新闻：于正回应《凤囚凰》争议。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。于正回应《凤囚凰》争议。不过根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "07月31日热乎的新闻。于正回应《凤囚凰》争议。于正回应《凤囚凰》争议。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "wangba": "今天有个新闻我必须得讲讲。于正回应《凤囚凰》争议。可是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？来告诉我。",
+      "aqi": "热点信息差。于正回应《凤囚凰》争议这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。你们们再看看原视频，注意那个时间点。",
+      "chen": "这波真的不讲武德。于正回应《凤囚凰》争议。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "快报时间。于正回应《凤囚凰》争议。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "来，今天的热点按时间串一下：于正回应《凤囚凰》争议。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "7月2日社会热点信息差#热点",
@@ -25104,11 +25438,11 @@
       "blogger_name": "阿七大型纪录片",
       "url": "https://www.douyin.com/video/7657856089347035365",
       "hot_score": 67.91702194426333,
-      "wangba": "今天有个新闻我必须得讲讲。7月2日社会热点信息差。不过起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？认为告诉我。",
-      "aqi": "热点信息差。7月2日社会热点信息差。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。网友们追不追？我每集都给剪好了。",
-      "chen": "今天讲一个现象级的新闻：7月2日社会热点信息差。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "热点快报，先看数据：7月2日社会热点信息差。不过说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：7月2日社会热点信息差。给还没看的朋友用一句话说清楚——7月2日社会热点信息差。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。7月2日社会热点信息差。其实表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。觉得觉得呢？",
+      "aqi": "热点信息差。7月2日社会热点信息差。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但来们不要急着下结论，证据链还没完整。",
+      "chen": "今天讲一个现象级的新闻：7月2日社会热点信息差。但是我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。7月2日社会热点信息差。说到底所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。觉得你能看到B吗？",
+      "shadi": "来，今天的热点按时间串一下：7月2日社会热点信息差。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "董宇辉称看了500遍大话西游 星爷震惊",
@@ -25116,10 +25450,10 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=董宇辉称看了500遍大话西游 星爷震惊",
       "hot_score": 66,
-      "wangba": "OK下事儿。董宇辉称看了500遍大话西游 星爷震惊。不过表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。觉得觉得呢？",
-      "aqi": "热点信息差。董宇辉称看了500遍大话西游 星爷震惊。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
-      "chen": "来讲一个正在发生的变化：董宇辉称看了500遍大话西游 星爷震惊。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今天观察到一个有趣的现象：董宇辉称看了500遍大话西游 星爷震惊。董宇辉称看了500遍大话西游 星爷震惊。说到底我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。分享觉得这说明什么？",
+      "wangba": "OK下事儿。董宇辉称看了500遍大话西游 星爷震惊。虽然表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。你们觉得呢？",
+      "aqi": "热点信息差。董宇辉称看了500遍大话西游 星爷震惊这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。觉得们再看看原视频，注意那个时间点。",
+      "chen": "今天讲一个现象级的新闻：董宇辉称看了500遍大话西游 星爷震惊。但是我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "今天观察到一个有趣的现象：董宇辉称看了500遍大话西游 星爷震惊。董宇辉称看了500遍大话西游 星爷震惊。其实我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。分享觉得这说明什么？",
       "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：董宇辉称看了500遍大话西游 星爷震惊。给还没看的朋友用一句话说清楚——董宇辉称看了500遍大话西游 星爷震惊。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
@@ -25128,11 +25462,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=数千移民游泳偷渡 西班牙边境崩溃",
       "hot_score": 66,
-      "wangba": "不是，数千移民游泳偷渡 西班牙边境崩溃？我反复确认了三遍，这事儿还真就发生在咱身边。说实话最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。数千移民游泳偷渡 西班牙边境崩溃。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。你们去评论区看看，已经有课代表总结了。",
+      "wangba": "今天有个新闻我必须得讲讲。数千移民游泳偷渡 西班牙边境崩溃。不过起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？来告诉我。",
+      "aqi": "热点信息差。数千移民游泳偷渡 西班牙边境崩溃。起因是有位/数千移民游泳偷渡 西班牙边境崩溃的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。网友们你们觉得谁有理？评论区辩一辩。",
       "chen": "今天讲一个现象级的新闻：数千移民游泳偷渡 西班牙边境崩溃。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "快报时间。数千移民游泳偷渡 西班牙边境崩溃。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "补一下今天的热搜。数千移民游泳偷渡 西班牙边境崩溃。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "guancha": "一条热乎的新闻。数千移民游泳偷渡 西班牙边境崩溃。然而根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：数千移民游泳偷渡 西班牙边境崩溃。数千移民游泳偷渡 西班牙边境崩溃。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "连云港消防回应火灾母女坠楼",
@@ -25140,11 +25474,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=连云港消防回应火灾母女坠楼",
       "hot_score": 64,
-      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。可是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。觉得去评论区看看，已经有课代表总结了。",
-      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。但是说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。连云港消防回应火灾母女坠楼。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
+      "wangba": "不是，连云港消防回应火灾母女坠楼？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。连云港消防回应火灾母女坠楼。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。大家们看完觉得哪个环节最离谱？",
+      "chen": "这波真的不讲武德。连云港消防回应火灾母女坠楼。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "热点快报，先看数据：连云港消防回应火灾母女坠楼。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "07月31日热乎的新闻。连云港消防回应火灾母女坠楼。连云港消防回应火灾母女坠楼。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "女警撞脸邱淑贞走红 本人回应",
@@ -25152,11 +25486,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=女警撞脸邱淑贞走红 本人回应",
       "hot_score": 64,
-      "wangba": "不是，女警撞脸邱淑贞走红 本人回应？我反复确认了三遍，这事儿还真就发生在咱身边。虽然最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。认为们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。女警撞脸邱淑贞走红 本人回应。起因是有位/女警撞脸邱淑贞走红 本人回应的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。觉得们你们觉得谁有理？评论区辩一辩。",
-      "chen": "大型纪录片之《女警撞脸邱淑贞走红 本人回应》持续为您播出。女警撞脸邱淑贞走红 本人回应，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "一条热乎的新闻。女警撞脸邱淑贞走红 本人回应。说到底根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：女警撞脸邱淑贞走红 本人回应。给还没看的朋友用一句话说清楚——女警撞脸邱淑贞走红 本人回应。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。女警撞脸邱淑贞走红 本人回应。虽然表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。网友觉得呢？",
+      "aqi": "热点信息差。女警撞脸邱淑贞走红 本人回应。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。你们们追不追？我每集都给剪好了。",
+      "chen": "来讲一个正在发生的变化：女警撞脸邱淑贞走红 本人回应。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。女警撞脸邱淑贞走红 本人回应。说到底所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。评论区你能看到B吗？",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：女警撞脸邱淑贞走红 本人回应。给还没看的朋友用一句话说清楚——女警撞脸邱淑贞走红 本人回应。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "歌手孙悦回应巅峰期突然隐退",
@@ -25164,11 +25498,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=歌手孙悦回应巅峰期突然隐退",
       "hot_score": 64,
-      "wangba": "来来来，最近有个事儿真给我整笑了。歌手孙悦回应巅峰期突然隐退。其实你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。网友你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。歌手孙悦回应巅峰期突然隐退。起因是有位/歌手孙悦回应巅峰期突然隐退的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。你们们你们觉得谁有理？评论区辩一辩。",
-      "chen": "这波真的不讲武德。歌手孙悦回应巅峰期突然隐退。但是我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今日热点快报：歌手孙悦回应巅峰期突然隐退。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "来了来了，07月31日时间线整理好了。歌手孙悦回应巅峰期突然隐退。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。你们觉得呢？"
+      "wangba": "歌手孙悦回应巅峰期突然隐退。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。觉得们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。歌手孙悦回应巅峰期突然隐退。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。网友去评论区看看，已经有课代表总结了。",
+      "chen": "这波真的不讲武德。歌手孙悦回应巅峰期突然隐退。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "热点快报，先看数据：歌手孙悦回应巅峰期突然隐退。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：歌手孙悦回应巅峰期突然隐退。给还没看的朋友用一句话说清楚——歌手孙悦回应巅峰期突然隐退。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "携程通报1.5万元机票仅退432元事件",
@@ -25176,11 +25510,11 @@
       "blogger_name": "",
       "url": "https://www.baidu.com/s?wd=携程通报1.5万元机票仅退432元事件",
       "hot_score": 64,
-      "wangba": "携程通报1.5万元机票仅退432元事件。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说白了说真的，这事儿搁谁身上都得懵。评论区们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。携程通报1.5万元机票仅退432元事件。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。关注们看完觉得哪个环节最离谱？",
-      "chen": "《携程通报1.5万元机票仅退432元事件》这部纪录片更新了。携程通报1.5万元机票仅退432元事件。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "热点快报，先看数据：携程通报1.5万元机票仅退432元事件。不过说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——携程通报1.5万元机票仅退432元事件。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
+      "wangba": "OK下事儿。携程通报1.5万元机票仅退432元事件。不过表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。来觉得呢？",
+      "aqi": "热点信息差。携程通报1.5万元机票仅退432元事件。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。网友们别光看，把这条转给你那个还不相信的朋友。",
+      "chen": "今天讲一个现象级的新闻：携程通报1.5万元机票仅退432元事件。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "一条热乎的新闻。携程通报1.5万元机票仅退432元事件。但是根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "补一下今天的热搜。携程通报1.5万元机票仅退432元事件。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?",
@@ -25188,11 +25522,11 @@
       "blogger_name": "",
       "url": "https://www.zhihu.com/question/2066407134779138989",
       "hot_score": 61.20411932505142,
-      "wangba": "来来来，最近有个事儿真给我整笑了。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。虽然你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。你们你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。觉得们看完觉得哪个环节最离谱？",
-      "chen": "这波真的不讲武德。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。不过我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "wangba": "不是，西班牙北非飞地休达遭遇大规模移民涌入，负…？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。来们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。这事儿真的，一波三折都不足以形容。不过第一波——第二波——第三波——。目前最新的进展是——但评论区们不要急着下结论，证据链还没完整。",
+      "chen": "《西班牙北非飞地休达遭遇大规模移民涌入，负…》这部纪录片更新了。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
       "guancha": "今日热点快报：西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "07月31日热乎的新闻。西班牙北非飞地休达遭遇大规模移民涌入，负…。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "shadi": "补一下今天的热搜。西班牙北非飞地休达遭遇大规模移民涌入，负责人直言边境已「完全崩溃」，目前情况如何?。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "BLG战胜WE赛后数据",
@@ -25200,10 +25534,10 @@
       "blogger_name": "",
       "url": "https://search.bilibili.com/all?keyword=BLG战胜WE赛后数据",
       "hot_score": 60.565961356775105,
-      "wangba": "不是，BLG战胜WE赛后数据？我反复确认了三遍，这事儿还真就发生在咱身边。其实最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。网友们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。BLG战胜WE赛后数据这事儿我必须说两句。说到底很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。BLG战胜WE赛后数据。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。觉得你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。BLG战胜WE赛后数据。哥们儿，这事儿搁以前谁能信？但是但现在它就是真的。大家们别光看，把这条转给你那个还不相信的朋友。",
       "chen": "来讲一个正在发生的变化：BLG战胜WE赛后数据。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今天观察到一个有趣的现象：BLG战胜WE赛后数据。BLG战胜WE赛后数据。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。网友觉得这说明什么？",
+      "guancha": "快报时间。BLG战胜WE赛后数据。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
       "shadi": "来，今天的热点按时间串一下：BLG战胜WE赛后数据。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
@@ -25212,23 +25546,35 @@
       "blogger_name": "",
       "url": "https://search.bilibili.com/all?keyword=重庆狼队 北京WB",
       "hot_score": 60.565961356775105,
-      "wangba": "重庆狼队 北京WB。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。虽然说真的，这事儿搁谁身上都得懵。觉得们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。重庆狼队 北京WB这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "来讲一个正在发生的变化：重庆狼队 北京WB。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。重庆狼队 北京WB。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。来你能看到B吗？",
-      "shadi": "来，今天的热点按时间串一下：重庆狼队 北京WB。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "OK下事儿。重庆狼队 北京WB。说白了表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。觉得觉得呢？",
+      "aqi": "热点信息差。重庆狼队 北京WB。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。评论区去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《重庆狼队 北京WB》持续为您播出。重庆狼队 北京WB，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "快报时间。重庆狼队 北京WB。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。重庆狼队 北京WB。重庆狼队 北京WB。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
-      "topic": "UP主现场探访成吉思鸡",
+      "topic": "为什么今年这么湿热",
       "source": "bilibili",
       "blogger_name": "",
-      "url": "https://search.bilibili.com/all?keyword=UP主现场探访成吉思鸡",
+      "url": "https://search.bilibili.com/all?keyword=为什么今年这么湿热",
       "hot_score": 60.565961356775105,
-      "wangba": "UP主现场探访成吉思鸡。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。不过说真的，这事儿搁谁身上都得懵。来们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。UP主现场探访成吉思鸡。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但来们不要急着下结论，证据链还没完整。",
-      "chen": "来讲一个正在发生的变化：UP主现场探访成吉思鸡。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "热点快报，先看数据：UP主现场探访成吉思鸡。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来了来了，07月31日时间线整理好了。UP主现场探访成吉思鸡。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。觉得觉得呢？"
+      "wangba": "今天有个新闻我必须得讲讲。为什么今年这么湿热。虽然起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？认为告诉我。",
+      "aqi": "热点信息差。为什么今年这么湿热。起因是有位/为什么今年这么湿热的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。关注们你们觉得谁有理？评论区辩一辩。",
+      "chen": "来讲一个正在发生的变化：为什么今年这么湿热。虽然很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "今天观察到一个有趣的现象：为什么今年这么湿热。为什么今年这么湿热。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。网友觉得这说明什么？",
+      "shadi": "来，今天的热点按时间串一下：为什么今年这么湿热。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+    },
+    {
+      "topic": "如何评价奥登巅峰实力",
+      "source": "bilibili",
+      "blogger_name": "",
+      "url": "https://search.bilibili.com/all?keyword=如何评价奥登巅峰实力",
+      "hot_score": 60.565961356775105,
+      "wangba": "不是，如何评价奥登巅峰实力？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。评论区们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。如何评价奥登巅峰实力。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。来去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《如何评价奥登巅峰实力》持续为您播出。如何评价奥登巅峰实力，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "热点快报，先看数据：如何评价奥登巅峰实力。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "来，今天的热点按时间串一下：如何评价奥登巅峰实力。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "谁能唤起你的童年阴影",
@@ -25236,11 +25582,23 @@
       "blogger_name": "",
       "url": "https://search.bilibili.com/all?keyword=谁能唤起你的童年阴影",
       "hot_score": 60.565961356775105,
-      "wangba": "说回今天的新闻，第一个事儿：谁能唤起你的童年阴影。不过这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。网友你们品，细品。",
-      "aqi": "热点信息差。谁能唤起你的童年阴影这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。大家们再看看原视频，注意那个时间点。",
-      "chen": "今天讲一个现象级的新闻：谁能唤起你的童年阴影。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。谁能唤起你的童年阴影。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。来你能看到B吗？",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：谁能唤起你的童年阴影。给还没看的朋友用一句话说清楚——谁能唤起你的童年阴影。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。谁能唤起你的童年阴影。可是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。网友觉得呢？",
+      "aqi": "热点信息差。谁能唤起你的童年阴影。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。关注去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《谁能唤起你的童年阴影》持续为您播出。谁能唤起你的童年阴影，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今日热点快报：谁能唤起你的童年阴影。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "补一下今天的热搜。谁能唤起你的童年阴影。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+    },
+    {
+      "topic": "UP主现场探访成吉思鸡",
+      "source": "bilibili",
+      "blogger_name": "",
+      "url": "https://search.bilibili.com/all?keyword=UP主现场探访成吉思鸡",
+      "hot_score": 60.565961356775105,
+      "wangba": "UP主现场探访成吉思鸡。虽然我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。UP主现场探访成吉思鸡。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。关注去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《UP主现场探访成吉思鸡》持续为您播出。UP主现场探访成吉思鸡，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今天观察到一个有趣的现象：UP主现场探访成吉思鸡。UP主现场探访成吉思鸡。不过我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。大家觉得这说明什么？",
+      "shadi": "来，今天的热点按时间串一下：UP主现场探访成吉思鸡。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "WE BLG",
@@ -25248,35 +25606,11 @@
       "blogger_name": "",
       "url": "https://search.bilibili.com/all?keyword=WE BLG",
       "hot_score": 60.565961356775105,
-      "wangba": "WE BLG。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说实话说真的，这事儿搁谁身上都得懵。觉得们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。WE BLG。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。你们们别光看，把这条转给你那个还不相信的朋友。",
-      "chen": "来讲一个正在发生的变化：WE BLG。其实很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "热点快报，先看数据：WE BLG。说到底说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "来，今天的热点按时间串一下：WE BLG。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
-    },
-    {
-      "topic": "许愿柳是什么梗",
-      "source": "bilibili",
-      "blogger_name": "",
-      "url": "https://search.bilibili.com/all?keyword=许愿柳是什么梗",
-      "hot_score": 60.565961356775105,
-      "wangba": "许愿柳是什么梗。说白了我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。认为支持的扣1，反对的扣2。",
-      "aqi": "热点信息差。许愿柳是什么梗。起因是有位/许愿柳是什么梗的事/在网上火了。但是本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。网友们你们觉得谁有理？评论区辩一辩。",
-      "chen": "今天讲一个现象级的新闻：许愿柳是什么梗。其实我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "快报时间。许愿柳是什么梗。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：许愿柳是什么梗。许愿柳是什么梗。其实目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
-    },
-    {
-      "topic": "AL EDG",
-      "source": "bilibili",
-      "blogger_name": "",
-      "url": "https://search.bilibili.com/all?keyword=AL EDG",
-      "hot_score": 60.565961356775105,
-      "wangba": "不是，AL EDG？我反复确认了三遍，这事儿还真就发生在咱身边。说实话最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。AL EDG。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。评论区们看完觉得哪个环节最离谱？",
-      "chen": "这波真的不讲武德。AL EDG。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。AL EDG。其实所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。分享你能看到B吗？",
-      "shadi": "来，今天的热点按时间串一下：AL EDG。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "WE BLG。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说白了说真的，这事儿搁谁身上都得懵。认为们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。WE BLG。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。评论区们看完觉得哪个环节最离谱？",
+      "chen": "《WE BLG》这部纪录片更新了。WE BLG。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "快报时间。WE BLG。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热乎的新闻。WE BLG。WE BLG。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
     },
     {
       "topic": "好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！#搞笑#哈基米#流浪猫 #反转 #剪映",
@@ -25284,11 +25618,11 @@
       "blogger_name": "陈先生",
       "url": "https://www.douyin.com/video/7658623879846454699",
       "hot_score": 59.41139455130754,
-      "wangba": "说回今天的新闻，第一个事儿：好消息捡了只绝世好猫，坏消息老板拿签子的…。说白了这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。认为你们品，细品。",
-      "aqi": "热点信息差。好消息捡了只绝世好猫，坏消息老板拿签子的…。哥们儿，这事儿搁以前谁能信？不过但现在它就是真的。大家们别光看，把这条转给你那个还不相信的朋友。",
-      "chen": "来讲一个正在发生的变化：好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。但是很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "快报时间。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。其实巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "来，今天的热点按时间串一下：好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
+      "wangba": "OK下事儿。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。但是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。评论区觉得呢？",
+      "aqi": "热点信息差。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。这事儿真的，一波三折都不足以形容。不过第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
+      "chen": "这波真的不讲武德。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。分享你能看到B吗？",
+      "shadi": "来了来了，07月31日时间线整理好了。好消息捡了只绝世好猫，坏消息老板拿签子的手已经忍不住颤抖了！。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。觉得觉得呢？"
     },
     {
       "topic": "特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息",
@@ -25296,11 +25630,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33688958",
       "hot_score": 59.34746206911844,
-      "wangba": "今天有个新闻我必须得讲讲。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。说白了起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？网友告诉我。",
-      "aqi": "热点信息差。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。但是事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。来们看完觉得哪个环节最离谱？",
-      "chen": "《特斯拉正考虑剥离中国业务？特斯拉中国官方…》这部纪录片更新了。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "快报时间。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：特斯拉正考虑剥离中国业务？特斯拉中国官方…。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
+      "wangba": "特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。说白了说真的，这事儿搁谁身上都得懵。来们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
+      "aqi": "热点信息差。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。不过事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。觉得们看完觉得哪个环节最离谱？",
+      "chen": "大型纪录片之《特斯拉正考虑剥离中国业务？特斯拉中国官方…》持续为您播出。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "今日快报，注意一个容易被忽视的细节。特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。其实所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。网友你能看到B吗？",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "宇树科技：8月10日打新",
@@ -25308,11 +25642,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33687840",
       "hot_score": 59.34746206911844,
-      "wangba": "不是，宇树科技：8月10日打新？我反复确认了三遍，这事儿还真就发生在咱身边。说实话最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。宇树科技：8月10日打新。起因是有位/宇树科技：8月10日打新的事/在网上火了。不过本来以为是件小事，没成想后面越闹越大，各路回应一个比一个精彩。评论区们你们觉得谁有理？评论区辩一辩。",
+      "wangba": "说回今天的新闻，第一个事儿：宇树科技：8月10日打新。不过这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。评论区你们品，细品。",
+      "aqi": "热点信息差。宇树科技：8月10日打新。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
       "chen": "《宇树科技：8月10日打新》这部纪录片更新了。宇树科技：8月10日打新。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "热点快报，先看数据：宇树科技：8月10日打新。其实说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——宇树科技：8月10日打新。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
+      "guancha": "快报时间。宇树科技：8月10日打新。其实巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：宇树科技：8月10日打新。给还没看的朋友用一句话说清楚——宇树科技：8月10日打新。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？",
@@ -25320,11 +25654,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33672802",
       "hot_score": 59.34746206911844,
-      "wangba": "今天有个新闻我必须得讲讲。法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。可是起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？认为告诉我。",
-      "aqi": "热点信息差。法学何为｜张凌寒：法律如何回应人工智能时…这事儿我必须说两句。但是很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。觉得们再看看原视频，注意那个时间点。",
-      "chen": "今天讲一个现象级的新闻：法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。虽然我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
-      "guancha": "一条热乎的新闻。法学何为｜张凌寒：法律如何回应人工智能时…。然而根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
-      "shadi": "来了来了，07月31日时间线整理好了。法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。不过先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。来觉得呢？"
+      "wangba": "OK下事儿。法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。可是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。觉得觉得呢？",
+      "aqi": "热点信息差。法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。但是事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。关注们看完觉得哪个环节最离谱？",
+      "chen": "大型纪录片之《法学何为｜张凌寒：法律如何回应人工智能时…》持续为您播出。法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。其实只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "热点快报，先看数据：法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。但是说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "来，今天的热点按时间串一下：法学何为｜张凌寒：法律如何回应人工智能时代的责任追问？。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组",
@@ -25332,11 +25666,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33682399",
       "hot_score": 59.34746206911844,
-      "wangba": "今天有个新闻我必须得讲讲。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。其实起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？评论区告诉我。",
-      "aqi": "热点信息差。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。但是事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。网友们看完觉得哪个环节最离谱？",
-      "chen": "这波真的不讲武德。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
-      "guancha": "今天观察到一个有趣的现象：桃酥里吃出三颗金属假牙排，泸溪河发布声明…。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。其实我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。评论区觉得这说明什么？",
-      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：桃酥里吃出三颗金属假牙排，泸溪河发布声明…。给还没看的朋友用一句话说清楚——桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
+      "wangba": "OK下事儿。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。可是表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。认为觉得呢？",
+      "aqi": "热点信息差。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。你们们追不追？我每集都给剪好了。",
+      "chen": "《桃酥里吃出三颗金属假牙排，泸溪河发布声明…》这部纪录片更新了。桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
+      "guancha": "今日热点快报：桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：桃酥里吃出三颗金属假牙排，泸溪河发布声明…。给还没看的朋友用一句话说清楚——桃酥里吃出三颗金属假牙排，泸溪河发布声明：成立专项小组。其实如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀",
@@ -25344,11 +25678,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33682760",
       "hot_score": 59.34746206911844,
-      "wangba": "来来来，最近有个事儿真给我整笑了。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。说白了你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。来你们觉得哪个最接近真相？",
-      "aqi": "热点信息差。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。但是事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。觉得们看完觉得哪个环节最离谱？",
-      "chen": "大型纪录片之《又吃糖又犯困，特朗普在美政客葬礼现场小动…》持续为您播出。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "今日快报，注意一个容易被忽视的细节。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。但是所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。你们你能看到B吗？",
-      "shadi": "来了来了，07月31日时间线整理好了。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。其实先捋时间——再捋各方回应——最后捋争议焦点——。捋完之后你会发现，整件事情的最高潮，其实是——。评论区觉得呢？"
+      "wangba": "来来来，最近有个事儿真给我整笑了。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。可是你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。觉得你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。评论区去评论区看看，已经有课代表总结了。",
+      "chen": "来讲一个正在发生的变化：又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+      "guancha": "一条热乎的新闻。又吃糖又犯困，特朗普在美政客葬礼现场小动…。其实根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？评论区告诉我。",
+      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：又吃糖又犯困，特朗普在美政客葬礼现场小动…。又吃糖又犯困，特朗普在美政客葬礼现场小动作惹争议，白宫：他在缅怀。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
     },
     {
       "topic": "台当局拒上海派员参加小熊猫见面仪式，国台办回应",
@@ -25356,11 +25690,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33680439",
       "hot_score": 59.34746206911844,
-      "wangba": "不是，台当局拒上海派员参加小熊猫见面仪式，国台…？我反复确认了三遍，这事儿还真就发生在咱身边。不过最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。你们们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。台当局拒上海派员参加小熊猫见面仪式，国台办回应。你以为你看的是新闻，其实是连续剧。但是今天是第三集，前两集在这里→。觉得们追不追？我每集都给剪好了。",
-      "chen": "大型纪录片之《台当局拒上海派员参加小熊猫见面仪式，国台…》持续为您播出。台当局拒上海派员参加小熊猫见面仪式，国台办回应，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。不过只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "今天观察到一个有趣的现象：台当局拒上海派员参加小熊猫见面仪式，国台…。台当局拒上海派员参加小熊猫见面仪式，国台办回应。然而我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。分享觉得这说明什么？",
-      "shadi": "补一下今天的热搜。台当局拒上海派员参加小熊猫见面仪式，国台办回应。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "今天有个新闻我必须得讲讲。台当局拒上海派员参加小熊猫见面仪式，国台办回应。其实起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？觉得告诉我。",
+      "aqi": "热点信息差。台当局拒上海派员参加小熊猫见面仪式，国台办回应。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。说到底更狠的是——当事人还出来说话了。网友去评论区看看，已经有课代表总结了。",
+      "chen": "今天讲一个现象级的新闻：台当局拒上海派员参加小熊猫见面仪式，国台办回应。但是我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "快报时间。台当局拒上海派员参加小熊猫见面仪式，国台办回应。然而巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "07月31日热点开唠。昨天晚上到今天全网最热闹的新闻：台当局拒上海派员参加小熊猫见面仪式，国台…。给还没看的朋友用一句话说清楚——台当局拒上海派员参加小熊猫见面仪式，国台办回应。不过如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链。"
     },
     {
       "topic": "河南“三支一扶”高分成绩引争议，官方再回应",
@@ -25368,11 +25702,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33675257",
       "hot_score": 59.34746206911844,
-      "wangba": "不是，河南“三支一扶”高分成绩引争议，官方再回…？我反复确认了三遍，这事儿还真就发生在咱身边。说实话最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。评论区们自己去看，我在评论区放链接。#大学生 #热点",
-      "aqi": "热点信息差。河南“三支一扶”高分成绩引争议，官方再回应。这事儿真的，一波三折都不足以形容。不过第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
-      "chen": "《河南“三支一扶”高分成绩引争议，官方再回…》这部纪录片更新了。河南“三支一扶”高分成绩引争议，官方再回应。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "热点快报，先看数据：河南“三支一扶”高分成绩引争议，官方再回应。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "用两分钟给你补完今天的热搜，先说最火的一个：河南“三支一扶”高分成绩引争议，官方再回…。河南“三支一扶”高分成绩引争议，官方再回应。不过目前我看到的最新情况是这样——但如果你往回翻时间线，会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。我帮你拼好了。"
+      "wangba": "OK下事儿。河南“三支一扶”高分成绩引争议，官方再回应。不过表面上看起来是个段子，但你细品——每次这种事儿发生，背后都有个一模一样的逻辑。说白了，不是人出了问题，是规则出了问题。评论区觉得呢？",
+      "aqi": "热点信息差。河南“三支一扶”高分成绩引争议，官方再回…这事儿我必须说两句。不过很多人都没注意到一个关键细节——。这个细节才是整个事情的转折点。关注们再看看原视频，注意那个时间点。",
+      "chen": "这波真的不讲武德。河南“三支一扶”高分成绩引争议，官方再回应。其实我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。数据不会骗人，你自己去看。",
+      "guancha": "快报时间。河南“三支一扶”高分成绩引争议，官方再回应。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "补一下今天的热搜。河南“三支一扶”高分成绩引争议，官方再回应。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
     },
     {
       "topic": "警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款",
@@ -25380,11 +25714,11 @@
       "blogger_name": "",
       "url": "https://www.thepaper.cn/newsDetail_forward_33673720",
       "hot_score": 59.34746206911844,
-      "wangba": "今天有个新闻我必须得讲讲。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。不过起因是这样的——过程是这样的——结果是——。你品，这三个'这样的'，哪个环节是可以避免的？评论区告诉我。",
-      "aqi": "热点信息差。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。你们们追不追？我每集都给剪好了。",
-      "chen": "来讲一个正在发生的变化：警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。但是很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "今日热点快报：警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "07月31日热乎的新闻。警方通报：4辆越野车高速并排占道51秒，…。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "wangba": "警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。其实我说一句公道话——这事儿不是谁对谁错的问题，它是一个系统性的bug。别人不敢说，我来说。你们支持的扣1，反对的扣2。",
+      "aqi": "热点信息差。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。但是更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
+      "chen": "大型纪录片之《警方通报：4辆越野车高速并排占道51秒，…》持续为您播出。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。但是只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
+      "guancha": "快报时间。警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。说到底巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——警方通报：4辆越野车高速并排占道51秒，1人被行拘3人被罚款。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？",
@@ -25392,11 +25726,11 @@
       "blogger_name": "",
       "url": "https://www.zhihu.com/question/2065846000862720837",
       "hot_score": 59.20411932505142,
-      "wangba": "说回今天的新闻，第一个事儿：徐福记突发声明称拼多多店铺非官方自营，网…。说实话这事儿最搞笑的不是事情本身，是各方的反应——甲方恨不得连夜删帖，乙方疯狂甩锅，第三方默默吃瓜。来你们品，细品。",
-      "aqi": "热点信息差。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。你以为你看的是新闻，其实是连续剧。说到底今天是第三集，前两集在这里→。网友们追不追？我每集都给剪好了。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。不过你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。认为你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。这事儿真的，一波三折都不足以形容。但是第一波——第二波——第三波——。目前最新的进展是——但网友们不要急着下结论，证据链还没完整。",
       "chen": "《徐福记突发声明称拼多多店铺非官方自营，网…》这部纪录片更新了。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。",
-      "guancha": "今日热点快报：徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。先说基本事实——目前可以确认的是——。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。我不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己判断。",
-      "shadi": "07月31日热乎的新闻。徐福记突发声明称拼多多店铺非官方自营，网…。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "guancha": "今日快报，注意一个容易被忽视的细节。徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。不过所有媒体的标题都在强调A，但真正的关键其实是B。为什么没人提B？因为B涉及到——所以大家默契地选择看不见。你们你能看到B吗？",
+      "shadi": "来，今天的热点按时间串一下：徐福记突发声明称拼多多店铺非官方自营，网传纠纷原因为个体商家为报复平台秒退款，具体什么情况？。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     },
     {
       "topic": "1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？",
@@ -25404,11 +25738,11 @@
       "blogger_name": "",
       "url": "https://www.zhihu.com/question/2066088472851341477",
       "hot_score": 59.20411932505142,
-      "wangba": "1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。但是说真的，这事儿搁谁身上都得懵。来们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。第一集→第二集→现在第三集。这个剧情走向，好莱坞编剧都不敢这么写。不过更狠的是——当事人还出来说话了。大家去评论区看看，已经有课代表总结了。",
+      "wangba": "来来来，最近有个事儿真给我整笑了。1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。其实你以为这事儿就一个版本？不不不，版本A是官方的，版本B是当事人的，版本C是网友脑补的——三个版本三个世界。来你们觉得哪个最接近真相？",
+      "aqi": "热点信息差。1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。你以为你看的是新闻，其实是连续剧。不过今天是第三集，前两集在这里→。大家们追不追？我每集都给剪好了。",
       "chen": "来讲一个正在发生的变化：1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。不过很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，——第二，——第三，——。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
-      "guancha": "快报时间。1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。但是巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。",
-      "shadi": "07月31日热乎的新闻。1.5万机票退票仅退432元，曝光后获全…。1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。我直接把时间线给你们列出来：🔹最开始——🔹然后——🔹转折——🔹最新——。不分析了，你们自己看。关注我，信息差不掉线。"
+      "guancha": "热点快报，先看数据：1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。但是说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
+      "shadi": "一夜之间发生了啥？07月31日热点快报。第一条——1.5万机票退票仅退432元，曝光后获全额退款，问题出在哪？这次胜利能否撬动天价退票费规则？。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——来评论区一人一句。"
     },
     {
       "topic": "河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？",
@@ -25416,13 +25750,13 @@
       "blogger_name": "",
       "url": "https://www.zhihu.com/question/2065344071745233365",
       "hot_score": 59.20411932505142,
-      "wangba": "河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。真的，我一开始以为是谁编的段子，结果一查，真有这事儿。其实说真的，这事儿搁谁身上都得懵。你们们如果遇到了，第一反应是什么？#青年创作者成长计划 #内容过于真实",
-      "aqi": "热点信息差。河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。这事儿真的，一波三折都不足以形容。说到底第一波——第二波——第三波——。目前最新的进展是——但来们不要急着下结论，证据链还没完整。",
-      "chen": "大型纪录片之《河北 860 元一晚酒店半夜关空调导致客…》持续为您播出。河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？，讲真的，这个事发生的时候我一点都不意外。因为在这之前已经有信号了。虽然只是没人把这三个信号连起来看——第一个——第二个——第三个——。连起来看就很清楚了。",
-      "guancha": "热点快报，先看数据：河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。然而说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息。",
-      "shadi": "补一下今天的热搜。河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。先说结论：这件事现在还在发酵中，后面的走向还没定。但有三点是确定的——第一——第二——第三——。这三点不管后面怎么变都不会变，因为这是事实，不是观点。好，下一条——"
+      "wangba": "不是，河北 860 元一晚酒店半夜关空调导致客…？我反复确认了三遍，这事儿还真就发生在咱身边。但是最离谱的是什么呢——官方回应已经出来了，跟网友猜的完全不一样。网友们自己去看，我在评论区放链接。#大学生 #热点",
+      "aqi": "热点信息差。河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。说真的，第一眼看的时候我以为是在看段子，第二眼才发现是新闻。说到底事情是这样的——最开始是——然后是——转折出现在——现在的状态是——。大家们看完觉得哪个环节最离谱？",
+      "chen": "今天讲一个现象级的新闻：河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。不过我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家。",
+      "guancha": "今天观察到一个有趣的现象：河北 860 元一晚酒店半夜关空调导致客…。河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。但是我打开评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。评论区觉得这说明什么？",
+      "shadi": "来，今天的热点按时间串一下：河北 860 元一晚酒店半夜关空调导致客人被热醒，酒店空调间断关停合法吗？消费者该怎样维权？。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差。"
     }
   ],
-  "updated_at": "2026-07-31T19:53:42Z",
+  "updated_at": "2026-07-31T22:17:27Z",
   "failed_platforms": null
 }
