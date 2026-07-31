@@ -47,22 +47,44 @@ def douyin_score(a):
     score+=boost.get(a.get("source",""),2)
     return score
 
-def select_topics(data, n=200):
+def select_topics(data, n=60):
+    """按爆火度排名前 n 条（动态，不再固定200）。
+    用户要求：灵感不固定条数，只放容易火的、按爆火度排名前。
+    有真实摘要的文章小幅加权，提升灵感文案质量（避免空壳）。
+    """
     arts = [a for a in data.get("articles",[]) if a.get("source")!="blogger"]
     seen = set(); uni = []
-    for a in sorted(arts, key=douyin_score, reverse=True):
+    def key_fn(a):
+        s = douyin_score(a)
+        if a.get("summary") and len(str(a.get("summary")).strip()) > 15:
+            s += 8
+        return s
+    for a in sorted(arts, key=key_fn, reverse=True):
         t = a.get("title","")
-        if t and t not in seen and douyin_score(a)>=25:
+        if t and t not in seen:
             seen.add(t); uni.append(a)
     return uni[:n]
 
-def parse_event(summary):
-    """把summary拆成起因+经过+结果"""
+def parse_event(summary, topic=""):
+    """把summary拆成起因+经过+结果；若summary只是标题复述/热搜前缀则返回空"""
     s = clean_text(summary or "")
+    # 剔除热搜平台前缀（如「抖音热搜:」「微博热搜」）
+    s = re.sub(r'^(抖音热搜|微博热搜|百度热搜|知乎热榜|今日头条|热搜|热榜)[:：]?\s*', '', s).strip()
     if not s: return {"cause":"", "detail":"", "result":""}
     sents = [x.strip() for x in re.split(r'[。；]', s) if len(x.strip())>10]
+    if not sents:
+        return {"cause":"", "detail":"", "result":""}
+    cause = sents[0]
+    # 若首句以话题开头（话题复述+扩展），去掉话题前缀，避免文案重复
+    if topic and cause.startswith(topic):
+        cause = cause[len(topic):].lstrip('：:，, 。　 ')
+        if not cause:
+            return {"cause":"", "detail":"", "result":""}
+    # 首句基本就是话题本身的复述（无额外信息）→ 视为无真实内容
+    elif topic and len(cause) <= len(topic)+8 and topic[:min(8,len(topic))] in cause:
+        return {"cause":"", "detail":"", "result":""}
     return {
-        "cause": sents[0] if len(sents)>=1 else s,
+        "cause": cause,
         "detail": sents[1] if len(sents)>=2 else "",
         "result": sents[2] if len(sents)>=3 else (sents[1] if len(sents)>=2 else ""),
     }
@@ -83,31 +105,35 @@ def wangba_write(topic, event, style):
         f"说回到新闻，{today}呢，首先第一个，{topic}。",
     ]
     opening = pick(opens, topic+"_open")
-    
+
     # 起因→经过→结果 结构
-    cause = event.get("cause","") or topic
-    detail = event.get("detail","")
-    result = event.get("result","")
-    
-    # 口语化改写
-    for old, new in [("经审理查明：","简单来说就是，"),("经调查","据了解"),
-                      ("据报道","说是啊"),("据悉","听说啊"),("目前","截止到现在啊"),
-                      ("近日","就这两天"),("人民法院","法院"),("被告人","这哥们"),
-                      ("非法收受财物","贪了"),("判处死刑","直接判了死刑")]:
-        cause = cause.replace(old, new)
-    
-    # 起因叙述
-    story = f"起因是这样——{cause}。"
-    if detail:
-        story += f"{detail}。"
-    if result:
-        story += f"结果呢——{result}。"
-    
-    # 博主评论
+    cause = event.get("cause","") or ""
+    detail = event.get("detail","") or ""
+    result = event.get("result","") or ""
+
+    # 口语化改写（仅当有真实摘要时）
+    if cause:
+        for old, new in [("经审理查明：","简单来说就是，"),("经调查","据了解"),
+                          ("据报道","说是啊"),("据悉","听说啊"),("目前","截止到现在啊"),
+                          ("近日","就这两天"),("人民法院","法院"),("被告人","这哥们"),
+                          ("非法收受财物","贪了"),("判处死刑","直接判了死刑")]:
+            cause = cause.replace(old, new)
+
+    # 有真实摘要才展开叙事，否则克制陈述，不编空壳
+    if cause or detail or result:
+        story = f"起因是这样——{cause or topic}。"
+        if detail:
+            story += f"{detail}。"
+        if result:
+            story += f"结果呢——{result}。"
+    else:
+        story = "这事儿最近在网上传得挺凶，巴沙帮大家理一遍。"
+
+    # 博主评论（去掉"有人说…有人说…"套话，写真实观点；不以句号结尾，避免与 return 拼接出双句号）
     comments = [
-        f"{story}那听到这儿，各位不用问了啊。网友们直接就绷不住了，有人说这也太{emotion}了，有人说这背后肯定有故事。",
-        f"{story}{trans}，那我说白了，这事儿评论区也吵翻了。有人觉得这太{emotion}了，有人说这完全就是剧本。",
-        f"{story}哎，{trans}有意思的来了。说白了，这事儿就是典型的——你从标题看不出水有多深的那种。",
+        f"{story}那听到这儿，评论区已经炸了，网友们直接就绷不住了",
+        f"{story}{trans}，我说白了，这事儿没那么简单，评论区已经吵翻了",
+        f"{story}有意思的来了——你从标题根本看不出这事儿水有多深",
     ]
     comment = pick(comments, topic+"_mid")
     
@@ -124,26 +150,32 @@ def aqi_write(topic, event, style):
     """阿七纪录片：起因+各方反应+信息差"""
     today = datetime.now().strftime("%m月%d日")
     trans = pick(style.get("connectors",["不过"]), topic+"_trans")
-    cause = event.get("cause","") or topic
-    detail = event.get("detail","")
-    result = event.get("result","")
-    
-    story = f"事情是这样的——{cause}。"
-    if detail: story += f"{detail}。"
-    if result: story += f"后续——{result}。"
-    
-    return f"{today}社会热点信息差。今天讲一件其实挺重要但没什么人深聊的事：{topic}。{story}{trans}，你可能觉得这跟你没什么关系，但巴沙帮你理一下：不同平台讲同一个话题的时候，侧重点完全不一样。微博在强调情绪，知乎在分析逻辑，每个版本都只说了一半的事实。另一半在哪？就在信息差里。OK下一件事。"
+    cause = event.get("cause","") or ""
+    detail = event.get("detail","") or ""
+    result = event.get("result","") or ""
+
+    if cause or detail or result:
+        story = f"事情是这样的——{cause or topic}。"
+        if detail: story += f"{detail}。"
+        if result: story += f"后续——{result}。"
+    else:
+        story = "这事儿最近传得挺凶。"
+
+    return f"{today}社会热点信息差。今天讲一件其实挺重要但没什么人深聊的事：{topic}。{story}{trans}，你可能觉得这跟你没什么关系，但我帮你理一下：不同平台讲同一个话题的时候，侧重点完全不一样。微博在强调情绪，知乎在分析逻辑，每个版本都只说了一半的事实。另一半在哪？就在信息差里。OK下一件事。"
 
 def chen_write(topic, event, style):
     """陈先生：事件+数据+反转"""
-    cause = event.get("cause","") or topic
-    result = event.get("result","")
+    cause = event.get("cause","") or ""
+    result = event.get("result","") or ""
     trans = pick(style.get("connectors",["不过"]), topic+"_trans")
     kw = topic[:20]
-    
-    story = f"{cause}。"
-    if result: story += f"{result}。"
-    
+
+    if cause or result:
+        story = f"{cause or topic}。"
+        if result: story += f"{result}。"
+    else:
+        story = "这事儿最近传得挺凶，我帮你捋一下。"
+
     return f"大型纪录片之《{kw}》持续为您播出。{story}讲真的，{trans}，这个事发生的时候我一点都不意外。在过去几个月里，类似的事情已经不是第一次了。大家觉得是小概率事件——完全不是。只是以前没人统计。现在统计出来了，数字摆在那里。你怎么看？"
 
 def guancha_write(topic, event, style):
@@ -159,12 +191,15 @@ def guancha_write(topic, event, style):
 def shadi_write(topic, event, style):
     """沙漠一之雕：快节奏播报"""
     today = datetime.now().strftime("%m月%d日")
-    cause = event.get("cause","") or topic
-    result = event.get("result","")
-    
-    story = f"{cause}。"
-    if result: story += f"{result}。"
-    
+    cause = event.get("cause","") or ""
+    result = event.get("result","") or ""
+
+    if cause or result:
+        story = f"{cause}。"
+        if result: story += f"{result}。"
+    else:
+        story = "这事儿最近传得挺凶，简单给你捋一下。"
+
     return f"一夜之间发生了啥？{today}热点快报。第一条——{topic}。{story}目前这件事还在发酵，后续值得盯一下。来评论区一人一句。"
 
 def main():
@@ -202,7 +237,7 @@ def main():
                 "人类观察菌":"guancha","沙漠一之雕":"shadi"}
     
     data = load_json(DATA_FILE)
-    topics = select_topics(data, n=200)
+    topics = select_topics(data)
     print(f"\n筛选 {len(topics)} 个高爆火话题\n")
     
     writers = {"wangba": wangba_write, "aqi": aqi_write, "chen": chen_write,
@@ -214,8 +249,8 @@ def main():
         summary = a.get("summary","")
         if not topic: continue
         
-        event = parse_event(summary)
-        insp = {"topic": topic, "source": a.get("source",""), "score": douyin_score(a)}
+        event = parse_event(summary, topic)
+        insp = {"topic": topic, "source": a.get("source",""), "url": a.get("url","") or "", "score": douyin_score(a)}
         
         for cn_name, key in name_map.items():
             style = learned.get(cn_name, defaults.get(cn_name, {"emotions":[],"connectors":[]}))

@@ -21,11 +21,16 @@ def sanitize(obj):
     return obj
 
 def optimize_articles(articles):
+    from datetime import datetime, timedelta
+    # 最终兜底：新闻只保留近3天（无论上游如何累积，线上 data.js 一定只含近3天）
+    news_cutoff = (datetime.now().date() - timedelta(days=2)).strftime("%Y-%m-%d")
     optimized = []
     for a in articles:
         if a.get("source") == "blogger":
             optimized.append(a)
         else:
+            if (a.get("date", "") or "")[:10] < news_cutoff:
+                continue  # 丢弃3天前的新闻
             item = {
                 "id": a.get("id"), "title": a.get("title"),
                 "source": a.get("source"), "date": a.get("date"),
@@ -77,6 +82,16 @@ def main():
             )
             if 'data.js' not in new_html:
                 new_html = new_html.replace('<script>', f'<script src="data.js?v={version}" defer></script>\n<script>', 1)
+            # 注入灵感文件版本号，避免浏览器缓存旧 inspiration.js（否则用户刷新看不到更新）
+            # 注意：renderInspire 里已「引用」window.__DATA_VERSION__，故需用「赋值形式是否存在」判断，而非子串
+            if re.search(r'window\.__DATA_VERSION__\s*=\s*["\']', new_html):
+                new_html = re.sub(
+                    r'window\.__DATA_VERSION__\s*=\s*["\'][^"\']*["\']',
+                    f"window.__DATA_VERSION__='{version}'",
+                    new_html
+                )
+            else:
+                new_html = new_html.replace('</head>', f'<script>window.__DATA_VERSION__=\'{version}\';</script>\n</head>', 1)
             if new_html != html:
                 atomic_write(html_path, new_html, newline="\n")
         

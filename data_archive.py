@@ -61,8 +61,8 @@ def archive_data():
             merged.append(a)
             seen_ids.add(aid)
 
-    # 只保留近14天的数据
-    cutoff = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
+    # 只保留近3天的数据（与 generate_hot.py 数据保留策略一致，防止归档累积旧数据）
+    cutoff = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
     merged = [a for a in merged if a.get("date", "") >= cutoff]
 
     archive["articles"] = merged
@@ -88,8 +88,10 @@ def restore_from_archive():
     current_ids = set(a.get("id") for a in current_articles)
     restored = 0
 
+    # 只恢复近3天的数据（与数据保留策略一致，防止把归档里的旧数据填充回来）
+    cutoff = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
     for a in archive_articles:
-        if a.get("id") not in current_ids:
+        if a.get("id") not in current_ids and a.get("date", "") >= cutoff:
             current_articles.append(a)
             restored += 1
 

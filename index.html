@@ -260,6 +260,10 @@ header{
 .inspire h3 .badge-a{background:var(--blue-dim);color:var(--blue)}
 .inspire h3 .badge-c{background:rgba(216,90,48,0.12);color:#D85A30}
 .inspire .suggestion{font-size:13px;color:var(--text-sec);line-height:1.6;padding:6px 0 4px;font-style:italic}
+.insp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 2px}
+.insp-tab{font-size:11px;padding:3px 11px;border-radius:13px;border:1px solid var(--border);color:var(--text-sec);cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
+.insp-tab:hover{border-color:var(--blue);color:var(--blue)}
+.insp-tab.active{background:var(--gold-dim);color:var(--gold);border-color:var(--gold)}
 
 /* blogger prediction card */
 .prediction-card{background:linear-gradient(135deg,#1A1F2E,#161C27);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:12px;border-left:3px solid}
@@ -404,6 +408,7 @@ footer a:hover{color:var(--gold-hover)}
 .fav-btn:active{transform:scale(1.2)}
 button:active{transform:scale(0.97)}
 </style>
+<script>window.__DATA_VERSION__='1785514033';</script>
 </head>
 <body>
 <div id="jsError" style="display:none;background:#ff5252;color:#fff;padding:12px 20px;font-size:14px;position:fixed;top:0;left:0;width:100%;z-index:9999;line-height:1.6"></div>
@@ -484,7 +489,7 @@ button:active{transform:scale(0.97)}
 </footer>
 
 <!-- ===== Script ===== -->
-<script src="data.js?v=1785508570" defer></script>
+<script src="data.js?v=1785514033" defer></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -823,13 +828,25 @@ function renderFav(){
       function ik(t,s){var k=(t||'')+'|'+(s||'');var h=0;for(var j=0;j<k.length;j++){h=((h<<5)-h)+k.charCodeAt(j);h|=0;}return'k'+Math.abs(h);}
       const liked=[];
       favKeys.forEach(function(key){
-        inspirations.forEach(function(a){
-          if(ik(a.topic,a.source)===key) liked.push(a);
+        inspirations.forEach(function(a, idx){
+          if(ik(a.topic,a.source)===key) liked.push({a:a, idx:idx});
         });
       });
       if(liked.length>0){
         inspHtml='<div class="section-title">收藏的灵感 ('+liked.length+')</div>'+
-        liked.map(d=>'<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div><h3><span class="badge badge-w">🏪 网吧信息差</span></h3><div class="suggestion">'+esc(d.wangba)+'</div><h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七纪录片</span></h3><div class="suggestion">'+esc(d.aqi)+'</div><h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生</span></h3><div class="suggestion" style="color:#D85A30">'+esc(d.chen)+'</div><h3 style="margin-top:12px"><span class="badge badge-g">🔍 人类观察菌</span></h3><div class="suggestion" style="color:#A78BFA">'+esc(d.guancha)+'</div><h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕</span></h3><div class="suggestion" style="color:#C9A96E">'+esc(d.shadi)+'</div></div>').join('');
+        liked.map(function(item){
+          var d=item.a, oi=item.idx;
+          return '<div class="inspire"><div class="topic">📌 '+esc(d.topic)+'</div><div class="source-tag">来源: '+esc(d.source)+'</div>'+
+          '<div class="insp-tabs" id="insp-tabs-'+oi+'">'+
+            '<span class="insp-tab active" onclick="switchInspStyle('+oi+',\'wangba\',this)">🏪 网吧信息差</span>'+
+            '<span class="insp-tab" onclick="switchInspStyle('+oi+',\'aqi\',this)">🎬 阿七纪录片</span>'+
+            '<span class="insp-tab" onclick="switchInspStyle('+oi+',\'chen\',this)">📺 陈先生</span>'+
+            '<span class="insp-tab" onclick="switchInspStyle('+oi+',\'guancha\',this)">🔍 观察菌</span>'+
+            '<span class="insp-tab" onclick="switchInspStyle('+oi+',\'shadi\',this)">🎮 沙漠一之雕</span>'+
+          '</div>'+
+          '<div class="suggestion" id="insp-body-'+oi+'">'+esc(d.wangba)+' <button onclick="copyText(this.parentElement.textContent.replace(\'📋\',\'\').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制当前">📋</button></div>'+
+          '</div>';
+        }).join('');
       }
     }
   }catch(e){}
@@ -861,6 +878,18 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 
 // 一键复制功能
 function copyInspText(idx,btn){var d=window.__INSP_DATA__[idx];if(!d)return;var t='选题：'+d.topic+'\n网吧信息差：'+d.wangba+'\n阿七纪录片：'+d.aqi+'\n陈先生：'+d.chen+'\n人类观察菌：'+d.guancha+'\n沙漠一之雕：'+d.shadi;copyText(t,btn)}
+// 灵感卡片风格切换：默认只显示1个博主范本，点击标签切换其余博主
+function switchInspStyle(oi, key, el){
+  var a = window.__INSP_DATA__ ? window.__INSP_DATA__[oi] : null;
+  if(!a) return;
+  var body = document.getElementById('insp-body-'+oi);
+  if(!body) return;
+  var txt = a[key]||'';
+  body.innerHTML = esc(txt) + ' <button onclick="copyText(this.parentElement.textContent.replace(\'📋\',\'\').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制当前">📋</button>';
+  var tabs = document.getElementById('insp-tabs-'+oi);
+  if(tabs){ var all = tabs.querySelectorAll('.insp-tab'); for(var i=0;i<all.length;i++) all[i].classList.remove('active'); }
+  if(el) el.classList.add('active');
+}
 function copyText(text, btn){
   navigator.clipboard.writeText(text).then(()=>{
     const orig=btn.textContent;
@@ -1002,22 +1031,20 @@ function renderInspire(){
       var isFaved=inspFavs.includes(inspKey(a.topic,a.source));
       var isDone=dismissed.includes(oi);
       return `
-      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.viral>=80?'border-left:3px solid #FF6B6B':r.viral>=65?'border-left:3px solid var(--orange)':r.viral>=58?'border-left:3px solid var(--blue)':''}">
+      <div class="inspire" style="${isFaved?'border-color:var(--gold)':''}${isDone?'opacity:0.4;filter:grayscale(50%)':''}${r.boost>=100?'border-left:3px solid var(--gold)':r.viral>=80?'border-left:3px solid #FF6B6B':r.viral>=65?'border-left:3px solid var(--orange, #FF9800)':r.viral>=58?'border-left:3px solid var(--blue)':''}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div class="topic" style="flex:1">📌 ${a.url&&a.url!=='#'?'<a href=\"'+esc(a.url)+'\" target=\"_blank\" style=\"color:inherit;text-decoration:none;border-bottom:1px dashed var(--text-muted)\">'+esc(a.topic)+'</a>':esc(a.topic)}${r.viral>=80?' <span style=\"font-size:9px;background:#FF6B6B;color:#fff;padding:1px 5px;border-radius:6px\">🔥🔥🔥 '+r.viral+'分</span>':r.viral>=65?' <span style=\"font-size:9px;background:var(--orange-dim, rgba(255,152,0,0.15));color:var(--orange, #FF9800);padding:1px 5px;border-radius:6px\">🔥🔥 '+r.viral+'分</span>':r.viral>=58?' <span style=\"font-size:9px;background:var(--blue-dim, rgba(74,143,228,0.12));color:var(--blue);padding:1px 5px;border-radius:6px\">🔥 '+r.viral+'分</span>':''}${isDone?' <span style=\"font-size:10px;background:var(--green-dim);color:var(--green);padding:1px 6px;border-radius:8px\">✅ 已发布</span>':''}${isFaved?' <span style=\"font-size:10px;background:var(--gold-dim);color:var(--gold);padding:1px 6px;border-radius:8px\">⭐ 已收藏</span>':''}</div>
           <button onclick="event.stopPropagation();toggleInspDismiss(${oi})" style="background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:var(--text-muted);opacity:0.6" title="${isDone?'撤销标记':'标记为已发布'}">${isDone?'↩':'✕'}</button>
         </div>
         <div class="source-tag">来源: ${esc(a.source||'')}</div>
-        <h3><span class="badge badge-w">🏪 网吧信息差风格</span></h3>
-        <div class="suggestion">${esc(a.wangba)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
-        <h3 style="margin-top:12px"><span class="badge badge-a">🎬 阿七大型纪录片风格</span></h3>
-        <div class="suggestion">${esc(a.aqi)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
-        <h3 style="margin-top:12px"><span class="badge badge-c">📺 陈先生风格</span></h3>
-        <div class="suggestion" style="color:#D85A30">${esc(a.chen)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
-        <h3 style="margin-top:12px"><span class="badge badge-g">🔍 人类观察菌风格</span></h3>
-        <div class="suggestion" style="color:#A78BFA">${esc(a.guancha)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
-        <h3 style="margin-top:12px"><span class="badge badge-s">🎮 沙漠一之雕风格</span></h3>
-        <div class="suggestion" style="color:#C9A96E">${esc(a.shadi)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制">📋</button></div>
+        <div class="insp-tabs" id="insp-tabs-${oi}">
+          <span class="insp-tab active" onclick="switchInspStyle(${oi},'wangba',this)">🏪 网吧信息差</span>
+          <span class="insp-tab" onclick="switchInspStyle(${oi},'aqi',this)">🎬 阿七纪录片</span>
+          <span class="insp-tab" onclick="switchInspStyle(${oi},'chen',this)">📺 陈先生</span>
+          <span class="insp-tab" onclick="switchInspStyle(${oi},'guancha',this)">🔍 观察菌</span>
+          <span class="insp-tab" onclick="switchInspStyle(${oi},'shadi',this)">🎮 沙漠一之雕</span>
+        </div>
+        <div class="suggestion" id="insp-body-${oi}">${esc(a.wangba)} <button onclick="copyText(this.parentElement.textContent.replace('📋','').trim(),this)" style="background:none;border:none;cursor:pointer;font-size:11px;color:var(--text-muted);padding:2px 6px" title="复制当前">📋</button></div>
         <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
           <button onclick="toggleInspFav(${oi})" style="padding:4px 16px;border-radius:20px;border:1px solid ${isFaved?'var(--gold)':'var(--border)'};background:${isFaved?'var(--gold-dim)':'transparent'};color:${isFaved?'var(--gold)':'var(--text-sec)'};cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">${isFaved?'⭐ 取消收藏':'☆ 收藏'}</button>
           <button onclick="copyInspText(${oi},this)" style="padding:4px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);cursor:pointer;font-size:12px;font-family:inherit;transition:all .2s">📋 复制全部</button>

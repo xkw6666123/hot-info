@@ -127,32 +127,35 @@ def merge_data():
         merged = True
         print(f"  ✅ 从 ASR 备份恢复 {restored} 条文案")
 
-    # 5. 从旧数据补充近7天的热点文章（防止CI/CD丢失历史数据）
+    # 5. 从旧数据补充近3天的热点文章（防止CI/CD当天抓取丢失，窗口与 generate_hot.py 一致）
+    # 用户要求：新闻只保留近3天。此处窗口必须=3天，否则会把3天前的旧数据填充回来导致无限累积
     if old_data:
         from datetime import datetime, timedelta
         old_articles_all = old_data.get("articles", [])
-        cutoff = (datetime.now() - timedelta(days=6)).strftime("%Y-%m-%d")
-        
-        # 提取旧数据中近7天的非博主文章
-        old_hot = [a for a in old_articles_all 
-                   if a.get("source") != "blogger" 
+        cutoff = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
+
+        # 提取旧数据中近3天的非博主文章
+        old_hot = [a for a in old_articles_all
+                   if a.get("source") != "blogger"
                    and a.get("date", "") >= cutoff]
-        
+
         # 提取新数据中的非博主文章
         new_hot = [a for a in new_articles if a.get("source") != "blogger"]
-        new_hot_ids = set(a.get("id") for a in new_hot)
-        
-        # 补充旧数据中缺失的文章
+        # 用 title+source 去重（比 id 更稳定，避免 id 每日变化导致同一文章重复累积）
+        new_hot_keys = set((a.get("title", ""), a.get("source", "")) for a in new_hot)
+
+        # 补充旧数据中缺失的文章（仅3天内，且标题不重复）
         added = 0
         for a in old_hot:
-            if a.get("id") not in new_hot_ids:
+            if (a.get("title", ""), a.get("source", "")) not in new_hot_keys:
                 new_articles.append(a)
+                new_hot_keys.add((a.get("title", ""), a.get("source", "")))
                 added += 1
-        
+
         if added:
             new_data["articles"] = new_articles
             merged = True
-            print(f"  ✅ 补充近7天热点: +{added}条")
+            print(f"  ✅ 补充近3天热点: +{added}条")
     
     # 6. 从旧数据补充缺失的博主文章
     # 核心逻辑：新数据中博主数量 < 旧数据中博主数量 → 补充旧数据
