@@ -8,7 +8,8 @@
 import json, os, re, random
 from datetime import datetime, timezone
 
-WORK = r"D:\AI\hotinfo\hot-info"
+# 基于脚本所在目录定位，避免硬编码 Windows 路径导致 Linux CI (GitHub Actions) 找不到文件而报错跳过
+WORK = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(WORK, "data.json")
 STYLE_FILE = os.path.join(WORK, "deep_style_learned.json")
 
