@@ -261,80 +261,73 @@ def scrape_bilibili():
     return articles
 
 def scrape_bilibili_bloggers():
-    """B站博主追踪：使用 bilibili-api-python 获取最新视频"""
+    """B站博主追踪：搜索API（curl_cffi模拟浏览器指纹，免费无token、无需登录）。
+    实测可拿到最新视频（含当日），规避 bilibili-api 库的依赖地狱与空间API的未登录风控。
+    """
     if not BILI_BLOGGERS:
         return []
-    
-    print("📡 B站博主追踪...")
+
+    print("📡 B站博主追踪(搜索API)...")
     articles = []
-    
+
     try:
-        from bilibili_api import user as bili_user
-        import asyncio
+        from curl_cffi import requests as creq
     except ImportError:
-        print("  ⚠️ bilibili-api-python 未安装，跳过B站博主追踪")
+        print("  ⚠️ curl_cffi 未安装，跳过B站博主追踪")
         return []
-    
-    async def fetch_bili_videos():
+
+    import urllib.parse as _up
+    import re as _re
+    UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+
+    try:
+        s = creq.Session(impersonate="chrome", headers={"User-Agent": UA})
+        try:
+            s.get("https://www.bilibili.com", timeout=15)  # 建立 cookie(buvid3/b_nut)
+        except Exception:
+            pass
+
         for blogger in BILI_BLOGGERS:
-            name = blogger["name"]
-            mid = blogger.get("mid", "")
-            
-            if not mid:
-                print(f"  📹 {name}: 无 mid，跳过")
-                continue
-            
-            print(f"  📹 {name} (mid={mid})...")
+            name = blogger["name"] if isinstance(blogger, dict) else blogger
+            print(f"  📹 {name}...")
             try:
-                u = bili_user.User(uid=int(mid))
-                videos = await u.get_videos(pn=1, ps=5)
-                vlist = videos.get('list', {}).get('vlist', [])
-                
-                if not vlist:
-                    print(f"    ⚠️ 无视频")
+                kw = _up.quote(name)
+                url = f"https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={kw}&order=pubdate&page=1"
+                r = s.get(url, headers={"Referer": "https://search.bilibili.com"}, timeout=15)
+                j = r.json()
+                if j.get("code") != 0:
+                    print(f"    ⚠️ code={j.get('code')} {j.get('message')}")
                     continue
-                
-                print(f"    ✅ 找到 {len(vlist)} 条视频")
-                
-                for v in vlist[:3]:
-                    created = v.get("created", 0)
+                res = j.get("data", {}).get("result", []) or []
+                # 只保留该博主的视频（过滤重名/搬运号）
+                videos = [v for v in res if (v.get("author", "") or "").strip() == name][:5]
+                for v in videos:
+                    title = _re.sub(r"<[^>]+>", "", v.get("title", "") or "").strip()
+                    pubdate = v.get("pubdate", 0)
+                    bvid = v.get("bvid", "")
                     articles.append({
-                        "id": make_id("bili_blogger", f"{name}_{v.get('bvid','')}") % 10**9,
-                        "title": v.get("title", f"{name} 最新视频")[:50],
-                        "summary": (v.get("description", "") or v.get("title", ""))[:200],
+                        "id": make_id("bili_blogger", f"{name}_{bvid}") % 10**9,
+                        "title": (title or f"{name} 最新视频")[:50],
+                        "summary": f"{name}：{title}"[:200],
                         "source": "blogger",
                         "blogger_name": name,
                         "platform": "bilibili",
-                        "date": datetime.fromtimestamp(created).strftime("%Y-%m-%d") if created else today,
-                        "time": datetime.fromtimestamp(created).strftime("%H:%M") if created else now_time,
+                        "date": datetime.fromtimestamp(pubdate).strftime("%Y-%m-%d") if pubdate else today,
+                        "time": datetime.fromtimestamp(pubdate).strftime("%H:%M") if pubdate else now_time,
                         "tags": ["B站", "博主", "热点"],
-                        "url": f"https://www.bilibili.com/video/{v.get('bvid','')}",
-                        "likes": safe_int(v.get("favorites"), 0),
-                        "comments": safe_int(v.get("comment"), 0),
-                        "play_count": v.get("play", 0),
-                        "aweme_id": v.get("bvid", ""),
-                        "create_time": created,
+                        "url": f"https://www.bilibili.com/video/{bvid}" if bvid else "",
+                        "likes": safe_int(v.get("play", 0), 0),
+                        "comments": safe_int(v.get("review", 0), 0),
+                        "play_count": safe_int(v.get("play", 0), 0),
+                        "aweme_id": bvid,
+                        "create_time": pubdate,
                     })
-                
-                # 避免请求过快
-                await asyncio.sleep(2)
-                
+                print(f"    ✅ {len(videos)}条")
             except Exception as e:
-                print(f"    ⚠️ 获取失败: {e}")
-    
-    # 运行异步函数
-    try:
-        try:
-            loop = asyncio.get_event_loop()
-            if loop.is_running():
-                import nest_asyncio
-                nest_asyncio.apply()
-        except RuntimeError:
-            pass  # Python 3.12+: no current event loop
-        asyncio.run(fetch_bili_videos())
+                print(f"    ⚠️ {name}失败: {e}")
     except Exception as e:
         print(f"  ⚠️ B站博主追踪异常: {e}")
-    
+
     return articles
 
 def scrape_toutiao():
@@ -1014,106 +1007,102 @@ def scrape_bloggers_f2():
     return articles
 
 
-def scrape_bloggers_pw():
-    """Playwright 回退方案：F2 失败时使用
-    优先用 v2 单会话批量抓取，降级到 v1 逐条抓取
-    """
-    import subprocess as _sp
-    
-    # 检测 bash 是否可用
+def _launch_browser(p):
+    """启动 chromium；若未安装则回退到系统 chrome/msedge（本地/CI 均可用）"""
+    args = ["--disable-blink-features=AutomationControlled", "--no-sandbox"]
     try:
-        r = _sp.run(["bash", "--version"], capture_output=True, timeout=5)
-        if r.returncode != 0:
-            return []
+        return p.chromium.launch(headless=True, args=args)
     except Exception:
+        pass
+    for ch in ("chrome", "msedge"):
+        try:
+            return p.chromium.launch(headless=True, channel=ch, args=args)
+        except Exception:
+            continue
+    raise RuntimeError("无可用浏览器（需安装 chromium 或系统 chrome/edge）")
+
+def scrape_bloggers_pw():
+    """免费无token方案：Python Playwright 拦截抖音用户页 aweme/post API 获取最新视频。
+    不依赖任何 API key / token / cookie，纯浏览器自动化（抖音网页端内部接口）。
+    B站博主由 scrape_bilibili_bloggers 单独处理。
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("  ⚠️ playwright 未安装，跳过抖音博主追踪")
         return []
-    
-    # 找到 playwright-cli 路径（bash 子进程需要无扩展名的 shell 版本）
-    import shutil as _shutil
-    _pw_cli = _shutil.which("playwright-cli") or "playwright-cli"
-    # Windows: shutil.which 可能返回 .CMD 版本，bash 用不了
-    # 优先从 node 全局 bin 目录查找无扩展名版本
-    _try_paths = [
-        os.path.expanduser("~/.workbuddy/binaries/node/versions/22.12.0/playwright-cli"),
-        "/usr/local/bin/playwright-cli",
-    ]
-    for _p in _try_paths:
-        if os.path.isfile(_p):
-            _pw_cli = _p
-            break
-    
-    scrape_script_v2 = os.path.join(BASE_DIR, "pw_scrape_blogger_v2.sh")
-    scrape_script_v1 = os.path.join(BASE_DIR, "pw_scrape_blogger.sh")
-    if not os.path.exists(scrape_script_v1):
-        return []
-    
-    articles = []
-    _env = os.environ.copy()
-    _env["PLAYWRIGHT_CLI"] = _pw_cli
-    
-    # 收集需要抓取的博主
-    blogger_list = []
-    for entry in TRACKED_BLOGGERS:
-        name = entry["name"] if isinstance(entry, dict) else entry
-        sec_uid = BLOGGER_SEC_UIDS.get(name, "")
-        if sec_uid:
-            blogger_list.append((name, sec_uid))
-    
+
+    # 收集抖音博主（sec_uid 映射）
+    blogger_list = [(n, u) for n, u in BLOGGER_SEC_UIDS.items() if u]
     if not blogger_list:
         return []
-    
-    import re as _re
-    use_v2 = os.path.exists(scrape_script_v2)
-    
-    if use_v2:
-        print(f"  📹 PW批量: {len(blogger_list)}位博主（单会话防限流）...")
-        args = ["bash", scrape_script_v2]
-        for n, u in blogger_list:
-            args.extend([n, u])
-        try:
-            r = _sp.run(args, capture_output=True, text=True, timeout=360,
-                       encoding="utf-8", errors="replace", env=_env)
-            output = r.stdout
-            if "验证码拦截" in output or "验证码" in r.stderr:
-                print("    ⚠️ 验证码拦截，降级v1...")
-            else:
-                json_match = _re.search(r'\{.*\}', output, _re.DOTALL)
-                if json_match:
-                    try:
-                        results = json.loads(json_match.group(0))
-                        for name, videos in results.items():
-                            if isinstance(videos, list) and len(videos) > 0:
-                                print(f"    ✅ {name}: {len(videos)}条")
-                                for v in videos[:5]:
-                                    articles.append(_build_pw_article(name, v))
-                        if articles:
-                            return articles
-                    except json.JSONDecodeError:
-                        print("    ⚠️ v2 JSON解析失败，降级v1...")
-        except Exception as e:
-            print(f"    ⚠️ v2失败: {e}，降级v1...")
-    
-    # v1 降级
-    for name, sec_uid in blogger_list:
-        print(f"  📹 PW: {name}...")
-        try:
-            r = _sp.run(["bash", scrape_script_v1, name, sec_uid],
-                       capture_output=True, text=True, timeout=90,
-                       encoding="utf-8", errors="replace", env=_env)
-            output = r.stdout
-            if "验证码" in output:
-                continue
-            m = _re.search(r'\[.*?\]', output, _re.DOTALL)
-            if not m:
-                continue
-            json_str = m.group(0).replace('\\"', '"')
-            videos = json.loads(json_str)
-            for v in videos[:5]:
-                articles.append(_build_pw_article(name, v))
-            print(f"    ✅ {len(videos)}条")
-        except Exception as e:
-            print(f"    ⚠️ PW失败: {e}")
-    
+
+    articles = []
+    try:
+        with sync_playwright() as p:
+            browser = _launch_browser(p)
+            ctx = browser.new_context(
+                user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                            "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"),
+                viewport={"width": 1280, "height": 800},
+                locale="zh-CN",
+            )
+            # 反检测：隐藏 webdriver 特征，降低风控概率
+            ctx.add_init_script(
+                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+            )
+            # 注入抖音登录 cookie（可选，DOUYIN_COOKIE env；有自己账号cookie则过风控，无则尽力抓）
+            _ck = os.environ.get("DOUYIN_COOKIE", "").strip()
+            if _ck:
+                try:
+                    _cookies = []
+                    for _part in _ck.split(";"):
+                        _part = _part.strip()
+                        if "=" in _part:
+                            _k, _v = _part.split("=", 1)
+                            _cookies.append({"name": _k.strip(), "value": _v.strip(),
+                                             "domain": ".douyin.com", "path": "/"})
+                    if _cookies:
+                        ctx.add_cookies(_cookies)
+                except Exception as _e:
+                    print(f"    ⚠️ cookie 注入失败: {_e}")
+            page = ctx.new_page()
+
+            for name, sec_uid in blogger_list:
+                captured = []
+                def on_resp(resp, _name=name, _cap=captured):
+                    if "aweme/v1/web/aweme/post" in resp.url and resp.status == 200:
+                        try:
+                            body = resp.json()
+                            for v in body.get("aweme_list", [])[:5]:
+                                st = v.get("statistics", {}) or {}
+                                _cap.append({
+                                    "id": v.get("aweme_id", ""),
+                                    "title": (v.get("desc", "") or "").strip(),
+                                    "likes": st.get("digg_count", 0) or 0,
+                                })
+                        except Exception:
+                            pass
+                page.on("response", on_resp)
+                try:
+                    page.goto(f"https://www.douyin.com/user/{sec_uid}",
+                              wait_until="domcontentloaded", timeout=45000)
+                    page.wait_for_timeout(4000)
+                    page.mouse.wheel(0, 1500)  # 滚动触发视频列表加载
+                    page.wait_for_timeout(2500)
+                except Exception as e:
+                    print(f"    ⚠️ {name} 页面加载失败: {e}")
+                page.remove_listener("response", on_resp)
+
+                if captured:
+                    for v in captured[:5]:
+                        articles.append(_build_pw_article(name, v))
+                    print(f"    ✅ {name}: {len(captured)}条")
+                else:
+                    print(f"    ⚠️ {name}: 未截获视频（可能触发验证码，建议后续手动补录）")
+            browser.close()
+    except Exception as e:
+        print(f"  ⚠️ Playwright 整体失败: {e}")
     return articles
 
 
@@ -1534,7 +1523,7 @@ def main(mode="full"):
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
         ("公众号", scrape_weixin),
-        ("博主追踪", lambda: scrape_bloggers_f2() or scrape_bloggers() or scrape_bloggers_pw()),
+        ("博主追踪", scrape_bloggers_pw),
     ]
     
     if mode == "local":
