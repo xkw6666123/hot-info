@@ -12,6 +12,12 @@ auto_run.log
 *_cookie.txt
 _valid_cookie.txt
 feishu_webhook.txt
+glm_key.txt
+_test_glm_key.py
+_test_key2.py
+_test_embed.py
+transcript_vectors.json
+deep_style_learned.json.bak
 
 # 临时文件
 temp_*.mp3

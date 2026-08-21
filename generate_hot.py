@@ -1368,6 +1368,19 @@ def douyin_score(a):
 def generate_inspirations(all_articles):
     """按🔥爆火度动态筛选：只保留高分话题，数量不设上限，爆火度越高排越前"""
 
+    # ── 无 GLM key（CI 环境）时保留已有灵感，避免用模板覆盖本地 LLM 生成的高质量版本 ──
+    # 本地每日任务（有 key）才用 LLM 重新生成；CI 只维护新闻，灵感库交给本地
+    try:
+        from llm_inspiration import _load_key as _glm_key
+        if not _glm_key():
+            with open(OUTPUT_FILE, "r", encoding="utf-8-sig") as _f:
+                _existing = json.load(_f).get("inspirations", [])
+            if _existing and any(len(i.get("wangba", "")) > 10 for i in _existing[:3]):
+                print(f"  💡 无 GLM key（CI 环境），保留已有 {len(_existing)} 条灵感（本地 LLM 版），不重新生成")
+                return _existing
+    except Exception:
+        pass  # 任何异常都回退到正常模板生成，绝不影响 CI
+
     # ── 内部评分和筛选 ──
     _ds = douyin_score
 

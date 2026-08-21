@@ -165,7 +165,7 @@ def analyze_blogger_style_deep(blogger_name, transcriptions):
 
 
 def learn_all_styles_deep():
-    """深度学习所有博主的风格"""
+    """深度学习所有博主的风格（合并 data.json 当前文案 + asr_content.json 累积完整转录）"""
     data = load_data()
     bloggers = [a for a in data.get("articles", []) if a.get("source") == "blogger"]
 
@@ -178,6 +178,23 @@ def learn_all_styles_deep():
             if name not in blogger_texts:
                 blogger_texts[name] = []
             blogger_texts[name].append(ci)
+
+    # 合并 asr_content.json 的完整累积转录（更多样本 → 指纹更准、更能跟上博主变化）
+    asr_file = os.path.join(os.path.dirname(__file__), "asr_content.json")
+    if os.path.exists(asr_file):
+        try:
+            with open(asr_file, "r", encoding="utf-8-sig") as f:
+                asr = json.load(f)
+            items = asr.values() if isinstance(asr, dict) else asr
+            for it in items:
+                if not isinstance(it, dict):
+                    continue
+                name = it.get("blogger_name", "")
+                ci = (it.get("content_intro") or "").strip()
+                if name and len(ci) > 100 and ci not in blogger_texts.get(name, []):
+                    blogger_texts.setdefault(name, []).append(ci)
+        except Exception:
+            pass
 
     # 深度分析每位博主
     styles = {}
@@ -238,7 +255,17 @@ def generate_inspiration_from_deep_style(topic, source, styles):
         emo = pick(emotions, topic + blogger_name + "em") or "离谱"
         inter = pick(interactions, topic + blogger_name + "in") or "网友"
         end_phrase = pick(endings, topic + blogger_name + "end") or ""
-        
+
+        # ── LLM 优先：拿到 GLM key 就模仿博主真实口吻写，失败/无 key 自动回退下方模板 ──
+        try:
+            from llm_inspiration import generate_llm_inspiration
+            llm_text = generate_llm_inspiration(blogger_name, style, clean)
+            if llm_text:
+                results[blogger_name] = llm_text
+                continue
+        except Exception:
+            pass
+
         if blogger_name == "网吧信息差":
             seed_i = topic + 'wb'
             patterns = [
