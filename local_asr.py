@@ -140,34 +140,22 @@ def transcribe(wav_path: str) -> str:
 # ── 单视频处理 ──
 
 async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
-    if server is None:
-        print(f"    ⏭️ douyin-transcribe 不可用（非本机环境），跳过抖音")
+    """抖音视频：douyin_dl 免登录（a_bogus 签名 + 匿名 ttwid）拿音频流 + ASR。
+    不再依赖 Playwright 拦截 / douyin-transcribe / 登录 cookie。"""
+    import douyin_dl
+    print(f"  [1/3] 免登录拿音频流 {tag}...")
+    dl = douyin_dl.DouyinDL()
+    audio_url = dl.audio_url_by_aweme_id(aweme_id)
+    if not audio_url:
+        print(f"    ❌ 无音频地址")
         return ""
-    print(f"  [1/3] Playwright 拦截 {tag}...")
-    video = await server._get_douyin_video_object(url)
-    if not isinstance(video, dict):
-        return ""
+    print(f"    URL: {audio_url[:80]}...")
 
-    dl_url = server._pick_url_for_transcription(video)
-    if not dl_url:
-        print(f"    ❌ 无下载URL")
-        return ""
-    print(f"    URL: {dl_url[:80]}...")
-
-    print(f"  [2/3] ffmpeg 下载...")
+    print(f"  [2/3] 下载音频...")
     wav = os.path.join(TEMP, f"asr_{tag}.wav")
-    cmd = [
-        FFMPEG, "-y",
-        "-headers", "Referer: https://www.douyin.com/\r\n",
-        "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "300", wav,
-    ]
-    subprocess.run(cmd, capture_output=True, timeout=120)
-
-    if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
-        subprocess.run([FFMPEG, "-y", "-i", dl_url, "-ac", "1", "-ar", "16000", "-t", "300", wav],
-                       capture_output=True, timeout=120)
-
-    if not os.path.exists(wav) or os.path.getsize(wav) < 1000:
+    wav = dl.download_audio(audio_url, wav)
+    if not wav:
+        print(f"    ❌ 下载失败")
         return ""
     print(f"    ✅ {os.path.getsize(wav)//1024}KB")
 
@@ -176,7 +164,7 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
 
     try:
         os.remove(wav)
-    except:
+    except Exception:
         pass
 
     if len(text) < 20:

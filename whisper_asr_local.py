@@ -90,24 +90,20 @@ def ffmpeg_wav(src_url_or_path, tag, referer=None):
 
 
 def get_douyin_audio(url, tag):
-    """分享页同步解析 → 播放地址 → wav；失败则 Playwright 兜底"""
-    import server as dt
-    video = None
-    try:
-        video = dt._get_video_object_from_share_page_sync(url)
-    except Exception as e:
-        print(f"    同步解析失败({type(e).__name__})，Playwright 兜底...")
-        try:
-            import asyncio
-            video = asyncio.run(dt._get_douyin_video_object(url))
-        except Exception as e2:
-            print(f"    ❌ Playwright 也失败: {type(e2).__name__}: {str(e2)[:100]}")
-            return None
-    dl = dt._pick_url_for_transcription(video)
-    if not dl:
-        print("    ❌ 无可用播放地址")
+    """抖音免登录：douyin_dl（a_bogus 签名）按 aweme_id 拿音频流 → wav"""
+    import re as _re
+    import douyin_dl
+    m = _re.search(r"video/(\d+)", url or "")
+    if not m:
         return None
-    return ffmpeg_wav(dl, tag, referer="https://www.douyin.com/")
+    aweme_id = m.group(1)
+    dl = douyin_dl.DouyinDL()
+    audio_url = dl.audio_url_by_aweme_id(aweme_id)
+    if not audio_url:
+        print("    ❌ 无音频地址")
+        return None
+    wav = os.path.join(TEMP, f"w_{tag}.wav")
+    return dl.download_audio(audio_url, wav, max_sec=MAX_AUDIO_SEC)
 
 
 def get_bilibili_audio(url, tag):
