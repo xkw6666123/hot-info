@@ -111,31 +111,9 @@ def get_douyin_audio(url, tag):
 
 
 def get_bilibili_audio(url, tag):
-    import yt_dlp
-    base = os.path.join(TEMP, f"b_{tag}")
-    opts = {
-        "format": "bestaudio/best",
-        "outtmpl": base + ".%(ext)s",
-        "quiet": True, "no_warnings": True, "socket_timeout": 30,
-        "download_ranges": lambda info, ydl: [{"start_time": 0, "end_time": MAX_AUDIO_SEC}],
-        "force_keyframes_at_cuts": True,
-    }
-    try:
-        with yt_dlp.YoutubeDL(opts) as ydl:
-            ydl.download([url])
-    except Exception as e:
-        print(f"    ❌ yt-dlp: {str(e)[:120]}")
-        return None
-    found = None
-    for ext in ("webm", "m4a", "mp3", "opus", "wav"):
-        p = base + "." + ext
-        if os.path.exists(p) and os.path.getsize(p) > 2000:
-            found = p
-            break
-    if not found:
-        print("    ❌ 音频文件未生成")
-        return None
-    return ffmpeg_wav(found, "conv_" + tag)
+    import bili_dl
+    wav = os.path.join(TEMP, f"w_{tag}.wav")
+    return bili_dl.download_audio(url, wav, max_sec=MAX_AUDIO_SEC)
 
 
 def clean_text(t):

@@ -195,72 +195,15 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
 # ── B站视频处理 ──
 
 async def process_bilibili(url: str, tag: str = "") -> str:
-    """B站视频：使用yt-dlp下载音频 + ASR（CI无Chrome时自动免cookie）"""
-    import yt_dlp
-
-    print(f"  [1/3] yt-dlp 下载音频 {tag}...")
+    """B站视频：curl_cffi 免登录下载音频 + ASR"""
+    print(f"  [1/3] 下载音频 {tag}（curl_cffi 免登录）...")
     wav = os.path.join(TEMP, f"bili_{tag}.wav")
-
-    # yt-dlp 配置（本机用Chrome cookies绕过B站限制；CI无浏览器则免cookie直连）
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'outtmpl': wav.replace('.wav', '.%(ext)s'),
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'wav',
-            'preferredquality': '16',
-        }],
-        'quiet': True,
-        'no_warnings': True,
-        'socket_timeout': 30,
-        'download_ranges': lambda info, ydl: [{'start_time': 0, 'end_time': 300}],  # 取前5分钟
-        'force_keyframes_at_cuts': True,
-    }
-    if not os.environ.get("CI") and not os.environ.get("GITHUB_ACTIONS"):
-        ydl_opts['cookiesfrombrowser'] = ('chrome',)
-
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([url])
-    except Exception as e:
-        print(f"    ❌ yt-dlp 失败: {e}")
-        # 兜底：去掉 postprocessor 与 cookie 再试一次（裸下载）
-        if ydl_opts.get('cookiesfrombrowser'):
-            ydl_opts.pop('cookiesfrombrowser', None)
-            try:
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    ydl.download([url])
-            except Exception as e2:
-                print(f"    ❌ 免cookie重试仍失败: {e2}")
-                return ""
-        else:
-            return ""
-
-    # 检查文件是否存在
-    if not os.path.exists(wav):
-        # 尝试查找其他格式
-        for ext in ['wav', 'mp3', 'm4a', 'webm']:
-            alt = wav.replace('.wav', f'.{ext}')
-            if os.path.exists(alt):
-                wav = alt
-                break
-        else:
-            print(f"    ❌ 音频文件不存在")
-            return ""
-
-    file_size = os.path.getsize(wav)
-    if file_size < 1000:
-        print(f"    ❌ 音频文件过小: {file_size}字节")
+    import bili_dl
+    wav = bili_dl.download_audio(url, wav)
+    if not wav:
+        print(f"    ❌ 音频下载失败")
         return ""
-    print(f"    ✅ {file_size//1024}KB")
-
-    # 转换为16kHz单声道（MiMo ASR要求）
-    wav_16k = wav.replace('.wav', '_16k.wav')
-    cmd = [FFMPEG, '-y', '-i', wav, '-ac', '1', '-ar', '16000', '-t', '300', wav_16k]
-    subprocess.run(cmd, capture_output=True, timeout=60)
-    if os.path.exists(wav_16k) and os.path.getsize(wav_16k) > 1000:
-        wav = wav_16k
-        print(f"    ✅ 转换为16kHz: {os.path.getsize(wav)//1024}KB")
+    print(f"    ✅ {os.path.getsize(wav)//1024}KB")
 
     print(f"  [2/3] ASR 转写...")
     text = transcribe(wav)
