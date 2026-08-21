@@ -36,16 +36,20 @@ _MODEL = None
 _MODEL_KIND = None
 
 def get_model():
-    """转写引擎：funasr(paraformer-zh, 中文最优) 优先；whisper base 兜底"""
+    """转写引擎：funasr(seaco paraformer，已缓存 ~/.cache/modelscope) 优先；whisper base 兜底。
+    注意：用缓存的 seaco 模型 id，不要用 paraformer-zh（会重新下载 1.2GB）。"""
     global _MODEL, _MODEL_KIND
     if _MODEL is None:
         try:
             from funasr import AutoModel
-            print("  ⏳ 加载 funasr paraformer-zh（首次需下载~1.2GB）...")
-            _MODEL = AutoModel(model="paraformer-zh", vad_model="fsmn-vad",
-                               punc_model="ct-punc", disable_update=True)
+            _MODEL = AutoModel(
+                model="iic/speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
+                vad_model="iic/speech_fsmn_vad_zh-cn-16k-common-pytorch",
+                punc_model="iic/punc_ct-transformer_cn-en-common-vocab471067-large",
+                disable_update=True,
+            )
             _MODEL_KIND = "funasr"
-            print("  ✅ funasr 模型就绪")
+            print("  ✅ funasr seaco 模型就绪")
         except Exception as e:
             print(f"  ⚠️ funasr 不可用({type(e).__name__})，降级 whisper base")
             import whisper
