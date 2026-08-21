@@ -33,9 +33,8 @@ C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe data_archive.p
 :: 数据合并保护：确保不丢失博主数据和灵感库
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe merge_data.py >> auto_run.log 2>&1
 
-:: 自动ASR：检测缺失文案并自动补提
-set MIMO_API_KEY=
-C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe auto_asr.py >> auto_run.log 2>&1
+:: 自动ASR：whisper 本地补提（无需 API key；whisper_asr_local 内部断点续跑）
+C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe whisper_asr_local.py >> auto_run.log 2>&1
 
 :: 持续学习：归档文案 + 学习风格
 C:\Users\Kevin\AppData\Local\Programs\Python\Python311\python.exe continuous_learner.py >> auto_run.log 2>&1

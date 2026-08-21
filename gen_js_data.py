@@ -22,15 +22,18 @@ def sanitize(obj):
 
 def optimize_articles(articles):
     from datetime import datetime, timedelta
-    # 最终兜底：新闻只保留近3天（无论上游如何累积，线上 data.js 一定只含近3天）
     news_cutoff = (datetime.now().date() - timedelta(days=2)).strftime("%Y-%m-%d")
+    news = [a for a in articles if a.get("source") != "blogger"]
+    # 兜底：新鲜新闻不足阈值（管道停摆/半瘫）时保留全部旧新闻，避免站点被清空
+    fresh_count = sum(1 for a in news if (a.get("date", "") or "")[:10] >= news_cutoff)
+    keep_cutoff = news_cutoff if fresh_count >= 20 else "0000-00-00"
     optimized = []
     for a in articles:
         if a.get("source") == "blogger":
             optimized.append(a)
         else:
-            if (a.get("date", "") or "")[:10] < news_cutoff:
-                continue  # 丢弃3天前的新闻
+            if (a.get("date", "") or "")[:10] < keep_cutoff:
+                continue  # 丢弃 keep_cutoff 之前的新闻
             item = {
                 "id": a.get("id"), "title": a.get("title"),
                 "source": a.get("source"), "date": a.get("date"),

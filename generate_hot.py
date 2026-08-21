@@ -1007,6 +1007,100 @@ def scrape_bloggers_f2():
     return articles
 
 
+def scrape_bloggers_signed():
+    """抖音博主追踪：a_bogus 签名 + 匿名 ttwid（免费无token、无需登录）。
+    采用 douyin_crawl(f2/JohnserfSeed) 的纯 Python a_bogus 实现，匿名可拿 ~41 条。
+    依赖 requests + gmssl。实测匿名拿到真实视频。
+    """
+    try:
+        import requests as _req
+        from douyin_abogus import ABogus, BrowserFingerprintGenerator
+    except ImportError:
+        print("  ⚠️ requests/gmssl 未安装，跳过抖音签名抓取")
+        return []
+
+    print("📡 抖音博主追踪(a_bogus签名,匿名)...")
+    WEB_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0")
+    COMMON = {
+        "device_platform": "webapp", "aid": "6383", "channel": "channel_pc_web",
+        "update_version_code": "170400", "pc_client_type": "1", "pc_libra_divert": "Windows",
+        "support_h265": "1", "support_dash": "0", "version_code": "290100", "version_name": "29.1.0",
+        "cookie_enabled": "true", "screen_width": "1920", "screen_height": "1080",
+        "browser_language": "zh-CN", "browser_platform": "Win32", "browser_name": "Edge",
+        "browser_version": "130.0.0.0", "browser_online": "true", "engine_name": "Blink",
+        "engine_version": "130.0.0.0", "os_name": "Windows", "os_version": "10",
+        "cpu_core_num": "12", "device_memory": "8", "platform": "PC", "downlink": "10",
+        "effective_type": "4g", "round_trip_time": "50",
+    }
+    session = _req.Session()
+    session.headers.update({"User-Agent": WEB_UA})
+    abogus = ABogus(user_agent=WEB_UA, fp=BrowserFingerprintGenerator.generate_fingerprint("Edge"))
+
+    # 匿名 cookie：官方 ttwid 接口注册 + 随机 msToken
+    ttwid = ""
+    try:
+        r = session.post("https://ttwid.bytedance.com/ttwid/union/register/",
+                         json={"region": "cn", "aid": 1768, "needFid": False,
+                               "service": "https://www.douyin.com/", "mip": "0.0.0.0",
+                               "cbUrlProtocol": "https", "union": True},
+                         headers={"Content-Type": "application/json", "User-Agent": WEB_UA},
+                         timeout=10)
+        ttwid = r.cookies.get("ttwid") or ""
+    except Exception:
+        pass
+    import random as _rnd
+    ms_token = "".join(_rnd.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") for _ in range(107))
+    cookie_parts = ["msToken=" + ms_token, "odin_tt=1"]
+    if ttwid:
+        cookie_parts.insert(0, "ttwid=" + ttwid)
+    cookie = "; ".join(cookie_parts)
+
+    articles = []
+    for name, sec_uid in [(n, u) for n, u in BLOGGER_SEC_UIDS.items() if u]:
+        try:
+            params = {**COMMON, "sec_user_id": sec_uid, "count": "20", "max_cursor": "0",
+                      "locate_query": "false", "publish_video_strategy_type": "2",
+                      "need_time_list": "1", "time_list_query": "0", "whale_cut_token": "",
+                      "cut_version": "1", "from_user_page": "1"}
+            query = "&".join(f"{k}={v}" for k, v in params.items())
+            signed_query, _ab, ua, _ = abogus.generate_abogus(query, "")
+            url = f"https://www.douyin.com/aweme/v1/web/aweme/post/?{signed_query}"
+            headers = {"User-Agent": ua, "Referer": "https://www.douyin.com/", "Cookie": cookie,
+                       "Accept": "application/json, text/plain, */*", "Accept-Language": "zh-CN,zh;q=0.9"}
+            r = session.get(url, headers=headers, timeout=15)
+            if r.status_code != 200:
+                print(f"    ⚠️ {name}: HTTP {r.status_code}")
+                continue
+            j = r.json()
+            al = j.get("aweme_list") or []
+            for a in al[:5]:
+                ct = a.get("create_time", 0)
+                desc = (a.get("desc", "") or "").strip()
+                stats = a.get("statistics", {}) or {}
+                aweme_id = str(a.get("aweme_id", ""))
+                articles.append({
+                    "id": make_id("dy_signed", f"{name}_{aweme_id}") % 10**9,
+                    "title": (desc or f"{name} 最新视频")[:50],
+                    "summary": f"{name}：{desc}"[:200],
+                    "source": "blogger",
+                    "blogger_name": name,
+                    "date": datetime.fromtimestamp(ct).strftime("%Y-%m-%d") if ct else today,
+                    "time": datetime.fromtimestamp(ct).strftime("%H:%M") if ct else now_time,
+                    "tags": ["博主", "爆款", "拆解"],
+                    "url": f"https://www.douyin.com/video/{aweme_id}",
+                    "likes": safe_int(stats.get("digg_count", 0), 0),
+                    "comments": safe_int(stats.get("comment_count", 0), 0),
+                    "aweme_id": aweme_id,
+                    "create_time": ct,
+                    "content_intro": f"📹 {name}最新视频：{desc}"[:200],
+                })
+            print(f"    ✅ {name}: {len(al)}条")
+        except Exception as e:
+            print(f"    ⚠️ {name}失败: {e}")
+    return articles
+
+
 def _launch_browser(p):
     """启动 chromium；若未安装则回退到系统 chrome/msedge（本地/CI 均可用）"""
     args = ["--disable-blink-features=AutomationControlled", "--no-sandbox"]
@@ -1183,21 +1277,22 @@ def generate_blogger_analysis(article):
     elif "教程" in title:
         cover_style = "步骤图+大字标题"
     
-    # 发布规律判断
+    # 发布规律判断（只认明确字眼；"7月6日"这类日期标题不能误判为月更）
     publish_pattern = "日更"
-    if "周" in title or "weekly" in title.lower():
+    if "周更" in title or "每周" in title or "weekly" in title:
         publish_pattern = "周更"
-    elif "月" in title:
+    elif "月更" in title or "每月" in title:
         publish_pattern = "月更"
-    
-    # 可复制建议
-    replicable_tip = f"精选今日热门{keywords[0] if keywords else '社会'}新闻做合集，标题用#{'#'.join(keywords[:3])}标签引流"
-    
+
+    # 可复制建议（先用兜底关键词，避免 keywords 为空拼出"标题用#标签引流"病句）
+    kw_final = keywords[:5] if keywords else ["热点", "社会"]
+    replicable_tip = f"精选今日热门{kw_final[0]}新闻做合集，标题用#{'#'.join(kw_final[:3])}标签引流"
+
     return {
         "video_type": video_type,
         "cover_style": cover_style,
         "publish_pattern": publish_pattern,
-        "keywords": keywords[:5] if keywords else ["热点", "社会"],
+        "keywords": kw_final,
         "replicable_tip": replicable_tip,
     }
 
@@ -1523,10 +1618,20 @@ def main(mode="full"):
         ("微博", scrape_weibo),
         ("抖音", scrape_douyin),
         ("公众号", scrape_weixin),
-        ("博主追踪", scrape_bloggers_pw),
+        ("博主追踪", lambda: scrape_bloggers_signed() or scrape_bloggers_pw()),
     ]
     
-    if mode == "local":
+    if mode == "reprocess":
+        # 不重爬：直接对现有 data.json 重跑后处理管道（清洗/补文案/补拆解/过滤/灵感）
+        try:
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                all_articles = json.load(f).get("articles", [])
+            print(f"  🔁 reprocess 模式：加载 {len(all_articles)} 条现有数据，跳过爬虫")
+        except Exception as e:
+            print(f"  ❌ reprocess 模式读取 data.json 失败: {e}")
+            return False
+        scrapers = []
+    elif mode == "local":
         # local 模式：抖音API国内直连可用（已验证2026-06-07）
         pass
     elif mode == "remote":
@@ -1541,7 +1646,8 @@ def main(mode="full"):
         except Exception:
             old_articles = []
 
-    all_articles = []
+    if mode != "reprocess":
+        all_articles = []
     for name, scraper in scrapers:
         # 时间预算：剩余时间 < 10s 跳过后续平台
         if time.time() > IMPORT_DEADLINE - 10:
@@ -1769,12 +1875,19 @@ def main(mode="full"):
             if k in a and isinstance(a[k], str):
                 a[k] = a[k].replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
     
-    # 为缺少/过短 content_intro 的博主视频补充基础简介（不覆盖 F2/ASR 已提取的实质内容）
+    # ═══ 清理文案尾部拼接的互动数据块（"👍 7赞 💬 1评论 🔄 3分享" 是抓取降级产物，不是文案）═══
+    _eng_pat = re.compile(r'\s*[👍💬🔄]\s*[\d.]+\s*万?\s*(?:赞|评论|分享)')
+    for a in all_articles:
+        ci = a.get("content_intro", "")
+        if ci and ('👍' in ci or '💬' in ci or '🔄' in ci):
+            a["content_intro"] = _eng_pat.sub('', ci).strip()
+
+    # 为缺少 content_intro 的博主视频补充基础简介（不覆盖 F2/ASR/真实 caption）
     for a in all_articles:
         if a.get("source") == "blogger":
             ci = a.get("content_intro", "")
-            # 空或过短（<80字且无真实F2/ASR内容标识）→ 重新生成
-            if not ci or (len(ci) < 80 and not any(kw in ci for kw in ['进行了','描述了','讲述了','还原','经过','视频中','完整','👍','赞','评论','分享'])):
+            # 空文案或占位文案（📹前缀=此前降级生成）→ 重新生成
+            if not ci or ci.startswith("📹"):
                 a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # ═══ 文案清洗：繁转简 + Whisper误识别修复 ═══
@@ -1792,26 +1905,39 @@ def main(mode="full"):
         ('三娘我请我来哦',''),('你爆一个四十','你爆一个试试'),
         ('浓的要小','弄的要死'),('恰人中等急救措施','掐人中急救'),
         ('不是陷入','不适陷入'),
+        # Whisper 日期误识别修复（视频为2026年7月，"五十四"系"五日"误听）
+        ('七月五十四单','七月五日'),('七月五十四号','七月五日'),
+        ('二零二四年七月五','二零二六年七月五'),('二零二五年七月五','二零二六年七月五'),
     ]
     _zhe = [('想著','想着'),('握著','握着'),('看著','看着'),('对著','对着'),
             ('拿著','拿着'),('跟著','跟着'),('推著','推着'),('抱著','抱着'),
             ('走著','走着'),('笑著','笑着'),('吃著','吃着'),('站著','站着')]
+    # 修复表清洗不依赖 opencc（本地/CI 没装 opencc 时 _clean_fixes 也必须生效）
+    _cc = None
     try:
         from opencc import OpenCC
         _cc = OpenCC('t2s')
-        for a in all_articles:
-            ci = a.get('content_intro','')
-            if not ci: continue
-            try: ci = _cc.convert(ci)
-            except Exception: pass
-            for w,r in _zhe: ci=ci.replace(w,r)
-            for w,r in _clean_fixes: ci=ci.replace(w,r)
-            a['content_intro'] = ci.strip()
     except ImportError:
         pass
-    # 为缺少 analysis 的博主视频自动生成
     for a in all_articles:
-        if a.get("source") == "blogger" and not a.get("analysis"):
+        ci = a.get('content_intro','')
+        if not ci: continue
+        if _cc:
+            try: ci = _cc.convert(ci)
+            except Exception: pass
+        for w,r in _zhe: ci=ci.replace(w,r)
+        for w,r in _clean_fixes: ci=ci.replace(w,r)
+        a['content_intro'] = ci.strip()
+    # 为缺少 analysis 的博主视频自动生成；旧 analysis 含已知病句/误判模式的也重新生成
+    for a in all_articles:
+        if a.get("source") != "blogger":
+            continue
+        ana = a.get("analysis")
+        stale = ana and (
+            re.search(r'用#标签引流', ana.get("replicable_tip", ""))  # 空关键词病句
+            or (ana.get("publish_pattern") == "月更" and "月更" not in (a.get("title") or "") and "每月" not in (a.get("title") or ""))  # 日期标题误判月更
+        )
+        if not ana or stale:
             a["analysis"] = generate_blogger_analysis(a)
 
     # 构建 data.json
@@ -1885,22 +2011,22 @@ def main(mode="full"):
         likes = a.get("likes", 0) or 0
         comments = a.get("comments", 0) or 0
         
-        # 已有实质内容（>50字且不是"📹"开头）→ 保留
-        if len(ci) > 50 and not ci.startswith("📹"):
+        # 已有实质内容（≥20字真实 caption/ASR）或已是占位文案 → 保留
+        if len(ci) >= 20 or ci.startswith("📹"):
             continue
-        
-        # 重建文案：优先用 summary，降级用 title
+
+        # 重建文案：优先用 summary，降级用 title（📹前缀标记为占位内容）
         base = summary if len(summary) > 20 else title
         if not base or len(base) < 3:
             continue
-        
+
         parts = [base]
         if likes > 0:
             parts.append(f"👍 {likes//10000}万赞" if likes >= 10000 else f"👍 {likes}赞")
         if comments > 0:
             parts.append(f"💬 {comments}评论")
-        
-        a["content_intro"] = "\n".join(parts)[:300]
+
+        a["content_intro"] = "📹 " + ("\n".join(parts)[:297])
         _lost_ci += 1
     
     if _lost_ci:
@@ -1988,5 +2114,7 @@ if __name__ == "__main__":
         mode = "local"
     elif "--remote" in sys.argv:
         mode = "remote"
+    elif "--reprocess" in sys.argv:
+        mode = "reprocess"
     success = main(mode=mode)
     exit(0 if success else 1)

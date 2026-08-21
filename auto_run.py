@@ -69,14 +69,8 @@ def main():
     except Exception as e:
         log(f"WARNING: continuous_learner error: {e}")
 
-    # Step 3: gen_js_data.py
-    code, out = run([PYTHON, "gen_js_data.py"], timeout=30)
-    if code != 0:
-        log(f"ERROR: gen_js_data.py failed: {out[:200]}")
-        sys.exit(1)
-    log(f"gen_js_data OK")
-
-    # Step 3.5: 从视频描述生成 content_intro（描述 → 文案，仅填充无真实转录的）
+    # Step 3: 从视频描述生成 content_intro（描述 → 文案，仅填充无真实转录的）
+    # 注意：必须在 ASR 之前跑，否则 ASR 会对本可由描述填充的视频空跑
     try:
         code_gci, out_gci = run([PYTHON, "gen_content_intro.py"], timeout=60)
         if code_gci == 0:
@@ -106,9 +100,6 @@ def main():
                 log(f"WARNING: ASR failed: ...{out[-500:]}")
             else:
                 log(f"ASR OK")
-                code2, out2 = run([PYTHON, "gen_js_data.py"], timeout=30)
-                if code2 != 0:
-                    log(f"ERROR: gen_js_data re-run failed: {out2[:200]}")
         else:
             log("all videos have clean content_intro, no ASR needed")
     except Exception as e:
@@ -124,6 +115,13 @@ def main():
     except Exception as e:
         log(f"WARNING: inspiration_generator error: {e}")
 
+    # Step 5.8: 最后统一构建 data.js + inspiration.js（确保以上所有 data.json 修改都进入本次部署）
+    code, out = run([PYTHON, "gen_js_data.py"], timeout=30)
+    if code != 0:
+        log(f"ERROR: gen_js_data.py failed: {out[:200]}")
+        sys.exit(1)
+    log(f"gen_js_data OK")
+
     # Step 5.5: 检查数据完整性
     try:
         data = json.load(open(os.path.join(WORK, "data.json"), encoding="utf-8-sig"))
@@ -136,8 +134,10 @@ def main():
         log(f"ERROR: can't read data.json: {e}")
         return
 
-    # Step 5: git commit & push（直连 GitHub）
-    code, _ = run(["git", "add", "data.json", "data.js", "index.html"], timeout=10)
+    # Step 6: git commit & push（直连 GitHub）——灵感文件和学习产物必须一起推，否则灵感更新不上线
+    code, _ = run(["git", "add", "data.json", "data.js", "inspiration.js", "index.html",
+                   "blogger_content_learn.json", "asr_content.json",
+                   "blogger_content_archive.json", "deep_style_learned.json", "data_archive.json"], timeout=10)
     code2, diff = run(["git", "diff", "--cached", "--stat"], timeout=10)
     
     if "file changed" in diff or "files changed" in diff:

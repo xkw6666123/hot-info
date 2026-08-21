@@ -1,34 +1,61 @@
 #!/usr/bin/env python3
 """
-本地 ASR 流水线：
-  1. douyin-transcribe Playwright 拦截 → 获取视频播放URL
-  2. ffmpeg 下载音频
-  3. 小米 MiMo ASR API 转文字
+本地/CI 通用 ASR 流水线：
+  1. douyin-transcribe Playwright 拦截 → 获取视频播放URL（仅本机，CI 自动跳过）
+  2. ffmpeg 下载音频（B站走 yt-dlp）
+  3. 转写引擎自动选择：有 MIMO_API_KEY 用小米 MiMo ASR；否则本地 whisper base
   4. 更新 data.json
 
-需要: MIMO_API_KEY 环境变量
+环境变量: MIMO_API_KEY（可选；缺失时自动降级 whisper）
 """
 
 import asyncio, json, os, sys, subprocess, re, shutil, base64, urllib.request, urllib.error, time
 
-# ── 路径 ──
+# ── 路径（douyin-transcribe 仅本机存在；CI 不存在时抖音视频优雅跳过，不再整体崩溃）──
 DT_PATH = r"D:\AI\hotinfo\douyin-transcribe"
-sys.path.insert(0, DT_PATH)
-import server  # _get_douyin_video_object, _pick_url_for_transcription
+if os.path.isdir(DT_PATH):
+    sys.path.insert(0, DT_PATH)
+try:
+    import server  # _get_douyin_video_object, _pick_url_for_transcription
+except Exception:
+    server = None
 
 PROJECT = os.path.dirname(os.path.abspath(__file__))
 FFMPEG = shutil.which("ffmpeg") or "ffmpeg"
 TEMP = os.path.join(PROJECT, "asr_temp")
 os.makedirs(TEMP, exist_ok=True)
 
-# ── MiMo ASR (复用 asr_extract.py 的实现) ──
+# ── 转写引擎：MiMo 优先，whisper 兜底 ──
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY")
 MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+
+_WHISPER_MODEL = None
+
+def whisper_asr(audio_path: str) -> str:
+    """本地 whisper base（CPU 可跑，无需任何 API key）"""
+    global _WHISPER_MODEL
+    try:
+        import whisper
+    except ImportError:
+        return ""
+    if _WHISPER_MODEL is None:
+        print("    ⏳ 加载 whisper base 模型...")
+        _WHISPER_MODEL = whisper.load_model("base")
+    r = _WHISPER_MODEL.transcribe(audio_path, language="zh", fp16=False,
+                                  initial_prompt="以下是简体中文口语视频文案。",
+                                  condition_on_previous_text=False)
+    text = (r.get("text") or "").strip()
+    try:
+        from opencc import OpenCC
+        text = OpenCC("t2s").convert(text)
+    except Exception:
+        pass
+    return text
 
 def mimo_asr(audio_path: str, language: str = "zh") -> str:
     """小米 MiMo ASR API"""
     if not MIMO_API_KEY:
-        raise RuntimeError("MIMO_API_KEY 未设置！请 export MIMO_API_KEY=xxx")
+        return ""
 
     with open(audio_path, "rb") as f:
         audio_bytes = f.read()
@@ -100,9 +127,22 @@ def _clean(text: str) -> str:
     return "\n".join(clean).strip()
 
 
+def transcribe(wav_path: str) -> str:
+    """统一转写入口：MiMo 优先（有 key 时），whisper 兜底；返回清洗后文本"""
+    text = ""
+    if MIMO_API_KEY:
+        text = mimo_asr(wav_path)
+    if not text:
+        text = whisper_asr(wav_path)
+    return _clean(text or "")
+
+
 # ── 单视频处理 ──
 
 async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
+    if server is None:
+        print(f"    ⏭️ douyin-transcribe 不可用（非本机环境），跳过抖音")
+        return ""
     print(f"  [1/3] Playwright 拦截 {tag}...")
     video = await server._get_douyin_video_object(url)
     if not isinstance(video, dict):
@@ -131,9 +171,8 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
         return ""
     print(f"    ✅ {os.path.getsize(wav)//1024}KB")
 
-    print(f"  [3/3] MiMo ASR...")
-    text = mimo_asr(wav)
-    text = _clean(text)
+    print(f"  [3/3] ASR 转写...")
+    text = transcribe(wav)
 
     try:
         os.remove(wav)
@@ -156,13 +195,13 @@ async def process_one(aweme_id: str, url: str, tag: str = "") -> str:
 # ── B站视频处理 ──
 
 async def process_bilibili(url: str, tag: str = "") -> str:
-    """B站视频：使用yt-dlp下载音频 + MiMo ASR"""
+    """B站视频：使用yt-dlp下载音频 + ASR（CI无Chrome时自动免cookie）"""
     import yt_dlp
 
     print(f"  [1/3] yt-dlp 下载音频 {tag}...")
     wav = os.path.join(TEMP, f"bili_{tag}.wav")
 
-    # yt-dlp 配置（使用浏览器cookies绕过B站限制）
+    # yt-dlp 配置（本机用Chrome cookies绕过B站限制；CI无浏览器则免cookie直连）
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': wav.replace('.wav', '.%(ext)s'),
@@ -174,17 +213,28 @@ async def process_bilibili(url: str, tag: str = "") -> str:
         'quiet': True,
         'no_warnings': True,
         'socket_timeout': 30,
-        'cookiesfrombrowser': ('chrome',),  # 从Chrome读取cookies
         'download_ranges': lambda info, ydl: [{'start_time': 0, 'end_time': 300}],  # 取前5分钟
         'force_keyframes_at_cuts': True,
     }
+    if not os.environ.get("CI") and not os.environ.get("GITHUB_ACTIONS"):
+        ydl_opts['cookiesfrombrowser'] = ('chrome',)
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
     except Exception as e:
         print(f"    ❌ yt-dlp 失败: {e}")
-        return ""
+        # 兜底：去掉 postprocessor 与 cookie 再试一次（裸下载）
+        if ydl_opts.get('cookiesfrombrowser'):
+            ydl_opts.pop('cookiesfrombrowser', None)
+            try:
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([url])
+            except Exception as e2:
+                print(f"    ❌ 免cookie重试仍失败: {e2}")
+                return ""
+        else:
+            return ""
 
     # 检查文件是否存在
     if not os.path.exists(wav):
@@ -212,9 +262,8 @@ async def process_bilibili(url: str, tag: str = "") -> str:
         wav = wav_16k
         print(f"    ✅ 转换为16kHz: {os.path.getsize(wav)//1024}KB")
 
-    print(f"  [2/3] MiMo ASR...")
-    text = mimo_asr(wav)
-    text = _clean(text)
+    print(f"  [2/3] ASR 转写...")
+    text = transcribe(wav)
 
     # 清理临时文件
     try:
@@ -238,10 +287,8 @@ async def process_bilibili(url: str, tag: str = "") -> str:
 # ── 主流程 ──
 
 async def main():
-    if not MIMO_API_KEY:
-        print("❌ 请先设置 MIMO_API_KEY 环境变量")
-        print("   export MIMO_API_KEY=your_key_here")
-        return
+    engine = "MiMo API" if MIMO_API_KEY else "whisper base(本地)"
+    print(f"🎙️ 转写引擎: {engine}")
 
     with open("data.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
@@ -249,7 +296,7 @@ async def main():
     bloggers = [a for a in data["articles"] if a.get("source") == "blogger"]
     need = [a for a in bloggers if len(a.get("content_intro", "")) < 500]
 
-    print(f"\n🎯 本地 ASR (MiMo): {len(need)}/{len(bloggers)} 条\n")
+    print(f"\n🎯 ASR 补提: {len(need)}/{len(bloggers)} 条\n")
 
     if not need:
         print("全部已有完整文案！")

@@ -62,8 +62,11 @@ def archive_data():
             seen_ids.add(aid)
 
     # 只保留近3天的数据（与 generate_hot.py 数据保留策略一致，防止归档累积旧数据）
+    # 兜底：管道停摆（近3天无新鲜新闻）时保留全部，避免归档也被清空
     cutoff = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
-    merged = [a for a in merged if a.get("date", "") >= cutoff]
+    _fresh = sum(1 for a in merged if a.get("source") != "blogger" and (a.get("date", "") or "")[:10] >= cutoff)
+    if _fresh >= 20:
+        merged = [a for a in merged if a.get("date", "") >= cutoff]
 
     archive["articles"] = merged
     archive["last_archived"] = datetime.now().isoformat()

@@ -65,8 +65,19 @@ def main():
     data = load_json(DATA_FILE)
     articles = data.get("articles", [])
     today = datetime.now().date()
-    news_cutoff = today - timedelta(days=2)  # 新闻保留3天（今天+昨天+前天）
+    _base_cutoff = today - timedelta(days=2)  # 新闻保留3天（今天+昨天+前天）
     blog_cutoff = today - timedelta(days=30)  # 博主不跟3天，保留30天
+
+    # 兜底：管道停摆（近3天无新鲜新闻）时保留全部旧新闻，避免站点被清空
+    _news_only = [a for a in articles if a.get("source") != "blogger"]
+    _fresh = 0
+    for _a in _news_only:
+        try:
+            if datetime.strptime((_a.get("date") or "")[:10], "%Y-%m-%d").date() >= _base_cutoff:
+                _fresh += 1
+        except Exception:
+            pass
+    news_cutoff = _base_cutoff if _fresh >= 20 else datetime(2000, 1, 1).date()
 
     blogger_groups = {}
     news = []
