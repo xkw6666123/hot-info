@@ -32,9 +32,17 @@ def aid_of(a):
 
 def quality(a):
     """排序权重：有真实ASR文案 > 有create_time"""
-    has_asr = 1 if (a.get("content_intro") or "").strip() and not a.get("content_intro", "").startswith("📹") else 0
+    ci = a.get("content_intro") or ""
+    has_asr = 1 if ci.strip() and not ci.startswith("📹") else 0
     has_ct = 1 if a.get("create_time") else 0
     return has_asr, has_ct
+
+
+def sort_key(a):
+    """统一排序键：抖音条目用 aweme_id 数值（随发布时间单调递增）；
+    B站条目 aweme_id 是 BV 号（int() 失败返回 0），回落 create_time。
+    每位博主只用单一平台，不会出现两种量纲混排。"""
+    return aid_of(a) or int(a.get("create_time") or 0)
 
 
 def main():
@@ -66,9 +74,8 @@ def main():
             if aid not in by_id or quality(a) > quality(by_id[aid]):
                 by_id[aid] = a
         uniq = list(by_id.values())
-        # 统一按 aweme_id 数值降序：它与发布时间单调递增（与 fix_blogger_data.py 同规则）。
-        # 不能用 create_time 排序——远端旧条目多数没有 ct，与 epoch 秒混排量纲不一致。
-        uniq.sort(key=aid_of, reverse=True)
+        # 排序见 sort_key 注释（此前用 create_time 与 aweme_id 混排量纲不一致导致旧条目上浮，已修）
+        uniq.sort(key=sort_key, reverse=True)
         kept = uniq[:3]
         merged_bloggers.extend(kept)
         ids = [f"{(a.get('title') or '')[:18]}@{a.get('date')}{'(ASR)' if quality(a)[0] else ''}" for a in kept]

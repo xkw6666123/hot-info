@@ -460,6 +460,20 @@ def shadi_write(topic, event):
 def main():
     print("=== 灵感生成器 v11 真实风格指纹驱动 ===\n")
     data = load_json(DATA_FILE)
+
+    # ── 无 GLM key（CI 环境）时保留已有灵感，避免模板覆盖本地 LLM 生成的高质量版本 ──
+    # 与 generate_hot.py generate_inspirations 的保护同款；本脚本被 workflow 独立调用，
+    # 缺这层保护会把推送上去的 LLM 精选灵感在下次 CI 整体冲掉
+    try:
+        from llm_inspiration import _load_key as _glm_key
+        if not _glm_key():
+            _existing = data.get("inspirations", [])
+            if _existing and any(len(i.get("wangba", "")) > 10 for i in _existing[:3]):
+                print(f"  💡 无 GLM key（CI 环境），保留已有 {len(_existing)} 条灵感（本地 LLM 版），不重新生成")
+                return
+    except Exception:
+        pass  # 任何异常都回退到正常模板生成，绝不影响 CI
+
     topics = select_topics(data)
     print(f"筛选 {len(topics)} 个高爆火话题\n")
 

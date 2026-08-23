@@ -9,7 +9,7 @@
 import json, os, re, time
 from datetime import datetime, timedelta, timezone
 
-WORK = r"D:\AI\hotinfo\hot-info"
+WORK = os.path.dirname(os.path.abspath(__file__))  # 脚本所在目录（此前硬编码旧目录 D:\AI\hotinfo\hot-info，CI 上必然失败被吞、本地误跑会污染旧项目）
 DATA_FILE = os.path.join(WORK, "data.json")
 JS_FILE = os.path.join(WORK, "data.js")
 HTML_FILE = os.path.join(WORK, "index.html")

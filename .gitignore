@@ -24,6 +24,13 @@ temp_*.mp3
 test_*.mp3
 *.log
 
+# 本地探针/一次性验证脚本与备份（防 git add . 误提交大文件）
+probe_*.py
+test_*.py
+_backup_*/
+data.json.bak*
+verify_live*.py
+
 # 系统文件
 .DS_Store
 Thumbs.db
