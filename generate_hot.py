@@ -1049,9 +1049,9 @@ def scrape_bloggers_f2():
 
 
 def scrape_bloggers_signed():
-    """抖音博主追踪：a_bogus 签名 + 匿名 ttwid（免费无token、无需登录）。
-    采用 douyin_crawl(f2/JohnserfSeed) 的纯 Python a_bogus 实现，匿名可拿 ~41 条。
-    依赖 requests + gmssl。实测匿名拿到真实视频。
+    """抖音博主追踪：a_bogus 签名 + 登录 Cookie 优先 / 匿名 ttwid 兜底。
+    登录 Cookie 从 douyin_cookies.txt 读取（extract_cookie_run.py 从 Chrome 提取），
+    登录态稳定绕过抖音频率风控；无 Cookie 时退回匿名抓取（有频率限制，仅部分博主能成功）。
     """
     try:
         import requests as _req
@@ -1060,7 +1060,17 @@ def scrape_bloggers_signed():
         print("  ⚠️ requests/gmssl 未安装，跳过抖音签名抓取")
         return []
 
-    print("📡 抖音博主追踪(a_bogus签名,匿名)...")
+    # 优先读取本地登录 Cookie（douyin_cookies.txt，已被 .gitignore 忽略，不会进公开仓库）
+    login_cookie = ""
+    try:
+        _ck_path = os.path.join(BASE_DIR, "douyin_cookies.txt")
+        if os.path.exists(_ck_path):
+            _ck = open(_ck_path, encoding="utf-8").read().strip()
+            if "sessionid=" in _ck:
+                login_cookie = _ck
+    except Exception:
+        pass
+    print("📡 抖音博主追踪(a_bogus签名," + ("登录Cookie" if login_cookie else "匿名") + ")...")
     WEB_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0")
     COMMON = {
@@ -1078,70 +1088,80 @@ def scrape_bloggers_signed():
     session.headers.update({"User-Agent": WEB_UA})
     abogus = ABogus(user_agent=WEB_UA, fp=BrowserFingerprintGenerator.generate_fingerprint("Edge"))
 
-    # 匿名 cookie：官方 ttwid 接口注册 + 随机 msToken
-    ttwid = ""
-    try:
-        r = session.post("https://ttwid.bytedance.com/ttwid/union/register/",
-                         json={"region": "cn", "aid": 1768, "needFid": False,
-                               "service": "https://www.douyin.com/", "mip": "0.0.0.0",
-                               "cbUrlProtocol": "https", "union": True},
-                         headers={"Content-Type": "application/json", "User-Agent": WEB_UA},
-                         timeout=10)
-        ttwid = r.cookies.get("ttwid") or ""
-    except Exception:
-        pass
     import random as _rnd
-    ms_token = "".join(_rnd.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") for _ in range(107))
-    cookie_parts = ["msToken=" + ms_token, "odin_tt=1"]
-    if ttwid:
-        cookie_parts.insert(0, "ttwid=" + ttwid)
-    cookie = "; ".join(cookie_parts)
+    import time as _time
+    def _fresh_cookie():
+        """每次调用重新注册 ttwid + 新 msToken，返回匿名 cookie。
+        抖音对连续请求有频率风控，复用同一 cookie 连续抓多个博主会触发 403/验证页。"""
+        ttwid = ""
+        try:
+            r = session.post("https://ttwid.bytedance.com/ttwid/union/register/",
+                             json={"region": "cn", "aid": 1768, "needFid": False,
+                                   "service": "https://www.douyin.com/", "mip": "0.0.0.0",
+                                   "cbUrlProtocol": "https", "union": True},
+                             headers={"Content-Type": "application/json", "User-Agent": WEB_UA},
+                             timeout=10)
+            ttwid = r.cookies.get("ttwid") or ""
+        except Exception:
+            pass
+        ms_token = "".join(_rnd.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") for _ in range(107))
+        cookie_parts = ["msToken=" + ms_token, "odin_tt=1"]
+        if ttwid:
+            cookie_parts.insert(0, "ttwid=" + ttwid)
+        return "; ".join(cookie_parts)
 
     articles = []
+    max_attempts = 1 if login_cookie else 3  # 登录态稳定1次即可；匿名态重试3次（频率风控）
     for name, sec_uid in [(n, u) for n, u in BLOGGER_SEC_UIDS.items() if u]:
-        try:
-            params = {**COMMON, "sec_user_id": sec_uid, "count": "20", "max_cursor": "0",
-                      "locate_query": "false", "publish_video_strategy_type": "2",
-                      "need_time_list": "1", "time_list_query": "0", "whale_cut_token": "",
-                      "cut_version": "1", "from_user_page": "1"}
-            query = "&".join(f"{k}={v}" for k, v in params.items())
-            signed_query, _ab, ua, _ = abogus.generate_abogus(query, "")
-            url = f"https://www.douyin.com/aweme/v1/web/aweme/post/?{signed_query}"
-            headers = {"User-Agent": ua, "Referer": "https://www.douyin.com/", "Cookie": cookie,
-                       "Accept": "application/json, text/plain, */*", "Accept-Language": "zh-CN,zh;q=0.9"}
-            r = session.get(url, headers=headers, timeout=15)
-            if r.status_code != 200:
-                print(f"    ⚠️ {name}: HTTP {r.status_code}")
-                continue
-            j = r.json()
-            al = j.get("aweme_list") or []
-            # 置顶帖(is_top=1)不是最新视频，跳过；再按 create_time 降序取前5
-            al = [a for a in al if not a.get("is_top") and not a.get("is_ads")]
-            al.sort(key=lambda a: safe_int(a.get("create_time", 0), 0), reverse=True)
-            for a in al[:5]:
-                ct = a.get("create_time", 0)
-                desc = (a.get("desc", "") or "").strip()
-                stats = a.get("statistics", {}) or {}
-                aweme_id = str(a.get("aweme_id", ""))
-                articles.append({
-                    "id": make_id("dy_signed", f"{name}_{aweme_id}") % 10**9,
-                    "title": (desc or f"{name} 最新视频")[:50],
-                    "summary": f"{name}：{desc}"[:200],
-                    "source": "blogger",
-                    "blogger_name": name,
-                    "date": datetime.fromtimestamp(ct).strftime("%Y-%m-%d") if ct else today,
-                    "time": datetime.fromtimestamp(ct).strftime("%H:%M") if ct else now_time,
-                    "tags": ["博主", "爆款", "拆解"],
-                    "url": f"https://www.douyin.com/video/{aweme_id}",
-                    "likes": safe_int(stats.get("digg_count", 0), 0),
-                    "comments": safe_int(stats.get("comment_count", 0), 0),
-                    "aweme_id": aweme_id,
-                    "create_time": ct,
-                    "content_intro": f"📹 {name}最新视频：{desc}"[:200],
-                })
-            print(f"    ✅ {name}: {len(al)}条")
-        except Exception as e:
-            print(f"    ⚠️ {name}失败: {e}")
+        for attempt in range(max_attempts):
+            if attempt > 0:
+                _time.sleep(3)  # 风控退避：失败后等待再重试
+            try:
+                cookie = login_cookie if login_cookie else _fresh_cookie()  # 登录态复用，匿名态每次换新
+                params = {**COMMON, "sec_user_id": sec_uid, "count": "20", "max_cursor": "0",
+                          "locate_query": "false", "publish_video_strategy_type": "2",
+                          "need_time_list": "1", "time_list_query": "0", "whale_cut_token": "",
+                          "cut_version": "1", "from_user_page": "1"}
+                query = "&".join(f"{k}={v}" for k, v in params.items())
+                signed_query, _ab, ua, _ = abogus.generate_abogus(query, "")
+                url = f"https://www.douyin.com/aweme/v1/web/aweme/post/?{signed_query}"
+                headers = {"User-Agent": ua, "Referer": "https://www.douyin.com/", "Cookie": cookie,
+                           "Accept": "application/json, text/plain, */*", "Accept-Language": "zh-CN,zh;q=0.9"}
+                r = session.get(url, headers=headers, timeout=15)
+                if r.status_code != 200:
+                    print(f"    ⚠️ {name}: HTTP {r.status_code} (尝试{attempt+1}/{max_attempts})")
+                    continue
+                j = r.json()
+                al = j.get("aweme_list") or []
+                # 置顶帖(is_top=1)不是最新视频，跳过；再按 create_time 降序取前5
+                al = [a for a in al if not a.get("is_top") and not a.get("is_ads")]
+                al.sort(key=lambda a: safe_int(a.get("create_time", 0), 0), reverse=True)
+                for a in al[:5]:
+                    ct = a.get("create_time", 0)
+                    desc = (a.get("desc", "") or "").strip()
+                    stats = a.get("statistics", {}) or {}
+                    aweme_id = str(a.get("aweme_id", ""))
+                    articles.append({
+                        "id": make_id("dy_signed", f"{name}_{aweme_id}") % 10**9,
+                        "title": (desc or f"{name} 最新视频")[:50],
+                        "summary": f"{name}：{desc}"[:200],
+                        "source": "blogger",
+                        "blogger_name": name,
+                        "date": datetime.fromtimestamp(ct).strftime("%Y-%m-%d") if ct else today,
+                        "time": datetime.fromtimestamp(ct).strftime("%H:%M") if ct else now_time,
+                        "tags": ["博主", "爆款", "拆解"],
+                        "url": f"https://www.douyin.com/video/{aweme_id}",
+                        "likes": safe_int(stats.get("digg_count", 0), 0),
+                        "comments": safe_int(stats.get("comment_count", 0), 0),
+                        "aweme_id": aweme_id,
+                        "create_time": ct,
+                        "content_intro": f"📹 {name}最新视频：{desc}"[:200],
+                    })
+                print(f"    ✅ {name}: {len(al)}条")
+                break
+            except Exception as e:
+                print(f"    ⚠️ {name}失败(尝试{attempt+1}/{max_attempts}): {e}")
+        _time.sleep(2)  # 博主之间间隔，避免连续请求触发频率风控
     return articles
 
 
