@@ -16,11 +16,11 @@ TIMEOUT = 25
 
 # 各博主人设提示（帮助 LLM 抓住差异化，而不是所有博主都一个味）
 BLOGGER_HINTS = {
-    "网吧信息差": "大学生视角的荒诞解构，爱用「不是，xxx？」「能理解能理解」，把严肃的事说得哭笑不得，带点自嘲",
-    "阿七大型纪录片": "日期锚点式信息差播报，老记者口吻，爱说「先说结论」「巴沙帮你捋」，强调别人没看到的那层信息",
-    "陈先生": "商业纪录片旁白腔，爱用「大型纪录片之《xxx》」，叙事宏大、讲商业逻辑和行业信号，自带BGM感",
-    "人类观察菌": "冷静对话体，像在摆事实、呈现多个版本再让观众自己判断，爱说「先说基本事实」「三个版本三个世界」",
-    "沙漠一之雕": "B站唠嗑式快报，快节奏连播、信息量大，爱说「一夜之间发生了啥」「来来来」「补一下今天的热搜」",
+    "网吧信息差": "大学生视角的荒诞解构，爱用「不是，xxx？」「能理解能理解」，把严肃的事说得哭笑不得，带点自嘲。不用日期开头",
+    "阿七大型纪录片": "日期锚点式信息差播报，老记者口吻，习惯用「8月X日社会热点信息差」这类日期+主题开场，强调别人没看到的那层信息。只有他可以用日期开头",
+    "陈先生": "商业纪录片旁白腔，爱用「大型纪录片之《xxx》」，叙事宏大、讲商业逻辑和行业信号，自带BGM感。不用日期开头",
+    "人类观察菌": "冷静对话体，像在摆事实、呈现多个版本再让观众自己判断，爱说「先说基本事实」「三个版本三个世界」。不用日期开头",
+    "沙漠一之雕": "B站唠嗑式快报，快节奏连播、信息量大，爱说「一夜之间发生了啥」「来来来」「补一下今天的热搜」。不用日期开头",
 }
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -80,8 +80,9 @@ def _load_transcripts():
     return result
 
 
-def _build_prompt(blogger_name, style, topic):
+def _build_prompt(blogger_name, style, topic, summary=""):
     """构建模仿 prompt：RAG 检索"该博主讲相似话题"的真实口播为主 + 口头禅/开场收尾为辅。
+    summary 是话题的真实新闻素材——没有它 LLM 只能对着空话题瞎编（此前灵感生硬/跑题的根因）。
     返回 (system, user, samples)：samples 是喂给模型的原始样本（供照抄检测用）。"""
     # 主素材：RAG 检索与当前话题最相似的该博主历史口播（像"博主讲这类话题时"的样子）
     excerpts = []
@@ -120,6 +121,21 @@ def _build_prompt(blogger_name, style, topic):
     hint = BLOGGER_HINTS.get(blogger_name, "")
     hint_line = f"\n【TA 的人设/风格】{hint}" if hint else ""
     today_cn = datetime.now().strftime("%Y年%m月%d日")
+    # 话题事实素材：有就给足，没有就明说"只有标题"，让模型围绕标题本身发挥而不是编新闻
+    summary_clean = re.sub(r"#[^\s#]+", "", summary or "").strip()[:200]
+    # 剥掉素材里的博主名前缀（"网吧信息差：xxx"）——否则模型会把博主名当成话题的一部分写进别人的文案
+    for _n in BLOGGER_HINTS:
+        if summary_clean.startswith(_n + "：") or summary_clean.startswith(_n + ":"):
+            summary_clean = summary_clean[len(_n) + 1:].strip()
+            break
+    if summary_clean and summary_clean != topic:
+        material_line = f"话题：{topic}\n这个话题的新闻事实：{summary_clean}"
+        fact_rule = ("2. 必须围绕上面的话题和新闻事实来写，写的是这件真实发生的事；"
+                     "**严禁编造与话题无关的事件、人物、数据**（没有素材就事论事，不要扯AI、元宇宙等万能话题凑字数）")
+    else:
+        material_line = f"话题：{topic}"
+        fact_rule = ("2. 必须围绕上面这个话题本身来写；这个话题只有标题没有详细素材，"
+                     "你可以就标题所指的这件事发表看法、吐槽、分析，但**严禁编造标题之外的具体事件、人名、数字**")
     user_p = f"""今天是 {today_cn}。下面是抖音博主「{blogger_name}」真实视频的完整口播转录（最能代表 TA 的口吻、用词和说话节奏，请重点学习）：
 
 【博主真实口播文案】
@@ -130,16 +146,18 @@ def _build_prompt(blogger_name, style, topic):
 【TA 典型的收尾方式】{endings}{hint_line}
 
 现在请完全代入「{blogger_name}」这个人，针对下面这个话题写一条抖音视频文案：
-话题：{topic}
+{material_line}
 
 要求：
 1. 必须就是 TA 本人的口吻——读到的人会觉得"这就是{blogger_name}写的"，不要套话、不要官方腔、不要书面腔
-2. 上面的真实口播讲的是别的具体事件，**只学它的口吻、句式、节奏和口头禅，绝不照抄里面的事件/人名/数字**，你要写的是新话题
-3. 口语化、真实、有趣，像在跟粉丝唠嗑；可以有观点、有吐槽、有情绪，别干巴巴陈述事实
-4. 若 TA 习惯用日期开头，务必用今天（{today_cn}）的真实日期，不要瞎编日期
-5. 结尾学 TA 真实收尾的**腔调和句式节奏**，但内容必须贴合当前话题；**严禁把示例文案里的任何句子原样搬进你的文案**（那些是别的视频的原话，跟新话题无关）；也禁止"评论区聊聊/你们觉得呢"这类任何博主都能说的通用互动语
-6. 长度控制在 60~140 字
-7. 只输出文案本身，不要任何解释、标题、引号、前缀标签或多余的话"""
+{fact_rule}
+3. 上面的真实口播讲的是别的具体事件，**只学它的口吻、句式、节奏和口头禅，绝不照抄里面的事件/人名/数字**，你要写的是新话题
+4. 口语化、真实、有趣，像在跟粉丝唠嗑；可以有观点、有吐槽、有情绪，别干巴巴陈述事实
+5. 只有「阿七大型纪录片」可以用日期开头（用今天 {today_cn}）；其他博主**禁止**用日期开头
+6. 收尾要贴合当前话题，要么用话题相关的反问/观点自然收住，要么干脆不收；**严禁在结尾拼接与话题无关的口头禅或收尾句**；也禁止"评论区聊聊/你们觉得呢"这类任何博主都能说的通用互动语
+7. 严禁把示例文案里的任何句子原样搬进你的文案（那些是别的视频的原话，跟新话题无关）
+8. 长度控制在 60~140 字
+9. 只输出文案本身，不要任何解释、标题、引号、前缀标签或多余的话"""
     return sys_p, user_p, source_texts
 
 
@@ -173,9 +191,10 @@ def _post(url, payload, key):
         return None
 
 
-def generate_llm_inspiration(blogger_name, style, topic, max_retry=2):
+def generate_llm_inspiration(blogger_name, style, topic, max_retry=2, summary=""):
     """主入口：模仿博主生成一条文案。成功返回 str，失败返回 None（上层回退模板）
 
+    summary：话题对应的真实新闻摘要，给 LLM 事实素材，防止对着空话题瞎编。
     配额保护：每次运行 LLM 调用数有上限（默认 50 次 ≈ 10 个话题×5 博主），
     超出后回退模板，防止免费 token 被一轮跑空。可用环境变量 LLM_MAX_CALLS 调整。"""
     global _call_count
@@ -188,17 +207,18 @@ def generate_llm_inspiration(blogger_name, style, topic, max_retry=2):
     if not clean:
         return None
 
-    sys_p, user_p, source_texts = _build_prompt(blogger_name, style, clean)
+    sys_p, user_p, source_texts = _build_prompt(blogger_name, style, clean, summary=summary)
     payload = {
         "model": GLM_MODEL,
         "messages": [
             {"role": "system", "content": sys_p},
             {"role": "user", "content": user_p},
         ],
-        "temperature": 0.9,   # 高一点更活泼
+        "temperature": 0.8,   # 0.9 太容易跑偏跑题，0.8 兼顾活泼与贴题
         "top_p": 0.95,
         "max_tokens": 300,
     }
+    date_open_pat = re.compile(r'^\s*(今天)?[（(]?\d{4}年\d{1,2}月\d{1,2}日[）)]?[，,。：: ]*')
     for attempt in range(max_retry):
         _call_count += 1
         text = _post(GLM_URL, payload, key)
@@ -208,6 +228,18 @@ def generate_llm_inspiration(blogger_name, style, topic, max_retry=2):
             text = re.sub(r'^【[^】]*】\s*', '', text).strip()
             # 清掉结尾偶发的英文乱码（如 GLM 幻觉出的 "dinero." / "Sorry"）
             text = re.sub(r'[A-Za-z]{3,}\s*\.?\s*$', '', text).strip()
+            # 人格串味清理①：GLM 提到"大型纪录片"会自动补全成知名账号"阿七大型纪录片"，
+            # 陈先生人设的「大型纪录片之《xxx》」开场尤其高发，先做无害替换
+            text = text.replace("阿七大型纪录片之《", "大型纪录片之《") \
+                       .replace("阿七大型纪录片《", "大型纪录片《")
+            # 非阿七博主禁止日期开头（此前所有文案都"2026年08月21日，"开头，极其生硬）
+            if blogger_name != "阿七大型纪录片":
+                text = date_open_pat.sub('', text).strip()
+            # 人格串味清理②：输出里出现其他博主名字 → 串台了，重试
+            _others = [n for n in BLOGGER_HINTS if n != blogger_name]
+            if any(n in text for n in _others):
+                print(f"    ⚠️ 检测到人格串味（{blogger_name}的文案出现其他博主名），重试 ({attempt+1}/{max_retry})", flush=True)
+                continue
             if len(text) >= 25 and _has_verbatim_copy(text, source_texts):
                 print(f"    ⚠️ 检测到照抄原句，重试 ({attempt+1}/{max_retry})", flush=True)
                 continue

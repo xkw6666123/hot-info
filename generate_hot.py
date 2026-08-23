@@ -805,6 +805,7 @@ def _build_pw_article(name, v):
     aweme_id = v.get("id", "")
     title_text = v.get("title", "").strip()
     likes = v.get("likes", 0) or 0
+    ct = v.get("create_time", 0) or 0  # 真实发布时间戳（0=未截获，降级用今天）
     if not likes:
         m = re.match(r'([\d.]+)万', title_text)
         if m:
@@ -812,18 +813,25 @@ def _build_pw_article(name, v):
             title_text = title_text[m.end():].strip()
     if not title_text:
         title_text = f"{name} 最新视频"
+    # 优先用真实发布时间；截获失败才降级 today（避免把旧帖/置顶盖上今天的戳）
+    if ct:
+        pub_date = datetime.fromtimestamp(ct).strftime("%Y-%m-%d")
+        pub_time = datetime.fromtimestamp(ct).strftime("%H:%M")
+    else:
+        pub_date, pub_time = today, ""
     return {
         "id": make_id("pw_blogger", f"{name}_{aweme_id}") % 10**9,
         "title": title_text[:80],
         "summary": f"{name}：{title_text}"[:200],
         "source": "blogger",
         "blogger_name": name,
-        "date": today, "time": "",
+        "date": pub_date, "time": pub_time,
         "tags": ["博主", "爆款", "拆解"],
         "url": f"https://www.douyin.com/video/{aweme_id}",
         "likes": likes,
         "comments": max(likes // 100, 10),
         "aweme_id": aweme_id,
+        "create_time": ct or None,
         "content_intro": f"📹 {name}最新视频：{title_text}"[:200],
     }
 
@@ -1074,6 +1082,9 @@ def scrape_bloggers_signed():
                 continue
             j = r.json()
             al = j.get("aweme_list") or []
+            # 置顶帖(is_top=1)不是最新视频，跳过；再按 create_time 降序取前5
+            al = [a for a in al if not a.get("is_top") and not a.get("is_ads")]
+            al.sort(key=lambda a: safe_int(a.get("create_time", 0), 0), reverse=True)
             for a in al[:5]:
                 ct = a.get("create_time", 0)
                 desc = (a.get("desc", "") or "").strip()
@@ -1168,12 +1179,21 @@ def scrape_bloggers_pw():
                     if "aweme/v1/web/aweme/post" in resp.url and resp.status == 200:
                         try:
                             body = resp.json()
-                            for v in body.get("aweme_list", [])[:5]:
+                            for v in body.get("aweme_list", [])[:8]:
+                                # 置顶视频不是最新视频：抖音把 is_top=1 的帖排在列表最前，必须跳过
+                                if v.get("is_top") or v.get("is_ads"):
+                                    continue
                                 st = v.get("statistics", {}) or {}
+                                _ct = v.get("create_time", 0) or 0
+                                try:
+                                    _ct = int(_ct)
+                                except (TypeError, ValueError):
+                                    _ct = 0
                                 _cap.append({
                                     "id": v.get("aweme_id", ""),
                                     "title": (v.get("desc", "") or "").strip(),
                                     "likes": st.get("digg_count", 0) or 0,
+                                    "create_time": _ct,
                                 })
                         except Exception:
                             pass
@@ -1189,6 +1209,13 @@ def scrape_bloggers_pw():
                 page.remove_listener("response", on_resp)
 
                 if captured:
+                    # 按真实发布时间降序（API 返回顺序可能被置顶/热门干扰，不能信位置）
+                    captured.sort(key=lambda x: x.get("create_time") or 0, reverse=True)
+                    # 阿七特判：过滤"分享一些短视频心得"等非日常热点的置顶/杂帖
+                    if name == "阿七大型纪录片":
+                        captured = [v for v in captured
+                                    if not any(kw in v.get("title", "")
+                                               for kw in ("分享一些短视频心得", "短视频创业"))]
                     for v in captured[:5]:
                         articles.append(_build_pw_article(name, v))
                     print(f"    ✅ {name}: {len(captured)}条")
@@ -1395,9 +1422,29 @@ def generate_inspirations(all_articles):
     scored.sort(key=lambda x: x[0], reverse=True)
 
     # 3. 来源多样性：每平台最多8条，博主内容不限
+    # 3.5 话题质量过滤：无实质内容的"空话题"（如博主日更的通用标题"今日热点信息快报"）
+    #     会让 LLM/模板对着空气瞎编——这是灵感生硬跑题的根因，必须在源头拦住
+    _GENERIC_TITLES = {
+        "今日热点信息快报", "今日热点快报", "热点快报", "热点信息差", "社会热点信息差",
+        "今日热点", "热点新闻", "每日热点", "今日新闻", "热点合集", "最新视频",
+    }
+    def _has_substance(title):
+        t = re.sub(r'\[.*?\]', '', title or '')
+        t = re.sub(r'#\S+', '', t).strip(' ，。！？、:：')
+        if len(t) < 8:
+            return False
+        if t in _GENERIC_TITLES:
+            return False
+        # 博主日更合集壳标题（"8月5日社会热点信息差"）不是具体话题，LLM 只能对着它空谈
+        if re.match(r'^\d{1,2}月\d{1,2}日社会热点信息差$', t):
+            return False
+        return True
+
     selected = []
     seen_non_blogger = {}
     for score, a in scored:
+        if not _has_substance(a.get("title", "")):
+            continue
         src = a.get("source", "其他")
         if a.get("source") == "blogger":
             selected.append(a)
@@ -1467,14 +1514,14 @@ def generate_inspirations(all_articles):
         return pick(patterns, topic + 'wb_r8' + str(idx))
 
     def aqi_style(topic, source, title, idx=0):
-        """阿七纪录片 — 信息差视角，逐条分析，像在看一个调查记者写稿"""
+        """阿七纪录片 — 日期锚点信息差播报，老记者口吻"""
         k = keyword(topic)[:15]; s = short(topic, 40); ts = today_str
         patterns = [
-            f"{ts}社会热点信息差。今天先讲一个很多人只看了一眼标题就划走的事：{s}。你可能觉得这跟你没什么关系，但巴沙帮你理了三条线：一是这件事的时间线其实比报道里说的要早将近一周；二是当事人的回应方式本身就很有意思，你仔细读他说的每一句话；三是这件事背后涉及的人群比表面上多得多。这就是信息差——你看的是新闻，别人看的是信号。",
-            f"热点信息差。{s}——这条新闻今天在全网刷到的人应该不少，但是你有没有注意到，不同平台在讲同一件事的时候，侧重点完全不一样？微博在强调情绪，知乎在分析逻辑，评论区的大哥在科普背景。巴沙花了半天把这些版本都看了一遍，发现每个版本都只说了一半的事实。另一半在哪里？在这条视频里。",
-            f"{ts}，巴沙今天想讲一个其实挺重要但没什么人深聊的事：{k}。这类新闻有一个共同特点——标题很平淡，点进去才发现水很深。我分三个角度帮你看：时间、人物、潜在影响。第一个角度——第二个角度——第三个——好了，信息给你了。每天一条信息差，你就比99%的人多知道一点。",
-            f"为什么{s}？因为大部分人都被标题带偏了。巴沙翻了一上午原始资料，发现最早的消息源其实不是你们看到的那个账号，而是一个几乎没人关注的小号。然后这条信息经过了三次转手，每转一次就变一次意思，到了热搜上的时候已经面目全非。这个过程本身就是一个经典的信息差案例。",
-            f"今天全网都在讨论{s}，但没几个人把关键节点说清楚。巴沙直接给你画时间线：第一阶段——第二阶段——反转点——现状——。你把这个时间线记住，下次再有人跟你聊这个事，你就不会被带节奏了。记住巴沙一句话：看新闻永远要看谁在说、对谁说、为什么这时候说。",
+            f"{ts}社会热点信息差。{s}。很多人只看了一眼标题就划走了，但这件事的时间线比报道里说的要长，牵扯的人也比表面上多。这就是信息差——你看的是新闻，别人看的是信号。",
+            f"热点信息差。{s}。这条新闻今天刷到的人不少，但你有没有发现，不同平台讲同一件事的侧重点完全不一样？我把几个版本都看了一遍，每个版本都只说了一半。另一半，在这条视频里。",
+            f"{ts}，今天讲一个挺重要但没什么人深聊的事：{k}。这类新闻有个共同特点——标题很平淡，点进去才发现水很深。每天一条信息差，你就比99%的人多知道一点。",
+            f"为什么说{s}这事没那么简单？因为大部分人都被标题带偏了。信息从源头到热搜，每转一次手就变一次意思，等你看到的时候已经面目全非。这个过程本身就是经典的信息差案例。",
+            f"今天全网都在讨论{s}，但没几个人把关键节点说清楚。记住一句话：看新闻永远要看谁在说、对谁说、为什么这时候说。把这条时间线记住，下次有人跟你聊这个事，你就不会被带节奏。",
         ]
         return pick(patterns, topic + 'aqi_v7' + str(idx))
 
@@ -1484,15 +1531,15 @@ def generate_inspirations(all_articles):
         ib = any(w in topic for w in ['上市','降价','新品','发布','收购','手机','车','股','芯片','AI','裁员','融资'])
         if ib:
             patterns = [
-                f"大型纪录片之《{k}》持续为您播出。{s}，这件事如果放在三年前，没有人会信。但现在它真实地发生了。不是因为运气好，是因为整个行业走到了一个拐点。以前大家想的是怎么做大，现在所有人都在想怎么活下去。活下去的办法就一条——把东西做好，把价格打下来。不玩虚的。",
-                f"这波真的不讲武德。{s}。我理解为什么很多人说不可能——因为按照常规思路这件事确实不可能。但是这次人家走的路跟你想象的不太一样。过去大家挤在一条赛道上卷，卷到最后谁都赚不到钱。现在有人换了一条路——不是更好，是更对。数据不会骗人，你自己去看。",
-                f"来讲一个正在发生的产业变革：{s}。很多人看新闻只看标题，但其实这条新闻背后有三个信号：第一，产业链上游在重构；第二，终端定价逻辑在变；第三，消费者的预期被重新教育了。任何一个信号单独看都不算什么，三个信号一起出现——这就不是偶然了。",
+                f"大型纪录片之《{k}》持续为您播出。{s}，这件事放在三年前，没有人会信，但现在它真实地发生了。不是运气好，是行业走到了拐点。以前大家想怎么做大，现在所有人想怎么活下去。",
+                f"这波真的不讲武德。{s}。我理解为什么很多人说不可能——按常规思路确实不可能。但这次走的路跟你想象的不一样。过去大家挤在一条赛道上卷，现在有人换了一条路。数据不会骗人，你自己去看。",
+                f"来讲一个正在发生的产业变化：{s}。很多人看新闻只看标题，但这条新闻背后的信号比新闻本身重要：产业链在变、定价逻辑在变、消费者的预期也在变。几个信号一起出现，就不是偶然了。",
             ]
         else:
             patterns = [
-                f"大型纪录片之《{k}》。{s}，讲真的，这个事发生的时候我一点都不意外。因为在过去的三个月里，类似的事情已经有四五起了。大家觉得这是小概率事件，其实完全不是——只是以前没人统计罢了。现在统计出来了，数字摆在那里，不信也得信。这就是我说的——大数据时代，没有秘密。",
-                f"今天讲一个现象级的新闻：{s}。我翻了一下评论区，点赞最高的三条评论分别代表了三种完全不同的立场。有意思的不是他们说了什么，而是他们的点赞数——你会发现这场争论其实没有赢家，每个人的观点都被一半的人支持、一半的人反对。这种撕裂感，在最近的热搜里越来越常见了。",
-                f"《{k}》这部纪录片更新了。{s}。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。甲方说——乙方回应——第三方插了一句——你看出来了吗？这里面有一个很微妙的权力结构。这是真实的中国互联网，比任何剧本都精彩。",
+                f"大型纪录片之《{k}》。{s}。讲真的，这事发生的时候我一点都不意外，因为过去一段时间类似的事已经有好几起了，只是以前没人把它们连起来看。现在连起来了，数字摆在那里。",
+                f"今天讲一个现象级的新闻：{s}。我翻了评论区，前排几种观点立场完全不同。有意思的不是他们说了什么，而是你会发现这场争论其实没有赢家——这种撕裂感，最近越来越常见。",
+                f"《{k}》这部纪录片更新了。{s}。说大不大说小不小，但我注意到的不是事情本身，是各方的反应。你仔细看每一方说话的时间点和措辞，里面有一个很微妙的结构。这比剧本精彩。",
             ]
         return pick(patterns, topic + 'chen_v7' + str(idx))
 
@@ -1500,11 +1547,11 @@ def generate_inspirations(all_articles):
         """人类观察菌 — 冷静观察者，摆事实不讲道理，像在看一份社会实验报告"""
         k = keyword(topic)[:15]; s = short(topic, 40)
         patterns = [
-            f"今日热点快报：{k}。先说基本事实——{s}，这是目前可以确认的。然后有意思的部分来了：官方说的是A，当事人说的是B，网友说的是C。三个版本，三个世界。巴沙不告诉你谁对谁错，我把所有能找到的公开信息放在下面，你自己比对，自己判断。",
-            f"一条热乎的新闻：{s}。根据目前已经公开的信息，我整理了这样一个时间线——最开始是——然后是——转折出现在——现在的状态是——。你看完这条时间线，有没有觉得哪里不对劲？如果有，评论区告诉我你注意到的是什么。",
-            f"热点快报，先看数据：{s}。说一下我注意到的三个细节，其他报道基本都只提了第一个。细节一——细节二——细节三——。这三个细节连起来，指向一个不太一样的方向。今天我不给结论，只呈现信息，结论交给你。",
-            f"今天观察到一个有趣的现象：{k}。{s}。我打开微博评论区看了前五十条——大概60%的人说——30%的人说——剩下10%在问今天午饭吃什么。这个比例本身就是一个信号。你觉得这个比例说明了什么？来评论区聊聊你的分析。",
-            f"快报时间。{s}。巴沙收集了公开信息整理了一下前后脉络：起因→发展→各方回应→最新进展。好了打出来给你们了。我今天不想评价，因为我觉得这件事的答案不在任何一方的说法里，在那些还没被说出来的信息里。评论区聊聊你的视角。",
+            f"今日热点快报：{k}。先说基本事实——{s}，这是目前可以确认的。然后有意思的部分来了：官方一个说法，当事人一个说法，网友又是另一个版本。三个版本，三个世界。信息放这，你自己判断。",
+            f"一条热乎的新闻：{s}。根据目前公开的信息，我把整件事的时间线捋了一遍。你看完有没有觉得哪里不对劲？如果有，说明你注意到关键了。",
+            f"热点快报，先看事实：{s}。说一下我注意到的几个细节，大部分报道只提了表面那层。这几个细节连起来，指向一个不太一样的方向。今天不给结论，只呈现信息，结论交给你。",
+            f"今天观察到一个有趣的现象：{k}。{s}。我翻了评论区前排，几种观点的比例本身就很有意思。这个比例说明的问题，可能比事件本身还值得琢磨。",
+            f"快报时间。{s}。公开信息的前后脉络整理好了：起因、发展、各方回应、最新进展。今天不评价，因为答案不在任何一方的说法里，在那些还没被说出来的信息里。",
         ]
         return pick(patterns, topic + 'gc_v7' + str(idx))
 
@@ -1512,11 +1559,11 @@ def generate_inspirations(all_articles):
         """沙漠一之雕 — 快节奏连播，信息量大，像在报新闻联播"""
         k = keyword(topic)[:12]; s = short(topic, 45); ts = today_str
         patterns = [
-            f"一夜之间发生了啥？{ts}热点快报。第一条——{s}。起因很简单，但后面发生的事完全出乎意料。事情是这样的：最早是——结果没过多久——然后今天上午——。大家现在最关心的问题是——这个问题的答案可能比你想的复杂。来评论区一人一句。",
-            f"{ts}热点开唠。昨天晚上到今天全网最热闹的新闻：{k}。给还没看的朋友用一句话说清楚——{s}。如果你觉得这件事就是一个简单的A导致B，那可能要重新想想了。因为它后面的逻辑其实是一条链：从A到B到C到D，中间每个环节都有人在操作。这不是一个人的事，是一群人的事。",
-            f"用两分钟给你补完今天的热搜，先说最火的一个：{k}。{s}。目前我看到的最新情况是这样——但是如果你往回翻翻时间线，你会发现事情在三天前就已经有苗头了。为什么三天前没人关注？因为那时候信息还太碎，没人拼起来。巴沙今天帮你拼好了。",
-            f"来，今天的热点按时间串一下：{s}。早上——下午——傍晚——。一天之内，事情变了三回。每回都不一样。你如果只看中午的报道，你会得出一个完全相反的结论。这就是为什么你需要信息差——不是比别人快，是比别人全。",
-            f"补一下今天的热搜。{s}。先说结论：这件事现在还在发酵中，后面的走向还没定。但是有几点是确定的——第一——第二——第三——。这三点不管后面怎么变，都不会变。因为这是事实，不是观点。好，下一条——",
+            f"一夜之间发生了啥？{ts}热点快报。第一条，{s}。起因很简单，但后面发生的事完全出乎意料。来，评论区一人一句。",
+            f"{ts}热点开唠。昨天到现在全网最热闹的新闻：{k}。给还没看的朋友一句话说清楚——{s}。你要是觉得这事就是简单的A导致B，那得重新想想，它后面是一整条链，每个环节都有人在操作。",
+            f"用两分钟给你补完今天的热搜，先说最火的一个：{k}。{s}。目前最新情况是这样，但你往回翻时间线，几天前就有苗头了。为什么当时没人关注？信息太碎，没人拼起来。今天帮你拼好了。",
+            f"来，今天的热点按时间串一下：{s}。这事短时间内变了好几回，你只看其中一个时间点的报道，会得出完全相反的结论。这就是为什么你需要信息差——不是比别人快，是比别人全。",
+            f"补一下今天的热搜。{s}。先说结论：这事还在发酵，走向没定。但已经确认的事实就是事实，不会跟着反转变。好，下一条。",
         ]
         return pick(patterns, topic + 'sd_v7' + str(idx))
 
@@ -1562,8 +1609,11 @@ def generate_inspirations(all_articles):
             summary = a.get("summary", "") or ""
             seed = f"{topic}_{source}_{i}"
             
-            # 使用学习到的风格生成灵感
-            style_inspirations = gen_func(topic, source, learned_styles)
+            # 使用学习到的风格生成灵感（传 summary 给 LLM 当事实素材，防止对空话题瞎编）
+            try:
+                style_inspirations = gen_func(topic, source, learned_styles, summary=summary)
+            except TypeError:
+                style_inspirations = gen_func(topic, source, learned_styles)
             
             inspirations.append({
                 "topic": topic,
@@ -1813,6 +1863,20 @@ def main(mode="full"):
 
     
     # 每个博主：先按标题去重（同一视频可能因 ID 不同产生两条），再保留最新 3 条
+    def _blogger_recency_key(x):
+        """博主视频真实新旧排序键：create_time 时间戳 > aweme_id（数值随时间递增）> date 字符串。
+        不能信 date——Playwright 兜底路径曾把 date 盖成抓取当天，导致置顶旧帖冒充最新。"""
+        ct = x.get("create_time")
+        try:
+            ct = int(ct) if ct else 0
+        except (TypeError, ValueError):
+            ct = 0
+        try:
+            aid = int(x.get("aweme_id") or 0)
+        except (TypeError, ValueError):
+            aid = 0
+        return (ct, aid, x.get("date", "") or "", x.get("time", "") or "")
+
     blogger_by_name = {}
     for a in all_articles:
         if a.get("source") == "blogger":
@@ -1858,7 +1922,7 @@ def main(mode="full"):
         # 从 all_articles 中移除被标题去重掉的条目
         if removed_ids:
             all_articles = [a for a in all_articles if str(a.get("id","")) not in removed_ids]
-        deduped.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+        deduped.sort(key=_blogger_recency_key, reverse=True)
         blogger_by_name[name] = deduped
     
     # 清理旧版 [博主名] 标题前缀
@@ -1871,7 +1935,7 @@ def main(mode="full"):
     # 保留最新 3 条，移除超出部分
     
     for name, items in blogger_by_name.items():
-        items.sort(key=lambda x: (x.get("date", ""), x.get("time", "")), reverse=True)
+        items.sort(key=_blogger_recency_key, reverse=True)
         kept = items[:3]
         removed = items[3:]
         if removed:
@@ -2004,7 +2068,7 @@ def main(mode="full"):
             except ValueError:
                 old += 1
                 continue
-        recent.sort(key=lambda x: x.get("date","") or x.get("published_at","") or "", reverse=True)
+        recent.sort(key=_blogger_recency_key, reverse=True)
         fresh.extend(recent[:3])
         blog_removed += old + max(0, len(recent) - 3)
     if blog_removed:
