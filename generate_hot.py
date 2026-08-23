@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import time
+import html
 import hashlib
 import urllib.request
 import urllib.error
@@ -404,9 +405,9 @@ def scrape_wallstreetcn():
     return articles
 
 def scrape_cls():
-    """财联社（API不可用时从HTML抓取）"""
+    """财联社（API需要签名，不可用时从HTML抓取）"""
     print("📡 财联社...")
-    # 尝试 API（可能已迁移）
+    # API 已要求签名（errno=10012 签名错误），保留尝试但预期走 HTML 降级
     data = fetch_json("https://www.cls.cn/v1/roll/get_roll_list?app=CailianpressWeb&os=web&sv=8.4.6",
                       referer="https://www.cls.cn/")
     if data and data.get("data"):
@@ -425,19 +426,22 @@ def scrape_cls():
                     "likes": 20000, "comments": 200,
                 })
             return articles
+    if data and data.get("errno"):
+        print(f"  ⚠️ API返回错误: errno={data.get('errno')} {data.get('msg','')}")
     
     # 降级：从首页HTML提取
     print("  ⚠️ API不可用，从HTML降级抓取...")
-    html = fetch("https://www.cls.cn/", referer="https://www.cls.cn/")
-    if not html:
+    html_text = fetch("https://www.cls.cn/", referer="https://www.cls.cn/")
+    if not html_text:
         return []
     # 匹配首页新闻标题和链接
     pattern = r'<a[^>]*href="(/detail/\d+)"[^>]*>([^<]{8,200})</a>'
-    matches = re.findall(pattern, html)
+    matches = re.findall(pattern, html_text)
     articles = []
     seen = set()
     for url, title in matches:
         title = re.sub(r'<[^>]+>', '', title).strip()
+        title = html.unescape(title)  # 解码 &amp; &quot; &#x... 等 HTML 实体
         if not title or len(title) < 8 or title in seen:
             continue
         seen.add(title)
@@ -461,9 +465,12 @@ def scrape_ifeng():
     text = fetch("https://news.ifeng.com/")
     if not text:
         return []
-    # 从首页提取新闻标题和链接
+    # 主正则：a 标签带 title 属性
     pattern = r'<a[^>]*href="([^"]*)"[^>]*title="([^"]*)"'
     matches = re.findall(pattern, text)
+    # 备用正则：a 标签内文本（title 属性被去掉时）
+    if len(matches) < 6:
+        matches = re.findall(r'<a[^>]*href="([^"]*ifeng[^"]*)"[^>]*>([^<]{6,200})</a>', text)
     
     # 过滤掉非新闻链接（如导航栏、品牌栏目等）
     news_items = []
@@ -471,6 +478,7 @@ def scrape_ifeng():
         # 跳过空标题、过短标题、导航栏标题
         if not title or len(title) < 6:
             continue
+        title = html.unescape(title.strip())
         skip_titles = ["首页", "资讯", "视频", "直播", "凤凰卫视", "财经", "娱乐", "体育", "时尚", "汽车", "房产", "科技", "军事", "文化", "旅游", "佛教", "国学", "数码", "健康", "公益", "教育", "酒业", "美食", "品牌主场", "更多>"]
         if title in skip_titles:
             continue
@@ -528,37 +536,61 @@ def scrape_tieba():
     return articles
 
 def scrape_weibo():
-    """微博热搜 (HTML抓取)"""
+    """微博热搜 (ajax API，无Cookie时HTML降级)"""
     print("📡 微博热搜...")
-    # 微博热榜页面
     headers = {
         "User-Agent": USER_AGENT,
         "Cookie": os.environ.get("WEIBO_COOKIE", "")
     }
     if not headers["Cookie"]:
-        print("  ⚠️ WEIBO_COOKIE 未设置，微博可能抓取失败，将通过 GitHub Secrets 注入")
+        print("  ⚠️ WEIBO_COOKIE 未设置，将通过 GitHub Secrets 注入")
     text = fetch("https://weibo.com/ajax/side/hotSearch", headers=headers, referer="https://weibo.com/")
-    if not text:
-        return []
-    try:
-        data = json.loads(text)
-    except Exception:
+    if text:
+        try:
+            data = json.loads(text)
+            articles = []
+            for item in data.get("data", {}).get("realtime", [])[:10]:
+                word = item.get("word", "")
+                articles.append({
+                    "id": make_id("weibo", word) % 10**9,
+                    "title": item.get("note", word),
+                    "summary": item.get("word_scheme", "")[:100],
+                    "source": "微博",
+                    "date": today,
+                    "time": "",
+                    "tags": ["热议", "娱乐", "社会"],
+                    "url": f"https://s.weibo.com/weibo?q=%23{word}%23",
+                    "likes": safe_int(item.get("raw_hot"), 50000),
+                    "comments": 500,
+                })
+            if articles:
+                return articles
+        except Exception:
+            pass
+
+    # 降级：从 s.weibo.com/top/summary HTML 抓取（无Cookie可用）
+    print("  ⚠️ ajax API失败，从HTML降级抓取...")
+    html_text = fetch("https://s.weibo.com/top/summary", referer="https://weibo.com/")
+    if not html_text:
         return []
     articles = []
-    for item in data.get("data", {}).get("realtime", [])[:10]:
-        word = item.get("word", "")
+    for m in re.finditer(r'<td class="td-02">\s*<a[^>]*href="/weibo\?q=([^"]*)"[^>]*>([^<]{2,100})</a>', html_text):
+        word = html.unescape(urllib.parse.unquote(m.group(1).replace("%23", "#").strip("#")))
+        title = html.unescape(m.group(2).strip())
+        if not title or len(title) < 2:
+            continue
         articles.append({
-            "id": make_id("weibo", word) % 10**9,
-            "title": item.get("note", word),
-            "summary": item.get("word_scheme", "")[:100],
+            "id": make_id("weibo", title) % 10**9,
+            "title": title,
+            "summary": "",
             "source": "微博",
-            "date": today,
-            "time": "",
+            "date": today, "time": "",
             "tags": ["热议", "娱乐", "社会"],
-            "url": f"https://s.weibo.com/weibo?q=%23{word}%23",
-            "likes": safe_int(item.get("raw_hot"), 50000),
-            "comments": 500,
+            "url": f"https://s.weibo.com/weibo?q={urllib.parse.quote(title)}",
+            "likes": 50000, "comments": 500,
         })
+        if len(articles) >= 10:
+            break
     return articles
 
 def scrape_douyin():
@@ -599,7 +631,7 @@ def _fetch_weixin_api():
     
     for url, referer in apis:
         try:
-            # 尝试跳过SSL验证（处理证书过期问题）
+            # 第三方免费API证书不稳定，跳过SSL验证（仅限此API，不影响主 fetch 路径）
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
@@ -617,7 +649,8 @@ def _fetch_weixin_api():
                 items = data.get("data", [])
                 if items and len(items) > 0:
                     return items
-        except Exception:
+        except Exception as e:
+            print(f"  ⚠️ 公众号API {url[:40]}: {type(e).__name__}")
             continue
     
     return None
@@ -682,7 +715,7 @@ def scrape_weixin():
         
         result = result[:10]
         for a in result:
-            a["source"] = "公众号热点"
+            a["source"] = "微博精选"  # 标记真实来源（降级数据来自微博，非公众号）
             a["id"] = make_id("wx_fb", a["title"]) % 10**9
             a["url"] = "https://weixin.sogou.com/weixin?type=2&query=" + urllib.parse.quote(a["title"].split("#")[0])
         return result
@@ -1304,12 +1337,12 @@ def generate_blogger_analysis(article):
     elif "教程" in title:
         cover_style = "步骤图+大字标题"
     
-    # 发布规律判断（只认明确字眼；"7月6日"这类日期标题不能误判为月更）
+    # 发布规律判断：按博主名推断（博主标题几乎不写"周更/月更"字眼，靠标题判断无信息量）
     publish_pattern = "日更"
-    if "周更" in title or "每周" in title or "weekly" in title:
-        publish_pattern = "周更"
-    elif "月更" in title or "每月" in title:
-        publish_pattern = "月更"
+    if blogger in ("网吧信息差", "阿七大型纪录片", "人类观察菌", "沙漠一之雕"):
+        publish_pattern = "日更"
+    elif blogger == "陈先生":
+        publish_pattern = "不定期"
 
     # 可复制建议（先用兜底关键词，避免 keywords 为空拼出"标题用#标签引流"病句）
     kw_final = keywords[:5] if keywords else ["热点", "社会"]
@@ -1351,7 +1384,7 @@ def douyin_score(a):
 
     # 2. 情绪冲击分（标题含强情绪词 = 更容易在抖音传播）
     emotional_words = ['泪崩', '震惊', '怒了', '崩溃', '炸裂', '反转', '意外', '惊人',
-                      '离谱', '逆天', '离谱', '破防', '沉默', '不敢相信', '谁都没想到']
+                      '离谱', '逆天', '破防', '沉默', '不敢相信', '谁都没想到']
     for w in emotional_words:
         if w in title:
             score += 12
@@ -1659,7 +1692,7 @@ def main(mode="full"):
     mode: "full"=全部爬虫, "local"=跳过TikHub/B站博主, "remote"=只跑TikHub/B站+合并已有数据
     """
     global IMPORT_DEADLINE
-    IMPORT_DEADLINE = time.time() + 600  # 10分钟预算，给博主爬虫留足时间
+    IMPORT_DEADLINE = time.time() + 300  # 5分钟预算（GitHub Actions free tier 默认6分钟超时，留1分钟给后处理+提交）
     refresh_time()  # 刷新时间，避免跨日运行日期错误
     print("=" * 50)
     print(f"  热点数据自动采集 - {today} {now_time} [{mode}]")
@@ -1807,14 +1840,13 @@ def main(mode="full"):
             print(f"  🛟 保留 {rescued_bloggers} 条旧博主数据")
         
         # 2. 失败的源 -> 保留旧数据
-        failed_sources = set()
         for name, scraper in scrapers:
             if name != "博主追踪":
                 source_label = {
                     "百度热搜": "百度热搜", "知乎": "知乎", "B站": "bilibili",
                     "今日头条": "今日头条", "澎湃新闻": "澎湃新闻", "华尔街见闻": "华尔街见闻",
                     "财联社": "财联社热门", "凤凰网": "凤凰网", "贴吧": "贴吧",
-                    "微博": "微博", "抖音": "抖音", "公众号": "公众号热点"
+                    "微博": "微博", "抖音": "抖音", "公众号": "微博精选"
                 }.get(name, name)
                 has_data = any(a.get("source", "") == source_label for a in all_articles)
                 if not has_data:
@@ -1864,18 +1896,21 @@ def main(mode="full"):
     
     # 每个博主：先按标题去重（同一视频可能因 ID 不同产生两条），再保留最新 3 条
     def _blogger_recency_key(x):
-        """博主视频真实新旧排序键：create_time 时间戳 > aweme_id（数值随时间递增）> date 字符串。
-        不能信 date——Playwright 兜底路径曾把 date 盖成抓取当天，导致置顶旧帖冒充最新。"""
+        """博主视频真实新旧排序键：aweme_id 数值（抖音，随发布时间单调递增）优先，
+        无效时回落 create_time（B站 BV号 int() 失败→0）。
+        不能信 date——Playwright 兜底路径曾把 date 盖成抓取当天，导致置顶旧帖冒充最新。
+        不能用 (ct, aid, ...) 元组——ct（~1.8e9）和 aid（~7.7e18）量纲不一致，
+        无 ct 的条目 aid 远大于有 ct 的，会全部浮到顶部。每位博主单平台，aid or ct 不混排。"""
+        try:
+            aid = int(x.get("aweme_id") or 0)
+        except (TypeError, ValueError):
+            aid = 0
         ct = x.get("create_time")
         try:
             ct = int(ct) if ct else 0
         except (TypeError, ValueError):
             ct = 0
-        try:
-            aid = int(x.get("aweme_id") or 0)
-        except (TypeError, ValueError):
-            aid = 0
-        return (ct, aid, x.get("date", "") or "", x.get("time", "") or "")
+        return (aid or ct, x.get("date", "") or "", x.get("time", "") or "")
 
     blogger_by_name = {}
     for a in all_articles:
@@ -1968,27 +2003,17 @@ def main(mode="full"):
                 a["content_intro"] = _generate_video_intro(a, all_articles)
 
     # ═══ 文案清洗：繁转简 + Whisper误识别修复 ═══
-    _clean_fixes = [
-        ('无警广员支队银门哨兵','武警执勤'),('虎帐办演者','cosplay表演者'),
-        ('虎帐优人','coser'),('枪都已经向堂了','枪都已经上膛了'),
-        ('托落','脱落'),('昏觉','昏厥'),('灯上热搜','登上热搜'),
-        ('推桑','推搡'),('设施六人','涉案六人'),('户在身后','护在身后'),
-        ('富哨','副哨'),('烫手山狱','烫手山芋'),('切开的稀釉','切开的西瓜'),
-        ('六官王','六冠王'),('对势','对峙'),('慢展','漫展'),('苏行定徽','苏醒后'),
-        ('炼铜皮','恋童癖'),('黑闪酒机','黑闪连击'),('拒留','拘留'),
-        ('罩人男子','肇事男子'),('首部受伤','头部受伤'),('毒瘤女孩','盲人女孩'),
-        ('将警快核实','将尽快核实'),('全之龙','权志龙'),('其不来的','起不来的'),
-        ('图件进攻','推荐进攻'),('彼此根','培根'),('鲜耳朵','馅儿多'),
-        ('三娘我请我来哦',''),('你爆一个四十','你爆一个试试'),
-        ('浓的要小','弄的要死'),('恰人中等急救措施','掐人中急救'),
-        ('不是陷入','不适陷入'),
-        # Whisper 日期误识别修复（视频为2026年7月，"五十四"系"五日"误听）
-        ('七月五十四单','七月五日'),('七月五十四号','七月五日'),
-        ('二零二四年七月五','二零二六年七月五'),('二零二五年七月五','二零二六年七月五'),
-    ]
-    _zhe = [('想著','想着'),('握著','握着'),('看著','看着'),('对著','对着'),
-            ('拿著','拿着'),('跟著','跟着'),('推著','推着'),('抱著','抱着'),
-            ('走著','走着'),('笑著','笑着'),('吃著','吃着'),('站著','站着')]
+    # 误识别修复表外置为 asr_fixes.json，更新表不需要改代码
+    _clean_fixes = []
+    _zhe = []
+    try:
+        _fixes_path = os.path.join(BASE_DIR, "asr_fixes.json")
+        _fdata = json.load(open(_fixes_path, encoding="utf-8"))
+        _clean_fixes = [tuple(x) for x in _fdata.get("asr_fixes", [])]
+        _zhe = [tuple(x) for x in _fdata.get("zhe_to_zhe", [])]
+    except Exception:
+        _clean_fixes = []  # 文件缺失时跳过修复（不影响主流程）
+        _zhe = []
     # 修复表清洗不依赖 opencc（本地/CI 没装 opencc 时 _clean_fixes 也必须生效）
     _cc = None
     try:
