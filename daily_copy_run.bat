@@ -34,6 +34,12 @@ if errorlevel 1 (
     echo [%date% %time%] WARNING: git pull failed, continue with local data >> %LOG%
 )
 
+rem 1.5 refresh Douyin login cookie from Chrome (登录态稳定绕过抖音风控；失败不阻断，generate_hot 会退回匿名态重试)
+%PY% extract_cookie_run.py >> %LOG% 2>&1
+if errorlevel 1 (
+    echo [%date% %time%] WARNING: cookie refresh failed, will fallback to anonymous >> %LOG%
+)
+
 rem 2. fetch blogger videos (copywriting source: Douyin+Bilibili bloggers; --remote runs only bloggers, NOT news)
 %PY% generate_hot.py --remote >> %LOG% 2>&1
 if errorlevel 1 (
