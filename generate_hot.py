@@ -1787,7 +1787,9 @@ def main(mode="full"):
         for a in old_articles:
             aid = str(a.get("id", ""))
             if a.get("source") == "blogger":
-                if a.get("analysis") and aid not in new_blogger_ids:
+                # 只保留 create_time 有效的旧视频：create_time=0 是 Playwright 兜底
+                # 没拿到时间戳、date 被盖成抓取当天的置顶帖/脏数据，会冒充最新视频
+                if a.get("analysis") and a.get("create_time") and aid not in new_blogger_ids:
                     all_articles.append(a)
             else:
                 all_articles.append(a)
@@ -2103,6 +2105,10 @@ def main(mode="full"):
             try:
                 date_str = (a.get("date") or a.get("published_at") or "")[:10]
                 if not date_str:
+                    old += 1
+                    continue
+                # create_time 缺失(0)= Playwright 兜底没拿到时间戳的置顶帖/脏数据，冒充最新，必须过滤
+                if not a.get("create_time"):
                     old += 1
                     continue
                 d = datetime.strptime(date_str, "%Y-%m-%d").date()
