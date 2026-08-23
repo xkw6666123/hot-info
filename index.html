@@ -414,7 +414,7 @@ footer a:hover{color:var(--gold-hover)}
 .fav-btn:active{transform:scale(1.2)}
 button:active{transform:scale(0.97)}
 </style>
-<script>window.__DATA_VERSION__='1787468478';</script>
+<script>window.__DATA_VERSION__='1787470475';</script>
 </head>
 <body>
 <div id="jsError" style="display:none;background:#ff5252;color:#fff;padding:12px 20px;font-size:14px;position:fixed;top:0;left:0;width:100%;z-index:9999;line-height:1.6"></div>
@@ -496,7 +496,7 @@ button:active{transform:scale(0.97)}
 
 <!-- ===== Script ===== -->
 <link rel="preload" as="script" href="data.js?v=1787452644">
-<script src="data.js?v=1787468478" defer></script>
+<script src="data.js?v=1787470475" defer></script>
 <script>
 // 主题切换
 function toggleTheme(){
@@ -1190,10 +1190,18 @@ function renderAnalysis(){
   try {
   const el=document.getElementById('content');
   window.__CI_FULL__.length=0;  // 每次渲染重建索引，避免跨多次渲染无界增长
-  // 按博主分组，组内按发布时间降序（最新在前）
-  const allVids=data.filter(a=>a.source==='blogger').sort((a,b)=>{
-    const nc=(a.blogger_name||'').localeCompare(b.blogger_name||'');
-    if(nc!==0)return nc;
+  // 按博主分组（博主之间按各自最新视频日期倒序），组内按发布时间降序（最新在前）
+  const bloggerVids=data.filter(a=>a.source==='blogger');
+  const bloggerLatest={};
+  bloggerVids.forEach(a=>{
+    const n=a.blogger_name||'';
+    const d=(a.date||'')+' '+(a.time||'');
+    if(!bloggerLatest[n]||d>bloggerLatest[n])bloggerLatest[n]=d;
+  });
+  const allVids=bloggerVids.sort((a,b)=>{
+    const la=bloggerLatest[a.blogger_name||'']||'';
+    const lb=bloggerLatest[b.blogger_name||'']||'';
+    if(la!==lb)return lb.localeCompare(la);
     return ((b.date||'')+' '+(b.time||'')).localeCompare((a.date||'')+' '+(a.time||''));
   });
   if(!allVids.length){el.innerHTML='<div class="empty-state"><div class="icon">🔬</div><p>暂无视频数据</p></div>';return}
