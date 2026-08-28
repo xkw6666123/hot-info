@@ -2,7 +2,8 @@ name: Auto Update Hot News
 
 on:
   schedule:
-    - cron: '17 */3 * * *'   # 每3小时（UTC时间，错开整点）
+    - cron: '23 */3 * * *'    # 主调度：每3小时（UTC 23分=北京8:23/11:23/...，避开整点高峰）
+    - cron: '51 */3 * * *'    # 备用调度：错开28分钟（GitHub免费账户整点时段调度易被丢弃，双保险）
   workflow_dispatch:
 
 permissions:

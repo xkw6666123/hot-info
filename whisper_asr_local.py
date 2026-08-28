@@ -34,35 +34,67 @@ except Exception:
 
 _MODEL = None
 _MODEL_KIND = None
+_PUNC = None  # 标点模型（SenseVoice 输出无标点，需单独补）
 
 def get_model():
-    """转写引擎：funasr(seaco paraformer，已缓存 ~/.cache/modelscope) 优先；whisper base 兜底。
-    注意：用缓存的 seaco 模型 id，不要用 paraformer-zh（会重新下载 1.2GB）。"""
-    global _MODEL, _MODEL_KIND
+    """转写引擎：SenseVoiceSmall（阿里最新，准确率高，免费本地已缓存）优先；
+    seaco paraformer 兜底；whisper base 最后兜底。"""
+    global _MODEL, _MODEL_KIND, _PUNC
     if _MODEL is None:
         try:
             from funasr import AutoModel
             _MODEL = AutoModel(
-                model="iic/speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
-                vad_model="iic/speech_fsmn_vad_zh-cn-16k-common-pytorch",
-                punc_model="iic/punc_ct-transformer_cn-en-common-vocab471067-large",
+                model="iic/SenseVoiceSmall",
+                trust_remote_code=True,
                 disable_update=True,
             )
-            _MODEL_KIND = "funasr"
-            print("  ✅ funasr seaco 模型就绪")
+            _MODEL_KIND = "sensevoice"
+            # SenseVoice 输出无标点，同时加载标点模型
+            try:
+                _PUNC = AutoModel(
+                    model="iic/punc_ct-transformer_cn-en-common-vocab471067-large",
+                    disable_update=True,
+                )
+            except Exception:
+                _PUNC = None
+            print("  ✅ SenseVoiceSmall 模型就绪（准确率更高）")
         except Exception as e:
-            print(f"  ⚠️ funasr 不可用({type(e).__name__})，降级 whisper base")
-            import whisper
-            print("  ⏳ 加载 whisper base 模型...")
-            _MODEL = whisper.load_model("base")
-            _MODEL_KIND = "whisper"
-            print("  ✅ 模型就绪")
+            print(f"  ⚠️ SenseVoice 不可用({type(e).__name__})，降级 seaco paraformer")
+            try:
+                from funasr import AutoModel
+                _MODEL = AutoModel(
+                    model="iic/speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch",
+                    vad_model="iic/speech_fsmn_vad_zh-cn-16k-common-pytorch",
+                    punc_model="iic/punc_ct-transformer_cn-en-common-vocab471067-large",
+                    disable_update=True,
+                )
+                _MODEL_KIND = "funasr"
+                print("  ✅ funasr seaco 模型就绪")
+            except Exception as e2:
+                print(f"  ⚠️ funasr 不可用({type(e2).__name__})，降级 whisper base")
+                import whisper
+                print("  ⏳ 加载 whisper base 模型...")
+                _MODEL = whisper.load_model("base")
+                _MODEL_KIND = "whisper"
+                print("  ✅ 模型就绪")
     return _MODEL
 
 
 def transcribe(wav_path):
     model = get_model()
-    if _MODEL_KIND == "funasr":
+    if _MODEL_KIND == "sensevoice":
+        res = model.generate(input=wav_path, language="zh", use_itn=False)
+        text = (res[0]["text"] if res else "").strip()
+        # 清洗 SenseVoice 特殊标签 <|zh|> <|HAPPY|> <|BGM|> <|woitn|> 等
+        text = re.sub(r"<\|[^|]*\|>", "", text).strip()
+        # 补标点（SenseVoice 输出无标点）
+        if _PUNC:
+            try:
+                pres = _PUNC.generate(input=text)
+                text = (pres[0]["text"] if pres else text).strip()
+            except Exception:
+                pass
+    elif _MODEL_KIND == "funasr":
         res = model.generate(input=wav_path, batch_size_s=300)
         text = (res[0]["text"] if res else "").strip()
     else:
