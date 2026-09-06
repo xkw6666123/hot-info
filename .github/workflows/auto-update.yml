@@ -2,9 +2,15 @@ name: Auto Update Hot News
 
 on:
   schedule:
-    - cron: '23 */3 * * *'    # 主调度：每3小时（UTC 23分=北京8:23/11:23/...，避开整点高峰）
-    - cron: '51 */3 * * *'    # 备用调度：错开28分钟（GitHub免费账户整点时段调度易被丢弃，双保险）
+    - cron: '17 */3 * * *'   # 每3小时（UTC时间，错开整点）
   workflow_dispatch:
+  push:
+    paths:
+      - 'local_asr.py'
+      - 'auto_asr.py'
+      - 'douyin_dl.py'
+      - 'bili_dl.py'
+      - '.github/workflows/auto-update.yml'
 
 permissions:
   contents: write
@@ -12,7 +18,7 @@ permissions:
 jobs:
   merge-bloggers:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60  # whisper CPU 转写 15 条约需 30-50 分钟，20 分钟会被强杀
     env:
       MIMO_API_KEY: ${{ secrets.MIMO_API_KEY }}
 
@@ -35,7 +41,7 @@ jobs:
           echo "=== pip version ==="
           pip --version
           echo "=== Installing core packages ==="
-          pip install playwright opencc-python-reimplemented requests httpx pandas beautifulsoup4 lxml yt-dlp curl_cffi gmssl 2>&1
+          pip install playwright opencc-python-reimplemented requests httpx pandas beautifulsoup4 lxml yt-dlp curl_cffi gmssl faster-whisper 2>&1
           echo "=== pip install done, exit: $? ==="
 
       - name: Install Playwright browser
@@ -73,7 +79,16 @@ jobs:
         run: python gen_content_intro.py || echo "gen_content_intro skipped"
 
       - name: 自动ASR文案补提
-        run: python auto_asr.py || echo "Auto ASR skipped"
+        run: |
+          python auto_asr.py 2>&1 || echo "::warning::ASR 补提失败，请检查上方 local_asr 日志（引擎/下载通道）"
+          echo "=== ASR 后无文案博主统计 ==="
+          python -c "
+          import json
+          d = json.load(open('data.json','r',encoding='utf-8'))
+          bad = [a for a in d.get('articles',[]) if a.get('source')=='blogger' and len(a.get('content_intro',''))<100]
+          print(f'{len(bad)} 条博主视频仍无真实文案:')
+          for a in bad: print(' -', a.get('blogger_name'), a.get('date'), (a.get('title') or '')[:24])
+          "
         env:
           MIMO_API_KEY: ${{ secrets.MIMO_API_KEY }}
 

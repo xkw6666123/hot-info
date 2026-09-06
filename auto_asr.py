@@ -46,22 +46,29 @@ def main():
     print(f"🎯 检测到 {need_count} 条需要补提的文案")
     print("📞 调用 local_asr.py 进行补提...")
 
-    # 调用 local_asr.py 进行补提
+    # 调用 local_asr.py 进行补提（whisper CPU 转写慢，放宽到 50 分钟）
+    ok = False
     try:
         result = subprocess.run(
             [sys.executable, LOCAL_ASR],
             capture_output=True,
             text=True,
-            timeout=600,
+            timeout=3000,
             env={**os.environ}
         )
         print(result.stdout)
         if result.stderr:
-            print(f"⚠️ stderr: {result.stderr}")
-    except subprocess.TimeoutExpired:
-        print("⚠️ ASR超时")
+            print(f"⚠️ stderr: {result.stderr[-1500:]}")
+        ok = (result.returncode == 0)
+    except subprocess.TimeoutExpired as e:
+        print("⚠️ ASR超时(50min)，已提取部分结果")
+        if e.stdout:
+            print(str(e.stdout)[-1500:])
     except Exception as e:
         print(f"❌ ASR失败: {e}")
+
+    if not ok:
+        print("❌ local_asr.py 退出码非0 —— 请检查上方日志（引擎/key/下载通道）")
 
     # 再次检查
     remaining = check_content_quality()

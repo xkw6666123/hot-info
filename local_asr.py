@@ -3,7 +3,7 @@
 本地/CI 通用 ASR 流水线：
   1. douyin-transcribe Playwright 拦截 → 获取视频播放URL（仅本机，CI 自动跳过）
   2. ffmpeg 下载音频（B站走 yt-dlp）
-  3. 转写引擎自动选择：有 MIMO_API_KEY 用小米 MiMo ASR；否则本地 whisper base
+  3. 转写引擎自动选择：有 MIMO_API_KEY 用小米 MiMo ASR；否则 faster-whisper base（免费）
   4. 更新 data.json
 
 环境变量: MIMO_API_KEY（可选；缺失时自动降级 whisper）
@@ -32,19 +32,41 @@ MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
 _WHISPER_MODEL = None
 
 def whisper_asr(audio_path: str) -> str:
-    """本地 whisper base（CPU 可跑，无需任何 API key）"""
+    """whisper base（CPU 免费转写，无需 API key）。优先 faster-whisper（快、无torch依赖），回退 openai-whisper"""
     global _WHISPER_MODEL
-    try:
-        import whisper
-    except ImportError:
-        return ""
     if _WHISPER_MODEL is None:
-        print("    ⏳ 加载 whisper base 模型...")
-        _WHISPER_MODEL = whisper.load_model("base")
-    r = _WHISPER_MODEL.transcribe(audio_path, language="zh", fp16=False,
-                                  initial_prompt="以下是简体中文口语视频文案。",
-                                  condition_on_previous_text=False)
-    text = (r.get("text") or "").strip()
+        try:
+            from faster_whisper import WhisperModel
+            local_dir = os.path.join(TEMP, "fw-base")
+            if os.path.exists(os.path.join(local_dir, "model.bin")):
+                print("    ⏳ 加载 faster-whisper base（本地模型）...")
+                _WHISPER_MODEL = ("fw", WhisperModel(local_dir, device="cpu", compute_type="int8"))
+            else:
+                print("    ⏳ 加载 faster-whisper base（在线模型）...")
+                _WHISPER_MODEL = ("fw", WhisperModel("base", device="cpu", compute_type="int8"))
+        except ImportError:
+            try:
+                import whisper
+                print("    ⏳ 加载 openai-whisper base 模型...")
+                _WHISPER_MODEL = ("ow", whisper.load_model("base"))
+            except ImportError:
+                print("    ❌ 未安装 faster-whisper/openai-whisper，无法本地转写")
+                return ""
+    kind, model = _WHISPER_MODEL
+    text = ""
+    try:
+        if kind == "fw":
+            segments, _info = model.transcribe(audio_path, language="zh", vad_filter=True,
+                                               initial_prompt="以下是简体中文口语视频文案。")
+            text = "".join(s.text for s in segments).strip()
+        else:
+            r = model.transcribe(audio_path, language="zh", fp16=False,
+                                 initial_prompt="以下是简体中文口语视频文案。",
+                                 condition_on_previous_text=False)
+            text = (r.get("text") or "").strip()
+    except Exception as e:
+        print(f"    ❌ whisper 转写失败: {e}")
+        return ""
     try:
         from opencc import OpenCC
         text = OpenCC("t2s").convert(text)
@@ -218,7 +240,7 @@ async def process_bilibili(url: str, tag: str = "") -> str:
 # ── 主流程 ──
 
 async def main():
-    engine = "MiMo API" if MIMO_API_KEY else "whisper base(本地)"
+    engine = "MiMo API" if MIMO_API_KEY else "faster-whisper base(免费/CPU)"
     print(f"🎙️ 转写引擎: {engine}")
 
     with open("data.json", "r", encoding="utf-8-sig") as f:
@@ -242,7 +264,7 @@ async def main():
 
         # 根据URL类型选择处理方式
         if "douyin.com" in url:
-            # 抖音视频：使用Playwright拦截
+            # 抖音视频：douyin_dl 免登录（a_bogus 签名）
             print(f"[{i+1}/{len(need)}] {name} | {title}")
             try:
                 text = await process_one(aweme_id, url, tag=aweme_id or str(i))
