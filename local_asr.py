@@ -247,7 +247,7 @@ async def main():
         data = json.load(f)
 
     bloggers = [a for a in data["articles"] if a.get("source") == "blogger"]
-    need = [a for a in bloggers if len(a.get("content_intro", "")) < 500]
+    need = [a for a in bloggers if len(a.get("content_intro", "")) < 200]  # 与 auto_asr.py 阈值对齐，避免重转 200-500 字真实文案
 
     print(f"\n🎯 ASR 补提: {len(need)}/{len(bloggers)} 条\n")
 
