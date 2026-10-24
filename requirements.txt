@@ -1,17 +1,34 @@
 # 热点信息差网站 - 依赖清单
-# CI 和本地通用（browser_cookie3 仅本地需要，不在此文件中）
+# CI（.github/workflows/auto-update.yml）用 pip install -r requirements.txt 安装本文件
+#
+# 版本锁死于 2026-10-24 一次成功 CI 运行实际解析到的版本（pip --dry-run 复现），
+# 因此本文件生效后的首次运行与之前完全一致，只是不再随 PyPI 漂移。
+#
+# 本机专用、CI 不安装的依赖不写在此处（否则 CI 会去拉 ~2.5GB 的 torch 并超时）：
+#   funasr==1.3.1 / torch==2.11.0 / modelscope==1.37.0   ← whisper_asr_local.py 每日本地转写
+#   openai-whisper==20250625                             ← 兜底转写
+#   browser_cookie3==0.19.1                              ← 本地取抖音 Cookie
+#   playwright-stealth==2.0.3
 
 # 核心依赖
-playwright>=1.40.0
-opencc-python-reimplemented>=0.1.7
+playwright==1.64.1
+opencc-python-reimplemented==0.1.7
 
 # HTTP请求
-requests>=2.31.0
-httpx>=0.25.0
+requests==2.34.2
+httpx==0.28.1
 
 # 数据处理
-pandas>=2.1.0
+pandas==3.1.0
 
-# 其他
-beautifulsoup4>=4.12.0
-lxml>=4.9.0
+# 解析
+beautifulsoup4==4.15.0
+lxml==6.1.3
+
+# 抓取与签名（douyin_abogus.py 依赖 gmssl 的 SM3）
+yt-dlp==2026.10.21
+curl_cffi==0.16.3
+gmssl==3.2.2
+
+# 本地转写（CI 的 local_asr.py 兜底引擎）
+faster-whisper==1.2.1

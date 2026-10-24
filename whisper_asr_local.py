@@ -45,7 +45,6 @@ def get_model():
             from funasr import AutoModel
             _MODEL = AutoModel(
                 model="iic/SenseVoiceSmall",
-                trust_remote_code=True,
                 disable_update=True,
             )
             _MODEL_KIND = "sensevoice"
