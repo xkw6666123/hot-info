@@ -5,7 +5,6 @@ warnings.filterwarnings("ignore")
 # 强制无缓冲输出
 sys.stdout.reconfigure(line_buffering=True) if hasattr(sys.stdout, 'reconfigure') else None
 
-os.environ['MIMO_API_KEY'] = 'tp-c03hkz73ublqqhz4q4ya5k75dwjh8igvzyf25h126nlhmack'
 sys.path.insert(0, r'D:\AI\2026-06-06-23-33-48\douyin-transcribe')
 
 print("Loading douyin-transcribe server...")

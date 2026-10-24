@@ -2,7 +2,6 @@
 """批量提取博主视频 ASR 文案"""
 import json, os, sys, time, re
 
-os.environ['MIMO_API_KEY'] = 'tp-c03hkz73ublqqhz4q4ya5k75dwjh8igvzyf25h126nlhmack'
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from asr_extract import get_bilibili_content, get_douyin_content

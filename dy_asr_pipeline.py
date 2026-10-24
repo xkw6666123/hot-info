@@ -6,7 +6,7 @@ import subprocess, json, os, sys, time, base64, urllib.request
 
 PCLI = r"C:\Users\Kevin\.workbuddy\binaries\node\versions\22.12.0\node.exe"
 PCLI_SCRIPT = r"C:\Users\Kevin\.workbuddy\binaries\node\versions\22.12.0\playwright-cli"
-MIMO_KEY = "tp-c03hkz73ublqqhz4q4ya5k75dwjh8igvzyf25h126nlhmack"
+MIMO_KEY = os.environ.get("MIMO_API_KEY", "")
 OUT_DIR = os.path.join(os.path.dirname(__file__), "asr_temp")
 os.makedirs(OUT_DIR, exist_ok=True)
 

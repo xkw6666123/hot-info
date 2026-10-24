@@ -2,7 +2,7 @@
 """批量ASR v3：yt-dlp + Chrome cookies 下载音频 → MiMo ASR → 更新 data.json"""
 import json, os, sys, time, base64, subprocess, urllib.request
 
-MIMO_KEY = "tp-c03hkz73ublqqhz4q4ya5k75dwjh8igvzyf25h126nlhmack"
+MIMO_KEY = os.environ.get("MIMO_API_KEY", "")
 MIMO_URL = "https://token-plan-cn.xiaomimimo.com/v1/chat/completions"
 TMP = os.path.join(os.path.dirname(__file__), "asr_temp")
 os.makedirs(TMP, exist_ok=True)
