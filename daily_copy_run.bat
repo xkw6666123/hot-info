@@ -29,7 +29,13 @@ set ALL_PROXY=
 set all_proxy=
 
 rem 1. sync remote (news is maintained by CI, pull latest, failure is non-fatal)
-git pull --ff-only origin main >> %LOG% 2>&1
+rem 1a. commit leftover generated data first: a dirty worktree makes every pull fail forever
+git add data.json data.js inspiration.js index.html asr_content.json deep_style_learned.json >> %LOG% 2>&1
+git diff --cached --quiet
+if errorlevel 1 (
+    git commit -m "auto: commit leftover generated data before sync" >> %LOG% 2>&1
+)
+git pull --rebase --autostash origin main >> %LOG% 2>&1
 if errorlevel 1 (
     echo [%date% %time%] WARNING: git pull failed, continue with local data >> %LOG%
 )
@@ -64,13 +70,21 @@ if errorlevel 1 (
 )
 
 rem 5. commit and push to GitHub (triggers Cloudflare Pages auto-deploy)
-git add data.json data.js inspiration.js index.html asr_content.json >> %LOG% 2>&1
+git add data.json data.js inspiration.js index.html asr_content.json deep_style_learned.json >> %LOG% 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     git commit -m "auto: copywriting update (daily)" >> %LOG% 2>&1
+    if errorlevel 1 echo [%date% %time%] ERROR: git commit failed >> %LOG%
     git push origin main >> %LOG% 2>&1
     if errorlevel 1 (
-        echo [%date% %time%] WARNING: git push failed (maybe CI concurrent push), will retry next run >> %LOG%
+        echo [%date% %time%] WARNING: git push failed, rebasing and retrying >> %LOG%
+        git pull --rebase --autostash origin main >> %LOG% 2>&1
+        git push origin main >> %LOG% 2>&1
+        if errorlevel 1 (
+            echo [%date% %time%] ERROR: git push still failing >> %LOG%
+        ) else (
+            echo [%date% %time%] pushed to GitHub on retry >> %LOG%
+        )
     ) else (
         echo [%date% %time%] pushed to GitHub >> %LOG%
     )

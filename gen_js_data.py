@@ -83,6 +83,12 @@ def main():
                 f'<script src="data.js?v={version}" defer></script>',
                 html
             )
+            # preload 链接也要一起换版本，否则浏览器预取的是旧 data.js，白耗一次请求
+            new_html = re.sub(
+                r'(<link rel=["\']preload["\'] as=["\']script["\'] href=["\'])data\.js(?:\?v=[^"\']*)?(["\'])',
+                rf'\g<1>data.js?v={version}\g<2>',
+                new_html
+            )
             if 'data.js' not in new_html:
                 new_html = new_html.replace('<script>', f'<script src="data.js?v={version}" defer></script>\n<script>', 1)
             # 注入灵感文件版本号，避免浏览器缓存旧 inspiration.js（否则用户刷新看不到更新）
